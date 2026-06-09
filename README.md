@@ -23,6 +23,36 @@ Open **http://localhost:3000**. Express backend and Vite frontend both run on th
 
 For full-song playback in the embed, sign into Spotify in any tab of the same browser. Premium plays the whole track; Free gives you 30-second previews.
 
+## Terminal shortcut (zsh)
+
+If you want to launch Wax from anywhere in Terminal, add this function to `~/.zshrc`:
+
+```bash
+cat >> ~/.zshrc << 'EOF'
+
+# Wax - launch the listening journal
+wax() {
+  cd /Users/kaseymallette/github/wax && PORT=3000 npm run dev
+}
+EOF
+
+source ~/.zshrc
+```
+
+Now you can run:
+
+```text
+wax
+```
+
+Optional: open the app in your browser automatically too:
+
+```bash
+wax() {
+  cd /Users/kaseymallette/github/wax && open http://localhost:3000 && PORT=3000 npm run dev
+}
+```
+
 ## How it works
 
 1. **Import** — drop your `.db`, `.sqlite`, or `.csv` file on the import page. SQLite uploads use a column mapper (Track ID is the only required field; the rest auto-detects). CSV uploads auto-detect Exportify's standard columns.
