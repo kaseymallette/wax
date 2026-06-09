@@ -86,6 +86,23 @@ curl http://localhost:3000/api/export -o ~/Downloads/wax-listens.csv
 
 Columns: `track_id`, `name`, `artists`, `album`, `era`, `listened`, `would_again`, `activity`, `notes`, `logged_at`.
 
+To generate a curated `again-again.db` using each track's latest rating (so mind-changes are respected), run:
+
+```bash
+npm run db:again-again
+```
+
+This creates/overwrites `again-again.db` with two tables:
+
+- `tracks`: only tracks whose most recent listen has `would_again = 1`
+- `listens`: one row per included track (its most recent listen, where `would_again = 1`)
+
+Sample query:
+
+```bash
+sqlite3 again-again.db "SELECT COUNT(*) AS tracks FROM tracks;"
+```
+
 ## Reading your data from Python
 
 ```python
