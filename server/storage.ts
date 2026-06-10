@@ -214,6 +214,23 @@ export class DatabaseStorage implements IStorage {
     }
     if (status === "logged") having.push("listen_count > 0");
     else if (status === "unlogged") having.push("listen_count = 0");
+    else if (status === "keep") {
+      having.push(`(
+        SELECT l2.keep_in_library
+        FROM listens l2
+        WHERE l2.track_id = t.id
+        ORDER BY l2.logged_at DESC, l2.id DESC
+        LIMIT 1
+      ) = 1`);
+    } else if (status === "remove") {
+      having.push(`(
+        SELECT l2.keep_in_library
+        FROM listens l2
+        WHERE l2.track_id = t.id
+        ORDER BY l2.logged_at DESC, l2.id DESC
+        LIMIT 1
+      ) = 0`);
+    }
 
     let orderBy = "t.imported_at DESC, t.name COLLATE NOCASE ASC";
     if (sort === "listens") orderBy = "listen_count DESC, t.name COLLATE NOCASE ASC";

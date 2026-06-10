@@ -27,13 +27,15 @@ import {
   Search, Save, ThumbsUp, ThumbsDown, Headphones, EarOff, Trash2,
 } from "lucide-react";
 
-type StatusFilter = "all" | "logged" | "unlogged";
+type StatusFilter = "all" | "logged" | "unlogged" | "keep" | "remove";
 type SortKey = "added" | "listens" | "last" | "name";
 
 const FILTERS: { key: StatusFilter; label: string }[] = [
   { key: "all", label: "All" },
   { key: "logged", label: "Logged" },
   { key: "unlogged", label: "Unlogged" },
+  { key: "keep", label: "Keep" },
+  { key: "remove", label: "Remove" },
 ];
 
 const SORTS: { key: SortKey; label: string }[] = [

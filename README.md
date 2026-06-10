@@ -16,7 +16,7 @@ Wax is a local-first listening journal for your music library. Upload your Spoti
 git clone https://github.com/kaseymallette/wax.git
 cd wax
 npm install
-PORT=3000 npm run dev
+npm run dev
 ```
 
 Open **http://localhost:3000**. Express backend and Vite frontend both run on the same port. (Port 5000 conflicts with macOS AirPlay — that's why the default is 3000.)
@@ -32,7 +32,7 @@ cat >> ~/.zshrc << 'EOF'
 
 # Wax - launch the listening journal
 wax() {
-  cd /Users/kaseymallette/github/wax && PORT=3000 npm run dev
+  cd /Users/kaseymallette/github/wax && npm run dev
 }
 EOF
 
@@ -49,7 +49,7 @@ Optional: open the app in your browser automatically too:
 
 ```bash
 wax() {
-  cd /Users/kaseymallette/github/wax && open http://localhost:3000 && PORT=3000 npm run dev
+  cd /Users/kaseymallette/github/wax && open http://localhost:3000 && npm run dev
 }
 ```
 
