@@ -442,10 +442,29 @@ export class DatabaseStorage implements IStorage {
       .map(([activity, count]) => ({ activity, count }))
       .sort((a, b) => b.count - a.count);
 
-    // Would-again ratio.
-    const yes = (sqlite.prepare("SELECT COALESCE(SUM(would_again),0) c FROM listens").get() as any).c;
-    const no = totalListens - yes;
-    const wouldAgainRatio = { yes, no };
+    // Keep/remove ratio by unique track (latest decision per track).
+    const keepRemove = sqlite
+      .prepare(`
+        SELECT
+          COALESCE(SUM(CASE WHEN latest.keep_in_library = 1 THEN 1 ELSE 0 END), 0) AS keep_count,
+          COALESCE(SUM(CASE WHEN latest.keep_in_library = 0 THEN 1 ELSE 0 END), 0) AS remove_count
+        FROM (
+          SELECT l.keep_in_library
+          FROM listens l
+          WHERE l.id = (
+            SELECT l2.id
+            FROM listens l2
+            WHERE l2.track_id = l.track_id
+            ORDER BY l2.logged_at DESC, l2.id DESC
+            LIMIT 1
+          )
+        ) latest
+      `)
+      .get() as any;
+    const keepRemoveRatio = {
+      keep: Number(keepRemove.keep_count ?? 0),
+      remove: Number(keepRemove.remove_count ?? 0),
+    };
 
     // Era distribution (includes "unset").
     const eraRows = sqlite
@@ -463,7 +482,7 @@ export class DatabaseStorage implements IStorage {
       listensByDay,
       topTracks,
       activityBreakdown,
-      wouldAgainRatio,
+      keepRemoveRatio,
       eraDistribution,
       recent,
     };

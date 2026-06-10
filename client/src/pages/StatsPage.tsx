@@ -15,7 +15,7 @@ type Stats = {
   listensByDay: { date: string; count: number }[];
   topTracks: { trackId: string; name: string; artists: string; count: number }[];
   activityBreakdown: { activity: string; count: number }[];
-  wouldAgainRatio: { yes: number; no: number };
+  keepRemoveRatio: { keep: number; remove: number };
   eraDistribution: { era: string; count: number }[];
   recent: ListenWithTrack[];
 };
@@ -74,9 +74,9 @@ export default function StatsPage() {
 
   const eraData = data.eraDistribution.map((e) => ({ name: eraLabel(e.era === "unset" ? null : e.era), value: e.count }));
 
-  const total = data.wouldAgainRatio.yes + data.wouldAgainRatio.no;
-  const yesPct = total ? Math.round((data.wouldAgainRatio.yes / total) * 100) : 0;
-  const noPct = total ? 100 - yesPct : 0;
+  const total = data.keepRemoveRatio.keep + data.keepRemoveRatio.remove;
+  const keepPct = total ? Math.round((data.keepRemoveRatio.keep / total) * 100) : 0;
+  const removePct = total ? 100 - keepPct : 0;
 
   return (
     <Layout>
@@ -159,9 +159,9 @@ export default function StatsPage() {
           </div>
         </div>
 
-        {/* Would listen again */}
-        <div className="rounded-xl border border-border bg-card p-5" data-testid="chart-would-again">
-          <h2 className="font-display text-base font-semibold">Would listen again</h2>
+        {/* Keep vs remove (latest per unique track) */}
+        <div className="rounded-xl border border-border bg-card p-5" data-testid="chart-keep-remove">
+          <h2 className="font-display text-base font-semibold">Keep vs remove</h2>
           {total === 0 ? (
             <p className="mt-4 text-sm text-muted-foreground">No listens logged yet.</p>
           ) : (
@@ -169,19 +169,22 @@ export default function StatsPage() {
               <div className="flex items-end justify-around">
                 <div className="text-center">
                   <ThumbsUp className="mx-auto h-6 w-6 text-primary" />
-                  <div className="mt-2 font-display text-3xl font-extrabold tabular-nums">{yesPct}%</div>
-                  <div className="text-xs text-muted-foreground">Yes ({data.wouldAgainRatio.yes})</div>
+                  <div className="mt-2 font-display text-3xl font-extrabold tabular-nums">{keepPct}%</div>
+                  <div className="text-xs text-muted-foreground">Keep ({data.keepRemoveRatio.keep})</div>
                 </div>
                 <div className="text-center">
                   <ThumbsDown className="mx-auto h-6 w-6 text-destructive" />
-                  <div className="mt-2 font-display text-3xl font-extrabold tabular-nums">{noPct}%</div>
-                  <div className="text-xs text-muted-foreground">No ({data.wouldAgainRatio.no})</div>
+                  <div className="mt-2 font-display text-3xl font-extrabold tabular-nums">{removePct}%</div>
+                  <div className="text-xs text-muted-foreground">Remove ({data.keepRemoveRatio.remove})</div>
                 </div>
               </div>
               <div className="flex h-3 overflow-hidden rounded-full bg-secondary/50">
-                <div className="h-full bg-primary" style={{ width: `${yesPct}%` }} />
-                <div className="h-full bg-destructive" style={{ width: `${noPct}%` }} />
+                <div className="h-full bg-primary" style={{ width: `${keepPct}%` }} />
+                <div className="h-full bg-destructive" style={{ width: `${removePct}%` }} />
               </div>
+              <p className="text-center text-xs text-muted-foreground">
+                Based on each track's latest keep/remove decision.
+              </p>
             </div>
           )}
         </div>
