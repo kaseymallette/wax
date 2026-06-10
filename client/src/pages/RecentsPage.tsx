@@ -70,10 +70,11 @@ export default function RecentsPage() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => { await apiRequest("DELETE", `/api/listens/${id}`); },
-    onSuccess: () => {
+    onSuccess: async () => {
       queryClient.invalidateQueries({ queryKey: ["/api/listens"] });
       queryClient.invalidateQueries({ queryKey: ["/api/tracks"] });
       queryClient.invalidateQueries({ queryKey: ["/api/stats"] });
+      await queryClient.refetchQueries({ queryKey: ["/api/stats"], type: "all" });
       setConfirmDelete(null);
       toast({ title: "Entry deleted" });
     },
