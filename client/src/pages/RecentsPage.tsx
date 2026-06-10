@@ -245,10 +245,20 @@ export default function RecentsPage() {
                             {l.listened ? "Listened" : "Background"}
                           </span>
                           <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
+                            l.wantAgain ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
+                          }`}>
+                            {l.wantAgain ? "Want again" : "Don't want"}
+                          </span>
+                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
                             l.wouldAgain ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
                           }`}>
                             {l.wouldAgain ? <ThumbsUp className="h-3 w-3" /> : <ThumbsDown className="h-3 w-3" />}
                             {l.wouldAgain ? "Again" : "Not again"}
+                          </span>
+                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
+                            l.keepInLibrary ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
+                          }`}>
+                            {l.keepInLibrary ? "Keep" : "Remove"}
                           </span>
                           {l.activity.map((a) => (
                             <span key={a} className="rounded-full bg-secondary/40 px-2 py-0.5 text-[10px] text-muted-foreground">{a}</span>

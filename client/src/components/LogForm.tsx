@@ -11,18 +11,33 @@ import { Headphones, EarOff, ThumbsUp, ThumbsDown, X, Plus } from "lucide-react"
 export type LogState = {
   era: string | null;
   listened: boolean | null;
+  wantAgain: boolean | null;
   wouldAgain: boolean | null;
+  keepInLibrary: boolean | null;
   activity: string[];
   notes: string;
 };
 
 export function initialLogState(era: string | null): LogState {
-  return { era, listened: null, wouldAgain: null, activity: [], notes: "" };
+  return {
+    era,
+    listened: null,
+    wantAgain: null,
+    wouldAgain: null,
+    keepInLibrary: null,
+    activity: [],
+    notes: "",
+  };
 }
 
 export function isLogValid(state: LogState, needEra: boolean): boolean {
   if (needEra && !state.era) return false;
-  return state.listened !== null && state.wouldAgain !== null;
+  return (
+    state.listened !== null
+    && state.wantAgain !== null
+    && state.wouldAgain !== null
+    && state.keepInLibrary !== null
+  );
 }
 
 const SEG_BASE =
@@ -40,6 +55,7 @@ export function LogForm({
   showEra: boolean;
 }) {
   const [customInput, setCustomInput] = useState("");
+  const [customEraInput, setCustomEraInput] = useState("");
   const patch = (p: Partial<LogState>) => setState({ ...state, ...p });
 
   const toggleActivity = (tag: string) =>
@@ -51,6 +67,12 @@ export function LogForm({
     const t = raw.trim().toLowerCase();
     if (!t) return;
     if (!state.activity.includes(t)) patch({ activity: [...state.activity, t] });
+  };
+
+  const setCustomEra = (raw: string) => {
+    const era = raw.trim();
+    if (!era) return;
+    patch({ era: era.slice(0, 80) });
   };
 
   const customTags = state.activity.filter((t) => !isPreset(t));
@@ -88,6 +110,24 @@ export function LogForm({
               );
             })}
           </div>
+          <div className="relative">
+            <Plus className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={customEraInput}
+              onChange={(e) => setCustomEraInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setCustomEra(customEraInput);
+                  setCustomEraInput("");
+                }
+              }}
+              placeholder="Add custom era"
+              className="pl-8"
+              data-testid="input-custom-era"
+            />
+          </div>
           <p className="text-xs text-muted-foreground/70">
             Set once per song — you can edit it later from Library.
           </p>
@@ -117,6 +157,33 @@ export function LogForm({
         </div>
       </div>
 
+      {/* Want to listen again? */}
+      <div className="space-y-2">
+        <label className="text-sm font-semibold">Do you want to listen again?</label>
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => patch({ wantAgain: true })}
+            data-testid="button-want-again-yes"
+            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
+              state.wantAgain === true ? SEG_ACTIVE : SEG_IDLE
+            }`}
+          >
+            <ThumbsUp className="h-4 w-4" /> Yes
+          </button>
+          <button
+            type="button"
+            onClick={() => patch({ wantAgain: false })}
+            data-testid="button-want-again-no"
+            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
+              state.wantAgain === false ? SEG_ACTIVE : SEG_IDLE
+            }`}
+          >
+            <ThumbsDown className="h-4 w-4" /> No
+          </button>
+        </div>
+      </div>
+
       {/* Would you listen again? */}
       <div className="space-y-2">
         <label className="text-sm font-semibold">Would you listen again?</label>
@@ -142,6 +209,36 @@ export function LogForm({
             <ThumbsDown className="h-4 w-4" /> No
           </button>
         </div>
+      </div>
+
+      {/* Keep/remove library flag (logged only) */}
+      <div className="space-y-2">
+        <label className="text-sm font-semibold">Keep or remove from library?</label>
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => patch({ keepInLibrary: true })}
+            data-testid="button-keep-library"
+            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
+              state.keepInLibrary === true ? SEG_ACTIVE : SEG_IDLE
+            }`}
+          >
+            Keep
+          </button>
+          <button
+            type="button"
+            onClick={() => patch({ keepInLibrary: false })}
+            data-testid="button-remove-library"
+            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
+              state.keepInLibrary === false ? SEG_ACTIVE : SEG_IDLE
+            }`}
+          >
+            Remove
+          </button>
+        </div>
+        <p className="text-xs text-muted-foreground/70">
+          This only logs your preference. It does not delete tracks from your library.
+        </p>
       </div>
 
       {/* What were you doing? */}

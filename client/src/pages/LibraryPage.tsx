@@ -179,6 +179,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
   const { toast } = useToast();
   const [state, setState] = useState<LogState>(initialLogState(null));
   const [editingEra, setEditingEra] = useState(false);
+  const [customEraInput, setCustomEraInput] = useState("");
   const [confirmDelete, setConfirmDelete] = useState<number | null>(null);
 
   // Reset form when a new track opens.
@@ -188,6 +189,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
     setLastId(trackId);
     setState(initialLogState(editing?.era ?? null));
     setEditingEra(false);
+    setCustomEraInput("");
   }
 
   const historyQuery = useQuery<ListenWithTrack[]>({
@@ -218,7 +220,9 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
       const res = await apiRequest("POST", "/api/listens", {
         trackId,
         listened: state.listened,
+        wantAgain: state.wantAgain,
         wouldAgain: state.wouldAgain,
+        keepInLibrary: state.keepInLibrary,
         activity: state.activity,
         notes: state.notes,
         era: state.era ?? editing?.era ?? undefined,
@@ -281,22 +285,57 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
                     </button>
                   </>
                 ) : (
-                  <div className="flex flex-wrap gap-1.5">
-                    {ERA_OPTIONS.map((opt) => (
-                      <button
-                        key={opt.value}
-                        onClick={() => eraMutation.mutate(opt.value)}
+                  <div className="flex w-full flex-col gap-2">
+                    <div className="flex flex-wrap gap-1.5">
+                      {ERA_OPTIONS.map((opt) => (
+                        <button
+                          key={opt.value}
+                          onClick={() => eraMutation.mutate(opt.value)}
+                          disabled={eraMutation.isPending}
+                          data-testid={`edit-era-${opt.value}`}
+                          className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
+                            editing.era === opt.value
+                              ? "border-primary bg-primary/15 text-primary"
+                              : "border-border bg-secondary/40 text-muted-foreground"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="flex gap-2">
+                      <Input
+                        value={customEraInput}
+                        onChange={(e) => setCustomEraInput(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            const era = customEraInput.trim();
+                            if (era) eraMutation.mutate(era.slice(0, 80));
+                            setCustomEraInput("");
+                          }
+                        }}
+                        placeholder="Add custom era"
+                        className="h-8 text-xs"
+                        data-testid="input-edit-custom-era"
                         disabled={eraMutation.isPending}
-                        data-testid={`edit-era-${opt.value}`}
-                        className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
-                          editing.era === opt.value
-                            ? "border-primary bg-primary/15 text-primary"
-                            : "border-border bg-secondary/40 text-muted-foreground"
-                        }`}
+                      />
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="secondary"
+                        disabled={eraMutation.isPending || !customEraInput.trim()}
+                        onClick={() => {
+                          const era = customEraInput.trim();
+                          if (!era) return;
+                          eraMutation.mutate(era.slice(0, 80));
+                          setCustomEraInput("");
+                        }}
+                        data-testid="button-edit-custom-era"
                       >
-                        {opt.label}
-                      </button>
-                    ))}
+                        Save
+                      </Button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -345,16 +384,26 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
                       >
                         <div className="flex items-center justify-between gap-2">
                           <span className="text-xs font-medium">{absoluteTime(l.loggedAt)}</span>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1.5">
                             {l.listened ? (
                               <Headphones className="h-3.5 w-3.5 text-primary" aria-label="Listened" />
                             ) : (
                               <EarOff className="h-3.5 w-3.5 text-muted-foreground" aria-label="Background" />
                             )}
+                            {l.wantAgain ? (
+                              <span className="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-medium text-primary">Want</span>
+                            ) : (
+                              <span className="rounded-full bg-destructive/15 px-1.5 py-0.5 text-[10px] font-medium text-destructive">Don't want</span>
+                            )}
                             {l.wouldAgain ? (
                               <ThumbsUp className="h-3.5 w-3.5 text-primary" aria-label="Would listen again" />
                             ) : (
                               <ThumbsDown className="h-3.5 w-3.5 text-destructive" aria-label="Would not" />
+                            )}
+                            {l.keepInLibrary ? (
+                              <span className="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-medium text-primary">Keep</span>
+                            ) : (
+                              <span className="rounded-full bg-destructive/15 px-1.5 py-0.5 text-[10px] font-medium text-destructive">Remove</span>
                             )}
                             <button
                               onClick={() => setConfirmDelete(l.id)}

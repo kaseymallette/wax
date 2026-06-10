@@ -55,7 +55,9 @@ export default function Shuffle() {
       const res = await apiRequest("POST", "/api/listens", {
         trackId: current.id,
         listened: state.listened,
+        wantAgain: state.wantAgain,
         wouldAgain: state.wouldAgain,
+        keepInLibrary: state.keepInLibrary,
         activity: state.activity,
         notes: state.notes,
         era: state.era ?? undefined,
@@ -80,8 +82,8 @@ export default function Shuffle() {
       toast({
         title: "Fill the required fields",
         description: needEra
-          ? "Pick an era, listened state, and would-again."
-          : "Pick listened state and would-again.",
+          ? "Pick an era and all three listen-again choices."
+          : "Pick listened state and all three listen-again choices.",
         variant: "destructive",
       });
       return;
@@ -105,8 +107,12 @@ export default function Shuffle() {
       const k = e.key.toLowerCase();
       if (k === "l") setState((s) => ({ ...s, listened: true }));
       else if (k === "b") setState((s) => ({ ...s, listened: false }));
+      else if (k === "w") setState((s) => ({ ...s, wantAgain: true }));
+      else if (k === "o") setState((s) => ({ ...s, wantAgain: false }));
       else if (k === "a") setState((s) => ({ ...s, wouldAgain: true }));
       else if (k === "n") setState((s) => ({ ...s, wouldAgain: false }));
+      else if (k === "k") setState((s) => ({ ...s, keepInLibrary: true }));
+      else if (k === "r") setState((s) => ({ ...s, keepInLibrary: false }));
       else if (["1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(k)) {
         const tagName = ACTIVITY_PRESETS[Number(k) - 1];
         if (tagName) {
@@ -231,7 +237,7 @@ export default function Shuffle() {
               </div>
 
               <p className="mt-4 text-center text-xs text-muted-foreground/70" data-testid="text-shortcuts">
-                Shortcuts: L listened · B background · A again · N not · 1–9 activity · Enter log · → skip
+                Shortcuts: L listened · B background · W want again · O don't want · A would again · N wouldn't · K keep · R remove · 1–9 activity · Enter log · → skip
               </p>
             </motion.div>
           )}

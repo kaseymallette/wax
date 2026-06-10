@@ -58,10 +58,12 @@ wax() {
 1. **Import** — drop your `.db`, `.sqlite`, or `.csv` file on the import page. SQLite uploads use a column mapper (Track ID is the only required field; the rest auto-detects). CSV uploads auto-detect Exportify's standard columns.
 2. **Shuffle** — get a random track from your library, listen, and log it. Each entry captures:
    - **Listened** — did you actually play it through?
+   - **Want to listen again** — yes / no
    - **Would play again** — yes / no
+   - **Keep in library** — keep / remove (logged preference only; does not delete)
    - **Activity tags** — what you were doing (working, working out, cleaning, driving, dancing, singing, active listening, processing, resting, or custom)
    - **Notes** — free text
-   - **Era** (set once per track) — recently discovered, recently remembered, core Spotify, core iTunes, or core CD
+   - **Era** (set once per track) — recently discovered, recently remembered, core Spotify, core iTunes, core CD, Dance, Radio, Recommended, or your own custom era
 3. **Library** — searchable table of every track with listen count, last listened, and would-again count. Click any row to play it, log a new entry, edit its era, or view its full history.
 4. **Recents** — timeline of every entry, grouped by day, with filters for activity, era, and would-again.
 5. **Stats** — listens over time, top tracks, activity breakdown, would-again ratio, era distribution.
@@ -71,7 +73,7 @@ wax() {
 Two tables in `data.db`:
 
 - **`tracks`** — your imported library. One row per Spotify track ID. Columns: `id`, `name`, `artists`, `album`, `album_art_url`, `duration_ms`, `added_at`, `spotify_url`, `preview_url`, `imported_at`, `era`.
-- **`listens`** — your log entries. One row per logged listen. Columns: `id`, `track_id`, `listened` (0/1), `would_again` (0/1), `activity` (JSON array), `notes`, `logged_at` (unix ms).
+- **`listens`** — your log entries. One row per logged listen. Columns: `id`, `track_id`, `listened` (0/1), `want_again` (0/1), `would_again` (0/1), `keep_in_library` (0/1), `activity` (JSON array), `notes`, `logged_at` (unix ms).
 
 Indexes on `listens(track_id)` and `listens(logged_at DESC)`.
 
@@ -84,7 +86,7 @@ Indexes on `listens(track_id)` and `listens(logged_at DESC)`.
 curl http://localhost:3000/api/export -o ~/Downloads/wax-listens.csv
 ```
 
-Columns: `track_id`, `name`, `artists`, `album`, `era`, `listened`, `would_again`, `activity`, `notes`, `logged_at`.
+Columns: `track_id`, `name`, `artists`, `album`, `era`, `listened`, `want_again`, `would_again`, `keep_in_library`, `activity`, `notes`, `logged_at`.
 
 To generate a curated `again-again.db` using each track's latest rating (so mind-changes are respected), run:
 
@@ -111,7 +113,8 @@ import sqlite3, json, pandas as pd
 con = sqlite3.connect("wax/data.db")
 df = pd.read_sql_query("""
     SELECT t.id AS track_id, t.name, t.artists, t.album, t.era,
-           l.listened, l.would_again, l.activity, l.notes, l.logged_at
+           l.listened, l.want_again, l.would_again, l.keep_in_library,
+           l.activity, l.notes, l.logged_at
     FROM tracks t
     LEFT JOIN listens l ON l.track_id = t.id
     ORDER BY l.logged_at DESC

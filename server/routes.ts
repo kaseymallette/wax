@@ -463,7 +463,7 @@ export async function registerRoutes(
     }
     const headers = [
       "logged_at", "track_id", "name", "artists", "album", "era",
-      "listened", "would_again", "activity", "notes", "spotify_url",
+      "listened", "want_again", "would_again", "keep_in_library", "activity", "notes", "spotify_url",
     ];
     const esc = (v: any) => {
       const s = v === null || v === undefined ? "" : String(v);
@@ -474,7 +474,7 @@ export async function registerRoutes(
       lines.push([
         r.loggedAt ? new Date(r.loggedAt).toISOString() : "",
         r.trackId, r.name, r.artists, r.album, r.era ?? "",
-        r.listened, r.wouldAgain, JSON.stringify(r.activity), r.notes ?? "",
+        r.listened, r.wantAgain, r.wouldAgain, r.keepInLibrary, JSON.stringify(r.activity), r.notes ?? "",
         r.spotifyUrl ?? "",
       ].map(esc).join(","));
     }

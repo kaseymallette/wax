@@ -45,7 +45,9 @@ sqlite.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     track_id TEXT NOT NULL REFERENCES tracks(id) ON DELETE CASCADE,
     listened INTEGER NOT NULL,
+    want_again INTEGER NOT NULL DEFAULT 1,
     would_again INTEGER NOT NULL,
+    keep_in_library INTEGER NOT NULL DEFAULT 1,
     activity TEXT NOT NULL DEFAULT '[]',
     notes TEXT DEFAULT '',
     logged_at INTEGER NOT NULL
@@ -53,6 +55,14 @@ sqlite.exec(`
   CREATE INDEX IF NOT EXISTS idx_listens_track ON listens(track_id);
   CREATE INDEX IF NOT EXISTS idx_listens_logged ON listens(logged_at DESC);
 `);
+
+const listenCols = sqlite.prepare(`PRAGMA table_info(listens)`).all() as { name: string }[];
+if (!listenCols.some((c) => c.name === "want_again")) {
+  sqlite.exec(`ALTER TABLE listens ADD COLUMN want_again INTEGER NOT NULL DEFAULT 1;`);
+}
+if (!listenCols.some((c) => c.name === "keep_in_library")) {
+  sqlite.exec(`ALTER TABLE listens ADD COLUMN keep_in_library INTEGER NOT NULL DEFAULT 1;`);
+}
 
 export const db = drizzle(sqlite);
 
@@ -92,7 +102,9 @@ function rowToListenWithTrack(r: any): ListenWithTrack {
     id: r.id,
     trackId: r.track_id,
     listened: r.listened,
+    wantAgain: r.want_again,
     wouldAgain: r.would_again,
+    keepInLibrary: r.keep_in_library,
     activity: safeParseTags(r.activity),
     notes: r.notes ?? "",
     loggedAt: r.logged_at,
@@ -143,7 +155,7 @@ const TRACK_AGG_SELECT = `
 `;
 
 const LISTEN_JOIN_SELECT = `
-  SELECT l.id, l.track_id, l.listened, l.would_again, l.activity, l.notes, l.logged_at,
+  SELECT l.id, l.track_id, l.listened, l.want_again, l.would_again, l.keep_in_library, l.activity, l.notes, l.logged_at,
          t.name, t.artists, t.album, t.album_art_url, t.spotify_url, t.preview_url, t.era
   FROM listens l
   JOIN tracks t ON t.id = l.track_id
@@ -258,19 +270,23 @@ export class DatabaseStorage implements IStorage {
 
     const now = Date.now();
     const listened = typeof payload.listened === "boolean" ? (payload.listened ? 1 : 0) : payload.listened;
+    const wantAgain = typeof payload.wantAgain === "boolean" ? (payload.wantAgain ? 1 : 0) : payload.wantAgain;
     const wouldAgain = typeof payload.wouldAgain === "boolean" ? (payload.wouldAgain ? 1 : 0) : payload.wouldAgain;
+    const keepInLibrary = typeof payload.keepInLibrary === "boolean" ? (payload.keepInLibrary ? 1 : 0) : payload.keepInLibrary;
     const activity = JSON.stringify(payload.activity ?? []);
 
     const inserted = sqlite
       .prepare(`
-        INSERT INTO listens (track_id, listened, would_again, activity, notes, logged_at)
-        VALUES (@trackId, @listened, @wouldAgain, @activity, @notes, @loggedAt)
+        INSERT INTO listens (track_id, listened, want_again, would_again, keep_in_library, activity, notes, logged_at)
+        VALUES (@trackId, @listened, @wantAgain, @wouldAgain, @keepInLibrary, @activity, @notes, @loggedAt)
         RETURNING *
       `)
       .get({
         trackId: payload.trackId,
         listened,
+        wantAgain,
         wouldAgain,
+        keepInLibrary,
         activity,
         notes: payload.notes ?? "",
         loggedAt: now,
@@ -280,7 +296,9 @@ export class DatabaseStorage implements IStorage {
       id: inserted.id,
       trackId: inserted.track_id,
       listened: inserted.listened,
+      wantAgain: inserted.want_again,
       wouldAgain: inserted.would_again,
+      keepInLibrary: inserted.keep_in_library,
       activity: inserted.activity,
       notes: inserted.notes,
       loggedAt: inserted.logged_at,

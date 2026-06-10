@@ -24,7 +24,9 @@ export const listens = sqliteTable("listens", {
     .notNull()
     .references(() => tracks.id, { onDelete: "cascade" }),
   listened: integer("listened").notNull(), // 0 = no/background, 1 = yes/actually listened
+  wantAgain: integer("want_again").notNull().default(1), // 0 = no, 1 = yes
   wouldAgain: integer("would_again").notNull(), // 0 = no, 1 = yes
+  keepInLibrary: integer("keep_in_library").notNull().default(1), // 0 = remove, 1 = keep
   activity: text("activity").notNull().default("[]"), // JSON array of strings
   notes: text("notes").default(""),
   loggedAt: integer("logged_at").notNull(), // unix ms
@@ -49,9 +51,13 @@ export const ERA_OPTIONS = [
   { value: "core_spotify", label: "Core Spotify" },
   { value: "core_itunes", label: "Core iTunes" },
   { value: "core_cd", label: "Core CD" },
+  { value: "dance", label: "Dance" },
+  { value: "radio", label: "Radio" },
+  { value: "recommended", label: "Recommended" },
 ] as const;
 
 export const ERA_VALUES = ERA_OPTIONS.map((e) => e.value) as [string, ...string[]];
+const eraValueSchema = z.string().trim().min(1).max(80);
 
 export const insertTrackSchema = createInsertSchema(tracks);
 
@@ -59,14 +65,16 @@ export const insertTrackSchema = createInsertSchema(tracks);
 export const listenPayloadSchema = z.object({
   trackId: z.string().min(1),
   listened: z.union([z.boolean(), z.number().int().min(0).max(1)]),
+  wantAgain: z.union([z.boolean(), z.number().int().min(0).max(1)]),
   wouldAgain: z.union([z.boolean(), z.number().int().min(0).max(1)]),
+  keepInLibrary: z.union([z.boolean(), z.number().int().min(0).max(1)]),
   activity: z.array(z.string()).default([]),
   notes: z.string().default(""),
-  era: z.enum(ERA_VALUES).nullable().optional(),
+  era: eraValueSchema.nullable().optional(),
 });
 
 export const eraUpdateSchema = z.object({
-  era: z.enum(ERA_VALUES),
+  era: eraValueSchema,
 });
 
 export const trackImportSchema = z.object({
@@ -101,7 +109,9 @@ export type ListenWithTrack = {
   id: number;
   trackId: string;
   listened: number;
+  wantAgain: number;
   wouldAgain: number;
+  keepInLibrary: number;
   activity: string[];
   notes: string;
   loggedAt: number;
