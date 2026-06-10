@@ -39,6 +39,12 @@ if (!trackCols.some((c) => c.name === "era")) {
   sqlite.exec(`ALTER TABLE tracks ADD COLUMN era TEXT;`);
 }
 
+// 2b) Migrate legacy era values to current options.
+sqlite.exec(`
+  UPDATE tracks SET era = '2010s' WHERE era = 'core_spotify';
+  UPDATE tracks SET era = '2000s' WHERE era IN ('core_itunes', 'core_cd');
+`);
+
 // 3) Create the listens table + indexes.
 sqlite.exec(`
   CREATE TABLE IF NOT EXISTS listens (

@@ -63,10 +63,32 @@ wax() {
    - **Keep in library** — keep / remove (logged preference only; does not delete)
    - **Activity tags** — what you were doing (working, working out, cleaning, driving, dancing, singing, active listening, processing, resting, or custom)
    - **Notes** — free text
-   - **Era** (set once per track) — recently discovered, recently remembered, core Spotify, core iTunes, core CD, Dance, Radio, Wax (Shuffle), or your own custom era
+   - **Era** (set once per track) — recently discovered, recently remembered, Dance, Radio, Vinyl, Mom, Dad, 2000s, 2010s, 2020s, or your own custom era
 3. **Library** — searchable table of every track with listen count, last listened, and would-again count. Click any row to play it, log a new entry, edit its era, or view its full history.
 4. **Recents** — timeline of every entry, grouped by day, with filters for activity, era, and would-again.
 5. **Stats** — listens over time, top tracks, activity breakdown, would-again ratio, era distribution.
+
+### Era presets
+
+Current default era presets are:
+
+- `recently_discovered`
+- `recently_remembered`
+- `dance`
+- `radio`
+- `vinyl`
+- `mom`
+- `dad`
+- `2000s`
+- `2010s`
+- `2020s`
+
+Want to change the preset era buttons?
+
+- Edit `shared/schema.ts`
+- Find `ERA_OPTIONS`
+- Add/remove/edit entries in this shape: `{ value: "my_value", label: "My Label" }`
+- Keep `value` lowercase/slug-style (used in saved data), and `label` human-friendly (used in the UI)
 
 ## Data model
 

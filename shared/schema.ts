@@ -48,12 +48,14 @@ export const ACTIVITY_PRESETS = [
 export const ERA_OPTIONS = [
   { value: "recently_discovered", label: "Recently discovered" },
   { value: "recently_remembered", label: "Recently remembered" },
-  { value: "core_spotify", label: "Core Spotify" },
-  { value: "core_itunes", label: "Core iTunes" },
-  { value: "core_cd", label: "Core CD" },
   { value: "dance", label: "Dance" },
   { value: "radio", label: "Radio" },
-  { value: "recommended", label: "Wax (Shuffle)" },
+  { value: "vinyl", label: "Vinyl" },
+  { value: "mom", label: "Mom" },
+  { value: "dad", label: "Dad" },
+  { value: "2000s", label: "2000s" },
+  { value: "2010s", label: "2010s" },
+  { value: "2020s", label: "2020s" },
 ] as const;
 
 export const ERA_VALUES = ERA_OPTIONS.map((e) => e.value) as [string, ...string[]];
