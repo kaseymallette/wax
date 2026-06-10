@@ -3,5 +3,9 @@ dist/
 .vite/
 .DS_Store
 *.log
+data.db
 data.db-wal
 data.db-shm
+again-again.db
+again-again.db-wal
+again-again.db-shm
