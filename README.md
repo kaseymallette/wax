@@ -63,7 +63,7 @@ wax() {
    - **Keep in library** — keep / remove (logged preference only; does not delete)
    - **Activity tags** — what you were doing (working, working out, cleaning, driving, dancing, singing, active listening, processing, resting, or custom)
    - **Notes** — free text
-   - **Era** (set once per track) — recently discovered, recently remembered, core Spotify, core iTunes, core CD, Dance, Radio, Recommended, or your own custom era
+   - **Era** (set once per track) — recently discovered, recently remembered, core Spotify, core iTunes, core CD, Dance, Radio, Wax (Shuffle), or your own custom era
 3. **Library** — searchable table of every track with listen count, last listened, and would-again count. Click any row to play it, log a new entry, edit its era, or view its full history.
 4. **Recents** — timeline of every entry, grouped by day, with filters for activity, era, and would-again.
 5. **Stats** — listens over time, top tracks, activity breakdown, would-again ratio, era distribution.

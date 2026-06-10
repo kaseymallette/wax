@@ -53,7 +53,7 @@ export const ERA_OPTIONS = [
   { value: "core_cd", label: "Core CD" },
   { value: "dance", label: "Dance" },
   { value: "radio", label: "Radio" },
-  { value: "recommended", label: "Recommended" },
+  { value: "recommended", label: "Wax (Shuffle)" },
 ] as const;
 
 export const ERA_VALUES = ERA_OPTIONS.map((e) => e.value) as [string, ...string[]];
