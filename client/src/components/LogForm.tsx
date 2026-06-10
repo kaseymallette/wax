@@ -75,6 +75,12 @@ export function LogForm({
     patch({ era: era.slice(0, 80) });
   };
 
+  const commitCustomEra = () => {
+    if (!customEraInput.trim()) return;
+    setCustomEra(customEraInput);
+    setCustomEraInput("");
+  };
+
   const customTags = state.activity.filter((t) => !isPreset(t));
 
   return (
@@ -115,12 +121,12 @@ export function LogForm({
             <Input
               value={customEraInput}
               onChange={(e) => setCustomEraInput(e.target.value)}
+              onBlur={commitCustomEra}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
                   e.stopPropagation();
-                  setCustomEra(customEraInput);
-                  setCustomEraInput("");
+                  commitCustomEra();
                 }
               }}
               placeholder="Add custom era"
