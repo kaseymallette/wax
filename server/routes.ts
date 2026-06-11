@@ -697,7 +697,9 @@ export async function registerRoutes(
 
   app.get("/api/tracks/random", (req, res) => {
     const status = (req.query.status as string) || "unlogged";
-    const track = storage.getRandomTrack(status);
+    const keepOnlyRaw = String(req.query.keepOnly ?? "false").toLowerCase();
+    const keepOnly = keepOnlyRaw === "1" || keepOnlyRaw === "true";
+    const track = storage.getRandomTrack(status, keepOnly);
     if (!track) return res.status(404).json({ error: "No tracks" });
     res.json(track);
   });

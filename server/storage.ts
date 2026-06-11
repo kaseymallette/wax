@@ -480,15 +480,29 @@ export class DatabaseStorage implements IStorage {
     return rows.map(rowToTrackWithStats);
   }
 
-  getRandomTrack(status: string): TrackWithStats | undefined {
-    // Prefer tracks the user hasn't logged. Default behavior driven by `status`.
-    let havingClause = "HAVING listen_count = 0";
+  getRandomTrack(status: string, keepOnly = false): TrackWithStats | undefined {
+    const havingParts: string[] = [];
     let orderBy = "RANDOM()";
+
     if (status === "all") {
-      havingClause = "";
       // Bias toward least-recently / least-logged tracks, then random.
       orderBy = "last_listened_at ASC NULLS FIRST, RANDOM()";
+    } else {
+      // Prefer tracks the user hasn't logged unless status=all.
+      havingParts.push("listen_count = 0");
     }
+
+    if (keepOnly) {
+      havingParts.push(`(
+        SELECT l2.keep_in_library
+        FROM listens l2
+        WHERE l2.track_id = t.id
+        ORDER BY l2.logged_at DESC, l2.id DESC
+        LIMIT 1
+      ) = 1`);
+    }
+
+    const havingClause = havingParts.length ? `HAVING ${havingParts.join(" AND ")}` : "";
     const row = sqlite
       .prepare(`${TRACK_AGG_SELECT} GROUP BY t.id ${havingClause} ORDER BY ${orderBy} LIMIT 1`)
       .get() as any;

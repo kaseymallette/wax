@@ -32,13 +32,14 @@ export const listens = sqliteTable("listens", {
   loggedAt: integer("logged_at").notNull(), // unix ms
 });
 
-// 10 activity presets.
+// 11 activity presets.
 export const ACTIVITY_PRESETS = [
   "working",
   "working out",
   "cleaning",
   "driving",
   "vinyl",
+  "playlist",
   "dancing",
   "singing",
   "active listening",

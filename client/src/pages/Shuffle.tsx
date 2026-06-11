@@ -19,7 +19,8 @@ type StatsResp = { totals: { tracks: number } };
 
 export default function Shuffle() {
   const { toast } = useToast();
-  const [mode, setMode] = useState<"unlogged" | "all">("unlogged");
+  const [mode, setMode] = useState<"unlogged" | "all">("all");
+  const [keepOnly, setKeepOnly] = useState(false);
   const [current, setCurrent] = useState<TrackWithStats | null>(null);
   const [state, setState] = useState<LogState>(initialLogState(null));
   const [exhausted, setExhausted] = useState(false);
@@ -27,9 +28,9 @@ export default function Shuffle() {
   const statsQuery = useQuery<StatsResp>({ queryKey: ["/api/stats"] });
   const libraryEmpty = statsQuery.data ? statsQuery.data.totals.tracks === 0 : undefined;
 
-  const fetchRandom = useCallback(async (m: "unlogged" | "all") => {
+  const fetchRandom = useCallback(async (m: "unlogged" | "all", kOnly: boolean) => {
     try {
-      const res = await apiRequest("GET", `/api/tracks/random?status=${m}`);
+      const res = await apiRequest("GET", `/api/tracks/random?status=${m}&keepOnly=${kOnly}`);
       const t: TrackWithStats = await res.json();
       setCurrent(t);
       setState(initialLogState(t.era ?? null));
@@ -42,10 +43,10 @@ export default function Shuffle() {
 
   useEffect(() => {
     if (libraryEmpty === false && !current && !exhausted) {
-      fetchRandom(mode);
+      fetchRandom(mode, keepOnly);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [libraryEmpty]);
+  }, [libraryEmpty, keepOnly]);
 
   const needEra = !!current && !current.era;
 
@@ -70,7 +71,7 @@ export default function Shuffle() {
       queryClient.invalidateQueries({ queryKey: ["/api/listens"] });
       const count = data?.track?.listenCount ?? 1;
       toast({ title: "Logged.", description: `${count} ${count === 1 ? "listen" : "listens"} so far.` });
-      fetchRandom(mode);
+      fetchRandom(mode, keepOnly);
     },
     onError: (e: any) =>
       toast({ title: "Could not log", description: e?.message, variant: "destructive" }),
@@ -91,11 +92,11 @@ export default function Shuffle() {
     saveMutation.mutate();
   };
 
-  const handleSkip = () => fetchRandom(mode);
+  const handleSkip = () => fetchRandom(mode, keepOnly);
 
   const shuffleAll = () => {
     setMode("all");
-    fetchRandom("all");
+    fetchRandom("all", keepOnly);
   };
 
   // Keyboard shortcuts
@@ -174,6 +175,24 @@ export default function Shuffle() {
   return (
     <Layout>
       <div className="mx-auto w-full max-w-[520px]">
+        <div className="mb-3 flex items-center justify-end">
+          <button
+            type="button"
+            onClick={() => {
+              setKeepOnly((v) => !v);
+              setCurrent(null);
+              setExhausted(false);
+            }}
+            data-testid="toggle-keep-only"
+            className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
+              keepOnly
+                ? "border-primary/50 bg-primary/15 text-primary"
+                : "border-border bg-secondary/30 text-muted-foreground"
+            }`}
+          >
+            Keep only: {keepOnly ? "On" : "Off"}
+          </button>
+        </div>
         <AnimatePresence mode="wait">
           {current && (
             <motion.div
