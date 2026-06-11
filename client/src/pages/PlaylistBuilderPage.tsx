@@ -139,11 +139,11 @@ export default function PlaylistBuilderPage() {
     }
   };
 
-  const importFromSourceDb = async () => {
+  const importFromDefaults = async () => {
     setImportingFromDb(true);
     setUploadSummary(null);
     try {
-      const res = await apiRequest("POST", "/api/playlist-builder/import-features-from-db");
+      const res = await apiRequest("POST", "/api/playlist-builder/import-features-all");
       const raw = await res.text();
       let data: FeatureImportResp;
       try {
@@ -156,12 +156,12 @@ export default function PlaylistBuilderPage() {
       setUploadSummary(data);
       queryClient.invalidateQueries({ queryKey: ["/api/tracks"] });
       toast({
-        title: "Features imported from DB",
+        title: "Default feature sources imported",
         description: `${data.imported.toLocaleString()} matched tracks updated.`,
       });
     } catch (e: any) {
       toast({
-        title: "Could not import from source DB",
+        title: "Could not import default feature sources",
         description: e?.message,
         variant: "destructive",
       });
@@ -192,14 +192,14 @@ export default function PlaylistBuilderPage() {
         <div>
           <h1 className="font-display text-xl font-bold">Playlist Builder</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Import feature CSVs, choose a keep-track seed, and generate nearest-neighbor candidates using your harmonic rules.
+            Import feature sources, choose a keep-track seed, and generate nearest-neighbor candidates using your harmonic rules.
           </p>
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-5 sm:p-6">
-          <h2 className="font-display text-base font-semibold">1) Import feature CSV</h2>
+          <h2 className="font-display text-base font-semibold">1) Import feature sources</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Use files like <span className="text-foreground">Vinyl.csv</span> and <span className="text-foreground">new_new_red_car.csv</span>.
+            One-click import reads from <span className="text-foreground">data/music-library</span>.
           </p>
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -226,12 +226,12 @@ export default function PlaylistBuilderPage() {
             </Button>
             <Button
               variant="outline"
-              onClick={importFromSourceDb}
+              onClick={importFromDefaults}
               disabled={uploading || importingFromDb}
               data-testid="button-import-features-source-db"
             >
               {importingFromDb ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-              {importingFromDb ? "Importing from DB…" : "Import from spotify_music_library.db"}
+              {importingFromDb ? "Importing defaults…" : "Import DB + default CSVs"}
             </Button>
           </div>
 

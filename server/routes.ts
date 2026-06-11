@@ -14,6 +14,7 @@ import {
   trackImportSchema,
   featureImportRowSchema,
   playlistGenerateSchema,
+  type FeatureImportRow,
 } from "@shared/schema";
 import { z } from "zod";
 
@@ -182,6 +183,88 @@ export async function registerRoutes(
     if (v === null || v === undefined || v === "") return null;
     const n = Number(v);
     return Number.isFinite(n) ? Math.round(n) : null;
+  }
+
+  function toFeatureNumber(v: unknown): number | null {
+    if (v === null || v === undefined || v === "") return null;
+    const s = String(v).trim();
+    if (!s) return null;
+    const n = Number(s);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function parseFeatureYear(v: unknown): number | null {
+    if (v == null) return null;
+    const s = String(v).trim();
+    if (!s) return null;
+    const m = s.match(/(19|20)\d{2}/);
+    if (!m) return null;
+    const y = Number(m[0]);
+    return Number.isFinite(y) ? y : null;
+  }
+
+  function parseFeatureCsvRows(rows: string[][], source: string): { items: FeatureImportRow[]; skipped: number } {
+    if (rows.length <= 1) {
+      throw new Error("Feature CSV is empty or unparseable.");
+    }
+
+    const header = rows[0].map((h) => h.trim());
+    const idx = (...names: string[]) => {
+      for (const n of names) {
+        const i = header.findIndex((h) => h.toLowerCase() === n.toLowerCase());
+        if (i !== -1) return i;
+      }
+      return -1;
+    };
+
+    const iTrackId = idx("Spotify Track Id", "Track Id", "track_id", "id", "Track URI");
+    const iSong = idx("Song", "Track Name", "Title", "name", "song_name");
+    const iArtist = idx("Artist", "Artists", "Artist Name", "Artist Name(s)", "artists");
+    const iAlbum = idx("Album", "Album Name");
+    const iBpm = idx("BPM", "Tempo", "bpm");
+    const iCamelot = idx("Camelot", "Key", "camelot", "key");
+    const iEnergy = idx("Energy", "energy");
+    const iDance = idx("Dance", "Danceability", "dance", "danceability");
+    const iValence = idx("Valence", "valence");
+    const iPopularity = idx("Popularity", "popularity");
+    const iAlbumDate = idx("Album Date", "album_date", "Release Date", "release_date", "Year", "year");
+
+    if (iSong === -1 || iArtist === -1) {
+      throw new Error("Feature CSV must include Song and Artist columns.");
+    }
+    if (iBpm === -1 || iEnergy === -1 || iDance === -1 || iValence === -1) {
+      throw new Error("Feature CSV must include BPM, Energy, Dance, and Valence columns.");
+    }
+
+    const items: FeatureImportRow[] = [];
+    let skipped = 0;
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      if (!r || r.length === 0 || (r.length === 1 && !r[0])) continue;
+
+      const parsed = featureImportRowSchema.safeParse({
+        trackId: iTrackId !== -1 ? extractId(r[iTrackId]) ?? undefined : undefined,
+        song: r[iSong] ?? "",
+        artist: r[iArtist] ?? "",
+        album: iAlbum !== -1 ? (r[iAlbum] ?? "") : "",
+        bpm: toFeatureNumber(r[iBpm]),
+        camelot: iCamelot !== -1 ? (r[iCamelot] || null) : null,
+        energy: toFeatureNumber(r[iEnergy]),
+        dance: toFeatureNumber(r[iDance]),
+        valence: toFeatureNumber(r[iValence]),
+        popularity: iPopularity !== -1 ? toFeatureNumber(r[iPopularity]) : null,
+        albumYear: iAlbumDate !== -1 ? parseFeatureYear(r[iAlbumDate]) : null,
+        source,
+      });
+
+      if (!parsed.success) {
+        skipped += 1;
+        continue;
+      }
+      items.push(parsed.data);
+    }
+
+    return { items, skipped };
   }
 
   app.post("/api/import", (req, res) => {
@@ -359,85 +442,7 @@ export async function registerRoutes(
       const rows = parseCsv(text);
       fs.promises.unlink(file.path).catch(() => {});
 
-      if (rows.length <= 1) {
-        return res.status(400).json({ error: "Feature CSV is empty or unparseable." });
-      }
-
-      const header = rows[0].map((h) => h.trim());
-      const idx = (...names: string[]) => {
-        for (const n of names) {
-          const i = header.findIndex((h) => h.toLowerCase() === n.toLowerCase());
-          if (i !== -1) return i;
-        }
-        return -1;
-      };
-
-      const iTrackId = idx("Spotify Track Id", "Track Id", "track_id", "id", "Track URI");
-      const iSong = idx("Song", "Track Name", "Title", "name", "song_name");
-      const iArtist = idx("Artist", "Artists", "Artist Name", "Artist Name(s)", "artists");
-      const iAlbum = idx("Album", "Album Name");
-      const iBpm = idx("BPM", "Tempo", "bpm");
-      const iCamelot = idx("Camelot", "Key", "camelot", "key");
-      const iEnergy = idx("Energy", "energy");
-      const iDance = idx("Dance", "Danceability", "dance", "danceability");
-      const iValence = idx("Valence", "valence");
-      const iPopularity = idx("Popularity", "popularity");
-      const iAlbumDate = idx("Album Date", "album_date", "Release Date", "release_date", "Year", "year");
-
-      if (iSong === -1 || iArtist === -1) {
-        return res.status(400).json({ error: "Feature CSV must include Song and Artist columns." });
-      }
-      if (iBpm === -1 || iEnergy === -1 || iDance === -1 || iValence === -1) {
-        return res.status(400).json({
-          error: "Feature CSV must include BPM, Energy, Dance, and Valence columns.",
-        });
-      }
-
-      const toNumber = (v: string | undefined): number | null => {
-        if (v == null) return null;
-        const s = String(v).trim();
-        if (!s) return null;
-        const n = Number(s);
-        return Number.isFinite(n) ? n : null;
-      };
-
-      const parseYear = (v: string | undefined): number | null => {
-        if (v == null) return null;
-        const s = String(v).trim();
-        if (!s) return null;
-        const m = s.match(/(19|20)\d{2}/);
-        if (!m) return null;
-        const y = Number(m[0]);
-        return Number.isFinite(y) ? y : null;
-      };
-
-      const items = [];
-      let skipped = 0;
-      for (let i = 1; i < rows.length; i++) {
-        const r = rows[i];
-        if (!r || r.length === 0 || (r.length === 1 && !r[0])) continue;
-
-        const parsed = featureImportRowSchema.safeParse({
-          trackId: iTrackId !== -1 ? extractId(r[iTrackId]) ?? undefined : undefined,
-          song: r[iSong] ?? "",
-          artist: r[iArtist] ?? "",
-          album: iAlbum !== -1 ? (r[iAlbum] ?? "") : "",
-          bpm: toNumber(r[iBpm]),
-          camelot: iCamelot !== -1 ? (r[iCamelot] || null) : null,
-          energy: toNumber(r[iEnergy]),
-          dance: toNumber(r[iDance]),
-          valence: toNumber(r[iValence]),
-          popularity: iPopularity !== -1 ? toNumber(r[iPopularity]) : null,
-          albumYear: iAlbumDate !== -1 ? parseYear(r[iAlbumDate]) : null,
-          source: file.originalname,
-        });
-
-        if (!parsed.success) {
-          skipped += 1;
-          continue;
-        }
-        items.push(parsed.data);
-      }
+      const { items, skipped } = parseFeatureCsvRows(rows, file.originalname);
 
       const summary = storage.importFeatureRows(items);
       res.json({
@@ -455,10 +460,10 @@ export async function registerRoutes(
   app.post("/api/playlist-builder/import-features-from-db", (_req: Request, res) => {
     let sourceDb: Database.Database | null = null;
     try {
-      const sourcePath = path.resolve(process.cwd(), "data", "spotify_music_library.db");
+      const sourcePath = path.resolve(process.cwd(), "data", "music-library", "spotify_music_library.db");
       if (!fs.existsSync(sourcePath)) {
         return res.status(400).json({
-          error: "Source database not found at data/spotify_music_library.db",
+          error: "Source database not found at data/music-library/spotify_music_library.db",
         });
       }
 
@@ -482,14 +487,8 @@ export async function registerRoutes(
         `)
         .all() as any[];
 
-      const toNumber = (v: unknown): number | null => {
-        if (v === null || v === undefined || v === "") return null;
-        const n = Number(v);
-        return Number.isFinite(n) ? n : null;
-      };
-
       const parseYear = (albumYear: unknown, albumDate: unknown): number | null => {
-        const y = toNumber(albumYear);
+        const y = toFeatureNumber(albumYear);
         if (y && y >= 1900 && y <= 2100) return Math.round(y);
         const s = String(albumDate ?? "").trim();
         if (!s) return null;
@@ -507,12 +506,12 @@ export async function registerRoutes(
           song: row.song ?? "",
           artist: row.artist ?? "",
           album: row.album ?? "",
-          bpm: toNumber(row.bpm),
+          bpm: toFeatureNumber(row.bpm),
           camelot: row.camelot != null ? String(row.camelot) : null,
-          energy: toNumber(row.energy),
-          dance: toNumber(row.dance),
-          valence: toNumber(row.valence),
-          popularity: toNumber(row.popularity),
+          energy: toFeatureNumber(row.energy),
+          dance: toFeatureNumber(row.dance),
+          valence: toFeatureNumber(row.valence),
+          popularity: toFeatureNumber(row.popularity),
           albumYear: parseYear(row.albumYear, row.albumDate),
           source: "spotify_music_library.db",
         });
@@ -527,7 +526,7 @@ export async function registerRoutes(
       const summary = storage.importFeatureRows(items);
       res.json({
         ok: true,
-        source: "data/spotify_music_library.db",
+        source: "data/music-library/spotify_music_library.db",
         rowsRead: rows.length,
         importedRows: items.length,
         skipped,
@@ -535,8 +534,119 @@ export async function registerRoutes(
       });
     } catch (e: any) {
       res.status(400).json({
-        error: e?.message || "Could not import features from data/spotify_music_library.db",
+        error: e?.message || "Could not import features from data/music-library/spotify_music_library.db",
       });
+    } finally {
+      if (sourceDb) try { sourceDb.close(); } catch {}
+    }
+  });
+
+  app.post("/api/playlist-builder/import-features-all", (_req: Request, res) => {
+    const totals = {
+      importedRows: 0,
+      skipped: 0,
+      imported: 0,
+      matchedByTrackId: 0,
+      matchedByArtistSong: 0,
+      unmatched: 0,
+    };
+
+    const sources: Array<{ source: string; importedRows: number; skipped: number; imported: number }> = [];
+
+    const addSummary = (label: string, importedRows: number, skipped: number, summary: {
+      imported: number;
+      matchedByTrackId: number;
+      matchedByArtistSong: number;
+      unmatched: number;
+    }) => {
+      totals.importedRows += importedRows;
+      totals.skipped += skipped;
+      totals.imported += summary.imported;
+      totals.matchedByTrackId += summary.matchedByTrackId;
+      totals.matchedByArtistSong += summary.matchedByArtistSong;
+      totals.unmatched += summary.unmatched;
+      sources.push({ source: label, importedRows, skipped, imported: summary.imported });
+    };
+
+    let sourceDb: Database.Database | null = null;
+    try {
+      const dbPath = path.resolve(process.cwd(), "data", "music-library", "spotify_music_library.db");
+      if (fs.existsSync(dbPath)) {
+        sourceDb = new Database(dbPath, { readonly: true, fileMustExist: true });
+        const rows = sourceDb
+          .prepare(`
+            SELECT
+              Track_ID AS trackId,
+              Song AS song,
+              Artist AS artist,
+              Album AS album,
+              BPM AS bpm,
+              COALESCE(Camelot, Key) AS camelot,
+              Energy AS energy,
+              Dance AS dance,
+              Valence AS valence,
+              Popularity AS popularity,
+              Album_Year AS albumYear,
+              "Album Date" AS albumDate
+            FROM tracks
+          `)
+          .all() as any[];
+
+        const dbItems: FeatureImportRow[] = [];
+        let dbSkipped = 0;
+        for (const row of rows) {
+          const parsed = featureImportRowSchema.safeParse({
+            trackId: extractId(row.trackId) ?? undefined,
+            song: row.song ?? "",
+            artist: row.artist ?? "",
+            album: row.album ?? "",
+            bpm: toFeatureNumber(row.bpm),
+            camelot: row.camelot != null ? String(row.camelot) : null,
+            energy: toFeatureNumber(row.energy),
+            dance: toFeatureNumber(row.dance),
+            valence: toFeatureNumber(row.valence),
+            popularity: toFeatureNumber(row.popularity),
+            albumYear: parseFeatureYear(row.albumYear ?? row.albumDate),
+            source: "spotify_music_library.db",
+          });
+
+          if (!parsed.success) {
+            dbSkipped += 1;
+            continue;
+          }
+          dbItems.push(parsed.data);
+        }
+
+        const dbSummary = storage.importFeatureRows(dbItems);
+        addSummary("data/music-library/spotify_music_library.db", dbItems.length, dbSkipped, dbSummary);
+      }
+
+      const defaultCsvs = ["Vinyl.csv", "new_new_red_car.csv"];
+      for (const fileName of defaultCsvs) {
+        const csvPath = path.resolve(process.cwd(), "data", "music-library", fileName);
+        if (!fs.existsSync(csvPath)) continue;
+
+        const raw = fs.readFileSync(csvPath, "utf8").replace(/^\uFEFF/, "");
+        const rows = parseCsv(raw);
+        const { items, skipped } = parseFeatureCsvRows(rows, fileName);
+        const summary = storage.importFeatureRows(items);
+        addSummary(`data/music-library/${fileName}`, items.length, skipped, summary);
+      }
+
+      if (sources.length === 0) {
+        return res.status(400).json({
+          error: "No default feature sources found. Expected files in data/music-library/.",
+        });
+      }
+
+      res.json({
+        ok: true,
+        source: "combined-defaults",
+        sources,
+        ...totals,
+      });
+    } catch (e: any) {
+      res.status(400).json({ error: e?.message || "Could not import default feature sources." });
     } finally {
       if (sourceDb) try { sourceDb.close(); } catch {}
     }
