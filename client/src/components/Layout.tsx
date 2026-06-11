@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Logo } from "./Logo";
 import { useTheme } from "@/lib/theme";
 import { Button } from "@/components/ui/button";
-import { Shuffle, Library, Clock, BarChart3, Upload, Moon, Sun } from "lucide-react";
+import { Shuffle, Library, Clock, BarChart3, Upload, Moon, Sun, Sparkles } from "lucide-react";
 
 const NAV = [
   { href: "/", label: "Shuffle", icon: Shuffle },
@@ -10,6 +10,7 @@ const NAV = [
   { href: "/recents", label: "Recents", icon: Clock },
   { href: "/stats", label: "Stats", icon: BarChart3 },
   { href: "/import", label: "Import", icon: Upload },
+  { href: "/playlist-builder", label: "Builder", icon: Sparkles },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

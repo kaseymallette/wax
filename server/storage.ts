@@ -2,6 +2,7 @@ import { tracks, listens } from "@shared/schema";
 import type {
   Track,
   TrackImport,
+  FeatureImportRow,
   ListenPayload,
   TrackWithStats,
   ListenWithTrack,
@@ -39,6 +40,38 @@ if (!trackCols.some((c) => c.name === "era")) {
   sqlite.exec(`ALTER TABLE tracks ADD COLUMN era TEXT;`);
 }
 
+function normText(v: string | null | undefined): string {
+  return String(v ?? "").trim().toLowerCase();
+}
+
+function numOrNull(v: unknown): number | null {
+  if (v === null || v === undefined || v === "") return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+export type TrackFeaturePoint = {
+  trackId: string;
+  name: string;
+  artists: string;
+  album: string;
+  bpm: number;
+  camelot: string | null;
+  energy: number;
+  dance: number;
+  valence: number;
+  popularity: number | null;
+  albumYear: number | null;
+  source: string | null;
+};
+
+export type FeatureImportSummary = {
+  imported: number;
+  matchedByTrackId: number;
+  matchedByArtistSong: number;
+  unmatched: number;
+};
+
 // 2b) Migrate legacy era values to current options.
 sqlite.exec(`
   UPDATE tracks SET era = '2010s' WHERE era = 'core_spotify';
@@ -69,6 +102,23 @@ if (!listenCols.some((c) => c.name === "want_again")) {
 if (!listenCols.some((c) => c.name === "keep_in_library")) {
   sqlite.exec(`ALTER TABLE listens ADD COLUMN keep_in_library INTEGER NOT NULL DEFAULT 1;`);
 }
+
+// 4) Track-level features used by playlist builder.
+sqlite.exec(`
+  CREATE TABLE IF NOT EXISTS track_features (
+    track_id TEXT PRIMARY KEY REFERENCES tracks(id) ON DELETE CASCADE,
+    bpm REAL,
+    camelot TEXT,
+    energy REAL,
+    dance REAL,
+    valence REAL,
+    popularity REAL,
+    album_year INTEGER,
+    source TEXT,
+    updated_at INTEGER NOT NULL
+  );
+  CREATE INDEX IF NOT EXISTS idx_track_features_camelot ON track_features(camelot);
+`);
 
 export const db = drizzle(sqlite);
 
@@ -146,6 +196,9 @@ export interface IStorage {
   clearLibrary(): void;
   getStats(): any;
   trackCount(): number;
+  importFeatureRows(rows: FeatureImportRow[]): FeatureImportSummary;
+  getTrackFeaturePoint(trackId: string): TrackFeaturePoint | undefined;
+  listKeepTrackFeaturePoints(): TrackFeaturePoint[];
 }
 
 // Aggregate listen stats joined onto tracks.
@@ -182,6 +235,32 @@ export class DatabaseStorage implements IStorage {
       preview_url = excluded.preview_url
   `);
 
+  private importFeatureStmt = sqlite.prepare(`
+    INSERT INTO track_features
+      (track_id, bpm, camelot, energy, dance, valence, popularity, album_year, source, updated_at)
+    VALUES
+      (@trackId, @bpm, @camelot, @energy, @dance, @valence, @popularity, @albumYear, @source, @updatedAt)
+    ON CONFLICT(track_id) DO UPDATE SET
+      bpm = excluded.bpm,
+      camelot = excluded.camelot,
+      energy = excluded.energy,
+      dance = excluded.dance,
+      valence = excluded.valence,
+      popularity = excluded.popularity,
+      album_year = excluded.album_year,
+      source = excluded.source,
+      updated_at = excluded.updated_at
+  `);
+
+  private findTrackByArtistSongStmt = sqlite.prepare(`
+    SELECT id
+    FROM tracks
+    WHERE LOWER(name) = ?
+      AND INSTR(LOWER(artists), ?) > 0
+    ORDER BY imported_at DESC
+    LIMIT 1
+  `);
+
   importTracks(items: TrackImport[]): { imported: number; total: number } {
     const now = Date.now();
     const tx = sqlite.transaction((rows: TrackImport[]) => {
@@ -204,6 +283,156 @@ export class DatabaseStorage implements IStorage {
     tx(items);
     const total = this.trackCount();
     return { imported: items.length, total };
+  }
+
+  importFeatureRows(rows: FeatureImportRow[]): FeatureImportSummary {
+    let imported = 0;
+    let matchedByTrackId = 0;
+    let matchedByArtistSong = 0;
+    let unmatched = 0;
+    const now = Date.now();
+
+    const hasTrackStmt = sqlite.prepare(`SELECT 1 FROM tracks WHERE id = ? LIMIT 1`);
+
+    const tx = sqlite.transaction((items: FeatureImportRow[]) => {
+      for (const row of items) {
+        let matchedTrackId: string | null = null;
+        const byId = row.trackId?.trim();
+        if (byId) {
+          const exists = hasTrackStmt.get(byId) as { 1: number } | undefined;
+          if (exists) {
+            matchedTrackId = byId;
+            matchedByTrackId += 1;
+          }
+        }
+
+        if (!matchedTrackId) {
+          const song = normText(row.song);
+          const artist = normText(row.artist);
+          if (song && artist) {
+            const found = this.findTrackByArtistSongStmt.get(song, artist) as { id: string } | undefined;
+            if (found?.id) {
+              matchedTrackId = found.id;
+              matchedByArtistSong += 1;
+            }
+          }
+        }
+
+        if (!matchedTrackId) {
+          unmatched += 1;
+          continue;
+        }
+
+        this.importFeatureStmt.run({
+          trackId: matchedTrackId,
+          bpm: numOrNull(row.bpm),
+          camelot: row.camelot?.trim() || null,
+          energy: numOrNull(row.energy),
+          dance: numOrNull(row.dance),
+          valence: numOrNull(row.valence),
+          popularity: numOrNull(row.popularity),
+          albumYear: row.albumYear ?? null,
+          source: row.source?.trim() || null,
+          updatedAt: now,
+        });
+        imported += 1;
+      }
+    });
+
+    tx(rows);
+    return { imported, matchedByTrackId, matchedByArtistSong, unmatched };
+  }
+
+  getTrackFeaturePoint(trackId: string): TrackFeaturePoint | undefined {
+    const row = sqlite
+      .prepare(`
+        SELECT
+          t.id AS track_id,
+          t.name,
+          t.artists,
+          t.album,
+          tf.bpm,
+          tf.camelot,
+          tf.energy,
+          tf.dance,
+          tf.valence,
+          tf.popularity,
+          tf.album_year,
+          tf.source
+        FROM tracks t
+        JOIN track_features tf ON tf.track_id = t.id
+        WHERE t.id = ?
+          AND tf.bpm IS NOT NULL
+          AND tf.valence IS NOT NULL
+          AND tf.dance IS NOT NULL
+          AND tf.energy IS NOT NULL
+        LIMIT 1
+      `)
+      .get(trackId) as any;
+
+    if (!row) return undefined;
+    return {
+      trackId: row.track_id,
+      name: row.name,
+      artists: row.artists,
+      album: row.album,
+      bpm: Number(row.bpm),
+      camelot: row.camelot ?? null,
+      energy: Number(row.energy),
+      dance: Number(row.dance),
+      valence: Number(row.valence),
+      popularity: row.popularity == null ? null : Number(row.popularity),
+      albumYear: row.album_year == null ? null : Number(row.album_year),
+      source: row.source ?? null,
+    };
+  }
+
+  listKeepTrackFeaturePoints(): TrackFeaturePoint[] {
+    const rows = sqlite
+      .prepare(`
+        SELECT
+          t.id AS track_id,
+          t.name,
+          t.artists,
+          t.album,
+          tf.bpm,
+          tf.camelot,
+          tf.energy,
+          tf.dance,
+          tf.valence,
+          tf.popularity,
+          tf.album_year,
+          tf.source
+        FROM tracks t
+        JOIN track_features tf ON tf.track_id = t.id
+        WHERE tf.bpm IS NOT NULL
+          AND tf.valence IS NOT NULL
+          AND tf.dance IS NOT NULL
+          AND tf.energy IS NOT NULL
+          AND (
+            SELECT l2.keep_in_library
+            FROM listens l2
+            WHERE l2.track_id = t.id
+            ORDER BY l2.logged_at DESC, l2.id DESC
+            LIMIT 1
+          ) = 1
+      `)
+      .all() as any[];
+
+    return rows.map((row) => ({
+      trackId: row.track_id,
+      name: row.name,
+      artists: row.artists,
+      album: row.album,
+      bpm: Number(row.bpm),
+      camelot: row.camelot ?? null,
+      energy: Number(row.energy),
+      dance: Number(row.dance),
+      valence: Number(row.valence),
+      popularity: row.popularity == null ? null : Number(row.popularity),
+      albumYear: row.album_year == null ? null : Number(row.album_year),
+      source: row.source ?? null,
+    }));
   }
 
   listTracks(opts: { status?: string; q?: string; sort?: string }): TrackWithStats[] {

@@ -92,11 +92,34 @@ export const trackImportSchema = z.object({
   previewUrl: z.string().nullable().optional(),
 });
 
+export const featureImportRowSchema = z.object({
+  trackId: z.string().min(1).optional(),
+  song: z.string().trim().min(1),
+  artist: z.string().trim().min(1),
+  album: z.string().trim().optional(),
+  bpm: z.number().nullable().optional(),
+  camelot: z.string().trim().nullable().optional(),
+  energy: z.number().nullable().optional(),
+  dance: z.number().nullable().optional(),
+  valence: z.number().nullable().optional(),
+  popularity: z.number().nullable().optional(),
+  albumYear: z.number().int().nullable().optional(),
+  source: z.string().trim().optional(),
+});
+
+export const playlistGenerateSchema = z.object({
+  seedTrackId: z.string().min(1),
+  topN: z.number().int().min(1).max(200).default(50),
+  maxDistance: z.number().min(0).max(20).default(3),
+});
+
 export type InsertTrack = z.infer<typeof insertTrackSchema>;
 export type Track = typeof tracks.$inferSelect;
 export type Listen = typeof listens.$inferSelect;
 export type ListenPayload = z.infer<typeof listenPayloadSchema>;
 export type TrackImport = z.infer<typeof trackImportSchema>;
+export type FeatureImportRow = z.infer<typeof featureImportRowSchema>;
+export type PlaylistGenerateInput = z.infer<typeof playlistGenerateSchema>;
 
 // A track joined with aggregate listen data.
 export type TrackWithStats = Track & {
