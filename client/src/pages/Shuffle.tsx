@@ -82,7 +82,7 @@ export default function Shuffle() {
     if (!isLogValid(state)) {
       toast({
         title: "Fill the required fields",
-        description: "Pick listened state and all three listen-again choices.",
+        description: "Pick keep/remove, listened state, and both listen-again choices.",
         variant: "destructive",
       });
       return;

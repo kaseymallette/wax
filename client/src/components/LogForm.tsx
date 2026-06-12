@@ -84,60 +84,35 @@ export function LogForm({
 
   return (
     <div className="space-y-6">
-      {/* Era picker (first log only) */}
-      {showEra && (
-        <div className="space-y-2" data-testid="section-era">
-          <label className="text-sm font-semibold">
-            Which era of your life is this from?
-          </label>
-          <div className="grid gap-2 sm:grid-cols-2">
-            {ERA_OPTIONS.map((opt) => {
-              const active = state.era === opt.value;
-              return (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => patch({ era: opt.value })}
-                  data-testid={`radio-era-${opt.value}`}
-                  className={`flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-left text-sm font-medium transition-colors hover-elevate ${
-                    active ? SEG_ACTIVE : SEG_IDLE
-                  }`}
-                >
-                  <span
-                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${
-                      active ? "border-primary" : "border-muted-foreground/50"
-                    }`}
-                  >
-                    {active && <span className="h-2 w-2 rounded-full bg-primary" />}
-                  </span>
-                  {opt.label}
-                </button>
-              );
-            })}
-          </div>
-          <div className="relative">
-            <Plus className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={customEraInput}
-              onChange={(e) => setCustomEraInput(e.target.value)}
-              onBlur={commitCustomEra}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  commitCustomEra();
-                }
-              }}
-              placeholder="Add custom era"
-              className="pl-8"
-              data-testid="input-custom-era"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground/70">
-            Set once per song — you can edit it later from Library.
-          </p>
+      {/* Keep/remove library flag (required) */}
+      <div className="space-y-2">
+        <label className="text-sm font-semibold">Keep or remove from library? (required)</label>
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => patch({ keepInLibrary: true })}
+            data-testid="button-keep-library"
+            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
+              state.keepInLibrary === true ? SEG_ACTIVE : SEG_IDLE
+            }`}
+          >
+            Keep
+          </button>
+          <button
+            type="button"
+            onClick={() => patch({ keepInLibrary: false })}
+            data-testid="button-remove-library"
+            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
+              state.keepInLibrary === false ? SEG_ACTIVE : SEG_IDLE
+            }`}
+          >
+            Remove
+          </button>
         </div>
-      )}
+        <p className="text-xs text-muted-foreground/70">
+          This only logs your preference. It does not delete tracks from your library.
+        </p>
+      </div>
 
       {/* Did you actually listen? */}
       <div className="space-y-2">
@@ -216,35 +191,60 @@ export function LogForm({
         </div>
       </div>
 
-      {/* Keep/remove library flag (logged only) */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold">Keep or remove from library?</label>
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            type="button"
-            onClick={() => patch({ keepInLibrary: true })}
-            data-testid="button-keep-library"
-            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
-              state.keepInLibrary === true ? SEG_ACTIVE : SEG_IDLE
-            }`}
-          >
-            Keep
-          </button>
-          <button
-            type="button"
-            onClick={() => patch({ keepInLibrary: false })}
-            data-testid="button-remove-library"
-            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
-              state.keepInLibrary === false ? SEG_ACTIVE : SEG_IDLE
-            }`}
-          >
-            Remove
-          </button>
+      {/* Era picker (optional) */}
+      {showEra && (
+        <div className="space-y-2" data-testid="section-era">
+          <label className="text-sm font-semibold">
+            Which era of your life is this from?
+          </label>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {ERA_OPTIONS.map((opt) => {
+              const active = state.era === opt.value;
+              return (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => patch({ era: opt.value })}
+                  data-testid={`radio-era-${opt.value}`}
+                  className={`flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-left text-sm font-medium transition-colors hover-elevate ${
+                    active ? SEG_ACTIVE : SEG_IDLE
+                  }`}
+                >
+                  <span
+                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${
+                      active ? "border-primary" : "border-muted-foreground/50"
+                    }`}
+                  >
+                    {active && <span className="h-2 w-2 rounded-full bg-primary" />}
+                  </span>
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+          <div className="relative">
+            <Plus className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={customEraInput}
+              onChange={(e) => setCustomEraInput(e.target.value)}
+              onBlur={commitCustomEra}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  commitCustomEra();
+                }
+              }}
+              placeholder="Add custom era"
+              className="pl-8"
+              data-testid="input-custom-era"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground/70">
+            Optional — you can set or edit it later from Library.
+          </p>
         </div>
-        <p className="text-xs text-muted-foreground/70">
-          This only logs your preference. It does not delete tracks from your library.
-        </p>
-      </div>
+      )}
 
       {/* What were you doing? */}
       <div className="space-y-2">
