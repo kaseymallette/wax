@@ -351,13 +351,13 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
               <Button
                 className="w-full"
                 onClick={() => {
-                  if (!isLogValid(state, showEra)) {
+                  if (!isLogValid(state)) {
                     toast({ title: "Fill the required fields", variant: "destructive" });
                     return;
                   }
                   logMutation.mutate();
                 }}
-                disabled={logMutation.isPending || !isLogValid(state, showEra)}
+                disabled={logMutation.isPending || !isLogValid(state)}
                 data-testid="button-log-listen"
               >
                 <Save className="mr-2 h-4 w-4" />

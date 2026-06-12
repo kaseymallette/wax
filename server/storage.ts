@@ -527,10 +527,7 @@ export class DatabaseStorage implements IStorage {
 
     const currentEra = track.era ?? null;
     const providedEra = payload.era ?? null;
-    if (!currentEra) {
-      if (!providedEra) {
-        return { error: "Era required for first log" } as const;
-      }
+    if (!currentEra && providedEra) {
       sqlite.prepare(`UPDATE tracks SET era = ? WHERE id = ?`).run(providedEra, payload.trackId);
     }
 

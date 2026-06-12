@@ -30,8 +30,7 @@ export function initialLogState(era: string | null): LogState {
   };
 }
 
-export function isLogValid(state: LogState, needEra: boolean): boolean {
-  if (needEra && !state.era) return false;
+export function isLogValid(state: LogState): boolean {
   return (
     state.listened !== null
     && state.wantAgain !== null

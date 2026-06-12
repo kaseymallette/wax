@@ -79,12 +79,10 @@ export default function Shuffle() {
 
   const handleSave = () => {
     if (!current) return;
-    if (!isLogValid(state, needEra)) {
+    if (!isLogValid(state)) {
       toast({
         title: "Fill the required fields",
-        description: needEra
-          ? "Pick an era and all three listen-again choices."
-          : "Pick listened state and all three listen-again choices.",
+        description: "Pick listened state and all three listen-again choices.",
         variant: "destructive",
       });
       return;
@@ -247,7 +245,7 @@ export default function Shuffle() {
                 </Button>
                 <Button
                   onClick={handleSave}
-                  disabled={saveMutation.isPending || !isLogValid(state, needEra)}
+                  disabled={saveMutation.isPending || !isLogValid(state)}
                   data-testid="button-log-next"
                 >
                   <Save className="mr-2 h-4 w-4" />
