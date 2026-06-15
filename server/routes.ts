@@ -10,7 +10,7 @@ import { storage } from "./storage";
 import { generatePlaylistCandidates } from "./playlistBuilder";
 import {
   listenPayloadSchema,
-  eraUpdateSchema,
+  repeatIntentUpdateSchema,
   trackImportSchema,
   featureImportRowSchema,
   playlistGenerateSchema,
@@ -692,14 +692,33 @@ export async function registerRoutes(
     const status = (req.query.status as string) || "all";
     const q = (req.query.q as string) || "";
     const sort = (req.query.sort as string) || "added";
-    res.json(storage.listTracks({ status, q, sort }));
+    const includeFeaturesRaw = String(req.query.includeFeatures ?? "true").toLowerCase();
+    const includeFeatures = !(includeFeaturesRaw === "0" || includeFeaturesRaw === "false");
+    res.json(storage.listTracks({ status, q, sort, includeFeatures }));
+  });
+
+  app.get("/api/tracks/by-ids", (req, res) => {
+    const idsRaw = String(req.query.ids ?? "");
+    const ids = idsRaw
+      .split(",")
+      .map((id) => id.trim())
+      .filter(Boolean);
+    const includeFeaturesRaw = String(req.query.includeFeatures ?? "true").toLowerCase();
+    const includeFeatures = !(includeFeaturesRaw === "0" || includeFeaturesRaw === "false");
+    res.json(storage.listTracksByIds(ids, includeFeatures));
   });
 
   app.get("/api/tracks/random", (req, res) => {
     const status = (req.query.status as string) || "unlogged";
     const keepOnlyRaw = String(req.query.keepOnly ?? "false").toLowerCase();
     const keepOnly = keepOnlyRaw === "1" || keepOnlyRaw === "true";
-    const track = storage.getRandomTrack(status, keepOnly);
+    const includeFeaturesRaw = String(req.query.includeFeatures ?? "true").toLowerCase();
+    const includeFeatures = !(includeFeaturesRaw === "0" || includeFeaturesRaw === "false");
+    const excludeTrackIds = String(req.query.excludeTrackIds ?? "")
+      .split(",")
+      .map((id) => id.trim())
+      .filter(Boolean);
+    const track = storage.getRandomTrack(status, keepOnly, includeFeatures, excludeTrackIds);
     if (!track) return res.status(404).json({ error: "No tracks" });
     res.json(track);
   });
@@ -710,13 +729,13 @@ export async function registerRoutes(
     res.json(track);
   });
 
-  // --- Update era for a track ---
-  app.patch("/api/tracks/:id/era", (req, res) => {
-    const parsed = eraUpdateSchema.safeParse(req.body);
+  // --- Update repeat intent for a track ---
+  app.patch("/api/tracks/:id/repeat-intent", (req, res) => {
+    const parsed = repeatIntentUpdateSchema.safeParse(req.body);
     if (!parsed.success) {
-      return res.status(400).json({ error: "Invalid era" });
+      return res.status(400).json({ error: "Invalid repeat intent" });
     }
-    const track = storage.setEra(req.params.id, parsed.data.era);
+    const track = storage.setRepeatIntent(req.params.id, parsed.data.repeatIntent);
     if (!track) return res.status(404).json({ error: "Track not found" });
     res.json(track);
   });
@@ -751,7 +770,8 @@ export async function registerRoutes(
       storage.listListens({
         trackId: (q.trackId as string) || undefined,
         activity: splitCsv(q.activity),
-        era: splitCsv(q.era),
+        repeatIntent: splitCsv(q.repeatIntent),
+        keepOnly: q.keepOnly === "1" || q.keepOnly === "true",
         from: numOrUndef(q.from),
         to: numOrUndef(q.to),
         listenedOnly: q.listenedOnly === "1" || q.listenedOnly === "true",
@@ -805,7 +825,7 @@ export async function registerRoutes(
       if (more.length < 500) break;
     }
     const headers = [
-      "logged_at", "track_id", "name", "artists", "album", "era",
+      "logged_at", "track_id", "name", "artists", "album", "repeat_intent",
       "listened", "want_again", "would_again", "keep_in_library", "activity", "notes", "spotify_url",
     ];
     const esc = (v: any) => {
@@ -816,7 +836,7 @@ export async function registerRoutes(
     for (const r of all) {
       lines.push([
         r.loggedAt ? new Date(r.loggedAt).toISOString() : "",
-        r.trackId, r.name, r.artists, r.album, r.era ?? "",
+        r.trackId, r.name, r.artists, r.album, r.repeatIntent,
         r.listened, r.wantAgain, r.wouldAgain, r.keepInLibrary, JSON.stringify(r.activity), r.notes ?? "",
         r.spotifyUrl ?? "",
       ].map(esc).join(","));

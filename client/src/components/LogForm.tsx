@@ -1,29 +1,25 @@
 import { useState } from "react";
-import { ACTIVITY_PRESETS, ERA_OPTIONS } from "@shared/schema";
+import { ACTIVITY_PRESETS } from "@shared/schema";
 import { isPreset } from "@/lib/wax";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import {
   Tooltip, TooltipContent, TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Headphones, EarOff, ThumbsUp, ThumbsDown, X, Plus } from "lucide-react";
+import { Headphones, EarOff, X, Plus } from "lucide-react";
 
 export type LogState = {
-  era: string | null;
   listened: boolean | null;
-  wantAgain: boolean | null;
-  wouldAgain: boolean | null;
+  repeatIntent: "on_repeat" | "yes" | "maybe" | "nah" | null;
   keepInLibrary: boolean | null;
   activity: string[];
   notes: string;
 };
 
-export function initialLogState(era: string | null): LogState {
+export function initialLogState(): LogState {
   return {
-    era,
     listened: null,
-    wantAgain: null,
-    wouldAgain: null,
+    repeatIntent: null,
     keepInLibrary: null,
     activity: [],
     notes: "",
@@ -31,12 +27,10 @@ export function initialLogState(era: string | null): LogState {
 }
 
 export function isLogValid(state: LogState): boolean {
-  return (
-    state.listened !== null
-    && state.wantAgain !== null
-    && state.wouldAgain !== null
-    && state.keepInLibrary !== null
-  );
+  if (state.keepInLibrary === null) return false;
+  if (state.listened === null) return false;
+  if (state.keepInLibrary === false) return true;
+  return state.repeatIntent !== null;
 }
 
 const SEG_BASE =
@@ -47,14 +41,11 @@ const SEG_IDLE = "border-border bg-secondary/40 text-muted-foreground";
 export function LogForm({
   state,
   setState,
-  showEra,
 }: {
   state: LogState;
   setState: (s: LogState) => void;
-  showEra: boolean;
 }) {
   const [customInput, setCustomInput] = useState("");
-  const [customEraInput, setCustomEraInput] = useState("");
   const patch = (p: Partial<LogState>) => setState({ ...state, ...p });
 
   const toggleActivity = (tag: string) =>
@@ -66,18 +57,6 @@ export function LogForm({
     const t = raw.trim().toLowerCase();
     if (!t) return;
     if (!state.activity.includes(t)) patch({ activity: [...state.activity, t] });
-  };
-
-  const setCustomEra = (raw: string) => {
-    const era = raw.trim();
-    if (!era) return;
-    patch({ era: era.slice(0, 80) });
-  };
-
-  const commitCustomEra = () => {
-    if (!customEraInput.trim()) return;
-    setCustomEra(customEraInput);
-    setCustomEraInput("");
   };
 
   const customTags = state.activity.filter((t) => !isPreset(t));
@@ -100,7 +79,7 @@ export function LogForm({
           </button>
           <button
             type="button"
-            onClick={() => patch({ keepInLibrary: false })}
+            onClick={() => patch({ keepInLibrary: false, repeatIntent: null })}
             data-testid="button-remove-library"
             className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
               state.keepInLibrary === false ? SEG_ACTIVE : SEG_IDLE
@@ -137,112 +116,51 @@ export function LogForm({
         </div>
       </div>
 
-      {/* Want to listen again? */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold">Do you want to listen again?</label>
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            type="button"
-            onClick={() => patch({ wantAgain: true })}
-            data-testid="button-want-again-yes"
-            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
-              state.wantAgain === true ? SEG_ACTIVE : SEG_IDLE
-            }`}
-          >
-            <ThumbsUp className="h-4 w-4" /> Yes
-          </button>
-          <button
-            type="button"
-            onClick={() => patch({ wantAgain: false })}
-            data-testid="button-want-again-no"
-            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
-              state.wantAgain === false ? SEG_ACTIVE : SEG_IDLE
-            }`}
-          >
-            <ThumbsDown className="h-4 w-4" /> No
-          </button>
-        </div>
-      </div>
-
-      {/* Would you listen again? */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold">Would you listen again?</label>
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            type="button"
-            onClick={() => patch({ wouldAgain: true })}
-            data-testid="button-again-yes"
-            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
-              state.wouldAgain === true ? SEG_ACTIVE : SEG_IDLE
-            }`}
-          >
-            <ThumbsUp className="h-4 w-4" /> Yes
-          </button>
-          <button
-            type="button"
-            onClick={() => patch({ wouldAgain: false })}
-            data-testid="button-again-no"
-            className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
-              state.wouldAgain === false ? SEG_ACTIVE : SEG_IDLE
-            }`}
-          >
-            <ThumbsDown className="h-4 w-4" /> No
-          </button>
-        </div>
-      </div>
-
-      {/* Era picker (optional) */}
-      {showEra && (
-        <div className="space-y-2" data-testid="section-era">
-          <label className="text-sm font-semibold">
-            Which era of your life is this from?
-          </label>
+      {state.keepInLibrary === true && (
+        <div className="space-y-2">
+          <label className="text-sm font-semibold">Do you want to listen again?</label>
           <div className="grid gap-2 sm:grid-cols-2">
-            {ERA_OPTIONS.map((opt) => {
-              const active = state.era === opt.value;
-              return (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => patch({ era: opt.value })}
-                  data-testid={`radio-era-${opt.value}`}
-                  className={`flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-left text-sm font-medium transition-colors hover-elevate ${
-                    active ? SEG_ACTIVE : SEG_IDLE
-                  }`}
-                >
-                  <span
-                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${
-                      active ? "border-primary" : "border-muted-foreground/50"
-                    }`}
-                  >
-                    {active && <span className="h-2 w-2 rounded-full bg-primary" />}
-                  </span>
-                  {opt.label}
-                </button>
-              );
-            })}
+            <button
+              type="button"
+              onClick={() => patch({ repeatIntent: "on_repeat" })}
+              data-testid="button-repeat-on-repeat"
+              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
+                state.repeatIntent === "on_repeat" ? SEG_ACTIVE : SEG_IDLE
+              }`}
+            >
+              On repeat
+            </button>
+            <button
+              type="button"
+              onClick={() => patch({ repeatIntent: "yes" })}
+              data-testid="button-repeat-yes"
+              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
+                state.repeatIntent === "yes" ? SEG_ACTIVE : SEG_IDLE
+              }`}
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              onClick={() => patch({ repeatIntent: "maybe" })}
+              data-testid="button-repeat-maybe"
+              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
+                state.repeatIntent === "maybe" ? SEG_ACTIVE : SEG_IDLE
+              }`}
+            >
+              Maybe
+            </button>
+            <button
+              type="button"
+              onClick={() => patch({ repeatIntent: "nah" })}
+              data-testid="button-repeat-nah"
+              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
+                state.repeatIntent === "nah" ? SEG_ACTIVE : SEG_IDLE
+              }`}
+            >
+              Nah, I&apos;m good
+            </button>
           </div>
-          <div className="relative">
-            <Plus className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={customEraInput}
-              onChange={(e) => setCustomEraInput(e.target.value)}
-              onBlur={commitCustomEra}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  commitCustomEra();
-                }
-              }}
-              placeholder="Add custom era"
-              className="pl-8"
-              data-testid="input-custom-era"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground/70">
-            Optional — you can set or edit it later from Library.
-          </p>
         </div>
       )}
 

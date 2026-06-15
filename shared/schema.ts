@@ -14,7 +14,7 @@ export const tracks = sqliteTable("tracks", {
   spotifyUrl: text("spotify_url"),
   previewUrl: text("preview_url"),
   importedAt: integer("imported_at").notNull(),
-  era: text("era"), // one of ERA_OPTIONS values or null. Sticky per track.
+  repeatIntent: text("repeat_intent").notNull().default("maybe"),
 });
 
 // One row per listen. A track can be listened to many times.
@@ -47,21 +47,18 @@ export const ACTIVITY_PRESETS = [
   "resting",
 ] as const;
 
-export const ERA_OPTIONS = [
-  { value: "recently_discovered", label: "Recently discovered" },
-  { value: "recently_remembered", label: "Recently remembered" },
-  { value: "dance", label: "Dance" },
-  { value: "radio", label: "Radio" },
-  { value: "vinyl", label: "Vinyl" },
-  { value: "mom", label: "Mom" },
-  { value: "dad", label: "Dad" },
-  { value: "2000s", label: "2000s" },
-  { value: "2010s", label: "2010s" },
-  { value: "2020s", label: "2020s" },
+export const REPEAT_INTENT_OPTIONS = [
+  { value: "on_repeat", label: "On repeat" },
+  { value: "yes", label: "Yes" },
+  { value: "maybe", label: "Maybe" },
+  { value: "nah", label: "Nah, I'm good" },
 ] as const;
 
-export const ERA_VALUES = ERA_OPTIONS.map((e) => e.value) as [string, ...string[]];
-const eraValueSchema = z.string().trim().min(1).max(80);
+export const REPEAT_INTENT_VALUES = REPEAT_INTENT_OPTIONS.map((o) => o.value) as [
+  string,
+  ...string[],
+];
+export const repeatIntentSchema = z.enum(["on_repeat", "yes", "maybe", "nah"]);
 
 export const insertTrackSchema = createInsertSchema(tracks);
 
@@ -72,13 +69,13 @@ export const listenPayloadSchema = z.object({
   wantAgain: z.union([z.boolean(), z.number().int().min(0).max(1)]),
   wouldAgain: z.union([z.boolean(), z.number().int().min(0).max(1)]),
   keepInLibrary: z.union([z.boolean(), z.number().int().min(0).max(1)]),
+  repeatIntent: repeatIntentSchema.nullable().optional(),
   activity: z.array(z.string()).default([]),
   notes: z.string().default(""),
-  era: eraValueSchema.nullable().optional(),
 });
 
-export const eraUpdateSchema = z.object({
-  era: eraValueSchema,
+export const repeatIntentUpdateSchema = z.object({
+  repeatIntent: repeatIntentSchema,
 });
 
 export const trackImportSchema = z.object({
@@ -129,12 +126,19 @@ export type TrackWithStats = Track & {
   lastListenedAt: number | null;
   wouldAgainCount: number;
   wouldNotAgainCount: number;
+  bpm: number | null;
+  camelot: string | null;
+  energy: number | null;
+  dance: number | null;
+  valence: number | null;
+  albumYear: number | null;
 };
 
 // A listen joined with its track's display metadata.
 export type ListenWithTrack = {
   id: number;
   trackId: string;
+  repeatIntent: "on_repeat" | "yes" | "maybe" | "nah";
   listened: number;
   wantAgain: number;
   wouldAgain: number;
@@ -148,5 +152,4 @@ export type ListenWithTrack = {
   albumArtUrl: string | null;
   spotifyUrl: string | null;
   previewUrl: string | null;
-  era: string | null;
 };

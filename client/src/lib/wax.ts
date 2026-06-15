@@ -1,4 +1,4 @@
-import { ACTIVITY_PRESETS, ERA_OPTIONS } from "@shared/schema";
+import { ACTIVITY_PRESETS } from "@shared/schema";
 
 export const PRESETS: readonly string[] = ACTIVITY_PRESETS;
 
@@ -6,28 +6,20 @@ export function isPreset(tag: string): boolean {
   return PRESETS.includes(tag);
 }
 
-export const ERA_LABELS: Record<string, string> = Object.fromEntries(
-  ERA_OPTIONS.map((e) => [e.value, e.label]),
-);
-
-export function eraLabel(era: string | null | undefined): string {
-  if (!era) return "No era";
-  return ERA_LABELS[era] ?? era;
+export function repeatIntentLabel(intent: string | null | undefined): string {
+  if (intent === "on_repeat") return "On repeat";
+  if (intent === "yes") return "Yes";
+  if (intent === "maybe") return "Maybe";
+  if (intent === "nah") return "Nah, I'm good";
+  return "Maybe";
 }
 
-// Distinct chip color per era. Uses fixed Tailwind utility class strings so
-// they survive purge. Each: subtle tinted bg + readable text.
-export const ERA_CHIP: Record<string, string> = {
-  recently_discovered: "bg-amber-500/15 text-amber-500",
-  recently_remembered: "bg-purple-400/15 text-purple-300",
-  core_spotify: "bg-emerald-500/15 text-emerald-400",
-  core_itunes: "bg-slate-400/20 text-slate-300",
-  core_cd: "bg-rose-400/15 text-rose-300",
-};
-
-export function eraChipClass(era: string | null | undefined): string {
-  if (!era) return "bg-secondary/60 text-muted-foreground";
-  return ERA_CHIP[era] ?? "bg-secondary/60 text-muted-foreground";
+export function repeatIntentChipClass(intent: string | null | undefined): string {
+  if (intent === "on_repeat") return "bg-blue-500/15 text-blue-400";
+  if (intent === "yes") return "bg-emerald-500/15 text-emerald-400";
+  if (intent === "maybe") return "bg-amber-500/15 text-amber-400";
+  if (intent === "nah") return "bg-destructive/15 text-destructive";
+  return "bg-secondary/60 text-muted-foreground";
 }
 
 // Relative time, e.g. "2h ago", "yesterday", "3 days ago".

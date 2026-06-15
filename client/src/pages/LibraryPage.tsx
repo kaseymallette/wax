@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import type { TrackWithStats, ListenWithTrack } from "@shared/schema";
-import { ERA_OPTIONS } from "@shared/schema";
+import { REPEAT_INTENT_OPTIONS } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Layout } from "@/components/Layout";
@@ -9,7 +9,7 @@ import { ImportEmptyState } from "@/components/EmptyState";
 import { AlbumArt } from "@/components/AlbumArt";
 import { PlaybackSection } from "@/components/PlaybackSection";
 import { LogForm, LogState, initialLogState, isLogValid } from "@/components/LogForm";
-import { eraChipClass, eraLabel, relativeTime, absoluteTime } from "@/lib/wax";
+import { repeatIntentChipClass, repeatIntentLabel, relativeTime, absoluteTime } from "@/lib/wax";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -58,7 +58,7 @@ export default function LibraryPage() {
     queryFn: async () => {
       const res = await apiRequest(
         "GET",
-        `/api/tracks?status=${status}&sort=${sort}&q=${encodeURIComponent(q)}`,
+        `/api/tracks?status=${status}&sort=${sort}&q=${encodeURIComponent(q)}&includeFeatures=0`,
       );
       return res.json();
     },
@@ -152,8 +152,8 @@ export default function LibraryPage() {
                   </div>
                 </div>
                 <div className="hidden sm:block">
-                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${eraChipClass(t.era)}`}>
-                    {eraLabel(t.era)}
+                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${repeatIntentChipClass(t.repeatIntent)}`}>
+                    {repeatIntentLabel(t.repeatIntent)}
                   </span>
                 </div>
                 <div className="text-right text-xs text-muted-foreground sm:text-left">
@@ -179,9 +179,8 @@ export default function LibraryPage() {
 
 function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onClose: () => void }) {
   const { toast } = useToast();
-  const [state, setState] = useState<LogState>(initialLogState(null));
-  const [editingEra, setEditingEra] = useState(false);
-  const [customEraInput, setCustomEraInput] = useState("");
+  const [state, setState] = useState<LogState>(initialLogState());
+  const [editingRepeatIntent, setEditingRepeatIntent] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState<number | null>(null);
 
   // Reset form when a new track opens.
@@ -189,9 +188,8 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
   const [lastId, setLastId] = useState<string | null>(null);
   if (trackId !== lastId) {
     setLastId(trackId);
-    setState(initialLogState(editing?.era ?? null));
-    setEditingEra(false);
-    setCustomEraInput("");
+    setState(initialLogState());
+    setEditingRepeatIntent(false);
   }
 
   const historyQuery = useQuery<ListenWithTrack[]>({
@@ -203,31 +201,34 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
     enabled: !!trackId,
   });
 
-  const eraMutation = useMutation({
-    mutationFn: async (era: string) => {
-      const res = await apiRequest("PATCH", `/api/tracks/${trackId}/era`, { era });
+  const repeatIntentMutation = useMutation({
+    mutationFn: async (repeatIntent: TrackWithStats["repeatIntent"]) => {
+      const res = await apiRequest("PATCH", `/api/tracks/${trackId}/repeat-intent`, { repeatIntent });
       return res.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/tracks"] });
       queryClient.invalidateQueries({ queryKey: ["/api/stats"] });
-      setEditingEra(false);
-      toast({ title: "Era updated" });
+      setEditingRepeatIntent(false);
+      toast({ title: "Listen-again tag updated" });
     },
-    onError: (e: any) => toast({ title: "Could not update era", description: e?.message, variant: "destructive" }),
+    onError: (e: any) => toast({ title: "Could not update tag", description: e?.message, variant: "destructive" }),
   });
 
   const logMutation = useMutation({
     mutationFn: async () => {
+      if (state.keepInLibrary === null || state.listened === null) return;
+      const wantAgain = state.repeatIntent === "on_repeat" || state.repeatIntent === "yes" || state.repeatIntent === "maybe";
+      const wouldAgain = state.repeatIntent === "on_repeat" || state.repeatIntent === "yes";
       const res = await apiRequest("POST", "/api/listens", {
         trackId,
         listened: state.listened,
-        wantAgain: state.wantAgain,
-        wouldAgain: state.wouldAgain,
+        wantAgain,
+        wouldAgain,
         keepInLibrary: state.keepInLibrary,
+        repeatIntent: state.keepInLibrary ? state.repeatIntent : undefined,
         activity: state.activity,
         notes: state.notes,
-        era: state.era ?? editing?.era ?? undefined,
       });
       return res.json();
     },
@@ -235,7 +236,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
       queryClient.invalidateQueries({ queryKey: ["/api/tracks"] });
       queryClient.invalidateQueries({ queryKey: ["/api/stats"] });
       queryClient.invalidateQueries({ queryKey: ["/api/listens"] });
-      setState(initialLogState(editing?.era ?? state.era ?? null));
+      setState(initialLogState());
       toast({ title: "Logged.", description: editing?.name });
     },
     onError: (e: any) => toast({ title: "Could not log", description: e?.message, variant: "destructive" }),
@@ -254,9 +255,6 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
     },
   });
 
-  const hasEra = !!editing?.era;
-  const showEra = !hasEra && !state.era;
-
   return (
     <Dialog open={!!editing} onOpenChange={(o) => !o && onClose()}>
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-[560px]">
@@ -270,73 +268,40 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
             <div className="space-y-5">
               <PlaybackSection trackId={editing.id} previewUrl={editing.previewUrl} />
 
-              {/* Era edit row */}
+              {/* Repeat intent edit row */}
               <div className="flex items-center gap-2 rounded-lg border border-border bg-secondary/20 px-3 py-2">
-                <span className="text-xs text-muted-foreground">Era</span>
-                {!editingEra ? (
+                <span className="text-xs text-muted-foreground">Listen again</span>
+                {!editingRepeatIntent ? (
                   <>
-                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${eraChipClass(editing.era)}`} data-testid="text-current-era">
-                      {eraLabel(editing.era)}
+                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${repeatIntentChipClass(editing.repeatIntent)}`} data-testid="text-current-repeat-intent">
+                      {repeatIntentLabel(editing.repeatIntent)}
                     </span>
                     <button
                       className="ml-auto text-xs font-medium text-primary hover:underline"
-                      onClick={() => setEditingEra(true)}
-                      data-testid="link-edit-era"
+                      onClick={() => setEditingRepeatIntent(true)}
+                      data-testid="link-edit-repeat-intent"
                     >
-                      Edit era
+                      Edit tag
                     </button>
                   </>
                 ) : (
                   <div className="flex w-full flex-col gap-2">
                     <div className="flex flex-wrap gap-1.5">
-                      {ERA_OPTIONS.map((opt) => (
+                      {REPEAT_INTENT_OPTIONS.map((opt) => (
                         <button
                           key={opt.value}
-                          onClick={() => eraMutation.mutate(opt.value)}
-                          disabled={eraMutation.isPending}
-                          data-testid={`edit-era-${opt.value}`}
+                          onClick={() => repeatIntentMutation.mutate(opt.value)}
+                          disabled={repeatIntentMutation.isPending}
+                          data-testid={`edit-repeat-intent-${opt.value}`}
                           className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
-                            editing.era === opt.value
-                              ? "border-primary bg-primary/15 text-primary"
+                            editing.repeatIntent === opt.value
+                              ? repeatIntentChipClass(opt.value) + " border-current"
                               : "border-border bg-secondary/40 text-muted-foreground"
                           }`}
                         >
                           {opt.label}
                         </button>
                       ))}
-                    </div>
-                    <div className="flex gap-2">
-                      <Input
-                        value={customEraInput}
-                        onChange={(e) => setCustomEraInput(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            e.preventDefault();
-                            const era = customEraInput.trim();
-                            if (era) eraMutation.mutate(era.slice(0, 80));
-                            setCustomEraInput("");
-                          }
-                        }}
-                        placeholder="Add custom era"
-                        className="h-8 text-xs"
-                        data-testid="input-edit-custom-era"
-                        disabled={eraMutation.isPending}
-                      />
-                      <Button
-                        type="button"
-                        size="sm"
-                        variant="secondary"
-                        disabled={eraMutation.isPending || !customEraInput.trim()}
-                        onClick={() => {
-                          const era = customEraInput.trim();
-                          if (!era) return;
-                          eraMutation.mutate(era.slice(0, 80));
-                          setCustomEraInput("");
-                        }}
-                        data-testid="button-edit-custom-era"
-                      >
-                        Save
-                      </Button>
                     </div>
                   </div>
                 )}
@@ -345,7 +310,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
               {/* Log form */}
               <div>
                 <h3 className="mb-3 font-display text-sm font-semibold">Log a listen</h3>
-                <LogForm state={state} setState={setState} showEra={showEra} />
+                <LogForm state={state} setState={setState} />
               </div>
 
               <Button
@@ -392,16 +357,11 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
                             ) : (
                               <EarOff className="h-3.5 w-3.5 text-muted-foreground" aria-label="Background" />
                             )}
-                            {l.wantAgain ? (
-                              <span className="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-medium text-primary">Want</span>
-                            ) : (
-                              <span className="rounded-full bg-destructive/15 px-1.5 py-0.5 text-[10px] font-medium text-destructive">Don't want</span>
-                            )}
-                            {l.wouldAgain ? (
-                              <ThumbsUp className="h-3.5 w-3.5 text-primary" aria-label="Would listen again" />
-                            ) : (
-                              <ThumbsDown className="h-3.5 w-3.5 text-destructive" aria-label="Would not" />
-                            )}
+                            {l.keepInLibrary ? (
+                              <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium ${repeatIntentChipClass(l.repeatIntent)}`}>
+                                {repeatIntentLabel(l.repeatIntent)}
+                              </span>
+                            ) : null}
                             {l.keepInLibrary ? (
                               <span className="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-medium text-primary">Keep</span>
                             ) : (

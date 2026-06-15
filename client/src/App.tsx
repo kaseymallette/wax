@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/lib/theme";
 import Shuffle from "@/pages/Shuffle";
 import LibraryPage from "@/pages/LibraryPage";
 import RecentsPage from "@/pages/RecentsPage";
+import KeepsPage from "@/pages/KeepsPage";
 import StatsPage from "@/pages/StatsPage";
 import ImportPage from "@/pages/ImportPage";
 import PlaylistBuilderPage from "@/pages/PlaylistBuilderPage";
@@ -19,6 +20,7 @@ function AppRouter() {
       <Route path="/" component={Shuffle} />
       <Route path="/library" component={LibraryPage} />
       <Route path="/recents" component={RecentsPage} />
+      <Route path="/keeps" component={KeepsPage} />
       <Route path="/stats" component={StatsPage} />
       <Route path="/import" component={ImportPage} />
       <Route path="/playlist-builder" component={PlaylistBuilderPage} />

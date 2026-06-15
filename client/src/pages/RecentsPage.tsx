@@ -1,15 +1,15 @@
 import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Link } from "wouter";
-import type { ListenWithTrack } from "@shared/schema";
-import { ACTIVITY_PRESETS, ERA_OPTIONS } from "@shared/schema";
+import type { ListenWithTrack, TrackWithStats } from "@shared/schema";
+import { ACTIVITY_PRESETS } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Layout } from "@/components/Layout";
 import { ImportEmptyState } from "@/components/EmptyState";
 import { AlbumArt } from "@/components/AlbumArt";
 import {
-  eraChipClass, eraLabel, relativeTime, absoluteTime, dayHeader, dayKey,
+  repeatIntentChipClass, repeatIntentLabel, relativeTime, absoluteTime, dayHeader, dayKey,
 } from "@/lib/wax";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -22,10 +22,23 @@ import {
   AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import {
-  Headphones, EarOff, ThumbsUp, ThumbsDown, MoreHorizontal, Library, Trash2, Clock,
+  Headphones, EarOff, MoreHorizontal, Library, Trash2, Clock,
 } from "lucide-react";
 
 const PAGE_SIZE = 50;
+
+function featureChips(t: TrackWithStats | undefined): string[] {
+  if (!t) return [];
+  const chips: string[] = [];
+  if (t.bpm != null && Number.isFinite(t.bpm)) chips.push(`${Math.round(t.bpm)} BPM`);
+  if (t.camelot) chips.push(String(t.camelot));
+  if (t.energy != null && t.dance != null && t.valence != null) {
+    const mood = t.energy + t.dance + t.valence;
+    chips.push(`Mood ${mood.toFixed(2)}`);
+  }
+  if (t.albumYear != null && Number.isFinite(t.albumYear)) chips.push(String(t.albumYear));
+  return chips;
+}
 
 const DATE_RANGES = [
   { key: "7", label: "Last 7 days", days: 7 },
@@ -36,7 +49,6 @@ const DATE_RANGES = [
 export default function RecentsPage() {
   const { toast } = useToast();
   const [activities, setActivities] = useState<string[]>([]);
-  const [eras, setEras] = useState<string[]>([]);
   const [range, setRange] = useState<string>("all");
   const [listenedOnly, setListenedOnly] = useState(false);
   const [limit, setLimit] = useState(PAGE_SIZE);
@@ -53,12 +65,11 @@ export default function RecentsPage() {
   const params = useMemo(() => {
     const p = new URLSearchParams();
     if (activities.length) p.set("activity", activities.join(","));
-    if (eras.length) p.set("era", eras.join(","));
     if (from) p.set("from", String(from));
     if (listenedOnly) p.set("listenedOnly", "1");
     p.set("limit", String(limit));
     return p.toString();
-  }, [activities, eras, from, listenedOnly, limit]);
+  }, [activities, from, listenedOnly, limit]);
 
   const listensQuery = useQuery<ListenWithTrack[]>({
     queryKey: ["/api/listens", "recents", params],
@@ -66,6 +77,20 @@ export default function RecentsPage() {
       const res = await apiRequest("GET", `/api/listens?${params}`);
       return res.json();
     },
+  });
+
+  const recentTrackIdsParam = useMemo(() => {
+    const ids = Array.from(new Set((listensQuery.data ?? []).map((l) => l.trackId).filter(Boolean)));
+    return ids.join(",");
+  }, [listensQuery.data]);
+
+  const tracksQuery = useQuery<TrackWithStats[]>({
+    queryKey: ["/api/tracks/by-ids", recentTrackIdsParam],
+    queryFn: async () => {
+      const res = await apiRequest("GET", `/api/tracks/by-ids?ids=${encodeURIComponent(recentTrackIdsParam)}`);
+      return res.json();
+    },
+    enabled: recentTrackIdsParam.length > 0,
   });
 
   const deleteMutation = useMutation({
@@ -84,6 +109,11 @@ export default function RecentsPage() {
     set(arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
 
   const listens = listensQuery.data ?? [];
+  const trackById = useMemo(() => {
+    const m = new Map<string, TrackWithStats>();
+    for (const t of tracksQuery.data ?? []) m.set(t.id, t);
+    return m;
+  }, [tracksQuery.data]);
 
   // Group by day.
   const groups = useMemo(() => {
@@ -101,7 +131,7 @@ export default function RecentsPage() {
   }, [listens]);
 
   if (statsQuery.data && statsQuery.data.totals.totalListens === 0 &&
-      activities.length === 0 && eras.length === 0 && range === "all" && !listenedOnly) {
+      activities.length === 0 && range === "all" && !listenedOnly) {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card px-6 py-16 text-center">
@@ -139,21 +169,6 @@ export default function RecentsPage() {
               }`}
             >
               {a}
-            </button>
-          ))}
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold text-muted-foreground">Era</span>
-          {ERA_OPTIONS.map((e) => (
-            <button
-              key={e.value}
-              onClick={() => { toggle(eras, e.value, setEras); setLimit(PAGE_SIZE); }}
-              data-testid={`filter-era-${e.value}`}
-              className={`rounded-full px-2 py-0.5 text-xs font-medium transition-colors hover-elevate ${
-                eras.includes(e.value) ? eraChipClass(e.value) + " ring-1 ring-current" : "bg-secondary/40 text-muted-foreground"
-              }`}
-            >
-              {e.label}
             </button>
           ))}
         </div>
@@ -238,23 +253,12 @@ export default function RecentsPage() {
                           {absoluteTime(l.loggedAt)} · {relativeTime(l.loggedAt)}
                         </div>
                         <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                          <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${eraChipClass(l.era)}`}>
-                            {eraLabel(l.era)}
-                          </span>
                           <span className="inline-flex items-center gap-1 rounded-full bg-secondary/60 px-2 py-0.5 text-[10px] text-muted-foreground">
                             {l.listened ? <Headphones className="h-3 w-3" /> : <EarOff className="h-3 w-3" />}
                             {l.listened ? "Listened" : "Background"}
                           </span>
-                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
-                            l.wantAgain ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
-                          }`}>
-                            {l.wantAgain ? "Want again" : "Don't want"}
-                          </span>
-                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
-                            l.wouldAgain ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
-                          }`}>
-                            {l.wouldAgain ? <ThumbsUp className="h-3 w-3" /> : <ThumbsDown className="h-3 w-3" />}
-                            {l.wouldAgain ? "Again" : "Not again"}
+                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${repeatIntentChipClass(l.repeatIntent)}`}>
+                            {repeatIntentLabel(l.repeatIntent)}
                           </span>
                           <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
                             l.keepInLibrary ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
@@ -265,6 +269,15 @@ export default function RecentsPage() {
                             <span key={a} className="rounded-full bg-secondary/40 px-2 py-0.5 text-[10px] text-muted-foreground">{a}</span>
                           ))}
                         </div>
+                        {featureChips(trackById.get(l.trackId)).length > 0 && (
+                          <div className="mt-2 flex flex-wrap items-center gap-1" data-testid={`recent-feature-chips-${l.id}`}>
+                            {featureChips(trackById.get(l.trackId)).map((chip) => (
+                              <span key={chip} className="rounded-full bg-secondary/50 px-1.5 py-0.5 text-[10px] text-muted-foreground">
+                                {chip}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                         {l.notes && <p className="mt-1.5 text-xs text-muted-foreground">{l.notes}</p>}
                       </div>
                     </div>
