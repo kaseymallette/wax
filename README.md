@@ -164,7 +164,7 @@ Output files are written to `users/<name>/playlists/`:
 - `users/<name>/playlists/high.csv`
 - `users/<name>/missing-tracks.log` *(only when tracks are missing from `data.db` or missing features)*
 
-### Spotify push agent (Phase 2)
+### Spotify push agent
 
 Once your CSV outputs look right, you can push them to Spotify playlists.
 
