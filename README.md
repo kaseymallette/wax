@@ -164,6 +164,30 @@ Output files are written to `users/<name>/playlists/`:
 - `users/<name>/playlists/high.csv`
 - `users/<name>/missing-tracks.log` *(only when tracks are missing from `data.db` or missing features)*
 
+### Back up decisions + generated playlists
+
+To save a per-user snapshot (decisions + playlists + missing-tracks log):
+
+```bash
+WAX_USER=kasey npm run snapshot:user
+```
+
+This writes to a timestamped folder:
+
+- `backups/user-snapshots/<user>/<timestamp>/decisions-latest.json`
+- `backups/user-snapshots/<user>/<timestamp>/playlists/` *(if present)*
+- `backups/user-snapshots/<user>/<timestamp>/missing-tracks.log` *(if present)*
+
+To restore the latest snapshot for a user:
+
+```bash
+WAX_USER=kasey npm run restore:user
+```
+
+To restore a specific snapshot timestamp:
+```bash
+WAX_USER=kasey npm run restore:user -- 20260618-180500
+```
 
 ### Scope notes
 

@@ -12,6 +12,8 @@
     "restore-db": "bash -lc 'latest=$(ls -t backups/data.db.*.bak 2>/dev/null | head -n 1); if [ -z \"$latest\" ]; then echo \"No backup found in backups/.\"; exit 1; fi; cp \"$latest\" data.db; echo \"Restored $latest -> data.db\"'",
     "decisions:export": "tsx script/decisions.ts export",
     "decisions:import": "tsx script/decisions.ts import",
+    "snapshot:user": "tsx script/userSnapshot.ts",
+    "restore:user": "tsx script/userRestore.ts",
     "mood:build": "tsx script/buildMoodPlaylists.ts",
     "db:push": "drizzle-kit push"
   },
