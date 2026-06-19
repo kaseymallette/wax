@@ -164,6 +164,39 @@ Output files are written to `users/<name>/playlists/`:
 - `users/<name>/playlists/high.csv`
 - `users/<name>/missing-tracks.log` *(only when tracks are missing from `data.db` or missing features)*
 
+### Spotify push agent (Phase 2)
+
+Once your CSV outputs look right, you can push them to Spotify playlists.
+
+1. Configure `.env` with `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`.
+2. In Spotify Developer Dashboard, set redirect URI to `http://127.0.0.1:8888/callback`.
+3. Authorize once to get a refresh token:
+
+```bash
+npm run spotify:auth
+```
+
+4. Dry run (no writes):
+
+```bash
+WAX_USER=kasey npm run spotify:push:dry
+```
+
+5. Push for real:
+
+```bash
+WAX_USER=kasey npm run spotify:push
+```
+
+Push behavior:
+
+- Finds or creates `WAX – {User} Low/Medium/High Mood` playlists
+- Full-replaces each playlist in CSV order on every run
+- Writes `users/<WAX_USER>/playlists/push.log`
+- Supports multi-user by changing `WAX_USER`
+
+For full setup details and troubleshooting, see `SETUP.md`.
+
 ### Back up decisions + generated playlists
 
 To save a per-user snapshot (decisions + playlists + missing-tracks log):
@@ -188,13 +221,6 @@ To restore a specific snapshot timestamp:
 ```bash
 WAX_USER=kasey npm run restore:user -- 20260618-180500
 ```
-
-### Scope notes
-
-For this phase, the focus is algorithm output only.
-
-- Included: tercile mood bands, weighted ranking, per-user CSV generation.
-- Deferred: Spotify API push, agent scheduling, quartile bands, and expanded playlist splitting.
 
 ## Use Wax
 
