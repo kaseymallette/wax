@@ -26,6 +26,7 @@ function shuffleList<T>(items: T[]): T[] {
 }
 
 function buildKeepPriorityQueue(tracks: TrackWithStats[]): TrackWithStats[] {
+  const undecided = shuffleList(tracks.filter((t) => t.repeatIntent === "undecided"));
   const onRepeat = shuffleList(tracks.filter((t) => t.repeatIntent === "on_repeat"));
   const yes = shuffleList(tracks.filter((t) => t.repeatIntent === "yes"));
   const maybe = shuffleList(tracks.filter((t) => t.repeatIntent === "maybe"));
@@ -37,7 +38,7 @@ function buildKeepPriorityQueue(tracks: TrackWithStats[]): TrackWithStats[] {
     if (yes.length > 0) ordered.push(yes.shift()!);
   }
 
-  ordered.push(...maybe, ...nah);
+  ordered.push(...undecided, ...maybe, ...nah);
   return ordered;
 }
 
@@ -276,7 +277,7 @@ export default function Shuffle() {
     if (!isLogValid(state)) {
       toast({
         title: "Fill the required fields",
-        description: "Pick keep/remove and listened. If Keep is selected, choose On repeat, Yes, Maybe, or Nah, I'm good.",
+        description: "Pick keep/remove and listened. If Keep is selected, choose Undecided, On repeat, Yes, Maybe, or Nah, I'm good.",
         variant: "destructive",
       });
       return;
@@ -317,6 +318,7 @@ export default function Shuffle() {
       const k = e.key.toLowerCase();
       if (k === "l") setState((s) => ({ ...s, listened: true }));
       else if (k === "b") setState((s) => ({ ...s, listened: false }));
+      else if (k === "u") setState((s) => ({ ...s, repeatIntent: "undecided" }));
       else if (k === "w") setState((s) => ({ ...s, repeatIntent: "on_repeat" }));
       else if (k === "y") setState((s) => ({ ...s, repeatIntent: "yes" }));
       else if (k === "m") setState((s) => ({ ...s, repeatIntent: "maybe" }));
@@ -476,7 +478,7 @@ export default function Shuffle() {
               </div>
 
                 <p className="mt-4 text-center text-xs text-muted-foreground/70" data-testid="text-shortcuts">
-                  Shortcuts: L listened · B background · W on repeat · Y yes · M maybe · N nah · K keep · R remove · 1–9 activity · Enter log · → skip
+                  Shortcuts: L listened · B background · U undecided · W on repeat · Y yes · M maybe · N nah · K keep · R remove · 1–9 activity · Enter log · → skip
                 </p>
               </motion.div>
 

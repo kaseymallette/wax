@@ -10,7 +10,7 @@ import { Headphones, EarOff, X, Plus } from "lucide-react";
 
 export type LogState = {
   listened: boolean | null;
-  repeatIntent: "on_repeat" | "yes" | "maybe" | "nah" | null;
+  repeatIntent: "undecided" | "on_repeat" | "yes" | "maybe" | "nah" | null;
   keepInLibrary: boolean | null;
   activity: string[];
   notes: string;
@@ -120,6 +120,16 @@ export function LogForm({
         <div className="space-y-2">
           <label className="text-sm font-semibold">Do you want to listen again?</label>
           <div className="grid gap-2 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => patch({ repeatIntent: "undecided" })}
+              data-testid="button-repeat-undecided"
+              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
+                state.repeatIntent === "undecided" ? SEG_ACTIVE : SEG_IDLE
+              }`}
+            >
+              Undecided
+            </button>
             <button
               type="button"
               onClick={() => patch({ repeatIntent: "on_repeat" })}

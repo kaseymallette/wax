@@ -31,7 +31,7 @@ const FIELDS: { key: string; label: string; required?: boolean }[] = [
 
 const GUESS: Record<string, RegExp[]> = {
   id: [/track[_ ]?id/i, /^id$/i, /spotify[_ ]?id/i, /uri/i, /track[_ ]?uri/i],
-  name: [/track[_ ]?name/i, /^name$/i, /title/i, /song/i],
+  name: [/^song$/i, /track[_ ]?name/i, /^name$/i, /title/i, /song[_ ]name/i],
   artists: [/artist/i],
   album: [/album[_ ]?name/i, /^album$/i],
   albumArtUrl: [/album[_ ]?image/i, /art[_ ]?url/i, /image[_ ]?url/i, /cover/i, /artwork/i],
@@ -127,8 +127,9 @@ export default function ImportPage() {
       const data: { token: string; tables: TableInfo[] } = await res.json();
       setToken(data.token);
       setTables(data.tables);
-      // pick the table with the most rows by default
-      const best = [...data.tables].sort((a, b) => b.rowCount - a.rowCount)[0];
+      // Prefer the canonical tracks table; otherwise fall back to the largest table.
+      const tracksTable = data.tables.find((t) => t.name.toLowerCase() === "tracks");
+      const best = tracksTable ?? [...data.tables].sort((a, b) => b.rowCount - a.rowCount)[0];
       if (best) {
         setSelectedTable(best.name);
         setMapping(autoMap(best.columns));

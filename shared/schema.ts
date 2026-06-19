@@ -14,7 +14,7 @@ export const tracks = sqliteTable("tracks", {
   spotifyUrl: text("spotify_url"),
   previewUrl: text("preview_url"),
   importedAt: integer("imported_at").notNull(),
-  repeatIntent: text("repeat_intent").notNull().default("maybe"),
+  repeatIntent: text("repeat_intent").notNull().default("undecided"),
 });
 
 // One row per listen. A track can be listened to many times.
@@ -48,6 +48,7 @@ export const ACTIVITY_PRESETS = [
 ] as const;
 
 export const REPEAT_INTENT_OPTIONS = [
+  { value: "undecided", label: "Undecided" },
   { value: "on_repeat", label: "On repeat" },
   { value: "yes", label: "Yes" },
   { value: "maybe", label: "Maybe" },
@@ -58,7 +59,7 @@ export const REPEAT_INTENT_VALUES = REPEAT_INTENT_OPTIONS.map((o) => o.value) as
   string,
   ...string[],
 ];
-export const repeatIntentSchema = z.enum(["on_repeat", "yes", "maybe", "nah"]);
+export const repeatIntentSchema = z.enum(["undecided", "on_repeat", "yes", "maybe", "nah"]);
 
 export const insertTrackSchema = createInsertSchema(tracks);
 
@@ -138,7 +139,7 @@ export type TrackWithStats = Track & {
 export type ListenWithTrack = {
   id: number;
   trackId: string;
-  repeatIntent: "on_repeat" | "yes" | "maybe" | "nah";
+  repeatIntent: "undecided" | "on_repeat" | "yes" | "maybe" | "nah";
   listened: number;
   wantAgain: number;
   wouldAgain: number;

@@ -37,7 +37,7 @@ sqlite.exec(`DROP TABLE IF EXISTS ratings;`);
 // 2) Add sticky track metadata columns if missing.
 const trackCols = sqlite.prepare(`PRAGMA table_info(tracks)`).all() as { name: string }[];
 if (!trackCols.some((c) => c.name === "repeat_intent")) {
-  sqlite.exec(`ALTER TABLE tracks ADD COLUMN repeat_intent TEXT NOT NULL DEFAULT 'maybe';`);
+  sqlite.exec(`ALTER TABLE tracks ADD COLUMN repeat_intent TEXT NOT NULL DEFAULT 'undecided';`);
 }
 
 function normText(v: string | null | undefined): string {
@@ -91,9 +91,10 @@ function hasShuffleFeatures(row: ShuffleFeatureRow): boolean {
 function repeatIntentWeight(intent: string | null): number {
   if (intent === "on_repeat") return 1;
   if (intent === "yes") return 0.75;
+  if (intent === "undecided") return 0.2;
   if (intent === "maybe") return 0.35;
   if (intent === "nah") return 0.1;
-  return 0.35;
+  return 0.2;
 }
 
 function computeShuffleFeatureStats(rows: ShuffleFeatureRow[]): ShuffleFeatureStats {
@@ -221,6 +222,19 @@ if (!listenCols.some((c) => c.name === "keep_in_library")) {
   sqlite.exec(`ALTER TABLE listens ADD COLUMN keep_in_library INTEGER NOT NULL DEFAULT 1;`);
 }
 
+sqlite.exec(`
+  UPDATE tracks
+  SET repeat_intent = 'undecided'
+  WHERE repeat_intent = 'maybe'
+    AND id IN (
+      SELECT t.id
+      FROM tracks t
+      LEFT JOIN listens l ON l.track_id = t.id
+      GROUP BY t.id
+      HAVING COUNT(l.id) = 0
+    );
+`);
+
 // 4) Track-level features used by playlist builder.
 sqlite.exec(`
   CREATE TABLE IF NOT EXISTS track_features (
@@ -275,7 +289,7 @@ function rowToTrackWithStats(r: any): TrackWithStats {
     spotifyUrl: r.spotify_url ?? null,
     previewUrl: r.preview_url ?? null,
     importedAt: r.imported_at,
-    repeatIntent: r.repeat_intent ?? "maybe",
+    repeatIntent: r.repeat_intent ?? "undecided",
     listenCount: Number(r.listen_count ?? 0),
     actualListenCount: Number(r.actual_listen_count ?? 0),
     lastListenedAt: r.last_listened_at ?? null,
@@ -294,7 +308,7 @@ function rowToListenWithTrack(r: any): ListenWithTrack {
   return {
     id: r.id,
     trackId: r.track_id,
-    repeatIntent: r.repeat_intent ?? "maybe",
+    repeatIntent: r.repeat_intent ?? "undecided",
     listened: r.listened,
     wantAgain: r.want_again,
     wouldAgain: r.would_again,
@@ -385,8 +399,8 @@ const LISTEN_JOIN_SELECT = `
 
 export class DatabaseStorage implements IStorage {
   private importStmt = sqlite.prepare(`
-    INSERT INTO tracks (id, name, artists, album, album_art_url, duration_ms, added_at, spotify_url, preview_url, imported_at)
-    VALUES (@id, @name, @artists, @album, @albumArtUrl, @durationMs, @addedAt, @spotifyUrl, @previewUrl, @importedAt)
+    INSERT INTO tracks (id, name, artists, album, album_art_url, duration_ms, added_at, spotify_url, preview_url, imported_at, repeat_intent)
+    VALUES (@id, @name, @artists, @album, @albumArtUrl, @durationMs, @addedAt, @spotifyUrl, @previewUrl, @importedAt, @repeatIntent)
     ON CONFLICT(id) DO UPDATE SET
       name = excluded.name,
       artists = excluded.artists,
@@ -444,6 +458,7 @@ export class DatabaseStorage implements IStorage {
           spotifyUrl: it.spotifyUrl ?? `https://open.spotify.com/track/${id}`,
           previewUrl: it.previewUrl ?? null,
           importedAt: now,
+          repeatIntent: "undecided",
         });
       }
     });

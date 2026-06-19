@@ -32,9 +32,9 @@ function usage(): never {
 }
 
 function normalizeRepeatIntent(v: unknown): string {
-  const s = String(v ?? "maybe").trim().toLowerCase();
-  if (s === "on_repeat" || s === "yes" || s === "maybe" || s === "nah") return s;
-  return "maybe";
+  const s = String(v ?? "undecided").trim().toLowerCase();
+  if (s === "undecided" || s === "on_repeat" || s === "yes" || s === "maybe" || s === "nah") return s;
+  return "undecided";
 }
 
 function deriveAgainFlags(keepInLibrary: 0 | 1, repeatIntent: string): { wantAgain: 0 | 1; wouldAgain: 0 | 1 } {

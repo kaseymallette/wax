@@ -63,6 +63,7 @@ type Stats = {
 };
 
 const KEEP_INTENT_TABS = [
+  { value: "undecided", label: "Undecided" },
   { value: "on_repeat", label: "On repeat" },
   { value: "yes", label: "Yes" },
   { value: "maybe", label: "Maybe" },
@@ -71,6 +72,7 @@ const KEEP_INTENT_TABS = [
 
 function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], active: boolean): string {
   if (!active) return "bg-secondary/40 text-muted-foreground";
+  if (value === "undecided") return "bg-secondary/60 text-muted-foreground";
   if (value === "on_repeat") return "bg-blue-500/15 text-blue-400";
   if (value === "yes") return "bg-emerald-500/15 text-emerald-400";
   if (value === "maybe") return "bg-amber-500/15 text-amber-400";
@@ -79,6 +81,7 @@ function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], a
 }
 
 function keepIntentAccentTextClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
+  if (value === "undecided") return "text-muted-foreground";
   if (value === "on_repeat") return "text-blue-400";
   if (value === "yes") return "text-emerald-400";
   if (value === "maybe") return "text-amber-400";
@@ -87,6 +90,7 @@ function keepIntentAccentTextClass(value: (typeof KEEP_INTENT_TABS)[number]["val
 }
 
 function keepIntentPanelClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
+  if (value === "undecided") return "border-border bg-secondary/20";
   if (value === "on_repeat") return "border-blue-500/30 bg-blue-500/10";
   if (value === "yes") return "border-emerald-500/30 bg-emerald-500/10";
   if (value === "maybe") return "border-amber-500/30 bg-amber-500/10";
@@ -201,7 +205,7 @@ function formatYearIqr(iqr: { q1: number | null; q3: number | null }): string {
 
 export default function StatsPage() {
   const { data, isLoading } = useQuery<Stats>({ queryKey: ["/api/stats"] });
-  const [keepIntentTab, setKeepIntentTab] = useState<(typeof KEEP_INTENT_TABS)[number]["value"]>("on_repeat");
+  const [keepIntentTab, setKeepIntentTab] = useState<(typeof KEEP_INTENT_TABS)[number]["value"]>("undecided");
   const keepTracksQuery = useQuery<TrackWithStats[]>({
     queryKey: ["/api/tracks", "keep", "name", ""],
     queryFn: async () => {
