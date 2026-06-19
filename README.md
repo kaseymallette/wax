@@ -1,10 +1,14 @@
 # Wax
 
-A listening journal for your music library. Upload, shuffle, log what you actually played, and track your decisions to keep or remove tracks from your library. For songs you keep, you can decide how frequently you want to hear them again: *on repeat*, *yes*, *maybe*, or *nah, I'm good*. These decisions will be weighted in the shuffle algorithm and in playlist generation.
+A listening journal for your music library. Upload, shuffle, log your recent plays, and track your decisions to keep or remove tracks from your library. For songs you keep, you can decide how frequently you want to hear them again. These decisions will be weighted in the shuffle algorithm and in playlist generation.
 
 ## Introduction
 
 Wax is a local-first listening journal for your music library. Upload your Spotify export (`.db`, `.sqlite`, or Exportify `.csv`), shuffle through your tracks, and log what you actually played, what you were doing, how it felt, and whether you'd play it again. Built to help you stop streaming past your library and start curating it.
+
+For kept songs, you can set a repeat-intent category: *on repeat*, *yes*, *maybe*, or *nah*. These categories power weighted shuffle and playlist generation.
+
+Wax also tracks core music features for stats and recommendations: BPM, key (Camelot), valence, dance, and energy. Mood score is a cumulative score out of 300 (`valence + dance + energy`, each on a 0-100 scale), and harmonic key flow uses the Camelot wheel so key movement stays DJ-friendly.
 
 ## Screenshots
 
