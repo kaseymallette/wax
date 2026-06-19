@@ -1,6 +1,6 @@
 # Wax
 
-A listening journal for your music library. Upload, shuffle, log your recent plays, and track your decisions to keep or remove tracks from your library. For songs you keep, you can decide how frequently you want to hear them again. These decisions will be weighted in the shuffle algorithm and in playlist generation.
+A listening journal for your music library. Upload, shuffle, log recent plays, and track keep/remove decisions. Mood playlist generation is in development, with an agent-powered workflow planned.
 
 ## Introduction
 
@@ -141,6 +141,29 @@ wax/
 - Each user run produces `users/<name>/playlists/low.csv`, `medium.csv`, and `high.csv`.
 - Missing tracks referenced by a user's decisions are skipped and logged to `users/<name>/missing-tracks.log`.
 - v1 output is CSV-first for manual review before any Spotify push automation.
+
+### Run commands
+
+Before running, make sure:
+
+- `data.db` exists at the repo root and has `track_features` data
+- each user has `users/<name>/decisions-latest.json` (export via `npm run decisions:export` with `WAX_USER`)
+
+Build playlists with:
+
+```bash
+WAX_USER=kasey npm run mood:build
+WAX_USER=kaseysdad npm run mood:build
+WAX_USER=kaseysmom npm run mood:build
+```
+
+Output files are written to `users/<name>/playlists/`:
+
+- `users/<name>/playlists/low.csv`
+- `users/<name>/playlists/medium.csv`
+- `users/<name>/playlists/high.csv`
+- `users/<name>/missing-tracks.log` *(only when tracks are missing from `data.db` or missing features)*
+
 
 ### Scope notes
 
