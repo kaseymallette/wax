@@ -106,10 +106,10 @@ Wax includes a practical mood-playlist direction focused on fast iteration and h
 
 - Goal: partition kept tracks (`on_repeat`, `yes`, `maybe`) into three mood playlists with no overlaps or leftovers.
 - Mood score: `mood = valence + dance + energy` (0–300 from `track_features`).
-- Fixed v1 bands:
-  - Low: `0 <= mood < 100`
-  - Medium: `100 <= mood < 200`
-  - High: `200 <= mood <= 300`
+- v1 bands (terciles of the user's own mood distribution, recomputed each run):
+  - Low: `mood < tercile_1` (below the 33.3rd percentile)
+  - Medium: `tercile_1 <= mood < tercile_2` (between the 33.3rd and 66.6th percentile)
+  - High: `mood >= tercile_2` (at or above the 66.6th percentile)
 - Within each band, rank tracks by weighted sort score using:
   - tier weight (`on_repeat` > `yes` > `maybe`)
   - recency (`days_since_latest_listen` from `listens.logged_at`)
@@ -146,25 +146,8 @@ wax/
 
 For this phase, the focus is algorithm output only.
 
-- Included: fixed mood bands, weighted ranking, per-user CSV generation.
+- Included: tercile mood bands, weighted ranking, per-user CSV generation.
 - Deferred: Spotify API push, agent scheduling, quantile bands, and expanded playlist splitting.
-
-### Repeat-intent presets
-
-Current repeat-intent presets are:
-
-- `undecided` *(default for newly imported tracks)*
-- `on_repeat`
-- `yes`
-- `maybe`
-- `nah`
-
-Want to change these labels/options?
-
-- Edit `shared/schema.ts`
-- Find `REPEAT_INTENT_OPTIONS`
-- Update entries in this shape: `{ value: "my_value", label: "My Label" }`
-- Keep `value` lowercase/slug-style (saved data), and `label` human-friendly (UI)
 
 ## Use Wax
 
@@ -207,6 +190,23 @@ df = pd.read_sql_query("""
 df["activity"] = df["activity"].apply(lambda s: json.loads(s) if s else [])
 df["logged_at"] = pd.to_datetime(df["logged_at"], unit="ms")
 ```
+
+### Repeat-intent presets
+
+Current repeat-intent presets are:
+
+- `undecided` *(default for newly imported tracks)*
+- `on_repeat`
+- `yes`
+- `maybe`
+- `nah`
+
+Want to change these labels/options?
+
+- Edit `shared/schema.ts`
+- Find `REPEAT_INTENT_OPTIONS`
+- Update entries in this shape: `{ value: "my_value", label: "My Label" }`
+- Keep `value` lowercase/slug-style (saved data), and `label` human-friendly (UI)
 
 ### Production build (optional)
 
