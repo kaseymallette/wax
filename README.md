@@ -37,7 +37,7 @@ Open **http://localhost:3000**. Express backend and Vite frontend both run on th
 
 For full-song playback in the embed, sign into Spotify in any tab of the same browser. Premium plays the whole track; Free gives you 30-second previews.
 
-## Back up your data
+### Back up your data
 
 `data.db` is your local listening history and is not tracked in git. You can back it up and restore it with:
 
@@ -46,7 +46,7 @@ npm run backup-db   # creates backups/data.db.<timestamp>.bak
 npm run restore-db  # restores latest backup in backups/
 ```
 
-## Track decisions per user
+### Track decisions per user
 
 `decisions-latest.json` files are tracked in git for each user. You can export and import your latest keep/remove decisions with:
 
@@ -100,6 +100,55 @@ This restores each track's latest keep/remove + repeat-intent decision. It does 
 5. **Recents** — timeline of every entry, grouped by day, with keep/remove and repeat-intent context.
 6. **Stats** — listens over time, keep vs remove, and feature summaries for keeps and removes (including top keys and album-year metrics).
 
+## Mood playlists (v1 plan)
+
+Wax includes a practical mood-playlist direction focused on fast iteration and human review first.
+
+- Goal: partition kept tracks (`on_repeat`, `yes`, `maybe`) into three mood playlists with no overlaps or leftovers.
+- Mood score: `mood = valence + dance + energy` (0–300 from `track_features`).
+- Fixed v1 bands:
+  - Low: `0 <= mood < 100`
+  - Medium: `100 <= mood < 200`
+  - High: `200 <= mood <= 300`
+- Within each band, rank tracks by weighted sort score using:
+  - tier weight (`on_repeat` > `yes` > `maybe`)
+  - recency (`days_since_latest_listen` from `listens.logged_at`)
+  - listen-count boost
+  - small random jitter to avoid static ordering
+
+### Multi-user mood outputs
+
+The model is one shared `data.db` (master tracks/features) plus per-user decision snapshots in `users/<name>/decisions-latest.json`.
+
+```text
+wax/
+├── data.db
+├── script/
+│   ├── decisions.ts
+│   └── buildMoodPlaylists.ts
+├── users/
+│   ├── kasey/
+│   │   ├── decisions-latest.json
+│   │   ├── playlists/
+│   │   │   ├── low.csv
+│   │   │   ├── medium.csv
+│   │   │   └── high.csv
+│   │   └── missing-tracks.log
+│   ├── kaseysdad/
+│   └── kaseysmom/
+```
+
+- Each user run produces `users/<name>/playlists/low.csv`, `medium.csv`, and `high.csv`.
+- Missing tracks referenced by a user's decisions are skipped and logged to `users/<name>/missing-tracks.log`.
+- v1 output is CSV-first for manual review before any Spotify push automation.
+
+### Scope notes
+
+For this phase, the focus is algorithm output only.
+
+- Included: fixed mood bands, weighted ranking, per-user CSV generation.
+- Deferred: Spotify API push, agent scheduling, quantile bands, and expanded playlist splitting.
+
 ### Repeat-intent presets
 
 Current repeat-intent presets are:
@@ -117,17 +166,9 @@ Want to change these labels/options?
 - Update entries in this shape: `{ value: "my_value", label: "My Label" }`
 - Keep `value` lowercase/slug-style (saved data), and `label` human-friendly (UI)
 
-## Data model
+## Use Wax
 
-Three core tables in `data.db`:
-
-- **`tracks`** — your imported library. One row per Spotify track ID. Includes `repeat_intent` (track-level keep preference tag).
-- **`listens`** — your log entries. One row per logged listen. Columns include `listened` (0/1), `want_again` (0/1), `would_again` (0/1), `keep_in_library` (0/1), `activity` (JSON array), `notes`, `logged_at` (unix ms).
-- **`track_features`** — imported audio/music features keyed by track ID (`bpm`, `camelot`, `energy`, `dance`, `valence`, `popularity`, `album_year`, `source`, `updated_at`).
-
-Indexes on `listens(track_id)` and `listens(logged_at DESC)`.
-
-## Where your data lives
+### Where your data lives
 
 - **`data.db`** in the project root. Back this file up if you care about it.
 
@@ -139,7 +180,17 @@ curl http://localhost:3000/api/export -o ~/Downloads/wax-listens.csv
 
 Columns include: `track_id`, `name`, `artists`, `album`, `repeat_intent`, `listened`, `want_again`, `would_again`, `keep_in_library`, `activity`, `notes`, `logged_at`.
 
-## Reading your data from Python
+### Data model
+
+Three core tables in `data.db`:
+
+- **`tracks`** — your imported library. One row per Spotify track ID. Includes `repeat_intent` (track-level keep preference tag).
+- **`listens`** — your log entries. One row per logged listen. Columns include `listened` (0/1), `want_again` (0/1), `would_again` (0/1), `keep_in_library` (0/1), `activity` (JSON array), `notes`, `logged_at` (unix ms).
+- **`track_features`** — imported audio/music features keyed by track ID (`bpm`, `camelot`, `energy`, `dance`, `valence`, `popularity`, `album_year`, `source`, `updated_at`).
+
+Indexes on `listens(track_id)` and `listens(logged_at DESC)`.
+
+### Reading your data from Python
 
 ```python
 import sqlite3, json, pandas as pd
@@ -157,14 +208,16 @@ df["activity"] = df["activity"].apply(lambda s: json.loads(s) if s else [])
 df["logged_at"] = pd.to_datetime(df["logged_at"], unit="ms")
 ```
 
-## Production build (optional)
+### Production build (optional)
 
 ```bash
 npm run build                              # outputs dist/
 NODE_ENV=production PORT=3000 node dist/index.cjs
 ```
 
-## Troubleshooting
+## Support
+
+### Troubleshooting
 
 - **Port already in use** → `lsof -ti:3000 | xargs kill` then restart. Or run on a different port: `PORT=4000 npm run dev`.
 - **macOS AirPlay grabbing port 5000** → use `PORT=3000` (default) or disable AirPlay Receiver in System Settings → General → AirDrop & Handoff.
@@ -173,10 +226,10 @@ NODE_ENV=production PORT=3000 node dist/index.cjs
 - **Tracks show as "Unknown track" after CSV import** → your CSV's name column wasn't auto-detected. Wax recognizes `Song`, `Title`, `Track`, `Track Name`, `Song Name`. Rename your column or open an issue.
 - **Lost data after rebuild** → `data.db` lives at the project root, not in `dist/`. Don't delete it.
 
-## Tech stack
+### Tech stack
 
 Express · Vite · React · TypeScript · Tailwind · shadcn/ui · Drizzle ORM · better-sqlite3 · TanStack Query · framer-motion · Recharts · Fontshare (Cabinet Grotesk + Satoshi).
 
-## License
+### License
 
 MIT
