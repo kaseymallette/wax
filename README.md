@@ -1,10 +1,10 @@
 # Wax
 
-A listening journal for your music library. Upload, shuffle, log what you actually played — and how it felt.
+A listening journal for your music library. Upload, shuffle, log what you actually played, and track your decisions to keep or remove tracks from your library. For songs you keep, you can decide how frequently you want to hear them again: *on repeat*, *yes*, *maybe*, or *nah, I'm good*. These decisions will be weighted in the shuffle algorithm and in playlist generation.
 
 ## Introduction
 
-Wax is a local-first listening journal for your music library. Upload your Spotify export (`.db`, `.sqlite`, or Exportify `.csv`), shuffle through your tracks, and log what you actually played — what you were doing, how it felt, whether you'd play it again. Built to help you stop streaming past your library and start curating it.
+Wax is a local-first listening journal for your music library. Upload your Spotify export (`.db`, `.sqlite`, or Exportify `.csv`), shuffle through your tracks, and log what you actually played, what you were doing, how it felt, and whether you'd play it again. Built to help you stop streaming past your library and start curating it.
 
 ## Screenshots
 
@@ -54,6 +54,32 @@ WAX_USER=kasey npm run decisions:import  # reapplies that file into local data.d
 This snapshot stores one latest decision per track (`keep_in_library` + `repeat_intent`) so you can reimport your library and restore your curation quickly.
 
 Use a different `WAX_USER` value per family member (for example: `mom`, `dad`, `kasey`) so each person has their own tracked decisions file under `users/`.
+
+### Reimport library + restore decisions
+
+If you want a clean reimport (no duplicate old imports/listens), do this:
+
+1. Stop the app.
+2. Remove your local DB files:
+
+```bash
+rm data.db data.db-wal data.db-shm 2>/dev/null || true
+```
+
+3. Start the app again:
+
+```bash
+npm run dev
+```
+
+4. Reimport your library in the UI.
+5. Reapply your decisions snapshot:
+
+```bash
+WAX_USER=kasey npm run decisions:import
+```
+
+This restores each track's latest keep/remove + repeat-intent decision. It does not restore full listen history, notes, or activity timeline.
 
 
 ## How it works
