@@ -8,8 +8,11 @@
     "build": "tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
-    "db:push": "drizzle-kit push",
-    "db:again-again": "sqlite3 data.db \"ATTACH 'again-again.db' AS out; DROP TABLE IF EXISTS out.tracks; DROP TABLE IF EXISTS out.listens; CREATE TABLE out.tracks AS SELECT t.* FROM tracks t WHERE EXISTS (SELECT 1 FROM listens l WHERE l.id = (SELECT l2.id FROM listens l2 WHERE l2.track_id = t.id ORDER BY l2.logged_at DESC, l2.id DESC LIMIT 1) AND l.would_again = 1); CREATE TABLE out.listens AS SELECT l.* FROM listens l JOIN (SELECT track_id, MAX(logged_at) AS max_logged_at FROM listens GROUP BY track_id) latest ON latest.track_id = l.track_id AND latest.max_logged_at = l.logged_at WHERE l.id = (SELECT l2.id FROM listens l2 WHERE l2.track_id = l.track_id ORDER BY l2.logged_at DESC, l2.id DESC LIMIT 1) AND l.would_again = 1; CREATE INDEX IF NOT EXISTS out.idx_listens_track ON listens(track_id); CREATE INDEX IF NOT EXISTS out.idx_listens_logged ON listens(logged_at DESC); DETACH out;\""
+    "backup-db": "mkdir -p backups && cp data.db backups/data.db.$(date +%Y%m%d-%H%M%S).bak",
+    "restore-db": "bash -lc 'latest=$(ls -t backups/data.db.*.bak 2>/dev/null | head -n 1); if [ -z \"$latest\" ]; then echo \"No backup found in backups/.\"; exit 1; fi; cp \"$latest\" data.db; echo \"Restored $latest -> data.db\"'",
+    "decisions:export": "tsx script/decisions.ts export",
+    "decisions:import": "tsx script/decisions.ts import",
+    "db:push": "drizzle-kit push"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

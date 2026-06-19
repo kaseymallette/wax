@@ -267,6 +267,133 @@ export async function registerRoutes(
     return { items, skipped };
   }
 
+  type DefaultFeatureImportTotals = {
+    importedRows: number;
+    skipped: number;
+    imported: number;
+    matchedByTrackId: number;
+    matchedByArtistSong: number;
+    unmatched: number;
+  };
+
+  type DefaultFeatureImportSource = {
+    source: string;
+    importedRows: number;
+    skipped: number;
+    imported: number;
+  };
+
+  function importDefaultFeatureSources(): {
+    totals: DefaultFeatureImportTotals;
+    sources: DefaultFeatureImportSource[];
+    errors: string[];
+  } {
+    const totals: DefaultFeatureImportTotals = {
+      importedRows: 0,
+      skipped: 0,
+      imported: 0,
+      matchedByTrackId: 0,
+      matchedByArtistSong: 0,
+      unmatched: 0,
+    };
+
+    const sources: DefaultFeatureImportSource[] = [];
+    const errors: string[] = [];
+
+    const addSummary = (label: string, importedRows: number, skipped: number, summary: {
+      imported: number;
+      matchedByTrackId: number;
+      matchedByArtistSong: number;
+      unmatched: number;
+    }) => {
+      totals.importedRows += importedRows;
+      totals.skipped += skipped;
+      totals.imported += summary.imported;
+      totals.matchedByTrackId += summary.matchedByTrackId;
+      totals.matchedByArtistSong += summary.matchedByArtistSong;
+      totals.unmatched += summary.unmatched;
+      sources.push({ source: label, importedRows, skipped, imported: summary.imported });
+    };
+
+    let sourceDb: Database.Database | null = null;
+    try {
+      const dbPath = path.resolve(process.cwd(), "data", "music-library", "spotify_music_library.db");
+      if (fs.existsSync(dbPath)) {
+        sourceDb = new Database(dbPath, { readonly: true, fileMustExist: true });
+        const rows = sourceDb
+          .prepare(`
+            SELECT
+              Track_ID AS trackId,
+              Song AS song,
+              Artist AS artist,
+              Album AS album,
+              BPM AS bpm,
+              COALESCE(Camelot, Key) AS camelot,
+              Energy AS energy,
+              Dance AS dance,
+              Valence AS valence,
+              Popularity AS popularity,
+              Album_Year AS albumYear,
+              "Album Date" AS albumDate
+            FROM tracks
+          `)
+          .all() as any[];
+
+        const dbItems: FeatureImportRow[] = [];
+        let dbSkipped = 0;
+        for (const row of rows) {
+          const parsed = featureImportRowSchema.safeParse({
+            trackId: extractId(row.trackId) ?? undefined,
+            song: row.song ?? "",
+            artist: row.artist ?? "",
+            album: row.album ?? "",
+            bpm: toFeatureNumber(row.bpm),
+            camelot: row.camelot != null ? String(row.camelot) : null,
+            energy: toFeatureNumber(row.energy),
+            dance: toFeatureNumber(row.dance),
+            valence: toFeatureNumber(row.valence),
+            popularity: toFeatureNumber(row.popularity),
+            albumYear: parseFeatureYear(row.albumYear ?? row.albumDate),
+            source: "spotify_music_library.db",
+          });
+
+          if (!parsed.success) {
+            dbSkipped += 1;
+            continue;
+          }
+          dbItems.push(parsed.data);
+        }
+
+        const dbSummary = storage.importFeatureRows(dbItems);
+        addSummary("data/music-library/spotify_music_library.db", dbItems.length, dbSkipped, dbSummary);
+      }
+    } catch (e: any) {
+      errors.push(e?.message || "Could not import features from spotify_music_library.db");
+    } finally {
+      if (sourceDb) {
+        try { sourceDb.close(); } catch {}
+      }
+    }
+
+    const defaultCsvs = ["Vinyl.csv", "new_new_red_car.csv"];
+    for (const fileName of defaultCsvs) {
+      const csvPath = path.resolve(process.cwd(), "data", "music-library", fileName);
+      if (!fs.existsSync(csvPath)) continue;
+
+      try {
+        const raw = fs.readFileSync(csvPath, "utf8").replace(/^\uFEFF/, "");
+        const rows = parseCsv(raw);
+        const { items, skipped } = parseFeatureCsvRows(rows, fileName);
+        const summary = storage.importFeatureRows(items);
+        addSummary(`data/music-library/${fileName}`, items.length, skipped, summary);
+      } catch (e: any) {
+        errors.push(e?.message || `Could not import features from ${fileName}`);
+      }
+    }
+
+    return { totals, sources, errors };
+  }
+
   app.post("/api/import", (req, res) => {
     const parsed = importSchema.safeParse(req.body);
     if (!parsed.success) {
@@ -318,6 +445,7 @@ export async function registerRoutes(
       storage.importTracks(items);
       const nextOffset = offset + rows.length;
       const done = nextOffset >= total;
+      const autoFeatureImport = done ? importDefaultFeatureSources() : null;
 
       // Auto-delete the temp file after the final chunk.
       if (done) {
@@ -334,6 +462,15 @@ export async function registerRoutes(
         total,
         done,
         libraryTotal: storage.trackCount(),
+        autoFeatureImport:
+          autoFeatureImport && autoFeatureImport.sources.length > 0
+            ? {
+                ok: true,
+                source: "combined-defaults",
+                sources: autoFeatureImport.sources,
+                ...autoFeatureImport.totals,
+              }
+            : undefined,
       });
     } catch (e: any) {
       res.status(500).json({ error: e?.message || "Import failed" });
@@ -415,6 +552,7 @@ export async function registerRoutes(
       const afterCount = storage.trackCount();
       const newTracks = afterCount - beforeCount; // tracks that didn't already exist
       const updated = items.length - newTracks;   // tracks that already existed (metadata refreshed, ratings untouched)
+      const autoFeatureImport = importDefaultFeatureSources();
 
       res.json({
         ok: true,
@@ -425,6 +563,15 @@ export async function registerRoutes(
         updated,
         skipped,
         libraryTotal: afterCount,
+        autoFeatureImport:
+          autoFeatureImport.sources.length > 0
+            ? {
+                ok: true,
+                source: "combined-defaults",
+                sources: autoFeatureImport.sources,
+                ...autoFeatureImport.totals,
+              }
+            : undefined,
       });
     } catch (e: any) {
       fs.promises.unlink(file.path).catch(() => {});
@@ -542,114 +689,21 @@ export async function registerRoutes(
   });
 
   app.post("/api/playlist-builder/import-features-all", (_req: Request, res) => {
-    const totals = {
-      importedRows: 0,
-      skipped: 0,
-      imported: 0,
-      matchedByTrackId: 0,
-      matchedByArtistSong: 0,
-      unmatched: 0,
-    };
-
-    const sources: Array<{ source: string; importedRows: number; skipped: number; imported: number }> = [];
-
-    const addSummary = (label: string, importedRows: number, skipped: number, summary: {
-      imported: number;
-      matchedByTrackId: number;
-      matchedByArtistSong: number;
-      unmatched: number;
-    }) => {
-      totals.importedRows += importedRows;
-      totals.skipped += skipped;
-      totals.imported += summary.imported;
-      totals.matchedByTrackId += summary.matchedByTrackId;
-      totals.matchedByArtistSong += summary.matchedByArtistSong;
-      totals.unmatched += summary.unmatched;
-      sources.push({ source: label, importedRows, skipped, imported: summary.imported });
-    };
-
-    let sourceDb: Database.Database | null = null;
-    try {
-      const dbPath = path.resolve(process.cwd(), "data", "music-library", "spotify_music_library.db");
-      if (fs.existsSync(dbPath)) {
-        sourceDb = new Database(dbPath, { readonly: true, fileMustExist: true });
-        const rows = sourceDb
-          .prepare(`
-            SELECT
-              Track_ID AS trackId,
-              Song AS song,
-              Artist AS artist,
-              Album AS album,
-              BPM AS bpm,
-              COALESCE(Camelot, Key) AS camelot,
-              Energy AS energy,
-              Dance AS dance,
-              Valence AS valence,
-              Popularity AS popularity,
-              Album_Year AS albumYear,
-              "Album Date" AS albumDate
-            FROM tracks
-          `)
-          .all() as any[];
-
-        const dbItems: FeatureImportRow[] = [];
-        let dbSkipped = 0;
-        for (const row of rows) {
-          const parsed = featureImportRowSchema.safeParse({
-            trackId: extractId(row.trackId) ?? undefined,
-            song: row.song ?? "",
-            artist: row.artist ?? "",
-            album: row.album ?? "",
-            bpm: toFeatureNumber(row.bpm),
-            camelot: row.camelot != null ? String(row.camelot) : null,
-            energy: toFeatureNumber(row.energy),
-            dance: toFeatureNumber(row.dance),
-            valence: toFeatureNumber(row.valence),
-            popularity: toFeatureNumber(row.popularity),
-            albumYear: parseFeatureYear(row.albumYear ?? row.albumDate),
-            source: "spotify_music_library.db",
-          });
-
-          if (!parsed.success) {
-            dbSkipped += 1;
-            continue;
-          }
-          dbItems.push(parsed.data);
-        }
-
-        const dbSummary = storage.importFeatureRows(dbItems);
-        addSummary("data/music-library/spotify_music_library.db", dbItems.length, dbSkipped, dbSummary);
-      }
-
-      const defaultCsvs = ["Vinyl.csv", "new_new_red_car.csv"];
-      for (const fileName of defaultCsvs) {
-        const csvPath = path.resolve(process.cwd(), "data", "music-library", fileName);
-        if (!fs.existsSync(csvPath)) continue;
-
-        const raw = fs.readFileSync(csvPath, "utf8").replace(/^\uFEFF/, "");
-        const rows = parseCsv(raw);
-        const { items, skipped } = parseFeatureCsvRows(rows, fileName);
-        const summary = storage.importFeatureRows(items);
-        addSummary(`data/music-library/${fileName}`, items.length, skipped, summary);
-      }
-
-      if (sources.length === 0) {
-        return res.status(400).json({
-          error: "No default feature sources found. Expected files in data/music-library/.",
-        });
-      }
-
-      res.json({
-        ok: true,
-        source: "combined-defaults",
-        sources,
-        ...totals,
+    const result = importDefaultFeatureSources();
+    if (result.sources.length === 0) {
+      return res.status(400).json({
+        error:
+          result.errors[0] ||
+          "No default feature sources found. Expected files in data/music-library/.",
       });
-    } catch (e: any) {
-      res.status(400).json({ error: e?.message || "Could not import default feature sources." });
-    } finally {
-      if (sourceDb) try { sourceDb.close(); } catch {}
     }
+
+    res.json({
+      ok: true,
+      source: "combined-defaults",
+      sources: result.sources,
+      ...result.totals,
+    });
   });
 
   app.post("/api/playlist-builder/generate", (req: Request, res) => {

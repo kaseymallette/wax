@@ -1,0 +1,855 @@
+{
+  "exportedAt": 1781827370606,
+  "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
+  "count": 106,
+  "decisions": [
+    {
+      "trackId": "1nUC2uuKUl49tDwQ1m4A1J",
+      "name": "BURNER PHONE",
+      "artists": "cleopatrick",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781568410295
+    },
+    {
+      "trackId": "0QVqdSLCPskZiJpcYQTgvi",
+      "name": "Family",
+      "artists": "Badflower",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781568401535
+    },
+    {
+      "trackId": "54g63GAn77x9NcjiLzy7cW",
+      "name": "Queen Of Spades",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781568368321
+    },
+    {
+      "trackId": "4Mqs0h95KAeNiGp7u4udlt",
+      "name": "Love Reign O'er Me",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781568158206
+    },
+    {
+      "trackId": "5HAjss9faCAowGY8dM24r6",
+      "name": "Is There Anybody Out There",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781568106772
+    },
+    {
+      "trackId": "72QXcbzrCVYnWav6Xtuvaw",
+      "name": "Dangerous - Immortal Version",
+      "artists": "Michael Jackson",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781567384999
+    },
+    {
+      "trackId": "1u4orOe6gYxeE9xKpv11Qi",
+      "name": "First Fuck",
+      "artists": "6LACK,Jhené Aiko",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781567330359
+    },
+    {
+      "trackId": "5PKnZzkjs2y3WTbIYtv5Fq",
+      "name": "Magic Bus - Mono Edit",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781567228752
+    },
+    {
+      "trackId": "6Lto2Xj8y0U2bes2hmRMZu",
+      "name": "Wonderful Nothing",
+      "artists": "Glass Animals",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781566475122
+    },
+    {
+      "trackId": "3ApAsbQP7d5GlFwwdExaTY",
+      "name": "Poplar St",
+      "artists": "Glass Animals",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781566431425
+    },
+    {
+      "trackId": "5C5gvDZsl6d8bh89URfKHr",
+      "name": "Pork Soda",
+      "artists": "Glass Animals",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781566410151
+    },
+    {
+      "trackId": "1LPGwuFgIzbJoShfDdw7MY",
+      "name": "Youth",
+      "artists": "Glass Animals",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781566389600
+    },
+    {
+      "trackId": "2mpXcmYxyKLZSg41JRmJFR",
+      "name": "Lost Your Ghost",
+      "artists": "Two Feet",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781566309587
+    },
+    {
+      "trackId": "0babKgXwpYCxbmgTc2Ikrh",
+      "name": "The Way She Looks",
+      "artists": "Two Feet",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781566155195
+    },
+    {
+      "trackId": "05jFhbrKpgEOURy9gkWRTa",
+      "name": "Numbers",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781566058854
+    },
+    {
+      "trackId": "2XTFxS6tjPzRslHheCtAJf",
+      "name": "SUGAR",
+      "artists": "Elba Rose",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781565997512
+    },
+    {
+      "trackId": "1AQlvpcPh79BKnoKe1E6Nw",
+      "name": "Hot Goblin",
+      "artists": "Em Beihold",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781565696708
+    },
+    {
+      "trackId": "2YB7LLj8xZcd4pDs0UBM6i",
+      "name": "Don't Speak",
+      "artists": "Culture Wars",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781565583333
+    },
+    {
+      "trackId": "5iRv1aH4eNai45KfhjtJ6n",
+      "name": "When the Love is Gone",
+      "artists": "Des Rocs",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781565487808
+    },
+    {
+      "trackId": "5N7Cdi5Te9E3rejjuyRwll",
+      "name": "Your Chaos",
+      "artists": "NOMARKMORE",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781565432599
+    },
+    {
+      "trackId": "4wFXTN7ADsBxIyJfzvaHGf",
+      "name": "What's Wrong",
+      "artists": "Foreign Air",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781565333150
+    },
+    {
+      "trackId": "0fN8Symx2jOXpOAqrW6otf",
+      "name": "Feels Like Nothing",
+      "artists": "Foreign Air",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781565288090
+    },
+    {
+      "trackId": "2d4e45fmUnguxh6yqC7gNT",
+      "name": "Dirty Deeds Done Dirt Cheap",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781565034896
+    },
+    {
+      "trackId": "3TO7bbrUKrOSPGRTB5MeCz",
+      "name": "Time",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781564855332
+    },
+    {
+      "trackId": "2X8DqCikgiVk3214hbHEpz",
+      "name": "Doing The Right Thing",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781564728834
+    },
+    {
+      "trackId": "5916POJDlPQRBbe1SJc7uK",
+      "name": "Good Girl",
+      "artists": "Paris Paloma",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781564503310
+    },
+    {
+      "trackId": "7w57O4o0xCTn9YpKuaPZDd",
+      "name": "The Great Beyond",
+      "artists": "R.E.M.",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781564413931
+    },
+    {
+      "trackId": "5fbQCQt91LsVgXusFS0CCD",
+      "name": "Disorder - 2007 Remaster",
+      "artists": "Joy Division",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781564347274
+    },
+    {
+      "trackId": "1FqozwZRQt0hBBJX6e48j7",
+      "name": "Meathook",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781564304412
+    },
+    {
+      "trackId": "6liM7f1QwsPfwS1BkpMQ1M",
+      "name": "Grinding Halt - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781564265022
+    },
+    {
+      "trackId": "0jrRDpGv6FFizspjJJoH5i",
+      "name": "10:15 Saturday Night - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781564256171
+    },
+    {
+      "trackId": "660u9agQuREtEDmETVWSts",
+      "name": "Three Imaginary Boys - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781564131376
+    },
+    {
+      "trackId": "2mNGL7mZILSqZHxGboJaO9",
+      "name": "COMË N GO",
+      "artists": "Yeat",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781563993537
+    },
+    {
+      "trackId": "0aYQsp1vZZcX0JBEJvKF7N",
+      "name": "Words As Weapons",
+      "artists": "Seether",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781563710886
+    },
+    {
+      "trackId": "3TfTZ3fGLYtR1azsY8iEp4",
+      "name": "CIGARETTES",
+      "artists": "Amir Obe",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781334139385
+    },
+    {
+      "trackId": "3gx6E5B42WHKf5agVWQAf2",
+      "name": "Permission",
+      "artists": "Ro James",
+      "keepInLibrary": 0,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781334045294
+    },
+    {
+      "trackId": "0Zze3tFRSNwL6KllmYjLgZ",
+      "name": "Anywhere",
+      "artists": "112",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781333696605
+    },
+    {
+      "trackId": "7oyZBFN3b4fwWocws5NBcY",
+      "name": "Against Me",
+      "artists": "H.E.R.",
+      "keepInLibrary": 0,
+      "repeatIntent": "nah",
+      "loggedAt": 1781333421391
+    },
+    {
+      "trackId": "0hi5V0ExKfjCz9zLxhVAcl",
+      "name": "Bare Wit Me",
+      "artists": "Teyana Taylor",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781333264302
+    },
+    {
+      "trackId": "1AZoLkRwhHY5xSL9lGYrlc",
+      "name": "Elevator Eyes",
+      "artists": "Tove Lo",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781333252876
+    },
+    {
+      "trackId": "2QcWBgN96CO3eex8VSKJOh",
+      "name": "Get It Girl (from Insecure: Music From The HBO Original Series, Season 5)",
+      "artists": "Saweetie,Raedio",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781332928149
+    },
+    {
+      "trackId": "0q75NwOoFiARAVp4EXU4Bs",
+      "name": "Love Galore",
+      "artists": "SZA,Travis Scott",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781332669164
+    },
+    {
+      "trackId": "6vJ0Fezf6Etha2C4H21FKO",
+      "name": "Cool Girl",
+      "artists": "Tove Lo",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781332413820
+    },
+    {
+      "trackId": "6Px7oJcPvMWLhwRHmao0Fe",
+      "name": "LUCID DREAMS",
+      "artists": "Leon Thomas,Masego",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781332273864
+    },
+    {
+      "trackId": "1QoyuMHNBe7lg3YW4Qtll4",
+      "name": "St. Chroma",
+      "artists": "Tyler, The Creator,Daniel Caesar",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781331777118
+    },
+    {
+      "trackId": "3USxtqRwSYz57Ewm6wWRMp",
+      "name": "Heat Waves",
+      "artists": "Glass Animals",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781331766682
+    },
+    {
+      "trackId": "3SKH53SPQbEnZR4cJPVaz2",
+      "name": "Messy",
+      "artists": "Lola Young",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781331713819
+    },
+    {
+      "trackId": "7p8GWclbwHuUxwom7c1oRz",
+      "name": "Love You",
+      "artists": "SiR",
+      "keepInLibrary": 0,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781331520202
+    },
+    {
+      "trackId": "4xigPf2sigSPmuFH3qCelB",
+      "name": "Genius",
+      "artists": "Sia,Diplo,Labrinth,LSD",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781331470147
+    },
+    {
+      "trackId": "1SF8piqsZWn86DajVKih8F",
+      "name": "Kacey Talk",
+      "artists": "YoungBoy Never Broke Again",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781331402639
+    },
+    {
+      "trackId": "3wFFW1B6WAmAFGOwdEOOZR",
+      "name": "Drop The Game",
+      "artists": "Flume,Chet Faker",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781331342362
+    },
+    {
+      "trackId": "3tYxKs4D1Xqyt9xR8soVdr",
+      "name": "Is It Real",
+      "artists": "Flume,JPEGMAFIA,Ravyn Lenae",
+      "keepInLibrary": 0,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781331221120
+    },
+    {
+      "trackId": "5gmJlzd7GyggoqLedD7vKV",
+      "name": "Hollow",
+      "artists": "Flume,Emma Louise",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781330931158
+    },
+    {
+      "trackId": "3T59S3Vh3DOatsmTD8clqP",
+      "name": "You Rock My World",
+      "artists": "Michael Jackson",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1781330905582
+    },
+    {
+      "trackId": "0sKlV58cODrjxGFOyf9IXY",
+      "name": "The Way You Make Me Feel - 2012 Remaster",
+      "artists": "Michael Jackson",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1781330563677
+    },
+    {
+      "trackId": "1CgmY8fVN7kstVDZmsdM5k",
+      "name": "P.Y.T. (Pretty Young Thing)",
+      "artists": "Michael Jackson",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781244120862
+    },
+    {
+      "trackId": "3wuCCNCnBhJlwkIJTBZFiv",
+      "name": "They Don't Care About Us",
+      "artists": "Michael Jackson",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781243980022
+    },
+    {
+      "trackId": "23IJ5wLRhEZ9DOuia5mPiZ",
+      "name": "Who Are You",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781240756554
+    },
+    {
+      "trackId": "3dY1DlC1nDUDtiIKaQ0Ynu",
+      "name": "Kangaroo Court",
+      "artists": "Capital Cities",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1781140548840
+    },
+    {
+      "trackId": "3MjUtNVVq3C8Fn0MP3zhXa",
+      "name": "...Baby One More Time",
+      "artists": "Britney Spears",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1781140424435
+    },
+    {
+      "trackId": "3dFwpxh2yH7C7p9BGEKLVB",
+      "name": "Goodies",
+      "artists": "Ciara,Petey Pablo",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1781140150997
+    },
+    {
+      "trackId": "6KFQdIB3njXBQNcg1xUh9U",
+      "name": "One Thing",
+      "artists": "Lola Young",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1781139949269
+    },
+    {
+      "trackId": "1G6veZVvJjrSwCytFAKVkb",
+      "name": "Wake Up",
+      "artists": "AWOLNATION",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781139762238
+    },
+    {
+      "trackId": "1i2ujygcFXUBEJucbsBvKQ",
+      "name": "MAD GAAL",
+      "artists": "BEAM",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781139356047
+    },
+    {
+      "trackId": "2Y2q7PkD7lvuWr8YaZfWuv",
+      "name": "Rich Girl",
+      "artists": "Gwen Stefani,Eve",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781133149041
+    },
+    {
+      "trackId": "6YgV0EF8xJMZz0Zm6BTaT4",
+      "name": "This Love",
+      "artists": "Maroon 5",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781133134288
+    },
+    {
+      "trackId": "6u5flhVFxKZrl9AApvf2SL",
+      "name": "Girlfriend",
+      "artists": "*NSYNC",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781133115426
+    },
+    {
+      "trackId": "5p0KCAuu5nrHpTuAIhHdLw",
+      "name": "Overprotected - Radio Edit",
+      "artists": "Britney Spears",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781132658584
+    },
+    {
+      "trackId": "57ZM2wVnGENpoSR1meI7YA",
+      "name": "Feel Fine",
+      "artists": "Augustana",
+      "keepInLibrary": 0,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781131451133
+    },
+    {
+      "trackId": "5l2Umj2nI73rKCgOqPjyQK",
+      "name": "Breathe",
+      "artists": "Backstreet Boys",
+      "keepInLibrary": 0,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781131431655
+    },
+    {
+      "trackId": "2dar1QSaBJKGCPXJQsef0J",
+      "name": "Born To Kill",
+      "artists": "Social Distortion",
+      "keepInLibrary": 0,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781131414656
+    },
+    {
+      "trackId": "5XeFesFbtLpXzIVDNQP22n",
+      "name": "I Wanna Be Yours",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781131400629
+    },
+    {
+      "trackId": "2LGdO5MtFdyphi2EihANZG",
+      "name": "Knee Socks",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781130831278
+    },
+    {
+      "trackId": "0NdTUS4UiNYCNn5FgVqKQY",
+      "name": "Snap Out Of It",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1781130584678
+    },
+    {
+      "trackId": "086myS9r57YsLbJpU0TgK9",
+      "name": "Why'd You Only Call Me When You're High",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781130567458
+    },
+    {
+      "trackId": "4atMrAadB7dS8xn9vfk9PQ",
+      "name": "Fireside",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781130489321
+    },
+    {
+      "trackId": "75n7mraeMycQOl2sDGYaTe",
+      "name": "Mad Sounds",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781130246690
+    },
+    {
+      "trackId": "5TTGoX70AFrTvuEtqHK37S",
+      "name": "No. 1 Party Anthem",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781129898229
+    },
+    {
+      "trackId": "1j9rezdE3YeC7yktZXC1em",
+      "name": "I Want It All",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1781129802938
+    },
+    {
+      "trackId": "7nzsY8vlnKdvGOEE0rjAXZ",
+      "name": "Arabella",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781129312757
+    },
+    {
+      "trackId": "6wNUBZNWFxdUGof6vkaykE",
+      "name": "One For The Road",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781129295235
+    },
+    {
+      "trackId": "2AT8iROs4FQueDv2c8q2KE",
+      "name": "R U Mine",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781129277810
+    },
+    {
+      "trackId": "5FVd6KXrgO9B3JPmC8OPst",
+      "name": "Do I Wanna Know",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1781129253062
+    },
+    {
+      "trackId": "4eTIe5eqds88bA9ua6p5p6",
+      "name": "Fine Again",
+      "artists": "Seether",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780994378559
+    },
+    {
+      "trackId": "2hjp28NYmvDkce7RrCUlBq",
+      "name": "BAD CHILD",
+      "artists": "BAD CHILD",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1780994086964
+    },
+    {
+      "trackId": "7t0ohvf7w4e8VacR124wbA",
+      "name": "doing my best",
+      "artists": "Hazlett",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1780993660731
+    },
+    {
+      "trackId": "3t4pBXpBnhkIj9ErbTg9pJ",
+      "name": "BOTH",
+      "artists": "Todrick Hall",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1780993311366
+    },
+    {
+      "trackId": "7M6leGrw3CqVTSJOom4WhG",
+      "name": "Rolls Along",
+      "artists": "HARE",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1780991924443
+    },
+    {
+      "trackId": "6uQe7SVjdDlRqDRAi0qnKg",
+      "name": "Talking",
+      "artists": "Elderbrook",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1780991343168
+    },
+    {
+      "trackId": "0FaTDETtzCRxYIf3noMnsF",
+      "name": "Dandelion",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780991083215
+    },
+    {
+      "trackId": "0jXRQSoOA01VTmrVIDbhtm",
+      "name": "Shh",
+      "artists": "Frou Frou",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780990816693
+    },
+    {
+      "trackId": "4B0cJGASxVICLW2AsBZhiE",
+      "name": "LABOUR - the cacophony",
+      "artists": "Paris Paloma",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780990687326
+    },
+    {
+      "trackId": "0tdjTo4xacmmF7eINqaM8z",
+      "name": "Independent",
+      "artists": "Webbie,Boosie Badazz,Lil Phat",
+      "keepInLibrary": 1,
+      "repeatIntent": "nah",
+      "loggedAt": 1780990668873
+    },
+    {
+      "trackId": "45AbDqJVqVU7nOxtW4SUTG",
+      "name": "Facing My Fear",
+      "artists": "Cortes",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1780990590353
+    },
+    {
+      "trackId": "56YNYXJI7eWgpmzPht6c77",
+      "name": "New Game",
+      "artists": "Black Math",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1780990575615
+    },
+    {
+      "trackId": "166u1Cs46FmXoOaTGxh8aB",
+      "name": "Out Of Control",
+      "artists": "Hoobastank",
+      "keepInLibrary": 1,
+      "repeatIntent": "maybe",
+      "loggedAt": 1780990552787
+    },
+    {
+      "trackId": "2Ojr742JINM4QEOk7vQGEh",
+      "name": "Never Have I Ever",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780990493877
+    },
+    {
+      "trackId": "6GEIpzW14NtOjqHejbcSRE",
+      "name": "Journal of Ardency",
+      "artists": "Class Actress",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1780961781083
+    },
+    {
+      "trackId": "0YJ9FWWHn9EfnN0lHwbzvV",
+      "name": "Jigsaw Falling Into Place",
+      "artists": "Radiohead",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1780961758887
+    },
+    {
+      "trackId": "03mN5X7xFtv6uuBGsB43aY",
+      "name": "Sixteen",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780961724143
+    },
+    {
+      "trackId": "35Bv4QuokBrmWya208VcK2",
+      "name": "SCARING ME",
+      "artists": "cleopatrick",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780958201208
+    },
+    {
+      "trackId": "7fa34IepKo01jV34GTMxQC",
+      "name": "Third Side of the Moon",
+      "artists": "Modest Mouse",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780956113490
+    },
+    {
+      "trackId": "6iIygVDkwznk9NBXIwOIfP",
+      "name": "Ships Passing",
+      "artists": "Young the Giant",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1780956088110
+    },
+    {
+      "trackId": "7LsDPR5Y9YdzQOauL2DP4s",
+      "name": "Clothesline",
+      "artists": "The All-American Rejects",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1780956060400
+    },
+    {
+      "trackId": "3jfHclM5oNBSUvuBS7OgPj",
+      "name": "Absolution",
+      "artists": "Switchfoot",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780956038903
+    },
+    {
+      "trackId": "3TP8KZt9tJGyeBRVyDysp9",
+      "name": "Better If Worse",
+      "artists": "HAFFWAY,Matt Maeson",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1780956002757
+    }
+  ]
+}

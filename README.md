@@ -8,7 +8,17 @@ Wax is a local-first listening journal for your music library. Upload your Spoti
 
 ## Screenshots
 
-<!-- Add screenshots here: shuffle card, library table, recents timeline, stats. -->
+### Dashboard stats
+
+![Wax dashboard stats](images/wax_dashboard.png)
+
+### Shuffle view
+
+![Wax shuffle](images/wax_shuffle.png)
+
+### Keep/remove stats
+
+![Wax keep remove stats](images/wax_keep_remove_stats.png)
 
 ## Quick start
 
@@ -23,109 +33,80 @@ Open **http://localhost:3000**. Express backend and Vite frontend both run on th
 
 For full-song playback in the embed, sign into Spotify in any tab of the same browser. Premium plays the whole track; Free gives you 30-second previews.
 
-## Terminal shortcut (zsh)
+## Back up your data
 
-If you want to launch Wax from anywhere in Terminal, add this function to `~/.zshrc`:
-
-```bash
-cat >> ~/.zshrc << 'EOF'
-
-# Wax - launch the listening journal
-wax() {
-  cd /Users/kaseymallette/github/wax && npm run dev
-}
-EOF
-
-source ~/.zshrc
-```
-
-Now you can run:
-
-```text
-wax
-```
-
-Optional: open the app in your browser automatically too:
+`data.db` is your local listening history and is not tracked in git. You can back it up and restore it with:
 
 ```bash
-wax() {
-  cd /Users/kaseymallette/github/wax && open http://localhost:3000 && npm run dev
-}
+npm run backup-db   # creates backups/data.db.<timestamp>.bak
+npm run restore-db  # restores latest backup in backups/
 ```
+
+## Track decisions per user
+
+`decisions-latest.json` files are tracked in git for each user. You can export and import your latest keep/remove decisions with:
+
+```bash
+WAX_USER=kasey npm run decisions:export  # writes users/kasey/decisions-latest.json
+WAX_USER=kasey npm run decisions:import  # reapplies that file into local data.db
+```
+
+This snapshot stores one latest decision per track (`keep_in_library` + `repeat_intent`) so you can reimport your library and restore your curation quickly.
+
+Use a different `WAX_USER` value per family member (for example: `mom`, `dad`, `kasey`) so each person has their own tracked decisions file under `users/`.
+
 
 ## How it works
 
 1. **Import** — drop your `.db`, `.sqlite`, or `.csv` file on the import page. SQLite uploads use a column mapper (Track ID is the only required field; the rest auto-detects). CSV uploads auto-detect Exportify's standard columns.
 2. **Shuffle** — get a random track from your library, listen, and log it. Each entry captures:
    - **Listened** — did you actually play it through?
-   - **Want to listen again** — yes / no
-   - **Would play again** — yes / no
    - **Keep in library** — keep / remove (logged preference only; does not delete)
+   - **Hear again (Keep only)** — `on_repeat`, `yes`, `maybe`, `nah`
    - **Activity tags** — what you were doing (working, working out, cleaning, driving, dancing, singing, active listening, processing, resting, or custom)
    - **Notes** — free text
-   - **Era** (set once per track) — recently discovered, recently remembered, Dance, Radio, Vinyl, Mom, Dad, 2000s, 2010s, 2020s, or your own custom era
-3. **Library** — searchable table of every track with listen count, last listened, and would-again count. Click any row to play it, log a new entry, edit its era, or view its full history.
-4. **Recents** — timeline of every entry, grouped by day, with filters for activity, era, and would-again.
-5. **Stats** — listens over time, top tracks, activity breakdown, would-again ratio, era distribution.
+3. **Keeps** — keep-only view with repeat-intent filters and inline intent updates.
+4. **Library** — searchable table of every track with listen count and last listened. Click any row to play it, log a new entry, edit repeat intent, or view full history.
+5. **Recents** — timeline of every entry, grouped by day, with keep/remove and repeat-intent context.
+6. **Stats** — listens over time, keep vs remove, and feature summaries for keeps and removes (including top keys and album-year metrics).
 
-### Era presets
+### Repeat-intent presets
 
-Current default era presets are:
+Current repeat-intent presets are:
 
-- `recently_discovered`
-- `recently_remembered`
-- `dance`
-- `radio`
-- `vinyl`
-- `mom`
-- `dad`
-- `2000s`
-- `2010s`
-- `2020s`
+- `on_repeat`
+- `yes`
+- `maybe`
+- `nah`
 
-Want to change the preset era buttons?
+Want to change these labels/options?
 
 - Edit `shared/schema.ts`
-- Find `ERA_OPTIONS`
-- Add/remove/edit entries in this shape: `{ value: "my_value", label: "My Label" }`
-- Keep `value` lowercase/slug-style (used in saved data), and `label` human-friendly (used in the UI)
+- Find `REPEAT_INTENT_OPTIONS`
+- Update entries in this shape: `{ value: "my_value", label: "My Label" }`
+- Keep `value` lowercase/slug-style (saved data), and `label` human-friendly (UI)
 
 ## Data model
 
-Two tables in `data.db`:
+Three core tables in `data.db`:
 
-- **`tracks`** — your imported library. One row per Spotify track ID. Columns: `id`, `name`, `artists`, `album`, `album_art_url`, `duration_ms`, `added_at`, `spotify_url`, `preview_url`, `imported_at`, `era`.
-- **`listens`** — your log entries. One row per logged listen. Columns: `id`, `track_id`, `listened` (0/1), `want_again` (0/1), `would_again` (0/1), `keep_in_library` (0/1), `activity` (JSON array), `notes`, `logged_at` (unix ms).
+- **`tracks`** — your imported library. One row per Spotify track ID. Includes `repeat_intent` (track-level keep preference tag).
+- **`listens`** — your log entries. One row per logged listen. Columns include `listened` (0/1), `want_again` (0/1), `would_again` (0/1), `keep_in_library` (0/1), `activity` (JSON array), `notes`, `logged_at` (unix ms).
+- **`track_features`** — imported audio/music features keyed by track ID (`bpm`, `camelot`, `energy`, `dance`, `valence`, `popularity`, `album_year`, `source`, `updated_at`).
 
 Indexes on `listens(track_id)` and `listens(logged_at DESC)`.
 
 ## Where your data lives
 
 - **`data.db`** in the project root. Back this file up if you care about it.
+
 - CSV export from the API gives you everything in one file:
 
 ```bash
 curl http://localhost:3000/api/export -o ~/Downloads/wax-listens.csv
 ```
 
-Columns: `track_id`, `name`, `artists`, `album`, `era`, `listened`, `want_again`, `would_again`, `keep_in_library`, `activity`, `notes`, `logged_at`.
-
-To generate a curated `again-again.db` using each track's latest rating (so mind-changes are respected), run:
-
-```bash
-npm run db:again-again
-```
-
-This creates/overwrites `again-again.db` with two tables:
-
-- `tracks`: only tracks whose most recent listen has `would_again = 1`
-- `listens`: one row per included track (its most recent listen, where `would_again = 1`)
-
-Sample query:
-
-```bash
-sqlite3 again-again.db "SELECT COUNT(*) AS tracks FROM tracks;"
-```
+Columns include: `track_id`, `name`, `artists`, `album`, `repeat_intent`, `listened`, `want_again`, `would_again`, `keep_in_library`, `activity`, `notes`, `logged_at`.
 
 ## Reading your data from Python
 
@@ -134,7 +115,7 @@ import sqlite3, json, pandas as pd
 
 con = sqlite3.connect("wax/data.db")
 df = pd.read_sql_query("""
-    SELECT t.id AS track_id, t.name, t.artists, t.album, t.era,
+    SELECT t.id AS track_id, t.name, t.artists, t.album, t.repeat_intent,
            l.listened, l.want_again, l.would_again, l.keep_in_library,
            l.activity, l.notes, l.logged_at
     FROM tracks t
