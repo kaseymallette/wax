@@ -168,21 +168,49 @@ Output files are written to `users/<name>/playlists/`:
 
 Once your CSV outputs look right, you can push them to Spotify playlists.
 
-1. Configure `.env` with `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`.
-2. In Spotify Developer Dashboard, set redirect URI to `http://127.0.0.1:8888/callback`.
-3. Authorize once to get a refresh token:
+You only do setup once (steps 1–4). After that, pushing is a single command.
+
+1. Register a Spotify app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
+   - App name: `Wax`
+   - App description: `WAX mood playlists`
+   - Add redirect URI exactly: `http://127.0.0.1:8888/callback`
+   - Enable **Web API** and save.
+
+2. Copy the app credentials from Spotify app settings:
+   - `Client ID`
+   - `Client secret`
+
+3. Create `.env` from the example and fill in credentials:
+
+```bash
+cp .env.example .env
+```
+
+```bash
+SPOTIFY_CLIENT_ID=paste_your_client_id_here
+SPOTIFY_CLIENT_SECRET=paste_your_client_secret_here
+SPOTIFY_REDIRECT_URI=http://127.0.0.1:8888/callback
+SPOTIFY_REFRESH_TOKEN=
+WAX_USER=kasey
+```
+
+4. Authorize once to get a refresh token:
 
 ```bash
 npm run spotify:auth
 ```
 
-4. Dry run (no writes):
+Copy the `SPOTIFY_REFRESH_TOKEN=...` line from terminal output into `.env`.
+
+5. Push playlists:
+
+Dry run first (no writes):
 
 ```bash
 WAX_USER=kasey npm run spotify:push:dry
 ```
 
-5. Push for real:
+Then push for real:
 
 ```bash
 WAX_USER=kasey npm run spotify:push
@@ -194,6 +222,12 @@ Push behavior:
 - Full-replaces each playlist in CSV order on every run
 - Writes `users/<WAX_USER>/playlists/push.log`
 - Supports multi-user by changing `WAX_USER`
+
+Common issues:
+
+- `INVALID_CLIENT: Invalid redirect URI` → ensure `.env` URI exactly matches Spotify app settings.
+- `Failed to refresh access token` → run `npm run spotify:auth` again.
+- Playlists not updating → verify you authorized the same Spotify account that owns the playlists.
 
 For full setup details and troubleshooting, see `SETUP.md`.
 
