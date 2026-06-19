@@ -122,16 +122,6 @@ export function LogForm({
           <div className="grid gap-2 sm:grid-cols-2">
             <button
               type="button"
-              onClick={() => patch({ repeatIntent: "undecided" })}
-              data-testid="button-repeat-undecided"
-              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
-                state.repeatIntent === "undecided" ? SEG_ACTIVE : SEG_IDLE
-              }`}
-            >
-              Undecided
-            </button>
-            <button
-              type="button"
               onClick={() => patch({ repeatIntent: "on_repeat" })}
               data-testid="button-repeat-on-repeat"
               className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
@@ -169,6 +159,16 @@ export function LogForm({
               }`}
             >
               Nah, I&apos;m good
+            </button>
+            <button
+              type="button"
+              onClick={() => patch({ repeatIntent: "undecided" })}
+              data-testid="button-repeat-undecided"
+              className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover-elevate ${
+                state.repeatIntent === "undecided" ? SEG_ACTIVE : SEG_IDLE
+              }`}
+            >
+              Undecided
             </button>
           </div>
         </div>

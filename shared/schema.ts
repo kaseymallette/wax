@@ -48,11 +48,11 @@ export const ACTIVITY_PRESETS = [
 ] as const;
 
 export const REPEAT_INTENT_OPTIONS = [
-  { value: "undecided", label: "Undecided" },
   { value: "on_repeat", label: "On repeat" },
   { value: "yes", label: "Yes" },
   { value: "maybe", label: "Maybe" },
   { value: "nah", label: "Nah, I'm good" },
+  { value: "undecided", label: "Undecided" },
 ] as const;
 
 export const REPEAT_INTENT_VALUES = REPEAT_INTENT_OPTIONS.map((o) => o.value) as [

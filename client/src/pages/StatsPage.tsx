@@ -63,11 +63,11 @@ type Stats = {
 };
 
 const KEEP_INTENT_TABS = [
-  { value: "undecided", label: "Undecided" },
   { value: "on_repeat", label: "On repeat" },
   { value: "yes", label: "Yes" },
   { value: "maybe", label: "Maybe" },
   { value: "nah", label: "Nah, I'm good" },
+  { value: "undecided", label: "Undecided" },
 ] as const;
 
 function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], active: boolean): string {
@@ -205,7 +205,7 @@ function formatYearIqr(iqr: { q1: number | null; q3: number | null }): string {
 
 export default function StatsPage() {
   const { data, isLoading } = useQuery<Stats>({ queryKey: ["/api/stats"] });
-  const [keepIntentTab, setKeepIntentTab] = useState<(typeof KEEP_INTENT_TABS)[number]["value"]>("undecided");
+  const [keepIntentTab, setKeepIntentTab] = useState<(typeof KEEP_INTENT_TABS)[number]["value"]>("on_repeat");
   const keepTracksQuery = useQuery<TrackWithStats[]>({
     queryKey: ["/api/tracks", "keep", "name", ""],
     queryFn: async () => {
