@@ -100,7 +100,7 @@ This restores each track's latest keep/remove + repeat-intent decision. It does 
 5. **Recents** — timeline of every entry, grouped by day, with keep/remove and repeat-intent context.
 6. **Stats** — listens over time, keep vs remove, and feature summaries for keeps and removes (including top keys and album-year metrics).
 
-## Mood playlists (V1 plan)
+## Mood playlists
 
 Wax includes a practical mood-playlist direction focused on fast iteration and human review first.
 
