@@ -110,6 +110,9 @@ function main(): void {
   authUrl.searchParams.set("redirect_uri", REDIRECT_URI);
   authUrl.searchParams.set("scope", SCOPES);
   authUrl.searchParams.set("state", state);
+  // Force the consent screen every time so Spotify can't silently reuse an
+  // older, narrower grant (the cause of 403s on /tracks).
+  authUrl.searchParams.set("show_dialog", "true");
 
   const redirect = new URL(REDIRECT_URI);
   const port = Number(redirect.port || 8888);

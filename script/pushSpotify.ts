@@ -69,6 +69,20 @@ function flushLog(): void {
     /* best-effort */
   }
 }
+
+async function appendPlaylistTracks(
+  playlistId: string,
+  uris: string[],
+): Promise<void> {
+  const chunkSize = 100;
+  for (let i = 0; i < uris.length; i += chunkSize) {
+    const chunk = uris.slice(i, i + chunkSize);
+    await api(`/playlists/${playlistId}/tracks`, {
+      method: "POST",
+      body: JSON.stringify({ uris: chunk }),
+    });
+  }
+}
 function fail(msg: string): never {
   log(`❌ ${msg}`);
   flushLog();
@@ -207,7 +221,17 @@ async function api<T = unknown>(
     return api<T>(endpoint, init, retries - 1);
   }
   if (!res.ok) {
-    throw new Error(`Spotify API ${res.status} on ${url}: ${await res.text()}`);
+    const body = await res.text();
+    const authHeader = res.headers.get("www-authenticate");
+    const requestId = res.headers.get("x-spotify-request-id");
+    const diagnostics = [
+      authHeader ? `www-authenticate=${authHeader}` : null,
+      requestId ? `x-spotify-request-id=${requestId}` : null,
+    ].filter(Boolean).join("; ");
+
+    throw new Error(
+      `Spotify API ${res.status} on ${url}: ${body}${diagnostics ? ` [${diagnostics}]` : ""}`,
+    );
   }
   // Some endpoints (e.g. PUT items) return empty body.
   const text = await res.text();
@@ -223,7 +247,7 @@ interface SpotifyUser {
 interface SpotifyPlaylist {
   id: string;
   name: string;
-  tracks: { total: number };
+  tracks?: { total?: number };
 }
 
 async function getCurrentUser(): Promise<SpotifyUser> {
@@ -247,11 +271,8 @@ async function findPlaylistByName(
   return null;
 }
 
-async function createPlaylist(
-  userId: string,
-  name: string,
-): Promise<SpotifyPlaylist> {
-  return api<SpotifyPlaylist>(`/users/${userId}/playlists`, {
+async function createPlaylist(name: string): Promise<SpotifyPlaylist> {
+  return api<SpotifyPlaylist>(`/me/playlists`, {
     method: "POST",
     body: JSON.stringify({
       name,
@@ -299,10 +320,7 @@ async function replacePlaylistTracks(
 
 // ───────────────────────── main ─────────────────────────
 
-async function pushBand(
-  userId: string,
-  band: { file: string; label: string },
-): Promise<void> {
+async function pushBand(band: { file: string; label: string }): Promise<void> {
   const csvPath = path.join(PLAYLISTS_DIR, band.file);
   if (!fs.existsSync(csvPath)) {
     log(`⚠️  ${band.label}: CSV not found at ${csvPath} — skipping.`);
@@ -337,14 +355,21 @@ async function pushBand(
   }
 
   let playlist = await findPlaylistByName(playlistName);
+  let createdNow = false;
   if (!playlist) {
     log(`   Creating new playlist…`);
-    playlist = await createPlaylist(userId, playlistName);
+    playlist = await createPlaylist(playlistName);
+    createdNow = true;
   } else {
-    log(`   Found existing playlist (${playlist.tracks.total} tracks) — replacing.`);
+    const existingCount = playlist.tracks?.total ?? 0;
+    log(`   Found existing playlist (${existingCount} tracks) — replacing.`);
   }
 
-  await replacePlaylistTracks(playlist.id, uris);
+  if (createdNow) {
+    await appendPlaylistTracks(playlist.id, uris);
+  } else {
+    await replacePlaylistTracks(playlist.id, uris);
+  }
   log(`   ✅ Pushed ${uris.length} tracks.`);
   log(`   🔗 https://open.spotify.com/playlist/${playlist.id}`);
 }
@@ -365,7 +390,7 @@ async function main(): Promise<void> {
 
   for (const band of BANDS) {
     try {
-      await pushBand(me.id, band);
+      await pushBand(band);
     } catch (err) {
       log(`   ❌ ${band.label} failed: ${(err as Error).message}`);
     }
