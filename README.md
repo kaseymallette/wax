@@ -147,7 +147,7 @@ wax/
 For this phase, the focus is algorithm output only.
 
 - Included: tercile mood bands, weighted ranking, per-user CSV generation.
-- Deferred: Spotify API push, agent scheduling, quantile bands, and expanded playlist splitting.
+- Deferred: Spotify API push, agent scheduling, quartile bands, and expanded playlist splitting.
 
 ## Use Wax
 
