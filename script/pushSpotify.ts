@@ -32,6 +32,7 @@ import "dotenv/config";
 
 const WAX_USER = process.env.WAX_USER ?? "kasey";
 const DRY_RUN = process.argv.includes("--dry-run");
+const DEBUG = process.argv.includes("--debug");
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID ?? "";
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET ?? "";
@@ -77,7 +78,7 @@ async function appendPlaylistTracks(
   const chunkSize = 100;
   for (let i = 0; i < uris.length; i += chunkSize) {
     const chunk = uris.slice(i, i + chunkSize);
-    await api(`/playlists/${playlistId}/tracks`, {
+    await api(`/playlists/${playlistId}/items`, {
       method: "POST",
       body: JSON.stringify({ uris: chunk }),
     });
@@ -296,7 +297,7 @@ async function replacePlaylistTracks(
   const chunkSize = 100;
 
   if (uris.length === 0) {
-    await api(`/playlists/${playlistId}/tracks`, {
+    await api(`/playlists/${playlistId}/items`, {
       method: "PUT",
       body: JSON.stringify({ uris: [] }),
     });
@@ -304,14 +305,14 @@ async function replacePlaylistTracks(
   }
 
   const first = uris.slice(0, chunkSize);
-  await api(`/playlists/${playlistId}/tracks`, {
+  await api(`/playlists/${playlistId}/items`, {
     method: "PUT",
     body: JSON.stringify({ uris: first }),
   });
 
   for (let i = chunkSize; i < uris.length; i += chunkSize) {
     const chunk = uris.slice(i, i + chunkSize);
-    await api(`/playlists/${playlistId}/tracks`, {
+    await api(`/playlists/${playlistId}/items`, {
       method: "POST",
       body: JSON.stringify({ uris: chunk }),
     });
@@ -374,6 +375,63 @@ async function pushBand(band: { file: string; label: string }): Promise<void> {
   log(`   🔗 https://open.spotify.com/playlist/${playlist.id}`);
 }
 
+async function debugTest(): Promise<void> {
+  await refreshAccessToken();
+  const me = await getCurrentUser();
+  log(`[debug] Authenticated as: ${me.display_name ?? me.id} (${me.id})`);
+  log(`[debug] Access token (first 20): ${accessToken.slice(0, 20)}…`);
+
+  // Find or use the first existing WAX playlist
+  const testPlaylistName = `WAX – ${WAX_USER.charAt(0).toUpperCase() + WAX_USER.slice(1)} Low Mood`;
+  const playlist = await findPlaylistByName(testPlaylistName);
+  if (!playlist) {
+    log(`[debug] No existing playlist "${testPlaylistName}" found. Creating one…`);
+    const created = await createPlaylist(testPlaylistName);
+    log(`[debug] Created playlist: ${created.id}`);
+    log(`[debug] Now testing single-track POST…`);
+    await debugSingleTrackAdd(created.id);
+  } else {
+    log(`[debug] Found playlist: ${playlist.id}`);
+    log(`[debug] Testing single-track POST…`);
+    await debugSingleTrackAdd(playlist.id);
+  }
+}
+
+async function debugSingleTrackAdd(playlistId: string): Promise<void> {
+  // Use a known Spotify track (Bohemian Rhapsody)
+  const testUri = "spotify:track:7tFiyTwD0nx5a1eklYtX2J";
+  const url = `${API}/playlists/${playlistId}/items`;
+  const body = JSON.stringify({ uris: [testUri] });
+
+  log(`[debug] POST ${url}`);
+  log(`[debug] Body: ${body}`);
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body,
+  });
+
+  const responseBody = await res.text();
+  log(`[debug] Status: ${res.status}`);
+  log(`[debug] Response body: ${responseBody}`);
+  log(`[debug] Response headers:`);
+  res.headers.forEach((v, k) => log(`[debug]   ${k}: ${v}`));
+
+  if (res.ok) {
+    log(`[debug] ✅ Single-track add SUCCEEDED. The API works for this playlist.`);
+  } else {
+    log(`[debug] ❌ Single-track add FAILED. This confirms a permission issue.`);
+    log(`[debug] Next steps:`);
+    log(`[debug]   1. In Spotify Dashboard → your app → Settings → check "Web API" is enabled`);
+    log(`[debug]   2. Confirm the email in User Management matches your Agent KC login email exactly`);
+    log(`[debug]   3. Try requesting Extended Quota Mode if this is a dev-mode restriction`);
+  }
+}
+
 async function main(): Promise<void> {
   if (!CLIENT_ID || !CLIENT_SECRET || !REFRESH_TOKEN) {
     fail(
@@ -382,11 +440,18 @@ async function main(): Promise<void> {
     );
   }
 
+  if (DEBUG) {
+    await debugTest();
+    flushLog();
+    return;
+  }
+
   log(`WAX Spotify push — user="${WAX_USER}" dir="${PLAYLISTS_DIR}"${DRY_RUN ? " [DRY RUN]" : ""}`);
 
   await refreshAccessToken();
   const me = await getCurrentUser();
   log(`Authenticated as: ${me.display_name ?? me.id} (${me.id})`);
+
 
   for (const band of BANDS) {
     try {
