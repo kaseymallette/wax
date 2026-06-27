@@ -50,6 +50,7 @@ export default function RecentsPage() {
   const { toast } = useToast();
   const [activities, setActivities] = useState<string[]>([]);
   const [range, setRange] = useState<string>("all");
+  const [libraryView, setLibraryView] = useState<"all" | "kept" | "removed">("all");
   const [listenedOnly, setListenedOnly] = useState(false);
   const [limit, setLimit] = useState(PAGE_SIZE);
   const [confirmDelete, setConfirmDelete] = useState<number | null>(null);
@@ -109,6 +110,11 @@ export default function RecentsPage() {
     set(arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v]);
 
   const listens = listensQuery.data ?? [];
+  const filteredListens = useMemo(() => {
+    if (libraryView === "kept") return listens.filter((l) => l.keepInLibrary);
+    if (libraryView === "removed") return listens.filter((l) => !l.keepInLibrary);
+    return listens;
+  }, [listens, libraryView]);
   const trackById = useMemo(() => {
     const m = new Map<string, TrackWithStats>();
     for (const t of tracksQuery.data ?? []) m.set(t.id, t);
@@ -119,7 +125,7 @@ export default function RecentsPage() {
   const groups = useMemo(() => {
     const map: { key: string; header: string; items: ListenWithTrack[] }[] = [];
     let lastKey = "";
-    for (const l of listens) {
+    for (const l of filteredListens) {
       const k = dayKey(l.loggedAt);
       if (k !== lastKey) {
         map.push({ key: k, header: dayHeader(l.loggedAt), items: [] });
@@ -128,10 +134,10 @@ export default function RecentsPage() {
       map[map.length - 1].items.push(l);
     }
     return map;
-  }, [listens]);
+  }, [filteredListens]);
 
   if (statsQuery.data && statsQuery.data.totals.totalListens === 0 &&
-      activities.length === 0 && range === "all" && !listenedOnly) {
+      activities.length === 0 && range === "all" && !listenedOnly && libraryView === "all") {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card px-6 py-16 text-center">
@@ -173,19 +179,39 @@ export default function RecentsPage() {
           ))}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex gap-1.5">
-            {DATE_RANGES.map((r) => (
-              <button
-                key={r.key}
-                onClick={() => { setRange(r.key); setLimit(PAGE_SIZE); }}
-                data-testid={`filter-range-${r.key}`}
-                className={`rounded-full px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
-                  range === r.key ? "bg-primary/15 text-primary" : "bg-secondary/40 text-muted-foreground"
-                }`}
-              >
-                {r.label}
-              </button>
-            ))}
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex gap-1.5">
+              {DATE_RANGES.map((r) => (
+                <button
+                  key={r.key}
+                  onClick={() => { setRange(r.key); setLimit(PAGE_SIZE); }}
+                  data-testid={`filter-range-${r.key}`}
+                  className={`rounded-full px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
+                    range === r.key ? "bg-primary/15 text-primary" : "bg-secondary/40 text-muted-foreground"
+                  }`}
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-1.5" data-testid="filter-library-view">
+              {[
+                { key: "all", label: "All" },
+                { key: "kept", label: "Kept" },
+                { key: "removed", label: "Removed" },
+              ].map((option) => (
+                <button
+                  key={option.key}
+                  onClick={() => { setLibraryView(option.key as "all" | "kept" | "removed"); setLimit(PAGE_SIZE); }}
+                  data-testid={`filter-library-${option.key}`}
+                  className={`rounded-full px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
+                    libraryView === option.key ? "bg-primary/15 text-primary" : "bg-secondary/40 text-muted-foreground"
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
           <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
             Listened only
@@ -204,7 +230,7 @@ export default function RecentsPage() {
           <div className="space-y-3">
             {Array.from({ length: 5 }).map((_, i) => <Skeleton key={i} className="h-20 w-full rounded-xl" />)}
           </div>
-        ) : listens.length === 0 ? (
+        ) : filteredListens.length === 0 ? (
           <div className="rounded-xl border border-border bg-card px-4 py-12 text-center text-sm text-muted-foreground" data-testid="text-no-recents">
             No entries match these filters.
           </div>

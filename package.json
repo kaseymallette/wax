@@ -15,9 +15,13 @@
     "snapshot:user": "tsx script/userSnapshot.ts",
     "restore:user": "tsx script/userRestore.ts",
     "mood:build": "tsx script/buildMoodPlaylists.ts",
+    "knn:build": "tsx script/buildKNNPackets.ts",
     "spotify:auth": "tsx script/spotifyAuth.ts",
     "spotify:push": "tsx script/pushSpotify.ts",
     "spotify:push:dry": "tsx script/pushSpotify.ts --dry-run",
+    "music:add:csv:dry": "python3 src/add_to_music_library.py --csv ${WAX_ADD_CSV:-data/music-library/new_tracks.csv} --db data/music-library/spotify_music_library.db",
+    "music:add:csv": "python3 src/add_to_music_library.py --csv ${WAX_ADD_CSV:-data/music-library/new_tracks.csv} --db data/music-library/spotify_music_library.db --apply --backup",
+    "music:dupes:csv": "python3 src/check_duplicate_track_keys.py --db data/music-library/spotify_music_library.db --table tracks --column Track_Key --ignore-remaster --ignore-year-version --csv-out outputs/duplicate-track-keys.csv",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {

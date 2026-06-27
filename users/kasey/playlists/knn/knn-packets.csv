@@ -1,0 +1,332 @@
+packet_index,slot,seed_track_id,track_id,tier,name,artists,album,bpm,mood_score,key_step,distance,spotify_url
+1,1,1kDc700KN1jUerY6t09FNm,1kDc700KN1jUerY6t09FNm,yes,Oxygen,Catfish and the Bottlemen,The Ride,125.000,159.000,1,0.000000,https://open.spotify.com/track/1kDc700KN1jUerY6t09FNm
+1,2,1kDc700KN1jUerY6t09FNm,5fpZBXuorlUCC9SP6LVuw3,yes,West Coast,Lana Del Rey,Ultraviolence,123.000,158.000,1,0.094002,https://open.spotify.com/track/5fpZBXuorlUCC9SP6LVuw3
+1,3,1kDc700KN1jUerY6t09FNm,3LirkthakHFNj98PIO9oan,yes,Mission,Catfish and the Bottlemen,The Balance,128.000,165.000,1,0.239306,https://open.spotify.com/track/3LirkthakHFNj98PIO9oan
+1,4,1kDc700KN1jUerY6t09FNm,0fFPWoqcdEDfIpS7wk6shV,yes,Holy Ghost,The Neighbourhood,(((((ultraSOUND))))),125.000,148.000,1,0.366107,https://open.spotify.com/track/0fFPWoqcdEDfIpS7wk6shV
+2,1,6aCBjSb87RizdH8lVBIRW7,6aCBjSb87RizdH8lVBIRW7,on_repeat,Good Things Go,Linkin Park,From Zero,127.000,161.000,1,0.000000,https://open.spotify.com/track/6aCBjSb87RizdH8lVBIRW7
+2,2,6aCBjSb87RizdH8lVBIRW7,1owBzz8aYKe0bDJlAJt2Yn,yes,Breakin' up,The Palms,Sway,130.000,163.000,1,0.146900,https://open.spotify.com/track/1owBzz8aYKe0bDJlAJt2Yn
+2,3,6aCBjSb87RizdH8lVBIRW7,1HtrQWNpyEbGMEiwCjmPdi,yes,Curbstomp,MEG MYERS,Daughter in the Choir,123.000,153.000,1,0.317653,https://open.spotify.com/track/1HtrQWNpyEbGMEiwCjmPdi
+2,4,6aCBjSb87RizdH8lVBIRW7,3850dYVgOFIXJh5U4BFEWH,yes,Hung Up,Madonna,Confessions on a Dance Floor,125.000,171.000,1,0.342884,https://open.spotify.com/track/3850dYVgOFIXJh5U4BFEWH
+3,1,2A73XBDBQgmdXO8VsXPWIs,2A73XBDBQgmdXO8VsXPWIs,yes,Rumour Has It,Adele,21,120.000,193.000,1,0.000000,https://open.spotify.com/track/2A73XBDBQgmdXO8VsXPWIs
+3,2,2A73XBDBQgmdXO8VsXPWIs,1BXDOKw1wayAznyNIfHmv7,yes,Grey,Two Feet,Grey,120.000,186.000,1,0.230998,https://open.spotify.com/track/1BXDOKw1wayAznyNIfHmv7
+3,3,2A73XBDBQgmdXO8VsXPWIs,0TkKxuAP37iUqSzQMi3CsL,yes,Poison,MEG MYERS,Daughter in the Choir,123.000,200.000,1,0.265208,https://open.spotify.com/track/0TkKxuAP37iUqSzQMi3CsL
+3,4,2A73XBDBQgmdXO8VsXPWIs,39bEAYKI9sRQ1OvPYPmFvq,yes,"Lessons In Love (All Day, All Night)","Neon Trees,Kaskade",Picture Show,128.000,199.000,1,0.399895,https://open.spotify.com/track/39bEAYKI9sRQ1OvPYPmFvq
+4,1,1nUC2uuKUl49tDwQ1m4A1J,1nUC2uuKUl49tDwQ1m4A1J,on_repeat,BURNER PHONE,cleopatrick,SCRAP,136.000,181.000,1,0.000000,https://open.spotify.com/track/1nUC2uuKUl49tDwQ1m4A1J
+4,2,1nUC2uuKUl49tDwQ1m4A1J,7jjX6UPbGwK9AMGjkeSwPj,yes,Are You Ten Years Ago,Tegan and Sara,The Con,138.000,185.000,1,0.157354,https://open.spotify.com/track/7jjX6UPbGwK9AMGjkeSwPj
+4,3,1nUC2uuKUl49tDwQ1m4A1J,5iRv1aH4eNai45KfhjtJ6n,yes,When the Love is Gone,Des Rocs,When the Love is Gone,141.000,172.000,1,0.366338,https://open.spotify.com/track/5iRv1aH4eNai45KfhjtJ6n
+4,4,1nUC2uuKUl49tDwQ1m4A1J,2mNGL7mZILSqZHxGboJaO9,yes,COMË N GO,Yeat,DANGEROUS SUMMER,145.000,179.000,1,0.394108,https://open.spotify.com/track/2mNGL7mZILSqZHxGboJaO9
+5,1,2d4e45fmUnguxh6yqC7gNT,2d4e45fmUnguxh6yqC7gNT,yes,Dirty Deeds Done Dirt Cheap,AC/DC,Dirty Deeds Done Dirt Cheap,136.000,209.000,1,0.000000,https://open.spotify.com/track/2d4e45fmUnguxh6yqC7gNT
+5,2,2d4e45fmUnguxh6yqC7gNT,0babKgXwpYCxbmgTc2Ikrh,on_repeat,The Way She Looks,Two Feet,The Way She Looks,135.000,212.000,1,0.107075,https://open.spotify.com/track/0babKgXwpYCxbmgTc2Ikrh
+5,3,2d4e45fmUnguxh6yqC7gNT,6Wn3pdFtAcnYJyJVITwt7N,yes,Girls Got Rhythm,AC/DC,Highway to Hell,138.000,203.000,1,0.214149,https://open.spotify.com/track/6Wn3pdFtAcnYJyJVITwt7N
+5,4,2d4e45fmUnguxh6yqC7gNT,7D2DbbjKxGEAYwcEoG4wrI,yes,Duet In B Minor,Pacific Air,Stop Talking (Spotify Exclusive),150.000,202.000,1,0.643911,https://open.spotify.com/track/7D2DbbjKxGEAYwcEoG4wrI
+6,1,3TP8KZt9tJGyeBRVyDysp9,3TP8KZt9tJGyeBRVyDysp9,on_repeat,Better If Worse,"HAFFWAY,Matt Maeson",Better If Worse (with Matt Maeson),124.000,183.000,1,0.000000,https://open.spotify.com/track/3TP8KZt9tJGyeBRVyDysp9
+6,2,3TP8KZt9tJGyeBRVyDysp9,5iItYl3Q6wCnKVfpK1uNVf,yes,The Suburbs,Arcade Fire,The Suburbs (Deluxe),118.000,185.000,1,0.265099,https://open.spotify.com/track/5iItYl3Q6wCnKVfpK1uNVf
+6,3,3TP8KZt9tJGyeBRVyDysp9,0jXRQSoOA01VTmrVIDbhtm,yes,Shh,Frou Frou,Details,131.000,179.000,1,0.327031,https://open.spotify.com/track/0jXRQSoOA01VTmrVIDbhtm
+6,4,3TP8KZt9tJGyeBRVyDysp9,2Ojr742JINM4QEOk7vQGEh,on_repeat,Never Have I Ever,Rainbow Kitten Surprise,Never Have I Ever,130.000,195.000,1,0.469114,https://open.spotify.com/track/2Ojr742JINM4QEOk7vQGEh
+7,1,5jGxeAkNbep75x8JLeb52H,5jGxeAkNbep75x8JLeb52H,on_repeat,Upside Down & Inside Out,OK Go,Hungry Ghosts,93.000,192.000,1,0.000000,https://open.spotify.com/track/5jGxeAkNbep75x8JLeb52H
+7,2,5jGxeAkNbep75x8JLeb52H,5C5gvDZsl6d8bh89URfKHr,yes,Pork Soda,Glass Animals,How To Be A Human Being,96.000,198.000,1,0.233246,https://open.spotify.com/track/5C5gvDZsl6d8bh89URfKHr
+7,3,5jGxeAkNbep75x8JLeb52H,5OLvTcn4P3pZQ4erbwg6ro,on_repeat,Unravelling,Muse,The Wow! Signal,88.000,183.000,1,0.361953,https://open.spotify.com/track/5OLvTcn4P3pZQ4erbwg6ro
+7,4,5jGxeAkNbep75x8JLeb52H,0KseHCMXqZZkoKn4UJfWlO,yes,Smile,Foreign Air,Smile (Remix),100.000,181.000,1,0.465630,https://open.spotify.com/track/0KseHCMXqZZkoKn4UJfWlO
+8,1,5tb5fb5moizAdu3Z6jljn2,5tb5fb5moizAdu3Z6jljn2,yes,Make a Shadow,MEG MYERS,Sorry,134.000,145.000,1,0.000000,https://open.spotify.com/track/5tb5fb5moizAdu3Z6jljn2
+8,2,5tb5fb5moizAdu3Z6jljn2,35Bv4QuokBrmWya208VcK2,on_repeat,SCARING ME,cleopatrick,DOOM,135.000,139.000,1,0.198935,https://open.spotify.com/track/35Bv4QuokBrmWya208VcK2
+8,3,5tb5fb5moizAdu3Z6jljn2,0ue1SRXyvMme9iCSSWcuWb,on_repeat,Numbers,Daughter,Not to Disappear,131.000,134.000,1,0.378636,https://open.spotify.com/track/0ue1SRXyvMme9iCSSWcuWb
+8,4,5tb5fb5moizAdu3Z6jljn2,1ShxNSFFxy1rSbnopgYpvx,yes,Loneliest,Incubus,8,138.000,159.000,1,0.484600,https://open.spotify.com/track/1ShxNSFFxy1rSbnopgYpvx
+9,1,6SkGAtFv38tQjouh7UeNpu,6SkGAtFv38tQjouh7UeNpu,yes,Where The Silence Goes,LEAP,One Million Pieces,170.000,178.000,1,0.000000,https://open.spotify.com/track/6SkGAtFv38tQjouh7UeNpu
+9,2,6SkGAtFv38tQjouh7UeNpu,0FD5inFAFMXLM4o7JjNs1v,on_repeat,SCISSORS,Transviolet,SCISSORS,170.000,183.000,1,0.161932,https://open.spotify.com/track/0FD5inFAFMXLM4o7JjNs1v
+9,3,6SkGAtFv38tQjouh7UeNpu,1FqozwZRQt0hBBJX6e48j7,yes,Meathook,The Cure,Three Imaginary Boys,166.000,171.000,1,0.283569,https://open.spotify.com/track/1FqozwZRQt0hBBJX6e48j7
+9,4,6SkGAtFv38tQjouh7UeNpu,6wNUBZNWFxdUGof6vkaykE,yes,One For The Road,Arctic Monkeys,AM,180.000,193.000,1,0.646027,https://open.spotify.com/track/6wNUBZNWFxdUGof6vkaykE
+10,1,2QgDqRuKcCOd3iIWcspgUr,2QgDqRuKcCOd3iIWcspgUr,yes,Obsessed,Elle Lexxa,Obsessed,129.000,154.000,1,0.000000,https://open.spotify.com/track/2QgDqRuKcCOd3iIWcspgUr
+10,2,2QgDqRuKcCOd3iIWcspgUr,1JIffDQIhTeOeqYW66uu9e,on_repeat,The Dark Forest,Muse,The Wow! Signal,127.000,147.000,1,0.241471,https://open.spotify.com/track/1JIffDQIhTeOeqYW66uu9e
+10,3,2QgDqRuKcCOd3iIWcspgUr,5916POJDlPQRBbe1SJc7uK,on_repeat,Good Girl,Paris Paloma,Good Girl,129.000,166.000,1,0.386327,https://open.spotify.com/track/5916POJDlPQRBbe1SJc7uK
+10,4,2QgDqRuKcCOd3iIWcspgUr,5E0pS3sXgWdQZMKChqYXHE,on_repeat,Basic Instinct,The Acid,Liminal,118.000,154.000,1,0.477024,https://open.spotify.com/track/5E0pS3sXgWdQZMKChqYXHE
+11,1,31CgjKFR1pzFO5Im365rXB,31CgjKFR1pzFO5Im365rXB,yes,I Am,AWOLNATION,Run,130.000,159.000,1,0.000000,https://open.spotify.com/track/31CgjKFR1pzFO5Im365rXB
+11,2,31CgjKFR1pzFO5Im365rXB,2NEJSUekQg1nVvTI0ctJeA,on_repeat,Stem the Flow,Paris Paloma,Stem the Flow,129.000,166.000,1,0.228583,https://open.spotify.com/track/2NEJSUekQg1nVvTI0ctJeA
+11,3,31CgjKFR1pzFO5Im365rXB,5DIBVDJOHh7djepAjKHWCO,yes,Heart Like A Truck,Lainey Wilson,Bell Bottom Country,140.000,161.000,1,0.435576,https://open.spotify.com/track/5DIBVDJOHh7djepAjKHWCO
+11,4,31CgjKFR1pzFO5Im365rXB,5mqJu0zKOG1YAozKzZJj6f,yes,Wrong Side Of Love,Augustana,Augustana,120.000,161.000,1,0.435576,https://open.spotify.com/track/5mqJu0zKOG1YAozKzZJj6f
+12,1,1IHWl5LamUGEuP4ozKQSXZ,1IHWl5LamUGEuP4ozKQSXZ,yes,Tití Me Preguntó,Bad Bunny,Un Verano Sin Ti,107.000,156.000,1,0.000000,https://open.spotify.com/track/1IHWl5LamUGEuP4ozKQSXZ
+12,2,1IHWl5LamUGEuP4ozKQSXZ,5gmJlzd7GyggoqLedD7vKV,yes,Hollow,"Flume,Emma Louise",Palaces,105.000,161.000,1,0.180983,https://open.spotify.com/track/5gmJlzd7GyggoqLedD7vKV
+12,3,1IHWl5LamUGEuP4ozKQSXZ,3HErXAS9DiVd8C9x6CJTYd,yes,Attaway,Phantogram,Memory Of A Day,112.000,147.000,1,0.358049,https://open.spotify.com/track/3HErXAS9DiVd8C9x6CJTYd
+12,4,1IHWl5LamUGEuP4ozKQSXZ,6Wx88Mv6b9ofjKMKkdwOJd,yes,New Divide,Linkin Park,Transformers: Revenge Of The Fallen The Album,118.000,168.000,1,0.606848,https://open.spotify.com/track/6Wx88Mv6b9ofjKMKkdwOJd
+13,1,1aItKhUXwDGVNQIMdsEv5u,1aItKhUXwDGVNQIMdsEv5u,yes,Fake It,Seether,Finding Beauty In Negative Spaces (Bonus Track Version),132.000,221.000,1,0.000000,https://open.spotify.com/track/1aItKhUXwDGVNQIMdsEv5u
+13,2,1aItKhUXwDGVNQIMdsEv5u,4E3DhWlhgxDUCUIGeLIRV6,yes,Floor It,Bear Hands,The Key to What,132.000,227.000,1,0.190459,https://open.spotify.com/track/4E3DhWlhgxDUCUIGeLIRV6
+13,3,1aItKhUXwDGVNQIMdsEv5u,4addWz723II2aHsOpvmPH4,yes,FarAway,Pacific Air,Stop Talking,130.000,207.000,1,0.452527,https://open.spotify.com/track/4addWz723II2aHsOpvmPH4
+13,4,1aItKhUXwDGVNQIMdsEv5u,0NdTUS4UiNYCNn5FgVqKQY,on_repeat,Snap Out Of It,Arctic Monkeys,AM,130.000,224.000,2,0.543785,https://open.spotify.com/track/0NdTUS4UiNYCNn5FgVqKQY
+14,1,0EfsDEYaSjGYd66Pr881nq,0EfsDEYaSjGYd66Pr881nq,yes,Cry Baby,The Neighbourhood,Wiped Out!,108.000,158.000,1,0.000000,https://open.spotify.com/track/0EfsDEYaSjGYd66Pr881nq
+14,2,0EfsDEYaSjGYd66Pr881nq,69QHm3pustz01CJRwdo20z,yes,Hells Bells,AC/DC,Back In Black,107.000,156.000,1,0.076756,https://open.spotify.com/track/69QHm3pustz01CJRwdo20z
+14,3,0EfsDEYaSjGYd66Pr881nq,3adprsGoZuParw5pyhhLCc,yes,Trying To Be Cool,Phoenix,Bankrupt!,114.000,173.000,1,0.543151,https://open.spotify.com/track/3adprsGoZuParw5pyhhLCc
+14,4,0EfsDEYaSjGYd66Pr881nq,1yshfaUkaAletecfWFVgtS,yes,Gooey - Gilligan Moss Remix,"Glass Animals,Gilligan Moss",Remixes,110.000,140.000,1,0.582129,https://open.spotify.com/track/1yshfaUkaAletecfWFVgtS
+15,1,1LYdu02RKlGxYEYyGbQNhe,1LYdu02RKlGxYEYyGbQNhe,yes,Zombie,The Neighbourhood,(((((ultraSOUND))))),138.000,208.000,1,0.000000,https://open.spotify.com/track/1LYdu02RKlGxYEYyGbQNhe
+15,2,1LYdu02RKlGxYEYyGbQNhe,7LsDPR5Y9YdzQOauL2DP4s,yes,Clothesline,The All-American Rejects,Sandbox,145.000,206.000,1,0.302521,https://open.spotify.com/track/7LsDPR5Y9YdzQOauL2DP4s
+15,3,1LYdu02RKlGxYEYyGbQNhe,31hUonEmUsEVd0FMRv1s5r,yes,Not Your Fault,AWOLNATION,Megalithic Symphony,144.000,197.000,1,0.432630,https://open.spotify.com/track/31hUonEmUsEVd0FMRv1s5r
+15,4,1LYdu02RKlGxYEYyGbQNhe,6X3dsWYaXWhU5zdGj0p21G,yes,Intrusive Thoughts,Bear Hands,The Key to What,130.000,221.000,1,0.534699,https://open.spotify.com/track/6X3dsWYaXWhU5zdGj0p21G
+16,1,1Ki5PqMFMTKQfjB1uet9pG,1Ki5PqMFMTKQfjB1uet9pG,yes,You Again,Jonah Kagen,You Again,120.000,170.000,1,0.000000,https://open.spotify.com/track/1Ki5PqMFMTKQfjB1uet9pG
+16,2,1Ki5PqMFMTKQfjB1uet9pG,54jvLVojOWiQRubRfKmZ2k,yes,.intoodeep,Dead Poet Society,-!- (Deluxe),125.000,177.000,1,0.306786,https://open.spotify.com/track/54jvLVojOWiQRubRfKmZ2k
+16,3,1Ki5PqMFMTKQfjB1uet9pG,5N7Cdi5Te9E3rejjuyRwll,yes,Your Chaos,NOMARKMORE,Exhibition Number Zero,124.000,184.000,1,0.477513,https://open.spotify.com/track/5N7Cdi5Te9E3rejjuyRwll
+16,4,1Ki5PqMFMTKQfjB1uet9pG,4nSrvWuCRK5yzY4K5iksAr,yes,Play Nice,Pacific Air,Stop Talking (Spotify Exclusive),109.000,175.000,1,0.489203,https://open.spotify.com/track/4nSrvWuCRK5yzY4K5iksAr
+17,1,4xigPf2sigSPmuFH3qCelB,4xigPf2sigSPmuFH3qCelB,yes,Genius,"Sia,Diplo,Labrinth,LSD","LABRINTH, SIA & DIPLO PRESENT... LSD",159.000,178.000,1,0.000000,https://open.spotify.com/track/4xigPf2sigSPmuFH3qCelB
+17,2,4xigPf2sigSPmuFH3qCelB,0FaTDETtzCRxYIf3noMnsF,yes,Dandelion,Daughter,Stereo Mind Game,158.000,178.000,1,0.041781,https://open.spotify.com/track/0FaTDETtzCRxYIf3noMnsF
+17,3,4xigPf2sigSPmuFH3qCelB,660u9agQuREtEDmETVWSts,yes,Three Imaginary Boys - 2005 Remaster,The Cure,Three Imaginary Boys (Deluxe Edition),170.000,171.000,1,0.510335,https://open.spotify.com/track/660u9agQuREtEDmETVWSts
+17,4,4xigPf2sigSPmuFH3qCelB,5GI8QlM6RlyZjegB9CFk7U,yes,Jungle (Radio Edit),Tash Sultana,Jungle (Radio Edit),146.000,180.000,2,0.729577,https://open.spotify.com/track/5GI8QlM6RlyZjegB9CFk7U
+18,1,7DTAZBykDP2m8LkYehrwhl,7DTAZBykDP2m8LkYehrwhl,yes,Friendly Fire,Rainbow Kitten Surprise,bones,135.000,162.000,1,0.000000,https://open.spotify.com/track/7DTAZBykDP2m8LkYehrwhl
+18,2,7DTAZBykDP2m8LkYehrwhl,58ge6dfP91o9oXMzq3XkIS,yes,505,Arctic Monkeys,Favourite Worst Nightmare (Standard Version),140.000,160.000,1,0.219474,https://open.spotify.com/track/58ge6dfP91o9oXMzq3XkIS
+18,3,7DTAZBykDP2m8LkYehrwhl,35BspUdHJEuqWx6aCzMG5U,yes,R.I.P,3OH!3,Streets Of Gold,130.000,175.000,1,0.459864,https://open.spotify.com/track/35BspUdHJEuqWx6aCzMG5U
+18,4,7DTAZBykDP2m8LkYehrwhl,2m17BTWlZq0wtS9cpJsCfM,yes,Kill Of The Night,Gin Wigmore,Gravel & Wine,126.000,177.000,1,0.604922,https://open.spotify.com/track/2m17BTWlZq0wtS9cpJsCfM
+19,1,5vollujufHY0jMZxx77VWr,5vollujufHY0jMZxx77VWr,yes,All These Things That I've Done,The Killers,Hot Fuss,118.000,145.000,1,0.000000,https://open.spotify.com/track/5vollujufHY0jMZxx77VWr
+19,2,5vollujufHY0jMZxx77VWr,0WYqT1IvPzmKNNzR8mgIQs,yes,Love Lockdown,Glass Animals,Pools,120.000,142.000,1,0.125548,https://open.spotify.com/track/0WYqT1IvPzmKNNzR8mgIQs
+19,3,5vollujufHY0jMZxx77VWr,7yT4NJt5rgmVoMJMGPULcj,yes,Backseat,Balu Brigada,Backseat,126.000,138.000,1,0.399347,https://open.spotify.com/track/7yT4NJt5rgmVoMJMGPULcj
+19,4,5vollujufHY0jMZxx77VWr,0wO2H4SPvuaukEmxuAxFnF,on_repeat,I'll Let You Live,Taking Back Sunday,Louder Now,106.000,164.000,1,0.776889,https://open.spotify.com/track/0wO2H4SPvuaukEmxuAxFnF
+20,1,6Lto2Xj8y0U2bes2hmRMZu,6Lto2Xj8y0U2bes2hmRMZu,on_repeat,Wonderful Nothing,Glass Animals,I Love You So F***ing Much,89.000,162.000,1,0.000000,https://open.spotify.com/track/6Lto2Xj8y0U2bes2hmRMZu
+20,2,6Lto2Xj8y0U2bes2hmRMZu,2Ggr9IfS70wYQacW8nZKPG,on_repeat,labour,Paris Paloma,labour,84.000,166.000,1,0.242220,https://open.spotify.com/track/2Ggr9IfS70wYQacW8nZKPG
+20,3,6Lto2Xj8y0U2bes2hmRMZu,3jfHclM5oNBSUvuBS7OgPj,on_repeat,Absolution,Switchfoot,Absolution,91.000,168.000,2,0.524780,https://open.spotify.com/track/3jfHclM5oNBSUvuBS7OgPj
+20,4,6Lto2Xj8y0U2bes2hmRMZu,5lZJxYTRlmSP7DTvcHRfbE,yes,Illusion,Foreign Air,Good Morning Stranger,84.000,171.000,2,0.596148,https://open.spotify.com/track/5lZJxYTRlmSP7DTvcHRfbE
+21,1,2SGyf0hCuB81F85cHXuRjl,2SGyf0hCuB81F85cHXuRjl,yes,So Cold,Balu Brigada,Portal,111.000,222.000,1,0.000000,https://open.spotify.com/track/2SGyf0hCuB81F85cHXuRjl
+21,2,2SGyf0hCuB81F85cHXuRjl,0aYQsp1vZZcX0JBEJvKF7N,yes,Words As Weapons,Seether,Isolate And Medicate (Deluxe Edition),110.000,210.000,1,0.374004,https://open.spotify.com/track/0aYQsp1vZZcX0JBEJvKF7N
+21,3,2SGyf0hCuB81F85cHXuRjl,4yZaGXHJ4b6ToBBAIdK25W,yes,HIT ME HARDER,3OH!3,HIT ME HARDER,123.000,226.000,1,0.520389,https://open.spotify.com/track/4yZaGXHJ4b6ToBBAIdK25W
+21,4,2SGyf0hCuB81F85cHXuRjl,3bd1f4vkL6NMwL4BRV31wA,yes,Ugly Boy,Die Antwoord,Donker Mag,102.000,210.000,1,0.530849,https://open.spotify.com/track/3bd1f4vkL6NMwL4BRV31wA
+22,1,1LPGwuFgIzbJoShfDdw7MY,1LPGwuFgIzbJoShfDdw7MY,on_repeat,Youth,Glass Animals,How To Be A Human Being,96.000,216.000,1,0.000000,https://open.spotify.com/track/1LPGwuFgIzbJoShfDdw7MY
+22,2,1LPGwuFgIzbJoShfDdw7MY,4atMrAadB7dS8xn9vfk9PQ,yes,Fireside,Arctic Monkeys,AM,100.000,223.000,1,0.275279,https://open.spotify.com/track/4atMrAadB7dS8xn9vfk9PQ
+22,3,1LPGwuFgIzbJoShfDdw7MY,6n8TMVyFKoUmDc4apxceRD,on_repeat,Breaking the Habit,Linkin Park,Meteora,100.000,204.000,1,0.409955,https://open.spotify.com/track/6n8TMVyFKoUmDc4apxceRD
+22,4,1LPGwuFgIzbJoShfDdw7MY,53BirqAVvxjDPQCH316BNM,yes,Don't Dance,3OH!3,3OH!3,80.000,203.000,1,0.784239,https://open.spotify.com/track/53BirqAVvxjDPQCH316BNM
+23,1,0Y0opRUBGuBOh7sogywclY,0Y0opRUBGuBOh7sogywclY,on_repeat,Dust,Augustana,"Can't Love, Can't Hurt",146.000,151.000,1,0.000000,https://open.spotify.com/track/0Y0opRUBGuBOh7sogywclY
+23,2,0Y0opRUBGuBOh7sogywclY,3wNUaKeGPWmbB7139pfZdj,yes,Empty,Metric,Live It Out,146.000,156.000,1,0.156417,https://open.spotify.com/track/3wNUaKeGPWmbB7139pfZdj
+23,3,0Y0opRUBGuBOh7sogywclY,25dJMz1RMvCjoodJ2jI6BV,yes,MOONWALKIN',GLU,MY DEMONS EP,144.000,157.000,2,0.527871,https://open.spotify.com/track/25dJMz1RMvCjoodJ2jI6BV
+23,4,0Y0opRUBGuBOh7sogywclY,3xN4BIFz9spIZ0NIHTKFGC,yes,Feather,MEG MYERS,Sorry,150.000,124.000,1,0.861483,https://open.spotify.com/track/3xN4BIFz9spIZ0NIHTKFGC
+24,1,3USxtqRwSYz57Ewm6wWRMp,3USxtqRwSYz57Ewm6wWRMp,on_repeat,Heat Waves,Glass Animals,Dreamland,81.000,182.000,1,0.000000,https://open.spotify.com/track/3USxtqRwSYz57Ewm6wWRMp
+24,2,3USxtqRwSYz57Ewm6wWRMp,4ODBthPIrDroujDxRS7cWu,yes,GREAT LAKES,cleopatrick,BUMMER,75.000,176.000,1,0.315224,https://open.spotify.com/track/4ODBthPIrDroujDxRS7cWu
+24,3,3USxtqRwSYz57Ewm6wWRMp,2cRPkU3kkSK93bd65uLqzk,on_repeat,Smoking Gun,"Inpatient,Ren,Chris Webby",Smoking Gun,93.000,183.000,1,0.507747,https://open.spotify.com/track/2cRPkU3kkSK93bd65uLqzk
+24,4,3USxtqRwSYz57Ewm6wWRMp,21slhimb1blAmvpjq0l8rh,yes,Conversation,Catfish and the Bottlemen,The Balance,99.000,174.000,1,0.800232,https://open.spotify.com/track/21slhimb1blAmvpjq0l8rh
+25,1,6fTgbkBiMITtHUmik95ClX,6fTgbkBiMITtHUmik95ClX,yes,MakeDamnSure,Taking Back Sunday,Louder Now (Deluxe Edition),140.000,182.000,1,0.000000,https://open.spotify.com/track/6fTgbkBiMITtHUmik95ClX
+25,2,6fTgbkBiMITtHUmik95ClX,3Oiauiojgokw9vWQvFmEoI,yes,Eyes on Fire - Zeds Dead Remix,"Blue Foundation,Zeds Dead",Eyes on Fire (Zeds Dead Remix) [Zed Dead Remix],145.000,166.000,1,0.540640,https://open.spotify.com/track/3Oiauiojgokw9vWQvFmEoI
+25,3,6fTgbkBiMITtHUmik95ClX,03mN5X7xFtv6uuBGsB43aY,yes,Sixteen,Rainbow Kitten Surprise,Sixteen,143.000,199.000,1,0.542553,https://open.spotify.com/track/03mN5X7xFtv6uuBGsB43aY
+25,4,6fTgbkBiMITtHUmik95ClX,0A0RBBTrgfq9eClnw6ZXT7,yes,Future Starts Slow,The Kills,Blood Pressures,128.000,189.000,1,0.560185,https://open.spotify.com/track/0A0RBBTrgfq9eClnw6ZXT7
+26,1,358bOvBiZCS9fRzNYosw6c,358bOvBiZCS9fRzNYosw6c,yes,Like a Boy,Ciara,The Evolution,132.000,185.000,1,0.000000,https://open.spotify.com/track/358bOvBiZCS9fRzNYosw6c
+26,2,358bOvBiZCS9fRzNYosw6c,3AiXzUyFAFZVBGVAADPN5a,yes,Make Up Your Mind,Florence + The Machine,"How Big, How Blue, How Beautiful (Deluxe)",133.000,192.000,1,0.219775,https://open.spotify.com/track/3AiXzUyFAFZVBGVAADPN5a
+26,3,358bOvBiZCS9fRzNYosw6c,1735xgk2J8CHCGY2LS1HM6,yes,Private,The Neighbourhood,Private,124.000,175.000,2,0.711669,https://open.spotify.com/track/1735xgk2J8CHCGY2LS1HM6
+26,4,358bOvBiZCS9fRzNYosw6c,4jZWeEaLCnwYtLnVEN6BYV,yes,Blue Jeans,Lana Del Rey,Born To Die,118.000,190.000,2,0.822719,https://open.spotify.com/track/4jZWeEaLCnwYtLnVEN6BYV
+27,1,0QVqdSLCPskZiJpcYQTgvi,0QVqdSLCPskZiJpcYQTgvi,yes,Family,Badflower,Family,150.000,169.000,1,0.000000,https://open.spotify.com/track/0QVqdSLCPskZiJpcYQTgvi
+27,2,0QVqdSLCPskZiJpcYQTgvi,2YB7LLj8xZcd4pDs0UBM6i,yes,Don't Speak,Culture Wars,Don't Speak,154.000,177.000,1,0.297714,https://open.spotify.com/track/2YB7LLj8xZcd4pDs0UBM6i
+27,3,0QVqdSLCPskZiJpcYQTgvi,1ggbqc7jhg454UpFfSmdam,yes,Don't Miss,The Blue Stones,Pretty Monster,136.000,173.000,1,0.606482,https://open.spotify.com/track/1ggbqc7jhg454UpFfSmdam
+27,4,0QVqdSLCPskZiJpcYQTgvi,2XTFxS6tjPzRslHheCtAJf,yes,SUGAR,Elba Rose,SUGAR,164.000,171.000,2,0.847739,https://open.spotify.com/track/2XTFxS6tjPzRslHheCtAJf
+28,1,2wZBb1r0BYixj88W9VsrTl,2wZBb1r0BYixj88W9VsrTl,yes,Motel,MEG MYERS,Sorry,80.000,153.000,1,0.000000,https://open.spotify.com/track/2wZBb1r0BYixj88W9VsrTl
+28,2,2wZBb1r0BYixj88W9VsrTl,3XMyREykeptNpvd0tE75xw,yes,Numb,MEG MYERS,Take Me To The Disco,82.000,149.000,1,0.148031,https://open.spotify.com/track/3XMyREykeptNpvd0tE75xw
+28,3,2wZBb1r0BYixj88W9VsrTl,15y1BArk8UmePx9hqQDh42,on_repeat,The Sickness In You & I,Muse,The Wow! Signal,84.000,153.000,2,0.503199,https://open.spotify.com/track/15y1BArk8UmePx9hqQDh42
+28,4,2wZBb1r0BYixj88W9VsrTl,1Yi8XPnCPoimWwqxwm3uz9,yes,Longshot,Catfish and the Bottlemen,Longshot,103.000,172.000,1,1.134044,https://open.spotify.com/track/1Yi8XPnCPoimWwqxwm3uz9
+29,1,7vZ9v4c0ft0ro30awMw32V,7vZ9v4c0ft0ro30awMw32V,on_repeat,Cryogen,Muse,The Wow! Signal,133.000,185.000,1,0.000000,https://open.spotify.com/track/7vZ9v4c0ft0ro30awMw32V
+29,2,7vZ9v4c0ft0ro30awMw32V,3SiFPLJReFiH2uq6Lht7Xc,yes,The Comeback,Shout Out Louds,Howl Howl Gaff Gaff,129.000,190.000,1,0.229697,https://open.spotify.com/track/3SiFPLJReFiH2uq6Lht7Xc
+29,3,7vZ9v4c0ft0ro30awMw32V,1AQlvpcPh79BKnoKe1E6Nw,yes,Hot Goblin,Em Beihold,Hot Goblin,123.000,193.000,2,0.681344,https://open.spotify.com/track/1AQlvpcPh79BKnoKe1E6Nw
+29,4,7vZ9v4c0ft0ro30awMw32V,2gGCt2yXxDxDITx19sxwJJ,on_repeat,"We Bad, We Know","ZOI,Byfox","We Bad, We Know",112.000,174.000,1,0.968869,https://open.spotify.com/track/2gGCt2yXxDxDITx19sxwJJ
+30,1,6GEIpzW14NtOjqHejbcSRE,6GEIpzW14NtOjqHejbcSRE,yes,Journal of Ardency,Class Actress,Journal of Ardency,97.000,215.000,1,0.000000,https://open.spotify.com/track/6GEIpzW14NtOjqHejbcSRE
+30,2,6GEIpzW14NtOjqHejbcSRE,6HZdbb05lEXLvcmee3ZXO2,yes,Don't Stay,Linkin Park,Meteora,90.000,217.000,1,0.307002,https://open.spotify.com/track/6HZdbb05lEXLvcmee3ZXO2
+30,3,6GEIpzW14NtOjqHejbcSRE,6voIJ7OWwRabSZDC77D5Hp,yes,Trouble’s Coming,Royal Blood,Typhoons,112.000,228.000,1,0.753265,https://open.spotify.com/track/6voIJ7OWwRabSZDC77D5Hp
+30,4,6GEIpzW14NtOjqHejbcSRE,6OyKBwLzq4h15XmxeWf5n4,yes,Cute Without The 'E' (Cut From The Team) - Remastered 2019,Taking Back Sunday,Tell All Your Friends (Remastered),95.000,186.000,1,0.871230,https://open.spotify.com/track/6OyKBwLzq4h15XmxeWf5n4
+31,1,5ykbOijJEfRhuo2Td1m0Qd,5ykbOijJEfRhuo2Td1m0Qd,yes,7,Catfish and the Bottlemen,The Ride,155.000,152.000,1,0.000000,https://open.spotify.com/track/5ykbOijJEfRhuo2Td1m0Qd
+31,2,5ykbOijJEfRhuo2Td1m0Qd,5fvbLe4bIfFR4B5iB2EQSe,yes,Just A Feeling,Maroon 5,Hands All Over,150.000,151.000,1,0.218914,https://open.spotify.com/track/5fvbLe4bIfFR4B5iB2EQSe
+31,3,5ykbOijJEfRhuo2Td1m0Qd,4vGKLADQksmUcPAVHu7oab,on_repeat,Yours Forever (feat. Matt Maeson),"Bishop Briggs,Matt Maeson",Yours Forever (feat. Matt Maeson),143.000,131.000,2,0.977328,https://open.spotify.com/track/4vGKLADQksmUcPAVHu7oab
+31,4,5ykbOijJEfRhuo2Td1m0Qd,5H7Z2DdWYT9ctLSuKzqkSb,maybe,Golden Dandelions - Acoustic,Barns Courtney,Golden Dandelions (Acoustic),140.000,171.000,2,1.017495,https://open.spotify.com/track/5H7Z2DdWYT9ctLSuKzqkSb
+32,1,6NDt5z8GKIHub37hBQ4x18,6NDt5z8GKIHub37hBQ4x18,yes,Tearing Me Up,Bob Moses,Days Gone By,115.000,127.000,1,0.000000,https://open.spotify.com/track/6NDt5z8GKIHub37hBQ4x18
+32,2,6NDt5z8GKIHub37hBQ4x18,6EfZCB2wudriyD1vDjuAZ9,yes,Bird Song,Florence + The Machine,Lungs (Deluxe Edition),120.000,124.000,1,0.234054,https://open.spotify.com/track/6EfZCB2wudriyD1vDjuAZ9
+32,3,6NDt5z8GKIHub37hBQ4x18,0L3di3gB5KlamEABLJK8KK,maybe,Your Biggest Fan,Never Shout Never,Me and My Uke,125.000,158.000,1,1.023678,https://open.spotify.com/track/0L3di3gB5KlamEABLJK8KK
+32,4,6NDt5z8GKIHub37hBQ4x18,1wAPbQ5XjbZqPl0WDl5mHH,maybe,Tainted Love,Milky Chance,Trip Tape,114.000,159.000,2,1.072344,https://open.spotify.com/track/1wAPbQ5XjbZqPl0WDl5mHH
+33,1,771xIRZvmPNPNw8CP82WJV,771xIRZvmPNPNw8CP82WJV,yes,Jealousy,Phantogram,Memory Of A Day,161.000,203.000,1,0.000000,https://open.spotify.com/track/771xIRZvmPNPNw8CP82WJV
+33,2,771xIRZvmPNPNw8CP82WJV,6TjjZllUyDPIBiFuHZSVtm,yes,Grinding Halt - 2005 Remaster,The Cure,Three Imaginary Boys,173.000,211.000,1,0.568022,https://open.spotify.com/track/6TjjZllUyDPIBiFuHZSVtm
+33,3,771xIRZvmPNPNw8CP82WJV,76GlO5H5RT6g7y0gev86Nk,yes,Just like Heaven,The Cure,"Kiss Me, Kiss Me, Kiss Me",151.000,216.000,2,0.751671,https://open.spotify.com/track/76GlO5H5RT6g7y0gev86Nk
+33,4,771xIRZvmPNPNw8CP82WJV,1Au3FoCGdYXtecmFc5s2l1,maybe,Coincide,Catfish and the Bottlemen,The Balance,140.000,180.000,1,1.134590,https://open.spotify.com/track/1Au3FoCGdYXtecmFc5s2l1
+34,1,4eTIe5eqds88bA9ua6p5p6,4eTIe5eqds88bA9ua6p5p6,yes,Fine Again,Seether,Disclaimer,176.000,166.000,1,0.000000,https://open.spotify.com/track/4eTIe5eqds88bA9ua6p5p6
+34,2,4eTIe5eqds88bA9ua6p5p6,3A5rfmGdSmfcNqIURUJt4z,yes,All I Need Is You,NOMARKMORE,Exhibition Number Zero,176.000,166.000,2,0.486380,https://open.spotify.com/track/3A5rfmGdSmfcNqIURUJt4z
+34,3,4eTIe5eqds88bA9ua6p5p6,23IJ5wLRhEZ9DOuia5mPiZ,maybe,Who Are You,The Who,Who Are You,156.000,179.000,2,1.065092,https://open.spotify.com/track/23IJ5wLRhEZ9DOuia5mPiZ
+34,4,4eTIe5eqds88bA9ua6p5p6,1XYHqSfJK9ud9nuRjQcbXi,maybe,Tear You Apart,She Wants Revenge,She Wants Revenge,153.000,190.000,1,1.226219,https://open.spotify.com/track/1XYHqSfJK9ud9nuRjQcbXi
+35,1,2UdCAgl9eX9VevTzo4Rbyn,2UdCAgl9eX9VevTzo4Rbyn,yes,The Death Of Me,MEG MYERS,Take Me To The Disco,140.000,184.000,1,0.000000,https://open.spotify.com/track/2UdCAgl9eX9VevTzo4Rbyn
+35,2,2UdCAgl9eX9VevTzo4Rbyn,4pEU0NT64oiem9lDT7nuJn,yes,Running In Circles,Dead Poet Society,FISSION,142.000,210.000,1,0.776573,https://open.spotify.com/track/4pEU0NT64oiem9lDT7nuJn
+35,3,2UdCAgl9eX9VevTzo4Rbyn,219ekgc5N3hBkpZSr5fYnj,maybe,We Move Like the Ocean,Bad Suns,Language & Perspective,118.000,194.000,1,1.012436,https://open.spotify.com/track/219ekgc5N3hBkpZSr5fYnj
+35,4,2UdCAgl9eX9VevTzo4Rbyn,4bVuIlGQBMWS7vIhcx8Ae4,maybe,What Hurts The Most,Rascal Flatts,Me And My Gang,136.000,154.000,2,1.047282,https://open.spotify.com/track/4bVuIlGQBMWS7vIhcx8Ae4
+36,1,7mE57yFVWevAttx4HvLZKi,7mE57yFVWevAttx4HvLZKi,yes,Flow,Crooked Colours,Vera,118.000,139.000,1,0.000000,https://open.spotify.com/track/7mE57yFVWevAttx4HvLZKi
+36,2,7mE57yFVWevAttx4HvLZKi,3TO7bbrUKrOSPGRTB5MeCz,yes,Time,Pink Floyd,The Dark Side of the Moon,120.000,120.000,2,0.750307,https://open.spotify.com/track/3TO7bbrUKrOSPGRTB5MeCz
+36,3,7mE57yFVWevAttx4HvLZKi,5I2UElY0XPnPhQhBTxBcq3,maybe,Bloodstream,Stateless,Stateless,140.000,151.000,1,1.023686,https://open.spotify.com/track/5I2UElY0XPnPhQhBTxBcq3
+36,4,7mE57yFVWevAttx4HvLZKi,2KmSnPWWCIsEomVsKnbE1a,maybe,Big Balls,AC/DC,Dirty Deeds Done Dirt Cheap,107.000,167.000,2,1.074529,https://open.spotify.com/track/2KmSnPWWCIsEomVsKnbE1a
+37,1,5fbQCQt91LsVgXusFS0CCD,5fbQCQt91LsVgXusFS0CCD,yes,Disorder - 2007 Remaster,Joy Division,Unknown Pleasures (Collector's Edition),85.000,186.000,1,0.000000,https://open.spotify.com/track/5fbQCQt91LsVgXusFS0CCD
+37,2,5fbQCQt91LsVgXusFS0CCD,0qM7QW0hUI8Lez3MAI3P5U,yes,Gold,Sir Sly,You Haunt Me,90.000,162.000,1,0.740905,https://open.spotify.com/track/0qM7QW0hUI8Lez3MAI3P5U
+37,3,5fbQCQt91LsVgXusFS0CCD,0rn8BcTBTPGWb4NRCBST0k,maybe,..FEISTY,"Fred again..,BIA",ICEY..FEISTY,102.000,209.000,1,1.002126,https://open.spotify.com/track/0rn8BcTBTPGWb4NRCBST0k
+37,4,5fbQCQt91LsVgXusFS0CCD,4PvD06Pmbm2rHG2JjSlElF,maybe,Beggin For Thread,BANKS,Goddess (Deluxe),108.000,170.000,1,1.103410,https://open.spotify.com/track/4PvD06Pmbm2rHG2JjSlElF
+38,1,5l8ylBEHHYL62w5HfjB3JF,5l8ylBEHHYL62w5HfjB3JF,yes,Dang,Rainbow Kitten Surprise,bones,148.000,181.000,1,0.000000,https://open.spotify.com/track/5l8ylBEHHYL62w5HfjB3JF
+38,2,5l8ylBEHHYL62w5HfjB3JF,7DkTneByAopqOjXFG6XlZK,yes,No Room in Frame,Death Cab for Cutie,Kintsugi,125.000,180.000,1,1.009658,https://open.spotify.com/track/7DkTneByAopqOjXFG6XlZK
+38,3,5l8ylBEHHYL62w5HfjB3JF,7fa34IepKo01jV34GTMxQC,on_repeat,Third Side of the Moon,Modest Mouse,An Eraser And A Maze,171.000,180.000,1,1.009658,https://open.spotify.com/track/7fa34IepKo01jV34GTMxQC
+38,4,5l8ylBEHHYL62w5HfjB3JF,5xquYn2sr3uEcyuKU9BmCJ,maybe,Walk All Over You,AC/DC,Highway to Hell,162.000,151.000,1,1.072618,https://open.spotify.com/track/5xquYn2sr3uEcyuKU9BmCJ
+39,1,5zNZZ7TD1bsx0s7zdEHHRW,5zNZZ7TD1bsx0s7zdEHHRW,yes,Streets of Gold,3OH!3,Streets Of Gold,123.000,148.000,1,0.000000,https://open.spotify.com/track/5zNZZ7TD1bsx0s7zdEHHRW
+39,2,5zNZZ7TD1bsx0s7zdEHHRW,4jozjPDv6YVVDmDqDQqyTf,maybe,Always,Panama,Always EP (Deluxe Edition),116.000,181.000,1,1.006715,https://open.spotify.com/track/4jozjPDv6YVVDmDqDQqyTf
+39,3,5zNZZ7TD1bsx0s7zdEHHRW,4QhWbupniDd44EDtnh2bFJ,maybe,Pyramids,Frank Ocean,channel ORANGE,108.000,120.000,1,1.048806,https://open.spotify.com/track/4QhWbupniDd44EDtnh2bFJ
+39,4,5zNZZ7TD1bsx0s7zdEHHRW,7sVbKoBdhXtYCEOO6qC1SN,maybe,We Still Don't Trust You,"Future,Metro Boomin,The Weeknd",WE STILL DON'T TRUST YOU,110.000,174.000,2,1.094608,https://open.spotify.com/track/7sVbKoBdhXtYCEOO6qC1SN
+40,1,0X5C4WjQNubRysTkHOubz3,0X5C4WjQNubRysTkHOubz3,yes,Lovesong - 2010 Remaster,The Cure,Disintegration (Deluxe Edition),140.000,224.000,1,0.000000,https://open.spotify.com/track/0X5C4WjQNubRysTkHOubz3
+40,2,0X5C4WjQNubRysTkHOubz3,5l9D0ugfAeQ6cgiYb2ay65,maybe,Hey,"Lil Jon,3OH!3",Crunk Rock (Deluxe),132.000,196.000,2,1.009640,https://open.spotify.com/track/5l9D0ugfAeQ6cgiYb2ay65
+40,3,0X5C4WjQNubRysTkHOubz3,7IhsLJMqdxoo7YAZjaSMru,maybe,Dead And Gone,"T.I.,Justin Timberlake",Paper Trail,135.000,193.000,2,1.045247,https://open.spotify.com/track/7IhsLJMqdxoo7YAZjaSMru
+40,4,0X5C4WjQNubRysTkHOubz3,1CgmY8fVN7kstVDZmsdM5k,maybe,P.Y.T. (Pretty Young Thing),Michael Jackson,Thriller,127.000,252.000,2,1.105350,https://open.spotify.com/track/1CgmY8fVN7kstVDZmsdM5k
+41,1,2IGEPotTBIcmxM5SOFot6V,2IGEPotTBIcmxM5SOFot6V,yes,Lonely As You,Matt Maeson,Never Had to Leave,172.000,200.000,1,0.000000,https://open.spotify.com/track/2IGEPotTBIcmxM5SOFot6V
+41,2,2IGEPotTBIcmxM5SOFot6V,2PnlsTsOTLE5jnBnNe2K0A,yes,The Emptiness Machine,Linkin Park,The Emptiness Machine,184.000,215.000,2,0.834954,https://open.spotify.com/track/2PnlsTsOTLE5jnBnNe2K0A
+41,3,2IGEPotTBIcmxM5SOFot6V,1QoyuMHNBe7lg3YW4Qtll4,maybe,St. Chroma,"Tyler, The Creator,Daniel Caesar",CHROMAKOPIA,150.000,183.000,1,1.077901,https://open.spotify.com/track/1QoyuMHNBe7lg3YW4Qtll4
+41,4,2IGEPotTBIcmxM5SOFot6V,5flkGz6hHGvA5UD8LRDSgZ,maybe,On Directing,Tegan and Sara,Sainthood,144.000,192.000,1,1.238964,https://open.spotify.com/track/5flkGz6hHGvA5UD8LRDSgZ
+42,1,3ApAsbQP7d5GlFwwdExaTY,3ApAsbQP7d5GlFwwdExaTY,on_repeat,Poplar St,Glass Animals,How To Be A Human Being,69.000,128.000,1,0.000000,https://open.spotify.com/track/3ApAsbQP7d5GlFwwdExaTY
+42,2,3ApAsbQP7d5GlFwwdExaTY,22MuigRpnwPjbAtUSTexb8,yes,Jealous Sea,MEG MYERS,Take Me To The Disco,79.000,137.000,2,0.711477,https://open.spotify.com/track/22MuigRpnwPjbAtUSTexb8
+42,3,3ApAsbQP7d5GlFwwdExaTY,60hT5qY7Ck8D4laJYXdZ9O,yes,Accuracy - 2005 Remaster,The Cure,Three Imaginary Boys,62.000,165.000,2,1.225755,https://open.spotify.com/track/60hT5qY7Ck8D4laJYXdZ9O
+42,4,3ApAsbQP7d5GlFwwdExaTY,32CpKhS5v5SFgfbXmdpsi7,maybe,Hospital Beds,Florence + The Machine,Lungs (Deluxe Edition),96.000,144.000,1,1.286378,https://open.spotify.com/track/32CpKhS5v5SFgfbXmdpsi7
+43,1,6ThVbNunEIjQxRNn0gk6Yg,6ThVbNunEIjQxRNn0gk6Yg,yes,Red,Catfish and the Bottlemen,The Ride,135.000,156.000,1,0.000000,https://open.spotify.com/track/6ThVbNunEIjQxRNn0gk6Yg
+43,2,6ThVbNunEIjQxRNn0gk6Yg,2MO6XvzlEBKA0PoRqAt9J9,maybe,American Blood,Dead Poet Society,American Blood,118.000,167.000,2,1.020723,https://open.spotify.com/track/2MO6XvzlEBKA0PoRqAt9J9
+43,3,6ThVbNunEIjQxRNn0gk6Yg,0QGRhDnZtSUbaighbPENYW,maybe,Close To You,Neon Trees,Picture Show,120.000,173.000,2,1.021011,https://open.spotify.com/track/0QGRhDnZtSUbaighbPENYW
+43,4,6ThVbNunEIjQxRNn0gk6Yg,2X8DqCikgiVk3214hbHEpz,on_repeat,Doing The Right Thing,Daughter,Not To Disappear,136.000,118.000,1,1.108282,https://open.spotify.com/track/2X8DqCikgiVk3214hbHEpz
+44,1,6aBmVhShJV8rY9YAh4xxo6,6aBmVhShJV8rY9YAh4xxo6,on_repeat,Shadow On The Sea,CHAMPS,The Hard Interchange,110.000,245.000,1,0.000000,https://open.spotify.com/track/6aBmVhShJV8rY9YAh4xxo6
+44,2,6aBmVhShJV8rY9YAh4xxo6,5bp2ijoNHjLlZJqyqPWglv,maybe,8 O 8,J€AN-MARC,8 O 8,100.000,213.000,1,1.039572,https://open.spotify.com/track/5bp2ijoNHjLlZJqyqPWglv
+44,3,6aBmVhShJV8rY9YAh4xxo6,5PKnZzkjs2y3WTbIYtv5Fq,maybe,Magic Bus - Mono Edit,The Who,The Kids Are Alright,92.000,230.000,2,1.068116,https://open.spotify.com/track/5PKnZzkjs2y3WTbIYtv5Fq
+44,4,6aBmVhShJV8rY9YAh4xxo6,7feSbMqJGg9yL0s6ypxy9S,maybe,Girls on Film,Duran Duran,Decade,132.000,223.000,1,1.208337,https://open.spotify.com/track/7feSbMqJGg9yL0s6ypxy9S
+45,1,2ssHVnC8IEkQouNXfPDfAe,2ssHVnC8IEkQouNXfPDfAe,on_repeat,Hexagons,Muse,The Wow! Signal,141.000,123.000,1,0.000000,https://open.spotify.com/track/2ssHVnC8IEkQouNXfPDfAe
+45,2,2ssHVnC8IEkQouNXfPDfAe,20ftdDh5boQkgxgkx30Tri,maybe,She Just Happens To Date The Prince Of Darkness,Say Hi,Impeccable Blahs,136.000,155.000,2,1.101466,https://open.spotify.com/track/20ftdDh5boQkgxgkx30Tri
+45,3,2ssHVnC8IEkQouNXfPDfAe,5ULG2PLrYFHu2yan0Qutqe,maybe,Cliffy,Matt Maeson,The Hearse,120.000,125.000,2,1.108351,https://open.spotify.com/track/5ULG2PLrYFHu2yan0Qutqe
+45,4,2ssHVnC8IEkQouNXfPDfAe,0sL5WC2mgffTiCXUA0g2nh,maybe,All Your Love,Sir Sly,All Your Love,122.000,141.000,2,1.155254,https://open.spotify.com/track/0sL5WC2mgffTiCXUA0g2nh
+46,1,00aEvruq9NQRUzYMn1rEPs,00aEvruq9NQRUzYMn1rEPs,yes,The Therapist,Foreign Air,The Therapist,92.000,182.000,1,0.000000,https://open.spotify.com/track/00aEvruq9NQRUzYMn1rEPs
+46,2,00aEvruq9NQRUzYMn1rEPs,6IAQGogKOkE69G7OcXQ28e,maybe,Blue Gasoline,Airways,Blue Gasoline,113.000,174.000,2,1.125705,https://open.spotify.com/track/6IAQGogKOkE69G7OcXQ28e
+46,3,00aEvruq9NQRUzYMn1rEPs,72QXcbzrCVYnWav6Xtuvaw,maybe,Dangerous - Immortal Version,Michael Jackson,Immortal,113.000,202.000,1,1.141654,https://open.spotify.com/track/72QXcbzrCVYnWav6Xtuvaw
+46,4,00aEvruq9NQRUzYMn1rEPs,5kDJvxVwV5JY1DpCrQRhRk,maybe,English Town,Matchbox Twenty,North (Deluxe Edition),115.000,166.000,1,1.168153,https://open.spotify.com/track/5kDJvxVwV5JY1DpCrQRhRk
+47,1,7w57O4o0xCTn9YpKuaPZDd,7w57O4o0xCTn9YpKuaPZDd,yes,The Great Beyond,R.E.M.,In Time: The Best Of R.E.M. 1988-2003,110.000,126.000,1,0.000000,https://open.spotify.com/track/7w57O4o0xCTn9YpKuaPZDd
+47,2,7w57O4o0xCTn9YpKuaPZDd,51Wao8QZ4Fv4zamKbRnKQd,maybe,Bird Song,Elderbrook,Old Friend,120.000,153.000,2,1.065578,https://open.spotify.com/track/51Wao8QZ4Fv4zamKbRnKQd
+47,3,7w57O4o0xCTn9YpKuaPZDd,4W6tDPKAb5RTZaixgrcWWm,maybe,Hallucinogenics,Matt Maeson,The Hearse,122.000,153.000,2,1.109263,https://open.spotify.com/track/4W6tDPKAb5RTZaixgrcWWm
+47,4,7w57O4o0xCTn9YpKuaPZDd,1OV5oUwrL4iw0UTfZy3pGe,maybe,Cringe,Matt Maeson,Who Killed Matt Maeson,126.000,160.000,1,1.248408,https://open.spotify.com/track/1OV5oUwrL4iw0UTfZy3pGe
+48,1,6QQq00cv1UZK0bwWWEpa5e,6QQq00cv1UZK0bwWWEpa5e,yes,"Flicker, Fade",Taking Back Sunday,Happiness Is,197.000,112.000,1,0.000000,https://open.spotify.com/track/6QQq00cv1UZK0bwWWEpa5e
+48,2,6QQq00cv1UZK0bwWWEpa5e,4wFXTN7ADsBxIyJfzvaHGf,maybe,What's Wrong,Foreign Air,Smile,176.000,133.000,1,1.146622,https://open.spotify.com/track/4wFXTN7ADsBxIyJfzvaHGf
+49,1,4Yf5bqU3NK4kNOypcrLYwU,4Yf5bqU3NK4kNOypcrLYwU,yes,Faint,Linkin Park,Meteora,135.000,214.000,1,0.000000,https://open.spotify.com/track/4Yf5bqU3NK4kNOypcrLYwU
+49,2,4Yf5bqU3NK4kNOypcrLYwU,2Cp5exQvEWphydFc11pxO6,maybe,Undercover,No Doubt,Push And Shove,136.000,183.000,2,1.083676,https://open.spotify.com/track/2Cp5exQvEWphydFc11pxO6
+49,3,4Yf5bqU3NK4kNOypcrLYwU,3SKH53SPQbEnZR4cJPVaz2,maybe,Messy,Lola Young,Messy,111.000,200.000,1,1.227811,https://open.spotify.com/track/3SKH53SPQbEnZR4cJPVaz2
+49,4,4Yf5bqU3NK4kNOypcrLYwU,49gE0a0YPRMXRp43QhnHH8,maybe,In the Dark,Cathedrals,Cathedrals - EP,133.000,199.000,3,1.230098,https://open.spotify.com/track/49gE0a0YPRMXRp43QhnHH8
+50,1,4mHEAiQ3TqXizTGJEMZrEo,4mHEAiQ3TqXizTGJEMZrEo,on_repeat,Monroe,Angus & Julia Stone,Monroe,160.000,234.000,1,0.000000,https://open.spotify.com/track/4mHEAiQ3TqXizTGJEMZrEo
+50,2,4mHEAiQ3TqXizTGJEMZrEo,6Px7oJcPvMWLhwRHmao0Fe,maybe,LUCID DREAMS,"Leon Thomas,Masego",MUTT,155.000,193.000,1,1.233402,https://open.spotify.com/track/6Px7oJcPvMWLhwRHmao0Fe
+50,3,4mHEAiQ3TqXizTGJEMZrEo,4W4wYHtsrgDiivRASVOINL,maybe,Love Shack,The B-52's,Cosmic Thing,134.000,240.000,1,1.250801,https://open.spotify.com/track/4W4wYHtsrgDiivRASVOINL
+50,4,4mHEAiQ3TqXizTGJEMZrEo,5vmRQ3zELMLUQPo2FLQ76x,maybe,Smalltown Boy,Bronski Beat,The Age of Consent,135.000,221.000,1,1.250885,https://open.spotify.com/track/5vmRQ3zELMLUQPo2FLQ76x
+51,1,4B5lSnWRFiJx8XghHeTJhc,4B5lSnWRFiJx8XghHeTJhc,yes,ZAMA ZAMA,Die Antwoord,ZAMA ZAMA,175.000,213.000,1,0.000000,https://open.spotify.com/track/4B5lSnWRFiJx8XghHeTJhc
+51,2,4B5lSnWRFiJx8XghHeTJhc,207qLd1ovrqfYVBBDrNMUM,maybe,Dance This Mess Around,The B-52's,The B-52's,161.000,186.000,2,1.165324,https://open.spotify.com/track/207qLd1ovrqfYVBBDrNMUM
+51,3,4B5lSnWRFiJx8XghHeTJhc,3riRdhyMDfEQz5nKrxfbwv,maybe,MUTT [CB REMIX],"Leon Thomas,Chris Brown",MUTT (CB REMIX),180.000,172.000,1,1.259100,https://open.spotify.com/track/3riRdhyMDfEQz5nKrxfbwv
+51,4,4B5lSnWRFiJx8XghHeTJhc,3dcn1aghjxES2RbuIxF4ea,maybe,CHOKECHAIN,3OH!3,WANT (Deluxe),146.000,203.000,1,1.412706,https://open.spotify.com/track/3dcn1aghjxES2RbuIxF4ea
+52,1,6kkeV4q6GJscwNcpdjwApo,6kkeV4q6GJscwNcpdjwApo,yes,Black Out Days - Leo Justi Remix,"Phantogram,Danny Brown,Leo Justi",Black Out Days (Leo Justi Remix),194.000,172.000,1,0.000000,https://open.spotify.com/track/6kkeV4q6GJscwNcpdjwApo
+52,2,6kkeV4q6GJscwNcpdjwApo,13NCxLOlvQ4Tnexgfp03Gs,maybe,Do Me a Favour,Arctic Monkeys,Favourite Worst Nightmare (Standard Version),180.000,185.000,3,1.211523,https://open.spotify.com/track/13NCxLOlvQ4Tnexgfp03Gs
+52,3,6kkeV4q6GJscwNcpdjwApo,0jrRDpGv6FFizspjJJoH5i,yes,10:15 Saturday Night - 2005 Remaster,The Cure,Three Imaginary Boys,175.000,146.000,1,1.222969,https://open.spotify.com/track/0jrRDpGv6FFizspjJJoH5i
+52,4,6kkeV4q6GJscwNcpdjwApo,1gYNo6sCys1dJEIFcgqlYr,maybe,Don't Look Back in Anger - Remastered,Oasis,Time Flies... 1994-2009 (Remastered),163.000,156.000,1,1.610161,https://open.spotify.com/track/1gYNo6sCys1dJEIFcgqlYr
+53,1,54g63GAn77x9NcjiLzy7cW,54g63GAn77x9NcjiLzy7cW,yes,Queen Of Spades,Styx,Pieces Of Eight,135.000,83.000,1,0.000000,https://open.spotify.com/track/54g63GAn77x9NcjiLzy7cW
+53,2,54g63GAn77x9NcjiLzy7cW,1npDFCLgSeJzPnXLszvZQP,maybe,Rich Kids Blues,Lykke Li,Wounded Rhymes,128.000,118.000,1,1.106152,https://open.spotify.com/track/1npDFCLgSeJzPnXLszvZQP
+53,3,54g63GAn77x9NcjiLzy7cW,7LXVDbbx0NY6zJZbdUUaVx,maybe,Where Have You Been,Manchester Orchestra,I'm Like a Virgin Losing a Child,136.000,132.000,2,1.553878,https://open.spotify.com/track/7LXVDbbx0NY6zJZbdUUaVx
+53,4,54g63GAn77x9NcjiLzy7cW,7xgRurvaLwTMdgCXrivL1X,maybe,These Things,Fuel,Natural Selection,120.000,130.000,1,1.617890,https://open.spotify.com/track/7xgRurvaLwTMdgCXrivL1X
+54,1,2E2r97GUoaRP3jCVX3nLa5,2E2r97GUoaRP3jCVX3nLa5,yes,Passion,AWOLNATION,Passion,138.000,228.000,1,0.000000,https://open.spotify.com/track/2E2r97GUoaRP3jCVX3nLa5
+54,2,2E2r97GUoaRP3jCVX3nLa5,2NvnY0snMQqVMBWSJ6QjL2,maybe,Poisonous Kisses,Avi on Fire,Win,138.000,195.000,1,1.015195,https://open.spotify.com/track/2NvnY0snMQqVMBWSJ6QjL2
+54,3,2E2r97GUoaRP3jCVX3nLa5,0k6HUzaRHpQ3eEWr1C7Esh,maybe,Ms. New Booty,"Bubba Sparxxx,Ying Yang Twins,Mr. Collipark",Ms. New Booty,129.000,187.000,2,1.454137,https://open.spotify.com/track/0k6HUzaRHpQ3eEWr1C7Esh
+54,4,2E2r97GUoaRP3jCVX3nLa5,50Emgupm363qIrYBe20FR3,maybe,Quittin' Time,Zach Bryan,Summertime Blues,143.000,183.000,2,1.508674,https://open.spotify.com/track/50Emgupm363qIrYBe20FR3
+55,1,50GOcJ4oPhKmUxcdiqWBqx,50GOcJ4oPhKmUxcdiqWBqx,yes,Hell Nah,Rainbow Kitten Surprise,bones,170.000,160.000,1,0.000000,https://open.spotify.com/track/50GOcJ4oPhKmUxcdiqWBqx
+55,2,50GOcJ4oPhKmUxcdiqWBqx,6tW4k4hJRYTMIYeAWYLGeE,on_repeat,It Takes More,Taking Back Sunday,Happiness Is,153.000,122.000,1,1.480637,https://open.spotify.com/track/6tW4k4hJRYTMIYeAWYLGeE
+55,3,50GOcJ4oPhKmUxcdiqWBqx,2NfxtzCIrpCmJX5Z2KMdD5,maybe,Myth,Beach House,Bloom,142.000,157.000,2,1.588777,https://open.spotify.com/track/2NfxtzCIrpCmJX5Z2KMdD5
+55,4,50GOcJ4oPhKmUxcdiqWBqx,6R0HCnRKGxOaTkdbXUKoLL,maybe,Me and My Friends Are Lonely (Live),Matt Maeson,That's My Cue: A Solo Experience,140.000,165.000,1,1.615441,https://open.spotify.com/track/6R0HCnRKGxOaTkdbXUKoLL
+56,1,6s3aITK4gMINveYvaD7qxs,6s3aITK4gMINveYvaD7qxs,yes,Take Me To The Disco,MEG MYERS,Take Me To The Disco,87.000,124.000,1,0.000000,https://open.spotify.com/track/6s3aITK4gMINveYvaD7qxs
+56,2,6s3aITK4gMINveYvaD7qxs,73CMRj62VK8nUS4ezD2wvi,maybe,Set Fire to the Rain,Adele,21,108.000,172.000,2,1.950179,https://open.spotify.com/track/73CMRj62VK8nUS4ezD2wvi
+56,3,6s3aITK4gMINveYvaD7qxs,3bENrkfntz1ugrsi8yzT9C,maybe,Falling,Florence + The Machine,Lungs (Deluxe Edition),113.000,84.000,2,1.963441,https://open.spotify.com/track/3bENrkfntz1ugrsi8yzT9C
+57,1,15me96DL7o7XC4kctKRTjT,15me96DL7o7XC4kctKRTjT,yes,All A Mystery,Phantogram,Memory Of A Day (Deluxe),204.000,118.000,1,0.000000,https://open.spotify.com/track/15me96DL7o7XC4kctKRTjT
+58,1,7p64m8lgMpuTl00Gd6T9gx,7p64m8lgMpuTl00Gd6T9gx,yes,bones,Rainbow Kitten Surprise,bones,208.000,185.000,1,0.000000,https://open.spotify.com/track/7p64m8lgMpuTl00Gd6T9gx
+59,1,5TFD2bmFKGhoCRbX61nXY5,5TFD2bmFKGhoCRbX61nXY5,yes,NUEVAYoL,Bad Bunny,DeBÍ TiRAR MáS FOToS,138.000,46.000,1,0.000000,https://open.spotify.com/track/5TFD2bmFKGhoCRbX61nXY5
+60,1,2QhURnm7mQDxBb5jWkbDug,2QhURnm7mQDxBb5jWkbDug,maybe,Don't Panic,Coldplay,Parachutes,122.000,166.000,1,0.000000,https://open.spotify.com/track/2QhURnm7mQDxBb5jWkbDug
+60,2,2QhURnm7mQDxBb5jWkbDug,1N96ja5vHzX8cFr8rExKED,maybe,The Weight Of Love,Snow Patrol,Fallen Empires,124.000,167.000,1,0.143454,https://open.spotify.com/track/1N96ja5vHzX8cFr8rExKED
+60,3,2QhURnm7mQDxBb5jWkbDug,21fq2CKL93mfnYHItpitxg,maybe,What You Wanted,OneRepublic,Native,120.000,164.000,1,0.155362,https://open.spotify.com/track/21fq2CKL93mfnYHItpitxg
+60,4,2QhURnm7mQDxBb5jWkbDug,2ZJ0357KXCl3WTCwsPQWdQ,maybe,Story - Non-LP Version,Maroon 5,The B-Side Collection,120.000,170.000,1,0.195884,https://open.spotify.com/track/2ZJ0357KXCl3WTCwsPQWdQ
+61,1,5weqqLD5pDadqumvcrRCVA,5weqqLD5pDadqumvcrRCVA,maybe,Kelsey,Metro Station,Metro Station,120.000,198.000,1,0.000000,https://open.spotify.com/track/5weqqLD5pDadqumvcrRCVA
+61,2,5weqqLD5pDadqumvcrRCVA,6OqdF0vHI9xkqswI7EK0cD,maybe,Cowboy Casanova,Carrie Underwood,Play On,120.000,200.000,1,0.067729,https://open.spotify.com/track/6OqdF0vHI9xkqswI7EK0cD
+61,3,5weqqLD5pDadqumvcrRCVA,3Myb5tcPivRHsoz1jw8GKr,maybe,Codes and Keys,Death Cab for Cutie,Codes and Keys,119.000,191.000,1,0.246711,https://open.spotify.com/track/3Myb5tcPivRHsoz1jw8GKr
+61,4,5weqqLD5pDadqumvcrRCVA,2j0zExWFB0PowLOeoZosjK,maybe,Touch Too Much,AC/DC,Highway to Hell,123.000,204.000,1,0.288696,https://open.spotify.com/track/2j0zExWFB0PowLOeoZosjK
+62,1,6dzBzOOeBpTvv5iotTf2HJ,6dzBzOOeBpTvv5iotTf2HJ,maybe,Kiss,Presley Regier,Kiss,125.000,224.000,1,0.000000,https://open.spotify.com/track/6dzBzOOeBpTvv5iotTf2HJ
+62,2,6dzBzOOeBpTvv5iotTf2HJ,1TfqLAPs4K3s2rJMoCokcS,maybe,Sweet Dreams (Are Made of This) - 2005 Remaster,"Eurythmics,Annie Lennox,Dave Stewart",Sweet Dreams (Are Made Of This),125.000,228.000,1,0.134328,https://open.spotify.com/track/1TfqLAPs4K3s2rJMoCokcS
+62,3,6dzBzOOeBpTvv5iotTf2HJ,1SF8piqsZWn86DajVKih8F,maybe,Kacey Talk,YoungBoy Never Broke Again,Top,127.000,226.000,1,0.150073,https://open.spotify.com/track/1SF8piqsZWn86DajVKih8F
+62,4,6dzBzOOeBpTvv5iotTf2HJ,3eNSlXKgFkmekLIvyYTRKy,maybe,You're Not in on the Joke,Cobra Starship,Hot Mess,130.000,224.000,1,0.335513,https://open.spotify.com/track/3eNSlXKgFkmekLIvyYTRKy
+63,1,7a2utEMamL25CDBoCz5aGr,7a2utEMamL25CDBoCz5aGr,maybe,Found You Out,Sir Sly,You Haunt Me,127.000,185.000,1,0.000000,https://open.spotify.com/track/7a2utEMamL25CDBoCz5aGr
+63,2,7a2utEMamL25CDBoCz5aGr,2h5bz3snLAvbXJhMIrTmSY,maybe,Most Of All,Fuel,Natural Selection,127.000,184.000,1,0.035019,https://open.spotify.com/track/2h5bz3snLAvbXJhMIrTmSY
+63,3,7a2utEMamL25CDBoCz5aGr,5VJe8OKFcPBBjNEAPUeDuJ,maybe,Devil Like Me,Rainbow Kitten Surprise,Seven + Mary,123.000,187.000,1,0.272396,https://open.spotify.com/track/5VJe8OKFcPBBjNEAPUeDuJ
+63,4,7a2utEMamL25CDBoCz5aGr,2YYjiwYdhHGVoTy12yjuwh,maybe,Heavy Rotation,Ciara,Basic Instinct,132.000,183.000,1,0.336419,https://open.spotify.com/track/2YYjiwYdhHGVoTy12yjuwh
+64,1,1NrJYpdAi7uosDRPmSYrsG,1NrJYpdAi7uosDRPmSYrsG,maybe,Apologize,OneRepublic,Dreaming Out Loud,118.000,183.000,1,0.000000,https://open.spotify.com/track/1NrJYpdAi7uosDRPmSYrsG
+64,2,1NrJYpdAi7uosDRPmSYrsG,55lijDD6OAjLFFUHU9tcDm,maybe,WHERE IS MY HUSBAND,RAYE,WHERE IS MY HUSBAND!,116.000,180.000,1,0.165249,https://open.spotify.com/track/55lijDD6OAjLFFUHU9tcDm
+64,3,1NrJYpdAi7uosDRPmSYrsG,6itF8MROxH2MKs5oBuvUTz,maybe,We Fly High - Ballin',Jim Jones,M.O.B. Members of Byrdgang,120.000,186.000,1,0.165249,https://open.spotify.com/track/6itF8MROxH2MKs5oBuvUTz
+64,4,1NrJYpdAi7uosDRPmSYrsG,4g5MorMCNI2aOwEBSov4RT,maybe,Malt Liquor,Lewis Del Mar,Lewis Del Mar,122.000,178.000,1,0.310194,https://open.spotify.com/track/4g5MorMCNI2aOwEBSov4RT
+65,1,7HXzuAd8UNJj2yCAS0NWbB,7HXzuAd8UNJj2yCAS0NWbB,maybe,Opening Night,"Arctic Monkeys,War Child Records",Opening Night,123.000,183.000,1,0.000000,https://open.spotify.com/track/7HXzuAd8UNJj2yCAS0NWbB
+65,2,7HXzuAd8UNJj2yCAS0NWbB,5hlePSjUllP2HQrhRyjdio,maybe,Hermit the Frog,MARINA,The Family Jewels,122.000,181.000,1,0.092442,https://open.spotify.com/track/5hlePSjUllP2HQrhRyjdio
+65,3,7HXzuAd8UNJj2yCAS0NWbB,6XcfKZvJio9Z0fQy11GnNX,maybe,broken,lovelytheband,finding it hard to smile,123.000,191.000,1,0.269600,https://open.spotify.com/track/6XcfKZvJio9Z0fQy11GnNX
+65,4,7HXzuAd8UNJj2yCAS0NWbB,3EB5N4DHgM7Ktk8yy1EgYY,maybe,Stockholm,Atlas Genius,Stockholm,125.000,173.000,1,0.359972,https://open.spotify.com/track/3EB5N4DHgM7Ktk8yy1EgYY
+66,1,5wU6jk9kxYzFGUpeE6T2Q5,5wU6jk9kxYzFGUpeE6T2Q5,maybe,Crystals,Of Monsters and Men,Beneath The Skin,132.000,166.000,1,0.000000,https://open.spotify.com/track/5wU6jk9kxYzFGUpeE6T2Q5
+66,2,5wU6jk9kxYzFGUpeE6T2Q5,4eFiL1kZWXqacJhdhrsONv,maybe,This Is Us,Backstreet Boys,This Is Us,134.000,169.000,1,0.158420,https://open.spotify.com/track/4eFiL1kZWXqacJhdhrsONv
+66,3,5wU6jk9kxYzFGUpeE6T2Q5,6xpDh0dXrkVp0Po1qrHUd8,maybe,Adam's Song,blink-182,Enema Of The State,136.000,168.000,1,0.255891,https://open.spotify.com/track/6xpDh0dXrkVp0Po1qrHUd8
+66,4,5wU6jk9kxYzFGUpeE6T2Q5,003FTlCpBTM4eSqYSWPv4H,maybe,"Swing, Swing",The All-American Rejects,The All-American Rejects,128.000,159.000,1,0.338480,https://open.spotify.com/track/003FTlCpBTM4eSqYSWPv4H
+67,1,1TYqrI2JRi6QssuRMTh2iy,1TYqrI2JRi6QssuRMTh2iy,maybe,All I Need,Lloyd,All I Need,126.000,151.000,1,0.000000,https://open.spotify.com/track/1TYqrI2JRi6QssuRMTh2iy
+67,2,1TYqrI2JRi6QssuRMTh2iy,0LdIVAcALGjlmKnwN36WMg,maybe,Fall Back,Lithe,Fall Back / Selfish Game,126.000,149.000,1,0.064555,https://open.spotify.com/track/0LdIVAcALGjlmKnwN36WMg
+67,3,1TYqrI2JRi6QssuRMTh2iy,7jSyWNuHjjwJXr1SQCCAhB,maybe,Hurricane,Thirty Seconds To Mars,This Is War,125.000,156.000,1,0.172455,https://open.spotify.com/track/7jSyWNuHjjwJXr1SQCCAhB
+67,4,1TYqrI2JRi6QssuRMTh2iy,5Ut5dDKfBUCMsWQbc3Lgyi,maybe,Holiest,"Glass Animals,Tei Shi",Gooey,132.000,164.000,1,0.555964,https://open.spotify.com/track/5Ut5dDKfBUCMsWQbc3Lgyi
+68,1,28iw1FqJf6Vnfl2Fcu9rBh,28iw1FqJf6Vnfl2Fcu9rBh,maybe,Same Old Blues,Phantogram,Three,122.000,152.000,1,0.000000,https://open.spotify.com/track/28iw1FqJf6Vnfl2Fcu9rBh
+68,2,28iw1FqJf6Vnfl2Fcu9rBh,1R7EfuL60uDJSvGndrH7Np,maybe,16 Years,Phantogram,Nightlife,120.000,148.000,1,0.173864,https://open.spotify.com/track/1R7EfuL60uDJSvGndrH7Np
+68,3,28iw1FqJf6Vnfl2Fcu9rBh,4sK96UnGx3NjBaqvfTG2dm,maybe,Too Close,Alex Clare,The Lateness Of The Hour,126.000,158.000,1,0.304432,https://open.spotify.com/track/4sK96UnGx3NjBaqvfTG2dm
+68,4,28iw1FqJf6Vnfl2Fcu9rBh,1kxeWHF9PrCVZHvVskv8lg,maybe,Love Lockdown,Kanye West,808s & Heartbreak,120.000,139.000,1,0.429556,https://open.spotify.com/track/1kxeWHF9PrCVZHvVskv8lg
+69,1,5JqMWnxVKjJZ2NNOEux46S,5JqMWnxVKjJZ2NNOEux46S,maybe,Punkrocker,"Teddybears,Iggy Pop",Soft Machine (U.S. Version),142.000,166.000,1,0.000000,https://open.spotify.com/track/5JqMWnxVKjJZ2NNOEux46S
+69,2,5JqMWnxVKjJZ2NNOEux46S,1nE1VjP943pIuFdNWcLgYM,maybe,Feel Again - With Heartbeats,OneRepublic,Native,140.000,165.000,1,0.119799,https://open.spotify.com/track/1nE1VjP943pIuFdNWcLgYM
+69,3,5JqMWnxVKjJZ2NNOEux46S,4w6K8eMuWck8OSJ1fdvU9e,maybe,Lonely,Palaye Royale,Lonely,148.000,172.000,1,0.394860,https://open.spotify.com/track/4w6K8eMuWck8OSJ1fdvU9e
+69,4,5JqMWnxVKjJZ2NNOEux46S,0ZX5WYRg59qcTpKX8d6JPZ,maybe,Search And Destroy,Thirty Seconds To Mars,This Is War,135.000,171.000,1,0.434097,https://open.spotify.com/track/0ZX5WYRg59qcTpKX8d6JPZ
+70,1,0jeJR3LdrC2QJNviq7wjzp,0jeJR3LdrC2QJNviq7wjzp,maybe,In Cold Blood,alt-J,RELAXER,143.000,184.000,1,0.000000,https://open.spotify.com/track/0jeJR3LdrC2QJNviq7wjzp
+70,2,0jeJR3LdrC2QJNviq7wjzp,79MOydAvZYm8nyyzd6fiVi,maybe,Tunnel Vision,Justin Timberlake,The 20/20 Experience (Deluxe Version),142.000,191.000,1,0.222111,https://open.spotify.com/track/79MOydAvZYm8nyyzd6fiVi
+70,3,0jeJR3LdrC2QJNviq7wjzp,3RfbwqzBZuPpfRZe160HXD,maybe,Anything's Possible,Foreign Air,Hello Sunshine,140.000,174.000,1,0.352464,https://open.spotify.com/track/3RfbwqzBZuPpfRZe160HXD
+70,4,0jeJR3LdrC2QJNviq7wjzp,1gxc1dIYLmSS2sxMm8BYNj,maybe,Woman Is King,Bishop Briggs,Tell My Therapist I'm Fine (Deluxe),149.000,173.000,1,0.485071,https://open.spotify.com/track/1gxc1dIYLmSS2sxMm8BYNj
+71,1,50zMB2FDNBlVPQsIHiAeM1,50zMB2FDNBlVPQsIHiAeM1,maybe,Hypoxia,flipturn,Heavy Colors,138.000,160.000,1,0.000000,https://open.spotify.com/track/50zMB2FDNBlVPQsIHiAeM1
+71,2,50zMB2FDNBlVPQsIHiAeM1,6RJoqL7C1kEN6IL8zV6auG,maybe,Sunday Best,Augustana,All The Stars and Boulevards,142.000,163.000,1,0.254029,https://open.spotify.com/track/6RJoqL7C1kEN6IL8zV6auG
+71,3,50zMB2FDNBlVPQsIHiAeM1,7DdXf9x75iEVCHWfoRwRuR,maybe,Fitzpleasure,alt-J,An Awesome Wave,144.000,153.000,1,0.413113,https://open.spotify.com/track/7DdXf9x75iEVCHWfoRwRuR
+71,4,50zMB2FDNBlVPQsIHiAeM1,1iQQIAfpATwzNGL9cjvsqL,maybe,Lost Kitten,Metric,Synthetica,133.000,170.000,1,0.420663,https://open.spotify.com/track/1iQQIAfpATwzNGL9cjvsqL
+72,1,0BUxYYHPvkYOOGgX4aI2W4,0BUxYYHPvkYOOGgX4aI2W4,maybe,Ain’t In Kansas Anymore,Miranda Lambert,Twisters: The Album,126.000,174.000,1,0.000000,https://open.spotify.com/track/0BUxYYHPvkYOOGgX4aI2W4
+72,2,0BUxYYHPvkYOOGgX4aI2W4,3kprNlCNkGDpE6CeTb52vy,maybe,"MakeDamnSure - Live From Orensanz, New York, NY / 2010",Taking Back Sunday,Live From Orensanz,125.000,174.000,1,0.060156,https://open.spotify.com/track/3kprNlCNkGDpE6CeTb52vy
+72,3,0BUxYYHPvkYOOGgX4aI2W4,0SB7Ew45h690xWhmWvWixm,maybe,Swim Back,Daughter,Stereo Mind Game,120.000,172.000,1,0.365562,https://open.spotify.com/track/0SB7Ew45h690xWhmWvWixm
+72,4,0BUxYYHPvkYOOGgX4aI2W4,7oDUXxUIlfEnCh3wfeteYe,maybe,Take Me To The Riot,Stars,In Our Bedroom After The War,133.000,189.000,2,0.787876,https://open.spotify.com/track/7oDUXxUIlfEnCh3wfeteYe
+73,1,2Y115i0IhELJhyyftvoSFt,2Y115i0IhELJhyyftvoSFt,maybe,Dark Paradise,Lana Del Rey,Born To Die - The Paradise Edition,120.000,168.000,1,0.000000,https://open.spotify.com/track/2Y115i0IhELJhyyftvoSFt
+73,2,2Y115i0IhELJhyyftvoSFt,0EJfFBsTiTDqariX5cZfrC,maybe,Carl Sagan,Night Moves,Carl Sagan,118.000,167.000,1,0.120415,https://open.spotify.com/track/0EJfFBsTiTDqariX5cZfrC
+73,3,2Y115i0IhELJhyyftvoSFt,6LDQxzMiJdnUqnyJNX9LAx,maybe,Lasso,Gabe Lopez,Lasso,127.000,176.000,1,0.467217,https://open.spotify.com/track/6LDQxzMiJdnUqnyJNX9LAx
+73,4,2Y115i0IhELJhyyftvoSFt,2nLtzopw4rPReszdYBJU6h,maybe,Numb,Linkin Park,Meteora,110.000,157.000,1,0.661769,https://open.spotify.com/track/2nLtzopw4rPReszdYBJU6h
+74,1,1Nt23Ke8HuOZiYsT7Zabxp,1Nt23Ke8HuOZiYsT7Zabxp,maybe,Out the Speakers,"A-Trak,Milo & Otis,Rich Kidz",Out the Speakers,104.000,187.000,1,0.000000,https://open.spotify.com/track/1Nt23Ke8HuOZiYsT7Zabxp
+74,2,1Nt23Ke8HuOZiYsT7Zabxp,4prEPl61C8qZpeo3IkYSMl,maybe,Sleepyhead,Passion Pit,Manners,106.000,183.000,1,0.156787,https://open.spotify.com/track/4prEPl61C8qZpeo3IkYSMl
+74,3,1Nt23Ke8HuOZiYsT7Zabxp,5Ar7TB13XZYF6sDb6RoyWz,maybe,Fish Paste,Die Antwoord,$O$,95.000,198.000,1,0.590542,https://open.spotify.com/track/5Ar7TB13XZYF6sDb6RoyWz
+74,4,1Nt23Ke8HuOZiYsT7Zabxp,2Q5wSOwq6BDSu7sSVMNrtT,maybe,Rock Lobster,The B-52's,The B-52's,92.000,191.000,1,0.688322,https://open.spotify.com/track/2Q5wSOwq6BDSu7sSVMNrtT
+75,1,7mC7pOUiOqy3WZs6SmnFxx,7mC7pOUiOqy3WZs6SmnFxx,maybe,I Am Not a Robot,MARINA,The Family Jewels,120.000,170.000,1,0.000000,https://open.spotify.com/track/7mC7pOUiOqy3WZs6SmnFxx
+75,2,7mC7pOUiOqy3WZs6SmnFxx,3cvNxYnBgh6ystYLC6NQTT,maybe,Daylight,Maroon 5,Overexposed (Deluxe),120.000,168.000,1,0.052354,https://open.spotify.com/track/3cvNxYnBgh6ystYLC6NQTT
+75,3,7mC7pOUiOqy3WZs6SmnFxx,48aJ5BmJiVnz2AurXSWP2R,maybe,Out Of Control,She Wants Revenge,She Wants Revenge,113.000,190.000,1,0.661946,https://open.spotify.com/track/48aJ5BmJiVnz2AurXSWP2R
+75,4,7mC7pOUiOqy3WZs6SmnFxx,2OKo7g3KfmCt3kyLvUAL0g,maybe,The Search,NF,The Search,120.000,197.000,1,0.706778,https://open.spotify.com/track/2OKo7g3KfmCt3kyLvUAL0g
+76,1,3jwQt00cvkN57H6ZR75W2K,3jwQt00cvkN57H6ZR75W2K,maybe,RUNRUNRUN,Dutch Melrose,RUNRUNRUN,133.000,169.000,1,0.000000,https://open.spotify.com/track/3jwQt00cvkN57H6ZR75W2K
+76,2,3jwQt00cvkN57H6ZR75W2K,21ovuLfg5iT583UEgeEYQb,maybe,Keep On Lookin',Ciara,Ciara,129.000,176.000,1,0.283404,https://open.spotify.com/track/21ovuLfg5iT583UEgeEYQb
+76,3,3jwQt00cvkN57H6ZR75W2K,1pNVVLBd1HNvTiitcuC3HZ,maybe,Main Street,Angus & Julia Stone,Angus & Julia Stone (Deluxe),134.000,147.000,1,0.556735,https://open.spotify.com/track/1pNVVLBd1HNvTiitcuC3HZ
+76,4,3jwQt00cvkN57H6ZR75W2K,1HxvdVlvQH5NUPi1wsq5L1,maybe,Legendary,Welshly Arms,Legendary,142.000,159.000,1,0.559223,https://open.spotify.com/track/1HxvdVlvQH5NUPi1wsq5L1
+77,1,6QeIxGSHZPrHZxJOgYct9V,6QeIxGSHZPrHZxJOgYct9V,maybe,Fall Over,BANKS,Goddess (Deluxe),130.000,214.000,1,0.000000,https://open.spotify.com/track/6QeIxGSHZPrHZxJOgYct9V
+77,2,6QeIxGSHZPrHZxJOgYct9V,4ibvd9quldF0rV7YRah0DO,maybe,Fool's Gold,Aaron Carter,LØVË,130.000,218.000,1,0.096735,https://open.spotify.com/track/4ibvd9quldF0rV7YRah0DO
+77,3,6QeIxGSHZPrHZxJOgYct9V,0NdbxzIwRxPEjHjNHDvhiq,maybe,Too Loud,"Big Wild,Phantogram",Wild Child,135.000,239.000,2,0.857138,https://open.spotify.com/track/0NdbxzIwRxPEjHjNHDvhiq
+77,4,6QeIxGSHZPrHZxJOgYct9V,5LyKocU0lhUBlXrFKDxbBO,maybe,Snap My Finger,"KAYTRANADA,PinkPantheress",TIMELESS,118.000,191.000,1,0.859353,https://open.spotify.com/track/5LyKocU0lhUBlXrFKDxbBO
+78,1,31AOj9sFz2gM0O3hMARRBx,31AOj9sFz2gM0O3hMARRBx,maybe,Losing My Religion,R.E.M.,Out Of Time (25th Anniversary Edition),126.000,233.000,1,0.000000,https://open.spotify.com/track/31AOj9sFz2gM0O3hMARRBx
+78,2,31AOj9sFz2gM0O3hMARRBx,6mlGXuG5FmzcePHsMn6rIA,maybe,Baby's On Fire,Die Antwoord,Ten$ion,130.000,243.000,1,0.322643,https://open.spotify.com/track/6mlGXuG5FmzcePHsMn6rIA
+78,3,31AOj9sFz2gM0O3hMARRBx,4hWUOIDHda9XOb1zDchftP,maybe,Too Much Time On My Hands,Styx,Paradise Theatre,131.000,209.000,2,0.789794,https://open.spotify.com/track/4hWUOIDHda9XOb1zDchftP
+78,4,31AOj9sFz2gM0O3hMARRBx,05od2qm2MTSKCHxy1GBp5W,maybe,12 to 12,sombr,I Barely Know Her,124.000,207.000,2,0.790664,https://open.spotify.com/track/05od2qm2MTSKCHxy1GBp5W
+79,1,5tvMPInkVFU1YQJZnQzEEL,5tvMPInkVFU1YQJZnQzEEL,maybe,Forgotten,Avril Lavigne,Under My Skin,132.000,160.000,1,0.000000,https://open.spotify.com/track/5tvMPInkVFU1YQJZnQzEEL
+79,2,5tvMPInkVFU1YQJZnQzEEL,6h1s7cKnUtsbRpE5bwnUTf,maybe,dying on the inside,Nessa Barrett,dying on the inside,125.000,156.000,1,0.367768,https://open.spotify.com/track/6h1s7cKnUtsbRpE5bwnUTf
+79,3,5tvMPInkVFU1YQJZnQzEEL,2Vn92UPSmDMynFENzpe2zP,maybe,Open Your Eyes,STRFKR,"Being No One, Going Nowhere",130.000,182.000,1,0.580974,https://open.spotify.com/track/2Vn92UPSmDMynFENzpe2zP
+79,4,5tvMPInkVFU1YQJZnQzEEL,5JO7yGfeJKYjbOXRRdNk64,maybe,If I Go,Ella Eyre,Ella Eyre,148.000,192.000,1,1.158755,https://open.spotify.com/track/5JO7yGfeJKYjbOXRRdNk64
+80,1,2vfshZvISOKy2Je7wQBWOV,2vfshZvISOKy2Je7wQBWOV,maybe,Valentine's Day,Linkin Park,Minutes to Midnight,108.000,171.000,1,0.000000,https://open.spotify.com/track/2vfshZvISOKy2Je7wQBWOV
+80,2,2vfshZvISOKy2Je7wQBWOV,5TTGoX70AFrTvuEtqHK37S,maybe,No. 1 Party Anthem,Arctic Monkeys,AM,115.000,181.000,1,0.428899,https://open.spotify.com/track/5TTGoX70AFrTvuEtqHK37S
+80,3,2vfshZvISOKy2Je7wQBWOV,520goNMASTZp31CQCcSvwR,maybe,Tourniquet,MEG MYERS,Take Me To The Disco,105.000,143.000,2,0.834818,https://open.spotify.com/track/520goNMASTZp31CQCcSvwR
+80,4,2vfshZvISOKy2Je7wQBWOV,1sSNrDbb7hEptYOXaiOnUm,maybe,Climbing the Walls,Backstreet Boys,Never Gone,91.000,159.000,1,0.903094,https://open.spotify.com/track/1sSNrDbb7hEptYOXaiOnUm
+81,1,1q4L3WSZSygxR2GjuFswAF,1q4L3WSZSygxR2GjuFswAF,maybe,It Could Be Nice,Chet Faker,Hotel Surrender (Expanded Edition),131.000,115.000,1,0.000000,https://open.spotify.com/track/1q4L3WSZSygxR2GjuFswAF
+81,2,1q4L3WSZSygxR2GjuFswAF,0ft93Dt7MUQpjqLbVEBN59,maybe,Heart Heart Head,MEG MYERS,Make a Shadow,125.000,97.000,1,0.503507,https://open.spotify.com/track/0ft93Dt7MUQpjqLbVEBN59
+81,3,1q4L3WSZSygxR2GjuFswAF,6UWmNaS12bUJzFBuQB6e7j,maybe,Grave Digger,Matt Maeson,Grave Digger,140.000,137.000,1,0.664828,https://open.spotify.com/track/6UWmNaS12bUJzFBuQB6e7j
+81,4,1q4L3WSZSygxR2GjuFswAF,2IpeTEPICyB66jjg2hU4Vg,maybe,Didn't I,OneRepublic,Human (Deluxe),124.000,146.000,2,0.933139,https://open.spotify.com/track/2IpeTEPICyB66jjg2hU4Vg
+82,1,4N7159SXtxwObOFhimCLGW,4N7159SXtxwObOFhimCLGW,maybe,Fences,Phoenix,Wolfgang Amadeus Phoenix,113.000,184.000,1,0.000000,https://open.spotify.com/track/4N7159SXtxwObOFhimCLGW
+82,2,4N7159SXtxwObOFhimCLGW,6lx0wqoIBxSJgd033dJxvj,maybe,Fortune Teller,Maroon 5,Overexposed (Deluxe),120.000,184.000,2,0.567839,https://open.spotify.com/track/6lx0wqoIBxSJgd033dJxvj
+82,3,4N7159SXtxwObOFhimCLGW,0Fifn4lBIGM5LG18Whp1Dx,maybe,Corners,The Fray,Through the Years: The Best of The Fray,126.000,164.000,1,0.761835,https://open.spotify.com/track/0Fifn4lBIGM5LG18Whp1Dx
+82,4,4N7159SXtxwObOFhimCLGW,5qUrVPh2XRNuDLkkyAEuNQ,maybe,Figure It Out,Maroon 5,The B-Side Collection,100.000,190.000,2,0.773332,https://open.spotify.com/track/5qUrVPh2XRNuDLkkyAEuNQ
+83,1,5oLP3yTZ7oQlRJ8bSCWvzN,5oLP3yTZ7oQlRJ8bSCWvzN,maybe,Better,OneRepublic,Oh My My,136.000,192.000,1,0.000000,https://open.spotify.com/track/5oLP3yTZ7oQlRJ8bSCWvzN
+83,2,5oLP3yTZ7oQlRJ8bSCWvzN,618DIJLSOg5ffmXaFFRsnv,maybe,Fangs,Night Riots,Fangs,145.000,183.000,2,0.609536,https://open.spotify.com/track/618DIJLSOg5ffmXaFFRsnv
+83,3,5oLP3yTZ7oQlRJ8bSCWvzN,0JEzP25OqBOWbm5U7pC9f2,maybe,Adelaide,MEG MYERS,Daughter in the Choir,150.000,167.000,1,0.788390,https://open.spotify.com/track/0JEzP25OqBOWbm5U7pC9f2
+83,4,5oLP3yTZ7oQlRJ8bSCWvzN,2YD9lxZ8sLocATwfCPPoEc,maybe,Turning Into Stone,Phantogram,Nightlife,122.000,151.000,1,1.043994,https://open.spotify.com/track/2YD9lxZ8sLocATwfCPPoEc
+84,1,60wP3TZcl0sOFVfWrbADui,60wP3TZcl0sOFVfWrbADui,maybe,Not Enough,Daughter,Not Enough,77.000,184.000,1,0.000000,https://open.spotify.com/track/60wP3TZcl0sOFVfWrbADui
+84,2,60wP3TZcl0sOFVfWrbADui,1myE3bHoWoSO5hyr3MxdHJ,maybe,DYNAMITE,"Tyla,Wizkid",DYNAMITE,98.000,223.000,1,1.223758,https://open.spotify.com/track/1myE3bHoWoSO5hyr3MxdHJ
+85,1,2hDtkP0ge2Gckcj7qi2NQ2,2hDtkP0ge2Gckcj7qi2NQ2,maybe,Doing It To Death,The Kills,Ash & Ice,133.000,198.000,1,0.000000,https://open.spotify.com/track/2hDtkP0ge2Gckcj7qi2NQ2
+85,2,2hDtkP0ge2Gckcj7qi2NQ2,6jlqDfX8TQNxcaAz5oxYJA,maybe,Shattered (Turn The Car Around),O.A.R.,All Sides (Deluxe Edition),106.000,181.000,2,1.430200,https://open.spotify.com/track/6jlqDfX8TQNxcaAz5oxYJA
+86,1,53lnhcBZyo3vZD4dDZvcox,53lnhcBZyo3vZD4dDZvcox,maybe,Crank That Spiderman,Duffle Bag Boiz,Crank Dat DBB,141.000,199.000,1,0.000000,https://open.spotify.com/track/53lnhcBZyo3vZD4dDZvcox
+86,2,53lnhcBZyo3vZD4dDZvcox,4Mqs0h95KAeNiGp7u4udlt,maybe,Love Reign O'er Me,The Who,Quadrophenia (Super Deluxe Edition),116.000,124.000,1,1.668665,https://open.spotify.com/track/4Mqs0h95KAeNiGp7u4udlt
+87,1,5HAjss9faCAowGY8dM24r6,5HAjss9faCAowGY8dM24r6,maybe,Is There Anybody Out There,Pink Floyd,The Wall,119.000,42.000,1,0.000000,https://open.spotify.com/track/5HAjss9faCAowGY8dM24r6
+87,2,5HAjss9faCAowGY8dM24r6,3qiyyUfYe7CRYLucrPmulD,maybe,Baba O'Riley,The Who,Who's Next (Deluxe Edition),117.000,136.000,3,1.668527,https://open.spotify.com/track/3qiyyUfYe7CRYLucrPmulD
+88,1,3wuCCNCnBhJlwkIJTBZFiv,3wuCCNCnBhJlwkIJTBZFiv,maybe,They Don't Care About Us,Michael Jackson,"HIStory - PAST, PRESENT AND FUTURE - BOOK I",90.000,250.000,1,0.000000,https://open.spotify.com/track/3wuCCNCnBhJlwkIJTBZFiv
+88,2,3wuCCNCnBhJlwkIJTBZFiv,31kUJ6TBHOICknBrFugOvI,maybe,Winner,"Jamie Foxx,Justin Timberlake,T.I.",Best Night Of My Life,90.000,195.000,4,1.859000,https://open.spotify.com/track/31kUJ6TBHOICknBrFugOvI
+89,1,1dB3aEI23yg7Fz0IxO2pbL,1dB3aEI23yg7Fz0IxO2pbL,maybe,Eyes on Fire (Skeler Remix) - Re-Recorded,"Skeler,Blue Foundation",N i g h t D r i v e スケラー,72.000,133.000,1,0.000000,https://open.spotify.com/track/1dB3aEI23yg7Fz0IxO2pbL

@@ -30,7 +30,7 @@ Wax also tracks core music features for stats and recommendations: BPM, key (Cam
 git clone https://github.com/kaseymallette/wax.git
 cd wax
 npm install
-npm run dev
+
 ```
 
 Open **http://localhost:3000**. Express backend and Vite frontend both run on the same port. (Port 5000 conflicts with macOS AirPlay — that's why the default is 3000.)
@@ -58,6 +58,107 @@ WAX_USER=kasey npm run decisions:import  # reapplies that file into local data.d
 This snapshot stores one latest decision per track (`keep_in_library` + `repeat_intent`) so you can reimport your library and restore your curation quickly.
 
 Use a different `WAX_USER` value per family member (for example: `mom`, `dad`, `kasey`) so each person has their own tracked decisions file under `users/`.
+
+### Remove songs from `music-library` DB
+
+If you want to physically remove tracks from `data/music-library/spotify_music_library.db` based on your latest **Remove from library** decisions:
+
+1. Run a dry-run first:
+
+```bash
+python3 src/remove_from_music_library.py \
+  --owner-user kasey \
+  --decisions users/kasey/decisions-latest.json \
+  --users-root users \
+  --db data/music-library/spotify_music_library.db
+```
+
+2. Then apply (with backup):
+
+```bash
+python3 src/remove_from_music_library.py \
+  --owner-user kasey \
+  --decisions users/kasey/decisions-latest.json \
+  --users-root users \
+  --db data/music-library/spotify_music_library.db \
+  --apply --backup
+```
+
+`--backup` writes a timestamped DB backup into `backups/`.
+
+Safety behavior:
+
+- Deletion candidates come from the owner user's latest `keepInLibrary=0` decisions.
+- Tracks are protected if any other user's latest decision keeps them (`keepInLibrary=1`).
+- Script is dry-run by default unless `--apply` is provided.
+
+### Add songs to `music-library` DB
+
+Add new songs from a CSV directly into `data/music-library/spotify_music_library.db` (table: `tracks`).
+
+1. Dry-run first:
+
+```bash
+python3 src/add_to_music_library.py \
+  --csv data/music-library/new_music.csv \
+  --db data/music-library/spotify_music_library.db
+```
+
+2. Apply with backup:
+
+```bash
+python3 src/add_to_music_library.py \
+  --csv data/music-library/new_music.csv \
+  --db data/music-library/spotify_music_library.db \
+  --apply --backup
+```
+
+NPM shortcuts (set CSV path via `WAX_ADD_CSV`):
+
+```bash
+WAX_ADD_CSV=data/music-library/new_music.csv npm run music:add:csv:dry
+WAX_ADD_CSV=data/music-library/new_music.csv npm run music:add:csv
+```
+
+Notes:
+
+- Script is dry-run by default unless `--apply` is provided.
+- New rows are detected by `Track_ID`; existing IDs are skipped.
+- `--backup` writes a timestamped DB backup into `backups/`.
+- CSV should include a track-id column (`Track_ID`, `track_id`, `Track Id`, `Spotify Track Id`, `Track URI`, or `id`).
+
+### Check duplicate tracks in `music-library` DB
+
+Use this to find duplicate `Track_Key` values in the `tracks` table, with optional normalization that ignores common `remaster` / `remastered` text and year/version suffixes like `2019 Digital Master`.
+
+Quick command (exports CSV):
+
+```bash
+npm run music:dupes:csv
+```
+
+This writes:
+
+- `outputs/duplicate-track-keys.csv`
+
+Direct script usage (more options):
+
+```bash
+python3 src/check_duplicate_track_keys.py \
+  --db data/music-library/spotify_music_library.db \
+  --table tracks \
+  --column Track_Key \
+  --ignore-remaster \
+  --ignore-year-version \
+  --show-rows \
+  --csv-out outputs/duplicate-track-keys.csv
+```
+
+Interpretation notes:
+
+- Duplicate groups are review candidates, not automatic deletes.
+- Many duplicates are expected from remasters, deluxe editions, and compilation releases.
+- Confirm by `Track_ID`, album, and version details before removing anything.
 
 ### Reimport library + restore decisions
 
@@ -100,23 +201,67 @@ This restores each track's latest keep/remove + repeat-intent decision. It does 
 5. **Recents** — timeline of every entry, grouped by day, with keep/remove and repeat-intent context.
 6. **Stats** — listens over time, keep vs remove, and feature summaries for keeps and removes (including top keys and album-year metrics).
 
-## Mood playlists
+## Spotify API playlists
 
-Wax includes a practical mood-playlist direction focused on fast iteration and human review first.
+Wax supports two playlist-generation methods, both CSV-first for review and then Spotify push.
+
+### Method 1: Mood playlists (Low / Medium / High)
 
 - Goal: partition kept tracks (`on_repeat`, `yes`, `maybe`) into three mood playlists with no overlaps or leftovers.
 - Mood score: `mood = valence + dance + energy` (0–300 from `track_features`).
-- v1 bands (terciles of the user's own mood distribution, recomputed each run):
-  - Low: `mood < tercile_1` (below the 33.3rd percentile)
-  - Medium: `tercile_1 <= mood < tercile_2` (between the 33.3rd and 66.6th percentile)
-  - High: `mood >= tercile_2` (at or above the 66.6th percentile)
-- Within each band, rank tracks by weighted sort score using:
-  - tier weight (`on_repeat` > `yes` > `maybe`)
-  - recency (`days_since_latest_listen` from `listens.logged_at`)
-  - listen-count boost
-  - small random jitter to avoid static ordering
+- Bands: user-specific terciles (recomputed each run):
+  - Low: `mood < tercile_1`
+  - Medium: `tercile_1 <= mood < tercile_2`
+  - High: `mood >= tercile_2`
+- In-band ranking uses tier weight (`on_repeat` > `yes` > `maybe`), recency, listen-count boost, and jitter.
 
-### Multi-user mood outputs
+Run:
+
+```bash
+WAX_USER=kasey npm run mood:build
+```
+
+Mood outputs:
+
+- `users/<name>/playlists/mood/low.csv`
+- `users/<name>/playlists/mood/medium.csv`
+- `users/<name>/playlists/mood/high.csv`
+- `users/<name>/missing-tracks.log` *(only when tracks are missing from `data.db` or missing features)*
+
+If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`), create Method 1 playlists on Spotify with:
+
+```bash
+WAX_USER=kasey WAX_PLAYLIST_METHOD=mood npm run spotify:push:dry
+WAX_USER=kasey WAX_PLAYLIST_METHOD=mood npm run spotify:push
+```
+
+### Method 2: KNN packet playlists
+
+- Builds packeted nearest-neighbor groups from keeps (`on_repeat`, `yes`, `maybe`) using builder-style feature space (`BPM`, `Mood Score`, `Key Step`).
+- Allows partial packets based on distance rules and then appends sorted leftovers.
+- Also auto-splits packet centroids into 3 balanced playlists (`a`, `b`, `c`).
+
+Run:
+
+```bash
+WAX_USER=kasey npm run knn:build
+```
+
+KNN outputs:
+
+- `users/<name>/playlists/knn/knn-packets.csv`
+- `users/<name>/playlists/knn/knn-playlist-a.csv` *(Maybe/Sure)*
+- `users/<name>/playlists/knn/knn-playlist-b.csv` *(Yes/Maybe)*
+- `users/<name>/playlists/knn/knn-playlist-c.csv` *(Love/Like)*
+
+If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`), create Method 2 playlists on Spotify with:
+
+```bash
+WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push:dry
+WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push
+```
+
+### Multi-user playlist outputs
 
 The model is one shared `data.db` (master tracks/features) plus per-user decision snapshots in `users/<name>/decisions-latest.json`.
 
@@ -125,46 +270,27 @@ wax/
 ├── data.db
 ├── script/
 │   ├── decisions.ts
-│   └── buildMoodPlaylists.ts
+│   ├── buildMoodPlaylists.ts
+│   └── buildKNNPackets.ts
 ├── users/
 │   ├── kasey/
 │   │   ├── decisions-latest.json
 │   │   ├── playlists/
-│   │   │   ├── low.csv
-│   │   │   ├── medium.csv
-│   │   │   └── high.csv
+│   │   │   ├── mood/
+│   │   │   │   ├── low.csv
+│   │   │   │   ├── medium.csv
+│   │   │   │   └── high.csv
+│   │   │   └── knn/
+│   │   │       ├── knn-packets.csv
+│   │   │       ├── knn-playlist-a.csv
+│   │   │       ├── knn-playlist-b.csv
+│   │   │       └── knn-playlist-c.csv
 │   │   └── missing-tracks.log
 │   ├── kaseysdad/
 │   └── kaseysmom/
 ```
 
-- Each user run produces `users/<name>/playlists/low.csv`, `medium.csv`, and `high.csv`.
-- Missing tracks referenced by a user's decisions are skipped and logged to `users/<name>/missing-tracks.log`.
-- v1 output is CSV-first for manual review before any Spotify push automation.
-
-### Run commands
-
-Before running, make sure:
-
-- `data.db` exists at the repo root and has `track_features` data
-- each user has `users/<name>/decisions-latest.json` (export via `npm run decisions:export` with `WAX_USER`)
-
-Build playlists with:
-
-```bash
-WAX_USER=kasey npm run mood:build
-WAX_USER=kaseysdad npm run mood:build
-WAX_USER=kaseysmom npm run mood:build
-```
-
-Output files are written to `users/<name>/playlists/`:
-
-- `users/<name>/playlists/low.csv`
-- `users/<name>/playlists/medium.csv`
-- `users/<name>/playlists/high.csv`
-- `users/<name>/missing-tracks.log` *(only when tracks are missing from `data.db` or missing features)*
-
-### Spotify push agent
+### Spotify push agent (mood or KNN)
 
 Once your CSV outputs look right, you can push them to Spotify playlists.
 
@@ -204,6 +330,8 @@ Copy the `SPOTIFY_REFRESH_TOKEN=...` line from terminal output into `.env`.
 
 5. Push playlists:
 
+Mood mode (default):
+
 Dry run first (no writes):
 
 ```bash
@@ -216,11 +344,19 @@ Then push for real:
 WAX_USER=kasey npm run spotify:push
 ```
 
+KNN mode:
+
+```bash
+WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push:dry
+WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push
+```
+
 Push behavior:
 
-- Finds or creates `WAX – {User} Low/Medium/High Mood` playlists
-- Full-replaces each playlist in CSV order on every run
-- Writes `users/<WAX_USER>/playlists/push.log`
+- `WAX_PLAYLIST_METHOD=mood` (default): pushes `low/medium/high` mood CSVs from `users/<WAX_USER>/playlists/mood/`
+- `WAX_PLAYLIST_METHOD=knn`: pushes `knn-playlist-a/b/c.csv` from `users/<WAX_USER>/playlists/knn/`
+- Finds or creates `WAX – {User} ...` playlists and full-replaces each in CSV order on every run
+- Writes `push.log` in the selected method folder (`mood` or `knn`)
 - Supports multi-user by changing `WAX_USER`
 
 Common issues:

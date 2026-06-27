@@ -119,7 +119,7 @@ const DECISIONS_PATH = path.resolve(
 );
 const PLAYLISTS_DIR = path.resolve(
   REPO_ROOT,
-  process.env.WAX_PLAYLISTS_DIR || path.join("users", WAX_USER, "playlists"),
+  process.env.WAX_PLAYLISTS_DIR || path.join("users", WAX_USER, "playlists", "mood"),
 );
 const MISSING_LOG_PATH = path.resolve(
   REPO_ROOT,

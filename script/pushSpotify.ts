@@ -40,16 +40,31 @@ const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN ?? "";
 
 const PLAYLIST_PUBLIC = (process.env.WAX_PLAYLIST_PUBLIC ?? "false") === "true";
 
+type PlaylistMethod = "mood" | "knn";
+const PLAYLIST_METHOD: PlaylistMethod =
+  process.env.WAX_PLAYLIST_METHOD === "knn" ? "knn" : "mood";
+
+type PlaylistSpec = {
+  file: string;
+  label: string;
+  titleSuffix: string;
+};
+
+const PLAYLIST_SPECS: PlaylistSpec[] = PLAYLIST_METHOD === "knn"
+  ? [
+      { file: "knn-playlist-a.csv", label: "Maybe/Sure", titleSuffix: "Maybe/Sure" },
+      { file: "knn-playlist-b.csv", label: "Yes/Maybe", titleSuffix: "Yes/Maybe" },
+      { file: "knn-playlist-c.csv", label: "Love/Like", titleSuffix: "Love/Like" },
+    ]
+  : [
+      { file: "low.csv", label: "Low", titleSuffix: "Low Mood" },
+      { file: "medium.csv", label: "Medium", titleSuffix: "Medium Mood" },
+      { file: "high.csv", label: "High", titleSuffix: "High Mood" },
+    ];
+
 const PLAYLISTS_DIR =
   process.env.WAX_PLAYLISTS_DIR ??
-  path.join("users", WAX_USER, "playlists");
-
-// Band file name -> human label used in the playlist title.
-const BANDS: { file: string; label: string }[] = [
-  { file: "low.csv", label: "Low" },
-  { file: "medium.csv", label: "Medium" },
-  { file: "high.csv", label: "High" },
-];
+  path.join("users", WAX_USER, "playlists", PLAYLIST_METHOD);
 
 const LOG_PATH = path.join(PLAYLISTS_DIR, "push.log");
 const API = "https://api.spotify.com/v1";
@@ -321,10 +336,10 @@ async function replacePlaylistTracks(
 
 // ───────────────────────── main ─────────────────────────
 
-async function pushBand(band: { file: string; label: string }): Promise<void> {
-  const csvPath = path.join(PLAYLISTS_DIR, band.file);
+async function pushBand(spec: PlaylistSpec): Promise<void> {
+  const csvPath = path.join(PLAYLISTS_DIR, spec.file);
   if (!fs.existsSync(csvPath)) {
-    log(`⚠️  ${band.label}: CSV not found at ${csvPath} — skipping.`);
+    log(`⚠️  ${spec.label}: CSV not found at ${csvPath} — skipping.`);
     return;
   }
 
@@ -342,9 +357,9 @@ async function pushBand(band: { file: string; label: string }): Promise<void> {
 
   const uris = valid.map((r) => `spotify:track:${r.trackId}`);
   const userLabel = WAX_USER.charAt(0).toUpperCase() + WAX_USER.slice(1);
-  const playlistName = `WAX – ${userLabel} ${band.label} Mood`;
+  const playlistName = `WAX – ${userLabel} ${spec.titleSuffix}`;
 
-  log(`\n▶ ${band.label}: ${uris.length} tracks → "${playlistName}"`);
+  log(`\n▶ ${spec.label}: ${uris.length} tracks → "${playlistName}"`);
 
   if (DRY_RUN) {
     log(`   (dry-run) would replace contents with ${uris.length} tracks.`);
@@ -381,8 +396,9 @@ async function debugTest(): Promise<void> {
   log(`[debug] Authenticated as: ${me.display_name ?? me.id} (${me.id})`);
   log(`[debug] Access token (first 20): ${accessToken.slice(0, 20)}…`);
 
-  // Find or use the first existing WAX playlist
-  const testPlaylistName = `WAX – ${WAX_USER.charAt(0).toUpperCase() + WAX_USER.slice(1)} Low Mood`;
+  // Find or use the first configured playlist pattern for active method.
+  const testPlaylistName =
+    `WAX – ${WAX_USER.charAt(0).toUpperCase() + WAX_USER.slice(1)} ${PLAYLIST_SPECS[0].titleSuffix}`;
   const playlist = await findPlaylistByName(testPlaylistName);
   if (!playlist) {
     log(`[debug] No existing playlist "${testPlaylistName}" found. Creating one…`);
@@ -446,14 +462,16 @@ async function main(): Promise<void> {
     return;
   }
 
-  log(`WAX Spotify push — user="${WAX_USER}" dir="${PLAYLISTS_DIR}"${DRY_RUN ? " [DRY RUN]" : ""}`);
+  log(
+    `WAX Spotify push — user="${WAX_USER}" method="${PLAYLIST_METHOD}" dir="${PLAYLISTS_DIR}"${DRY_RUN ? " [DRY RUN]" : ""}`,
+  );
 
   await refreshAccessToken();
   const me = await getCurrentUser();
   log(`Authenticated as: ${me.display_name ?? me.id} (${me.id})`);
 
 
-  for (const band of BANDS) {
+  for (const band of PLAYLIST_SPECS) {
     try {
       await pushBand(band);
     } catch (err) {
