@@ -219,6 +219,7 @@ Run:
 
 ```bash
 WAX_USER=kasey npm run mood:build
+WAX_USER=kaseysdad npm run mood:build
 ```
 
 Mood outputs:
@@ -233,6 +234,9 @@ If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPO
 ```bash
 WAX_USER=kasey WAX_PLAYLIST_METHOD=mood npm run spotify:push:dry
 WAX_USER=kasey WAX_PLAYLIST_METHOD=mood npm run spotify:push
+
+WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=mood npm run spotify:push:dry
+WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=mood npm run spotify:push
 ```
 
 ### Method 2: KNN packet playlists

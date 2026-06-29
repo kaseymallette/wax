@@ -1,0 +1,37 @@
+packet_index,slot,seed_track_id,track_id,tier,name,artists,album,bpm,mood_score,key_step,distance,spotify_url
+2,1,1OV5oUwrL4iw0UTfZy3pGe,1OV5oUwrL4iw0UTfZy3pGe,yes,Cringe,Matt Maeson,Who Killed Matt Maeson,126.000,160.000,1,0.000000,https://open.spotify.com/track/1OV5oUwrL4iw0UTfZy3pGe
+2,2,1OV5oUwrL4iw0UTfZy3pGe,4W6tDPKAb5RTZaixgrcWWm,yes,Hallucinogenics,Matt Maeson,The Hearse,122.000,153.000,1,0.246008,https://open.spotify.com/track/4W6tDPKAb5RTZaixgrcWWm
+2,3,1OV5oUwrL4iw0UTfZy3pGe,5wU6jk9kxYzFGUpeE6T2Q5,yes,Crystals,Of Monsters and Men,Beneath The Skin,132.000,166.000,1,0.287633,https://open.spotify.com/track/5wU6jk9kxYzFGUpeE6T2Q5
+2,4,1OV5oUwrL4iw0UTfZy3pGe,2MO6XvzlEBKA0PoRqAt9J9,yes,American Blood,Dead Poet Society,American Blood,118.000,167.000,1,0.369169,https://open.spotify.com/track/2MO6XvzlEBKA0PoRqAt9J9
+16,1,2gnZad0pb6QtUqMLTj2AjI,2gnZad0pb6QtUqMLTj2AjI,on_repeat,Please Don't Leave Me,P!nk,Funhouse (Expanded Edition),138.000,219.000,1,0.000000,https://open.spotify.com/track/2gnZad0pb6QtUqMLTj2AjI
+16,2,2gnZad0pb6QtUqMLTj2AjI,2skmOCFU64Bg7Ytkgwliwe,yes,All For You,Sister Hazel,...Somewhere More Familiar,137.000,202.000,2,0.607194,https://open.spotify.com/track/2skmOCFU64Bg7Ytkgwliwe
+16,3,2gnZad0pb6QtUqMLTj2AjI,6FDtusHKRJdlHLApla3VSa,yes,Capricorn,Elderbrook,Capricorn,121.000,255.000,1,0.987311,https://open.spotify.com/track/6FDtusHKRJdlHLApla3VSa
+16,4,2gnZad0pb6QtUqMLTj2AjI,6HojDglE8E3EA7SbTLE8VF,maybe,Love To See You Cry,Enrique Iglesias,Escape,123.000,223.000,3,1.117920,https://open.spotify.com/track/6HojDglE8E3EA7SbTLE8VF
+18,1,0A2d4khGCCkWJS0SAZNxoP,0A2d4khGCCkWJS0SAZNxoP,yes,Real,Olly Alexander (Years & Years),Communion (Deluxe),114.000,190.000,1,0.000000,https://open.spotify.com/track/0A2d4khGCCkWJS0SAZNxoP
+18,2,0A2d4khGCCkWJS0SAZNxoP,6bpcvTmxA0iVRCBER7xw1a,yes,Driver,Billy Raffoul,Driver,115.000,159.000,1,0.699637,https://open.spotify.com/track/6bpcvTmxA0iVRCBER7xw1a
+18,3,0A2d4khGCCkWJS0SAZNxoP,0sHW1jXe6Sou3437gJQNGA,maybe,Space Bound,Eminem,Recovery,142.000,206.000,1,1.025594,https://open.spotify.com/track/0sHW1jXe6Sou3437gJQNGA
+18,4,0A2d4khGCCkWJS0SAZNxoP,3lPr8ghNDBLc2uZovNyLs9,yes,Supermassive Black Hole,Muse,Black Holes and Revelations,120.000,237.000,1,1.079256,https://open.spotify.com/track/3lPr8ghNDBLc2uZovNyLs9
+19,1,34d7sGX6WUqq8f04e7CSNF,34d7sGX6WUqq8f04e7CSNF,yes,Marsh,Eminem,Music To Be Murdered By,145.000,141.000,1,0.000000,https://open.spotify.com/track/34d7sGX6WUqq8f04e7CSNF
+19,2,34d7sGX6WUqq8f04e7CSNF,7riRkLUdLj0J8zwS6KtZIs,yes,Beggar's Song,Matt Maeson,Beggar's Song,145.000,118.000,1,0.523424,https://open.spotify.com/track/7riRkLUdLj0J8zwS6KtZIs
+19,3,34d7sGX6WUqq8f04e7CSNF,6lwZ1QSjco5ggPpKDXalNf,maybe,Word Of Mouth - Audiotree Live Version,"Shakey Graves,Audiotree",Shakey Graves on Audiotree Live (Session #1),121.000,107.000,1,1.106127,https://open.spotify.com/track/6lwZ1QSjco5ggPpKDXalNf
+19,4,34d7sGX6WUqq8f04e7CSNF,1AuokT6OG2XFyDp7kuRGJx,yes,32 Days,Numblife,32 Days,164.000,193.000,1,1.338661,https://open.spotify.com/track/1AuokT6OG2XFyDp7kuRGJx
+20,1,1JcIXOir94YUYBt2cXTzn2,1JcIXOir94YUYBt2cXTzn2,yes,Growing Sideways,Noah Kahan,Stick Season,178.000,137.000,1,0.000000,https://open.spotify.com/track/1JcIXOir94YUYBt2cXTzn2
+20,2,1JcIXOir94YUYBt2cXTzn2,7mjSHL2Eb0kAwiKbvNNyD9,on_repeat,Wild World,Yusuf / Cat Stevens,Tea For The Tillerman (Remastered 2020),153.000,159.000,1,0.931456,https://open.spotify.com/track/7mjSHL2Eb0kAwiKbvNNyD9
+20,3,1JcIXOir94YUYBt2cXTzn2,08mG3Y1vljYA6bvDt4Wqkj,on_repeat,Back In Black,AC/DC,Back In Black,188.000,177.000,2,1.051160,https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj
+20,4,1JcIXOir94YUYBt2cXTzn2,22YvUcGzVLjtK3u2fSMAZr,maybe,Need To,Gavin Adcock,Own Worst Enemy,146.000,170.000,1,1.252905,https://open.spotify.com/track/22YvUcGzVLjtK3u2fSMAZr
+21,1,261j28Hxs9xzmUcrYvnY92,261j28Hxs9xzmUcrYvnY92,yes,Unconditional,Matt Maeson,The Hearse,116.000,119.000,1,0.000000,https://open.spotify.com/track/261j28Hxs9xzmUcrYvnY92
+21,2,261j28Hxs9xzmUcrYvnY92,2AEW4oatiphhXuGRteMLqx,yes,Stealin',Uriah Heep,Sweet Freedom (Expanded Version),118.000,89.000,1,0.633436,https://open.spotify.com/track/2AEW4oatiphhXuGRteMLqx
+21,3,261j28Hxs9xzmUcrYvnY92,4VqPOruhp5EdPBeR92t6lQ,maybe,Uprising,Muse,The Resistance,128.000,192.000,1,1.583702,https://open.spotify.com/track/4VqPOruhp5EdPBeR92t6lQ
+22,1,02eD9ymfJOJOhM97HYp5R9,02eD9ymfJOJOhM97HYp5R9,on_repeat,The House That Built Me,Miranda Lambert,Revolution,81.000,104.000,1,0.000000,https://open.spotify.com/track/02eD9ymfJOJOhM97HYp5R9
+22,2,02eD9ymfJOJOhM97HYp5R9,4y5lApjfksaQ35CdhVjvL5,yes,Sunoco,X Ambassadors,Townie,120.000,109.000,1,1.227520,https://open.spotify.com/track/4y5lApjfksaQ35CdhVjvL5
+22,3,02eD9ymfJOJOhM97HYp5R9,5TgEJ62DOzBpGxZ7WRsrqb,maybe,Work Song,Hozier,Hozier (Expanded Edition),121.000,115.000,1,1.275822,https://open.spotify.com/track/5TgEJ62DOzBpGxZ7WRsrqb
+22,4,02eD9ymfJOJOhM97HYp5R9,39Rqt9KEOpsBG5T2wvy0np,maybe,Feel Good,Matt Maeson,Bank On The Funeral,124.000,112.000,1,1.359000,https://open.spotify.com/track/39Rqt9KEOpsBG5T2wvy0np
+23,1,0fN8Symx2jOXpOAqrW6otf,0fN8Symx2jOXpOAqrW6otf,yes,Feels Like Nothing,Foreign Air,Smile,128.000,113.000,1,0.000000,https://open.spotify.com/track/0fN8Symx2jOXpOAqrW6otf
+23,2,0fN8Symx2jOXpOAqrW6otf,1nE1VjP943pIuFdNWcLgYM,yes,Feel Again - With Heartbeats,OneRepublic,Native,140.000,165.000,1,1.224786,https://open.spotify.com/track/1nE1VjP943pIuFdNWcLgYM
+23,3,0fN8Symx2jOXpOAqrW6otf,4yoMMiRT5sXtIbSHKQfRqi,yes,Go Easy,Matt Maeson,Bank On The Funeral,86.000,139.000,1,1.399710,https://open.spotify.com/track/4yoMMiRT5sXtIbSHKQfRqi
+23,4,0fN8Symx2jOXpOAqrW6otf,1735xgk2J8CHCGY2LS1HM6,maybe,Private,The Neighbourhood,Private,124.000,175.000,1,1.399835,https://open.spotify.com/track/1735xgk2J8CHCGY2LS1HM6
+24,1,2YB7LLj8xZcd4pDs0UBM6i,2YB7LLj8xZcd4pDs0UBM6i,yes,Don't Speak,Culture Wars,Don't Speak,154.000,177.000,1,0.000000,https://open.spotify.com/track/2YB7LLj8xZcd4pDs0UBM6i
+24,2,2YB7LLj8xZcd4pDs0UBM6i,2N4viTG9njqCa4c46YyWs1,maybe,Be With You,Enrique Iglesias,Enrique,122.000,209.000,1,1.150117,https://open.spotify.com/track/2N4viTG9njqCa4c46YyWs1
+24,3,2YB7LLj8xZcd4pDs0UBM6i,6voIJ7OWwRabSZDC77D5Hp,yes,Trouble’s Coming,Royal Blood,Typhoons,112.000,228.000,1,1.634855,https://open.spotify.com/track/6voIJ7OWwRabSZDC77D5Hp
+25,1,4wFXTN7ADsBxIyJfzvaHGf,4wFXTN7ADsBxIyJfzvaHGf,yes,What's Wrong,Foreign Air,Smile,176.000,133.000,1,0.000000,https://open.spotify.com/track/4wFXTN7ADsBxIyJfzvaHGf
+25,2,4wFXTN7ADsBxIyJfzvaHGf,5Z7bkW3dsu8jLdv3dEGxly,maybe,Nice 'n' Easy - Remastered 1999,Frank Sinatra,Nice 'n' Easy (Remastered / Expanded Edition),109.000,120.000,2,1.851626,https://open.spotify.com/track/5Z7bkW3dsu8jLdv3dEGxly
