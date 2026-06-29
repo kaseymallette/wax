@@ -168,7 +168,7 @@ If you want a clean reimport (no duplicate old imports/listens), do this:
 2. Remove your local DB files:
 
 ```bash
-rm data.db data.db-wal data.db-shm 2>/dev/null || true
+npm run clean-db
 ```
 
 3. Start the app again:
