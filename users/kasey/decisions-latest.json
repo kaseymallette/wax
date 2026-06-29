@@ -1,5 +1,5 @@
 {
-  "exportedAt": 1782540344163,
+  "exportedAt": 1782542867769,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
   "count": 450,
   "decisions": [
@@ -3512,7 +3512,7 @@
       "name": "Trouble’s Coming",
       "artists": "Royal Blood",
       "keepInLibrary": 1,
-      "repeatIntent": "yes",
+      "repeatIntent": "on_repeat",
       "loggedAt": 1782430681584
     },
     {
@@ -3520,7 +3520,7 @@
       "name": "Don't Miss",
       "artists": "The Blue Stones",
       "keepInLibrary": 1,
-      "repeatIntent": "yes",
+      "repeatIntent": "on_repeat",
       "loggedAt": 1782430668345
     },
     {
@@ -3592,7 +3592,7 @@
       "name": "Faint",
       "artists": "Linkin Park",
       "keepInLibrary": 1,
-      "repeatIntent": "yes",
+      "repeatIntent": "on_repeat",
       "loggedAt": 1782430297290
     },
     {
@@ -3600,7 +3600,7 @@
       "name": "Don't Stay",
       "artists": "Linkin Park",
       "keepInLibrary": 1,
-      "repeatIntent": "yes",
+      "repeatIntent": "on_repeat",
       "loggedAt": 1782430285156
     }
   ]
