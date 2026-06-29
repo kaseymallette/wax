@@ -1,8 +1,128 @@
 {
-  "exportedAt": 1782702191689,
+  "exportedAt": 1782707597173,
   "sourceDbPath": "C:\\Users\\kcmma\\github\\wax\\data.db",
-  "count": 121,
+  "count": 136,
   "decisions": [
+    {
+      "trackId": "52MSDG99lVCtdqVHmqGgJF",
+      "name": "Spaghetti Western",
+      "artists": "Maudlin Strangers",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782707396985
+    },
+    {
+      "trackId": "5iRv1aH4eNai45KfhjtJ6n",
+      "name": "When the Love is Gone",
+      "artists": "Des Rocs",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782707313775
+    },
+    {
+      "trackId": "2YB7LLj8xZcd4pDs0UBM6i",
+      "name": "Don't Speak",
+      "artists": "Culture Wars",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782707231979
+    },
+    {
+      "trackId": "08mG3Y1vljYA6bvDt4Wqkj",
+      "name": "Back In Black",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782707141978
+    },
+    {
+      "trackId": "7nemcVsXVFZF01iqpIIo2Y",
+      "name": "It's a Long Way to the Top (If You Wanna Rock 'N' Roll)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782707127727
+    },
+    {
+      "trackId": "17lu4tymfnhmcIDlzBbtAb",
+      "name": "For Those About to Rock (We Salute You)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782707118788
+    },
+    {
+      "trackId": "69QHm3pustz01CJRwdo20z",
+      "name": "Hells Bells",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782707100353
+    },
+    {
+      "trackId": "7LRMbd3LEoV5wZJvXT1Lwb",
+      "name": "T.N.T",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782707073592
+    },
+    {
+      "trackId": "57bgtoPSgt236HzfBOd8kj",
+      "name": "Thunderstruck",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782707056668
+    },
+    {
+      "trackId": "2d4e45fmUnguxh6yqC7gNT",
+      "name": "Dirty Deeds Done Dirt Cheap",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782707025282
+    },
+    {
+      "trackId": "6voIJ7OWwRabSZDC77D5Hp",
+      "name": "Trouble’s Coming",
+      "artists": "Royal Blood",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782706953889
+    },
+    {
+      "trackId": "1ggbqc7jhg454UpFfSmdam",
+      "name": "Don't Miss",
+      "artists": "The Blue Stones",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782706919089
+    },
+    {
+      "trackId": "5fbQCQt91LsVgXusFS0CCD",
+      "name": "Disorder - 2007 Remaster",
+      "artists": "Joy Division",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782706849603
+    },
+    {
+      "trackId": "660u9agQuREtEDmETVWSts",
+      "name": "Three Imaginary Boys - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782706829574
+    },
+    {
+      "trackId": "0babKgXwpYCxbmgTc2Ikrh",
+      "name": "The Way She Looks",
+      "artists": "Two Feet",
+      "keepInLibrary": 1,
+      "repeatIntent": "yes",
+      "loggedAt": 1782706446040
+    },
     {
       "trackId": "1nE1VjP943pIuFdNWcLgYM",
       "name": "Feel Again - With Heartbeats",
@@ -24,7 +144,7 @@
       "name": "Dark Paradise",
       "artists": "Lana Del Rey",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781502433585
     },
     {
@@ -32,7 +152,7 @@
       "name": "Holiest",
       "artists": "Glass Animals,Tei Shi",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781502367349
     },
     {
@@ -40,7 +160,7 @@
       "name": "Drunk in Love",
       "artists": "Beyoncé,JAŸ-Z",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781502333345
     },
     {
@@ -48,7 +168,7 @@
       "name": "Roses",
       "artists": "Banks Arcade",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781502316650
     },
     {
@@ -72,7 +192,7 @@
       "name": "Swim Back",
       "artists": "Daughter",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781502126782
     },
     {
@@ -133,7 +253,7 @@
     },
     {
       "trackId": "0p1hBWPaSxUDTSa32PyhnU",
-      "name": "She Calls Me Back (with Kacey Musgraves)",
+      "name": "She Calls Me Back",
       "artists": "Noah Kahan,Kacey Musgraves",
       "keepInLibrary": 1,
       "repeatIntent": "yes",
@@ -565,7 +685,7 @@
     },
     {
       "trackId": "2AT8iROs4FQueDv2c8q2KE",
-      "name": "R U Mine?",
+      "name": "R U Mine",
       "artists": "Arctic Monkeys",
       "keepInLibrary": 1,
       "repeatIntent": "yes",
@@ -733,7 +853,7 @@
     },
     {
       "trackId": "3TP8KZt9tJGyeBRVyDysp9",
-      "name": "Better If Worse (with Matt Maeson)",
+      "name": "Better If Worse",
       "artists": "HAFFWAY,Matt Maeson",
       "keepInLibrary": 1,
       "repeatIntent": "yes",
@@ -744,7 +864,7 @@
       "name": "Murder",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240339474
     },
     {
@@ -752,7 +872,7 @@
       "name": "Crazy He Calls Me",
       "artists": "Billie Holiday",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240300467
     },
     {
@@ -760,7 +880,7 @@
       "name": "Fall In Love",
       "artists": "Phantogram",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240277534
     },
     {
@@ -768,7 +888,7 @@
       "name": "PURE/HONEY",
       "artists": "Beyoncé",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240250638
     },
     {
@@ -776,7 +896,7 @@
       "name": "out of order",
       "artists": "Ella Boh,Ari Abdul",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240216901
     },
     {
@@ -784,7 +904,7 @@
       "name": "Any Colour You Like",
       "artists": "Pink Floyd",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240189851
     },
     {
@@ -792,7 +912,7 @@
       "name": "Lips",
       "artists": "Marian Hill",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240165272
     },
     {
@@ -808,7 +928,7 @@
       "name": "Sins Of My Youth",
       "artists": "Neon Trees",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240112382
     },
     {
@@ -816,7 +936,7 @@
       "name": "The Devil Game",
       "artists": "Kansas",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240079068
     },
     {
@@ -824,7 +944,7 @@
       "name": "It's ok I'm ok",
       "artists": "Tate McRae",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240041930
     },
     {
@@ -832,7 +952,7 @@
       "name": "Up! - Green Version",
       "artists": "Shania Twain",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781240016982
     },
     {
@@ -840,7 +960,7 @@
       "name": "Save Me Some Sunshine",
       "artists": "Rafferty",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239990601
     },
     {
@@ -848,7 +968,7 @@
       "name": "Are You That Somebody",
       "artists": "Aaliyah",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239964436
     },
     {
@@ -856,7 +976,7 @@
       "name": "Good Girl Killer",
       "artists": "Paula Dalla Corte",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239942452
     },
     {
@@ -864,7 +984,7 @@
       "name": "What U See (Is What U Get)",
       "artists": "Britney Spears",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239918062
     },
     {
@@ -880,7 +1000,7 @@
       "name": "Escapar",
       "artists": "Enrique Iglesias",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239752661
     },
     {
@@ -888,7 +1008,7 @@
       "name": "Dímelo",
       "artists": "Enrique Iglesias",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239661509
     },
     {
@@ -904,7 +1024,7 @@
       "name": "Don't Turn Off The Lights",
       "artists": "Enrique Iglesias",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239603310
     },
     {
@@ -936,7 +1056,7 @@
       "name": "Bailamos - From  Wild Wild West",
       "artists": "Enrique Iglesias",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239513703
     },
     {
@@ -944,7 +1064,7 @@
       "name": "To Love A Woman",
       "artists": "Lionel Richie,Enrique Iglesias",
       "keepInLibrary": 0,
-      "repeatIntent": "maybe",
+      "repeatIntent": "nah",
       "loggedAt": 1781239484911
     },
     {
