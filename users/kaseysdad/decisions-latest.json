@@ -1,8 +1,16 @@
 {
-  "exportedAt": 1782707597173,
+  "exportedAt": 1782708502776,
   "sourceDbPath": "C:\\Users\\kcmma\\github\\wax\\data.db",
-  "count": 136,
+  "count": 137,
   "decisions": [
+    {
+      "trackId": "5DIBVDJOHh7djepAjKHWCO",
+      "name": "Heart Like A Truck",
+      "artists": "Lainey Wilson",
+      "keepInLibrary": 1,
+      "repeatIntent": "on_repeat",
+      "loggedAt": 1782708349996
+    },
     {
       "trackId": "52MSDG99lVCtdqVHmqGgJF",
       "name": "Spaghetti Western",
