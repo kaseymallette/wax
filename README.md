@@ -249,6 +249,7 @@ Run:
 
 ```bash
 WAX_USER=kasey npm run knn:build
+WAX_USER=kaseysdad npm run knn:build
 ```
 
 KNN outputs:
@@ -263,6 +264,9 @@ If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPO
 ```bash
 WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push:dry
 WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push
+
+WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=knn npm run spotify:push:dry
+WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=knn npm run spotify:push
 ```
 
 ### Multi-user playlist outputs

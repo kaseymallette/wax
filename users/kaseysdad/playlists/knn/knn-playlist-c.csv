@@ -1,40 +1,37 @@
 packet_index,slot,seed_track_id,track_id,tier,name,artists,album,bpm,mood_score,key_step,distance,spotify_url
 1,1,70wYA8oYHoMzhRRkARoMhU,70wYA8oYHoMzhRRkARoMhU,yes,When You Were Young,The Killers,Sam's Town,130.000,178.000,1,0.000000,https://open.spotify.com/track/70wYA8oYHoMzhRRkARoMhU
-1,2,70wYA8oYHoMzhRRkARoMhU,458JkK5eJhh4C4s6nTuz7g,yes,Dreams - Remastered 2026,The Cranberries,"Everybody Else Is Doing It, So Why Can't We? (Remastered 2026)",128.000,182.000,1,0.136019,https://open.spotify.com/track/458JkK5eJhh4C4s6nTuz7g
-1,3,70wYA8oYHoMzhRRkARoMhU,17lu4tymfnhmcIDlzBbtAb,on_repeat,For Those About to Rock (We Salute You),AC/DC,For Those About to Rock (We Salute You),134.000,176.000,1,0.170851,https://open.spotify.com/track/17lu4tymfnhmcIDlzBbtAb
-1,4,70wYA8oYHoMzhRRkARoMhU,0A0RBBTrgfq9eClnw6ZXT7,yes,Future Starts Slow,The Kills,Blood Pressures,128.000,189.000,1,0.311329,https://open.spotify.com/track/0A0RBBTrgfq9eClnw6ZXT7
-3,1,0babKgXwpYCxbmgTc2Ikrh,0babKgXwpYCxbmgTc2Ikrh,yes,The Way She Looks,Two Feet,The Way She Looks,135.000,212.000,1,0.000000,https://open.spotify.com/track/0babKgXwpYCxbmgTc2Ikrh
-3,2,0babKgXwpYCxbmgTc2Ikrh,2d4e45fmUnguxh6yqC7gNT,on_repeat,Dirty Deeds Done Dirt Cheap,AC/DC,Dirty Deeds Done Dirt Cheap,136.000,209.000,1,0.088157,https://open.spotify.com/track/2d4e45fmUnguxh6yqC7gNT
-3,3,0babKgXwpYCxbmgTc2Ikrh,7feSbMqJGg9yL0s6ypxy9S,yes,Girls on Film,Duran Duran,Decade,132.000,223.000,1,0.312633,https://open.spotify.com/track/7feSbMqJGg9yL0s6ypxy9S
-3,4,0babKgXwpYCxbmgTc2Ikrh,5qeLeyIWCPe1FpdJLQTUDW,yes,The Wild Boys,Duran Duran,Decade,116.000,217.000,1,0.751883,https://open.spotify.com/track/5qeLeyIWCPe1FpdJLQTUDW
-4,1,3skn2lauGk7Dx6bVIt5DVj,3skn2lauGk7Dx6bVIt5DVj,yes,Starlight,Muse,Black Holes and Revelations,122.000,174.000,1,0.000000,https://open.spotify.com/track/3skn2lauGk7Dx6bVIt5DVj
-4,2,3skn2lauGk7Dx6bVIt5DVj,5ehcf6UL1TkwozB386cRAp,yes,Don't Stop Believin' (2024 Remaster),Journey,Greatest Hits (2024 Remaster),119.000,174.000,1,0.114773,https://open.spotify.com/track/5ehcf6UL1TkwozB386cRAp
-4,3,3skn2lauGk7Dx6bVIt5DVj,57bgtoPSgt236HzfBOd8kj,on_repeat,Thunderstruck,AC/DC,The Razors Edge,134.000,165.000,1,0.517274,https://open.spotify.com/track/57bgtoPSgt236HzfBOd8kj
-4,4,3skn2lauGk7Dx6bVIt5DVj,7LRMbd3LEoV5wZJvXT1Lwb,on_repeat,T.N.T,AC/DC,High Voltage,126.000,195.000,1,0.576805,https://open.spotify.com/track/7LRMbd3LEoV5wZJvXT1Lwb
-5,1,5Pgwi0iizu96RHxJ4xL3SH,5Pgwi0iizu96RHxJ4xL3SH,yes,Strawberry Wine,Deana Carter,Did I Shave My Legs For This?,123.000,123.000,1,0.000000,https://open.spotify.com/track/5Pgwi0iizu96RHxJ4xL3SH
-5,2,5Pgwi0iizu96RHxJ4xL3SH,52DudaVZObvmBgEX6IObHX,yes,No Complaints,Noah Kahan,Stick Season (We'll All Be Here Forever),120.000,122.000,1,0.115328,https://open.spotify.com/track/52DudaVZObvmBgEX6IObHX
-5,3,5Pgwi0iizu96RHxJ4xL3SH,7yT4NJt5rgmVoMJMGPULcj,yes,Backseat,Balu Brigada,Backseat,126.000,138.000,1,0.405224,https://open.spotify.com/track/7yT4NJt5rgmVoMJMGPULcj
-5,4,5Pgwi0iizu96RHxJ4xL3SH,4O2rRsoSPb5aN7N3tG6Y3v,on_repeat,Northern Attitude,Noah Kahan,Stick Season,121.000,147.000,2,0.779823,https://open.spotify.com/track/4O2rRsoSPb5aN7N3tG6Y3v
-9,1,3Bclyko7WmwM2oGmKj8sue,3Bclyko7WmwM2oGmKj8sue,on_repeat,I Will Wait,Mumford & Sons,Babel (Deluxe Version),131.000,169.000,1,0.000000,https://open.spotify.com/track/3Bclyko7WmwM2oGmKj8sue
-9,2,3Bclyko7WmwM2oGmKj8sue,1ggbqc7jhg454UpFfSmdam,yes,Don't Miss,The Blue Stones,Pretty Monster,136.000,173.000,2,0.506064,https://open.spotify.com/track/1ggbqc7jhg454UpFfSmdam
-9,3,3Bclyko7WmwM2oGmKj8sue,7jSyWNuHjjwJXr1SQCCAhB,yes,Hurricane,Thirty Seconds To Mars,This Is War,125.000,156.000,2,0.603080,https://open.spotify.com/track/7jSyWNuHjjwJXr1SQCCAhB
-9,4,3Bclyko7WmwM2oGmKj8sue,7nemcVsXVFZF01iqpIIo2Y,on_repeat,It's a Long Way to the Top (If You Wanna Rock 'N' Roll),AC/DC,High Voltage,136.000,185.000,2,0.634914,https://open.spotify.com/track/7nemcVsXVFZF01iqpIIo2Y
+1,2,70wYA8oYHoMzhRRkARoMhU,458JkK5eJhh4C4s6nTuz7g,yes,Dreams - Remastered 2026,The Cranberries,"Everybody Else Is Doing It, So Why Can't We? (Remastered 2026)",128.000,182.000,1,0.136523,https://open.spotify.com/track/458JkK5eJhh4C4s6nTuz7g
+1,3,70wYA8oYHoMzhRRkARoMhU,17lu4tymfnhmcIDlzBbtAb,on_repeat,For Those About to Rock (We Salute You),AC/DC,For Those About to Rock (We Salute You),134.000,176.000,1,0.171369,https://open.spotify.com/track/17lu4tymfnhmcIDlzBbtAb
+1,4,70wYA8oYHoMzhRRkARoMhU,0A0RBBTrgfq9eClnw6ZXT7,yes,Future Starts Slow,The Kills,Blood Pressures,128.000,189.000,1,0.312595,https://open.spotify.com/track/0A0RBBTrgfq9eClnw6ZXT7
+3,1,5DIBVDJOHh7djepAjKHWCO,5DIBVDJOHh7djepAjKHWCO,on_repeat,Heart Like A Truck,Lainey Wilson,Bell Bottom Country,140.000,161.000,1,0.000000,https://open.spotify.com/track/5DIBVDJOHh7djepAjKHWCO
+3,2,5DIBVDJOHh7djepAjKHWCO,57bgtoPSgt236HzfBOd8kj,on_repeat,Thunderstruck,AC/DC,The Razors Edge,134.000,165.000,1,0.257327,https://open.spotify.com/track/57bgtoPSgt236HzfBOd8kj
+3,3,5DIBVDJOHh7djepAjKHWCO,6pYLOZFS1uZPmDFcj6OuMo,yes,The Mask,Matt Maeson,The Mask,148.000,163.000,1,0.317143,https://open.spotify.com/track/6pYLOZFS1uZPmDFcj6OuMo
+3,4,5DIBVDJOHh7djepAjKHWCO,1HxvdVlvQH5NUPi1wsq5L1,yes,Legendary,Welshly Arms,Legendary,142.000,159.000,2,0.483269,https://open.spotify.com/track/1HxvdVlvQH5NUPi1wsq5L1
+4,1,0babKgXwpYCxbmgTc2Ikrh,0babKgXwpYCxbmgTc2Ikrh,yes,The Way She Looks,Two Feet,The Way She Looks,135.000,212.000,1,0.000000,https://open.spotify.com/track/0babKgXwpYCxbmgTc2Ikrh
+4,2,0babKgXwpYCxbmgTc2Ikrh,2d4e45fmUnguxh6yqC7gNT,on_repeat,Dirty Deeds Done Dirt Cheap,AC/DC,Dirty Deeds Done Dirt Cheap,136.000,209.000,1,0.087030,https://open.spotify.com/track/2d4e45fmUnguxh6yqC7gNT
+4,3,0babKgXwpYCxbmgTc2Ikrh,7feSbMqJGg9yL0s6ypxy9S,yes,Girls on Film,Duran Duran,Decade,132.000,223.000,1,0.308530,https://open.spotify.com/track/7feSbMqJGg9yL0s6ypxy9S
+4,4,0babKgXwpYCxbmgTc2Ikrh,5qeLeyIWCPe1FpdJLQTUDW,yes,The Wild Boys,Duran Duran,Decade,116.000,217.000,1,0.745862,https://open.spotify.com/track/5qeLeyIWCPe1FpdJLQTUDW
+6,1,5Pgwi0iizu96RHxJ4xL3SH,5Pgwi0iizu96RHxJ4xL3SH,yes,Strawberry Wine,Deana Carter,Did I Shave My Legs For This?,123.000,123.000,1,0.000000,https://open.spotify.com/track/5Pgwi0iizu96RHxJ4xL3SH
+6,2,5Pgwi0iizu96RHxJ4xL3SH,52DudaVZObvmBgEX6IObHX,yes,No Complaints,Noah Kahan,Stick Season (We'll All Be Here Forever),120.000,122.000,1,0.114421,https://open.spotify.com/track/52DudaVZObvmBgEX6IObHX
+6,3,5Pgwi0iizu96RHxJ4xL3SH,7yT4NJt5rgmVoMJMGPULcj,yes,Backseat,Balu Brigada,Backseat,126.000,138.000,1,0.400711,https://open.spotify.com/track/7yT4NJt5rgmVoMJMGPULcj
+6,4,5Pgwi0iizu96RHxJ4xL3SH,4O2rRsoSPb5aN7N3tG6Y3v,on_repeat,Northern Attitude,Noah Kahan,Stick Season,121.000,147.000,2,0.770457,https://open.spotify.com/track/4O2rRsoSPb5aN7N3tG6Y3v
+10,1,3Bclyko7WmwM2oGmKj8sue,3Bclyko7WmwM2oGmKj8sue,on_repeat,I Will Wait,Mumford & Sons,Babel (Deluxe Version),131.000,169.000,1,0.000000,https://open.spotify.com/track/3Bclyko7WmwM2oGmKj8sue
+10,2,3Bclyko7WmwM2oGmKj8sue,1ggbqc7jhg454UpFfSmdam,yes,Don't Miss,The Blue Stones,Pretty Monster,136.000,173.000,2,0.498264,https://open.spotify.com/track/1ggbqc7jhg454UpFfSmdam
+10,3,3Bclyko7WmwM2oGmKj8sue,7jSyWNuHjjwJXr1SQCCAhB,yes,Hurricane,Thirty Seconds To Mars,This Is War,125.000,156.000,2,0.594011,https://open.spotify.com/track/7jSyWNuHjjwJXr1SQCCAhB
+10,4,3Bclyko7WmwM2oGmKj8sue,7nemcVsXVFZF01iqpIIo2Y,on_repeat,It's a Long Way to the Top (If You Wanna Rock 'N' Roll),AC/DC,High Voltage,136.000,185.000,2,0.625311,https://open.spotify.com/track/7nemcVsXVFZF01iqpIIo2Y
 11,1,7hOfyNuj2dLc0HAEYVDIYS,7hOfyNuj2dLc0HAEYVDIYS,on_repeat,El Perdón - Forgiveness,"Nicky Jam,Enrique Iglesias",Fénix,90.000,211.000,1,0.000000,https://open.spotify.com/track/7hOfyNuj2dLc0HAEYVDIYS
-11,2,7hOfyNuj2dLc0HAEYVDIYS,5aejtAMTPonqopEygQgOkq,yes,Cardiac Arrest,Bad Suns,Language & Perspective,94.000,227.000,1,0.398250,https://open.spotify.com/track/5aejtAMTPonqopEygQgOkq
-11,3,7hOfyNuj2dLc0HAEYVDIYS,52MSDG99lVCtdqVHmqGgJF,yes,Spaghetti Western,Maudlin Strangers,Spaghetti Western,100.000,188.000,2,0.799798,https://open.spotify.com/track/52MSDG99lVCtdqVHmqGgJF
-11,4,7hOfyNuj2dLc0HAEYVDIYS,22VHOlVYBqytsrAqV8yXBK,on_repeat,Dial Drunk,"Noah Kahan,Post Malone",Dial Drunk (with Post Malone),112.000,197.000,1,0.811911,https://open.spotify.com/track/22VHOlVYBqytsrAqV8yXBK
+11,2,7hOfyNuj2dLc0HAEYVDIYS,5aejtAMTPonqopEygQgOkq,yes,Cardiac Arrest,Bad Suns,Language & Perspective,94.000,227.000,1,0.403354,https://open.spotify.com/track/5aejtAMTPonqopEygQgOkq
+11,3,7hOfyNuj2dLc0HAEYVDIYS,52MSDG99lVCtdqVHmqGgJF,yes,Spaghetti Western,Maudlin Strangers,Spaghetti Western,100.000,188.000,2,0.806679,https://open.spotify.com/track/52MSDG99lVCtdqVHmqGgJF
+11,4,7hOfyNuj2dLc0HAEYVDIYS,22VHOlVYBqytsrAqV8yXBK,on_repeat,Dial Drunk,"Noah Kahan,Post Malone",Dial Drunk (with Post Malone),112.000,197.000,1,0.822402,https://open.spotify.com/track/22VHOlVYBqytsrAqV8yXBK
 12,1,6fJld32axCH9Aw7XlVLoGG,6fJld32axCH9Aw7XlVLoGG,yes,Man On A Mission,The Black Keys,Man On A Mission,89.000,157.000,1,0.000000,https://open.spotify.com/track/6fJld32axCH9Aw7XlVLoGG
-12,2,6fJld32axCH9Aw7XlVLoGG,3nEotpBFeXq0OJstuHzwDP,yes,God Needs The Devil,Jonah Kagen,God Needs The Devil,81.000,137.000,1,0.536552,https://open.spotify.com/track/3nEotpBFeXq0OJstuHzwDP
-12,3,6fJld32axCH9Aw7XlVLoGG,69QHm3pustz01CJRwdo20z,on_repeat,Hells Bells,AC/DC,Back In Black,107.000,156.000,1,0.604788,https://open.spotify.com/track/69QHm3pustz01CJRwdo20z
-12,4,6fJld32axCH9Aw7XlVLoGG,7JvNsKLxsUTGj7hR0Hkw2Z,yes,Smoke On the Highway,X Ambassadors,Townies,78.000,127.000,2,0.957349,https://open.spotify.com/track/7JvNsKLxsUTGj7hR0Hkw2Z
-13,1,0z1b34WikhOH9ZxU8QDWcv,0z1b34WikhOH9ZxU8QDWcv,on_repeat,One Headlight,The Wallflowers,Bringing Down The Horse,108.000,199.000,1,0.000000,https://open.spotify.com/track/0z1b34WikhOH9ZxU8QDWcv
-13,2,0z1b34WikhOH9ZxU8QDWcv,0mflMxspEfB0VbI1kyLiAv,on_repeat,Stick Season,Noah Kahan,Stick Season,118.000,196.000,1,0.352189,https://open.spotify.com/track/0mflMxspEfB0VbI1kyLiAv
-13,3,0z1b34WikhOH9ZxU8QDWcv,2CxUw9KnY5VHugLbBZiCAF,yes,I'm Not Really Here,X Ambassadors,Townies,109.000,237.000,1,0.867602,https://open.spotify.com/track/2CxUw9KnY5VHugLbBZiCAF
-13,4,0z1b34WikhOH9ZxU8QDWcv,5PKnZzkjs2y3WTbIYtv5Fq,on_repeat,Magic Bus - Mono Edit,The Who,The Kids Are Alright,92.000,230.000,1,0.897610,https://open.spotify.com/track/5PKnZzkjs2y3WTbIYtv5Fq
-15,1,6pYLOZFS1uZPmDFcj6OuMo,6pYLOZFS1uZPmDFcj6OuMo,yes,The Mask,Matt Maeson,The Mask,148.000,163.000,1,0.000000,https://open.spotify.com/track/6pYLOZFS1uZPmDFcj6OuMo
-15,2,6pYLOZFS1uZPmDFcj6OuMo,3xdjjKMcMOFgo1eQrfbogM,on_repeat,Wagon Wheel,Darius Rucker,True Believers,148.000,178.000,1,0.332294,https://open.spotify.com/track/3xdjjKMcMOFgo1eQrfbogM
-15,3,6pYLOZFS1uZPmDFcj6OuMo,660u9agQuREtEDmETVWSts,yes,Three Imaginary Boys - 2005 Remaster,The Cure,Three Imaginary Boys (Deluxe Edition),170.000,171.000,2,0.957134,https://open.spotify.com/track/660u9agQuREtEDmETVWSts
-15,4,6pYLOZFS1uZPmDFcj6OuMo,6UWmNaS12bUJzFBuQB6e7j,yes,Grave Digger,Matt Maeson,Grave Digger,140.000,137.000,3,1.139795,https://open.spotify.com/track/6UWmNaS12bUJzFBuQB6e7j
-17,1,2SGyf0hCuB81F85cHXuRjl,2SGyf0hCuB81F85cHXuRjl,yes,So Cold,Balu Brigada,Portal,111.000,222.000,1,0.000000,https://open.spotify.com/track/2SGyf0hCuB81F85cHXuRjl
-17,2,2SGyf0hCuB81F85cHXuRjl,0NdTUS4UiNYCNn5FgVqKQY,yes,Snap Out Of It,Arctic Monkeys,AM,130.000,224.000,1,0.665034,https://open.spotify.com/track/0NdTUS4UiNYCNn5FgVqKQY
-26,1,3BBESx22HOSrLjHjnrieP9,3BBESx22HOSrLjHjnrieP9,yes,Class Reunion,Peyton & His Peers,Legacy,153.000,231.000,1,0.000000,https://open.spotify.com/track/3BBESx22HOSrLjHjnrieP9
+12,2,6fJld32axCH9Aw7XlVLoGG,3nEotpBFeXq0OJstuHzwDP,yes,God Needs The Devil,Jonah Kagen,God Needs The Devil,81.000,137.000,1,0.544213,https://open.spotify.com/track/3nEotpBFeXq0OJstuHzwDP
+12,3,6fJld32axCH9Aw7XlVLoGG,69QHm3pustz01CJRwdo20z,on_repeat,Hells Bells,AC/DC,Back In Black,107.000,156.000,1,0.613376,https://open.spotify.com/track/69QHm3pustz01CJRwdo20z
+12,4,6fJld32axCH9Aw7XlVLoGG,7JvNsKLxsUTGj7hR0Hkw2Z,yes,Smoke On the Highway,X Ambassadors,Townies,78.000,127.000,2,0.949529,https://open.spotify.com/track/7JvNsKLxsUTGj7hR0Hkw2Z
+19,1,1JcIXOir94YUYBt2cXTzn2,1JcIXOir94YUYBt2cXTzn2,yes,Growing Sideways,Noah Kahan,Stick Season,178.000,137.000,1,0.000000,https://open.spotify.com/track/1JcIXOir94YUYBt2cXTzn2
+19,2,1JcIXOir94YUYBt2cXTzn2,7mjSHL2Eb0kAwiKbvNNyD9,on_repeat,Wild World,Yusuf / Cat Stevens,Tea For The Tillerman (Remastered 2020),153.000,159.000,1,0.951076,https://open.spotify.com/track/7mjSHL2Eb0kAwiKbvNNyD9
+19,3,1JcIXOir94YUYBt2cXTzn2,08mG3Y1vljYA6bvDt4Wqkj,on_repeat,Back In Black,AC/DC,Back In Black,188.000,177.000,2,1.037869,https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj
+19,4,1JcIXOir94YUYBt2cXTzn2,660u9agQuREtEDmETVWSts,yes,Three Imaginary Boys - 2005 Remaster,The Cure,Three Imaginary Boys (Deluxe Edition),170.000,171.000,3,1.200955,https://open.spotify.com/track/660u9agQuREtEDmETVWSts
+22,1,02eD9ymfJOJOhM97HYp5R9,02eD9ymfJOJOhM97HYp5R9,on_repeat,The House That Built Me,Miranda Lambert,Revolution,81.000,104.000,1,0.000000,https://open.spotify.com/track/02eD9ymfJOJOhM97HYp5R9
+22,2,02eD9ymfJOJOhM97HYp5R9,4y5lApjfksaQ35CdhVjvL5,yes,Sunoco,X Ambassadors,Townie,120.000,109.000,1,1.199851,https://open.spotify.com/track/4y5lApjfksaQ35CdhVjvL5
+25,1,3xdjjKMcMOFgo1eQrfbogM,3xdjjKMcMOFgo1eQrfbogM,on_repeat,Wagon Wheel,Darius Rucker,True Believers,148.000,178.000,1,0.000000,https://open.spotify.com/track/3xdjjKMcMOFgo1eQrfbogM
+25,2,3xdjjKMcMOFgo1eQrfbogM,3BBESx22HOSrLjHjnrieP9,yes,Class Reunion,Peyton & His Peers,Legacy,153.000,231.000,1,1.114643,https://open.spotify.com/track/3BBESx22HOSrLjHjnrieP9
