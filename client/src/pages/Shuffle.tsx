@@ -281,7 +281,7 @@ export default function Shuffle() {
     if (!isLogValid(state)) {
       toast({
         title: "Fill the required fields",
-        description: "Pick keep/remove. If Keep is selected, choose Currently Listening, Favorites Archive, Save For Later, or Skip.",
+        description: "Pick keep/remove. If Keep is selected, choose Currently Listening, Favorites Archive, Save for Later, or Skip for Now.",
         variant: "destructive",
       });
       return;
@@ -469,7 +469,7 @@ export default function Shuffle() {
               </div>
 
                 <p className="mt-4 text-center text-xs text-muted-foreground/70" data-testid="text-shortcuts">
-                  Shortcuts: W currently listening · Y favorites archive · M save for later · N skip · K keep · R remove · 1–9 activity · Enter log · → skip
+                  Shortcuts: W currently listening · Y favorites archive · M save for later · N skip for now · K keep · R remove · 1–9 activity · Enter log · → skip
                 </p>
               </motion.div>
             </div>

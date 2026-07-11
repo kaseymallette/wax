@@ -10,8 +10,8 @@ export function repeatIntentLabel(intent: string | null | undefined): string {
   if (intent === "undecided") return "Undecided";
   if (intent === "currently_listening") return "Currently Listening";
   if (intent === "favorites_archive") return "Favorites Archive";
-  if (intent === "save_for_later") return "Save For Later";
-  if (intent === "skip") return "Skip";
+  if (intent === "save_for_later") return "Save for Later";
+  if (intent === "skip") return "Skip for Now";
   return "Undecided";
 }
 

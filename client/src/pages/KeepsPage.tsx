@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import type { ListenWithTrack, TrackWithStats } from "@shared/schema";
-import { REPEAT_INTENT_OPTIONS } from "@shared/schema";
+import { CURRENTLY_LISTENING_CAPACITY, REPEAT_INTENT_OPTIONS } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Layout } from "@/components/Layout";
@@ -35,7 +35,8 @@ import {
 } from "@/lib/wax";
 import { Clock, EarOff, Headphones, Library, MoreHorizontal, Trash2 } from "lucide-react";
 
-const TAG_FILTERS = [{ value: "all", label: "All keeps" }, ...REPEAT_INTENT_OPTIONS] as const;
+const KEEP_DECISION_OPTIONS = REPEAT_INTENT_OPTIONS.filter((opt) => opt.value !== "undecided");
+const TAG_FILTERS = [{ value: "all", label: "All keeps" }, ...KEEP_DECISION_OPTIONS] as const;
 
 function featureChips(t: TrackWithStats | undefined): string[] {
   if (!t) return [];
@@ -52,7 +53,6 @@ function featureChips(t: TrackWithStats | undefined): string[] {
 
 function keepCountBadgeClass(tag: (typeof TAG_FILTERS)[number]["value"]): string {
   if (tag === "all") return "border-amber-500/40 bg-amber-500/15 text-amber-400";
-  if (tag === "undecided") return "border-border bg-secondary/60 text-muted-foreground";
   if (tag === "currently_listening") return "border-blue-500/40 bg-blue-500/15 text-blue-400";
   if (tag === "favorites_archive") return "border-emerald-500/40 bg-emerald-500/15 text-emerald-400";
   if (tag === "save_for_later") return "border-amber-500/40 bg-amber-500/15 text-amber-400";
@@ -124,6 +124,11 @@ export default function KeepsPage() {
     for (const t of keepTracksQuery.data ?? []) m.set(t.id, t);
     return m;
   }, [keepTracksQuery.data]);
+  const currentlyListeningCount = useMemo(
+    () => (keepTracksQuery.data ?? []).filter((t) => t.repeatIntent === "currently_listening").length,
+    [keepTracksQuery.data],
+  );
+  const isCurrentlyListeningFull = currentlyListeningCount >= CURRENTLY_LISTENING_CAPACITY;
   const keepTrackIds = useMemo(() => new Set((keepTracksQuery.data ?? []).map((t) => t.id)), [keepTracksQuery.data]);
   const latestKeeps = useMemo(() => {
     const byTrack = new Map<string, ListenWithTrack>();
@@ -151,7 +156,32 @@ export default function KeepsPage() {
   return (
     <Layout>
       <h1 className="font-display text-xl font-bold">Keeps</h1>
-      <p className="text-sm text-muted-foreground">Your keep logs, filterable by listen-again tag.</p>
+      <p className="text-sm text-muted-foreground">
+        Your songs, logged and organized by what you want to hear next. Move any song between tags to update your
+        playlists.
+      </p>
+      <div className="mt-3 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground">
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div>
+            <p className="font-semibold text-foreground">
+              Currently Listening ({currentlyListeningCount}/{CURRENTLY_LISTENING_CAPACITY})
+            </p>
+            <p>Grouped into 5 weekday playlists (Mon–Fri), up to 25 songs each.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Save for Later</p>
+            <p>Hold for future listens. Exported as one playlist.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Favorites Archive</p>
+            <p>Your all-time favorites not currently in rotation. Exported as one playlist.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Skip for Now</p>
+            <p>Temporarily out of rotation. No playlist is generated.</p>
+          </div>
+        </div>
+      </div>
 
       <div className="mt-5 rounded-xl border border-border bg-card p-4">
         <div className="flex flex-wrap gap-1.5 pt-5">
@@ -282,12 +312,16 @@ export default function KeepsPage() {
                           </div>
                         )}
                         <div className="mt-2 flex flex-wrap gap-1.5" data-testid={`edit-keep-tag-${l.id}`}>
-                          {REPEAT_INTENT_OPTIONS.map((opt) => (
+                          {KEEP_DECISION_OPTIONS.map((opt) => (
                             <button
                               key={opt.value}
                               type="button"
                               onClick={() => updateRepeatIntentMutation.mutate({ trackId: l.trackId, repeatIntent: opt.value })}
-                              disabled={updateRepeatIntentMutation.isPending || l.repeatIntent === opt.value}
+                              disabled={
+                                updateRepeatIntentMutation.isPending ||
+                                l.repeatIntent === opt.value ||
+                                (opt.value === "currently_listening" && isCurrentlyListeningFull && l.repeatIntent !== "currently_listening")
+                              }
                               data-testid={`button-keep-tag-${l.id}-${opt.value}`}
                               className={`rounded-full border px-2 py-0.5 text-[10px] font-medium transition-colors hover-elevate ${
                                 l.repeatIntent === opt.value

@@ -217,7 +217,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
 
   const logMutation = useMutation({
     mutationFn: async () => {
-      if (state.keepInLibrary === null || state.listened === null) return;
+      if (state.keepInLibrary === null) return;
       const wantAgain =
         state.repeatIntent === "currently_listening" ||
         state.repeatIntent === "favorites_archive" ||
@@ -227,7 +227,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
         state.repeatIntent === "favorites_archive";
       const res = await apiRequest("POST", "/api/listens", {
         trackId,
-        listened: state.listened,
+        listened: true,
         wantAgain,
         wouldAgain,
         keepInLibrary: state.keepInLibrary,

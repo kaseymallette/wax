@@ -94,59 +94,10 @@ export function LogForm({
       {state.keepInLibrary === true && (
         <div className="space-y-2">
           <label className="text-sm font-semibold">Add it to...</label>
+          <p className="text-xs text-muted-foreground/70">
+            Daily Spotify playlists are built from Currently Listening.
+          </p>
           <div className="grid gap-2 sm:grid-cols-2">
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => patch({ repeatIntent: "favorites_archive" })}
-                data-testid="button-repeat-favorites-archive"
-                className={`w-full rounded-lg border px-3 py-2.5 pl-9 text-sm font-medium transition-colors hover-elevate ${
-                  state.repeatIntent === "favorites_archive" ? SEG_ACTIVE : SEG_IDLE
-                }`}
-              >
-                Favorites Archive
-              </button>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    type="button"
-                    aria-label="About Favorites Archive"
-                    data-testid="button-info-favorites-archive"
-                    className="absolute left-2 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground/80 hover:text-foreground"
-                  >
-                    <Info className="h-4 w-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent>You loved it so much it needs a nap.</TooltipContent>
-              </Tooltip>
-            </div>
-
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => patch({ repeatIntent: "save_for_later" })}
-                data-testid="button-repeat-save-for-later"
-                className={`w-full rounded-lg border px-3 py-2.5 pl-9 text-sm font-medium transition-colors hover-elevate ${
-                  state.repeatIntent === "save_for_later" ? SEG_ACTIVE : SEG_IDLE
-                }`}
-              >
-                Save For Later
-              </button>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    type="button"
-                    aria-label="About Save For Later"
-                    data-testid="button-info-save-for-later"
-                    className="absolute left-2 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground/80 hover:text-foreground"
-                  >
-                    <Info className="h-4 w-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent>Could be good, not sure yet.</TooltipContent>
-              </Tooltip>
-            </div>
-
             <div className="relative">
               <button
                 type="button"
@@ -176,19 +127,71 @@ export function LogForm({
             <div className="relative">
               <button
                 type="button"
+                onClick={() => patch({ repeatIntent: "save_for_later" })}
+                data-testid="button-repeat-save-for-later"
+                className={`w-full rounded-lg border px-3 py-2.5 pl-9 text-sm font-medium transition-colors hover-elevate ${
+                  state.repeatIntent === "save_for_later" ? SEG_ACTIVE : SEG_IDLE
+                }`}
+              >
+                Save for Later
+              </button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="About Save for Later"
+                    data-testid="button-info-save-for-later"
+                    className="absolute left-2 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground/80 hover:text-foreground"
+                  >
+                    <Info className="h-4 w-4" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>Could be good, not sure yet.</TooltipContent>
+              </Tooltip>
+            </div>
+
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => patch({ repeatIntent: "favorites_archive" })}
+                data-testid="button-repeat-favorites-archive"
+                className={`w-full rounded-lg border px-3 py-2.5 pl-9 text-sm font-medium transition-colors hover-elevate ${
+                  state.repeatIntent === "favorites_archive" ? SEG_ACTIVE : SEG_IDLE
+                }`}
+              >
+                Favorites Archive
+              </button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="About Favorites Archive"
+                    data-testid="button-info-favorites-archive"
+                    className="absolute left-2 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground/80 hover:text-foreground"
+                  >
+                    <Info className="h-4 w-4" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>You loved it so much it needs a nap.</TooltipContent>
+              </Tooltip>
+            </div>
+
+            <div className="relative">
+              <button
+                type="button"
                 onClick={() => patch({ repeatIntent: "skip" })}
                 data-testid="button-repeat-skip"
                 className={`w-full rounded-lg border px-3 py-2.5 pl-9 text-sm font-medium transition-colors hover-elevate ${
                   state.repeatIntent === "skip" ? SEG_ACTIVE : SEG_IDLE
                 }`}
               >
-                Skip
+                Skip for Now
               </button>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
                     type="button"
-                    aria-label="About Skip"
+                    aria-label="About Skip for Now"
                     data-testid="button-info-skip"
                     className="absolute left-2 top-1/2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground/80 hover:text-foreground"
                   >
@@ -199,9 +202,6 @@ export function LogForm({
               </Tooltip>
             </div>
           </div>
-          <p className="text-xs text-muted-foreground/70">
-            Only songs in Currently Listening are used to build Spotify playlists.
-          </p>
         </div>
       )}
 

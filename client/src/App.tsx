@@ -11,7 +11,6 @@ import RecentsPage from "@/pages/RecentsPage";
 import KeepsPage from "@/pages/KeepsPage";
 import StatsPage from "@/pages/StatsPage";
 import ImportPage from "@/pages/ImportPage";
-import PlaylistBuilderPage from "@/pages/PlaylistBuilderPage";
 import NotFound from "@/pages/not-found";
 
 function AppRouter() {
@@ -23,7 +22,6 @@ function AppRouter() {
       <Route path="/keeps" component={KeepsPage} />
       <Route path="/stats" component={StatsPage} />
       <Route path="/import" component={ImportPage} />
-      <Route path="/playlist-builder" component={PlaylistBuilderPage} />
       <Route component={NotFound} />
     </Switch>
   );

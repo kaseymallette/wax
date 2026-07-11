@@ -65,14 +65,12 @@ type Stats = {
 const KEEP_INTENT_TABS = [
   { value: "currently_listening", label: "Currently Listening" },
   { value: "favorites_archive", label: "Favorites Archive" },
-  { value: "save_for_later", label: "Save For Later" },
-  { value: "skip", label: "Skip" },
-  { value: "undecided", label: "Undecided" },
+  { value: "save_for_later", label: "Save for Later" },
+  { value: "skip", label: "Skip for Now" },
 ] as const;
 
 function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], active: boolean): string {
   if (!active) return "bg-secondary/40 text-muted-foreground";
-  if (value === "undecided") return "bg-secondary/60 text-muted-foreground";
   if (value === "currently_listening") return "bg-blue-500/15 text-blue-400";
   if (value === "favorites_archive") return "bg-emerald-500/15 text-emerald-400";
   if (value === "save_for_later") return "bg-amber-500/15 text-amber-400";
@@ -81,7 +79,6 @@ function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], a
 }
 
 function keepIntentAccentTextClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
-  if (value === "undecided") return "text-muted-foreground";
   if (value === "currently_listening") return "text-blue-400";
   if (value === "favorites_archive") return "text-emerald-400";
   if (value === "save_for_later") return "text-amber-400";
@@ -90,7 +87,6 @@ function keepIntentAccentTextClass(value: (typeof KEEP_INTENT_TABS)[number]["val
 }
 
 function keepIntentPanelClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
-  if (value === "undecided") return "border-border bg-secondary/20";
   if (value === "currently_listening") return "border-blue-500/30 bg-blue-500/10";
   if (value === "favorites_archive") return "border-emerald-500/30 bg-emerald-500/10";
   if (value === "save_for_later") return "border-amber-500/30 bg-amber-500/10";
@@ -341,7 +337,7 @@ export default function StatsPage() {
           <p className="mt-1 text-xs text-muted-foreground">
             Averages from imported feature data on latest keep decisions. Tracks missing features are excluded from averages.
           </p>
-          <div className="mt-3 flex flex-wrap gap-1.5">
+          <div className="mt-3 grid grid-cols-2 gap-1.5">
             {KEEP_INTENT_TABS.map((tab) => (
               <button
                 key={tab.value}

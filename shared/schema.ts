@@ -54,10 +54,12 @@ export const ACTIVITY_PRESETS = [
 export const REPEAT_INTENT_OPTIONS = [
   { value: "currently_listening", label: "Currently Listening" },
   { value: "favorites_archive", label: "Favorites Archive" },
-  { value: "save_for_later", label: "Save For Later" },
-  { value: "skip", label: "Skip" },
+  { value: "save_for_later", label: "Save for Later" },
+  { value: "skip", label: "Skip for Now" },
   { value: "undecided", label: "Undecided" },
 ] as const;
+
+export const CURRENTLY_LISTENING_CAPACITY = 125;
 
 export const REPEAT_INTENT_VALUES = REPEAT_INTENT_OPTIONS.map((o) => o.value) as [
   string,

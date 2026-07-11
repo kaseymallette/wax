@@ -1,4 +1,4 @@
-import { tracks, listens } from "@shared/schema";
+import { tracks, listens, CURRENTLY_LISTENING_CAPACITY } from "@shared/schema";
 import type {
   Track,
   TrackImport,
@@ -318,7 +318,10 @@ export interface IStorage {
   listTracksByIds(ids: string[], includeFeatures?: boolean): TrackWithStats[];
   getRandomTrack(status: string, keepOnly?: boolean, includeFeatures?: boolean, excludeTrackIds?: string[]): TrackWithStats | undefined;
   getTrack(id: string, includeFeatures?: boolean): TrackWithStats | undefined;
-  setRepeatIntent(id: string, repeatIntent: Track["repeatIntent"]): TrackWithStats | undefined;
+  setRepeatIntent(id: string, repeatIntent: Track["repeatIntent"]):
+    | TrackWithStats
+    | { error: string }
+    | undefined;
   addListen(payload: ListenPayload): { listen: Listen; track: TrackWithStats } | { error: string };
   listListens(opts: {
     trackId?: string;
@@ -814,6 +817,33 @@ export class DatabaseStorage implements IStorage {
     return this.getTrack(best.id, includeFeatures);
   }
 
+  private applyRepeatIntent(trackId: string, repeatIntent: Track["repeatIntent"]): { ok: true } | { error: string } {
+    if (repeatIntent !== "currently_listening") {
+      sqlite.prepare(`UPDATE tracks SET repeat_intent = ? WHERE id = ?`).run(repeatIntent, trackId);
+      return { ok: true };
+    }
+
+    const current = sqlite
+      .prepare(`SELECT repeat_intent FROM tracks WHERE id = ?`)
+      .get(trackId) as { repeat_intent: string } | undefined;
+
+    if (!current) return { error: "Track not found" };
+    if (current.repeat_intent === "currently_listening") return { ok: true };
+
+    const currentlyListeningCount = sqlite
+      .prepare(`SELECT COUNT(*) AS c FROM tracks WHERE repeat_intent = 'currently_listening'`)
+      .get() as { c: number };
+
+    if (currentlyListeningCount.c >= CURRENTLY_LISTENING_CAPACITY) {
+      return {
+        error: `Currently Listening is full (${CURRENTLY_LISTENING_CAPACITY}/${CURRENTLY_LISTENING_CAPACITY}). Move tracks to another tag first.`,
+      };
+    }
+
+    sqlite.prepare(`UPDATE tracks SET repeat_intent = ? WHERE id = ?`).run(repeatIntent, trackId);
+    return { ok: true };
+  }
+
   getTrack(id: string, includeFeatures = true): TrackWithStats | undefined {
     const trackAggSelect = includeFeatures ? TRACK_AGG_SELECT : TRACK_AGG_SELECT_NO_FEATURES;
     const row = sqlite
@@ -822,8 +852,12 @@ export class DatabaseStorage implements IStorage {
     return row ? rowToTrackWithStats(row) : undefined;
   }
 
-  setRepeatIntent(id: string, repeatIntent: Track["repeatIntent"]): TrackWithStats | undefined {
-    sqlite.prepare(`UPDATE tracks SET repeat_intent = ? WHERE id = ?`).run(repeatIntent, id);
+  setRepeatIntent(id: string, repeatIntent: Track["repeatIntent"]):
+    | TrackWithStats
+    | { error: string }
+    | undefined {
+    const result = this.applyRepeatIntent(id, repeatIntent);
+    if ("error" in result) return result;
     return this.getTrack(id);
   }
 
@@ -832,7 +866,8 @@ export class DatabaseStorage implements IStorage {
     if (!track) return { error: "Track not found" } as const;
 
     if (payload.repeatIntent) {
-      sqlite.prepare(`UPDATE tracks SET repeat_intent = ? WHERE id = ?`).run(payload.repeatIntent, payload.trackId);
+      const result = this.applyRepeatIntent(payload.trackId, payload.repeatIntent);
+      if ("error" in result) return { error: result.error } as const;
     }
 
     const now = Date.now();

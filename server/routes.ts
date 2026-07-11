@@ -7,13 +7,11 @@ import os from "node:os";
 import multer from "multer";
 import Database from "better-sqlite3";
 import { storage } from "./storage";
-import { generatePlaylistCandidates } from "./playlistBuilder";
 import {
   listenPayloadSchema,
   repeatIntentUpdateSchema,
   trackImportSchema,
   featureImportRowSchema,
-  playlistGenerateSchema,
   type FeatureImportRow,
 } from "@shared/schema";
 import { z } from "zod";
@@ -579,168 +577,6 @@ export async function registerRoutes(
     }
   });
 
-  app.post("/api/playlist-builder/import-features", upload.single("file"), async (req: Request, res) => {
-    const file = (req as any).file;
-    if (!file) return res.status(400).json({ error: "No file uploaded" });
-
-    try {
-      const raw = await fs.promises.readFile(file.path, "utf8");
-      const text = raw.replace(/^\uFEFF/, "");
-      const rows = parseCsv(text);
-      fs.promises.unlink(file.path).catch(() => {});
-
-      const { items, skipped } = parseFeatureCsvRows(rows, file.originalname);
-
-      const summary = storage.importFeatureRows(items);
-      res.json({
-        ok: true,
-        importedRows: items.length,
-        skipped,
-        ...summary,
-      });
-    } catch (e: any) {
-      fs.promises.unlink(file.path).catch(() => {});
-      res.status(400).json({ error: e?.message || "Could not parse feature CSV." });
-    }
-  });
-
-  app.post("/api/playlist-builder/import-features-from-db", (_req: Request, res) => {
-    let sourceDb: Database.Database | null = null;
-    try {
-      const sourcePath = path.resolve(process.cwd(), "data", "music-library", "spotify_music_library.db");
-      if (!fs.existsSync(sourcePath)) {
-        return res.status(400).json({
-          error: "Source database not found at data/music-library/spotify_music_library.db",
-        });
-      }
-
-      sourceDb = new Database(sourcePath, { readonly: true, fileMustExist: true });
-      const rows = sourceDb
-        .prepare(`
-          SELECT
-            Track_ID AS trackId,
-            Song AS song,
-            Artist AS artist,
-            Album AS album,
-            BPM AS bpm,
-            COALESCE(Camelot, Key) AS camelot,
-            Energy AS energy,
-            Dance AS dance,
-            Valence AS valence,
-            Popularity AS popularity,
-            Album_Year AS albumYear,
-            "Album Date" AS albumDate
-          FROM tracks
-        `)
-        .all() as any[];
-
-      const parseYear = (albumYear: unknown, albumDate: unknown): number | null => {
-        const y = toFeatureNumber(albumYear);
-        if (y && y >= 1900 && y <= 2100) return Math.round(y);
-        const s = String(albumDate ?? "").trim();
-        if (!s) return null;
-        const m = s.match(/(19|20)\d{2}/);
-        if (!m) return null;
-        const parsed = Number(m[0]);
-        return Number.isFinite(parsed) ? parsed : null;
-      };
-
-      const items = [];
-      let skipped = 0;
-      for (const row of rows) {
-        const parsed = featureImportRowSchema.safeParse({
-          trackId: extractId(row.trackId) ?? undefined,
-          song: row.song ?? "",
-          artist: row.artist ?? "",
-          album: row.album ?? "",
-          bpm: toFeatureNumber(row.bpm),
-          camelot: row.camelot != null ? String(row.camelot) : null,
-          energy: toFeatureNumber(row.energy),
-          dance: toFeatureNumber(row.dance),
-          valence: toFeatureNumber(row.valence),
-          popularity: toFeatureNumber(row.popularity),
-          albumYear: parseYear(row.albumYear, row.albumDate),
-          source: "spotify_music_library.db",
-        });
-
-        if (!parsed.success) {
-          skipped += 1;
-          continue;
-        }
-        items.push(parsed.data);
-      }
-
-      const summary = storage.importFeatureRows(items);
-      res.json({
-        ok: true,
-        source: "data/music-library/spotify_music_library.db",
-        rowsRead: rows.length,
-        importedRows: items.length,
-        skipped,
-        ...summary,
-      });
-    } catch (e: any) {
-      res.status(400).json({
-        error: e?.message || "Could not import features from data/music-library/spotify_music_library.db",
-      });
-    } finally {
-      if (sourceDb) try { sourceDb.close(); } catch {}
-    }
-  });
-
-  app.post("/api/playlist-builder/import-features-all", (_req: Request, res) => {
-    const result = importDefaultFeatureSources();
-    if (result.sources.length === 0) {
-      return res.status(400).json({
-        error:
-          result.errors[0] ||
-          "No default feature sources found. Expected files in data/music-library/.",
-      });
-    }
-
-    res.json({
-      ok: true,
-      source: "combined-defaults",
-      sources: result.sources,
-      ...result.totals,
-    });
-  });
-
-  app.post("/api/playlist-builder/generate", (req: Request, res) => {
-    const parsed = playlistGenerateSchema.safeParse(req.body);
-    if (!parsed.success) {
-      return res.status(400).json({ error: "Invalid playlist request." });
-    }
-
-    try {
-      const keepPoints = storage.listKeepTrackFeaturePoints();
-      if (keepPoints.length === 0) {
-        const keepTracks = storage.listTracks({ status: "keep", sort: "name", q: "" });
-        const keepTrackIds = new Set(keepTracks.map((t) => t.id));
-        const seedFeature = storage.getTrackFeaturePoint(parsed.data.seedTrackId);
-        return res.status(400).json({
-          error: "No keep tracks with features found. Import features and keep some tracks first.",
-          diagnostics: {
-            keepTrackCount: keepTracks.length,
-            seedInKeep: keepTrackIds.has(parsed.data.seedTrackId),
-            seedHasFeatures: !!seedFeature,
-          },
-        });
-      }
-
-      const result = generatePlaylistCandidates({
-        seedTrackId: parsed.data.seedTrackId,
-        topN: parsed.data.topN,
-        maxDistance: parsed.data.maxDistance,
-        keepPoints,
-      });
-
-      res.json(result);
-    } catch (e: any) {
-      res.status(400).json({ error: e?.message || "Could not generate playlist candidates." });
-    }
-  });
-
   // --- Tracks list with aggregate listen stats joined ---
   app.get("/api/tracks", (req, res) => {
     const status = (req.query.status as string) || "all";
@@ -790,6 +626,7 @@ export async function registerRoutes(
       return res.status(400).json({ error: "Invalid repeat intent" });
     }
     const track = storage.setRepeatIntent(req.params.id, parsed.data.repeatIntent);
+    if (track && "error" in track) return res.status(400).json({ error: track.error });
     if (!track) return res.status(404).json({ error: "Track not found" });
     res.json(track);
   });
