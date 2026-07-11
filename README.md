@@ -271,7 +271,7 @@ WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=knn npm run spotify:push
 
 ### Multi-user playlist outputs
 
-The model is one shared `data.db` (master tracks/features) plus per-user decision snapshots in `users/<name>/decisions-latest.json`.
+The model is one shared `data.db` (master tracks/features) plus per-user decision snapshots in `users/<name>/decisions-latest.json`. 
 
 ```text
 wax/
