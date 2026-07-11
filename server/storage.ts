@@ -89,11 +89,11 @@ function hasShuffleFeatures(row: ShuffleFeatureRow): boolean {
 }
 
 function repeatIntentWeight(intent: string | null): number {
-  if (intent === "on_repeat") return 1;
-  if (intent === "yes") return 0.75;
+  if (intent === "currently_listening") return 1;
+  if (intent === "favorites_archive") return 0.75;
   if (intent === "undecided") return 0.2;
-  if (intent === "maybe") return 0.35;
-  if (intent === "nah") return 0.1;
+  if (intent === "save_for_later") return 0.35;
+  if (intent === "skip") return 0;
   return 0.2;
 }
 
@@ -221,19 +221,6 @@ if (!listenCols.some((c) => c.name === "want_again")) {
 if (!listenCols.some((c) => c.name === "keep_in_library")) {
   sqlite.exec(`ALTER TABLE listens ADD COLUMN keep_in_library INTEGER NOT NULL DEFAULT 1;`);
 }
-
-sqlite.exec(`
-  UPDATE tracks
-  SET repeat_intent = 'undecided'
-  WHERE repeat_intent = 'maybe'
-    AND id IN (
-      SELECT t.id
-      FROM tracks t
-      LEFT JOIN listens l ON l.track_id = t.id
-      GROUP BY t.id
-      HAVING COUNT(l.id) = 0
-    );
-`);
 
 // 4) Track-level features used by playlist builder.
 sqlite.exec(`
@@ -677,6 +664,7 @@ export class DatabaseStorage implements IStorage {
 
   getRandomTrack(status: string, keepOnly = false, includeFeatures = true, excludeTrackIds: string[] = []): TrackWithStats | undefined {
     const whereParts: string[] = [];
+    whereParts.push(`COALESCE(t.repeat_intent, 'undecided') != 'skip'`);
     if (status !== "all") {
       whereParts.push("latest.track_id IS NULL");
     }
@@ -867,6 +855,7 @@ export class DatabaseStorage implements IStorage {
         wouldAgain,
         keepInLibrary,
         activity,
+        // Notes are currently hidden in the Shuffle UI, but this field is kept so it can be re-enabled later.
         notes: payload.notes ?? "",
         loggedAt: now,
       }) as any;

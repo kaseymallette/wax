@@ -33,15 +33,30 @@ function usage(): never {
 
 function normalizeRepeatIntent(v: unknown): string {
   const s = String(v ?? "undecided").trim().toLowerCase();
-  if (s === "undecided" || s === "on_repeat" || s === "yes" || s === "maybe" || s === "nah") return s;
+  if (
+    s === "undecided" ||
+    s === "currently_listening" ||
+    s === "favorites_archive" ||
+    s === "save_for_later" ||
+    s === "skip"
+  ) return s;
   return "undecided";
 }
 
 function deriveAgainFlags(keepInLibrary: 0 | 1, repeatIntent: string): { wantAgain: 0 | 1; wouldAgain: 0 | 1 } {
   if (!keepInLibrary) return { wantAgain: 0, wouldAgain: 0 };
 
-  const wantAgain: 0 | 1 = repeatIntent === "on_repeat" || repeatIntent === "yes" || repeatIntent === "maybe" ? 1 : 0;
-  const wouldAgain: 0 | 1 = repeatIntent === "on_repeat" || repeatIntent === "yes" ? 1 : 0;
+  const wantAgain: 0 | 1 =
+    repeatIntent === "currently_listening" ||
+    repeatIntent === "favorites_archive" ||
+    repeatIntent === "save_for_later"
+      ? 1
+      : 0;
+  const wouldAgain: 0 | 1 =
+    repeatIntent === "currently_listening" ||
+    repeatIntent === "favorites_archive"
+      ? 1
+      : 0;
   return { wantAgain, wouldAgain };
 }
 

@@ -32,26 +32,30 @@ export const listens = sqliteTable("listens", {
   loggedAt: integer("logged_at").notNull(), // unix ms
 });
 
-// 11 activity presets.
+// 15 activity presets.
 export const ACTIVITY_PRESETS = [
   "working",
+  "studying",
   "working out",
   "cleaning",
   "driving",
-  "vinyl",
-  "playlist",
+  "traveling",
+  "cooking",
   "dancing",
   "singing",
-  "active listening",
-  "processing",
+  "walking",
   "resting",
+  "processing",
+  "relaxing",
+  "vibing",
+  "energizing",
 ] as const;
 
 export const REPEAT_INTENT_OPTIONS = [
-  { value: "on_repeat", label: "On repeat" },
-  { value: "yes", label: "Yes" },
-  { value: "maybe", label: "Maybe" },
-  { value: "nah", label: "Nah, I'm good" },
+  { value: "currently_listening", label: "Currently Listening" },
+  { value: "favorites_archive", label: "Favorites Archive" },
+  { value: "save_for_later", label: "Save For Later" },
+  { value: "skip", label: "Skip" },
   { value: "undecided", label: "Undecided" },
 ] as const;
 
@@ -59,7 +63,13 @@ export const REPEAT_INTENT_VALUES = REPEAT_INTENT_OPTIONS.map((o) => o.value) as
   string,
   ...string[],
 ];
-export const repeatIntentSchema = z.enum(["undecided", "on_repeat", "yes", "maybe", "nah"]);
+export const repeatIntentSchema = z.enum([
+  "undecided",
+  "currently_listening",
+  "favorites_archive",
+  "save_for_later",
+  "skip",
+]);
 
 export const insertTrackSchema = createInsertSchema(tracks);
 
@@ -139,7 +149,7 @@ export type TrackWithStats = Track & {
 export type ListenWithTrack = {
   id: number;
   trackId: string;
-  repeatIntent: "undecided" | "on_repeat" | "yes" | "maybe" | "nah";
+  repeatIntent: "undecided" | "currently_listening" | "favorites_archive" | "save_for_later" | "skip";
   listened: number;
   wantAgain: number;
   wouldAgain: number;

@@ -12,7 +12,7 @@ import { PlaybackSection } from "@/components/PlaybackSection";
 import { LogForm, LogState, initialLogState, isLogValid } from "@/components/LogForm";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { SkipForward, Save, PartyPopper, ChevronRight } from "lucide-react";
+import { SkipForward, Save, PartyPopper } from "lucide-react";
 
 type StatsResp = { totals: { tracks: number } };
 
@@ -27,18 +27,17 @@ function shuffleList<T>(items: T[]): T[] {
 
 function buildKeepPriorityQueue(tracks: TrackWithStats[]): TrackWithStats[] {
   const undecided = shuffleList(tracks.filter((t) => t.repeatIntent === "undecided"));
-  const onRepeat = shuffleList(tracks.filter((t) => t.repeatIntent === "on_repeat"));
-  const yes = shuffleList(tracks.filter((t) => t.repeatIntent === "yes"));
-  const maybe = shuffleList(tracks.filter((t) => t.repeatIntent === "maybe"));
-  const nah = shuffleList(tracks.filter((t) => t.repeatIntent === "nah"));
+  const currentlyListening = shuffleList(tracks.filter((t) => t.repeatIntent === "currently_listening"));
+  const favoritesArchive = shuffleList(tracks.filter((t) => t.repeatIntent === "favorites_archive"));
+  const saveForLater = shuffleList(tracks.filter((t) => t.repeatIntent === "save_for_later"));
   const ordered: TrackWithStats[] = [];
 
-  while (onRepeat.length > 0 || yes.length > 0) {
-    if (onRepeat.length > 0) ordered.push(onRepeat.shift()!);
-    if (yes.length > 0) ordered.push(yes.shift()!);
+  while (currentlyListening.length > 0 || favoritesArchive.length > 0) {
+    if (currentlyListening.length > 0) ordered.push(currentlyListening.shift()!);
+    if (favoritesArchive.length > 0) ordered.push(favoritesArchive.shift()!);
   }
 
-  ordered.push(...undecided, ...maybe, ...nah);
+  ordered.push(...undecided, ...saveForLater);
   return ordered;
 }
 
@@ -241,12 +240,17 @@ export default function Shuffle() {
   const saveMutation = useMutation({
     mutationFn: async () => {
       if (!current) return;
-      if (state.keepInLibrary === null || state.listened === null) return;
-      const wantAgain = state.repeatIntent === "on_repeat" || state.repeatIntent === "yes" || state.repeatIntent === "maybe";
-      const wouldAgain = state.repeatIntent === "on_repeat" || state.repeatIntent === "yes";
+      if (state.keepInLibrary === null) return;
+      const wantAgain =
+        state.repeatIntent === "currently_listening" ||
+        state.repeatIntent === "favorites_archive" ||
+        state.repeatIntent === "save_for_later";
+      const wouldAgain =
+        state.repeatIntent === "currently_listening" ||
+        state.repeatIntent === "favorites_archive";
       const res = await apiRequest("POST", "/api/listens", {
         trackId: current.id,
-        listened: state.listened,
+        listened: true,
         wantAgain,
         wouldAgain,
         keepInLibrary: state.keepInLibrary,
@@ -277,7 +281,7 @@ export default function Shuffle() {
     if (!isLogValid(state)) {
       toast({
         title: "Fill the required fields",
-        description: "Pick keep/remove and listened. If Keep is selected, choose Undecided, On repeat, Yes, Maybe, or Nah, I'm good.",
+        description: "Pick keep/remove. If Keep is selected, choose Currently Listening, Favorites Archive, Save For Later, or Skip.",
         variant: "destructive",
       });
       return;
@@ -286,13 +290,6 @@ export default function Shuffle() {
   };
 
   const handleSkip = () => {
-    if (keepOnly) {
-      advanceKeepQueue();
-      return;
-    }
-    fetchRandom(mode, keepOnly);
-  };
-  const handleNextUp = () => {
     if (keepOnly) {
       advanceKeepQueue();
       return;
@@ -316,13 +313,10 @@ export default function Shuffle() {
       if (tag === "INPUT" || tag === "TEXTAREA") return;
       if (!current) return;
       const k = e.key.toLowerCase();
-      if (k === "l") setState((s) => ({ ...s, listened: true }));
-      else if (k === "b") setState((s) => ({ ...s, listened: false }));
-      else if (k === "u") setState((s) => ({ ...s, repeatIntent: "undecided" }));
-      else if (k === "w") setState((s) => ({ ...s, repeatIntent: "on_repeat" }));
-      else if (k === "y") setState((s) => ({ ...s, repeatIntent: "yes" }));
-      else if (k === "m") setState((s) => ({ ...s, repeatIntent: "maybe" }));
-      else if (k === "n") setState((s) => ({ ...s, repeatIntent: "nah" }));
+      if (k === "w") setState((s) => ({ ...s, repeatIntent: "currently_listening" }));
+      else if (k === "y") setState((s) => ({ ...s, repeatIntent: "favorites_archive" }));
+      else if (k === "m") setState((s) => ({ ...s, repeatIntent: "save_for_later" }));
+      else if (k === "n") setState((s) => ({ ...s, repeatIntent: "skip" }));
       else if (k === "k") setState((s) => ({ ...s, keepInLibrary: true }));
       else if (k === "r") setState((s) => ({ ...s, keepInLibrary: false, repeatIntent: null }));
       else if (["1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(k)) {
@@ -460,12 +454,9 @@ export default function Shuffle() {
                 <LogForm state={state} setState={setState} />
               </div>
 
-              <div className="mt-7 grid grid-cols-3 gap-3">
+              <div className="mt-7 grid grid-cols-2 gap-3">
                 <Button variant="ghost" onClick={handleSkip} data-testid="button-skip">
                   <SkipForward className="mr-2 h-4 w-4" /> Skip
-                </Button>
-                <Button variant="outline" onClick={handleNextUp} data-testid="button-next-up" disabled={!nextTrack}>
-                  Next up
                 </Button>
                 <Button
                   onClick={handleSave}
@@ -478,24 +469,9 @@ export default function Shuffle() {
               </div>
 
                 <p className="mt-4 text-center text-xs text-muted-foreground/70" data-testid="text-shortcuts">
-                  Shortcuts: L listened · B background · U undecided · W on repeat · Y yes · M maybe · N nah · K keep · R remove · 1–9 activity · Enter log · → skip
+                  Shortcuts: W currently listening · Y favorites archive · M save for later · N skip · K keep · R remove · 1–9 activity · Enter log · → skip
                 </p>
               </motion.div>
-
-              <button
-                type="button"
-                onClick={handleNextUp}
-                disabled={!nextTrack}
-                aria-label="Go to next track"
-                data-testid="button-next-arrow"
-                className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors ${
-                  nextTrack
-                    ? "border-border bg-card text-foreground hover:bg-secondary"
-                    : "cursor-not-allowed border-border/60 bg-secondary/30 text-muted-foreground"
-                }`}
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
             </div>
           )}
         </AnimatePresence>

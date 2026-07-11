@@ -52,9 +52,9 @@ type PlaylistSpec = {
 
 const PLAYLIST_SPECS: PlaylistSpec[] = PLAYLIST_METHOD === "knn"
   ? [
-      { file: "knn-playlist-a.csv", label: "Maybe/Sure", titleSuffix: "Maybe/Sure" },
-      { file: "knn-playlist-b.csv", label: "Yes/Maybe", titleSuffix: "Yes/Maybe" },
-      { file: "knn-playlist-c.csv", label: "Love/Like", titleSuffix: "Love/Like" },
+      { file: "knn-playlist-a.csv", label: "Save For Later Focus", titleSuffix: "Save For Later Focus" },
+      { file: "knn-playlist-b.csv", label: "Favorites + Save For Later", titleSuffix: "Favorites + Save For Later" },
+      { file: "knn-playlist-c.csv", label: "Currently Listening + Favorites", titleSuffix: "Currently Listening + Favorites" },
     ]
   : [
       { file: "low.csv", label: "Low", titleSuffix: "Low Mood" },

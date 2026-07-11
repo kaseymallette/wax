@@ -6,7 +6,7 @@ A listening journal for your music library. Upload, shuffle, log recent plays, a
 
 Wax is a local-first listening journal for your music library. Upload your Spotify export (`.db`, `.sqlite`, or Exportify `.csv`), shuffle through your tracks, and log what you actually played, what you were doing, how it felt, and whether you'd play it again. Built to help you stop streaming past your library and start curating it.
 
-For kept songs, you can set a repeat-intent category: *undecided*, *on repeat*, *yes*, *maybe*, or *nah I'm good*. Newly imported tracks default to *undecided* until you tag them. These categories power weighted shuffle and playlist generation.
+For kept songs, you can set a repeat-intent category: *Undecided*, *Currently Listening*, *Favorites Archive*, *Save For Later*, or *Skip*. Newly imported tracks default to *Undecided* until you tag them. These categories power weighted shuffle and playlist generation.
 
 Wax also tracks core music features for stats and recommendations: BPM, key (Camelot), valence, dance, and energy. Mood score is a cumulative score out of 300 (`valence + dance + energy`, each on a 0-100 scale), and harmonic key flow uses the Camelot wheel so key movement stays DJ-friendly.
 
@@ -193,7 +193,7 @@ This restores each track's latest keep/remove + repeat-intent decision. It does 
 2. **Shuffle** — get a random track from your library, listen, and log it. Each entry captures:
    - **Listened** — did you actually play it through?
    - **Keep in library** — keep / remove (logged preference only; does not delete)
-   - **Hear again (Keep only)** — `undecided`, `on_repeat`, `yes`, `maybe`, `nah`
+   - **Hear again (Keep only)** — `undecided`, `currently_listening`, `favorites_archive`, `save_for_later`, `skip`
    - **Activity tags** — what you were doing (working, working out, cleaning, driving, dancing, singing, active listening, processing, resting, or custom)
    - **Notes** — free text
 3. **Keeps** — keep-only view with repeat-intent filters and inline intent updates.
@@ -207,13 +207,13 @@ Wax supports two playlist-generation methods, both CSV-first for review and then
 
 ### Method 1: Mood playlists (Low / Medium / High)
 
-- Goal: partition kept tracks (`on_repeat`, `yes`, `maybe`) into three mood playlists with no overlaps or leftovers.
+- Goal: partition kept tracks (`currently_listening`, `favorites_archive`, `save_for_later`) into three mood playlists with no overlaps or leftovers.
 - Mood score: `mood = valence + dance + energy` (0–300 from `track_features`).
 - Bands: user-specific terciles (recomputed each run):
   - Low: `mood < tercile_1`
   - Medium: `tercile_1 <= mood < tercile_2`
   - High: `mood >= tercile_2`
-- In-band ranking uses tier weight (`on_repeat` > `yes` > `maybe`), recency, listen-count boost, and jitter.
+- In-band ranking uses tier weight (`currently_listening` > `favorites_archive` > `save_for_later`), recency, listen-count boost, and jitter.
 
 Run:
 
@@ -241,7 +241,7 @@ WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=mood npm run spotify:push
 
 ### Method 2: KNN packet playlists
 
-- Builds packeted nearest-neighbor groups from keeps (`on_repeat`, `yes`, `maybe`) using builder-style feature space (`BPM`, `Mood Score`, `Key Step`).
+- Builds packeted nearest-neighbor groups from keeps (`currently_listening`, `favorites_archive`, `save_for_later`) using builder-style feature space (`BPM`, `Mood Score`, `Key Step`).
 - Allows partial packets based on distance rules and then appends sorted leftovers.
 - Also auto-splits packet centroids into 3 balanced playlists (`a`, `b`, `c`).
 
@@ -255,9 +255,9 @@ WAX_USER=kaseysdad npm run knn:build
 KNN outputs:
 
 - `users/<name>/playlists/knn/knn-packets.csv`
-- `users/<name>/playlists/knn/knn-playlist-a.csv` *(Maybe/Sure)*
-- `users/<name>/playlists/knn/knn-playlist-b.csv` *(Yes/Maybe)*
-- `users/<name>/playlists/knn/knn-playlist-c.csv` *(Love/Like)*
+- `users/<name>/playlists/knn/knn-playlist-a.csv` *(Save For Later Focus)*
+- `users/<name>/playlists/knn/knn-playlist-b.csv` *(Favorites + Save For Later)*
+- `users/<name>/playlists/knn/knn-playlist-c.csv` *(Currently Listening + Favorites)*
 
 If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`), create Method 2 playlists on Spotify with:
 
@@ -447,10 +447,10 @@ df["logged_at"] = pd.to_datetime(df["logged_at"], unit="ms")
 Current repeat-intent presets are:
 
 - `undecided` *(default for newly imported tracks)*
-- `on_repeat`
-- `yes`
-- `maybe`
-- `nah`
+- `currently_listening`
+- `favorites_archive`
+- `save_for_later`
+- `skip`
 
 Want to change these labels/options?
 

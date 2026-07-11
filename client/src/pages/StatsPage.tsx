@@ -63,38 +63,38 @@ type Stats = {
 };
 
 const KEEP_INTENT_TABS = [
-  { value: "on_repeat", label: "On repeat" },
-  { value: "yes", label: "Yes" },
-  { value: "maybe", label: "Maybe" },
-  { value: "nah", label: "Nah, I'm good" },
+  { value: "currently_listening", label: "Currently Listening" },
+  { value: "favorites_archive", label: "Favorites Archive" },
+  { value: "save_for_later", label: "Save For Later" },
+  { value: "skip", label: "Skip" },
   { value: "undecided", label: "Undecided" },
 ] as const;
 
 function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], active: boolean): string {
   if (!active) return "bg-secondary/40 text-muted-foreground";
   if (value === "undecided") return "bg-secondary/60 text-muted-foreground";
-  if (value === "on_repeat") return "bg-blue-500/15 text-blue-400";
-  if (value === "yes") return "bg-emerald-500/15 text-emerald-400";
-  if (value === "maybe") return "bg-amber-500/15 text-amber-400";
-  if (value === "nah") return "bg-destructive/15 text-destructive";
+  if (value === "currently_listening") return "bg-blue-500/15 text-blue-400";
+  if (value === "favorites_archive") return "bg-emerald-500/15 text-emerald-400";
+  if (value === "save_for_later") return "bg-amber-500/15 text-amber-400";
+  if (value === "skip") return "bg-destructive/15 text-destructive";
   return "bg-primary/15 text-primary";
 }
 
 function keepIntentAccentTextClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
   if (value === "undecided") return "text-muted-foreground";
-  if (value === "on_repeat") return "text-blue-400";
-  if (value === "yes") return "text-emerald-400";
-  if (value === "maybe") return "text-amber-400";
-  if (value === "nah") return "text-destructive";
+  if (value === "currently_listening") return "text-blue-400";
+  if (value === "favorites_archive") return "text-emerald-400";
+  if (value === "save_for_later") return "text-amber-400";
+  if (value === "skip") return "text-destructive";
   return "text-primary";
 }
 
 function keepIntentPanelClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
   if (value === "undecided") return "border-border bg-secondary/20";
-  if (value === "on_repeat") return "border-blue-500/30 bg-blue-500/10";
-  if (value === "yes") return "border-emerald-500/30 bg-emerald-500/10";
-  if (value === "maybe") return "border-amber-500/30 bg-amber-500/10";
-  if (value === "nah") return "border-destructive/30 bg-destructive/10";
+  if (value === "currently_listening") return "border-blue-500/30 bg-blue-500/10";
+  if (value === "favorites_archive") return "border-emerald-500/30 bg-emerald-500/10";
+  if (value === "save_for_later") return "border-amber-500/30 bg-amber-500/10";
+  if (value === "skip") return "border-destructive/30 bg-destructive/10";
   return "border-border bg-secondary/20";
 }
 
@@ -205,7 +205,7 @@ function formatYearIqr(iqr: { q1: number | null; q3: number | null }): string {
 
 export default function StatsPage() {
   const { data, isLoading } = useQuery<Stats>({ queryKey: ["/api/stats"] });
-  const [keepIntentTab, setKeepIntentTab] = useState<(typeof KEEP_INTENT_TABS)[number]["value"]>("on_repeat");
+  const [keepIntentTab, setKeepIntentTab] = useState<(typeof KEEP_INTENT_TABS)[number]["value"]>("currently_listening");
   const keepTracksQuery = useQuery<TrackWithStats[]>({
     queryKey: ["/api/tracks", "keep", "name", ""],
     queryFn: async () => {

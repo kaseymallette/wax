@@ -8,19 +8,19 @@ export function isPreset(tag: string): boolean {
 
 export function repeatIntentLabel(intent: string | null | undefined): string {
   if (intent === "undecided") return "Undecided";
-  if (intent === "on_repeat") return "On repeat";
-  if (intent === "yes") return "Yes";
-  if (intent === "maybe") return "Maybe";
-  if (intent === "nah") return "Nah, I'm good";
+  if (intent === "currently_listening") return "Currently Listening";
+  if (intent === "favorites_archive") return "Favorites Archive";
+  if (intent === "save_for_later") return "Save For Later";
+  if (intent === "skip") return "Skip";
   return "Undecided";
 }
 
 export function repeatIntentChipClass(intent: string | null | undefined): string {
   if (intent === "undecided") return "bg-secondary/60 text-muted-foreground";
-  if (intent === "on_repeat") return "bg-blue-500/15 text-blue-400";
-  if (intent === "yes") return "bg-emerald-500/15 text-emerald-400";
-  if (intent === "maybe") return "bg-amber-500/15 text-amber-400";
-  if (intent === "nah") return "bg-destructive/15 text-destructive";
+  if (intent === "currently_listening") return "bg-blue-500/15 text-blue-400";
+  if (intent === "favorites_archive") return "bg-emerald-500/15 text-emerald-400";
+  if (intent === "save_for_later") return "bg-amber-500/15 text-amber-400";
+  if (intent === "skip") return "bg-destructive/15 text-destructive";
   return "bg-secondary/60 text-muted-foreground";
 }
 

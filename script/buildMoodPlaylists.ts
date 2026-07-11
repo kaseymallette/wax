@@ -5,7 +5,7 @@
  * joins each trackId against the shared `data.db` `track_features` table for
  * mood (= energy + dance + valence), then:
  *
- *   1. Filters to keeps with repeat_intent in { on_repeat, yes, maybe }
+ *   1. Filters to keeps with repeat_intent in { currently_listening, favorites_archive, save_for_later }
  *   2. Partitions into Low / Medium / High using TERCILES of the user's
  *      mood distribution (recomputed each run)
  *   3. Sorts within each band by a weighted score:
@@ -33,7 +33,7 @@ import path from "node:path";
 
 // ---------- Types ---------------------------------------------------------
 
-type RepeatIntent = "on_repeat" | "yes" | "maybe" | "nah" | "undecided";
+type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip" | "undecided";
 
 type DecisionSnapshot = {
   trackId: string;
@@ -93,14 +93,14 @@ type Band = "low" | "medium" | "high";
 
 // ---------- Config --------------------------------------------------------
 
-const KEEP_TIERS = new Set<RepeatIntent>(["on_repeat", "yes", "maybe"]);
+const KEEP_TIERS = new Set<RepeatIntent>(["currently_listening", "favorites_archive", "save_for_later"]);
 
 const TIER_WEIGHTS: Record<RepeatIntent, number> = {
-  on_repeat: 3.0,
-  yes: 1.5,
-  maybe: 0.6,
+  currently_listening: 3.0,
+  favorites_archive: 1.5,
+  save_for_later: 0.6,
   // present so the type is total — these tiers are filtered out before scoring
-  nah: 0,
+  skip: 0,
   undecided: 0,
 };
 
@@ -130,7 +130,13 @@ const MISSING_LOG_PATH = path.resolve(
 
 function normalizeRepeatIntent(v: unknown): RepeatIntent {
   const s = String(v ?? "undecided").trim().toLowerCase();
-  if (s === "undecided" || s === "on_repeat" || s === "yes" || s === "maybe" || s === "nah") {
+  if (
+    s === "undecided" ||
+    s === "currently_listening" ||
+    s === "favorites_archive" ||
+    s === "save_for_later" ||
+    s === "skip"
+  ) {
     return s as RepeatIntent;
   }
   return "undecided";
@@ -243,7 +249,7 @@ function buildCandidates(
 
   for (const d of decisions) {
     const tier = normalizeRepeatIntent(d.repeatIntent);
-    if (!KEEP_TIERS.has(tier)) continue; // skip nah / undecided
+    if (!KEEP_TIERS.has(tier)) continue; // skip skip / undecided
 
     const row = featureMap.get(d.trackId);
     if (!row) {

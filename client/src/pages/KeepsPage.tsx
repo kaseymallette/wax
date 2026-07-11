@@ -53,10 +53,10 @@ function featureChips(t: TrackWithStats | undefined): string[] {
 function keepCountBadgeClass(tag: (typeof TAG_FILTERS)[number]["value"]): string {
   if (tag === "all") return "border-amber-500/40 bg-amber-500/15 text-amber-400";
   if (tag === "undecided") return "border-border bg-secondary/60 text-muted-foreground";
-  if (tag === "on_repeat") return "border-blue-500/40 bg-blue-500/15 text-blue-400";
-  if (tag === "yes") return "border-emerald-500/40 bg-emerald-500/15 text-emerald-400";
-  if (tag === "maybe") return "border-amber-500/40 bg-amber-500/15 text-amber-400";
-  if (tag === "nah") return "border-destructive/40 bg-destructive/15 text-destructive";
+  if (tag === "currently_listening") return "border-blue-500/40 bg-blue-500/15 text-blue-400";
+  if (tag === "favorites_archive") return "border-emerald-500/40 bg-emerald-500/15 text-emerald-400";
+  if (tag === "save_for_later") return "border-amber-500/40 bg-amber-500/15 text-amber-400";
+  if (tag === "skip") return "border-destructive/40 bg-destructive/15 text-destructive";
   return "border-primary/40 bg-primary/15 text-primary";
 }
 

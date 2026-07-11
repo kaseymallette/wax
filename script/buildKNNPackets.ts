@@ -2,7 +2,7 @@ import Database from "better-sqlite3";
 import fs from "node:fs";
 import path from "node:path";
 
-type RepeatIntent = "on_repeat" | "yes" | "maybe" | "nah" | "undecided";
+type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip" | "undecided";
 
 type DecisionSnapshot = {
   trackId: string;
@@ -63,18 +63,18 @@ const HARMONIC_RULE_GROUPS: Record<(typeof HARMONIC_RULE_COLUMNS)[number], numbe
 };
 
 const DEFAULT_KEY_STEP = 6;
-const KEEP_TIERS = new Set<RepeatIntent>(["on_repeat", "yes", "maybe"]);
-const PRIMARY_TIERS = new Set<RepeatIntent>(["on_repeat", "yes"]);
+const KEEP_TIERS = new Set<RepeatIntent>(["currently_listening", "favorites_archive", "save_for_later"]);
+const PRIMARY_TIERS = new Set<RepeatIntent>(["currently_listening", "favorites_archive"]);
 const TIER_PRIORITY: Record<RepeatIntent, number> = {
-  on_repeat: 0,
-  yes: 1,
-  maybe: 2,
-  nah: 3,
+  currently_listening: 0,
+  favorites_archive: 1,
+  save_for_later: 2,
+  skip: 3,
   undecided: 4,
 };
 
 const DEFAULT_NEIGHBORS = 3;
-const DEFAULT_MAYBE_DISTANCE_THRESHOLD = 1.0;
+const DEFAULT_SAVE_FOR_LATER_DISTANCE_THRESHOLD = 1.0;
 const DEFAULT_MAX_NEIGHBOR_DISTANCE = 2.0;
 
 const REPO_ROOT = process.cwd();
@@ -93,7 +93,13 @@ const OUTPUT_PATH = path.resolve(REPO_ROOT, "users", WAX_USER, "playlists", "knn
 
 function normalizeRepeatIntent(v: unknown): RepeatIntent {
   const s = String(v ?? "undecided").trim().toLowerCase();
-  if (s === "on_repeat" || s === "yes" || s === "maybe" || s === "nah" || s === "undecided") {
+  if (
+    s === "currently_listening" ||
+    s === "favorites_archive" ||
+    s === "save_for_later" ||
+    s === "skip" ||
+    s === "undecided"
+  ) {
     return s;
   }
   return "undecided";
@@ -321,7 +327,7 @@ function buildPackets(tracksById: Map<string, Track>, harmonicLookup: HarmonicLo
     const primarySeeds = allCandidates.filter((t) => PRIMARY_TIERS.has(t.tier));
     const seedCandidates = primarySeeds.length > 0
       ? primarySeeds
-      : allCandidates.filter((t) => t.tier === "maybe");
+      : allCandidates.filter((t) => t.tier === "save_for_later");
     if (seedCandidates.length === 0) break;
 
     let bestPacket: PacketEntry[] = [];
@@ -337,8 +343,8 @@ function buildPackets(tracksById: Map<string, Track>, harmonicLookup: HarmonicLo
         if (picked.length >= DEFAULT_NEIGHBORS) break;
         if (entry.distance > DEFAULT_MAX_NEIGHBOR_DISTANCE) break;
 
-        if (entry.track.tier === "maybe") {
-          if (seed.tier === "maybe" || entry.distance > DEFAULT_MAYBE_DISTANCE_THRESHOLD) {
+        if (entry.track.tier === "save_for_later") {
+          if (seed.tier === "save_for_later" || entry.distance > DEFAULT_SAVE_FOR_LATER_DISTANCE_THRESHOLD) {
             picked.push(entry);
           }
           continue;
@@ -352,7 +358,7 @@ function buildPackets(tracksById: Map<string, Track>, harmonicLookup: HarmonicLo
         : Number.POSITIVE_INFINITY;
 
       const tie: [number, number, string] = [
-        seed.tier === "on_repeat" ? 0 : 1,
+        seed.tier === "currently_listening" ? 0 : 1,
         -seed.loggedAt,
         seed.trackId,
       ];
@@ -434,17 +440,17 @@ function writePacketsCsvList(outputPath: string, packets: PacketEntry[][]): void
 type TierVector = [number, number, number];
 
 const KNN_PLAYLIST_ARCHETYPES: Array<{ key: string; vector: TierVector }> = [
-  { key: "love-like", vector: [0.45, 0.55, 0.0] },
-  { key: "yes-maybe", vector: [0.05, 0.55, 0.4] },
-  { key: "maybe-sure", vector: [0.0, 0.2, 0.8] },
+  { key: "currently-listening-favorites", vector: [0.45, 0.55, 0.0] },
+  { key: "favorites-save-for-later", vector: [0.05, 0.55, 0.4] },
+  { key: "save-for-later-heavy", vector: [0.0, 0.2, 0.8] },
 ];
 
 function packetTierVector(packet: PacketEntry[]): TierVector {
   const counts: TierVector = [0, 0, 0];
   for (const entry of packet) {
-    if (entry.track.tier === "on_repeat") counts[0] += 1;
-    else if (entry.track.tier === "yes") counts[1] += 1;
-    else if (entry.track.tier === "maybe") counts[2] += 1;
+    if (entry.track.tier === "currently_listening") counts[0] += 1;
+    else if (entry.track.tier === "favorites_archive") counts[1] += 1;
+    else if (entry.track.tier === "save_for_later") counts[2] += 1;
   }
   const n = Math.max(1, counts[0] + counts[1] + counts[2]);
   return [counts[0] / n, counts[1] / n, counts[2] / n];
@@ -468,18 +474,18 @@ function nearestArchetype(point: TierVector, archetypes: Array<{ key: string; ve
 }
 
 function classifyTierBucket(v: TierVector): number {
-  const hasOnRepeat = v[0] > 1e-9;
-  const hasYes = v[1] > 1e-9;
-  const hasMaybe = v[2] > 1e-9;
+  const hasCurrentlyListening = v[0] > 1e-9;
+  const hasFavoritesArchive = v[1] > 1e-9;
+  const hasSaveForLater = v[2] > 1e-9;
 
-  if (!hasMaybe) return 0;
-  if (hasOnRepeat || hasYes) return 1;
+  if (!hasSaveForLater) return 0;
+  if (hasCurrentlyListening || hasFavoritesArchive) return 1;
   return 2;
 }
 
 function canAssignToBucket(bucket: number, v: TierVector): boolean {
-  const hasMaybe = v[2] > 1e-9;
-  if (bucket === 0) return !hasMaybe;
+  const hasSaveForLater = v[2] > 1e-9;
+  if (bucket === 0) return !hasSaveForLater;
   return true;
 }
 
@@ -584,10 +590,10 @@ function main(): void {
   const partialPackets = packets.length - fullPackets;
 
   console.log(`Built packets for user: ${WAX_USER}`);
-  console.log(`Decisions considered (on_repeat + yes + maybe): ${decisions.size}`);
+  console.log(`Decisions considered (currently_listening + favorites_archive + save_for_later): ${decisions.size}`);
   console.log(`Tracks with full features available: ${tracks.size}`);
   console.log("Seed mode: auto");
-  console.log(`Maybe fallback threshold: > ${DEFAULT_MAYBE_DISTANCE_THRESHOLD.toFixed(3)}`);
+  console.log(`Save For Later fallback threshold: > ${DEFAULT_SAVE_FOR_LATER_DISTANCE_THRESHOLD.toFixed(3)}`);
   console.log(`Max NN distance before fallback sort: ${DEFAULT_MAX_NEIGHBOR_DISTANCE.toFixed(3)}`);
   console.log(`Packets: ${packets.length} (full: ${fullPackets}, partial: ${partialPackets})`);
   console.log(`Total tracks used: ${totalTracks}`);
