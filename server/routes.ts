@@ -7,6 +7,7 @@ import os from "node:os";
 import multer from "multer";
 import Database from "better-sqlite3";
 import { storage } from "./storage";
+import { buildDailyPlaylists } from "./dailyPlaylists";
 import {
   listenPayloadSchema,
   repeatIntentUpdateSchema,
@@ -700,6 +701,15 @@ export async function registerRoutes(
   // --- Stats ---
   app.get("/api/stats", (_req, res) => {
     res.json(storage.getStats());
+  });
+
+  app.get("/api/playlists/daily", (_req, res) => {
+    try {
+      const keepTracks = storage.listTracks({ status: "keep", sort: "last", q: "" });
+      res.json(buildDailyPlaylists(keepTracks));
+    } catch (e: any) {
+      res.status(500).json({ error: e?.message || "Could not generate daily playlists." });
+    }
   });
 
   // --- Export listens as CSV (one row per log entry) ---

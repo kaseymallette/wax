@@ -9,6 +9,7 @@ import Shuffle from "@/pages/Shuffle";
 import LibraryPage from "@/pages/LibraryPage";
 import RecentsPage from "@/pages/RecentsPage";
 import KeepsPage from "@/pages/KeepsPage";
+import PlaylistsPage from "@/pages/PlaylistsPage";
 import StatsPage from "@/pages/StatsPage";
 import ImportPage from "@/pages/ImportPage";
 import NotFound from "@/pages/not-found";
@@ -20,6 +21,7 @@ function AppRouter() {
       <Route path="/library" component={LibraryPage} />
       <Route path="/recents" component={RecentsPage} />
       <Route path="/keeps" component={KeepsPage} />
+      <Route path="/playlists" component={PlaylistsPage} />
       <Route path="/stats" component={StatsPage} />
       <Route path="/import" component={ImportPage} />
       <Route component={NotFound} />

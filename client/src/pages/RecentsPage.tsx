@@ -30,13 +30,16 @@ const PAGE_SIZE = 50;
 function featureChips(t: TrackWithStats | undefined): string[] {
   if (!t) return [];
   const chips: string[] = [];
+  if (t.albumYear != null && Number.isFinite(t.albumYear)) chips.push(String(t.albumYear));
   if (t.bpm != null && Number.isFinite(t.bpm)) chips.push(`${Math.round(t.bpm)} BPM`);
   if (t.camelot) chips.push(String(t.camelot));
+  if (t.energy != null && Number.isFinite(t.energy)) chips.push(`Energy ${t.energy.toFixed(1)}`);
+  if (t.valence != null && Number.isFinite(t.valence)) chips.push(`Valence ${t.valence.toFixed(1)}`);
+  if (t.dance != null && Number.isFinite(t.dance)) chips.push(`Dance ${t.dance.toFixed(1)}`);
   if (t.energy != null && t.dance != null && t.valence != null) {
     const mood = t.energy + t.dance + t.valence;
     chips.push(`Mood ${mood.toFixed(2)}`);
   }
-  if (t.albumYear != null && Number.isFinite(t.albumYear)) chips.push(String(t.albumYear));
   return chips;
 }
 

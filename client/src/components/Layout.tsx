@@ -2,13 +2,14 @@ import { Link, useLocation } from "wouter";
 import { Logo } from "./Logo";
 import { useTheme } from "@/lib/theme";
 import { Button } from "@/components/ui/button";
-import { Shuffle, Library, Clock, Heart, BarChart3, Upload, Moon, Sun } from "lucide-react";
+import { Shuffle, Library, Clock, Heart, ListMusic, BarChart3, Upload, Moon, Sun } from "lucide-react";
 
 const NAV = [
   { href: "/", label: "Shuffle", icon: Shuffle },
   { href: "/library", label: "Library", icon: Library },
   { href: "/recents", label: "Recents", icon: Clock },
   { href: "/keeps", label: "Keeps", icon: Heart },
+  { href: "/playlists", label: "Playlists", icon: ListMusic },
   { href: "/stats", label: "Stats", icon: BarChart3 },
   { href: "/import", label: "Import", icon: Upload },
 ];
