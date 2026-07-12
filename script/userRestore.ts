@@ -34,11 +34,13 @@ function main() {
   const userDir = path.join(root, "users", user);
   const targetDecisions = path.join(userDir, "decisions-latest.json");
   const targetPlaylists = path.join(userDir, "playlists");
-  const targetMissingLog = path.join(userDir, "missing-tracks.log");
+  const targetMissingFeaturesLog = path.join(userDir, "missing-features.log");
+  const targetMissingTracksLogLegacy = path.join(userDir, "missing-tracks.log");
 
   const srcDecisions = path.join(snapshotDir, "decisions-latest.json");
   const srcPlaylists = path.join(snapshotDir, "playlists");
-  const srcMissingLog = path.join(snapshotDir, "missing-tracks.log");
+  const srcMissingFeaturesLog = path.join(snapshotDir, "missing-features.log");
+  const srcMissingTracksLogLegacy = path.join(snapshotDir, "missing-tracks.log");
 
   if (!fs.existsSync(srcDecisions)) {
     console.error(`[restore:user] Snapshot is missing decisions file: ${srcDecisions}`);
@@ -53,10 +55,16 @@ function main() {
     fs.cpSync(srcPlaylists, targetPlaylists, { recursive: true });
   }
 
-  if (fs.existsSync(srcMissingLog)) {
-    fs.cpSync(srcMissingLog, targetMissingLog);
-  } else if (fs.existsSync(targetMissingLog)) {
-    fs.rmSync(targetMissingLog, { force: true });
+  if (fs.existsSync(srcMissingFeaturesLog)) {
+    fs.cpSync(srcMissingFeaturesLog, targetMissingFeaturesLog);
+  } else if (fs.existsSync(targetMissingFeaturesLog)) {
+    fs.rmSync(targetMissingFeaturesLog, { force: true });
+  }
+
+  if (fs.existsSync(srcMissingTracksLogLegacy)) {
+    fs.cpSync(srcMissingTracksLogLegacy, targetMissingTracksLogLegacy);
+  } else if (fs.existsSync(targetMissingTracksLogLegacy)) {
+    fs.rmSync(targetMissingTracksLogLegacy, { force: true });
   }
 
   console.log(`[restore:user] user=${user}`);

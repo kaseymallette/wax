@@ -14,7 +14,8 @@ function main() {
   const userDir = path.join(root, "users", user);
   const decisionsPath = path.join(userDir, "decisions-latest.json");
   const playlistsDir = path.join(userDir, "playlists");
-  const missingLogPath = path.join(userDir, "missing-tracks.log");
+  const missingFeaturesLogPath = path.join(userDir, "missing-features.log");
+  const legacyMissingTracksLogPath = path.join(userDir, "missing-tracks.log");
 
   if (!fs.existsSync(decisionsPath)) {
     console.error(`[snapshot:user] Missing decisions file: ${decisionsPath}`);
@@ -33,8 +34,10 @@ function main() {
     fs.cpSync(playlistsDir, path.join(outDir, "playlists"), { recursive: true });
   }
 
-  if (fs.existsSync(missingLogPath)) {
-    fs.cpSync(missingLogPath, path.join(outDir, "missing-tracks.log"));
+  if (fs.existsSync(missingFeaturesLogPath)) {
+    fs.cpSync(missingFeaturesLogPath, path.join(outDir, "missing-features.log"));
+  } else if (fs.existsSync(legacyMissingTracksLogPath)) {
+    fs.cpSync(legacyMissingTracksLogPath, path.join(outDir, "missing-tracks.log"));
   }
 
   const metadata = {
@@ -42,7 +45,8 @@ function main() {
     createdAt: new Date().toISOString(),
     decisionsFile: fs.existsSync(outDecisions),
     playlistsDir: fs.existsSync(path.join(outDir, "playlists")),
-    missingLog: fs.existsSync(path.join(outDir, "missing-tracks.log")),
+    missingFeaturesLog: fs.existsSync(path.join(outDir, "missing-features.log")),
+    missingTracksLogLegacy: fs.existsSync(path.join(outDir, "missing-tracks.log")),
   };
   fs.writeFileSync(path.join(outDir, "meta.json"), `${JSON.stringify(metadata, null, 2)}\n`, "utf8");
 

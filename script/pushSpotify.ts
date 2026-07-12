@@ -1,9 +1,9 @@
 /**
- * pushSpotify.ts — WAX Phase 2: push mood-band CSVs to Spotify playlists.
+ * pushSpotify.ts — push default WAX playlist CSVs to Spotify playlists.
  *
- * Reads the three mood-band CSVs produced by buildMoodPlaylists.ts for the
- * current WAX_USER, then for each band finds-or-creates a private playlist
- * named "WAX – {User} {Band} Mood" and FULL-REPLACES its contents with the
+ * Reads CSVs produced by buildPlaylists.ts for the current WAX_USER
+ * (`daily-1..5`, `favorites-archive`, `save-for-later`), then for each one
+ * finds-or-creates a private playlist and FULL-REPLACES its contents with the
  * tracks in CSV (algorithm) order.
  *
  * Full replace is used deliberately: the algorithm re-ranks tracks every run,
@@ -40,31 +40,25 @@ const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN ?? "";
 
 const PLAYLIST_PUBLIC = (process.env.WAX_PLAYLIST_PUBLIC ?? "false") === "true";
 
-type PlaylistMethod = "mood" | "knn";
-const PLAYLIST_METHOD: PlaylistMethod =
-  process.env.WAX_PLAYLIST_METHOD === "knn" ? "knn" : "mood";
-
 type PlaylistSpec = {
   file: string;
   label: string;
   titleSuffix: string;
 };
 
-const PLAYLIST_SPECS: PlaylistSpec[] = PLAYLIST_METHOD === "knn"
-  ? [
-      { file: "knn-playlist-a.csv", label: "Save For Later Focus", titleSuffix: "Save For Later Focus" },
-      { file: "knn-playlist-b.csv", label: "Favorites + Save For Later", titleSuffix: "Favorites + Save For Later" },
-      { file: "knn-playlist-c.csv", label: "Currently Listening + Favorites", titleSuffix: "Currently Listening + Favorites" },
-    ]
-  : [
-      { file: "low.csv", label: "Low", titleSuffix: "Low Mood" },
-      { file: "medium.csv", label: "Medium", titleSuffix: "Medium Mood" },
-      { file: "high.csv", label: "High", titleSuffix: "High Mood" },
-    ];
+const PLAYLIST_SPECS: PlaylistSpec[] = [
+  { file: "daily-1.csv", label: "Daily 1", titleSuffix: "Daily 1" },
+  { file: "daily-2.csv", label: "Daily 2", titleSuffix: "Daily 2" },
+  { file: "daily-3.csv", label: "Daily 3", titleSuffix: "Daily 3" },
+  { file: "daily-4.csv", label: "Daily 4", titleSuffix: "Daily 4" },
+  { file: "daily-5.csv", label: "Daily 5", titleSuffix: "Daily 5" },
+  { file: "favorites-archive.csv", label: "Favorites Archive", titleSuffix: "Favorites Archive" },
+  { file: "save-for-later.csv", label: "Save for Later", titleSuffix: "Save for Later" },
+];
 
 const PLAYLISTS_DIR =
   process.env.WAX_PLAYLISTS_DIR ??
-  path.join("users", WAX_USER, "playlists", PLAYLIST_METHOD);
+  path.join("users", WAX_USER, "playlists");
 
 const LOG_PATH = path.join(PLAYLISTS_DIR, "push.log");
 const API = "https://api.spotify.com/v1";
@@ -463,7 +457,7 @@ async function main(): Promise<void> {
   }
 
   log(
-    `WAX Spotify push — user="${WAX_USER}" method="${PLAYLIST_METHOD}" dir="${PLAYLISTS_DIR}"${DRY_RUN ? " [DRY RUN]" : ""}`,
+    `WAX Spotify push — user="${WAX_USER}" dir="${PLAYLISTS_DIR}"${DRY_RUN ? " [DRY RUN]" : ""}`,
   );
 
   await refreshAccessToken();

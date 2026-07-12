@@ -1,28 +1,51 @@
 # Wax
 
-A listening journal for your music library. Upload, shuffle, log recent plays, and track keep/remove decisions. Mood playlist generation is in development, with an agent-powered workflow planned.
+A local-first listening journal for your music library. Upload tracks, shuffle with intent, tag what to keep, and generate export-ready playlists you can push to Spotify.
 
 ## Introduction
 
-Wax is a local-first listening journal for your music library. Upload your Spotify export (`.db`, `.sqlite`, or Exportify `.csv`), shuffle through your tracks, and log what you actually played, what you were doing, how it felt, and whether you'd play it again. Built to help you stop streaming past your library and start curating it.
+Wax is built for deliberate curation instead of endless skipping. Import your library (`.db`, `.sqlite`, or Exportify `.csv`), run Shuffle, and log decisions quickly with keep/remove plus repeat intent.
 
-For kept songs, you can set a repeat-intent category: *Undecided*, *Currently Listening*, *Favorites Archive*, *Save for Later*, or *Skip for Now*. Newly imported tracks default to *Undecided* until you tag them. These categories power weighted shuffle and playlist generation.
+Tracks start as *Undecided*, and keeps are organized into four intent buckets: *Currently Listening*, *Favorites Archive*, *Save for Later*, and *Skip for Now*. These intents drive weighted shuffle, Keeps/Stats views, and playlist generation.
 
-Wax also tracks core music features for stats and recommendations: BPM, key (Camelot), valence, dance, and energy. Mood score is a cumulative score out of 300 (`valence + dance + energy`, each on a 0-100 scale), and harmonic key flow uses the Camelot wheel so key movement stays DJ-friendly.
+The default playlist flow creates 5 daily playlists from *Currently Listening* (BPM + mood clustering, max 25 tracks each), plus one playlist each for *Favorites Archive* and *Save for Later*. Everything exports to CSV first, then can be pushed to Spotify with the built-in push script.
+
+Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot), energy, dance, and valence. Mood score is `energy + dance + valence` on a 0–300 scale.
 
 ## Screenshots
 
-### Dashboard stats
+1. **Dev setup + launch**
+   ![Dev setup + launch](images/01_run_dev.png)
 
-![Wax dashboard stats](images/wax_dashboard.png)
+2. **Import library source**
+   ![Import library source](images/02_import_library.png)
 
-### Shuffle view
+3. **Map import columns**
+   ![Map import columns](images/03_map_columns.png)
 
-![Wax shuffle](images/wax_shuffle.png)
+4. **Import confirmation**
+   ![Import confirmation](images/04_import_complete.png)
 
-### Keep/remove stats
+5. **Shuffle: up next queue**
+   ![Shuffle up next queue](images/05_shuffle_up_next.png)
 
-![Wax keep remove stats](images/wax_keep_remove_stats.png)
+6. **Shuffle: keep decision flow**
+   ![Shuffle keep decision flow](images/06_shuffle_keep.png)
+
+7. **Library search + browse**
+   ![Library search and browse](images/07_library_search.png)
+
+8. **Recents timeline**
+   ![Recents timeline](images/08_recents.png)
+
+9. **Keeps workspace**
+   ![Keeps workspace](images/09_keeps.png)
+
+10. **Playlists workspace**
+    ![Playlists workspace](images/10_playlists.png)
+
+11. **Stats dashboard**
+    ![Stats dashboard](images/11_stats.png)
 
 ## Quick start
 
@@ -203,70 +226,41 @@ This restores each track's latest keep/remove + repeat-intent decision. It does 
 
 ## Spotify API playlists
 
-Wax supports two playlist-generation methods, both CSV-first for review and then Spotify push.
+Wax uses one default playlist-generation flow (CSV-first for review, then Spotify push).
 
-### Method 1: Mood playlists (Low / Medium / High)
+### Default playlist flow
 
-- Goal: partition kept tracks (`currently_listening`, `favorites_archive`, `save_for_later`) into three mood playlists with no overlaps or leftovers.
-- Mood score: `mood = valence + dance + energy` (0–300 from `track_features`).
-- Bands: user-specific terciles (recomputed each run):
-  - Low: `mood < tercile_1`
-  - Medium: `tercile_1 <= mood < tercile_2`
-  - High: `mood >= tercile_2`
-- In-band ranking uses tier weight (`currently_listening` > `favorites_archive` > `save_for_later`), recency, listen-count boost, and jitter.
+- Uses the same generation logic as the in-app `Playlists` tab.
+- Builds 5 daily playlists from `currently_listening` using k-means on BPM + mood (`energy + dance + valence`) with nearest-neighbor ordering and max 25 tracks per playlist.
+- Also writes one CSV for `favorites_archive` and one for `save_for_later`.
 
 Run:
 
 ```bash
-WAX_USER=kasey npm run mood:build
-WAX_USER=kaseysdad npm run mood:build
+WAX_USER=kasey npm run playlists:build
+WAX_USER=kaseysdad npm run playlists:build
 ```
 
-Mood outputs:
+Outputs:
 
-- `users/<name>/playlists/mood/low.csv`
-- `users/<name>/playlists/mood/medium.csv`
-- `users/<name>/playlists/mood/high.csv`
-- `users/<name>/missing-tracks.log` *(only when tracks are missing from `data.db` or missing features)*
+- `users/<name>/playlists/daily-1.csv`
+- `users/<name>/playlists/daily-2.csv`
+- `users/<name>/playlists/daily-3.csv`
+- `users/<name>/playlists/daily-4.csv`
+- `users/<name>/playlists/daily-5.csv`
+- `users/<name>/playlists/favorites-archive.csv`
+- `users/<name>/playlists/save-for-later.csv`
+- `users/<name>/playlists/summary.json`
+- `users/<name>/playlists/missing-features.log` *(only when currently-listening tracks are missing BPM/energy/dance/valence)*
 
-If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`), create Method 1 playlists on Spotify with:
-
-```bash
-WAX_USER=kasey WAX_PLAYLIST_METHOD=mood npm run spotify:push:dry
-WAX_USER=kasey WAX_PLAYLIST_METHOD=mood npm run spotify:push
-
-WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=mood npm run spotify:push:dry
-WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=mood npm run spotify:push
-```
-
-### Method 2: KNN packet playlists
-
-- Builds packeted nearest-neighbor groups from keeps (`currently_listening`, `favorites_archive`, `save_for_later`) using builder-style feature space (`BPM`, `Mood Score`, `Key Step`).
-- Allows partial packets based on distance rules and then appends sorted leftovers.
-- Also auto-splits packet centroids into 3 balanced playlists (`a`, `b`, `c`).
-
-Run:
+If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`), push playlists to Spotify with:
 
 ```bash
-WAX_USER=kasey npm run knn:build
-WAX_USER=kaseysdad npm run knn:build
-```
+WAX_USER=kasey npm run spotify:push:dry
+WAX_USER=kasey npm run spotify:push
 
-KNN outputs:
-
-- `users/<name>/playlists/knn/knn-packets.csv`
-- `users/<name>/playlists/knn/knn-playlist-a.csv` *(Save For Later Focus)*
-- `users/<name>/playlists/knn/knn-playlist-b.csv` *(Favorites + Save For Later)*
-- `users/<name>/playlists/knn/knn-playlist-c.csv` *(Currently Listening + Favorites)*
-
-If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`), create Method 2 playlists on Spotify with:
-
-```bash
-WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push:dry
-WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push
-
-WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=knn npm run spotify:push:dry
-WAX_USER=kaseysdad WAX_PLAYLIST_METHOD=knn npm run spotify:push
+WAX_USER=kaseysdad npm run spotify:push:dry
+WAX_USER=kaseysdad npm run spotify:push
 ```
 
 ### Multi-user playlist outputs
@@ -278,27 +272,25 @@ wax/
 ├── data.db
 ├── script/
 │   ├── decisions.ts
-│   ├── buildMoodPlaylists.ts
-│   └── buildKNNPackets.ts
+│   └── buildPlaylists.ts
 ├── users/
 │   ├── kasey/
 │   │   ├── decisions-latest.json
 │   │   ├── playlists/
-│   │   │   ├── mood/
-│   │   │   │   ├── low.csv
-│   │   │   │   ├── medium.csv
-│   │   │   │   └── high.csv
-│   │   │   └── knn/
-│   │   │       ├── knn-packets.csv
-│   │   │       ├── knn-playlist-a.csv
-│   │   │       ├── knn-playlist-b.csv
-│   │   │       └── knn-playlist-c.csv
-│   │   └── missing-tracks.log
+│   │   │   ├── daily-1.csv
+│   │   │   ├── daily-2.csv
+│   │   │   ├── daily-3.csv
+│   │   │   ├── daily-4.csv
+│   │   │   ├── daily-5.csv
+│   │   │   ├── favorites-archive.csv
+│   │   │   ├── save-for-later.csv
+│   │   │   └── summary.json
+│   │   └── missing-features.log
 │   ├── kaseysdad/
 │   └── kaseysmom/
 ```
 
-### Spotify push agent (mood or KNN)
+### Spotify push agent
 
 Once your CSV outputs look right, you can push them to Spotify playlists.
 
@@ -306,7 +298,7 @@ You only do setup once (steps 1–4). After that, pushing is a single command.
 
 1. Register a Spotify app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
    - App name: `Wax`
-   - App description: `WAX mood playlists`
+   - App description: `WAX playlists`
    - Add redirect URI exactly: `http://127.0.0.1:8888/callback`
    - Enable **Web API** and save.
 
@@ -338,8 +330,6 @@ Copy the `SPOTIFY_REFRESH_TOKEN=...` line from terminal output into `.env`.
 
 5. Push playlists:
 
-Mood mode (default):
-
 Dry run first (no writes):
 
 ```bash
@@ -352,19 +342,11 @@ Then push for real:
 WAX_USER=kasey npm run spotify:push
 ```
 
-KNN mode:
-
-```bash
-WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push:dry
-WAX_USER=kasey WAX_PLAYLIST_METHOD=knn npm run spotify:push
-```
-
 Push behavior:
 
-- `WAX_PLAYLIST_METHOD=mood` (default): pushes `low/medium/high` mood CSVs from `users/<WAX_USER>/playlists/mood/`
-- `WAX_PLAYLIST_METHOD=knn`: pushes `knn-playlist-a/b/c.csv` from `users/<WAX_USER>/playlists/knn/`
+- Pushes `daily-1..5.csv`, `favorites-archive.csv`, and `save-for-later.csv` from `users/<WAX_USER>/playlists/`
 - Finds or creates `WAX – {User} ...` playlists and full-replaces each in CSV order on every run
-- Writes `push.log` in the selected method folder (`mood` or `knn`)
+- Writes `push.log` in `users/<WAX_USER>/playlists/`
 - Supports multi-user by changing `WAX_USER`
 
 Common issues:
@@ -377,7 +359,7 @@ For full setup details and troubleshooting, see `SETUP.md`.
 
 ### Back up decisions + generated playlists
 
-To save a per-user snapshot (decisions + playlists + missing-tracks log):
+To save a per-user snapshot (decisions + playlists + missing-features log):
 
 ```bash
 WAX_USER=kasey npm run snapshot:user
@@ -387,7 +369,7 @@ This writes to a timestamped folder:
 
 - `backups/user-snapshots/<user>/<timestamp>/decisions-latest.json`
 - `backups/user-snapshots/<user>/<timestamp>/playlists/` *(if present)*
-- `backups/user-snapshots/<user>/<timestamp>/missing-tracks.log` *(if present)*
+- `backups/user-snapshots/<user>/<timestamp>/missing-features.log` *(if present)*
 
 To restore the latest snapshot for a user:
 
