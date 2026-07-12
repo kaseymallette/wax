@@ -316,7 +316,7 @@ export default function Shuffle() {
       if (k === "w") setState((s) => ({ ...s, repeatIntent: "currently_listening" }));
       else if (k === "y") setState((s) => ({ ...s, repeatIntent: "favorites_archive" }));
       else if (k === "m") setState((s) => ({ ...s, repeatIntent: "save_for_later" }));
-      else if (k === "n") setState((s) => ({ ...s, repeatIntent: "skip" }));
+      else if (k === "n") setState((s) => ({ ...s, repeatIntent: "skip_for_now" }));
       else if (k === "k") setState((s) => ({ ...s, keepInLibrary: true }));
       else if (k === "r") setState((s) => ({ ...s, keepInLibrary: false, repeatIntent: null }));
       else if (["1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(k)) {

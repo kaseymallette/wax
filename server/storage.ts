@@ -39,9 +39,19 @@ const trackCols = sqlite.prepare(`PRAGMA table_info(tracks)`).all() as { name: s
 if (!trackCols.some((c) => c.name === "repeat_intent")) {
   sqlite.exec(`ALTER TABLE tracks ADD COLUMN repeat_intent TEXT NOT NULL DEFAULT 'undecided';`);
 }
+sqlite.exec(`UPDATE tracks SET repeat_intent = 'skip_for_now' WHERE repeat_intent = 'skip';`);
 
 function normText(v: string | null | undefined): string {
   return String(v ?? "").trim().toLowerCase();
+}
+
+function normalizeRepeatIntent(v: string | null | undefined): ListenWithTrack["repeatIntent"] {
+  const s = String(v ?? "undecided").trim().toLowerCase();
+  if (s === "currently_listening") return "currently_listening";
+  if (s === "favorites_archive") return "favorites_archive";
+  if (s === "save_for_later") return "save_for_later";
+  if (s === "skip" || s === "skip_for_now") return "skip_for_now";
+  return "undecided";
 }
 
 function numOrNull(v: unknown): number | null {
@@ -93,7 +103,7 @@ function repeatIntentWeight(intent: string | null): number {
   if (intent === "favorites_archive") return 0.75;
   if (intent === "undecided") return 0.2;
   if (intent === "save_for_later") return 0.35;
-  if (intent === "skip") return 0;
+  if (intent === "skip" || intent === "skip_for_now") return 0;
   return 0.2;
 }
 
@@ -276,7 +286,7 @@ function rowToTrackWithStats(r: any): TrackWithStats {
     spotifyUrl: r.spotify_url ?? null,
     previewUrl: r.preview_url ?? null,
     importedAt: r.imported_at,
-    repeatIntent: r.repeat_intent ?? "undecided",
+    repeatIntent: normalizeRepeatIntent(r.repeat_intent),
     listenCount: Number(r.listen_count ?? 0),
     actualListenCount: Number(r.actual_listen_count ?? 0),
     lastListenedAt: r.last_listened_at ?? null,
@@ -295,7 +305,7 @@ function rowToListenWithTrack(r: any): ListenWithTrack {
   return {
     id: r.id,
     trackId: r.track_id,
-    repeatIntent: r.repeat_intent ?? "undecided",
+    repeatIntent: normalizeRepeatIntent(r.repeat_intent),
     listened: r.listened,
     wantAgain: r.want_again,
     wouldAgain: r.would_again,
@@ -667,7 +677,7 @@ export class DatabaseStorage implements IStorage {
 
   getRandomTrack(status: string, keepOnly = false, includeFeatures = true, excludeTrackIds: string[] = []): TrackWithStats | undefined {
     const whereParts: string[] = [];
-    whereParts.push(`COALESCE(t.repeat_intent, 'undecided') != 'skip'`);
+    whereParts.push(`COALESCE(t.repeat_intent, 'undecided') NOT IN ('skip', 'skip_for_now')`);
     if (status !== "all") {
       whereParts.push("latest.track_id IS NULL");
     }
@@ -724,7 +734,7 @@ export class DatabaseStorage implements IStorage {
       id: String(row.id),
       keepInLibrary: row.keep_in_library == null ? null : Number(row.keep_in_library),
       loggedAt: row.logged_at == null ? null : Number(row.logged_at),
-      repeatIntent: row.repeat_intent == null ? null : String(row.repeat_intent),
+      repeatIntent: normalizeRepeatIntent(row.repeat_intent),
       bpm: numOrNull(row.bpm),
       energy: numOrNull(row.energy),
       dance: numOrNull(row.dance),
@@ -769,7 +779,7 @@ export class DatabaseStorage implements IStorage {
       id: String(row.id),
       keepInLibrary: row.keep_in_library == null ? null : Number(row.keep_in_library),
       loggedAt: row.logged_at == null ? null : Number(row.logged_at),
-      repeatIntent: row.repeat_intent == null ? null : String(row.repeat_intent),
+      repeatIntent: normalizeRepeatIntent(row.repeat_intent),
       bpm: numOrNull(row.bpm),
       energy: numOrNull(row.energy),
       dance: numOrNull(row.dance),
@@ -933,8 +943,9 @@ export class DatabaseStorage implements IStorage {
       where.push("l.keep_in_library = 1");
     }
     if (opts.repeatIntent && opts.repeatIntent.length) {
-      where.push(`t.repeat_intent IN (${opts.repeatIntent.map(() => "?").join(",")})`);
-      params.push(...opts.repeatIntent);
+      const normalized = Array.from(new Set(opts.repeatIntent.map((v) => normalizeRepeatIntent(v))));
+      where.push(`t.repeat_intent IN (${normalized.map(() => "?").join(",")})`);
+      params.push(...normalized);
     }
     if (typeof opts.from === "number") {
       where.push("l.logged_at >= ?");

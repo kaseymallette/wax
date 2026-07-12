@@ -55,7 +55,7 @@ export const REPEAT_INTENT_OPTIONS = [
   { value: "currently_listening", label: "Currently Listening" },
   { value: "favorites_archive", label: "Favorites Archive" },
   { value: "save_for_later", label: "Save for Later" },
-  { value: "skip", label: "Skip for Now" },
+  { value: "skip_for_now", label: "Skip for Now" },
   { value: "undecided", label: "Undecided" },
 ] as const;
 
@@ -70,7 +70,7 @@ export const repeatIntentSchema = z.enum([
   "currently_listening",
   "favorites_archive",
   "save_for_later",
-  "skip",
+  "skip_for_now",
 ]);
 
 export const insertTrackSchema = createInsertSchema(tracks);
@@ -151,7 +151,7 @@ export type TrackWithStats = Track & {
 export type ListenWithTrack = {
   id: number;
   trackId: string;
-  repeatIntent: "undecided" | "currently_listening" | "favorites_archive" | "save_for_later" | "skip";
+  repeatIntent: "undecided" | "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now";
   listened: number;
   wantAgain: number;
   wouldAgain: number;

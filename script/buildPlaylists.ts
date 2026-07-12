@@ -4,7 +4,7 @@ import path from "node:path";
 import { buildDailyPlaylists } from "../server/dailyPlaylists";
 import type { TrackWithStats } from "../shared/schema";
 
-type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip" | "undecided";
+type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | "undecided";
 
 type TrackAggRow = {
   id: string;
@@ -57,11 +57,12 @@ function fmtNum(n: number | null | undefined, digits = 3): string {
 
 function normalizeRepeatIntent(v: unknown): RepeatIntent {
   const s = String(v ?? "undecided").trim().toLowerCase();
+  if (s === "skip") return "skip_for_now";
   if (
     s === "currently_listening" ||
     s === "favorites_archive" ||
     s === "save_for_later" ||
-    s === "skip" ||
+    s === "skip_for_now" ||
     s === "undecided"
   ) {
     return s;

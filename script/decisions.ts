@@ -33,12 +33,13 @@ function usage(): never {
 
 function normalizeRepeatIntent(v: unknown): string {
   const s = String(v ?? "undecided").trim().toLowerCase();
+  if (s === "skip") return "skip_for_now";
   if (
     s === "undecided" ||
     s === "currently_listening" ||
     s === "favorites_archive" ||
     s === "save_for_later" ||
-    s === "skip"
+    s === "skip_for_now"
   ) return s;
   return "undecided";
 }

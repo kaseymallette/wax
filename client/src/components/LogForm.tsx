@@ -9,7 +9,7 @@ import { Info, X, Plus } from "lucide-react";
 
 export type LogState = {
   listened: boolean | null;
-  repeatIntent: "undecided" | "currently_listening" | "favorites_archive" | "save_for_later" | "skip" | null;
+  repeatIntent: "undecided" | "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | null;
   keepInLibrary: boolean | null;
   activity: string[];
   notes: string;
@@ -179,10 +179,10 @@ export function LogForm({
             <div className="relative">
               <button
                 type="button"
-                onClick={() => patch({ repeatIntent: "skip" })}
+                onClick={() => patch({ repeatIntent: "skip_for_now" })}
                 data-testid="button-repeat-skip"
                 className={`w-full rounded-lg border px-3 py-2.5 pl-9 text-sm font-medium transition-colors hover-elevate ${
-                  state.repeatIntent === "skip" ? SEG_ACTIVE : SEG_IDLE
+                  state.repeatIntent === "skip_for_now" ? SEG_ACTIVE : SEG_IDLE
                 }`}
               >
                 Skip for Now

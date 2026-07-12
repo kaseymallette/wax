@@ -118,7 +118,14 @@ This restores each track's latest keep/remove + repeat-intent decision. It does 
 
 Add new songs from a CSV directly into `data/music-library/spotify_music_library.db` (table: `tracks`).
 
-1. Dry-run first:
+1. Prepare a CSV from a Spotify playlist:
+
+   - Build or open a playlist in Spotify.
+   - Copy the playlist link.
+   - Go to [Chosic Playlist Exporter](https://www.chosic.com/spotify-playlist-exporter/) and export the playlist as CSV.
+   - Save the exported file in `data/music-library/` (for example: `data/music-library/new_music.csv`).
+
+2. Dry-run first:
 
 ```bash
 python3 src/add_to_music_library.py \
@@ -126,7 +133,7 @@ python3 src/add_to_music_library.py \
   --db data/music-library/spotify_music_library.db
 ```
 
-2. Apply with backup:
+3. Apply with backup:
 
 ```bash
 python3 src/add_to_music_library.py \
@@ -224,20 +231,6 @@ npm run backup-db   # creates backups/data.db.<timestamp>.bak
 npm run restore-db  # restores latest backup in backups/
 ```
 
-## How it works
-
-1. **Import** — drop your `.db`, `.sqlite`, or `.csv` file on the import page. SQLite uploads use a column mapper (Track ID is the only required field; the rest auto-detects). CSV uploads auto-detect Exportify's standard columns.
-2. **Shuffle** — get a random track from your library, listen, and log it. Each entry captures:
-   - **Listened** — did you actually play it through?
-   - **Keep in library** — keep / remove (logged preference only; does not delete)
-   - **Hear again (Keep only)** — `undecided`, `currently_listening`, `favorites_archive`, `save_for_later`, `skip`
-   - **Activity tags** — what you were doing (working, working out, cleaning, driving, dancing, singing, active listening, processing, resting, or custom)
-   - **Notes** — free text
-3. **Keeps** — keep-only view with repeat-intent filters and inline intent updates.
-4. **Library** — searchable table of every track with listen count and last listened. Click any row to play it, log a new entry, edit repeat intent, or view full history.
-5. **Recents** — timeline of every entry, grouped by day, with keep/remove and repeat-intent context.
-6. **Stats** — listens over time, keep vs remove, and feature summaries for keeps and removes (including top keys and album-year metrics).
-
 ## Spotify API playlists
 
 Wax uses one default playlist-generation flow (CSV-first for review, then Spotify push).
@@ -252,7 +245,6 @@ Run:
 
 ```bash
 WAX_USER=kasey npm run playlists:build
-WAX_USER=kaseysdad npm run playlists:build
 ```
 
 Outputs:
@@ -272,36 +264,6 @@ If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPO
 ```bash
 WAX_USER=kasey npm run spotify:push:dry
 WAX_USER=kasey npm run spotify:push
-
-WAX_USER=kaseysdad npm run spotify:push:dry
-WAX_USER=kaseysdad npm run spotify:push
-```
-
-### Multi-user playlist outputs
-
-The model is one shared `data.db` (master tracks/features) plus per-user decision snapshots in `users/<name>/decisions-latest.json`. 
-
-```text
-wax/
-├── data.db
-├── script/
-│   ├── decisions.ts
-│   └── buildPlaylists.ts
-├── users/
-│   ├── kasey/
-│   │   ├── decisions-latest.json
-│   │   ├── playlists/
-│   │   │   ├── daily-1.csv
-│   │   │   ├── daily-2.csv
-│   │   │   ├── daily-3.csv
-│   │   │   ├── daily-4.csv
-│   │   │   ├── daily-5.csv
-│   │   │   ├── favorites-archive.csv
-│   │   │   ├── save-for-later.csv
-│   │   │   └── summary.json
-│   │   └── missing-features.log
-│   ├── kaseysdad/
-│   └── kaseysmom/
 ```
 
 ### Spotify push agent
@@ -401,34 +363,38 @@ WAX_USER=kasey npm run restore:user -- 20260618-180500
 ### Where your data lives
 
 - **`data.db`** in the project root. Back this file up if you care about it.
+- **`users/<name>/decisions-latest.json`** for each user's latest keep/remove + repeat-intent snapshot.
+- **`users/<name>/playlists/`** for generated CSV playlists and `summary.json`.
 
 - CSV export from the API gives you everything in one file:
 
 ```bash
-curl http://localhost:3000/api/export -o ~/Downloads/wax-listens.csv
+curl http://127.0.0.1:3000/api/export -o ~/Downloads/wax-listens.csv
 ```
 
-Columns include: `track_id`, `name`, `artists`, `album`, `repeat_intent`, `listened`, `want_again`, `would_again`, `keep_in_library`, `activity`, `notes`, `logged_at`.
+Columns include: `track_id`, `name`, `artists`, `album`, `repeat_intent`, `keep_in_library`, `activity`, `notes`, and `logged_at`.
 
 ### Data model
 
 Three core tables in `data.db`:
 
 - **`tracks`** — your imported library. One row per Spotify track ID. Includes `repeat_intent` (track-level keep preference tag).
-- **`listens`** — your log entries. One row per logged listen. Columns include `listened` (0/1), `want_again` (0/1), `would_again` (0/1), `keep_in_library` (0/1), `activity` (JSON array), `notes`, `logged_at` (unix ms).
+- **`listens`** — your decision log. One row per Shuffle/Library log event, including `keep_in_library` (0/1), `repeat_intent`-driven decisions, `activity` (JSON array), `notes`, and `logged_at` (unix ms).
 - **`track_features`** — imported audio/music features keyed by track ID (`bpm`, `camelot`, `energy`, `dance`, `valence`, `popularity`, `album_year`, `source`, `updated_at`).
 
 Indexes on `listens(track_id)` and `listens(logged_at DESC)`.
+
+Playlist outputs are file-based (`users/<name>/playlists/*.csv`), not separate DB tables.
 
 ### Reading your data from Python
 
 ```python
 import sqlite3, json, pandas as pd
 
-con = sqlite3.connect("wax/data.db")
+con = sqlite3.connect("data.db")
 df = pd.read_sql_query("""
     SELECT t.id AS track_id, t.name, t.artists, t.album, t.repeat_intent,
-           l.listened, l.want_again, l.would_again, l.keep_in_library,
+           l.keep_in_library,
            l.activity, l.notes, l.logged_at
     FROM tracks t
     LEFT JOIN listens l ON l.track_id = t.id
@@ -446,7 +412,7 @@ Current repeat-intent presets are:
 - `currently_listening`
 - `favorites_archive`
 - `save_for_later`
-- `skip`
+- `skip_for_now`
 
 Want to change these labels/options?
 

@@ -66,7 +66,7 @@ const KEEP_INTENT_TABS = [
   { value: "currently_listening", label: "Currently Listening" },
   { value: "favorites_archive", label: "Favorites Archive" },
   { value: "save_for_later", label: "Save for Later" },
-  { value: "skip", label: "Skip for Now" },
+  { value: "skip_for_now", label: "Skip for Now" },
 ] as const;
 
 function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], active: boolean): string {
@@ -74,7 +74,7 @@ function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], a
   if (value === "currently_listening") return "bg-blue-500/15 text-blue-400";
   if (value === "favorites_archive") return "bg-emerald-500/15 text-emerald-400";
   if (value === "save_for_later") return "bg-amber-500/15 text-amber-400";
-  if (value === "skip") return "bg-destructive/15 text-destructive";
+  if (value === "skip_for_now") return "bg-destructive/15 text-destructive";
   return "bg-primary/15 text-primary";
 }
 
@@ -82,7 +82,7 @@ function keepIntentAccentTextClass(value: (typeof KEEP_INTENT_TABS)[number]["val
   if (value === "currently_listening") return "text-blue-400";
   if (value === "favorites_archive") return "text-emerald-400";
   if (value === "save_for_later") return "text-amber-400";
-  if (value === "skip") return "text-destructive";
+  if (value === "skip_for_now") return "text-destructive";
   return "text-primary";
 }
 
@@ -90,7 +90,7 @@ function keepIntentPanelClass(value: (typeof KEEP_INTENT_TABS)[number]["value"])
   if (value === "currently_listening") return "border-blue-500/30 bg-blue-500/10";
   if (value === "favorites_archive") return "border-emerald-500/30 bg-emerald-500/10";
   if (value === "save_for_later") return "border-amber-500/30 bg-amber-500/10";
-  if (value === "skip") return "border-destructive/30 bg-destructive/10";
+  if (value === "skip_for_now") return "border-destructive/30 bg-destructive/10";
   return "border-border bg-secondary/20";
 }
 
