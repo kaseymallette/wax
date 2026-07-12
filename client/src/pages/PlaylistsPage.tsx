@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -47,6 +47,18 @@ type Resp = {
   };
 };
 
+type KeepTrack = {
+  id: string;
+  name: string;
+  artists: string;
+  repeatIntent: string;
+  albumYear: number | null;
+  bpm: number | null;
+  energy: number | null;
+  dance: number | null;
+  valence: number | null;
+};
+
 const LOCAL_STORAGE_KEY = "wax-playlist-weekday-map";
 
 function defaultDayMap(playlists: Playlist[]): Record<number, string> {
@@ -58,7 +70,7 @@ function defaultDayMap(playlists: Playlist[]): Record<number, string> {
 }
 
 export default function PlaylistsPage() {
-  const [expanded, setExpanded] = useState<Set<number>>(new Set());
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [dayMap, setDayMap] = useState<Record<number, string>>({});
 
   const query = useQuery<Resp>({
@@ -69,8 +81,35 @@ export default function PlaylistsPage() {
     },
   });
 
+  const keepTracksQuery = useQuery<KeepTrack[]>({
+    queryKey: ["/api/tracks", "keep", "playlists"],
+    queryFn: async () => {
+      const res = await apiRequest("GET", "/api/tracks?status=keep&sort=last");
+      return res.json();
+    },
+  });
+
   const playlists = query.data?.playlists ?? [];
   const diagnostics = query.data?.diagnostics;
+  const keepTracks = keepTracksQuery.data ?? [];
+  const favoritesArchiveTracks = [...keepTracks.filter((t) => t.repeatIntent === "favorites_archive")].sort((a, b) => {
+    const aYear = a.albumYear;
+    const bYear = b.albumYear;
+    if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
+    if (aYear == null) return 1;
+    if (bYear == null) return -1;
+    if (bYear !== aYear) return bYear - aYear;
+    return a.name.localeCompare(b.name);
+  });
+  const saveForLaterTracks = [...keepTracks.filter((t) => t.repeatIntent === "save_for_later")].sort((a, b) => {
+    const aYear = a.albumYear;
+    const bYear = b.albumYear;
+    if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
+    if (aYear == null) return 1;
+    if (bYear == null) return -1;
+    if (aYear !== bYear) return aYear - bYear;
+    return a.name.localeCompare(b.name);
+  });
 
   useEffect(() => {
     if (playlists.length === 0) return;
@@ -100,8 +139,6 @@ export default function PlaylistsPage() {
     if (!Object.keys(dayMap).length) return;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(dayMap));
   }, [dayMap]);
-
-  const assignedDays = useMemo(() => new Set(Object.values(dayMap)), [dayMap]);
 
   const updateDay = (playlistIndex: number, newDay: string) => {
     setDayMap((prev) => {
@@ -151,7 +188,8 @@ export default function PlaylistsPage() {
 
           <div className="mt-6 space-y-4">
             {playlists.map((playlist) => {
-              const isExpanded = expanded.has(playlist.index);
+              const panelKey = `daily-${playlist.index}`;
+              const isExpanded = expanded.has(panelKey);
               const preview = playlist.tracks.slice(0, 5);
               const visibleTracks = isExpanded ? playlist.tracks : preview;
               return (
@@ -171,11 +209,7 @@ export default function PlaylistsPage() {
                         </SelectTrigger>
                         <SelectContent>
                           {WEEKDAYS.map((day) => (
-                            <SelectItem
-                              key={day}
-                              value={day}
-                              disabled={assignedDays.has(day) && dayMap[playlist.index] !== day}
-                            >
+                            <SelectItem key={day} value={day}>
                               {day}
                             </SelectItem>
                           ))}
@@ -221,12 +255,103 @@ export default function PlaylistsPage() {
                         onClick={() => {
                           setExpanded((prev) => {
                             const next = new Set(prev);
-                            if (next.has(playlist.index)) next.delete(playlist.index);
-                            else next.add(playlist.index);
+                            if (next.has(panelKey)) next.delete(panelKey);
+                            else next.add(panelKey);
                             return next;
                           });
                         }}
                         data-testid={`button-playlist-expand-${playlist.index}`}
+                      >
+                        {isExpanded ? (
+                          <>
+                            Show fewer <ChevronUp className="ml-1 h-4 w-4" />
+                          </>
+                        ) : (
+                          <>
+                            Show all songs <ChevronDown className="ml-1 h-4 w-4" />
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {[
+              { key: "favorites-archive", title: "Favorites Archive", tracks: favoritesArchiveTracks },
+              { key: "save-for-later", title: "Save for Later", tracks: saveForLaterTracks },
+            ].map((list) => {
+              const isExpanded = expanded.has(list.key);
+              const preview = list.tracks.slice(0, 5);
+              const visibleTracks = isExpanded ? list.tracks : preview;
+
+              return (
+                <div key={list.key} className="rounded-xl border border-border bg-card p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <h2 className="font-display text-base font-semibold">{list.title}</h2>
+                      <p className="text-xs text-muted-foreground">{list.tracks.length} songs</p>
+                    </div>
+                  </div>
+
+                  {keepTracksQuery.isLoading ? (
+                    <div className="mt-4 space-y-2">
+                      {Array.from({ length: 3 }).map((_, i) => (
+                        <Skeleton key={`${list.key}-skeleton-${i}`} className="h-14 w-full rounded-lg" />
+                      ))}
+                    </div>
+                  ) : visibleTracks.length === 0 ? (
+                    <div className="mt-4 rounded-lg border border-dashed border-border px-3 py-6 text-center text-xs text-muted-foreground">
+                      <Music2 className="mx-auto h-4 w-4" />
+                      <p className="mt-2">No songs in this playlist yet.</p>
+                    </div>
+                  ) : (
+                    <div className="mt-4 space-y-2">
+                      {visibleTracks.map((t, idx) => {
+                        const mood =
+                          t.energy != null && t.dance != null && t.valence != null
+                            ? t.energy + t.dance + t.valence
+                            : null;
+
+                        return (
+                          <div
+                            key={t.id}
+                            className="rounded-lg border border-border/80 bg-secondary/20 px-3 py-2"
+                            data-testid={`${list.key}-track-${t.id}`}
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="min-w-0">
+                                <p className="truncate text-sm font-medium">
+                                  {idx + 1}. {t.name}
+                                </p>
+                                <p className="truncate text-xs text-muted-foreground">{t.artists}</p>
+                              </div>
+                              <div className="shrink-0 text-[10px] text-muted-foreground">
+                                {t.bpm != null && Number.isFinite(t.bpm) ? `${Math.round(t.bpm)} BPM` : "—"}
+                                {mood != null ? ` · Mood ${mood.toFixed(2)}` : ""}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {list.tracks.length > 5 && (
+                    <div className="mt-3">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => {
+                          setExpanded((prev) => {
+                            const next = new Set(prev);
+                            if (next.has(list.key)) next.delete(list.key);
+                            else next.add(list.key);
+                            return next;
+                          });
+                        }}
+                        data-testid={`button-${list.key}-expand`}
                       >
                         {isExpanded ? (
                           <>
