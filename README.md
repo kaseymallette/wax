@@ -64,67 +64,55 @@ Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot
 git clone https://github.com/kaseymallette/wax.git
 cd wax
 npm install
+npm run dev
 
 ```
 
-Open **http://localhost:3000**. Express backend and Vite frontend both run on the same port. (Port 5000 conflicts with macOS AirPlay — that's why the default is 3000.)
+Then open **http://127.0.0.1:3000**.
 
 For full-song playback in the embed, sign into Spotify in any tab of the same browser. Premium plays the whole track; Free gives you 30-second previews.
 
-### Back up your data
+### Import your music library
 
-`data.db` is your local listening history and is not tracked in git. You can back it up and restore it with:
+1. Open the app and go to the import flow.
+2. Upload your Spotify export (`.db`, `.sqlite`, or Exportify `.csv`).
+3. If prompted, map columns and complete import.
 
-```bash
-npm run backup-db   # creates backups/data.db.<timestamp>.bak
-npm run restore-db  # restores latest backup in backups/
-```
+### Export decisions per user
 
-### Track decisions per user
-
-`decisions-latest.json` files are tracked in git for each user. You can export and import your latest keep/remove decisions with:
+`decisions-latest.json` files are tracked in git for each user. Export your latest keep/remove decisions with:
 
 ```bash
 WAX_USER=kasey npm run decisions:export  # writes users/kasey/decisions-latest.json
-WAX_USER=kasey npm run decisions:import  # reapplies that file into local data.db
 ```
-
-This snapshot stores one latest decision per track (`keep_in_library` + `repeat_intent`) so you can reimport your library and restore your curation quickly.
 
 Use a different `WAX_USER` value per family member (for example: `mom`, `dad`, `kasey`) so each person has their own tracked decisions file under `users/`.
 
-### Remove songs from `music-library` DB
+### Reimport library + restore decisions
 
-If you want to physically remove tracks from `data/music-library/spotify_music_library.db` based on your latest **Remove from library** decisions:
+If you want a clean reimport (no duplicate old imports/listens), do this:
 
-1. Run a dry-run first:
-
-```bash
-python3 src/remove_from_music_library.py \
-  --owner-user kasey \
-  --decisions users/kasey/decisions-latest.json \
-  --users-root users \
-  --db data/music-library/spotify_music_library.db
-```
-
-2. Then apply (with backup):
+1. Stop the app.
+2. Remove your local DB files:
 
 ```bash
-python3 src/remove_from_music_library.py \
-  --owner-user kasey \
-  --decisions users/kasey/decisions-latest.json \
-  --users-root users \
-  --db data/music-library/spotify_music_library.db \
-  --apply --backup
+npm run clean-db
 ```
 
-`--backup` writes a timestamped DB backup into `backups/`.
+3. Start the app again:
 
-Safety behavior:
+```bash
+npm run dev
+```
 
-- Deletion candidates come from the owner user's latest `keepInLibrary=0` decisions.
-- Tracks are protected if any other user's latest decision keeps them (`keepInLibrary=1`).
-- Script is dry-run by default unless `--apply` is provided.
+4. Reimport your library in the UI.
+5. Reapply your decisions snapshot:
+
+```bash
+WAX_USER=kasey npm run decisions:import
+```
+
+This restores each track's latest keep/remove + repeat-intent decision. It does not restore full listen history, notes, or activity timeline.
 
 ### Add songs to `music-library` DB
 
@@ -161,6 +149,39 @@ Notes:
 - `--backup` writes a timestamped DB backup into `backups/`.
 - CSV should include a track-id column (`Track_ID`, `track_id`, `Track Id`, `Spotify Track Id`, `Track URI`, or `id`).
 
+### Remove songs from `music-library` DB
+
+If you want to physically remove tracks from `data/music-library/spotify_music_library.db` based on your latest **Remove from library** decisions:
+
+1. Run a dry-run first:
+
+```bash
+python3 src/remove_from_music_library.py \
+  --owner-user kasey \
+  --decisions users/kasey/decisions-latest.json \
+  --users-root users \
+  --db data/music-library/spotify_music_library.db
+```
+
+2. Then apply (with backup):
+
+```bash
+python3 src/remove_from_music_library.py \
+  --owner-user kasey \
+  --decisions users/kasey/decisions-latest.json \
+  --users-root users \
+  --db data/music-library/spotify_music_library.db \
+  --apply --backup
+```
+
+`--backup` writes a timestamped DB backup into `backups/`.
+
+Safety behavior:
+
+- Deletion candidates come from the owner user's latest `keepInLibrary=0` decisions.
+- Tracks are protected if any other user's latest decision keeps them (`keepInLibrary=1`).
+- Script is dry-run by default unless `--apply` is provided.
+
 ### Check duplicate tracks in `music-library` DB
 
 Use this to find duplicate `Track_Key` values in the `tracks` table, with optional normalization that ignores common `remaster` / `remastered` text and year/version suffixes like `2019 Digital Master`.
@@ -194,32 +215,14 @@ Interpretation notes:
 - Many duplicates are expected from remasters, deluxe editions, and compilation releases.
 - Confirm by `Track_ID`, album, and version details before removing anything.
 
-### Reimport library + restore decisions
+### Back up your data
 
-If you want a clean reimport (no duplicate old imports/listens), do this:
-
-1. Stop the app.
-2. Remove your local DB files:
+`data.db` is your local listening history and is not tracked in git. You can back it up and restore it with:
 
 ```bash
-npm run clean-db
+npm run backup-db   # creates backups/data.db.<timestamp>.bak
+npm run restore-db  # restores latest backup in backups/
 ```
-
-3. Start the app again:
-
-```bash
-npm run dev
-```
-
-4. Reimport your library in the UI.
-5. Reapply your decisions snapshot:
-
-```bash
-WAX_USER=kasey npm run decisions:import
-```
-
-This restores each track's latest keep/remove + repeat-intent decision. It does not restore full listen history, notes, or activity timeline.
-
 
 ## How it works
 
