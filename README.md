@@ -14,38 +14,49 @@ Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot
 
 ## Screenshots
 
-1. **Dev setup + launch**
-   ![Dev setup + launch](images/01_run_dev.png)
+### 01. Dev setup + launch
 
-2. **Import library source**
-   ![Import library source](images/02_import_library.png)
+![Dev setup + launch](images/01_run_dev.png)
 
-3. **Map import columns**
-   ![Map import columns](images/03_map_columns.png)
+### 02. Import library source
 
-4. **Import confirmation**
-   ![Import confirmation](images/04_import_complete.png)
+![Import library source](images/02_import_library.png)
 
-5. **Shuffle: up next queue**
-   ![Shuffle up next queue](images/05_shuffle_up_next.png)
+### 03. Map import columns
 
-6. **Shuffle: keep decision flow**
-   ![Shuffle keep decision flow](images/06_shuffle_keep.png)
+![Map import columns](images/03_map_columns.png)
 
-7. **Library search + browse**
-   ![Library search and browse](images/07_library_search.png)
+### 04. Import confirmation
 
-8. **Recents timeline**
-   ![Recents timeline](images/08_recents.png)
+![Import confirmation](images/04_import_complete.png)
 
-9. **Keeps workspace**
-   ![Keeps workspace](images/09_keeps.png)
+### 05. Shuffle
 
-10. **Playlists workspace**
-    ![Playlists workspace](images/10_playlists.png)
+![Shuffle](images/05_shuffle_up_next.png)
 
-11. **Stats dashboard**
-    ![Stats dashboard](images/11_stats.png)
+### 06. Keep Workflow
+
+![Shuffle keep workflow](images/06_shuffle_keep.png)
+
+### 07. Library search + browse
+
+![Library search and browse](images/07_library_search.png)
+
+### 08. Recents timeline
+
+![Recents timeline](images/08_recents.png)
+
+### 09. Keeps workspace
+
+![Keeps workspace](images/09_keeps.png)
+
+### 10. Playlists workspace
+
+![Playlists workspace](images/10_playlists.png)
+
+### 11. Stats dashboard
+
+![Stats dashboard](images/11_stats.png)
 
 ## Quick start
 
