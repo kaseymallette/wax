@@ -1,8 +1,1232 @@
 {
-  "exportedAt": 1783825208261,
+  "exportedAt": 1783892851928,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 50,
+  "count": 203,
   "decisions": [
+    {
+      "trackId": "4bTkbxCPOgyzHmiApGNtKd",
+      "name": "Home",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892730093
+    },
+    {
+      "trackId": "3GS8qG28p2RF6M7S5rFdx5",
+      "name": "Howl",
+      "artists": "Florence + The Machine",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892715613
+    },
+    {
+      "trackId": "06IZo6f9idHrryBnFoyoHd",
+      "name": "Boys Wanna Be Her",
+      "artists": "Peaches",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892639653
+    },
+    {
+      "trackId": "7vOLJwP5O0woITaIQWOoUX",
+      "name": "Why",
+      "artists": "Bronski Beat",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892601200
+    },
+    {
+      "trackId": "5vmRQ3zELMLUQPo2FLQ76x",
+      "name": "Smalltown Boy",
+      "artists": "Bronski Beat",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892594942
+    },
+    {
+      "trackId": "58E1XVmZTODC67YNjneuXM",
+      "name": "Tainted Love",
+      "artists": "Soft Cell",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892582330
+    },
+    {
+      "trackId": "1TfqLAPs4K3s2rJMoCokcS",
+      "name": "Sweet Dreams (Are Made of This) - 2005 Remaster",
+      "artists": "Eurythmics,Annie Lennox,Dave Stewart",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892573731
+    },
+    {
+      "trackId": "4W4wYHtsrgDiivRASVOINL",
+      "name": "Love Shack",
+      "artists": "The B-52's",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892561924
+    },
+    {
+      "trackId": "0vFOzaXqZHahrZp6enQwQb",
+      "name": "Money",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892506724
+    },
+    {
+      "trackId": "5HNCy40Ni5BZJFw1TKzRsC",
+      "name": "Comfortably Numb",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892484410
+    },
+    {
+      "trackId": "4gMgiXfqyzZLMhsksGmbQV",
+      "name": "Another Brick in the Wall, Pt. 2",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892472437
+    },
+    {
+      "trackId": "5HAjss9faCAowGY8dM24r6",
+      "name": "Is There Anybody Out There",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892459701
+    },
+    {
+      "trackId": "3TO7bbrUKrOSPGRTB5MeCz",
+      "name": "Time",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892437765
+    },
+    {
+      "trackId": "5UKeFkVeUfvP6S43I8s9mt",
+      "name": "Jailbreak",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783892299943
+    },
+    {
+      "trackId": "7nemcVsXVFZF01iqpIIo2Y",
+      "name": "It's a Long Way to the Top (If You Wanna Rock 'N' Roll)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892283040
+    },
+    {
+      "trackId": "57bgtoPSgt236HzfBOd8kj",
+      "name": "Thunderstruck",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892264032
+    },
+    {
+      "trackId": "7LRMbd3LEoV5wZJvXT1Lwb",
+      "name": "T.N.T",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892256564
+    },
+    {
+      "trackId": "7zscdQe9CjzXnqT3P1Ey7K",
+      "name": "If You Want Blood (You've Got It)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783892237310
+    },
+    {
+      "trackId": "69QHm3pustz01CJRwdo20z",
+      "name": "Hells Bells",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783892229145
+    },
+    {
+      "trackId": "6Wn3pdFtAcnYJyJVITwt7N",
+      "name": "Girls Got Rhythm",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783892217222
+    },
+    {
+      "trackId": "2d4e45fmUnguxh6yqC7gNT",
+      "name": "Dirty Deeds Done Dirt Cheap",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783892204129
+    },
+    {
+      "trackId": "08mG3Y1vljYA6bvDt4Wqkj",
+      "name": "Back In Black",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783892193788
+    },
+    {
+      "trackId": "2KmSnPWWCIsEomVsKnbE1a",
+      "name": "Big Balls",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892176643
+    },
+    {
+      "trackId": "2zYzyRzz6pRmhPzyfMEC8s",
+      "name": "Highway to Hell",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892161817
+    },
+    {
+      "trackId": "7Eb9i3xmiLuY5MiY6AhzzL",
+      "name": "Last One To Know",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892105019
+    },
+    {
+      "trackId": "22YvUcGzVLjtK3u2fSMAZr",
+      "name": "Need To",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892054414
+    },
+    {
+      "trackId": "15TRZ6Lpfts7Oowxh7Ic8a",
+      "name": "Losing Keys",
+      "artists": "Jack Johnson",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892037938
+    },
+    {
+      "trackId": "4SGBuq37Ol4HJr7pQqFMKa",
+      "name": "I Got You Babe",
+      "artists": "Sonny & Cher",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783892011632
+    },
+    {
+      "trackId": "0Hsc0sIaxOxXBZbT3ms2oj",
+      "name": "In The Wee Small Hours Of The Morning - Remastered 1998",
+      "artists": "Frank Sinatra",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783891999119
+    },
+    {
+      "trackId": "35BspUdHJEuqWx6aCzMG5U",
+      "name": "R.I.P",
+      "artists": "3OH!3",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783891970836
+    },
+    {
+      "trackId": "3SKH53SPQbEnZR4cJPVaz2",
+      "name": "Messy",
+      "artists": "Lola Young",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783891909850
+    },
+    {
+      "trackId": "6fTgbkBiMITtHUmik95ClX",
+      "name": "MakeDamnSure",
+      "artists": "Taking Back Sunday",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783891879155
+    },
+    {
+      "trackId": "5b2aMqcSeAMlDptX6EjE7m",
+      "name": "Lucky Strike",
+      "artists": "Maroon 5",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783891841208
+    },
+    {
+      "trackId": "15JINEqzVMv3SvJTAXAKED",
+      "name": "Love The Way You Lie",
+      "artists": "Eminem,Rihanna",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783891829881
+    },
+    {
+      "trackId": "0No5Hr1LxZjJHGsQSTy2bm",
+      "name": "I Can't Dance - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783891785082
+    },
+    {
+      "trackId": "1Z4bpgy49F5P9mQrp29OVK",
+      "name": "Locked In A Cage",
+      "artists": "Brick + Mortar",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783891635288
+    },
+    {
+      "trackId": "3bENrkfntz1ugrsi8yzT9C",
+      "name": "Falling",
+      "artists": "Florence + The Machine",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783891553348
+    },
+    {
+      "trackId": "2NoSYYZTazkbsH20fgbBkZ",
+      "name": "We're Both Idiots",
+      "artists": "Shrink the Giant",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783891154354
+    },
+    {
+      "trackId": "5PKnZzkjs2y3WTbIYtv5Fq",
+      "name": "Magic Bus - Mono Edit",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890618612
+    },
+    {
+      "trackId": "4hWUOIDHda9XOb1zDchftP",
+      "name": "Too Much Time On My Hands",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890596025
+    },
+    {
+      "trackId": "54g63GAn77x9NcjiLzy7cW",
+      "name": "Queen Of Spades",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890581484
+    },
+    {
+      "trackId": "4Mqs0h95KAeNiGp7u4udlt",
+      "name": "Love Reign O'er Me",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890561073
+    },
+    {
+      "trackId": "0YJ9FWWHn9EfnN0lHwbzvV",
+      "name": "Jigsaw Falling Into Place",
+      "artists": "Radiohead",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890509154
+    },
+    {
+      "trackId": "0jXRQSoOA01VTmrVIDbhtm",
+      "name": "Shh",
+      "artists": "Frou Frou",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783890383271
+    },
+    {
+      "trackId": "7mMlbJlXXo2mRtQ4R9sIzD",
+      "name": "Hide and Seek",
+      "artists": "Imogen Heap",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890352122
+    },
+    {
+      "trackId": "1oaQPvbue475MuCBHEtlUJ",
+      "name": "Her Eyes",
+      "artists": "Pat Monahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890319473
+    },
+    {
+      "trackId": "3USxtqRwSYz57Ewm6wWRMp",
+      "name": "Heat Waves",
+      "artists": "Glass Animals",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783890300878
+    },
+    {
+      "trackId": "4z2xy1UYMu70xCkWudeL96",
+      "name": "Gimme Sympathy",
+      "artists": "Metric",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783890209844
+    },
+    {
+      "trackId": "5a0z3YMeIkXwvJxja3gdy9",
+      "name": "Downstairs",
+      "artists": "Matt Maeson",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889886585
+    },
+    {
+      "trackId": "00vlCXriiYxfO1AZoRJKec",
+      "name": "The Comedown",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889820268
+    },
+    {
+      "trackId": "0M2qo3471lo6vo91qHM5Ub",
+      "name": "Goodnight Chicago",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889797061
+    },
+    {
+      "trackId": "1nR4y4D5imW4jQfPV3TCd2",
+      "name": "Devil Like Me - Audiotree Live Version",
+      "artists": "Rainbow Kitten Surprise,Audiotree",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783889721361
+    },
+    {
+      "trackId": "0R4IUpw5VNpBMAargjRNKU",
+      "name": "Devil Like Me (Audiotree Live Version)",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783889716987
+    },
+    {
+      "trackId": "0mq0kQzH9624p7ZGJq2QPd",
+      "name": "Bare Bones",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783889707177
+    },
+    {
+      "trackId": "2UdNWwoFiRKowzzYCFzlp5",
+      "name": "American Shoes",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783889679420
+    },
+    {
+      "trackId": "03mN5X7xFtv6uuBGsB43aY",
+      "name": "Sixteen",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889623272
+    },
+    {
+      "trackId": "3wWEuiTXp26PM2yZY98Yb4",
+      "name": "Run",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889610006
+    },
+    {
+      "trackId": "2Ojr742JINM4QEOk7vQGEh",
+      "name": "Never Have I Ever",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889596031
+    },
+    {
+      "trackId": "4SnapLE1VPRbqrYo1aPuYa",
+      "name": "Lady Lie",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889572910
+    },
+    {
+      "trackId": "2YQJCYnf4Ab1wS5bA89nHE",
+      "name": "Holy War",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889556774
+    },
+    {
+      "trackId": "63GEVDE0TPzHCkeb6wV6jo",
+      "name": "Hey Pretty Momma",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889549324
+    },
+    {
+      "trackId": "1y3NV3N99VoSP4crdkbog7",
+      "name": "Drop Stop Roll",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889528784
+    },
+    {
+      "trackId": "5vyt44455ipNNVSYq8fYY7",
+      "name": "Fever Pitch",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889515247
+    },
+    {
+      "trackId": "50kY9njISacBSyPLyR8cwk",
+      "name": "Tropics",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889486288
+    },
+    {
+      "trackId": "7vBs57yYONIjmlLFXjTazJ",
+      "name": "Murder",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889471299
+    },
+    {
+      "trackId": "5l8ylBEHHYL62w5HfjB3JF",
+      "name": "Dang",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889374045
+    },
+    {
+      "trackId": "5UEmz6KnGST4pSznrAPuJx",
+      "name": "Texas Hold‘em",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889329136
+    },
+    {
+      "trackId": "3CpTESaweBfLB3VM2gwyOM",
+      "name": "Stars",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889313798
+    },
+    {
+      "trackId": "3aMmkUThZiT8ynSTh5Xntk",
+      "name": "King",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889296975
+    },
+    {
+      "trackId": "5jpT2b5gkbfaGIfMsXoKK6",
+      "name": "100 Summers",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889262550
+    },
+    {
+      "trackId": "7p64m8lgMpuTl00Gd6T9gx",
+      "name": "bones",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783889191674
+    },
+    {
+      "trackId": "16ro1is6DmDKkarlJMBbzV",
+      "name": "When It Lands",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889110014
+    },
+    {
+      "trackId": "2uUqZJKpvWR43KgMM7FCBK",
+      "name": "Wasted",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889087347
+    },
+    {
+      "trackId": "4uA1caRo0SsSEXeRlY3VtB",
+      "name": "Shameful Company",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889074157
+    },
+    {
+      "trackId": "5fC26gOszFNhmkjrqItnBc",
+      "name": "Seven",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889054227
+    },
+    {
+      "trackId": "4aeW1xk0D7GDiuAdR04FXz",
+      "name": "Our Song",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889038027
+    },
+    {
+      "trackId": "5ApWY94jYEG9mMtgEMV1tT",
+      "name": "LOL",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889024272
+    },
+    {
+      "trackId": "474uVhyGgK5MtY9gMcDgGl",
+      "name": "It's Called: Freefall",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783889010567
+    },
+    {
+      "trackId": "7DTAZBykDP2m8LkYehrwhl",
+      "name": "Friendly Fire",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783888993257
+    },
+    {
+      "trackId": "0uQxV7ysuBPhbfUkW1WOCp",
+      "name": "First Class",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888908433
+    },
+    {
+      "trackId": "02ag51uxrMyesCjFZvGkGQ",
+      "name": "Cold Love",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888889438
+    },
+    {
+      "trackId": "0ZAbupc7jAQpG9IxojQ3s3",
+      "name": "Cocaine Jesus",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888878331
+    },
+    {
+      "trackId": "6Ey1C21IUiGRBPOeal2qMc",
+      "name": "American Hero",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888865011
+    },
+    {
+      "trackId": "4N6mfzZarbwBGfRoAFzt8e",
+      "name": "Counting Cards",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888847439
+    },
+    {
+      "trackId": "6eO78rJBtNGmKDdVS0USVT",
+      "name": "Heat Stroke",
+      "artists": "Black Math",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888804168
+    },
+    {
+      "trackId": "5j4hSQH0KaAc8f6cimnXIT",
+      "name": "Fire Away",
+      "artists": "Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888785849
+    },
+    {
+      "trackId": "7xbF5Nf1iKYmwvD9EWhJav",
+      "name": "Fever To The Form",
+      "artists": "Nick Mulvey",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888770574
+    },
+    {
+      "trackId": "5VJe8OKFcPBBjNEAPUeDuJ",
+      "name": "Devil Like Me",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888746586
+    },
+    {
+      "trackId": "2GvtgZIVoPbFrpG659ggUD",
+      "name": "Desire",
+      "artists": "MEG MYERS",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888722580
+    },
+    {
+      "trackId": "1OV5oUwrL4iw0UTfZy3pGe",
+      "name": "Cringe",
+      "artists": "Matt Maeson",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888694939
+    },
+    {
+      "trackId": "6HJxf2Vnveoo5Hm7sZ7qOp",
+      "name": "Crash",
+      "artists": "Gwen Stefani",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888676939
+    },
+    {
+      "trackId": "2tpWsVSb9UEmDRxAl1zhX1",
+      "name": "Counting Stars",
+      "artists": "OneRepublic",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888658402
+    },
+    {
+      "trackId": "2b8RCiPb2rtG5AQ1FwyUZX",
+      "name": "Come Baby Come",
+      "artists": "K7",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888599709
+    },
+    {
+      "trackId": "5hnyJvgoWiQUYZttV4wXy6",
+      "name": "Chasing Cars",
+      "artists": "Snow Patrol",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888574705
+    },
+    {
+      "trackId": "1lK5iIMKifrxERzS3iimJH",
+      "name": "Breathe on Me",
+      "artists": "Britney Spears",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888561332
+    },
+    {
+      "trackId": "3y4LxiYMgDl4RethdzpmNe",
+      "name": "Breathe",
+      "artists": "Faith Hill",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888546122
+    },
+    {
+      "trackId": "3k3FEwVuaokMi13Ud4nnYm",
+      "name": "Blood In The Cut",
+      "artists": "K.Flay",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888528415
+    },
+    {
+      "trackId": "2LadlqFWLPRJAQu3PEe9CN",
+      "name": "Be On Your Way",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888506110
+    },
+    {
+      "trackId": "5J58slQI9ku9125VhQ070L",
+      "name": "Beep",
+      "artists": "The Pussycat Dolls,will.i.am",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783888493246
+    },
+    {
+      "trackId": "6or1bKJiZ06IlK0vFvY75k",
+      "name": "Rap God",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783887751340
+    },
+    {
+      "trackId": "1mavQ4WCzXSeL2Dm5DS4GQ",
+      "name": "Legacy",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783887703634
+    },
+    {
+      "trackId": "6dJRP4pXk4SOzWfhfHL3Or",
+      "name": "So Much Better",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783887592239
+    },
+    {
+      "trackId": "3IaAYtmN8T0YIYVqnxNnVz",
+      "name": "Bad Guy",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783887537734
+    },
+    {
+      "trackId": "2Pdo1VvYDB9FqeuNx8D1FW",
+      "name": "Back in Your Head",
+      "artists": "Tegan and Sara",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783887496854
+    },
+    {
+      "trackId": "1x075F39Q0zOhjPzPKgG8E",
+      "name": "Baby By Me",
+      "artists": "50 Cent,Ne-Yo",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783887469591
+    },
+    {
+      "trackId": "2WQAknZHrJAEQOFXe0F44P",
+      "name": "Austin",
+      "artists": "Blake Shelton",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783887452557
+    },
+    {
+      "trackId": "2bL2gyO6kBdLkNSkxXNh6x",
+      "name": "Animals",
+      "artists": "Maroon 5",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783887430910
+    },
+    {
+      "trackId": "0grO1Y8vkaJqWu4im2fZy2",
+      "name": "All I Wanted",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783887411996
+    },
+    {
+      "trackId": "0DJJdLSQKTPVnAA2iEuvsQ",
+      "name": "All I Ever Wanted",
+      "artists": "Train",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783887060578
+    },
+    {
+      "trackId": "3mNecsYFb6LQg7822DPXCP",
+      "name": "Absolutely (Story of a Girl) - Radio Mix",
+      "artists": "Nine Days",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783887048415
+    },
+    {
+      "trackId": "0dyWQoMOU9oERL6c9vxtRp",
+      "name": "25 To Life",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783887030486
+    },
+    {
+      "trackId": "4wcBRRpIfesgcyUtis7PEg",
+      "name": "1 step forward, 3 steps back",
+      "artists": "Olivia Rodrigo",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783886978183
+    },
+    {
+      "trackId": "4mbscHErDrJvBYZNRNjeSj",
+      "name": "Hate Me",
+      "artists": "Blue October",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783886941541
+    },
+    {
+      "trackId": "6JH9yWhgbm0y9iAJhCslNc",
+      "name": "Handlebars",
+      "artists": "Flobots",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783885694811
+    },
+    {
+      "trackId": "74RBxG1kzNOYOgDGn5RO8S",
+      "name": "Greenback Boogie",
+      "artists": "Ima Robot",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885640144
+    },
+    {
+      "trackId": "6UWmNaS12bUJzFBuQB6e7j",
+      "name": "Grave Digger",
+      "artists": "Matt Maeson",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885605559
+    },
+    {
+      "trackId": "3nEotpBFeXq0OJstuHzwDP",
+      "name": "God Needs The Devil",
+      "artists": "Jonah Kagen",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885479228
+    },
+    {
+      "trackId": "4DJwdQDai9DLYBL9TNrEDo",
+      "name": "Girl On TV",
+      "artists": "LFO",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885351502
+    },
+    {
+      "trackId": "1C1PabZfidunDI3xEj0D0H",
+      "name": "Get Happy",
+      "artists": "Matt Maeson",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885328120
+    },
+    {
+      "trackId": "14iMoEpgyNjJ3y7bYJ9TTG",
+      "name": "Future Lover",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885190436
+    },
+    {
+      "trackId": "5l8oNQsDDPNFUIV5M4lzRJ",
+      "name": "Free Animal",
+      "artists": "Foreign Air",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885167487
+    },
+    {
+      "trackId": "4KoecuyOpZaNFZ0UqVsllc",
+      "name": "Follow Me",
+      "artists": "Uncle Kracker",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885138561
+    },
+    {
+      "trackId": "15y44uyGiDqQWLlhc1Rj9l",
+      "name": "Together",
+      "artists": "The xx",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885101070
+    },
+    {
+      "trackId": "40Gp0YR5kj8vT7Z55YzTFM",
+      "name": "Fiction",
+      "artists": "The xx",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885065755
+    },
+    {
+      "trackId": "3XHrTm6WE2BOHafLwTT3GR",
+      "name": "Eyes on Fire",
+      "artists": "Blue Foundation",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783885005819
+    },
+    {
+      "trackId": "2iUmqdfGZcHIhS3b9E9EWq",
+      "name": "Everybody Talks",
+      "artists": "Neon Trees",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783884984538
+    },
+    {
+      "trackId": "1fBl642IhJOE5U319Gy2Go",
+      "name": "Animal",
+      "artists": "Neon Trees",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783884962721
+    },
+    {
+      "trackId": "3uD4aRM8QoEAAhwpOke7QU",
+      "name": "Every Other Time - Radio Edit & Album Version",
+      "artists": "LFO",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783839268930
+    },
+    {
+      "trackId": "6KRi6CBUitENJB4HQbSVSD",
+      "name": "Escape",
+      "artists": "Enrique Iglesias",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783839145797
+    },
+    {
+      "trackId": "1rYMhRNa26kKbIRP0xe6cP",
+      "name": "Embrace",
+      "artists": "WYATT",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783839082675
+    },
+    {
+      "trackId": "2N4Lw4tS3KBx0PMJ7ZJXiy",
+      "name": "Dream Walkin'",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783839045760
+    },
+    {
+      "trackId": "5FVd6KXrgO9B3JPmC8OPst",
+      "name": "Do I Wanna Know",
+      "artists": "Arctic Monkeys",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838992482
+    },
+    {
+      "trackId": "6bON0csSf7G4LDsUrBwQ54",
+      "name": "Dirty Love",
+      "artists": "Mt. Joy",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838847958
+    },
+    {
+      "trackId": "207qLd1ovrqfYVBBDrNMUM",
+      "name": "Dance This Mess Around",
+      "artists": "The B-52's",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838568454
+    },
+    {
+      "trackId": "4OI0mQIFAvlHFm2PPSOG0R",
+      "name": "Did You Get My Message",
+      "artists": "Jason Mraz",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838363979
+    },
+    {
+      "trackId": "4XfI7M5gLwEY84gYiH4RDD",
+      "name": "Devil's Advocate",
+      "artists": "The Neighbourhood",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838292650
+    },
+    {
+      "trackId": "4foA1v3lrbL0nG1unF5aYX",
+      "name": "Talk To Me",
+      "artists": "Peaches",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838269547
+    },
+    {
+      "trackId": "2Cp5exQvEWphydFc11pxO6",
+      "name": "Undercover",
+      "artists": "No Doubt",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838239773
+    },
+    {
+      "trackId": "1z9kQ14XBSN0r2v6fx4IdG",
+      "name": "Diamonds",
+      "artists": "Rihanna",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838190108
+    },
+    {
+      "trackId": "4jZWeEaLCnwYtLnVEN6BYV",
+      "name": "Blue Jeans",
+      "artists": "Lana Del Rey",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838151434
+    },
+    {
+      "trackId": "7DkTneByAopqOjXFG6XlZK",
+      "name": "No Room in Frame",
+      "artists": "Death Cab for Cutie",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838097790
+    },
+    {
+      "trackId": "3Myb5tcPivRHsoz1jw8GKr",
+      "name": "Codes and Keys",
+      "artists": "Death Cab for Cutie",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838085039
+    },
+    {
+      "trackId": "4HM8tkHTQ6JVSMfsJOrcAW",
+      "name": "Close Your Eyes",
+      "artists": "The All-American Rejects",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838055552
+    },
+    {
+      "trackId": "7LbfuQVct78YoghmoPtsQ8",
+      "name": "Casey Jones - 2013 Remaster",
+      "artists": "Grateful Dead",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783838010602
+    },
+    {
+      "trackId": "1sSNrDbb7hEptYOXaiOnUm",
+      "name": "Climbing the Walls",
+      "artists": "Backstreet Boys",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783837907779
+    },
+    {
+      "trackId": "6VeZ970uI0Yi6sjBgyFBrp",
+      "name": "Cheeseburger In Paradise",
+      "artists": "Jimmy Buffett",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783836358412
+    },
+    {
+      "trackId": "0pdfN7nOHMYmKykzu1cyfm",
+      "name": "Any Man Of Mine",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783835970667
+    },
+    {
+      "trackId": "4fF34Yf5KsfUbCORyLGpEj",
+      "name": "Aaron's Party (Come Get It)",
+      "artists": "Aaron Carter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783835833377
+    },
+    {
+      "trackId": "5ykbOijJEfRhuo2Td1m0Qd",
+      "name": "7",
+      "artists": "Catfish and the Bottlemen",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783831114978
+    },
+    {
+      "trackId": "7MdEJ3bjnxslNiG8CHvOnq",
+      "name": "6 Minutes",
+      "artists": "LFO",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783831056513
+    },
+    {
+      "trackId": "68hYdj3GepWm2R202KhJT7",
+      "name": "1901",
+      "artists": "Phoenix",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783830778705
+    },
+    {
+      "trackId": "3u1f75MWE7gsMhZ4bBaZ4U",
+      "name": "All's Well That Ends",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783826402637
+    },
+    {
+      "trackId": "6mFkJmJqdDVQ1REhVfGgd1",
+      "name": "Wish You Were Here",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783826361552
+    },
     {
       "trackId": "2NEJSUekQg1nVvTI0ctJeA",
       "name": "Stem the Flow",
@@ -48,7 +1272,7 @@
       "name": "The Great Beyond",
       "artists": "R.E.M.",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783819247119
     },
     {
@@ -64,7 +1288,7 @@
       "name": "Doing The Right Thing",
       "artists": "Daughter",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783818622016
     },
     {
@@ -72,7 +1296,7 @@
       "name": "Numbers",
       "artists": "Daughter",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783818577567
     },
     {
@@ -80,7 +1304,7 @@
       "name": "Basic Instinct",
       "artists": "The Acid",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783818561314
     },
     {
@@ -144,7 +1368,7 @@
       "name": "Kacey Talk",
       "artists": "YoungBoy Never Broke Again",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783818245244
     },
     {
@@ -160,7 +1384,7 @@
       "name": "Bird Song",
       "artists": "Florence + The Machine",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783818153977
     },
     {
@@ -208,7 +1432,7 @@
       "name": "Streets of Gold",
       "artists": "3OH!3",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783817941983
     },
     {
