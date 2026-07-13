@@ -215,13 +215,31 @@ function writeDailyPlaylistCsv(
   writeCsv(filePath, header, lines);
 }
 
-function writeIntentPlaylistCsv(filePath: string, tracks: TrackWithStats[]) {
+function writeIntentPlaylistCsv(
+  filePath: string,
+  tracks: TrackWithStats[],
+  intent: "favorites_archive" | "save_for_later",
+) {
+  const compareArtistThenName = (a: TrackWithStats, b: TrackWithStats) =>
+    a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
+
   const sorted = [...tracks].sort((a, b) => {
-    const t1 = a.lastListenedAt ?? 0;
-    const t2 = b.lastListenedAt ?? 0;
-    if (t2 !== t1) return t2 - t1;
-    if (b.listenCount !== a.listenCount) return b.listenCount - a.listenCount;
-    return a.id.localeCompare(b.id);
+    const aYear = a.albumYear;
+    const bYear = b.albumYear;
+
+    if (intent === "favorites_archive") {
+      if (aYear == null && bYear == null) return compareArtistThenName(a, b);
+      if (aYear == null) return 1;
+      if (bYear == null) return -1;
+      if (bYear !== aYear) return bYear - aYear;
+      return compareArtistThenName(a, b);
+    }
+
+    if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
+    if (aYear == null) return 1;
+    if (bYear == null) return -1;
+    if (aYear !== bYear) return aYear - bYear;
+    return a.name.localeCompare(b.name);
   });
 
   const header = [
@@ -343,8 +361,8 @@ function main() {
   const favoritesPath = path.join(PLAYLISTS_DIR, "favorites-archive.csv");
   const saveForLaterPath = path.join(PLAYLISTS_DIR, "save-for-later.csv");
 
-  writeIntentPlaylistCsv(favoritesPath, favorites);
-  writeIntentPlaylistCsv(saveForLaterPath, saveForLater);
+  writeIntentPlaylistCsv(favoritesPath, favorites, "favorites_archive");
+  writeIntentPlaylistCsv(saveForLaterPath, saveForLater, "save_for_later");
 
   const missingPath = writeMissingFeaturesLog(tracks);
 
