@@ -1,8 +1,48 @@
 {
-  "exportedAt": 1783904667901,
+  "exportedAt": 1783926217066,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 328,
+  "count": 332,
   "decisions": [
+    {
+      "trackId": "4TVnzZW8dIPjMjg5e8gKhH",
+      "name": "Games Without Frontiers",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783926158391
+    },
+    {
+      "trackId": "16ro1is6DmDKkarlJMBbzV",
+      "name": "When It Lands",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783925942302
+    },
+    {
+      "trackId": "18AXbzPzBS8Y3AkgSxzJPb",
+      "name": "In The Air Tonight - 2015 Remastered",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783910415307
+    },
+    {
+      "trackId": "24IdPCimVnJJDRuB5YSDiS",
+      "name": "I Don't Care Anymore - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783910401120
+    },
+    {
+      "trackId": "3RpKyeQWrZFwX2fomsq2Y8",
+      "name": "Red Rain - 2012 Remaster",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783910310132
+    },
     {
       "trackId": "5Ve4qBYAThGLTOva0hhoTa",
       "name": "So Bad",
@@ -368,7 +408,7 @@
       "name": "Cry Baby",
       "artists": "The Neighbourhood",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783902686242
     },
     {
@@ -1578,14 +1618,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "currently_listening",
       "loggedAt": 1783889191674
-    },
-    {
-      "trackId": "16ro1is6DmDKkarlJMBbzV",
-      "name": "When It Lands",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783889110014
     },
     {
       "trackId": "2uUqZJKpvWR43KgMM7FCBK",
