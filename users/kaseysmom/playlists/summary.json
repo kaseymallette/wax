@@ -1,0 +1,27 @@
+{
+  "user": "kaseysmom",
+  "generatedAt": 1783925576148,
+  "dbPath": "/Users/mmallett/github/wax/data.db",
+  "diagnostics": {
+    "currentlyListeningCount": 124,
+    "usableTrackCount": 124,
+    "excludedMissingFeatures": 0,
+    "droppedForCapacity": 0
+  },
+  "counts": {
+    "favoritesArchive": 26,
+    "saveForLater": 31
+  },
+  "files": {
+    "daily": [
+      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-1.csv",
+      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-2.csv",
+      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-3.csv",
+      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-4.csv",
+      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-5.csv"
+    ],
+    "favoritesArchive": "/Users/mmallett/github/wax/users/kaseysmom/playlists/favorites-archive.csv",
+    "saveForLater": "/Users/mmallett/github/wax/users/kaseysmom/playlists/save-for-later.csv",
+    "missingFeatures": null
+  }
+}
