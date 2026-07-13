@@ -374,6 +374,39 @@ curl http://127.0.0.1:3000/api/export -o ~/Downloads/wax-listens.csv
 
 Columns include: `track_id`, `name`, `artists`, `album`, `repeat_intent`, `keep_in_library`, `activity`, `notes`, and `logged_at`.
 
+### Family branch merge workflow
+
+If your family uses separate branches (for example `dev-kasey`, `dev-kaseysmom`, `dev-kaseysdad-v1`) and you only want to sync user state, copy only these paths from each branch into `dev`:
+
+- `users/<name>/decisions-latest.json`
+- `users/<name>/playlists/`
+
+From `dev`, run per user branch:
+
+```bash
+git checkout dev
+git pull origin dev
+git checkout origin/dev-kasey -- users/kasey/decisions-latest.json users/kasey/playlists/
+git checkout origin/dev-kaseysmom -- users/kaseysmom/decisions-latest.json users/kaseysmom/playlists/
+git checkout origin/dev-kaseysdad-v1 -- users/kaseysdad/decisions-latest.json users/kaseysdad/playlists/
+git add users/
+git commit -m "Sync family decisions/playlists into dev"
+git push origin dev
+```
+
+Then promote `dev` to `main`:
+
+```bash
+git checkout main
+git pull origin main
+git merge origin/dev
+git push origin main
+```
+
+This keeps merges focused on user decision/playlist files and avoids pulling unrelated branch changes.
+
+
+
 ### Data model
 
 Three core tables in `data.db`:
