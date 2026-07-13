@@ -1,8 +1,88 @@
 {
-  "exportedAt": 1783926217066,
+  "exportedAt": 1783933929392,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 332,
+  "count": 335,
   "decisions": [
+    {
+      "trackId": "20MWkJVeqKnWf0rGFJJqRY",
+      "name": "I am not a woman, I'm a god",
+      "artists": "Halsey",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783933774035
+    },
+    {
+      "trackId": "53BirqAVvxjDPQCH316BNM",
+      "name": "Don't Dance",
+      "artists": "3OH!3",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783933575340
+    },
+    {
+      "trackId": "5Ar7TB13XZYF6sDb6RoyWz",
+      "name": "Fish Paste",
+      "artists": "Die Antwoord",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783933563540
+    },
+    {
+      "trackId": "4DOoiKOl3qH0l0Dlail9rH",
+      "name": "LEECH",
+      "artists": "Transviolet",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783933470081
+    },
+    {
+      "trackId": "2NoSYYZTazkbsH20fgbBkZ",
+      "name": "We're Both Idiots",
+      "artists": "Shrink the Giant",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783933456251
+    },
+    {
+      "trackId": "3RRQunWUTx2XpmmbcdhBc7",
+      "name": "Mr. Redundant",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783933411451
+    },
+    {
+      "trackId": "7vBs57yYONIjmlLFXjTazJ",
+      "name": "Murder",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783933351719
+    },
+    {
+      "trackId": "3CpTESaweBfLB3VM2gwyOM",
+      "name": "Stars",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783933260136
+    },
+    {
+      "trackId": "50kY9njISacBSyPLyR8cwk",
+      "name": "Tropics",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783933207154
+    },
+    {
+      "trackId": "5UEmz6KnGST4pSznrAPuJx",
+      "name": "Texas Hold‘em",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783933165619
+    },
     {
       "trackId": "4TVnzZW8dIPjMjg5e8gKhH",
       "name": "Games Without Frontiers",
@@ -98,14 +178,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "save_for_later",
       "loggedAt": 1783904306437
-    },
-    {
-      "trackId": "3RRQunWUTx2XpmmbcdhBc7",
-      "name": "Mr. Redundant",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783904302574
     },
     {
       "trackId": "1TDdYSYLIXMJ4EiKO6ZCYk",
@@ -828,22 +900,6 @@
       "loggedAt": 1783901105420
     },
     {
-      "trackId": "4DOoiKOl3qH0l0Dlail9rH",
-      "name": "LEECH",
-      "artists": "Transviolet",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783901092866
-    },
-    {
-      "trackId": "2NoSYYZTazkbsH20fgbBkZ",
-      "name": "We're Both Idiots",
-      "artists": "Shrink the Giant",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783901081733
-    },
-    {
       "trackId": "5UiwpYH8hfVR6CAvzzrP7B",
       "name": "High Horse",
       "artists": "Black Pistol Fire",
@@ -1556,44 +1612,12 @@
       "loggedAt": 1783889515247
     },
     {
-      "trackId": "50kY9njISacBSyPLyR8cwk",
-      "name": "Tropics",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783889486288
-    },
-    {
-      "trackId": "7vBs57yYONIjmlLFXjTazJ",
-      "name": "Murder",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783889471299
-    },
-    {
       "trackId": "5l8ylBEHHYL62w5HfjB3JF",
       "name": "Dang",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
       "repeatIntent": "currently_listening",
       "loggedAt": 1783889374045
-    },
-    {
-      "trackId": "5UEmz6KnGST4pSznrAPuJx",
-      "name": "Texas Hold‘em",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783889329136
-    },
-    {
-      "trackId": "3CpTESaweBfLB3VM2gwyOM",
-      "name": "Stars",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783889313798
     },
     {
       "trackId": "3aMmkUThZiT8ynSTh5Xntk",
