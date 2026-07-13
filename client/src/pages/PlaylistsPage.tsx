@@ -95,11 +95,11 @@ export default function PlaylistsPage() {
   const favoritesArchiveTracks = [...keepTracks.filter((t) => t.repeatIntent === "favorites_archive")].sort((a, b) => {
     const aYear = a.albumYear;
     const bYear = b.albumYear;
-    if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
+    if (aYear == null && bYear == null) return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
     if (aYear == null) return 1;
     if (bYear == null) return -1;
     if (bYear !== aYear) return bYear - aYear;
-    return a.name.localeCompare(b.name);
+    return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
   });
   const saveForLaterTracks = [...keepTracks.filter((t) => t.repeatIntent === "save_for_later")].sort((a, b) => {
     const aYear = a.albumYear;
