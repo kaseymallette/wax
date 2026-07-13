@@ -40,6 +40,10 @@ const PLAYLISTS_DIR = path.resolve(
 );
 const SUMMARY_PATH = path.join(PLAYLISTS_DIR, "summary.json");
 const MISSING_FEATURES_PATH = path.join(PLAYLISTS_DIR, "missing-features.log");
+const WEEKDAY_MAP_PATH = path.join(PLAYLISTS_DIR, "weekday-map.json");
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
+type Weekday = (typeof WEEKDAYS)[number];
+const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
 
 function escapeCsv(value: string | number | null | undefined): string {
   if (value === null || value === undefined) return "";
@@ -48,6 +52,38 @@ function escapeCsv(value: string | number | null | undefined): string {
     return `"${s.replace(/"/g, '""')}"`;
   }
   return s;
+}
+
+function loadWeekdayMap(): Record<number, Weekday> {
+  const fallback: Record<number, Weekday> = {
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+  };
+
+  try {
+    if (!fs.existsSync(WEEKDAY_MAP_PATH)) return fallback;
+    const raw = fs.readFileSync(WEEKDAY_MAP_PATH, "utf8");
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    const next: Record<number, Weekday> = { ...fallback };
+    const seen = new Set<Weekday>();
+
+    for (const [rawIndex, rawDay] of Object.entries(parsed)) {
+      const index = Number(rawIndex);
+      if (!Number.isInteger(index) || index < 1 || index > 5) continue;
+      if (typeof rawDay !== "string") continue;
+      if (!WEEKDAY_SET.has(rawDay as Weekday)) continue;
+      if (seen.has(rawDay as Weekday)) continue;
+      next[index] = rawDay as Weekday;
+      seen.add(rawDay as Weekday);
+    }
+
+    return next;
+  } catch {
+    return fallback;
+  }
 }
 
 function fmtNum(n: number | null | undefined, digits = 3): string {
@@ -282,10 +318,21 @@ function main() {
 
   const byId = new Map(tracks.map((t) => [t.id, t]));
   const daily = buildDailyPlaylists(tracks);
+  const weekdayMap = loadWeekdayMap();
+  const dailyByIndex = new Map(daily.playlists.map((p) => [p.index, p]));
+  const dailyIndexByWeekday = new Map<Weekday, number>();
+  for (const [index, day] of Object.entries(weekdayMap)) {
+    dailyIndexByWeekday.set(day, Number(index));
+  }
 
   const dailyFiles: string[] = [];
-  for (const playlist of daily.playlists) {
-    const outPath = path.join(PLAYLISTS_DIR, `daily-${playlist.index}.csv`);
+  for (let slot = 0; slot < WEEKDAYS.length; slot += 1) {
+    const day = WEEKDAYS[slot];
+    const sourceIndex = dailyIndexByWeekday.get(day) ?? slot + 1;
+    const playlist = dailyByIndex.get(sourceIndex) ?? dailyByIndex.get(slot + 1);
+    if (!playlist) continue;
+
+    const outPath = path.join(PLAYLISTS_DIR, `daily-${slot + 1}.csv`);
     writeDailyPlaylistCsv(outPath, playlist.tracks, byId);
     dailyFiles.push(outPath);
   }

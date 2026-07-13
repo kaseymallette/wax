@@ -20,6 +20,15 @@ import { z } from "zod";
 const UPLOAD_DIR = path.join(os.tmpdir(), "wax-uploads");
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
+const WAX_USER = (process.env.WAX_USER ?? "kasey").trim() || "kasey";
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
+type Weekday = (typeof WEEKDAYS)[number];
+const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
+const WEEKDAY_MAP_PATH = path.resolve(
+  process.cwd(),
+  path.join("users", WAX_USER, "playlists", "weekday-map.json"),
+);
+
 const upload = multer({
   dest: UPLOAD_DIR,
   limits: { fileSize: 80 * 1024 * 1024 }, // 80MB
@@ -27,6 +36,35 @@ const upload = multer({
 
 // In-memory registry of uploaded DB files (token -> path)
 const uploadedFiles = new Map<string, { path: string; expires: number }>();
+
+function normalizeWeekdayMap(input: unknown): Record<string, Weekday> {
+  if (!input || typeof input !== "object") return {};
+  const out: Record<string, Weekday> = {};
+  for (const [rawIndex, rawDay] of Object.entries(input as Record<string, unknown>)) {
+    const index = Number(rawIndex);
+    if (!Number.isInteger(index) || index < 1 || index > 5) continue;
+    if (typeof rawDay !== "string") continue;
+    if (!WEEKDAY_SET.has(rawDay as Weekday)) continue;
+    out[String(index)] = rawDay as Weekday;
+  }
+  return out;
+}
+
+function readWeekdayMap(): Record<string, Weekday> {
+  try {
+    if (!fs.existsSync(WEEKDAY_MAP_PATH)) return {};
+    const raw = fs.readFileSync(WEEKDAY_MAP_PATH, "utf8");
+    const parsed = JSON.parse(raw) as unknown;
+    return normalizeWeekdayMap(parsed);
+  } catch {
+    return {};
+  }
+}
+
+function writeWeekdayMap(mapping: Record<string, Weekday>): void {
+  fs.mkdirSync(path.dirname(WEEKDAY_MAP_PATH), { recursive: true });
+  fs.writeFileSync(WEEKDAY_MAP_PATH, `${JSON.stringify(mapping, null, 2)}\n`, "utf8");
+}
 
 function cleanupExpired() {
   const now = Date.now();
@@ -709,6 +747,35 @@ export async function registerRoutes(
       res.json(buildDailyPlaylists(keepTracks));
     } catch (e: any) {
       res.status(500).json({ error: e?.message || "Could not generate daily playlists." });
+    }
+  });
+
+  const weekdayMapSchema = z.object({
+    mapping: z.record(z.string()),
+  });
+
+  app.get("/api/playlists/weekday-map", (_req, res) => {
+    res.json({ mapping: readWeekdayMap() });
+  });
+
+  app.put("/api/playlists/weekday-map", (req, res) => {
+    const parsed = weekdayMapSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ error: "Invalid weekday map" });
+    }
+
+    const mapping = normalizeWeekdayMap(parsed.data.mapping);
+    const assignedDays = Object.values(mapping);
+    const hasDuplicateDays = assignedDays.length !== new Set(assignedDays).size;
+    if (hasDuplicateDays) {
+      return res.status(400).json({ error: "Weekdays must be unique" });
+    }
+
+    try {
+      writeWeekdayMap(mapping);
+      res.json({ ok: true, mapping });
+    } catch {
+      res.status(500).json({ error: "Could not save weekday map" });
     }
   });
 

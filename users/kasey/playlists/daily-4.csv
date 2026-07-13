@@ -1,12 +1,26 @@
 rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
-1,0WYqT1IvPzmKNNzR8mgIQs,Love Lockdown,Glass Animals,Pools,currently_listening,120.00,142.00,36.00,77.00,29.00,1B,1,2026-07-12T00:46:36.033Z,https://open.spotify.com/track/0WYqT1IvPzmKNNzR8mgIQs
-2,5zNZZ7TD1bsx0s7zdEHHRW,Streets of Gold,3OH!3,Streets Of Gold,currently_listening,123.00,148.00,65.00,57.00,26.00,3A,1,2026-07-12T00:59:01.983Z,https://open.spotify.com/track/5zNZZ7TD1bsx0s7zdEHHRW
-3,1HtrQWNpyEbGMEiwCjmPdi,Curbstomp,MEG MYERS,Daughter in the Choir,currently_listening,123.00,153.00,67.00,68.00,18.00,6A,1,2026-07-12T01:07:34.246Z,https://open.spotify.com/track/1HtrQWNpyEbGMEiwCjmPdi
-4,47wC5QlTE6UrHKMOz2PrP2,I Really Want You to Hate Me,MEG MYERS,Sorry,currently_listening,124.00,153.00,54.00,68.00,31.00,6A,1,2026-07-12T00:53:33.696Z,https://open.spotify.com/track/47wC5QlTE6UrHKMOz2PrP2
-5,5E0pS3sXgWdQZMKChqYXHE,Basic Instinct,The Acid,Liminal,currently_listening,118.00,154.00,47.00,74.00,33.00,9B,1,2026-07-12T01:09:21.314Z,https://open.spotify.com/track/5E0pS3sXgWdQZMKChqYXHE
-6,35Bv4QuokBrmWya208VcK2,SCARING ME,cleopatrick,DOOM,currently_listening,135.00,139.00,66.00,59.00,14.00,12A,1,2026-07-12T01:02:56.176Z,https://open.spotify.com/track/35Bv4QuokBrmWya208VcK2
-7,0ue1SRXyvMme9iCSSWcuWb,Numbers,Daughter,Not to Disappear,currently_listening,131.00,134.00,71.00,42.00,21.00,11A,1,2026-07-12T01:09:37.567Z,https://open.spotify.com/track/0ue1SRXyvMme9iCSSWcuWb
-8,6EfZCB2wudriyD1vDjuAZ9,Bird Song,Florence + The Machine,Lungs (Deluxe Edition),currently_listening,120.00,124.00,53.00,46.00,25.00,8B,1,2026-07-12T01:02:33.977Z,https://open.spotify.com/track/6EfZCB2wudriyD1vDjuAZ9
-9,7w57O4o0xCTn9YpKuaPZDd,The Great Beyond,R.E.M.,In Time: The Best Of R.E.M. 1988-2003,currently_listening,110.00,126.00,75.00,33.00,18.00,6B,1,2026-07-12T01:20:47.119Z,https://open.spotify.com/track/7w57O4o0xCTn9YpKuaPZDd
-10,31ABtQJdfloNaGz7ZhXaN5,King,Florence + The Machine,Dance Fever,currently_listening,106.00,127.00,45.00,73.00,9.00,11A,1,2026-07-12T00:53:12.953Z,https://open.spotify.com/track/31ABtQJdfloNaGz7ZhXaN5
-11,2X8DqCikgiVk3214hbHEpz,Doing The Right Thing,Daughter,Not To Disappear,currently_listening,136.00,118.00,65.00,41.00,12.00,5A,1,2026-07-12T01:10:22.016Z,https://open.spotify.com/track/2X8DqCikgiVk3214hbHEpz
+1,5jGxeAkNbep75x8JLeb52H,Upside Down & Inside Out,OK Go,Hungry Ghosts,currently_listening,93.00,192.00,82.00,56.00,54.00,8B,1,2026-07-13T00:09:04.517Z,https://open.spotify.com/track/5jGxeAkNbep75x8JLeb52H
+2,5C5gvDZsl6d8bh89URfKHr,Pork Soda,Glass Animals,How To Be A Human Being,currently_listening,96.00,198.00,66.00,70.00,62.00,9B,1,2026-07-13T00:00:24.798Z,https://open.spotify.com/track/5C5gvDZsl6d8bh89URfKHr
+3,2gSVKxPDww9Eep5rdvtdem,My Way,Limp Bizkit,Chocolate Starfish And The Hot Dog Flavored Water,currently_listening,97.00,205.00,86.00,58.00,61.00,2B,1,2026-07-12T23:58:25.531Z,https://open.spotify.com/track/2gSVKxPDww9Eep5rdvtdem
+4,6n8TMVyFKoUmDc4apxceRD,Breaking the Habit,Linkin Park,Meteora,currently_listening,100.00,204.00,87.00,58.00,59.00,9A,1,2026-07-12T23:56:26.616Z,https://open.spotify.com/track/6n8TMVyFKoUmDc4apxceRD
+5,3bd1f4vkL6NMwL4BRV31wA,Ugly Boy,Die Antwoord,Donker Mag,currently_listening,102.00,210.00,67.00,83.00,60.00,3A,1,2026-07-12T23:57:17.969Z,https://open.spotify.com/track/3bd1f4vkL6NMwL4BRV31wA
+6,1LPGwuFgIzbJoShfDdw7MY,Youth,Glass Animals,How To Be A Human Being,currently_listening,96.00,216.00,72.00,65.00,79.00,8A,1,2026-07-12T01:21:01.952Z,https://open.spotify.com/track/1LPGwuFgIzbJoShfDdw7MY
+7,3IXRdLsQib8m0hBbQpe7T8,Hang Me Up To Dry,Cold War Kids,Robbers & Cowards,currently_listening,93.00,208.00,92.00,51.00,65.00,8A,1,2026-07-13T00:05:41.464Z,https://open.spotify.com/track/3IXRdLsQib8m0hBbQpe7T8
+8,5PntSbMHC1ud6Vvl8x56qd,Loser,Beck,Mellow Gold,currently_listening,85.00,205.00,61.00,65.00,79.00,10B,1,2026-07-13T00:56:17.942Z,https://open.spotify.com/track/5PntSbMHC1ud6Vvl8x56qd
+9,5UiwpYH8hfVR6CAvzzrP7B,High Horse,Black Pistol Fire,Flagrant Act of Bliss,currently_listening,80.00,201.00,69.00,63.00,69.00,3B,1,2026-07-13T00:04:00.692Z,https://open.spotify.com/track/5UiwpYH8hfVR6CAvzzrP7B
+10,0ZqWBTU1EkdVPAMwQgfKiv,Going Through Changes,Eminem,Recovery,currently_listening,86.00,191.00,90.00,69.00,32.00,8B,1,2026-07-13T00:51:34.964Z,https://open.spotify.com/track/0ZqWBTU1EkdVPAMwQgfKiv
+11,5fbQCQt91LsVgXusFS0CCD,Disorder - 2007 Remaster,Joy Division,Unknown Pleasures (Collector's Edition),currently_listening,85.00,186.00,80.00,32.00,74.00,3A,1,2026-07-13T00:01:14.458Z,https://open.spotify.com/track/5fbQCQt91LsVgXusFS0CCD
+12,1Z4bpgy49F5P9mQrp29OVK,Locked In A Cage,Brick + Mortar,Bangs,currently_listening,83.00,176.00,84.00,56.00,36.00,7B,1,2026-07-12T21:27:15.288Z,https://open.spotify.com/track/1Z4bpgy49F5P9mQrp29OVK
+13,4ODBthPIrDroujDxRS7cWu,GREAT LAKES,cleopatrick,BUMMER,currently_listening,75.00,176.00,79.00,45.00,52.00,2B,1,2026-07-12T00:57:56.210Z,https://open.spotify.com/track/4ODBthPIrDroujDxRS7cWu
+14,3IaAYtmN8T0YIYVqnxNnVz,Bad Guy,Eminem,The Marshall Mathers LP2 (Deluxe),currently_listening,83.00,165.00,80.00,50.00,35.00,8B,1,2026-07-12T20:18:57.734Z,https://open.spotify.com/track/3IaAYtmN8T0YIYVqnxNnVz
+15,6Lto2Xj8y0U2bes2hmRMZu,Wonderful Nothing,Glass Animals,I Love You So F***ing Much,currently_listening,89.00,162.00,49.00,65.00,48.00,11A,1,2026-07-12T23:52:35.055Z,https://open.spotify.com/track/6Lto2Xj8y0U2bes2hmRMZu
+16,3jfHclM5oNBSUvuBS7OgPj,Absolution,Switchfoot,Absolution,currently_listening,91.00,168.00,87.00,54.00,27.00,11B,1,2026-07-13T00:00:58.266Z,https://open.spotify.com/track/3jfHclM5oNBSUvuBS7OgPj
+17,58hzFlHm1gKIJzRMSt0vWV,Carry On,"The Score,AWOLNATION",Carry On,currently_listening,92.00,169.00,74.00,55.00,40.00,8B,1,2026-07-13T00:56:42.127Z,https://open.spotify.com/track/58hzFlHm1gKIJzRMSt0vWV
+18,5UKeFkVeUfvP6S43I8s9mt,Jailbreak,AC/DC,'74 Jailbreak,currently_listening,132.00,200.00,84.00,57.00,59.00,11B,1,2026-07-12T21:38:19.943Z,https://open.spotify.com/track/5UKeFkVeUfvP6S43I8s9mt
+19,6Wn3pdFtAcnYJyJVITwt7N,Girls Got Rhythm,AC/DC,Highway to Hell,currently_listening,138.00,203.00,98.00,51.00,54.00,9A,1,2026-07-12T21:36:57.222Z,https://open.spotify.com/track/6Wn3pdFtAcnYJyJVITwt7N
+20,4pEU0NT64oiem9lDT7nuJn,Running In Circles,Dead Poet Society,FISSION,currently_listening,142.00,210.00,84.00,62.00,64.00,5B,1,2026-07-13T00:05:05.420Z,https://open.spotify.com/track/4pEU0NT64oiem9lDT7nuJn
+21,4Yf5bqU3NK4kNOypcrLYwU,Faint,Linkin Park,Meteora,currently_listening,135.00,214.00,98.00,55.00,61.00,12B,1,2026-07-12T00:53:51.344Z,https://open.spotify.com/track/4Yf5bqU3NK4kNOypcrLYwU
+22,1aItKhUXwDGVNQIMdsEv5u,Fake It,Seether,Finding Beauty In Negative Spaces (Bonus Track Version),currently_listening,132.00,221.00,95.00,61.00,65.00,4B,1,2026-07-12T23:55:49.912Z,https://open.spotify.com/track/1aItKhUXwDGVNQIMdsEv5u
+23,4SE4yewyGpOYfxfx59Yjc5,Cinderella Man,Eminem,Recovery,currently_listening,86.00,228.00,91.00,68.00,69.00,4B,1,2026-07-13T01:00:50.387Z,https://open.spotify.com/track/4SE4yewyGpOYfxfx59Yjc5
+24,6dJRP4pXk4SOzWfhfHL3Or,So Much Better,Eminem,The Marshall Mathers LP2 (Deluxe),currently_listening,85.00,220.00,86.00,72.00,62.00,3A,1,2026-07-12T20:19:52.239Z,https://open.spotify.com/track/6dJRP4pXk4SOzWfhfHL3Or
+25,5Ve4qBYAThGLTOva0hhoTa,So Bad,Eminem,Recovery,currently_listening,81.00,235.00,81.00,77.00,77.00,3B,1,2026-07-13T01:01:30.160Z,https://open.spotify.com/track/5Ve4qBYAThGLTOva0hhoTa

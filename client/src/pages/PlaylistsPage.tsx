@@ -31,6 +31,10 @@ type PlaylistTrack = {
   albumYear: number | null;
 };
 
+type WeekdayMapResp = {
+  mapping: Record<string, string>;
+};
+
 type Playlist = {
   index: number;
   trackCount: number;
@@ -72,6 +76,7 @@ function defaultDayMap(playlists: Playlist[]): Record<number, string> {
 export default function PlaylistsPage() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [dayMap, setDayMap] = useState<Record<number, string>>({});
+  const [dayMapInitialized, setDayMapInitialized] = useState(false);
 
   const query = useQuery<Resp>({
     queryKey: ["/api/playlists/daily"],
@@ -115,30 +120,56 @@ export default function PlaylistsPage() {
     if (playlists.length === 0) return;
 
     const fallback = defaultDayMap(playlists);
-    try {
-      const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (!raw) {
-        setDayMap(fallback);
-        return;
-      }
-      const parsed = JSON.parse(raw) as Record<string, string>;
+    let cancelled = false;
+
+    const load = async () => {
       const next: Record<number, string> = { ...fallback };
-      for (const p of playlists) {
-        const assigned = parsed[String(p.index)];
-        if (assigned && WEEKDAYS.includes(assigned as (typeof WEEKDAYS)[number])) {
-          next[p.index] = assigned;
+
+      try {
+        const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw) as Record<string, string>;
+          for (const p of playlists) {
+            const assigned = parsed[String(p.index)];
+            if (assigned && WEEKDAYS.includes(assigned as (typeof WEEKDAYS)[number])) {
+              next[p.index] = assigned;
+            }
+          }
         }
+      } catch {}
+
+      try {
+        const res = await apiRequest("GET", "/api/playlists/weekday-map");
+        const payload = (await res.json()) as WeekdayMapResp;
+        const serverMap = payload.mapping ?? {};
+        for (const p of playlists) {
+          const assigned = serverMap[String(p.index)];
+          if (assigned && WEEKDAYS.includes(assigned as (typeof WEEKDAYS)[number])) {
+            next[p.index] = assigned;
+          }
+        }
+      } catch {}
+
+      if (!cancelled) {
+        setDayMap(next);
+        setDayMapInitialized(true);
       }
-      setDayMap(next);
-    } catch {
-      setDayMap(fallback);
-    }
+    };
+
+    void load();
+
+    return () => {
+      cancelled = true;
+    };
   }, [playlists]);
 
   useEffect(() => {
-    if (!Object.keys(dayMap).length) return;
+    if (!dayMapInitialized || !Object.keys(dayMap).length) return;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(dayMap));
-  }, [dayMap]);
+    void apiRequest("PUT", "/api/playlists/weekday-map", {
+      mapping: Object.fromEntries(Object.entries(dayMap).map(([k, v]) => [String(k), v])),
+    }).catch(() => {});
+  }, [dayMap, dayMapInitialized]);
 
   const updateDay = (playlistIndex: number, newDay: string) => {
     setDayMap((prev) => {

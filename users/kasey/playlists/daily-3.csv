@@ -1,3 +1,26 @@
 rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
-1,3ApAsbQP7d5GlFwwdExaTY,Poplar St,Glass Animals,How To Be A Human Being,currently_listening,69.00,128.00,45.00,57.00,26.00,9A,1,2026-07-12T01:06:56.705Z,https://open.spotify.com/track/3ApAsbQP7d5GlFwwdExaTY
-2,4ODBthPIrDroujDxRS7cWu,GREAT LAKES,cleopatrick,BUMMER,currently_listening,75.00,176.00,79.00,45.00,52.00,2B,1,2026-07-12T00:57:56.210Z,https://open.spotify.com/track/4ODBthPIrDroujDxRS7cWu
+1,5iRv1aH4eNai45KfhjtJ6n,When the Love is Gone,Des Rocs,When the Love is Gone,currently_listening,141.00,172.00,81.00,44.00,47.00,9A,1,2026-07-12T00:37:32.646Z,https://open.spotify.com/track/5iRv1aH4eNai45KfhjtJ6n
+2,3lN8PP6R2IxbLP05QpYXng,Born To Be Wild - Single Version,Steppenwolf,Steppenwolf,currently_listening,146.00,171.00,73.00,44.00,54.00,10B,1,2026-07-12T00:43:23.964Z,https://open.spotify.com/track/3lN8PP6R2IxbLP05QpYXng
+3,0m3Ze0cy8qBHSsV2exAfCw,Amazing,"Kanye West,Jeezy",808s & Heartbreak,currently_listening,146.00,164.00,55.00,59.00,50.00,4B,1,2026-07-12T00:45:42.409Z,https://open.spotify.com/track/0m3Ze0cy8qBHSsV2exAfCw
+4,0Y0opRUBGuBOh7sogywclY,Dust,Augustana,"Can't Love, Can't Hurt",currently_listening,146.00,151.00,63.00,38.00,50.00,10A,1,2026-07-12T01:07:50.108Z,https://open.spotify.com/track/0Y0opRUBGuBOh7sogywclY
+5,0wokCRaKD0zPNhMRXAgVsr,Ordinary World,Duran Duran,Duran Duran,currently_listening,140.00,152.00,65.00,47.00,40.00,12A,1,2026-07-12T00:40:14.931Z,https://open.spotify.com/track/0wokCRaKD0zPNhMRXAgVsr
+6,4z2xy1UYMu70xCkWudeL96,Gimme Sympathy,Metric,Fantasies,currently_listening,139.00,145.00,89.00,45.00,11.00,11B,1,2026-07-12T21:03:29.844Z,https://open.spotify.com/track/4z2xy1UYMu70xCkWudeL96
+7,5tb5fb5moizAdu3Z6jljn2,Make a Shadow,MEG MYERS,Sorry,currently_listening,134.00,145.00,42.00,73.00,30.00,11A,1,2026-07-13T00:33:47.175Z,https://open.spotify.com/track/5tb5fb5moizAdu3Z6jljn2
+8,35Bv4QuokBrmWya208VcK2,SCARING ME,cleopatrick,DOOM,currently_listening,135.00,139.00,66.00,59.00,14.00,12A,1,2026-07-12T01:02:56.176Z,https://open.spotify.com/track/35Bv4QuokBrmWya208VcK2
+9,7vBs57yYONIjmlLFXjTazJ,Murder,Rainbow Kitten Surprise,bones,currently_listening,141.00,132.00,57.00,59.00,16.00,3B,1,2026-07-12T20:51:11.299Z,https://open.spotify.com/track/7vBs57yYONIjmlLFXjTazJ
+10,1HIV7KpOnHL32AKth0l1eU,Shadowplay - 2019 Digital Master,Joy Division,Unknown Pleasures,currently_listening,145.00,130.00,77.00,42.00,11.00,11B,1,2026-07-13T00:01:35.249Z,https://open.spotify.com/track/1HIV7KpOnHL32AKth0l1eU
+11,0WYqT1IvPzmKNNzR8mgIQs,Love Lockdown,Glass Animals,Pools,currently_listening,120.00,142.00,36.00,77.00,29.00,1B,1,2026-07-12T00:46:36.033Z,https://open.spotify.com/track/0WYqT1IvPzmKNNzR8mgIQs
+12,1yshfaUkaAletecfWFVgtS,Gooey - Gilligan Moss Remix,"Glass Animals,Gilligan Moss",Remixes,currently_listening,110.00,140.00,70.00,58.00,12.00,10A,1,2026-07-12T23:50:21.016Z,https://open.spotify.com/track/1yshfaUkaAletecfWFVgtS
+13,6RSVgjjYRtKg4FDyx2Lj1u,The Best,AWOLNATION,Angel Miners & The Lightning Riders,currently_listening,111.00,156.00,87.00,64.00,5.00,7A,1,2026-07-12T23:59:13.320Z,https://open.spotify.com/track/6RSVgjjYRtKg4FDyx2Lj1u
+14,0EfsDEYaSjGYd66Pr881nq,Cry Baby,The Neighbourhood,Wiped Out!,currently_listening,108.00,158.00,66.00,58.00,34.00,9A,1,2026-07-13T00:31:26.242Z,https://open.spotify.com/track/0EfsDEYaSjGYd66Pr881nq
+15,69QHm3pustz01CJRwdo20z,Hells Bells,AC/DC,Back In Black,currently_listening,107.00,156.00,87.00,39.00,30.00,9A,1,2026-07-12T21:37:09.145Z,https://open.spotify.com/track/69QHm3pustz01CJRwdo20z
+16,57UIoWO4bNtnrTRXHvHfbL,Jailbreak,AWOLNATION,Run,currently_listening,111.00,166.00,40.00,78.00,48.00,4A,1,2026-07-12T23:58:38.007Z,https://open.spotify.com/track/57UIoWO4bNtnrTRXHvHfbL
+17,2gGCt2yXxDxDITx19sxwJJ,"We Bad, We Know","ZOI,Byfox","We Bad, We Know",currently_listening,112.00,174.00,59.00,74.00,41.00,9B,1,2026-07-12T23:53:20.280Z,https://open.spotify.com/track/2gGCt2yXxDxDITx19sxwJJ
+18,6IAQGogKOkE69G7OcXQ28e,Blue Gasoline,Airways,Blue Gasoline,currently_listening,113.00,174.00,64.00,61.00,49.00,9B,1,2026-07-12T00:47:38.607Z,https://open.spotify.com/track/6IAQGogKOkE69G7OcXQ28e
+19,5iItYl3Q6wCnKVfpK1uNVf,The Suburbs,Arcade Fire,The Suburbs (Deluxe),currently_listening,118.00,185.00,69.00,62.00,54.00,11A,1,2026-07-12T23:59:46.213Z,https://open.spotify.com/track/5iItYl3Q6wCnKVfpK1uNVf
+20,5N7Cdi5Te9E3rejjuyRwll,Your Chaos,NOMARKMORE,Exhibition Number Zero,currently_listening,124.00,184.00,45.00,74.00,65.00,2B,1,2026-07-12T00:37:10.726Z,https://open.spotify.com/track/5N7Cdi5Te9E3rejjuyRwll
+21,3TP8KZt9tJGyeBRVyDysp9,Better If Worse,"HAFFWAY,Matt Maeson",Better If Worse (with Matt Maeson),currently_listening,124.00,183.00,81.00,54.00,48.00,11A,1,2026-07-12T00:51:24.416Z,https://open.spotify.com/track/3TP8KZt9tJGyeBRVyDysp9
+22,0jXRQSoOA01VTmrVIDbhtm,Shh,Frou Frou,Details,currently_listening,131.00,179.00,80.00,65.00,34.00,11A,1,2026-07-12T21:06:23.271Z,https://open.spotify.com/track/0jXRQSoOA01VTmrVIDbhtm
+23,1nUC2uuKUl49tDwQ1m4A1J,BURNER PHONE,cleopatrick,SCRAP,currently_listening,136.00,181.00,91.00,44.00,46.00,9A,1,2026-07-12T00:50:09.565Z,https://open.spotify.com/track/1nUC2uuKUl49tDwQ1m4A1J
+24,2UdCAgl9eX9VevTzo4Rbyn,The Death Of Me,MEG MYERS,Take Me To The Disco,currently_listening,140.00,184.00,87.00,56.00,41.00,4B,1,2026-07-12T01:04:28.233Z,https://open.spotify.com/track/2UdCAgl9eX9VevTzo4Rbyn
+25,6JH9yWhgbm0y9iAJhCslNc,Handlebars,Flobots,Fight With Tools,currently_listening,142.00,179.00,57.00,70.00,52.00,7B,1,2026-07-12T19:48:14.811Z,https://open.spotify.com/track/6JH9yWhgbm0y9iAJhCslNc

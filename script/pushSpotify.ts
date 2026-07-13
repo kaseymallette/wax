@@ -39,19 +39,21 @@ const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET ?? "";
 const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN ?? "";
 
 const PLAYLIST_PUBLIC = (process.env.WAX_PLAYLIST_PUBLIC ?? "false") === "true";
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
 
 type PlaylistSpec = {
   file: string;
   label: string;
-  titleSuffix: string;
+  titleSuffix?: string;
+  dailyIndex?: number;
 };
 
 const PLAYLIST_SPECS: PlaylistSpec[] = [
-  { file: "daily-1.csv", label: "Daily 1", titleSuffix: "Daily 1" },
-  { file: "daily-2.csv", label: "Daily 2", titleSuffix: "Daily 2" },
-  { file: "daily-3.csv", label: "Daily 3", titleSuffix: "Daily 3" },
-  { file: "daily-4.csv", label: "Daily 4", titleSuffix: "Daily 4" },
-  { file: "daily-5.csv", label: "Daily 5", titleSuffix: "Daily 5" },
+  { file: "daily-1.csv", label: "Daily 1", dailyIndex: 1 },
+  { file: "daily-2.csv", label: "Daily 2", dailyIndex: 2 },
+  { file: "daily-3.csv", label: "Daily 3", dailyIndex: 3 },
+  { file: "daily-4.csv", label: "Daily 4", dailyIndex: 4 },
+  { file: "daily-5.csv", label: "Daily 5", dailyIndex: 5 },
   { file: "favorites-archive.csv", label: "Favorites Archive", titleSuffix: "Favorites Archive" },
   { file: "save-for-later.csv", label: "Save for Later", titleSuffix: "Save for Later" },
 ];
@@ -62,6 +64,13 @@ const PLAYLISTS_DIR =
 
 const LOG_PATH = path.join(PLAYLISTS_DIR, "push.log");
 const API = "https://api.spotify.com/v1";
+
+function playlistTitleSuffix(spec: PlaylistSpec): string {
+  if (spec.dailyIndex) {
+    return WEEKDAYS[spec.dailyIndex - 1] ?? `Daily ${spec.dailyIndex}`;
+  }
+  return spec.titleSuffix ?? spec.label;
+}
 
 // ───────────────────────── logging ─────────────────────────
 
@@ -351,7 +360,7 @@ async function pushBand(spec: PlaylistSpec): Promise<void> {
 
   const uris = valid.map((r) => `spotify:track:${r.trackId}`);
   const userLabel = WAX_USER.charAt(0).toUpperCase() + WAX_USER.slice(1);
-  const playlistName = `WAX – ${userLabel} ${spec.titleSuffix}`;
+  const playlistName = `Wax - ${userLabel} ${playlistTitleSuffix(spec)}`;
 
   log(`\n▶ ${spec.label}: ${uris.length} tracks → "${playlistName}"`);
 
@@ -392,7 +401,7 @@ async function debugTest(): Promise<void> {
 
   // Find or use the first configured playlist pattern for active method.
   const testPlaylistName =
-    `WAX – ${WAX_USER.charAt(0).toUpperCase() + WAX_USER.slice(1)} ${PLAYLIST_SPECS[0].titleSuffix}`;
+    `Wax - ${WAX_USER.charAt(0).toUpperCase() + WAX_USER.slice(1)} ${playlistTitleSuffix(PLAYLIST_SPECS[0])}`;
   const playlist = await findPlaylistByName(testPlaylistName);
   if (!playlist) {
     log(`[debug] No existing playlist "${testPlaylistName}" found. Creating one…`);

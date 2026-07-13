@@ -1,8 +1,208 @@
 {
-  "exportedAt": 1783903525597,
+  "exportedAt": 1783904667901,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 306,
+  "count": 328,
   "decisions": [
+    {
+      "trackId": "5Ve4qBYAThGLTOva0hhoTa",
+      "name": "So Bad",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904490160
+    },
+    {
+      "trackId": "7bHT9osSq1rwT2yaImzqCi",
+      "name": "No Love",
+      "artists": "Eminem,Lil Wayne",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904481040
+    },
+    {
+      "trackId": "4SE4yewyGpOYfxfx59Yjc5",
+      "name": "Cinderella Man",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904450387
+    },
+    {
+      "trackId": "0sHW1jXe6Sou3437gJQNGA",
+      "name": "Space Bound",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783904425038
+    },
+    {
+      "trackId": "0dyWQoMOU9oERL6c9vxtRp",
+      "name": "25 To Life",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1783904409359
+    },
+    {
+      "trackId": "0M2qo3471lo6vo91qHM5Ub",
+      "name": "Goodnight Chicago",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783904322951
+    },
+    {
+      "trackId": "6fc51JZVE0Yijdi6RuoLFv",
+      "name": "Painkillers",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783904306437
+    },
+    {
+      "trackId": "3RRQunWUTx2XpmmbcdhBc7",
+      "name": "Mr. Redundant",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783904302574
+    },
+    {
+      "trackId": "1TDdYSYLIXMJ4EiKO6ZCYk",
+      "name": "Mission to Mars",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783904298992
+    },
+    {
+      "trackId": "0hJS3EHWC4uL9sJ52ErpoN",
+      "name": "Hide",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783904294847
+    },
+    {
+      "trackId": "00vlCXriiYxfO1AZoRJKec",
+      "name": "The Comedown",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1783904265003
+    },
+    {
+      "trackId": "7a2UznTMFRCL7c1sscXDEv",
+      "name": "SVO",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904253581
+    },
+    {
+      "trackId": "24jvD83UgLmrdGjhWTFslY",
+      "name": "Video Games",
+      "artists": "Lana Del Rey",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904239346
+    },
+    {
+      "trackId": "58hzFlHm1gKIJzRMSt0vWV",
+      "name": "Carry On",
+      "artists": "The Score,AWOLNATION",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904202127
+    },
+    {
+      "trackId": "5PntSbMHC1ud6Vvl8x56qd",
+      "name": "Loser",
+      "artists": "Beck",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904177942
+    },
+    {
+      "trackId": "7Ie9W94M7OjPoZVV216Xus",
+      "name": "Not Afraid",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904118336
+    },
+    {
+      "trackId": "6cc4X3CBJhdPbARRbyaJkP",
+      "name": "Help I'm Alive - BYNX Rework",
+      "artists": "Metric,BYNX",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904080812
+    },
+    {
+      "trackId": "5aramQ0GUxy5EMs7XI94GP",
+      "name": "Hospital Beds - Live Rising",
+      "artists": "Cold War Kids",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783904069486
+    },
+    {
+      "trackId": "0ZqWBTU1EkdVPAMwQgfKiv",
+      "name": "Going Through Changes",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783903894964
+    },
+    {
+      "trackId": "7kNlRLC9PEH8nXMVawssMx",
+      "name": "Won't Back Down",
+      "artists": "Eminem,P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783903689388
+    },
+    {
+      "trackId": "66h8hB4In6t725WtAPL23J",
+      "name": "Talkin’ 2 Myself",
+      "artists": "Eminem,Kobe Honeycutt",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783903677866
+    },
+    {
+      "trackId": "4dfAUJI1QesmK5HfK9gtYs",
+      "name": "Wicked Ways",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783903653160
+    },
+    {
+      "trackId": "7hiBhOh4s8G0xmGYBAjyuw",
+      "name": "Beautiful Pain",
+      "artists": "Eminem,Sia",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783903640341
+    },
+    {
+      "trackId": "01zPnSlKCw9WLbY0kvNep0",
+      "name": "Desperation",
+      "artists": "Eminem,Jamie N Commons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783903630751
+    },
+    {
+      "trackId": "4WgvTITBJbEfCJHguiE7QS",
+      "name": "The Monster",
+      "artists": "Eminem,Rihanna",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783903616806
+    },
     {
       "trackId": "58ge6dfP91o9oXMzq3XkIS",
       "name": "505",
@@ -760,7 +960,7 @@
       "name": "It Takes More",
       "artists": "Taking Back Sunday",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783900501370
     },
     {
@@ -768,7 +968,7 @@
       "name": "Flicker, Fade",
       "artists": "Taking Back Sunday",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783900472760
     },
     {
@@ -1218,22 +1418,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "favorites_archive",
       "loggedAt": 1783889886585
-    },
-    {
-      "trackId": "00vlCXriiYxfO1AZoRJKec",
-      "name": "The Comedown",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783889820268
-    },
-    {
-      "trackId": "0M2qo3471lo6vo91qHM5Ub",
-      "name": "Goodnight Chicago",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783889797061
     },
     {
       "trackId": "1nR4y4D5imW4jQfPV3TCd2",
@@ -1706,14 +1890,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "favorites_archive",
       "loggedAt": 1783887048415
-    },
-    {
-      "trackId": "0dyWQoMOU9oERL6c9vxtRp",
-      "name": "25 To Life",
-      "artists": "Eminem",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783887030486
     },
     {
       "trackId": "4wcBRRpIfesgcyUtis7PEg",

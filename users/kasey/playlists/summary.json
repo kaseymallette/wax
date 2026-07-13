@@ -1,16 +1,16 @@
 {
   "user": "kasey",
-  "generatedAt": 1783823679888,
+  "generatedAt": 1783905312748,
   "dbPath": "/Users/kaseymallette/github/wax/data.db",
   "diagnostics": {
-    "currentlyListeningCount": 50,
-    "usableTrackCount": 50,
+    "currentlyListeningCount": 125,
+    "usableTrackCount": 125,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "favoritesArchive": 0,
-    "saveForLater": 0
+    "favoritesArchive": 178,
+    "saveForLater": 21
   },
   "files": {
     "daily": [
