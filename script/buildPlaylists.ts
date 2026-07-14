@@ -4,7 +4,7 @@ import path from "node:path";
 import { buildDailyPlaylists } from "../server/dailyPlaylists";
 import type { TrackWithStats } from "../shared/schema";
 
-type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | "undecided";
+type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | "off_rotation" | "removed" | "undecided";
 
 type TrackAggRow = {
   id: string;
@@ -41,7 +41,7 @@ const PLAYLISTS_DIR = path.resolve(
 const SUMMARY_PATH = path.join(PLAYLISTS_DIR, "summary.json");
 const MISSING_FEATURES_PATH = path.join(PLAYLISTS_DIR, "missing-features.log");
 const WEEKDAY_MAP_PATH = path.join(PLAYLISTS_DIR, "weekday-map.json");
-const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 type Weekday = (typeof WEEKDAYS)[number];
 const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
 
@@ -61,6 +61,8 @@ function loadWeekdayMap(): Record<number, Weekday> {
     3: "Wednesday",
     4: "Thursday",
     5: "Friday",
+    6: "Saturday",
+    7: "Sunday",
   };
 
   try {
@@ -72,7 +74,7 @@ function loadWeekdayMap(): Record<number, Weekday> {
 
     for (const [rawIndex, rawDay] of Object.entries(parsed)) {
       const index = Number(rawIndex);
-      if (!Number.isInteger(index) || index < 1 || index > 5) continue;
+      if (!Number.isInteger(index) || index < 1 || index > 7) continue;
       if (typeof rawDay !== "string") continue;
       if (!WEEKDAY_SET.has(rawDay as Weekday)) continue;
       if (seen.has(rawDay as Weekday)) continue;
@@ -99,6 +101,8 @@ function normalizeRepeatIntent(v: unknown): RepeatIntent {
     s === "favorites_archive" ||
     s === "save_for_later" ||
     s === "skip_for_now" ||
+    s === "off_rotation" ||
+    s === "removed" ||
     s === "undecided"
   ) {
     return s;
@@ -218,7 +222,7 @@ function writeDailyPlaylistCsv(
 function writeIntentPlaylistCsv(
   filePath: string,
   tracks: TrackWithStats[],
-  intent: "favorites_archive" | "save_for_later",
+  intent: "favorites_archive" | "save_for_later" | "off_rotation",
 ) {
   const compareArtistThenName = (a: TrackWithStats, b: TrackWithStats) =>
     a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
@@ -235,11 +239,19 @@ function writeIntentPlaylistCsv(
       return compareArtistThenName(a, b);
     }
 
-    if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
+    if (intent === "save_for_later") {
+      if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
+      if (aYear == null) return 1;
+      if (bYear == null) return -1;
+      if (aYear !== bYear) return aYear - bYear;
+      return a.name.localeCompare(b.name);
+    }
+
+    if (aYear == null && bYear == null) return compareArtistThenName(a, b);
     if (aYear == null) return 1;
     if (bYear == null) return -1;
     if (aYear !== bYear) return aYear - bYear;
-    return a.name.localeCompare(b.name);
+    return compareArtistThenName(a, b);
   });
 
   const header = [
@@ -357,12 +369,15 @@ function main() {
 
   const favorites = tracks.filter((t) => t.repeatIntent === "favorites_archive");
   const saveForLater = tracks.filter((t) => t.repeatIntent === "save_for_later");
+  const offRotation = tracks.filter((t) => t.repeatIntent === "off_rotation");
 
   const favoritesPath = path.join(PLAYLISTS_DIR, "favorites-archive.csv");
   const saveForLaterPath = path.join(PLAYLISTS_DIR, "save-for-later.csv");
+  const offRotationPath = path.join(PLAYLISTS_DIR, "off-rotation.csv");
 
   writeIntentPlaylistCsv(favoritesPath, favorites, "favorites_archive");
   writeIntentPlaylistCsv(saveForLaterPath, saveForLater, "save_for_later");
+  writeIntentPlaylistCsv(offRotationPath, offRotation, "off_rotation");
 
   const missingPath = writeMissingFeaturesLog(tracks);
 
@@ -375,11 +390,13 @@ function main() {
     counts: {
       favoritesArchive: favorites.length,
       saveForLater: saveForLater.length,
+      offRotation: offRotation.length,
     },
     files: {
       daily: dailyFiles,
       favoritesArchive: favoritesPath,
       saveForLater: saveForLaterPath,
+      offRotation: offRotationPath,
       missingFeatures: missingPath,
     },
   };
@@ -389,6 +406,7 @@ function main() {
   dailyFiles.forEach((f) => console.log(`[buildPlaylists] wrote ${f}`));
   console.log(`[buildPlaylists] wrote ${favoritesPath}`);
   console.log(`[buildPlaylists] wrote ${saveForLaterPath}`);
+  console.log(`[buildPlaylists] wrote ${offRotationPath}`);
   console.log(`[buildPlaylists] wrote ${SUMMARY_PATH}`);
   if (missingPath) {
     console.log(`[buildPlaylists] warning: missing features log -> ${missingPath}`);

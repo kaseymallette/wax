@@ -6,9 +6,9 @@ A local-first listening journal for your music library. Upload tracks, shuffle w
 
 Wax is built for deliberate curation instead of endless skipping. Import your library (`.db`, `.sqlite`, or Exportify `.csv`), run Shuffle, and log decisions quickly with keep/remove plus repeat intent.
 
-Tracks start as *Undecided*, and keeps are organized into four intent buckets: *Currently Listening*, *Favorites Archive*, *Save for Later*, and *Skip for Now*. These intents drive weighted shuffle, Keeps/Stats views, and playlist generation.
+Tracks start as *Undecided*, and keeps are organized into five intent buckets: *Currently Listening*, *Save for Later*, *Off Rotation*, *Favorites Archive*, and *Skip for Now*. These intents drive weighted shuffle, Keeps/Stats views, and playlist generation.
 
-The default playlist flow creates 5 daily playlists from *Currently Listening* (BPM + mood clustering, max 25 tracks each), plus one playlist each for *Favorites Archive* and *Save for Later*. Everything exports to CSV first, then can be pushed to Spotify with the built-in push script.
+The default playlist flow creates 7 daily playlists from *Currently Listening* (BPM + mood clustering, dynamic per-playlist cap tiers from 5 up to 30 tracks), plus one playlist each for *Save for Later*, *Off Rotation*, and *Favorites Archive*. Everything exports to CSV first, then can be pushed to Spotify with the built-in push script.
 
 Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot), energy, dance, and valence. Mood score is `energy + dance + valence` on a 0–300 scale.
 
@@ -84,9 +84,11 @@ For full-song playback in the embed, sign into Spotify in any tab of the same br
 
 ```bash
 WAX_USER=kasey npm run decisions:export  # writes users/kasey/decisions-latest.json
+WAX_USER=kaseysdad npm run decisions:export  # writes users/kaseysdad/decisions-latest.json
+WAX_USER=kaseysmom npm run decisions:export  # writes users/kaseysmom/decisions-latest.json
 ```
 
-Use a different `WAX_USER` value per family member (for example: `mom`, `dad`, `kasey`) so each person has their own tracked decisions file under `users/`.
+Use a different `WAX_USER` value per family member (for example: `kasey`, `kaseysdad`, `kaseysmom`) so each person has their own tracked decisions file under `users/`.
 
 ### Reimport library + restore decisions
 
@@ -110,6 +112,8 @@ npm run dev
 
 ```bash
 WAX_USER=kasey npm run decisions:import
+WAX_USER=kaseysdad npm run decisions:import
+WAX_USER=kaseysmom npm run decisions:import
 ```
 
 This restores each track's latest keep/remove + repeat-intent decision. It does not restore full listen history, notes, or activity timeline.
@@ -238,13 +242,22 @@ Wax uses one default playlist-generation flow (CSV-first for review, then Spotif
 ### Default playlist flow
 
 - Uses the same generation logic as the in-app `Playlists` tab.
-- Builds 5 daily playlists from `currently_listening` using k-means on BPM + mood (`energy + dance + valence`) with nearest-neighbor ordering and max 25 tracks per playlist.
-- Also writes one CSV for `favorites_archive` and one for `save_for_later`.
+- Builds 7 daily playlists from `currently_listening` using k-means on BPM + mood (`energy + dance + valence`) with nearest-neighbor ordering.
+- Uses dynamic per-playlist caps based on current `currently_listening` count:
+  - `0–35` tracks → max `5` per playlist
+  - `36–70` tracks → max `10` per playlist
+  - `71–105` tracks → max `15` per playlist
+  - `106–140` tracks → max `20` per playlist
+  - `141–175` tracks → max `25` per playlist
+  - `176+` tracks → max `30` per playlist
+- Also writes one CSV each for `favorites_archive`, `save_for_later`, and `off_rotation`.
 
 Run:
 
 ```bash
 WAX_USER=kasey npm run playlists:build
+WAX_USER=kaseysdad npm run playlists:build
+WAX_USER=kaseysmom npm run playlists:build
 ```
 
 Outputs:
@@ -254,8 +267,11 @@ Outputs:
 - `users/<name>/playlists/daily-3.csv`
 - `users/<name>/playlists/daily-4.csv`
 - `users/<name>/playlists/daily-5.csv`
+- `users/<name>/playlists/daily-6.csv`
+- `users/<name>/playlists/daily-7.csv`
 - `users/<name>/playlists/favorites-archive.csv`
 - `users/<name>/playlists/save-for-later.csv`
+- `users/<name>/playlists/off-rotation.csv`
 - `users/<name>/playlists/summary.json`
 - `users/<name>/playlists/missing-features.log` *(only when currently-listening tracks are missing BPM/energy/dance/valence)*
 
@@ -264,6 +280,10 @@ If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPO
 ```bash
 WAX_USER=kasey npm run spotify:push:dry
 WAX_USER=kasey npm run spotify:push
+WAX_USER=kaseysdad npm run spotify:push:dry
+WAX_USER=kaseysdad npm run spotify:push
+WAX_USER=kaseysmom npm run spotify:push:dry
+WAX_USER=kaseysmom npm run spotify:push
 ```
 
 ### Spotify push agent
@@ -294,6 +314,8 @@ SPOTIFY_CLIENT_SECRET=paste_your_client_secret_here
 SPOTIFY_REDIRECT_URI=http://127.0.0.1:8888/callback
 SPOTIFY_REFRESH_TOKEN=
 WAX_USER=kasey
+# or WAX_USER=kaseysdad
+# or WAX_USER=kaseysmom
 ```
 
 4. Authorize once to get a refresh token:
@@ -310,17 +332,21 @@ Dry run first (no writes):
 
 ```bash
 WAX_USER=kasey npm run spotify:push:dry
+WAX_USER=kaseysdad npm run spotify:push:dry
+WAX_USER=kaseysmom npm run spotify:push:dry
 ```
 
 Then push for real:
 
 ```bash
 WAX_USER=kasey npm run spotify:push
+WAX_USER=kaseysdad npm run spotify:push
+WAX_USER=kaseysmom npm run spotify:push
 ```
 
 Push behavior:
 
-- Pushes `daily-1..5.csv`, `favorites-archive.csv`, and `save-for-later.csv` from `users/<WAX_USER>/playlists/`
+- Pushes `daily-1..7.csv`, `favorites-archive.csv`, `save-for-later.csv`, and `off-rotation.csv` from `users/<WAX_USER>/playlists/`
 - Finds or creates `WAX – {User} ...` playlists and full-replaces each in CSV order on every run
 - Writes `push.log` in `users/<WAX_USER>/playlists/`
 - Supports multi-user by changing `WAX_USER`
@@ -339,6 +365,8 @@ To save a per-user snapshot (decisions + playlists + missing-features log):
 
 ```bash
 WAX_USER=kasey npm run snapshot:user
+WAX_USER=kaseysdad npm run snapshot:user
+WAX_USER=kaseysmom npm run snapshot:user
 ```
 
 This writes to a timestamped folder:
@@ -351,11 +379,15 @@ To restore the latest snapshot for a user:
 
 ```bash
 WAX_USER=kasey npm run restore:user
+WAX_USER=kaseysdad npm run restore:user
+WAX_USER=kaseysmom npm run restore:user
 ```
 
 To restore a specific snapshot timestamp:
 ```bash
 WAX_USER=kasey npm run restore:user -- 20260618-180500
+WAX_USER=kaseysdad npm run restore:user -- 20260618-180500
+WAX_USER=kaseysmom npm run restore:user -- 20260618-180500
 ```
 
 ## Use Wax
@@ -376,7 +408,7 @@ Columns include: `track_id`, `name`, `artists`, `album`, `repeat_intent`, `keep_
 
 ### Family branch merge workflow
 
-If your family uses separate branches (for example `dev-kasey`, `dev-kaseysmom`, `dev-kaseysdad-v1`) and you only want to sync user state, copy only these paths from each branch into `dev`:
+If your family uses separate branches (for example `dev-kasey`, `dev-kaseysdad-v1`, `dev-kaseysmom`) and you only want to sync user state, copy only these paths from each branch into `dev`:
 
 - `users/<name>/decisions-latest.json`
 - `users/<name>/playlists/`
@@ -387,8 +419,8 @@ From `dev`, run per user branch:
 git checkout dev
 git pull origin dev
 git checkout origin/dev-kasey -- users/kasey/decisions-latest.json users/kasey/playlists/
-git checkout origin/dev-kaseysmom -- users/kaseysmom/decisions-latest.json users/kaseysmom/playlists/
 git checkout origin/dev-kaseysdad-v1 -- users/kaseysdad/decisions-latest.json users/kaseysdad/playlists/
+git checkout origin/dev-kaseysmom -- users/kaseysmom/decisions-latest.json users/kaseysmom/playlists/
 git add users/
 git commit -m "Sync family decisions/playlists into dev"
 git push origin dev
@@ -446,6 +478,8 @@ Current repeat-intent presets are:
 - `favorites_archive`
 - `save_for_later`
 - `skip_for_now`
+- `off_rotation`
+- `removed` *(label: "Nah, I'm good")*
 
 Want to change these labels/options?
 

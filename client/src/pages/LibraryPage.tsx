@@ -231,7 +231,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
         wantAgain,
         wouldAgain,
         keepInLibrary: state.keepInLibrary,
-        repeatIntent: state.keepInLibrary ? state.repeatIntent : undefined,
+        repeatIntent: state.keepInLibrary ? state.repeatIntent : "removed",
         activity: state.activity,
         notes: state.notes,
       });

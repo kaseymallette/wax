@@ -9,7 +9,7 @@ import { Info, X, Plus } from "lucide-react";
 
 export type LogState = {
   listened: boolean | null;
-  repeatIntent: "undecided" | "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | null;
+  repeatIntent: "undecided" | "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | "removed" | null;
   keepInLibrary: boolean | null;
   activity: string[];
   notes: string;
@@ -67,7 +67,7 @@ export function LogForm({
         <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
-            onClick={() => patch({ keepInLibrary: true })}
+            onClick={() => patch({ keepInLibrary: true, repeatIntent: state.repeatIntent === "removed" ? null : state.repeatIntent })}
             data-testid="button-keep-library"
             className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
               state.keepInLibrary === true ? SEG_ACTIVE : SEG_IDLE
@@ -77,7 +77,7 @@ export function LogForm({
           </button>
           <button
             type="button"
-            onClick={() => patch({ keepInLibrary: false, repeatIntent: null })}
+            onClick={() => patch({ keepInLibrary: false, repeatIntent: "removed" })}
             data-testid="button-remove-library"
             className={`flex items-center justify-center gap-2 rounded-lg border py-2.5 text-sm font-medium transition-colors hover-elevate ${
               state.keepInLibrary === false ? SEG_ACTIVE : SEG_IDLE

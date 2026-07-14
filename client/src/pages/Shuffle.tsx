@@ -254,7 +254,7 @@ export default function Shuffle() {
         wantAgain,
         wouldAgain,
         keepInLibrary: state.keepInLibrary,
-        repeatIntent: state.keepInLibrary ? state.repeatIntent : undefined,
+        repeatIntent: state.keepInLibrary ? state.repeatIntent : "removed",
         activity: state.activity,
         notes: state.notes,
       });
@@ -318,7 +318,7 @@ export default function Shuffle() {
       else if (k === "m") setState((s) => ({ ...s, repeatIntent: "save_for_later" }));
       else if (k === "n") setState((s) => ({ ...s, repeatIntent: "skip_for_now" }));
       else if (k === "k") setState((s) => ({ ...s, keepInLibrary: true }));
-      else if (k === "r") setState((s) => ({ ...s, keepInLibrary: false, repeatIntent: null }));
+      else if (k === "r") setState((s) => ({ ...s, keepInLibrary: false, repeatIntent: "removed" }));
       else if (["1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(k)) {
         const tagName = ACTIVITY_PRESETS[Number(k) - 1];
         if (tagName) {

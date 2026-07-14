@@ -35,8 +35,23 @@ import {
 } from "@/lib/wax";
 import { Clock, EarOff, Headphones, Library, MoreHorizontal, Trash2 } from "lucide-react";
 
-const KEEP_DECISION_OPTIONS = REPEAT_INTENT_OPTIONS.filter((opt) => opt.value !== "undecided");
-const TAG_FILTERS = [{ value: "all", label: "All keeps" }, ...KEEP_DECISION_OPTIONS] as const;
+const KEEP_DECISION_OPTIONS = REPEAT_INTENT_OPTIONS.filter(
+  (opt) => opt.value !== "undecided" && opt.value !== "removed",
+);
+const KEEP_DECISION_ORDER = [
+  "currently_listening",
+  "save_for_later",
+  "off_rotation",
+  "favorites_archive",
+  "skip_for_now",
+] as const;
+const KEEP_DECISION_RANK = new Map(KEEP_DECISION_ORDER.map((value, index) => [value, index]));
+const ORDERED_KEEP_DECISION_OPTIONS = [...KEEP_DECISION_OPTIONS].sort((a, b) => {
+  const aRank = KEEP_DECISION_RANK.get(a.value) ?? Number.MAX_SAFE_INTEGER;
+  const bRank = KEEP_DECISION_RANK.get(b.value) ?? Number.MAX_SAFE_INTEGER;
+  return aRank - bRank;
+});
+const TAG_FILTERS = [{ value: "all", label: "All keeps" }, ...ORDERED_KEEP_DECISION_OPTIONS] as const;
 
 function featureChips(t: TrackWithStats | undefined): string[] {
   if (!t) return [];
@@ -57,6 +72,7 @@ function keepCountBadgeClass(tag: (typeof TAG_FILTERS)[number]["value"]): string
   if (tag === "favorites_archive") return "border-emerald-500/40 bg-emerald-500/15 text-emerald-400";
   if (tag === "save_for_later") return "border-amber-500/40 bg-amber-500/15 text-amber-400";
   if (tag === "skip_for_now") return "border-destructive/40 bg-destructive/15 text-destructive";
+  if (tag === "off_rotation") return "border-orange-500/40 bg-orange-500/15 text-orange-400";
   return "border-primary/40 bg-primary/15 text-primary";
 }
 
@@ -162,23 +178,31 @@ export default function KeepsPage() {
       </p>
       <div className="mt-3 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground">
         <div className="grid gap-3 sm:grid-cols-2">
-          <div>
-            <p className="font-semibold text-foreground">
-              Currently Listening ({currentlyListeningCount}/{CURRENTLY_LISTENING_CAPACITY})
-            </p>
-            <p>Grouped into 5 weekday playlists (Mon–Fri), up to 25 songs each.</p>
+          <div className="space-y-3">
+            <div>
+              <p className="font-semibold text-foreground">
+                Currently Listening ({currentlyListeningCount}/{CURRENTLY_LISTENING_CAPACITY})
+              </p>
+              <p>Grouped into 7 daily playlists (Mon-Sun), up to 30 songs each.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">Save for Later</p>
+              <p>Hold for future listens. Exported as one playlist.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">Off Rotation</p>
+              <p>Had its run. Didn't make the all-time favorites cut. Exported as one playlist.</p>
+            </div>
           </div>
-          <div>
-            <p className="font-semibold text-foreground">Save for Later</p>
-            <p>Hold for future listens. Exported as one playlist.</p>
-          </div>
-          <div>
-            <p className="font-semibold text-foreground">Favorites Archive</p>
-            <p>Your all-time favorites not currently in rotation. Exported as one playlist.</p>
-          </div>
-          <div>
-            <p className="font-semibold text-foreground">Skip for Now</p>
-            <p>Temporarily out of rotation. No playlist is generated.</p>
+          <div className="space-y-3">
+            <div>
+              <p className="font-semibold text-foreground">Favorites Archive</p>
+              <p>Your all-time favorites not currently in rotation. Exported as one playlist.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">Skip for Now</p>
+              <p>Temporarily out of rotation. No playlist is generated.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -312,7 +336,7 @@ export default function KeepsPage() {
                           </div>
                         )}
                         <div className="mt-2 flex flex-wrap gap-1.5" data-testid={`edit-keep-tag-${l.id}`}>
-                          {KEEP_DECISION_OPTIONS.map((opt) => (
+                          {ORDERED_KEEP_DECISION_OPTIONS.map((opt) => (
                             <button
                               key={opt.value}
                               type="button"

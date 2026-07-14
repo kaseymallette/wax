@@ -51,6 +51,8 @@ function normalizeRepeatIntent(v: string | null | undefined): ListenWithTrack["r
   if (s === "favorites_archive") return "favorites_archive";
   if (s === "save_for_later") return "save_for_later";
   if (s === "skip" || s === "skip_for_now") return "skip_for_now";
+  if (s === "off_rotation") return "off_rotation";
+  if (s === "removed") return "removed";
   return "undecided";
 }
 
@@ -103,6 +105,8 @@ function repeatIntentWeight(intent: string | null): number {
   if (intent === "favorites_archive") return 0.75;
   if (intent === "undecided") return 0.2;
   if (intent === "save_for_later") return 0.35;
+  if (intent === "off_rotation") return 0;
+  if (intent === "removed") return 0;
   if (intent === "skip" || intent === "skip_for_now") return 0;
   return 0.2;
 }
@@ -677,7 +681,7 @@ export class DatabaseStorage implements IStorage {
 
   getRandomTrack(status: string, keepOnly = false, includeFeatures = true, excludeTrackIds: string[] = []): TrackWithStats | undefined {
     const whereParts: string[] = [];
-    whereParts.push(`COALESCE(t.repeat_intent, 'undecided') NOT IN ('skip', 'skip_for_now')`);
+    whereParts.push(`COALESCE(t.repeat_intent, 'undecided') NOT IN ('skip', 'skip_for_now', 'off_rotation', 'removed')`);
     if (status !== "all") {
       whereParts.push("latest.track_id IS NULL");
     }

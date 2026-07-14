@@ -1,7 +1,7 @@
 import type { TrackWithStats } from "@shared/schema";
 
-const PLAYLIST_COUNT = 5;
-const PLAYLIST_MAX_SIZE = 25;
+const PLAYLIST_COUNT = 7;
+const PLAYLIST_MAX_SIZE = 30;
 const KMEANS_MAX_ITERS = 25;
 
 type Vector2 = { bpm: number; mood: number };
@@ -44,11 +44,21 @@ export type DailyPlaylistsResult = {
   playlists: DailyPlaylist[];
   diagnostics: {
     currentlyListeningCount: number;
+    playlistMaxSize: number;
     usableTrackCount: number;
     excludedMissingFeatures: number;
     droppedForCapacity: number;
   };
 };
+
+function playlistMaxSizeForCount(currentlyListeningCount: number): number {
+  if (currentlyListeningCount <= 35) return 5;
+  if (currentlyListeningCount <= 70) return 10;
+  if (currentlyListeningCount <= 105) return 15;
+  if (currentlyListeningCount <= 140) return 20;
+  if (currentlyListeningCount <= 175) return 25;
+  return PLAYLIST_MAX_SIZE;
+}
 
 function isFiniteNumber(v: unknown): v is number {
   return typeof v === "number" && Number.isFinite(v);
@@ -166,10 +176,10 @@ function runKMeans(points: CandidateTrack[], k: number): Cluster[] {
   return clusters;
 }
 
-function enforcePlaylistCap(clusters: Cluster[]): { droppedForCapacity: number } {
+function enforcePlaylistCap(clusters: Cluster[], playlistMaxSize: number): { droppedForCapacity: number } {
   let droppedForCapacity = 0;
 
-  const withOverflow = () => clusters.findIndex((c) => c.members.length > PLAYLIST_MAX_SIZE);
+  const withOverflow = () => clusters.findIndex((c) => c.members.length > playlistMaxSize);
 
   let overflowIdx = withOverflow();
   while (overflowIdx !== -1) {
@@ -181,13 +191,13 @@ function enforcePlaylistCap(clusters: Cluster[]): { droppedForCapacity: number }
       return a.track.id.localeCompare(b.track.id);
     });
 
-    const overflow = ranked.slice(PLAYLIST_MAX_SIZE);
-    cluster.members = ranked.slice(0, PLAYLIST_MAX_SIZE);
+    const overflow = ranked.slice(playlistMaxSize);
+    cluster.members = ranked.slice(0, playlistMaxSize);
 
     for (const candidate of overflow) {
       const targets = clusters
         .map((c, idx) => ({ idx, c }))
-        .filter(({ idx, c }) => idx !== overflowIdx && c.members.length < PLAYLIST_MAX_SIZE)
+        .filter(({ idx, c }) => idx !== overflowIdx && c.members.length < playlistMaxSize)
         .sort((a, b) => {
           const da = distance(candidate.normalized, a.c.centroid);
           const db = distance(candidate.normalized, b.c.centroid);
@@ -241,6 +251,7 @@ function orderClusterMembers(cluster: Cluster): CandidateTrack[] {
 
 export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsResult {
   const currentlyListening = tracks.filter((t) => t.repeatIntent === "currently_listening");
+  const playlistMaxSize = playlistMaxSizeForCount(currentlyListening.length);
 
   const candidatesRaw: Array<{ track: TrackWithStats; raw: Vector2; moodValue: number }> = [];
   for (const t of currentlyListening) {
@@ -264,7 +275,7 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
     clusters.push({ centroid: { bpm: 0, mood: 0 }, members: [] });
   }
 
-  const { droppedForCapacity } = enforcePlaylistCap(clusters);
+  const { droppedForCapacity } = enforcePlaylistCap(clusters, playlistMaxSize);
 
   const playlists: DailyPlaylist[] = clusters.slice(0, PLAYLIST_COUNT).map((cluster, i) => {
     const ordered = orderClusterMembers(cluster);
@@ -295,6 +306,7 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
     playlists,
     diagnostics: {
       currentlyListeningCount: currentlyListening.length,
+      playlistMaxSize,
       usableTrackCount: normalized.length,
       excludedMissingFeatures,
       droppedForCapacity,

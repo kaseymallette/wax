@@ -201,7 +201,7 @@ export default function RecentsPage() {
               {[
                 { key: "all", label: "All" },
                 { key: "kept", label: "Kept" },
-                { key: "removed", label: "Removed" },
+                { key: "removed", label: "Nah, I’m good" },
               ].map((option) => (
                 <button
                   key={option.key}

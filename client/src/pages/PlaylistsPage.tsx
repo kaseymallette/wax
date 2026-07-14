@@ -13,7 +13,7 @@ import {
 import { apiRequest } from "@/lib/queryClient";
 import { ChevronDown, ChevronUp, Music2 } from "lucide-react";
 
-const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 
 type PlaylistTrack = {
   id: string;
@@ -45,6 +45,7 @@ type Resp = {
   playlists: Playlist[];
   diagnostics: {
     currentlyListeningCount: number;
+    playlistMaxSize: number;
     usableTrackCount: number;
     excludedMissingFeatures: number;
     droppedForCapacity: number;
@@ -114,6 +115,15 @@ export default function PlaylistsPage() {
     if (bYear == null) return -1;
     if (aYear !== bYear) return aYear - bYear;
     return a.name.localeCompare(b.name);
+  });
+  const offRotationTracks = [...keepTracks.filter((t) => t.repeatIntent === "off_rotation")].sort((a, b) => {
+    const aYear = a.albumYear;
+    const bYear = b.albumYear;
+    if (aYear == null && bYear == null) return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
+    if (aYear == null) return 1;
+    if (bYear == null) return -1;
+    if (aYear !== bYear) return aYear - bYear;
+    return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
   });
 
   useEffect(() => {
@@ -193,12 +203,15 @@ export default function PlaylistsPage() {
     <Layout>
       <h1 className="font-display text-xl font-bold">Playlists</h1>
       <p className="text-sm text-muted-foreground">
-        Currently Listening is split into 5 weekday playlists using BPM + mood clustering.
+        7 daily playlists (Mon-Sun) are created from Currently Listening using BPM + mood clustering.
+      </p>
+      <p className="text-sm text-muted-foreground">
+        3 additional playlists are created: Save for Later, Off Rotation, and Favorites Archive.
       </p>
 
       {query.isLoading ? (
         <div className="mt-6 space-y-3">
-          {Array.from({ length: 5 }).map((_, i) => (
+          {Array.from({ length: 7 }).map((_, i) => (
             <Skeleton key={i} className="h-40 w-full rounded-xl" />
           ))}
         </div>
@@ -228,7 +241,7 @@ export default function PlaylistsPage() {
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
                       <h2 className="font-display text-base font-semibold">Playlist {playlist.index}</h2>
-                      <p className="text-xs text-muted-foreground">{playlist.trackCount} songs (max 25)</p>
+                      <p className="text-xs text-muted-foreground">{playlist.trackCount} songs (max {diagnostics.playlistMaxSize})</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Select
@@ -310,8 +323,9 @@ export default function PlaylistsPage() {
             })}
 
             {[
-              { key: "favorites-archive", title: "Favorites Archive", tracks: favoritesArchiveTracks },
               { key: "save-for-later", title: "Save for Later", tracks: saveForLaterTracks },
+              { key: "off-rotation", title: "Off Rotation", tracks: offRotationTracks },
+              { key: "favorites-archive", title: "Favorites Archive", tracks: favoritesArchiveTracks },
             ].map((list) => {
               const isExpanded = expanded.has(list.key);
               const preview = list.tracks.slice(0, 5);

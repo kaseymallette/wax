@@ -12,6 +12,8 @@ export function repeatIntentLabel(intent: string | null | undefined): string {
   if (intent === "favorites_archive") return "Favorites Archive";
   if (intent === "save_for_later") return "Save for Later";
   if (intent === "skip_for_now") return "Skip for Now";
+  if (intent === "off_rotation") return "Off Rotation";
+  if (intent === "removed") return "Nah, I’m good";
   return "Undecided";
 }
 
@@ -21,6 +23,8 @@ export function repeatIntentChipClass(intent: string | null | undefined): string
   if (intent === "favorites_archive") return "bg-emerald-500/15 text-emerald-400";
   if (intent === "save_for_later") return "bg-amber-500/15 text-amber-400";
   if (intent === "skip_for_now") return "bg-destructive/15 text-destructive";
+  if (intent === "off_rotation") return "bg-orange-500/15 text-orange-400";
+  if (intent === "removed") return "bg-destructive/20 text-destructive";
   return "bg-secondary/60 text-muted-foreground";
 }
 

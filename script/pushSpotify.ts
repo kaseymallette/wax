@@ -2,7 +2,7 @@
  * pushSpotify.ts — push default WAX playlist CSVs to Spotify playlists.
  *
  * Reads CSVs produced by buildPlaylists.ts for the current WAX_USER
- * (`daily-1..5`, `favorites-archive`, `save-for-later`), then for each one
+ * (`daily-1..5`, `favorites-archive`, `save-for-later`, `off-rotation`), then for each one
  * finds-or-creates a private playlist and FULL-REPLACES its contents with the
  * tracks in CSV (algorithm) order.
  *
@@ -54,8 +54,11 @@ const PLAYLIST_SPECS: PlaylistSpec[] = [
   { file: "daily-3.csv", label: "Daily 3", dailyIndex: 3 },
   { file: "daily-4.csv", label: "Daily 4", dailyIndex: 4 },
   { file: "daily-5.csv", label: "Daily 5", dailyIndex: 5 },
+  { file: "daily-6.csv", label: "Daily 6", dailyIndex: 6 },
+  { file: "daily-7.csv", label: "Daily 7", dailyIndex: 7 },
   { file: "favorites-archive.csv", label: "Favorites Archive", titleSuffix: "Favorites Archive" },
   { file: "save-for-later.csv", label: "Save for Later", titleSuffix: "Save for Later" },
+  { file: "off-rotation.csv", label: "Off Rotation", titleSuffix: "Off Rotation" },
 ];
 
 const PLAYLISTS_DIR =

@@ -21,7 +21,7 @@ const UPLOAD_DIR = path.join(os.tmpdir(), "wax-uploads");
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
 const WAX_USER = (process.env.WAX_USER ?? "kasey").trim() || "kasey";
-const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 type Weekday = (typeof WEEKDAYS)[number];
 const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
 const WEEKDAY_MAP_PATH = path.resolve(
@@ -42,7 +42,7 @@ function normalizeWeekdayMap(input: unknown): Record<string, Weekday> {
   const out: Record<string, Weekday> = {};
   for (const [rawIndex, rawDay] of Object.entries(input as Record<string, unknown>)) {
     const index = Number(rawIndex);
-    if (!Number.isInteger(index) || index < 1 || index > 5) continue;
+    if (!Number.isInteger(index) || index < 1 || index > 7) continue;
     if (typeof rawDay !== "string") continue;
     if (!WEEKDAY_SET.has(rawDay as Weekday)) continue;
     out[String(index)] = rawDay as Weekday;

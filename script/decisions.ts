@@ -39,7 +39,9 @@ function normalizeRepeatIntent(v: unknown): string {
     s === "currently_listening" ||
     s === "favorites_archive" ||
     s === "save_for_later" ||
-    s === "skip_for_now"
+    s === "off_rotation" ||
+    s === "skip_for_now" ||
+    s === "removed"
   ) return s;
   return "undecided";
 }
