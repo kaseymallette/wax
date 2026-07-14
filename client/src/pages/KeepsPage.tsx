@@ -79,6 +79,8 @@ function keepCountBadgeClass(tag: (typeof TAG_FILTERS)[number]["value"]): string
 export default function KeepsPage() {
   const { toast } = useToast();
   const [tag, setTag] = useState<(typeof TAG_FILTERS)[number]["value"]>("all");
+  const [lookup, setLookup] = useState("");
+  const [sortBy, setSortBy] = useState<"newest" | "name">("newest");
   const [confirmDelete, setConfirmDelete] = useState<number | null>(null);
 
   const params = useMemo(() => {
@@ -154,11 +156,40 @@ export default function KeepsPage() {
     }
     return Array.from(byTrack.values());
   }, [keeps, keepTrackIds]);
+  const visibleKeeps = useMemo(() => {
+    const q = lookup.trim().toLowerCase();
+    let out = latestKeeps;
+
+    if (q) {
+      out = out.filter((l) => {
+        const hay = `${l.name} ${l.artists} ${l.album}`.toLowerCase();
+        return hay.includes(q);
+      });
+    }
+
+    const sorted = [...out];
+    if (sortBy === "name") {
+      sorted.sort((a, b) => {
+        const byName = (a.name || "").localeCompare(b.name || "");
+        if (byName !== 0) return byName;
+        const byArtist = (a.artists || "").localeCompare(b.artists || "");
+        if (byArtist !== 0) return byArtist;
+        return b.loggedAt - a.loggedAt;
+      });
+    } else {
+      sorted.sort((a, b) => {
+        if (b.loggedAt !== a.loggedAt) return b.loggedAt - a.loggedAt;
+        return b.id - a.id;
+      });
+    }
+
+    return sorted;
+  }, [latestKeeps, lookup, sortBy]);
 
   const groups = useMemo(() => {
     const map: { key: string; header: string; items: ListenWithTrack[] }[] = [];
     let lastKey = "";
-    for (const l of latestKeeps) {
+    for (const l of visibleKeeps) {
       const k = dayKey(l.loggedAt);
       if (k !== lastKey) {
         map.push({ key: k, header: dayHeader(l.loggedAt), items: [] });
@@ -167,7 +198,7 @@ export default function KeepsPage() {
       map[map.length - 1].items.push(l);
     }
     return map;
-  }, [latestKeeps]);
+  }, [visibleKeeps]);
 
   return (
     <Layout>
@@ -190,7 +221,7 @@ export default function KeepsPage() {
               <p>Hold for future listens. Exported as one playlist.</p>
             </div>
             <div>
-              <p className="font-semibold text-foreground">Off Rotation</p>
+              <p className="font-semibold text-foreground">Off the Rotation</p>
               <p>Had its run. Didn't make the all-time favorites cut. Exported as one playlist.</p>
             </div>
           </div>
@@ -218,7 +249,7 @@ export default function KeepsPage() {
                   )}`}
                   data-testid={`text-keep-count-${f.value}`}
                 >
-                  {latestKeeps.length}
+                  {visibleKeeps.length}
                 </span>
               )}
               <button
@@ -239,6 +270,30 @@ export default function KeepsPage() {
             </div>
           ))}
         </div>
+        <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <input
+            value={lookup}
+            onChange={(e) => setLookup(e.target.value)}
+            placeholder="Look up keeps by song, artist, or album"
+            data-testid="input-keeps-lookup"
+            className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm text-foreground placeholder:text-muted-foreground sm:max-w-md"
+          />
+          <div className="flex items-center gap-2">
+            <label htmlFor="keeps-sort" className="text-xs text-muted-foreground">
+              Sort
+            </label>
+            <select
+              id="keeps-sort"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as "newest" | "name")}
+              data-testid="select-keeps-sort"
+              className="h-9 rounded-md border border-border bg-background px-2 text-sm text-foreground"
+            >
+              <option value="newest">Newest</option>
+              <option value="name">Name (A-Z)</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div className="mt-6">
@@ -248,11 +303,11 @@ export default function KeepsPage() {
               <Skeleton key={i} className="h-20 w-full rounded-xl" />
             ))}
           </div>
-        ) : latestKeeps.length === 0 ? (
+        ) : visibleKeeps.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-xl border border-border bg-card px-4 py-12 text-center">
             <Clock className="h-8 w-8 text-muted-foreground" />
             <p className="mt-3 text-sm text-muted-foreground" data-testid="text-no-keeps">
-              No keep entries match this tag yet.
+              No keep entries match this filter yet.
             </p>
           </div>
         ) : (

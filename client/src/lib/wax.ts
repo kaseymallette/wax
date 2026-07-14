@@ -12,7 +12,7 @@ export function repeatIntentLabel(intent: string | null | undefined): string {
   if (intent === "favorites_archive") return "Favorites Archive";
   if (intent === "save_for_later") return "Save for Later";
   if (intent === "skip_for_now") return "Skip for Now";
-  if (intent === "off_rotation") return "Off Rotation";
+  if (intent === "off_rotation") return "Off the Rotation";
   if (intent === "removed") return "Nah, I’m good";
   return "Undecided";
 }

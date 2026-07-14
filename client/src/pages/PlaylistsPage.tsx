@@ -56,6 +56,8 @@ type KeepTrack = {
   id: string;
   name: string;
   artists: string;
+  album: string;
+  addedAt: string | null;
   repeatIntent: string;
   albumYear: number | null;
   bpm: number | null;
@@ -99,31 +101,23 @@ export default function PlaylistsPage() {
   const diagnostics = query.data?.diagnostics;
   const keepTracks = keepTracksQuery.data ?? [];
   const favoritesArchiveTracks = [...keepTracks.filter((t) => t.repeatIntent === "favorites_archive")].sort((a, b) => {
-    const aYear = a.albumYear;
-    const bYear = b.albumYear;
-    if (aYear == null && bYear == null) return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
-    if (aYear == null) return 1;
-    if (bYear == null) return -1;
-    if (bYear !== aYear) return bYear - aYear;
-    return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
+    return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
   });
-  const saveForLaterTracks = [...keepTracks.filter((t) => t.repeatIntent === "save_for_later")].sort((a, b) => {
-    const aYear = a.albumYear;
-    const bYear = b.albumYear;
-    if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
-    if (aYear == null) return 1;
-    if (bYear == null) return -1;
-    if (aYear !== bYear) return aYear - bYear;
+  const compareAddedAtDesc = (a: KeepTrack, b: KeepTrack) => {
+    const aAdded = a.addedAt ? Date.parse(a.addedAt) : Number.NaN;
+    const bAdded = b.addedAt ? Date.parse(b.addedAt) : Number.NaN;
+    const aHas = Number.isFinite(aAdded);
+    const bHas = Number.isFinite(bAdded);
+    if (aHas && bHas && aAdded !== bAdded) return bAdded - aAdded;
+    if (aHas && !bHas) return -1;
+    if (!aHas && bHas) return 1;
     return a.name.localeCompare(b.name);
+  };
+  const saveForLaterTracks = [...keepTracks.filter((t) => t.repeatIntent === "save_for_later")].sort((a, b) => {
+    return compareAddedAtDesc(a, b);
   });
   const offRotationTracks = [...keepTracks.filter((t) => t.repeatIntent === "off_rotation")].sort((a, b) => {
-    const aYear = a.albumYear;
-    const bYear = b.albumYear;
-    if (aYear == null && bYear == null) return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
-    if (aYear == null) return 1;
-    if (bYear == null) return -1;
-    if (aYear !== bYear) return aYear - bYear;
-    return a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
+    return compareAddedAtDesc(a, b);
   });
 
   useEffect(() => {
@@ -206,7 +200,7 @@ export default function PlaylistsPage() {
         7 daily playlists (Mon-Sun) are created from Currently Listening using BPM + mood clustering.
       </p>
       <p className="text-sm text-muted-foreground">
-        3 additional playlists are created: Save for Later, Off Rotation, and Favorites Archive.
+        3 additional playlists are created: Save for Later, Off the Rotation, and Favorites Archive.
       </p>
 
       {query.isLoading ? (
@@ -324,7 +318,7 @@ export default function PlaylistsPage() {
 
             {[
               { key: "save-for-later", title: "Save for Later", tracks: saveForLaterTracks },
-              { key: "off-rotation", title: "Off Rotation", tracks: offRotationTracks },
+              { key: "off-rotation", title: "Off the Rotation", tracks: offRotationTracks },
               { key: "favorites-archive", title: "Favorites Archive", tracks: favoritesArchiveTracks },
             ].map((list) => {
               const isExpanded = expanded.has(list.key);

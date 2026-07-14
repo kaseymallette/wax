@@ -1,0 +1,30 @@
+rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
+1,2Ojr742JINM4QEOk7vQGEh,Never Have I Ever,Rainbow Kitten Surprise,Never Have I Ever,currently_listening,130.00,195.00,71.00,68.00,56.00,12A,1,2026-07-12T20:53:16.031Z,https://open.spotify.com/track/2Ojr742JINM4QEOk7vQGEh
+2,2uUqZJKpvWR43KgMM7FCBK,Wasted,Rainbow Kitten Surprise,RKS,currently_listening,126.00,195.00,60.00,78.00,57.00,7B,1,2026-07-12T20:44:47.347Z,https://open.spotify.com/track/2uUqZJKpvWR43KgMM7FCBK
+3,7LRMbd3LEoV5wZJvXT1Lwb,T.N.T,AC/DC,High Voltage,currently_listening,126.00,195.00,76.00,75.00,44.00,11B,1,2026-07-12T21:37:36.564Z,https://open.spotify.com/track/7LRMbd3LEoV5wZJvXT1Lwb
+4,1AQlvpcPh79BKnoKe1E6Nw,Hot Goblin,Em Beihold,Hot Goblin,currently_listening,123.00,193.00,68.00,79.00,46.00,9A,1,2026-07-12T23:53:56.731Z,https://open.spotify.com/track/1AQlvpcPh79BKnoKe1E6Nw
+5,2A73XBDBQgmdXO8VsXPWIs,Rumour Has It,Adele,21,currently_listening,120.00,193.00,75.00,61.00,57.00,8B,1,2026-07-13T00:11:23.603Z,https://open.spotify.com/track/2A73XBDBQgmdXO8VsXPWIs
+6,2zYzyRzz6pRmhPzyfMEC8s,Highway to Hell,AC/DC,Highway to Hell,currently_listening,116.00,190.00,91.00,57.00,42.00,11A,1,2026-07-12T21:36:01.817Z,https://open.spotify.com/track/2zYzyRzz6pRmhPzyfMEC8s
+7,0TkKxuAP37iUqSzQMi3CsL,Poison,MEG MYERS,Daughter in the Choir,currently_listening,123.00,200.00,65.00,71.00,64.00,8B,1,2026-07-12T00:49:28.747Z,https://open.spotify.com/track/0TkKxuAP37iUqSzQMi3CsL
+8,3SiFPLJReFiH2uq6Lht7Xc,The Comeback,Shout Out Louds,Howl Howl Gaff Gaff,currently_listening,129.00,190.00,84.00,61.00,45.00,8B,1,2026-07-13T00:00:46.148Z,https://open.spotify.com/track/3SiFPLJReFiH2uq6Lht7Xc
+9,7nemcVsXVFZF01iqpIIo2Y,It's a Long Way to the Top (If You Wanna Rock 'N' Roll),AC/DC,High Voltage,currently_listening,136.00,185.00,86.00,46.00,53.00,5B,1,2026-07-12T21:38:03.040Z,https://open.spotify.com/track/7nemcVsXVFZF01iqpIIo2Y
+10,2UdCAgl9eX9VevTzo4Rbyn,The Death Of Me,MEG MYERS,Take Me To The Disco,currently_listening,140.00,184.00,87.00,56.00,41.00,4B,1,2026-07-12T01:04:28.233Z,https://open.spotify.com/track/2UdCAgl9eX9VevTzo4Rbyn
+11,0jeJR3LdrC2QJNviq7wjzp,In Cold Blood,alt-J,RELAXER,currently_listening,143.00,184.00,75.00,50.00,59.00,10A,1,2026-07-13T00:28:46.414Z,https://open.spotify.com/track/0jeJR3LdrC2QJNviq7wjzp
+12,50Emgupm363qIrYBe20FR3,Quittin' Time,Zach Bryan,Summertime Blues,currently_listening,143.00,183.00,73.00,56.00,54.00,5A,1,2026-07-13T00:26:39.676Z,https://open.spotify.com/track/50Emgupm363qIrYBe20FR3
+13,5l8ylBEHHYL62w5HfjB3JF,Dang,Rainbow Kitten Surprise,bones,currently_listening,148.00,181.00,94.00,55.00,32.00,12B,1,2026-07-12T20:49:34.045Z,https://open.spotify.com/track/5l8ylBEHHYL62w5HfjB3JF
+14,68bLpWhZivilbacdheOIQz,White Flower,Rafferty,White Flower - EP,currently_listening,143.00,193.00,83.00,50.00,60.00,10A,1,2026-07-13T00:03:07.982Z,https://open.spotify.com/track/68bLpWhZivilbacdheOIQz
+15,31hUonEmUsEVd0FMRv1s5r,Not Your Fault,AWOLNATION,Megalithic Symphony,currently_listening,144.00,197.00,74.00,59.00,64.00,7B,1,2026-07-12T00:48:29.913Z,https://open.spotify.com/track/31hUonEmUsEVd0FMRv1s5r
+16,3yP1J5mOJ8MvifFoNjA3Lx,Taste It,Modern Alibi,American Radio,currently_listening,145.00,204.00,88.00,57.00,59.00,7A,1,2026-07-13T00:02:52.016Z,https://open.spotify.com/track/3yP1J5mOJ8MvifFoNjA3Lx
+17,4pEU0NT64oiem9lDT7nuJn,Running In Circles,Dead Poet Society,FISSION,currently_listening,142.00,210.00,84.00,62.00,64.00,5B,1,2026-07-13T00:05:05.420Z,https://open.spotify.com/track/4pEU0NT64oiem9lDT7nuJn
+18,4Yf5bqU3NK4kNOypcrLYwU,Faint,Linkin Park,Meteora,currently_listening,135.00,214.00,98.00,55.00,61.00,12B,1,2026-07-12T00:53:51.344Z,https://open.spotify.com/track/4Yf5bqU3NK4kNOypcrLYwU
+19,1aItKhUXwDGVNQIMdsEv5u,Fake It,Seether,Finding Beauty In Negative Spaces (Bonus Track Version),currently_listening,132.00,221.00,95.00,61.00,65.00,4B,1,2026-07-12T23:55:49.912Z,https://open.spotify.com/track/1aItKhUXwDGVNQIMdsEv5u
+20,6X3dsWYaXWhU5zdGj0p21G,Intrusive Thoughts,Bear Hands,The Key to What,currently_listening,130.00,221.00,74.00,75.00,72.00,7B,1,2026-07-13T00:16:03.672Z,https://open.spotify.com/track/6X3dsWYaXWhU5zdGj0p21G
+21,0NdTUS4UiNYCNn5FgVqKQY,Snap Out Of It,Arctic Monkeys,AM,currently_listening,130.00,224.00,64.00,73.00,87.00,4A,1,2026-07-13T00:09:24.151Z,https://open.spotify.com/track/0NdTUS4UiNYCNn5FgVqKQY
+22,4DOoiKOl3qH0l0Dlail9rH,LEECH,Transviolet,LEECH,currently_listening,130.00,225.00,89.00,59.00,77.00,10A,1,2026-07-13T09:04:30.081Z,https://open.spotify.com/track/4DOoiKOl3qH0l0Dlail9rH
+23,4E3DhWlhgxDUCUIGeLIRV6,Floor It,Bear Hands,The Key to What,currently_listening,132.00,227.00,72.00,76.00,79.00,4B,1,2026-07-12T01:06:38.269Z,https://open.spotify.com/track/4E3DhWlhgxDUCUIGeLIRV6
+24,4yZaGXHJ4b6ToBBAIdK25W,HIT ME HARDER,3OH!3,HIT ME HARDER,currently_listening,123.00,226.00,87.00,64.00,75.00,3A,1,2026-07-12T00:37:43.977Z,https://open.spotify.com/track/4yZaGXHJ4b6ToBBAIdK25W
+25,01zPnSlKCw9WLbY0kvNep0,Desperation,"Eminem,Jamie N Commons",The Marshall Mathers LP2 (Deluxe),currently_listening,144.00,229.00,92.00,71.00,66.00,10B,1,2026-07-13T00:47:10.751Z,https://open.spotify.com/track/01zPnSlKCw9WLbY0kvNep0
+26,6or1bKJiZ06IlK0vFvY75k,Rap God,Eminem,The Marshall Mathers LP2 (Deluxe),currently_listening,148.00,218.00,84.00,71.00,63.00,9B,1,2026-07-12T20:22:31.340Z,https://open.spotify.com/track/6or1bKJiZ06IlK0vFvY75k
+27,6vemhd0tPB9kQhlgHWxVXE,Fuck Machine,Mindless Self Indulgence,How I Learned to Stop Giving a Shit and Love Mindless Self Indulgence,currently_listening,151.00,206.00,97.00,60.00,49.00,4A,1,2026-07-13T00:06:47.231Z,https://open.spotify.com/track/6vemhd0tPB9kQhlgHWxVXE
+28,3aMmkUThZiT8ynSTh5Xntk,King,Rainbow Kitten Surprise,bones,currently_listening,154.00,204.00,93.00,55.00,56.00,9B,1,2026-07-12T20:48:16.975Z,https://open.spotify.com/track/3aMmkUThZiT8ynSTh5Xntk
+29,4yvgL1k1WkuSEHkMPhDF5X,Interzone - 2019 Digital Master,Joy Division,Unknown Pleasures,currently_listening,156.00,198.00,78.00,47.00,73.00,11B,1,2026-07-13T00:02:01.033Z,https://open.spotify.com/track/4yvgL1k1WkuSEHkMPhDF5X

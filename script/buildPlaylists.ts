@@ -224,34 +224,27 @@ function writeIntentPlaylistCsv(
   tracks: TrackWithStats[],
   intent: "favorites_archive" | "save_for_later" | "off_rotation",
 ) {
-  const compareArtistThenName = (a: TrackWithStats, b: TrackWithStats) =>
-    a.artists.localeCompare(b.artists) || a.name.localeCompare(b.name);
+  const compareArtistAlbumThenName = (a: TrackWithStats, b: TrackWithStats) =>
+    a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
+  const compareAddedAtDesc = (a: TrackWithStats, b: TrackWithStats) => {
+    const aAdded = a.addedAt ? Date.parse(a.addedAt) : Number.NaN;
+    const bAdded = b.addedAt ? Date.parse(b.addedAt) : Number.NaN;
+    const aHas = Number.isFinite(aAdded);
+    const bHas = Number.isFinite(bAdded);
+    if (aHas && bHas && aAdded !== bAdded) return bAdded - aAdded;
+    if (aHas && !bHas) return -1;
+    if (!aHas && bHas) return 1;
+    return a.name.localeCompare(b.name);
+  };
 
   const sorted = [...tracks].sort((a, b) => {
-    const aYear = a.albumYear;
-    const bYear = b.albumYear;
-
     if (intent === "favorites_archive") {
-      if (aYear == null && bYear == null) return compareArtistThenName(a, b);
-      if (aYear == null) return 1;
-      if (bYear == null) return -1;
-      if (bYear !== aYear) return bYear - aYear;
-      return compareArtistThenName(a, b);
+      return compareArtistAlbumThenName(a, b);
     }
 
-    if (intent === "save_for_later") {
-      if (aYear == null && bYear == null) return a.name.localeCompare(b.name);
-      if (aYear == null) return 1;
-      if (bYear == null) return -1;
-      if (aYear !== bYear) return aYear - bYear;
-      return a.name.localeCompare(b.name);
-    }
+    if (intent === "save_for_later") return compareAddedAtDesc(a, b);
 
-    if (aYear == null && bYear == null) return compareArtistThenName(a, b);
-    if (aYear == null) return 1;
-    if (bYear == null) return -1;
-    if (aYear !== bYear) return aYear - bYear;
-    return compareArtistThenName(a, b);
+    return compareAddedAtDesc(a, b);
   });
 
   const header = [

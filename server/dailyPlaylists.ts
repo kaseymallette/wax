@@ -218,6 +218,56 @@ function enforcePlaylistCap(clusters: Cluster[], playlistMaxSize: number): { dro
   return { droppedForCapacity };
 }
 
+function rebalanceClusterSizes(clusters: Cluster[], totalTracks: number): void {
+  if (clusters.length === 0 || totalTracks <= 0) return;
+
+  const base = Math.floor(totalTracks / clusters.length);
+  const remainder = totalTracks % clusters.length;
+
+  const rankedBySize = clusters
+    .map((cluster, idx) => ({ idx, size: cluster.members.length }))
+    .sort((a, b) => {
+      if (b.size !== a.size) return b.size - a.size;
+      return a.idx - b.idx;
+    });
+
+  const targetSizes = new Array<number>(clusters.length).fill(base);
+  for (let i = 0; i < remainder; i += 1) {
+    targetSizes[rankedBySize[i].idx] += 1;
+  }
+
+  const pickBestDonor = (receiverIdx: number): { donorIdx: number; memberIdx: number } | null => {
+    const receiver = clusters[receiverIdx];
+    let best: { donorIdx: number; memberIdx: number; distance: number } | null = null;
+
+    for (let donorIdx = 0; donorIdx < clusters.length; donorIdx += 1) {
+      if (donorIdx === receiverIdx) continue;
+      const donor = clusters[donorIdx];
+      if (donor.members.length <= targetSizes[donorIdx]) continue;
+
+      for (let memberIdx = 0; memberIdx < donor.members.length; memberIdx += 1) {
+        const candidate = donor.members[memberIdx];
+        const d = distance(candidate.normalized, receiver.centroid);
+        if (!best || d < best.distance) {
+          best = { donorIdx, memberIdx, distance: d };
+        }
+      }
+    }
+
+    if (!best) return null;
+    return { donorIdx: best.donorIdx, memberIdx: best.memberIdx };
+  };
+
+  for (let receiverIdx = 0; receiverIdx < clusters.length; receiverIdx += 1) {
+    while (clusters[receiverIdx].members.length < targetSizes[receiverIdx]) {
+      const donorPick = pickBestDonor(receiverIdx);
+      if (!donorPick) break;
+      const moved = clusters[donorPick.donorIdx].members.splice(donorPick.memberIdx, 1)[0];
+      clusters[receiverIdx].members.push(moved);
+    }
+  }
+}
+
 function orderClusterMembers(cluster: Cluster): CandidateTrack[] {
   if (cluster.members.length <= 2) return [...cluster.members];
 
@@ -276,6 +326,7 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
   }
 
   const { droppedForCapacity } = enforcePlaylistCap(clusters, playlistMaxSize);
+  rebalanceClusterSizes(clusters, normalized.length - droppedForCapacity);
 
   const playlists: DailyPlaylist[] = clusters.slice(0, PLAYLIST_COUNT).map((cluster, i) => {
     const ordered = orderClusterMembers(cluster);

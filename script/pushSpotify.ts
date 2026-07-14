@@ -2,7 +2,7 @@
  * pushSpotify.ts — push default WAX playlist CSVs to Spotify playlists.
  *
  * Reads CSVs produced by buildPlaylists.ts for the current WAX_USER
- * (`daily-1..5`, `favorites-archive`, `save-for-later`, `off-rotation`), then for each one
+ * (`daily-1..7`, `favorites-archive`, `save-for-later`, `off-rotation`), then for each one
  * finds-or-creates a private playlist and FULL-REPLACES its contents with the
  * tracks in CSV (algorithm) order.
  *
@@ -39,7 +39,7 @@ const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET ?? "";
 const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN ?? "";
 
 const PLAYLIST_PUBLIC = (process.env.WAX_PLAYLIST_PUBLIC ?? "false") === "true";
-const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 
 type PlaylistSpec = {
   file: string;
@@ -58,7 +58,7 @@ const PLAYLIST_SPECS: PlaylistSpec[] = [
   { file: "daily-7.csv", label: "Daily 7", dailyIndex: 7 },
   { file: "favorites-archive.csv", label: "Favorites Archive", titleSuffix: "Favorites Archive" },
   { file: "save-for-later.csv", label: "Save for Later", titleSuffix: "Save for Later" },
-  { file: "off-rotation.csv", label: "Off Rotation", titleSuffix: "Off Rotation" },
+  { file: "off-rotation.csv", label: "Off the Rotation", titleSuffix: "Off the Rotation" },
 ];
 
 const PLAYLISTS_DIR =

@@ -1,5 +1,5 @@
 {
-  "exportedAt": 1783990590696,
+  "exportedAt": 1783996556412,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
   "count": 336,
   "decisions": [
@@ -384,7 +384,7 @@
       "name": "Heart Like A Truck",
       "artists": "Lainey Wilson",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902928354
     },
     {
@@ -576,7 +576,7 @@
       "name": "Coincide",
       "artists": "Catfish and the Bottlemen",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902421041
     },
     {
@@ -584,7 +584,7 @@
       "name": "Quittin' Time",
       "artists": "Zach Bryan",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902399676
     },
     {
@@ -600,7 +600,7 @@
       "name": "Genius",
       "artists": "Sia,Diplo,Labrinth,LSD",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902363390
     },
     {
@@ -616,7 +616,7 @@
       "name": "Longshot",
       "artists": "Catfish and the Bottlemen",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902335366
     },
     {
@@ -632,7 +632,7 @@
       "name": "Play Nice",
       "artists": "Pacific Air",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902312809
     },
     {
@@ -640,7 +640,7 @@
       "name": "Conversation",
       "artists": "Catfish and the Bottlemen",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902301073
     },
     {
@@ -656,7 +656,7 @@
       "name": "Mission",
       "artists": "Catfish and the Bottlemen",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902265168
     },
     {
@@ -800,7 +800,7 @@
       "name": "Grey",
       "artists": "Two Feet",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783901497203
     },
     {
@@ -1336,7 +1336,7 @@
       "name": "Last One To Know",
       "artists": "Gavin Adcock",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783892105019
     },
     {
@@ -1344,7 +1344,7 @@
       "name": "Need To",
       "artists": "Gavin Adcock",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783892054414
     },
     {
@@ -1384,7 +1384,7 @@
       "name": "Messy",
       "artists": "Lola Young",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783891909850
     },
     {
@@ -1520,7 +1520,7 @@
       "name": "Downstairs",
       "artists": "Matt Maeson",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889886585
     },
     {
@@ -1600,7 +1600,7 @@
       "name": "Hey Pretty Momma",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1783889549324
     },
     {
@@ -1608,7 +1608,7 @@
       "name": "Drop Stop Roll",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1783889528784
     },
     {
@@ -2000,7 +2000,7 @@
       "name": "God Needs The Devil",
       "artists": "Jonah Kagen",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783885479228
     },
     {
@@ -2016,7 +2016,7 @@
       "name": "Get Happy",
       "artists": "Matt Maeson",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783885328120
     },
     {
@@ -2144,7 +2144,7 @@
       "name": "Did You Get My Message",
       "artists": "Jason Mraz",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783838363979
     },
     {
@@ -2280,7 +2280,7 @@
       "name": "All's Well That Ends",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783826402637
     },
     {
@@ -2496,7 +2496,7 @@
       "name": "Streets of Gold",
       "artists": "3OH!3",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783817941983
     },
     {

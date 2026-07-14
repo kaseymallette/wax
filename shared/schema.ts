@@ -56,7 +56,7 @@ export const REPEAT_INTENT_OPTIONS = [
   { value: "favorites_archive", label: "Favorites Archive" },
   { value: "save_for_later", label: "Save for Later" },
   { value: "skip_for_now", label: "Skip for Now" },
-  { value: "off_rotation", label: "Off Rotation" },
+  { value: "off_rotation", label: "Off the Rotation" },
   { value: "removed", label: "Nah, I’m good" },
   { value: "undecided", label: "Undecided" },
 ] as const;
