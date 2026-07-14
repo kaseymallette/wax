@@ -1,0 +1,32 @@
+{
+  "user": "kaseysdad",
+  "generatedAt": 1784002336911,
+  "dbPath": "/Users/kaseymallette/github/wax/data.db",
+  "diagnostics": {
+    "currentlyListeningCount": 112,
+    "playlistMaxSize": 20,
+    "usableTrackCount": 112,
+    "excludedMissingFeatures": 0,
+    "droppedForCapacity": 0
+  },
+  "counts": {
+    "favoritesArchive": 0,
+    "saveForLater": 36,
+    "offRotation": 0
+  },
+  "files": {
+    "daily": [
+      "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-1.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-2.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-3.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-4.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-5.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-6.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-7.csv"
+    ],
+    "favoritesArchive": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/favorites-archive.csv",
+    "saveForLater": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/save-for-later.csv",
+    "offRotation": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/off-rotation.csv",
+    "missingFeatures": null
+  }
+}

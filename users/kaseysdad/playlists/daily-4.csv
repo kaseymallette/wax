@@ -1,0 +1,17 @@
+rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
+1,5ngcqrs4Xq915GUqNtNNr5,Young Blood,Noah Kahan,Busyhead,currently_listening,85.00,148.00,46.00,67.00,35.00,1B,1,2026-07-14T03:37:02.481Z,https://open.spotify.com/track/5ngcqrs4Xq915GUqNtNNr5
+2,2ph0hzV1kCVhR82E2La4q5,Two Out of Three Ain't Bad,Meat Loaf,Bat Out Of Hell,currently_listening,80.00,156.00,48.00,59.00,49.00,11B,1,2026-07-14T04:09:39.087Z,https://open.spotify.com/track/2ph0hzV1kCVhR82E2La4q5
+3,67q8yivDoOPXCYodi1zTix,Glue Myself Shut,Noah Kahan,Cape Elizabeth,currently_listening,73.00,163.00,31.00,62.00,70.00,3B,1,2026-07-14T03:33:53.676Z,https://open.spotify.com/track/67q8yivDoOPXCYodi1zTix
+4,07HqIg8BnB1lJElnw2ZiSR,I'll Be There For You,Bon Jovi,New Jersey (Deluxe Edition),currently_listening,73.00,140.00,73.00,44.00,23.00,10B,1,2026-07-14T03:22:22.292Z,https://open.spotify.com/track/07HqIg8BnB1lJElnw2ZiSR
+5,3ApAsbQP7d5GlFwwdExaTY,Poplar St,Glass Animals,How To Be A Human Being,currently_listening,69.00,128.00,45.00,57.00,26.00,9A,1,2026-07-14T03:39:59.943Z,https://open.spotify.com/track/3ApAsbQP7d5GlFwwdExaTY
+6,3jfHclM5oNBSUvuBS7OgPj,Absolution,Switchfoot,Absolution,currently_listening,91.00,168.00,87.00,54.00,27.00,11B,1,2026-07-14T03:38:30.909Z,https://open.spotify.com/track/3jfHclM5oNBSUvuBS7OgPj
+7,0vTKR5TQD03kASmEGlyDF3,In These Arms,Bon Jovi,Keep The Faith,currently_listening,123.00,189.00,92.00,51.00,46.00,12B,1,2026-07-14T03:56:56.415Z,https://open.spotify.com/track/0vTKR5TQD03kASmEGlyDF3
+8,0HLIhUYvZdxemJ5vHJsSBy,Tommy Can You Hear Me,The Who,Tommy,currently_listening,126.00,188.00,37.00,63.00,88.00,8B,1,2026-07-14T04:02:54.818Z,https://open.spotify.com/track/0HLIhUYvZdxemJ5vHJsSBy
+9,7nemcVsXVFZF01iqpIIo2Y,It's a Long Way to the Top (If You Wanna Rock 'N' Roll),AC/DC,High Voltage,currently_listening,136.00,185.00,86.00,46.00,53.00,5B,1,2026-07-14T03:30:40.219Z,https://open.spotify.com/track/7nemcVsXVFZF01iqpIIo2Y
+10,05RgAMGypEvqhNs5hPCbMS,Panama - 2015 Remaster,Van Halen,1984 (Remastered),currently_listening,141.00,196.00,98.00,53.00,45.00,4B,1,2026-07-14T03:01:32.236Z,https://open.spotify.com/track/05RgAMGypEvqhNs5hPCbMS
+11,7zscdQe9CjzXnqT3P1Ey7K,If You Want Blood (You've Got It),AC/DC,Highway to Hell,currently_listening,141.00,196.00,93.00,49.00,54.00,10B,1,2026-07-14T03:30:34.933Z,https://open.spotify.com/track/7zscdQe9CjzXnqT3P1Ey7K
+12,0upLyFR8Rr52ZpMp5esQoq,You Really Got Me - 2015 Remaster,Van Halen,Van Halen (Remastered),currently_listening,138.00,205.00,95.00,45.00,65.00,12A,1,2026-07-14T03:21:46.030Z,https://open.spotify.com/track/0upLyFR8Rr52ZpMp5esQoq
+13,2d4e45fmUnguxh6yqC7gNT,Dirty Deeds Done Dirt Cheap,AC/DC,Dirty Deeds Done Dirt Cheap,currently_listening,136.00,209.00,91.00,67.00,51.00,10A,1,2026-07-14T03:30:05.910Z,https://open.spotify.com/track/2d4e45fmUnguxh6yqC7gNT
+14,0babKgXwpYCxbmgTc2Ikrh,The Way She Looks,Two Feet,The Way She Looks,currently_listening,135.00,212.00,90.00,54.00,68.00,11A,1,2026-07-14T03:41:42.022Z,https://open.spotify.com/track/0babKgXwpYCxbmgTc2Ikrh
+15,4RS9PmtHQe7I0o5fEeweOY,Dance the Night Away - 2015 Remaster,Van Halen,Van Halen II (Remastered),currently_listening,130.00,211.00,84.00,55.00,72.00,4B,1,2026-07-14T03:56:08.848Z,https://open.spotify.com/track/4RS9PmtHQe7I0o5fEeweOY
+16,6tVwi09OwB7zVYV0NUajeP,We Weren't Born To Follow,Bon Jovi,The Circle,currently_listening,126.00,207.00,85.00,50.00,72.00,1B,1,2026-07-14T03:57:27.377Z,https://open.spotify.com/track/6tVwi09OwB7zVYV0NUajeP

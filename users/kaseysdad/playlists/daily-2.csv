@@ -1,0 +1,17 @@
+rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
+1,5HAjss9faCAowGY8dM24r6,Is There Anybody Out There,Pink Floyd,The Wall,currently_listening,119.00,42.00,7.00,31.00,4.00,8A,1,2026-07-14T04:07:54.989Z,https://open.spotify.com/track/5HAjss9faCAowGY8dM24r6
+2,577MNC3o3L0lNIzx9abqOk,Thank You For Loving Me,Bon Jovi,Crush,currently_listening,133.00,87.00,34.00,40.00,13.00,10B,1,2026-07-14T03:57:05.055Z,https://open.spotify.com/track/577MNC3o3L0lNIzx9abqOk
+3,6MAev6g8Vz8UF7QfFlb6JD,White Blank Page,Mumford & Sons,Sigh No More,currently_listening,124.00,104.00,40.00,33.00,31.00,11A,1,2026-07-14T03:53:35.279Z,https://open.spotify.com/track/6MAev6g8Vz8UF7QfFlb6JD
+4,63CHa6rmamv9OsehkRD8oz,Against All Odds (Take a Look at Me Now) - 2016 Remaster,Phil Collins,The Singles (Expanded),currently_listening,116.00,119.00,50.00,58.00,11.00,3B,1,2026-07-14T04:06:50.005Z,https://open.spotify.com/track/63CHa6rmamv9OsehkRD8oz
+5,2VxeLyX666F8uXCJ0dZF8B,Shallow,"Lady Gaga,Bradley Cooper",A Star Is Born Soundtrack,currently_listening,96.00,130.00,39.00,58.00,33.00,9B,1,2026-07-14T03:11:40.300Z,https://open.spotify.com/track/2VxeLyX666F8uXCJ0dZF8B
+6,0ZLBD6hHGN9LYOtNlu2n8e,This Ain't A Love Song,Bon Jovi,These Days,currently_listening,88.00,113.00,64.00,35.00,14.00,12B,1,2026-07-14T03:57:13.289Z,https://open.spotify.com/track/0ZLBD6hHGN9LYOtNlu2n8e
+7,27U4sg4Z7tCnQ55jETIXDA,Where Are You Now,Mumford & Sons,Babel (Deluxe Version),currently_listening,84.00,98.00,34.00,52.00,12.00,12B,1,2026-07-14T03:53:13.584Z,https://open.spotify.com/track/27U4sg4Z7tCnQ55jETIXDA
+8,3nEotpBFeXq0OJstuHzwDP,God Needs The Devil,Jonah Kagen,God Needs The Devil,currently_listening,81.00,137.00,53.00,55.00,29.00,8A,1,2026-07-14T03:37:24.651Z,https://open.spotify.com/track/3nEotpBFeXq0OJstuHzwDP
+9,2KmSnPWWCIsEomVsKnbE1a,Big Balls,AC/DC,Dirty Deeds Done Dirt Cheap,currently_listening,107.00,167.00,63.00,62.00,42.00,11B,1,2026-07-14T03:31:39.549Z,https://open.spotify.com/track/2KmSnPWWCIsEomVsKnbE1a
+10,6LbbHFEajG9e4m0G3L47c4,Pinball Wizard,The Who,Tommy,currently_listening,124.00,173.00,72.00,54.00,47.00,10B,1,2026-07-14T04:02:40.381Z,https://open.spotify.com/track/6LbbHFEajG9e4m0G3L47c4
+11,3Bclyko7WmwM2oGmKj8sue,I Will Wait,Mumford & Sons,Babel (Deluxe Version),currently_listening,131.00,169.00,76.00,48.00,45.00,3B,1,2026-07-14T02:49:52.648Z,https://open.spotify.com/track/3Bclyko7WmwM2oGmKj8sue
+12,57bgtoPSgt236HzfBOd8kj,Thunderstruck,AC/DC,The Razors Edge,currently_listening,134.00,165.00,89.00,50.00,26.00,12B,1,2026-07-14T03:31:22.701Z,https://open.spotify.com/track/57bgtoPSgt236HzfBOd8kj
+13,2KQrrkOaaQWltWn6toCmfL,The Wolf,Mumford & Sons,Wilder Mind (Deluxe),currently_listening,153.00,151.00,71.00,43.00,37.00,10B,1,2026-07-14T03:52:41.337Z,https://open.spotify.com/track/2KQrrkOaaQWltWn6toCmfL
+14,4iJ3ZOcL5REtkoX7GNLPvQ,Here (with Chris Stapleton),"Mumford & Sons,Chris Stapleton",Prizefighter (Extended Edition),currently_listening,156.00,156.00,60.00,55.00,41.00,6B,1,2026-07-14T03:49:30.996Z,https://open.spotify.com/track/4iJ3ZOcL5REtkoX7GNLPvQ
+15,7so0lgd0zP2Sbgs2d7a1SZ,Die With A Smile,"Lady Gaga,Bruno Mars",MAYHEM,currently_listening,158.00,162.00,60.00,52.00,50.00,11A,1,2026-07-14T03:19:03.941Z,https://open.spotify.com/track/7so0lgd0zP2Sbgs2d7a1SZ
+16,09ln4QumFqjIkfCFiW9aRk,(You Want To) Make A Memory - Pop Album Version,Bon Jovi,Lost Highway,currently_listening,148.00,107.00,42.00,51.00,14.00,8B,1,2026-07-14T03:57:41.531Z,https://open.spotify.com/track/09ln4QumFqjIkfCFiW9aRk

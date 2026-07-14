@@ -1,0 +1,583 @@
+{
+  "exportedAt": 1784000730175,
+  "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
+  "count": 72,
+  "decisions": [
+    {
+      "trackId": "660u9agQuREtEDmETVWSts",
+      "name": "Three Imaginary Boys - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000623610
+    },
+    {
+      "trackId": "5fbQCQt91LsVgXusFS0CCD",
+      "name": "Disorder - 2007 Remaster",
+      "artists": "Joy Division",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000601667
+    },
+    {
+      "trackId": "2Ojr742JINM4QEOk7vQGEh",
+      "name": "Never Have I Ever",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000559835
+    },
+    {
+      "trackId": "50GOcJ4oPhKmUxcdiqWBqx",
+      "name": "Hell Nah",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000546450
+    },
+    {
+      "trackId": "5l8ylBEHHYL62w5HfjB3JF",
+      "name": "Dang",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000540082
+    },
+    {
+      "trackId": "0babKgXwpYCxbmgTc2Ikrh",
+      "name": "The Way She Looks",
+      "artists": "Two Feet",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000502022
+    },
+    {
+      "trackId": "7fa34IepKo01jV34GTMxQC",
+      "name": "Third Side of the Moon",
+      "artists": "Modest Mouse",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000482852
+    },
+    {
+      "trackId": "3A5rfmGdSmfcNqIURUJt4z",
+      "name": "All I Need Is You",
+      "artists": "NOMARKMORE",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000449328
+    },
+    {
+      "trackId": "5N7Cdi5Te9E3rejjuyRwll",
+      "name": "Your Chaos",
+      "artists": "NOMARKMORE",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000445675
+    },
+    {
+      "trackId": "1C1PabZfidunDI3xEj0D0H",
+      "name": "Get Happy",
+      "artists": "Matt Maeson",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000421696
+    },
+    {
+      "trackId": "3ApAsbQP7d5GlFwwdExaTY",
+      "name": "Poplar St",
+      "artists": "Glass Animals",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000399943
+    },
+    {
+      "trackId": "0sHW1jXe6Sou3437gJQNGA",
+      "name": "Space Bound",
+      "artists": "Eminem",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000349343
+    },
+    {
+      "trackId": "5jGxeAkNbep75x8JLeb52H",
+      "name": "Upside Down & Inside Out",
+      "artists": "OK Go",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000329878
+    },
+    {
+      "trackId": "3jfHclM5oNBSUvuBS7OgPj",
+      "name": "Absolution",
+      "artists": "Switchfoot",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000310909
+    },
+    {
+      "trackId": "3TP8KZt9tJGyeBRVyDysp9",
+      "name": "Better If Worse",
+      "artists": "HAFFWAY,Matt Maeson",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000296155
+    },
+    {
+      "trackId": "3nEotpBFeXq0OJstuHzwDP",
+      "name": "God Needs The Devil",
+      "artists": "Jonah Kagen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000244651
+    },
+    {
+      "trackId": "5ngcqrs4Xq915GUqNtNNr5",
+      "name": "Young Blood",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000222481
+    },
+    {
+      "trackId": "1JcIXOir94YUYBt2cXTzn2",
+      "name": "Growing Sideways",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000176315
+    },
+    {
+      "trackId": "4O2rRsoSPb5aN7N3tG6Y3v",
+      "name": "Northern Attitude",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000160297
+    },
+    {
+      "trackId": "52DudaVZObvmBgEX6IObHX",
+      "name": "No Complaints",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000121687
+    },
+    {
+      "trackId": "0mflMxspEfB0VbI1kyLiAv",
+      "name": "Stick Season",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000089807
+    },
+    {
+      "trackId": "0p1hBWPaSxUDTSa32PyhnU",
+      "name": "She Calls Me Back",
+      "artists": "Noah Kahan,Kacey Musgraves",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000085360
+    },
+    {
+      "trackId": "67q8yivDoOPXCYodi1zTix",
+      "name": "Glue Myself Shut",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000033676
+    },
+    {
+      "trackId": "7nDFTHHwfe32a8qdp9XqPy",
+      "name": "False Confidence",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784000016241
+    },
+    {
+      "trackId": "3iU2qsthCTo5EeTE03l3Si",
+      "name": "Doors",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999997628
+    },
+    {
+      "trackId": "22VHOlVYBqytsrAqV8yXBK",
+      "name": "Dial Drunk",
+      "artists": "Noah Kahan,Post Malone",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999967690
+    },
+    {
+      "trackId": "6Wn3pdFtAcnYJyJVITwt7N",
+      "name": "Girls Got Rhythm",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999916144
+    },
+    {
+      "trackId": "2KmSnPWWCIsEomVsKnbE1a",
+      "name": "Big Balls",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999899549
+    },
+    {
+      "trackId": "57bgtoPSgt236HzfBOd8kj",
+      "name": "Thunderstruck",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999882701
+    },
+    {
+      "trackId": "7LRMbd3LEoV5wZJvXT1Lwb",
+      "name": "T.N.T",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999877715
+    },
+    {
+      "trackId": "5UKeFkVeUfvP6S43I8s9mt",
+      "name": "Jailbreak",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783999861147
+    },
+    {
+      "trackId": "7nemcVsXVFZF01iqpIIo2Y",
+      "name": "It's a Long Way to the Top (If You Wanna Rock 'N' Roll)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999840219
+    },
+    {
+      "trackId": "7zscdQe9CjzXnqT3P1Ey7K",
+      "name": "If You Want Blood (You've Got It)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999834933
+    },
+    {
+      "trackId": "2zYzyRzz6pRmhPzyfMEC8s",
+      "name": "Highway to Hell",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999828460
+    },
+    {
+      "trackId": "69QHm3pustz01CJRwdo20z",
+      "name": "Hells Bells",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999823443
+    },
+    {
+      "trackId": "17lu4tymfnhmcIDlzBbtAb",
+      "name": "For Those About to Rock (We Salute You)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999812257
+    },
+    {
+      "trackId": "2d4e45fmUnguxh6yqC7gNT",
+      "name": "Dirty Deeds Done Dirt Cheap",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999805910
+    },
+    {
+      "trackId": "08mG3Y1vljYA6bvDt4Wqkj",
+      "name": "Back In Black",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999794933
+    },
+    {
+      "trackId": "5439qJTu5mVH9aeriwp03u",
+      "name": "Who Says You Can't Go Home",
+      "artists": "Bon Jovi,Jennifer Nettles",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783999372670
+    },
+    {
+      "trackId": "07HqIg8BnB1lJElnw2ZiSR",
+      "name": "I'll Be There For You",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999342292
+    },
+    {
+      "trackId": "2RChe0r2cMoyOvuKobZy44",
+      "name": "Always",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999333114
+    },
+    {
+      "trackId": "0upLyFR8Rr52ZpMp5esQoq",
+      "name": "You Really Got Me - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999306030
+    },
+    {
+      "trackId": "7Hqig8kp32q2Ire3ECQvWM",
+      "name": "Paparazzi",
+      "artists": "Lady Gaga",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999202155
+    },
+    {
+      "trackId": "6Xxvdy1m9TX9HTxOzQcfuV",
+      "name": "Grigio Girls",
+      "artists": "Lady Gaga",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999174091
+    },
+    {
+      "trackId": "2rbDhOo9Fh61Bbu23T2qCk",
+      "name": "Always Remember Us This Way",
+      "artists": "Lady Gaga",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999159966
+    },
+    {
+      "trackId": "7so0lgd0zP2Sbgs2d7a1SZ",
+      "name": "Die With A Smile",
+      "artists": "Lady Gaga,Bruno Mars",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783999143941
+    },
+    {
+      "trackId": "5R8dQOPq8haW94K7mgERlO",
+      "name": "Poker Face",
+      "artists": "Lady Gaga",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783998743920
+    },
+    {
+      "trackId": "2VxeLyX666F8uXCJ0dZF8B",
+      "name": "Shallow",
+      "artists": "Lady Gaga,Bradley Cooper",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998700300
+    },
+    {
+      "trackId": "7dZ1Odmx9jWIweQSatnRqo",
+      "name": "Million Reasons",
+      "artists": "Lady Gaga",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998652958
+    },
+    {
+      "trackId": "0oWraSo5ASJ0h1BEagTyEw",
+      "name": "Hold My Hand",
+      "artists": "Lady Gaga",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998638773
+    },
+    {
+      "trackId": "1icygp76kVbs429RikF0jJ",
+      "name": "You Make Me Sick - Radio Mix",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783998603610
+    },
+    {
+      "trackId": "2hns6Dv29Yrg68AVTJiAyA",
+      "name": "Who Knew",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998586772
+    },
+    {
+      "trackId": "3QRZknOUCPCpOvK21j0rXb",
+      "name": "Gone to California",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783998560827
+    },
+    {
+      "trackId": "1uexV2mYuZmLhVz4G5LUZv",
+      "name": "Funhouse",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783998534824
+    },
+    {
+      "trackId": "0eXz79Tu1iKOtxAcN1WnvA",
+      "name": "Don't Let Me Get Me - Radio Edit",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1783998482231
+    },
+    {
+      "trackId": "3bIF9Iee2Xmt8dQ71pUPGF",
+      "name": "Just Like a Pill",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998460243
+    },
+    {
+      "trackId": "733ncRLzZQT5UtSPg1QmPc",
+      "name": "Sober",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998426772
+    },
+    {
+      "trackId": "2gnZad0pb6QtUqMLTj2AjI",
+      "name": "Please Don't Leave Me",
+      "artists": "P!nk",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998401738
+    },
+    {
+      "trackId": "5Ts1DYOuouQLgzTaisxWYh",
+      "name": "Love Grows (Where My Rosemary Goes)",
+      "artists": "Edison Lighthouse",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998352474
+    },
+    {
+      "trackId": "3UQA4UTVqcI0VtSQ38nlq1",
+      "name": "Let It Ride",
+      "artists": "Bachman-Turner Overdrive",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998330783
+    },
+    {
+      "trackId": "0z1b34WikhOH9ZxU8QDWcv",
+      "name": "One Headlight",
+      "artists": "The Wallflowers",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998266288
+    },
+    {
+      "trackId": "3KhF2YiNpJvGpfiCW45R6D",
+      "name": "Runnin' with the Devil - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998110669
+    },
+    {
+      "trackId": "7N3PAbqfTjSEU1edb2tY8j",
+      "name": "Jump - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998104990
+    },
+    {
+      "trackId": "05RgAMGypEvqhNs5hPCbMS",
+      "name": "Panama - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998092236
+    },
+    {
+      "trackId": "6QDbGdbJ57Mtkflsg42WV5",
+      "name": "Hot for Teacher - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998088085
+    },
+    {
+      "trackId": "5TnzOUFWoZHUEtOWlxrIlY",
+      "name": "Everybody Wants Some!! - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998083999
+    },
+    {
+      "trackId": "0yfNXxlyXdmP0ue1iJijx1",
+      "name": "Come Undone",
+      "artists": "Duran Duran",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783998003987
+    },
+    {
+      "trackId": "7feSbMqJGg9yL0s6ypxy9S",
+      "name": "Girls on Film",
+      "artists": "Duran Duran",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783997999126
+    },
+    {
+      "trackId": "5qeLeyIWCPe1FpdJLQTUDW",
+      "name": "The Wild Boys",
+      "artists": "Duran Duran",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783997990686
+    },
+    {
+      "trackId": "5PKnZzkjs2y3WTbIYtv5Fq",
+      "name": "Magic Bus - Mono Edit",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783997802268
+    },
+    {
+      "trackId": "3pLTOP0G0etiWUknFoRpsr",
+      "name": "The Cave",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783997490513
+    },
+    {
+      "trackId": "3Bclyko7WmwM2oGmKj8sue",
+      "name": "I Will Wait",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783997392648
+    }
+  ]
+}
