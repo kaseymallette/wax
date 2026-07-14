@@ -1,8 +1,16 @@
 {
-  "exportedAt": 1783933929392,
+  "exportedAt": 1783990590696,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 335,
+  "count": 336,
   "decisions": [
+    {
+      "trackId": "2CxUw9KnY5VHugLbBZiCAF",
+      "name": "I'm Not Really Here",
+      "artists": "X Ambassadors",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1783990166663
+    },
     {
       "trackId": "20MWkJVeqKnWf0rGFJJqRY",
       "name": "I am not a woman, I'm a god",
@@ -16,7 +24,7 @@
       "name": "Don't Dance",
       "artists": "3OH!3",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783933575340
     },
     {
@@ -88,7 +96,7 @@
       "name": "Games Without Frontiers",
       "artists": "Peter Gabriel",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783926158391
     },
     {
@@ -104,7 +112,7 @@
       "name": "In The Air Tonight - 2015 Remastered",
       "artists": "Phil Collins",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783910415307
     },
     {
@@ -112,7 +120,7 @@
       "name": "I Don't Care Anymore - 2016 Remaster",
       "artists": "Phil Collins",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783910401120
     },
     {
@@ -120,7 +128,7 @@
       "name": "Red Rain - 2012 Remaster",
       "artists": "Peter Gabriel",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783910310132
     },
     {
@@ -152,7 +160,7 @@
       "name": "Space Bound",
       "artists": "Eminem",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783904425038
     },
     {
@@ -160,7 +168,7 @@
       "name": "25 To Life",
       "artists": "Eminem",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783904409359
     },
     {
@@ -320,7 +328,7 @@
       "name": "505",
       "artists": "Arctic Monkeys",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783903226123
     },
     {
@@ -328,7 +336,7 @@
       "name": "Gold",
       "artists": "Sir Sly",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783903209998
     },
     {
@@ -336,7 +344,7 @@
       "name": "NUEVAYoL",
       "artists": "Bad Bunny",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783903186983
     },
     {
@@ -344,7 +352,7 @@
       "name": "All A Mystery",
       "artists": "Phantogram",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783903033679
     },
     {
@@ -352,7 +360,7 @@
       "name": "Tearing Me Up",
       "artists": "Bob Moses",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783903018526
     },
     {
@@ -360,7 +368,7 @@
       "name": "Holy Ghost",
       "artists": "The Neighbourhood",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902971105
     },
     {
@@ -392,7 +400,7 @@
       "name": "Attaway",
       "artists": "Phantogram",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902884379
     },
     {
@@ -400,7 +408,7 @@
       "name": "Tití Me Preguntó",
       "artists": "Bad Bunny",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902864312
     },
     {
@@ -448,7 +456,7 @@
       "name": "Loneliest",
       "artists": "Incubus",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902762381
     },
     {
@@ -456,7 +464,7 @@
       "name": "Take Me To The Disco",
       "artists": "MEG MYERS",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902739134
     },
     {
@@ -464,7 +472,7 @@
       "name": "Jealous Sea",
       "artists": "MEG MYERS",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902715654
     },
     {
@@ -472,7 +480,7 @@
       "name": "Feather",
       "artists": "MEG MYERS",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902702468
     },
     {
@@ -480,7 +488,7 @@
       "name": "Cry Baby",
       "artists": "The Neighbourhood",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902686242
     },
     {
@@ -520,7 +528,7 @@
       "name": "In Cold Blood",
       "artists": "alt-J",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902526414
     },
     {
@@ -528,7 +536,7 @@
       "name": "Opening Night",
       "artists": "Arctic Monkeys,War Child Records",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902514652
     },
     {
@@ -536,7 +544,7 @@
       "name": "Woman Is King",
       "artists": "Bishop Briggs",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902492940
     },
     {
@@ -544,7 +552,7 @@
       "name": "English Town",
       "artists": "Matchbox Twenty",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902476500
     },
     {
@@ -616,7 +624,7 @@
       "name": "Private",
       "artists": "The Neighbourhood",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902322172
     },
     {
@@ -656,7 +664,7 @@
       "name": "Typical Ways",
       "artists": "Culture Wars",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902247939
     },
     {
@@ -664,7 +672,7 @@
       "name": "Family",
       "artists": "Badflower",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902218884
     },
     {
@@ -672,7 +680,7 @@
       "name": "Illusion",
       "artists": "Foreign Air",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902198516
     },
     {
@@ -680,7 +688,7 @@
       "name": "Meathook",
       "artists": "The Cure",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902181013
     },
     {
@@ -688,7 +696,7 @@
       "name": "Accuracy - 2005 Remaster",
       "artists": "The Cure",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902172205
     },
     {
@@ -720,7 +728,7 @@
       "name": "Gone",
       "artists": "HAIM",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783902033216
     },
     {
@@ -760,7 +768,7 @@
       "name": "Lonely As You",
       "artists": "Matt Maeson",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783901677614
     },
     {
@@ -768,7 +776,7 @@
       "name": "Backseat",
       "artists": "Balu Brigada",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783901562845
     },
     {
@@ -776,7 +784,7 @@
       "name": "So Cold",
       "artists": "Balu Brigada",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783901554236
     },
     {
@@ -800,7 +808,7 @@
       "name": "Rumour Has It",
       "artists": "Adele",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783901483603
     },
     {
@@ -808,7 +816,7 @@
       "name": "Snap Out Of It",
       "artists": "Arctic Monkeys",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783901364151
     },
     {
@@ -1056,7 +1064,7 @@
       "name": "It Takes More",
       "artists": "Taking Back Sunday",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783900501370
     },
     {
@@ -1064,7 +1072,7 @@
       "name": "Flicker, Fade",
       "artists": "Taking Back Sunday",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783900472760
     },
     {
@@ -1248,7 +1256,7 @@
       "name": "It's a Long Way to the Top (If You Wanna Rock 'N' Roll)",
       "artists": "AC/DC",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783892283040
     },
     {
@@ -1256,7 +1264,7 @@
       "name": "Thunderstruck",
       "artists": "AC/DC",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783892264032
     },
     {
@@ -1264,7 +1272,7 @@
       "name": "T.N.T",
       "artists": "AC/DC",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783892256564
     },
     {
@@ -1312,7 +1320,7 @@
       "name": "Big Balls",
       "artists": "AC/DC",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783892176643
     },
     {
@@ -1320,7 +1328,7 @@
       "name": "Highway to Hell",
       "artists": "AC/DC",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783892161817
     },
     {
@@ -1368,7 +1376,7 @@
       "name": "R.I.P",
       "artists": "3OH!3",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783891970836
     },
     {
@@ -1560,7 +1568,7 @@
       "name": "Run",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889610006
     },
     {
@@ -1576,7 +1584,7 @@
       "name": "Lady Lie",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889572910
     },
     {
@@ -1584,7 +1592,7 @@
       "name": "Holy War",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889556774
     },
     {
@@ -1608,7 +1616,7 @@
       "name": "Fever Pitch",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889515247
     },
     {
@@ -1648,7 +1656,7 @@
       "name": "Wasted",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889087347
     },
     {
@@ -1656,7 +1664,7 @@
       "name": "Shameful Company",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889074157
     },
     {
@@ -1664,7 +1672,7 @@
       "name": "Seven",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889054227
     },
     {
@@ -1672,7 +1680,7 @@
       "name": "Our Song",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889038027
     },
     {
@@ -1680,7 +1688,7 @@
       "name": "LOL",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
+      "repeatIntent": "currently_listening",
       "loggedAt": 1783889024272
     },
     {
