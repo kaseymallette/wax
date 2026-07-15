@@ -114,10 +114,10 @@ export default function PlaylistsPage() {
     return a.name.localeCompare(b.name);
   };
   const saveForLaterTracks = [...keepTracks.filter((t) => t.repeatIntent === "save_for_later")].sort((a, b) => {
-    return compareAddedAtDesc(a, b);
+    return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
   });
-  const offRotationTracks = [...keepTracks.filter((t) => t.repeatIntent === "off_rotation")].sort((a, b) => {
-    return compareAddedAtDesc(a, b);
+  const currentlyListeningTracks = [...keepTracks.filter((t) => t.repeatIntent === "currently_listening")].sort((a, b) => {
+    return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
   });
 
   useEffect(() => {
@@ -200,7 +200,7 @@ export default function PlaylistsPage() {
         7 daily playlists (Mon-Sun) are created from Currently Listening using BPM + mood clustering.
       </p>
       <p className="text-sm text-muted-foreground">
-        3 additional playlists are created: Save for Later, Off the Rotation, and Favorites Archive.
+        3 additional playlists are created: Currently Listening, Save for Later, and Favorites Archive.
       </p>
 
       {query.isLoading ? (
@@ -317,8 +317,8 @@ export default function PlaylistsPage() {
             })}
 
             {[
+              { key: "currently-listening", title: "Currently Listening", tracks: currentlyListeningTracks },
               { key: "save-for-later", title: "Save for Later", tracks: saveForLaterTracks },
-              { key: "off-rotation", title: "Off the Rotation", tracks: offRotationTracks },
               { key: "favorites-archive", title: "Favorites Archive", tracks: favoritesArchiveTracks },
             ].map((list) => {
               const isExpanded = expanded.has(list.key);

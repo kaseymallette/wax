@@ -8,7 +8,7 @@ Wax is built for deliberate curation instead of endless skipping. Import your li
 
 Tracks start as *Undecided*, and keeps are organized into five intent buckets: *Currently Listening*, *Save for Later*, *Off the Rotation*, *Favorites Archive*, and *Skip for Now*. These intents drive weighted shuffle, Keeps/Stats views, and playlist generation.
 
-The default playlist flow creates 7 daily playlists from *Currently Listening* (BPM + mood clustering, dynamic per-playlist cap tiers from 5 up to 30 tracks), plus one playlist each for *Save for Later*, *Off the Rotation*, and *Favorites Archive*. Everything exports to CSV first, then can be pushed to Spotify with the built-in push script.
+The default playlist flow creates 7 daily playlists from *Currently Listening* (BPM + mood clustering, dynamic per-playlist cap tiers from 5 up to 30 tracks), plus one playlist each for *Currently Listening* (all tracks), *Save for Later*, and *Favorites Archive*. Everything exports to CSV first, then can be pushed to Spotify with the built-in push script.
 
 Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot), energy, dance, and valence. Mood score is `energy + dance + valence` on a 0–300 scale.
 
@@ -290,7 +290,7 @@ Wax uses one default playlist-generation flow (CSV-first for review, then Spotif
   - `106–140` tracks → max `20` per playlist
   - `141–175` tracks → max `25` per playlist
   - `176+` tracks → max `30` per playlist
-- Also writes one CSV each for `favorites_archive`, `save_for_later`, and `off_rotation`.
+- Also writes one CSV each for `currently_listening`, `favorites_archive`, and `save_for_later`.
 
 Run:
 
@@ -309,9 +309,9 @@ Outputs:
 - `users/<name>/playlists/daily-5.csv`
 - `users/<name>/playlists/daily-6.csv`
 - `users/<name>/playlists/daily-7.csv`
+- `users/<name>/playlists/currently-listening.csv`
 - `users/<name>/playlists/favorites-archive.csv`
 - `users/<name>/playlists/save-for-later.csv`
-- `users/<name>/playlists/off-rotation.csv`
 - `users/<name>/playlists/summary.json`
 - `users/<name>/playlists/missing-features.log` *(only when currently-listening tracks are missing BPM/energy/dance/valence)*
 
@@ -386,7 +386,7 @@ WAX_USER=kaseysmom npm run spotify:push
 
 Push behavior:
 
-- Pushes `daily-1..7.csv`, `favorites-archive.csv`, `save-for-later.csv`, and `off-rotation.csv` from `users/<WAX_USER>/playlists/`
+- Pushes `daily-1..7.csv`, `currently-listening.csv`, `favorites-archive.csv`, and `save-for-later.csv` from `users/<WAX_USER>/playlists/`
 - Finds or creates `WAX – {User} ...` playlists and full-replaces each in CSV order on every run
 - Writes `push.log` in `users/<WAX_USER>/playlists/`
 - Supports multi-user by changing `WAX_USER`

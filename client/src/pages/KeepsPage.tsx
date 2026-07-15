@@ -41,8 +41,8 @@ const KEEP_DECISION_OPTIONS = REPEAT_INTENT_OPTIONS.filter(
 const KEEP_DECISION_ORDER = [
   "currently_listening",
   "save_for_later",
-  "off_rotation",
   "favorites_archive",
+  "off_rotation",
   "skip_for_now",
 ] as const;
 const KEEP_DECISION_RANK = new Map(KEEP_DECISION_ORDER.map((value, index) => [value, index]));
@@ -221,14 +221,14 @@ export default function KeepsPage() {
               <p>Hold for future listens. Exported as one playlist.</p>
             </div>
             <div>
-              <p className="font-semibold text-foreground">Off the Rotation</p>
-              <p>Had its run. Didn't make the all-time favorites cut. Exported as one playlist.</p>
+              <p className="font-semibold text-foreground">Favorites Archive</p>
+              <p>Your all-time favorites not currently in rotation. Exported as one playlist.</p>
             </div>
           </div>
           <div className="space-y-3">
             <div>
-              <p className="font-semibold text-foreground">Favorites Archive</p>
-              <p>Your all-time favorites not currently in rotation. Exported as one playlist.</p>
+              <p className="font-semibold text-foreground">Off the Rotation</p>
+              <p>Had its run. Didn't make the all-time favorites cut. No playlist is generated.</p>
             </div>
             <div>
               <p className="font-semibold text-foreground">Skip for Now</p>

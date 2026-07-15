@@ -222,7 +222,7 @@ function writeDailyPlaylistCsv(
 function writeIntentPlaylistCsv(
   filePath: string,
   tracks: TrackWithStats[],
-  intent: "favorites_archive" | "save_for_later" | "off_rotation",
+  intent: "currently_listening" | "favorites_archive" | "save_for_later",
 ) {
   const compareArtistAlbumThenName = (a: TrackWithStats, b: TrackWithStats) =>
     a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
@@ -238,11 +238,9 @@ function writeIntentPlaylistCsv(
   };
 
   const sorted = [...tracks].sort((a, b) => {
-    if (intent === "favorites_archive") {
+    if (intent === "favorites_archive" || intent === "currently_listening" || intent === "save_for_later") {
       return compareArtistAlbumThenName(a, b);
     }
-
-    if (intent === "save_for_later") return compareAddedAtDesc(a, b);
 
     return compareAddedAtDesc(a, b);
   });
@@ -361,16 +359,16 @@ function main() {
   }
 
   const favorites = tracks.filter((t) => t.repeatIntent === "favorites_archive");
+  const currentlyListening = tracks.filter((t) => t.repeatIntent === "currently_listening");
   const saveForLater = tracks.filter((t) => t.repeatIntent === "save_for_later");
-  const offRotation = tracks.filter((t) => t.repeatIntent === "off_rotation");
 
+  const currentlyListeningPath = path.join(PLAYLISTS_DIR, "currently-listening.csv");
   const favoritesPath = path.join(PLAYLISTS_DIR, "favorites-archive.csv");
   const saveForLaterPath = path.join(PLAYLISTS_DIR, "save-for-later.csv");
-  const offRotationPath = path.join(PLAYLISTS_DIR, "off-rotation.csv");
 
+  writeIntentPlaylistCsv(currentlyListeningPath, currentlyListening, "currently_listening");
   writeIntentPlaylistCsv(favoritesPath, favorites, "favorites_archive");
   writeIntentPlaylistCsv(saveForLaterPath, saveForLater, "save_for_later");
-  writeIntentPlaylistCsv(offRotationPath, offRotation, "off_rotation");
 
   const missingPath = writeMissingFeaturesLog(tracks);
 
@@ -381,15 +379,15 @@ function main() {
     dbPath: DB_PATH,
     diagnostics: daily.diagnostics,
     counts: {
+      currentlyListening: currentlyListening.length,
       favoritesArchive: favorites.length,
       saveForLater: saveForLater.length,
-      offRotation: offRotation.length,
     },
     files: {
       daily: dailyFiles,
+      currentlyListening: currentlyListeningPath,
       favoritesArchive: favoritesPath,
       saveForLater: saveForLaterPath,
-      offRotation: offRotationPath,
       missingFeatures: missingPath,
     },
   };
@@ -397,9 +395,9 @@ function main() {
 
   console.log(`[buildPlaylists] wrote ${dailyFiles.length} daily playlist CSVs`);
   dailyFiles.forEach((f) => console.log(`[buildPlaylists] wrote ${f}`));
+  console.log(`[buildPlaylists] wrote ${currentlyListeningPath}`);
   console.log(`[buildPlaylists] wrote ${favoritesPath}`);
   console.log(`[buildPlaylists] wrote ${saveForLaterPath}`);
-  console.log(`[buildPlaylists] wrote ${offRotationPath}`);
   console.log(`[buildPlaylists] wrote ${SUMMARY_PATH}`);
   if (missingPath) {
     console.log(`[buildPlaylists] warning: missing features log -> ${missingPath}`);

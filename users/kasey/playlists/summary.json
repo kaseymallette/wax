@@ -1,6 +1,6 @@
 {
   "user": "kasey",
-  "generatedAt": 1784148308449,
+  "generatedAt": 1784149775484,
   "dbPath": "/Users/kaseymallette/github/wax/data.db",
   "diagnostics": {
     "currentlyListeningCount": 189,
@@ -10,9 +10,9 @@
     "droppedForCapacity": 0
   },
   "counts": {
+    "currentlyListening": 189,
     "favoritesArchive": 134,
-    "saveForLater": 14,
-    "offRotation": 0
+    "saveForLater": 14
   },
   "files": {
     "daily": [
@@ -24,9 +24,9 @@
       "/Users/kaseymallette/github/wax/users/kasey/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kasey/playlists/daily-7.csv"
     ],
+    "currentlyListening": "/Users/kaseymallette/github/wax/users/kasey/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kasey/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kasey/playlists/save-for-later.csv",
-    "offRotation": "/Users/kaseymallette/github/wax/users/kasey/playlists/off-rotation.csv",
     "missingFeatures": null
   }
 }
