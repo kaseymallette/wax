@@ -1,27 +1,32 @@
 {
   "user": "kaseysmom",
-  "generatedAt": 1783925576148,
-  "dbPath": "/Users/mmallett/github/wax/data.db",
+  "generatedAt": 1784103280133,
+  "dbPath": "/Users/kaseymallette/github/wax/data.db",
   "diagnostics": {
-    "currentlyListeningCount": 124,
-    "usableTrackCount": 124,
+    "currentlyListeningCount": 145,
+    "playlistMaxSize": 25,
+    "usableTrackCount": 145,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "favoritesArchive": 26,
-    "saveForLater": 31
+    "favoritesArchive": 48,
+    "saveForLater": 62,
+    "offRotation": 0
   },
   "files": {
     "daily": [
-      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-1.csv",
-      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-2.csv",
-      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-3.csv",
-      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-4.csv",
-      "/Users/mmallett/github/wax/users/kaseysmom/playlists/daily-5.csv"
+      "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/daily-1.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/daily-2.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/daily-3.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/daily-4.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/daily-5.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/daily-6.csv",
+      "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/daily-7.csv"
     ],
-    "favoritesArchive": "/Users/mmallett/github/wax/users/kaseysmom/playlists/favorites-archive.csv",
-    "saveForLater": "/Users/mmallett/github/wax/users/kaseysmom/playlists/save-for-later.csv",
+    "favoritesArchive": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/favorites-archive.csv",
+    "saveForLater": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/save-for-later.csv",
+    "offRotation": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/off-rotation.csv",
     "missingFeatures": null
   }
 }
