@@ -193,6 +193,46 @@ Safety behavior:
 - Tracks are protected if any other user's latest decision keeps them (`keepInLibrary=1`).
 - Script is dry-run by default unless `--apply` is provided.
 
+### Review removes in a spreadsheet (recommended)
+
+If you want to approve removals one-by-one (yes/no) before deleting from `music-library`:
+
+1. Generate a review CSV for a user:
+
+```bash
+WAX_USER=kaseysmom npm run music:remove:review
+```
+
+This writes:
+
+- `outputs/kaseysmom-removal-review.csv`
+
+2. Open the CSV in Excel/Google Sheets and fill `your_decision` with `yes` or `no`.
+
+- `yes` = approve removal
+- `no` (or blank) = keep song in DB
+- Use `notes` for comments
+
+3. Dry-run the approved removals:
+
+```bash
+WAX_USER=kaseysmom npm run music:remove:approved:dry
+```
+
+4. Apply approved removals (with backup):
+
+```bash
+WAX_USER=kaseysmom npm run music:remove:approved
+```
+
+Review CSV columns include safety context:
+
+- `kept_by_other_user` (`yes`/`no`)
+- `eligible_for_delete` (`yes`/`no`)
+- `in_music_library_db` (`yes`/`no`)
+
+Only rows with `your_decision=yes` and `eligible_for_delete=yes` are deleted.
+
 ### Check duplicate tracks in `music-library` DB
 
 Use this to find duplicate `Track_Key` values in the `tracks` table, with optional normalization that ignores common `remaster` / `remastered` text and year/version suffixes like `2019 Digital Master`.

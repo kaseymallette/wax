@@ -21,6 +21,9 @@
     "spotify:push:dry": "tsx script/pushSpotify.ts --dry-run",
     "music:add:csv:dry": "python3 src/add_to_music_library.py --csv ${WAX_ADD_CSV:-data/music-library/new_tracks.csv} --db data/music-library/spotify_music_library.db",
     "music:add:csv": "python3 src/add_to_music_library.py --csv ${WAX_ADD_CSV:-data/music-library/new_tracks.csv} --db data/music-library/spotify_music_library.db --apply --backup",
+    "music:remove:review": "python3 src/build_music_library_removal_review.py --owner-user ${WAX_USER:-kasey} --decisions users/${WAX_USER:-kasey}/decisions-latest.json --users-root users --db data/music-library/spotify_music_library.db --out outputs/${WAX_USER:-kasey}-removal-review.csv",
+    "music:remove:approved:dry": "python3 src/apply_music_library_removal_review.py --csv outputs/${WAX_USER:-kasey}-removal-review.csv --db data/music-library/spotify_music_library.db",
+    "music:remove:approved": "python3 src/apply_music_library_removal_review.py --csv outputs/${WAX_USER:-kasey}-removal-review.csv --db data/music-library/spotify_music_library.db --apply --backup",
     "music:dupes:csv": "python3 src/check_duplicate_track_keys.py --db data/music-library/spotify_music_library.db --table tracks --column Track_Key --ignore-remaster --ignore-year-version --csv-out outputs/duplicate-track-keys.csv",
     "db:push": "drizzle-kit push"
   },
