@@ -1,23 +1,15 @@
 rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
-1,0hJS3EHWC4uL9sJ52ErpoN,Hide,Rainbow Kitten Surprise,"How to: Friend, Love, Freefall",save_for_later,115.00,179.00,50.00,80.00,49.00,12B,1,2026-07-13T00:58:14.847Z,https://open.spotify.com/track/0hJS3EHWC4uL9sJ52ErpoN
-2,1TDdYSYLIXMJ4EiKO6ZCYk,Mission to Mars,Rainbow Kitten Surprise,"How to: Friend, Love, Freefall",save_for_later,160.00,160.00,48.00,69.00,43.00,9B,1,2026-07-13T00:58:18.992Z,https://open.spotify.com/track/1TDdYSYLIXMJ4EiKO6ZCYk
-3,6fc51JZVE0Yijdi6RuoLFv,Painkillers,Rainbow Kitten Surprise,"How to: Friend, Love, Freefall",save_for_later,115.00,124.00,41.00,75.00,8.00,9B,1,2026-07-13T00:58:26.437Z,https://open.spotify.com/track/6fc51JZVE0Yijdi6RuoLFv
-4,7vZ9v4c0ft0ro30awMw32V,Cryogen,Muse,The Wow! Signal,save_for_later,133.00,185.00,96.00,39.00,50.00,9B,1,2026-07-13T00:07:57.445Z,https://open.spotify.com/track/7vZ9v4c0ft0ro30awMw32V
-5,2ssHVnC8IEkQouNXfPDfAe,Hexagons,Muse,The Wow! Signal,save_for_later,141.00,123.00,80.00,18.00,25.00,9A,1,2026-07-13T00:08:10.832Z,https://open.spotify.com/track/2ssHVnC8IEkQouNXfPDfAe
-6,4mHEAiQ3TqXizTGJEMZrEo,Monroe,Angus & Julia Stone,Monroe,save_for_later,160.00,234.00,62.00,79.00,93.00,5A,1,2026-07-13T00:08:54.727Z,https://open.spotify.com/track/4mHEAiQ3TqXizTGJEMZrEo
-7,0FD5inFAFMXLM4o7JjNs1v,SCISSORS,Transviolet,SCISSORS,save_for_later,170.00,183.00,89.00,45.00,49.00,9B,1,2026-07-13T00:18:25.593Z,https://open.spotify.com/track/0FD5inFAFMXLM4o7JjNs1v
-8,2cRPkU3kkSK93bd65uLqzk,Smoking Gun,"Inpatient,Ren,Chris Webby",Smoking Gun,save_for_later,93.00,183.00,36.00,79.00,68.00,2B,1,2026-07-13T00:18:14.442Z,https://open.spotify.com/track/2cRPkU3kkSK93bd65uLqzk
-9,1JIffDQIhTeOeqYW66uu9e,The Dark Forest,Muse,The Wow! Signal,save_for_later,127.00,147.00,88.00,40.00,19.00,8B,1,2026-07-13T00:08:17.600Z,https://open.spotify.com/track/1JIffDQIhTeOeqYW66uu9e
-10,15y1BArk8UmePx9hqQDh42,The Sickness In You & I,Muse,The Wow! Signal,save_for_later,84.00,153.00,85.00,37.00,31.00,10B,1,2026-07-13T00:08:24.692Z,https://open.spotify.com/track/15y1BArk8UmePx9hqQDh42
-11,5OLvTcn4P3pZQ4erbwg6ro,Unravelling,Muse,The Wow! Signal,save_for_later,88.00,183.00,83.00,54.00,46.00,9B,1,2026-07-13T00:08:30.176Z,https://open.spotify.com/track/5OLvTcn4P3pZQ4erbwg6ro
-12,4vGKLADQksmUcPAVHu7oab,Yours Forever (feat. Matt Maeson),"Bishop Briggs,Matt Maeson",Yours Forever (feat. Matt Maeson),save_for_later,143.00,131.00,57.00,49.00,25.00,6A,1,2026-07-13T00:31:01.185Z,https://open.spotify.com/track/4vGKLADQksmUcPAVHu7oab
-13,0KseHCMXqZZkoKn4UJfWlO,Smile,Foreign Air,Smile (Remix),save_for_later,100.00,181.00,65.00,59.00,57.00,8B,1,2026-07-13T00:25:49.357Z,https://open.spotify.com/track/0KseHCMXqZZkoKn4UJfWlO
-14,6SkGAtFv38tQjouh7UeNpu,Where The Silence Goes,LEAP,One Million Pieces,save_for_later,170.00,178.00,91.00,47.00,40.00,9B,1,2026-07-13T00:24:42.662Z,https://open.spotify.com/track/6SkGAtFv38tQjouh7UeNpu
-15,0M2qo3471lo6vo91qHM5Ub,Goodnight Chicago,Rainbow Kitten Surprise,RKS,save_for_later,120.00,129.00,37.00,72.00,20.00,10B,1,2026-07-13T00:58:42.951Z,https://open.spotify.com/track/0M2qo3471lo6vo91qHM5Ub
-16,5gmJlzd7GyggoqLedD7vKV,Hollow,"Flume,Emma Louise",Palaces,save_for_later,105.00,161.00,58.00,53.00,50.00,4A,1,2026-07-13T00:33:22.688Z,https://open.spotify.com/track/5gmJlzd7GyggoqLedD7vKV
-17,00vlCXriiYxfO1AZoRJKec,The Comedown,Rainbow Kitten Surprise,RKS,save_for_later,115.00,166.00,54.00,81.00,31.00,9B,1,2026-07-13T00:57:45.003Z,https://open.spotify.com/track/00vlCXriiYxfO1AZoRJKec
-18,7vBs57yYONIjmlLFXjTazJ,Murder,Rainbow Kitten Surprise,bones,save_for_later,141.00,132.00,57.00,59.00,16.00,3B,1,2026-07-13T09:02:31.719Z,https://open.spotify.com/track/7vBs57yYONIjmlLFXjTazJ
-19,3CpTESaweBfLB3VM2gwyOM,Stars,Rainbow Kitten Surprise,bones,save_for_later,156.00,166.00,70.00,66.00,30.00,6B,1,2026-07-13T09:01:00.136Z,https://open.spotify.com/track/3CpTESaweBfLB3VM2gwyOM
-20,5UEmz6KnGST4pSznrAPuJx,Texas Hold‘em,Rainbow Kitten Surprise,bones,save_for_later,184.00,163.00,64.00,55.00,44.00,2B,1,2026-07-13T08:59:25.619Z,https://open.spotify.com/track/5UEmz6KnGST4pSznrAPuJx
-21,50kY9njISacBSyPLyR8cwk,Tropics,Rainbow Kitten Surprise,bones,save_for_later,169.00,170.00,73.00,51.00,46.00,4B,1,2026-07-13T09:00:07.154Z,https://open.spotify.com/track/50kY9njISacBSyPLyR8cwk
-22,25dJMz1RMvCjoodJ2jI6BV,MOONWALKIN',GLU,MY DEMONS EP,save_for_later,144.00,157.00,58.00,56.00,43.00,12A,1,2026-07-13T00:33:32.368Z,https://open.spotify.com/track/25dJMz1RMvCjoodJ2jI6BV
+1,5LYJ631w9ps5h9tdvac7yP,Easy Lover,"Philip Bailey,Phil Collins",Chinese Wall (Expanded Edition),save_for_later,129.00,259.00,92.00,74.00,93.00,3B,1,2026-07-15T20:43:14.128Z,https://open.spotify.com/track/5LYJ631w9ps5h9tdvac7yP
+2,7vZ9v4c0ft0ro30awMw32V,Cryogen,Muse,The Wow! Signal,save_for_later,133.00,185.00,96.00,39.00,50.00,9B,1,2026-07-13T00:07:57.445Z,https://open.spotify.com/track/7vZ9v4c0ft0ro30awMw32V
+3,2ssHVnC8IEkQouNXfPDfAe,Hexagons,Muse,The Wow! Signal,save_for_later,141.00,123.00,80.00,18.00,25.00,9A,1,2026-07-13T00:08:10.832Z,https://open.spotify.com/track/2ssHVnC8IEkQouNXfPDfAe
+4,4mHEAiQ3TqXizTGJEMZrEo,Monroe,Angus & Julia Stone,Monroe,save_for_later,160.00,234.00,62.00,79.00,93.00,5A,1,2026-07-13T00:08:54.727Z,https://open.spotify.com/track/4mHEAiQ3TqXizTGJEMZrEo
+5,0FD5inFAFMXLM4o7JjNs1v,SCISSORS,Transviolet,SCISSORS,save_for_later,170.00,183.00,89.00,45.00,49.00,9B,1,2026-07-13T00:18:25.593Z,https://open.spotify.com/track/0FD5inFAFMXLM4o7JjNs1v
+6,2cRPkU3kkSK93bd65uLqzk,Smoking Gun,"Inpatient,Ren,Chris Webby",Smoking Gun,save_for_later,93.00,183.00,36.00,79.00,68.00,2B,1,2026-07-13T00:18:14.442Z,https://open.spotify.com/track/2cRPkU3kkSK93bd65uLqzk
+7,1JIffDQIhTeOeqYW66uu9e,The Dark Forest,Muse,The Wow! Signal,save_for_later,127.00,147.00,88.00,40.00,19.00,8B,1,2026-07-13T00:08:17.600Z,https://open.spotify.com/track/1JIffDQIhTeOeqYW66uu9e
+8,15y1BArk8UmePx9hqQDh42,The Sickness In You & I,Muse,The Wow! Signal,save_for_later,84.00,153.00,85.00,37.00,31.00,10B,1,2026-07-13T00:08:24.692Z,https://open.spotify.com/track/15y1BArk8UmePx9hqQDh42
+9,5OLvTcn4P3pZQ4erbwg6ro,Unravelling,Muse,The Wow! Signal,save_for_later,88.00,183.00,83.00,54.00,46.00,9B,1,2026-07-13T00:08:30.176Z,https://open.spotify.com/track/5OLvTcn4P3pZQ4erbwg6ro
+10,4vGKLADQksmUcPAVHu7oab,Yours Forever (feat. Matt Maeson),"Bishop Briggs,Matt Maeson",Yours Forever (feat. Matt Maeson),save_for_later,143.00,131.00,57.00,49.00,25.00,6A,1,2026-07-13T00:31:01.185Z,https://open.spotify.com/track/4vGKLADQksmUcPAVHu7oab
+11,0KseHCMXqZZkoKn4UJfWlO,Smile,Foreign Air,Smile (Remix),save_for_later,100.00,181.00,65.00,59.00,57.00,8B,1,2026-07-13T00:25:49.357Z,https://open.spotify.com/track/0KseHCMXqZZkoKn4UJfWlO
+12,6SkGAtFv38tQjouh7UeNpu,Where The Silence Goes,LEAP,One Million Pieces,save_for_later,170.00,178.00,91.00,47.00,40.00,9B,1,2026-07-13T00:24:42.662Z,https://open.spotify.com/track/6SkGAtFv38tQjouh7UeNpu
+13,5gmJlzd7GyggoqLedD7vKV,Hollow,"Flume,Emma Louise",Palaces,save_for_later,105.00,161.00,58.00,53.00,50.00,4A,1,2026-07-13T00:33:22.688Z,https://open.spotify.com/track/5gmJlzd7GyggoqLedD7vKV
+14,25dJMz1RMvCjoodJ2jI6BV,MOONWALKIN',GLU,MY DEMONS EP,save_for_later,144.00,157.00,58.00,56.00,43.00,12A,1,2026-07-13T00:33:32.368Z,https://open.spotify.com/track/25dJMz1RMvCjoodJ2jI6BV

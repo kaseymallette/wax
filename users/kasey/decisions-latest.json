@@ -1,8 +1,120 @@
 {
-  "exportedAt": 1783990590696,
+  "exportedAt": 1784148281886,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 336,
+  "count": 341,
   "decisions": [
+    {
+      "trackId": "5LYJ631w9ps5h9tdvac7yP",
+      "name": "Easy Lover",
+      "artists": "Philip Bailey,Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784148194128
+    },
+    {
+      "trackId": "00vlCXriiYxfO1AZoRJKec",
+      "name": "The Comedown",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147902472
+    },
+    {
+      "trackId": "50kY9njISacBSyPLyR8cwk",
+      "name": "Tropics",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147892656
+    },
+    {
+      "trackId": "5UEmz6KnGST4pSznrAPuJx",
+      "name": "Texas Hold‘em",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147885019
+    },
+    {
+      "trackId": "7vBs57yYONIjmlLFXjTazJ",
+      "name": "Murder",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147873968
+    },
+    {
+      "trackId": "3CpTESaweBfLB3VM2gwyOM",
+      "name": "Stars",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147811669
+    },
+    {
+      "trackId": "0M2qo3471lo6vo91qHM5Ub",
+      "name": "Goodnight Chicago",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147793645
+    },
+    {
+      "trackId": "6fc51JZVE0Yijdi6RuoLFv",
+      "name": "Painkillers",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147770095
+    },
+    {
+      "trackId": "1TDdYSYLIXMJ4EiKO6ZCYk",
+      "name": "Mission to Mars",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147763008
+    },
+    {
+      "trackId": "0hJS3EHWC4uL9sJ52ErpoN",
+      "name": "Hide",
+      "artists": "Rainbow Kitten Surprise",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147757090
+    },
+    {
+      "trackId": "3Dls79P2lgOM92yBQDalMZ",
+      "name": "Swimming",
+      "artists": "Florence + The Machine",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147719231
+    },
+    {
+      "trackId": "4tUOFydV4QoeqZOIoxzHNk",
+      "name": "Blinding",
+      "artists": "Florence + The Machine",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147699495
+    },
+    {
+      "trackId": "7tMF8Anyf7oIqQZSxE17do",
+      "name": "Everybody Scream",
+      "artists": "Florence + The Machine",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784147687818
+    },
+    {
+      "trackId": "32CpKhS5v5SFgfbXmdpsi7",
+      "name": "Hospital Beds",
+      "artists": "Florence + The Machine",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784147673792
+    },
     {
       "trackId": "2CxUw9KnY5VHugLbBZiCAF",
       "name": "I'm Not Really Here",
@@ -60,38 +172,6 @@
       "loggedAt": 1783933411451
     },
     {
-      "trackId": "7vBs57yYONIjmlLFXjTazJ",
-      "name": "Murder",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783933351719
-    },
-    {
-      "trackId": "3CpTESaweBfLB3VM2gwyOM",
-      "name": "Stars",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783933260136
-    },
-    {
-      "trackId": "50kY9njISacBSyPLyR8cwk",
-      "name": "Tropics",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783933207154
-    },
-    {
-      "trackId": "5UEmz6KnGST4pSznrAPuJx",
-      "name": "Texas Hold‘em",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783933165619
-    },
-    {
       "trackId": "4TVnzZW8dIPjMjg5e8gKhH",
       "name": "Games Without Frontiers",
       "artists": "Peter Gabriel",
@@ -112,7 +192,7 @@
       "name": "In The Air Tonight - 2015 Remastered",
       "artists": "Phil Collins",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783910415307
     },
     {
@@ -120,7 +200,7 @@
       "name": "I Don't Care Anymore - 2016 Remaster",
       "artists": "Phil Collins",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783910401120
     },
     {
@@ -170,46 +250,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "currently_listening",
       "loggedAt": 1783904409359
-    },
-    {
-      "trackId": "0M2qo3471lo6vo91qHM5Ub",
-      "name": "Goodnight Chicago",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783904322951
-    },
-    {
-      "trackId": "6fc51JZVE0Yijdi6RuoLFv",
-      "name": "Painkillers",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783904306437
-    },
-    {
-      "trackId": "1TDdYSYLIXMJ4EiKO6ZCYk",
-      "name": "Mission to Mars",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783904298992
-    },
-    {
-      "trackId": "0hJS3EHWC4uL9sJ52ErpoN",
-      "name": "Hide",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783904294847
-    },
-    {
-      "trackId": "00vlCXriiYxfO1AZoRJKec",
-      "name": "The Comedown",
-      "artists": "Rainbow Kitten Surprise",
-      "keepInLibrary": 1,
-      "repeatIntent": "save_for_later",
-      "loggedAt": 1783904265003
     },
     {
       "trackId": "7a2UznTMFRCL7c1sscXDEv",
