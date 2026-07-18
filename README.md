@@ -70,6 +70,17 @@ npm run dev
 
 Then open **http://127.0.0.1:3000**.
 
+Wax lands on **Import** by default (`/`). The top nav order is **Import → Evaluate → Shuffle → Library → Recents → Keeps → Playlists → Stats**.
+
+- Use **Import** to load your library CSV/DB.
+- Use **Evaluate** to review a playlist CSV and apply keep/remove decisions in bulk.
+- Use **Shuffle** for one-by-one listening decisions.
+- Use **Library** to browse/search tracks and edit repeat-intent tags directly.
+- Use **Recents** to review your latest logged decisions timeline.
+- Use **Keeps** to manage all keep-tagged songs and move tracks between keep buckets.
+- Use **Playlists** to inspect daily + intent playlists before Spotify push.
+- Use **Stats** to view totals, activity trends, and tag distribution.
+
 For full-song playback in the embed, sign into Spotify in any tab of the same browser. Premium plays the whole track; Free gives you 30-second previews.
 
 ### Import your music library

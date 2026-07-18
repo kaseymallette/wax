@@ -1,8 +1,800 @@
 {
-  "exportedAt": 1784148281886,
+  "exportedAt": 1784339234037,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 341,
+  "count": 432,
   "decisions": [
+    {
+      "trackId": "6vBhxOY5L0DJ7QSUxRuiAd",
+      "name": "Youth",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339194793
+    },
+    {
+      "trackId": "2b9B1QVb9obQx1zqIqmBxn",
+      "name": "Shallows",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339181980
+    },
+    {
+      "trackId": "0ue1SRXyvMme9iCSSWcuWb",
+      "name": "Numbers",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339174400
+    },
+    {
+      "trackId": "60wP3TZcl0sOFVfWrbADui",
+      "name": "Not Enough",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339167272
+    },
+    {
+      "trackId": "604UjnLgShAjVZhq0ingCg",
+      "name": "New Ways",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339154082
+    },
+    {
+      "trackId": "4jDMK7mlKrAAwygtaJOsTj",
+      "name": "Mothers",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339149112
+    },
+    {
+      "trackId": "6Qof5yPOxcKfCAZaZMtZ70",
+      "name": "Medicine",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339142283
+    },
+    {
+      "trackId": "6aIkm0WErAfsQ1xazOavfK",
+      "name": "Love",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339138254
+    },
+    {
+      "trackId": "7e4KdOOrZ1I4ybWpeDd3ow",
+      "name": "Landfill",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339134097
+    },
+    {
+      "trackId": "4bTkbxCPOgyzHmiApGNtKd",
+      "name": "Home",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339121051
+    },
+    {
+      "trackId": "7zOyGaIud15z9FrBthUfeL",
+      "name": "Fossa",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339110042
+    },
+    {
+      "trackId": "6NIJhiLIEUssFDBJBi2rR6",
+      "name": "My Heart",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032512
+    },
+    {
+      "trackId": "08rkQly80pDeIvY2uQKC2z",
+      "name": "5AM",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032511
+    },
+    {
+      "trackId": "602oIhuO9v7U3LqJBeqfXi",
+      "name": "I Can't Keep You",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032511
+    },
+    {
+      "trackId": "08yQOsu5UfEzrMk9xQJjTs",
+      "name": "Liar",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032510
+    },
+    {
+      "trackId": "634BbZtRlgkpWZIX3ytEbi",
+      "name": "Too Sad",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032509
+    },
+    {
+      "trackId": "5M4cvsIfpAIzFcFHtDvcb3",
+      "name": "Romance",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032508
+    },
+    {
+      "trackId": "622oH8Sm9hZaR9wiLracO1",
+      "name": "The Dazzler",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032508
+    },
+    {
+      "trackId": "0epcjIbZEW5cU4ooAd8PpJ",
+      "name": "New York",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032507
+    },
+    {
+      "trackId": "2ggIzOmjLGwsLBK8OZAbJB",
+      "name": "Crushing",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032506
+    },
+    {
+      "trackId": "5BgjyxVWI11cH36rzCIkh9",
+      "name": "Where the Time Went",
+      "artists": "Ex:Re,Josephine Stephenson,12 Ensemble",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032506
+    },
+    {
+      "trackId": "2y4Tj9DliQQC5MV5pLSXTq",
+      "name": "My Heart",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032505
+    },
+    {
+      "trackId": "0W3s3j1W9wejcPzZH3Ka58",
+      "name": "5AM",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032504
+    },
+    {
+      "trackId": "1KVkbF3nCtmpkucUBKP3RX",
+      "name": "I Can't Keep You",
+      "artists": "Ex:Re",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032503
+    },
+    {
+      "trackId": "5CqOJDUTd5gi8YvenNg1Sa",
+      "name": "Liar",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032503
+    },
+    {
+      "trackId": "6VoVG0X8ToU27bWyAXduJb",
+      "name": "Too Sad",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032502
+    },
+    {
+      "trackId": "1N4lStTVZN8KUD2d6SvimV",
+      "name": "The Dazzler",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032501
+    },
+    {
+      "trackId": "6OekrDohNUa6lMUQ6UWy1l",
+      "name": "Romance",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032501
+    },
+    {
+      "trackId": "0citn8Zfhpkpip4rwhlrAq",
+      "name": "New York",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032500
+    },
+    {
+      "trackId": "65AnZpYJ8mlZCa02MxWLnG",
+      "name": "Crushing",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032499
+    },
+    {
+      "trackId": "2cbnub8j1WFuUVmLOY56AQ",
+      "name": "Wish I Could Cross the Sea",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032498
+    },
+    {
+      "trackId": "3OkUiHa9aiUor3HphYw7CH",
+      "name": "Where the Time Went",
+      "artists": "Ex:Re",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032498
+    },
+    {
+      "trackId": "3yYPoZq0fsQ6d5iLvraz72",
+      "name": "To Rage",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032497
+    },
+    {
+      "trackId": "2fgMcXCUP0yf2pXOAmYXRB",
+      "name": "(Missed Calls)",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032496
+    },
+    {
+      "trackId": "3LKSRV0wMzYTnuGJvwLYrs",
+      "name": "Isolation",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032496
+    },
+    {
+      "trackId": "14iMoEpgyNjJ3y7bYJ9TTG",
+      "name": "Future Lover",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032494
+    },
+    {
+      "trackId": "7nu25XWqnLNRnqf8UGS10s",
+      "name": "Junkmail",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032493
+    },
+    {
+      "trackId": "0SB7Ew45h690xWhmWvWixm",
+      "name": "Swim Back",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032492
+    },
+    {
+      "trackId": "0Gqw2VCa5wtCibC22niG39",
+      "name": "Neptune",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032491
+    },
+    {
+      "trackId": "0FaTDETtzCRxYIf3noMnsF",
+      "name": "Dandelion",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784339032490
+    },
+    {
+      "trackId": "2tLLgIhHr3AFv0etCbjth2",
+      "name": "Party",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784339032489
+    },
+    {
+      "trackId": "2LadlqFWLPRJAQu3PEe9CN",
+      "name": "Be On Your Way",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032488
+    },
+    {
+      "trackId": "5YrMulUEHy0nwgLlqD9g3w",
+      "name": "Intro",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032487
+    },
+    {
+      "trackId": "1I1Ujc1QLzEgJCxyDXmHmr",
+      "name": "A Hole In The Earth",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032486
+    },
+    {
+      "trackId": "3XuhmFY6AwPmdbN674PtMZ",
+      "name": "Voices",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032485
+    },
+    {
+      "trackId": "5r8onkjhunKFydjcbL2JoB",
+      "name": "Improve",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032485
+    },
+    {
+      "trackId": "0iBfwJFNDe9XO2K0YLqCTK",
+      "name": "Dreams Of William",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032484
+    },
+    {
+      "trackId": "1S58IfG6kxDTTHfNdcwSpk",
+      "name": "I Can't Live Here Anymore",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032483
+    },
+    {
+      "trackId": "0grO1Y8vkaJqWu4im2fZy2",
+      "name": "All I Wanted",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032482
+    },
+    {
+      "trackId": "0jSt57QpcBnJLm3MZpJXKE",
+      "name": "Departure",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032481
+    },
+    {
+      "trackId": "6JR4oAmtvyMyitscEqJet2",
+      "name": "Witches",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784339032480
+    },
+    {
+      "trackId": "7la7uGsVc8YVnOWPmQyEcz",
+      "name": "Run",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784339032479
+    },
+    {
+      "trackId": "51oHidHioHAt2aUL6mHWGa",
+      "name": "Smother",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032478
+    },
+    {
+      "trackId": "1ziAdbTzyLDOLbLU7XSIJW",
+      "name": "The Right Way Around",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032477
+    },
+    {
+      "trackId": "6J6J9y7uKkdoLbKTCerX91",
+      "name": "Hope",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032477
+    },
+    {
+      "trackId": "5I25m3L32KCpo7WNdBSNL3",
+      "name": "Flaws",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032476
+    },
+    {
+      "trackId": "3gtL2E6j0vJb1LLtkphfMm",
+      "name": "Burn It Down",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784339032475
+    },
+    {
+      "trackId": "2zfeZ4DJBn5uqbnaVyqYmS",
+      "name": "Glass",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032474
+    },
+    {
+      "trackId": "1ygQqVSkR8A9DO5UQrWPqx",
+      "name": "The End",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032473
+    },
+    {
+      "trackId": "2pqbYs6WujMwox9pQiePDC",
+      "name": "Made Of Stone",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032473
+    },
+    {
+      "trackId": "0WXqirpUQC71A7BpoHBd20",
+      "name": "Fossa",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784339032472
+    },
+    {
+      "trackId": "61WG9Kz4xn03UrDkvg4vzN",
+      "name": "To Belong",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032471
+    },
+    {
+      "trackId": "26Ggcaz8arFAehpsfFTiRj",
+      "name": "No Care",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032470
+    },
+    {
+      "trackId": "4FUeeRJtq9auvjKm1za40S",
+      "name": "Alone / With You",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032469
+    },
+    {
+      "trackId": "5IPsPU8j0JENW8rDyPErdl",
+      "name": "Mothers",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032469
+    },
+    {
+      "trackId": "7IvZkmjsAW9t2QutuajQmo",
+      "name": "How",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032468
+    },
+    {
+      "trackId": "2X8DqCikgiVk3214hbHEpz",
+      "name": "Doing The Right Thing",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032466
+    },
+    {
+      "trackId": "05jFhbrKpgEOURy9gkWRTa",
+      "name": "Numbers",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032465
+    },
+    {
+      "trackId": "6SIwsg4DZx79ECsFgl6Xje",
+      "name": "New Ways",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784339032465
+    },
+    {
+      "trackId": "20aDJhWpujO3SaS11eZ3PW",
+      "name": "Amsterdam",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032463
+    },
+    {
+      "trackId": "4jpsjVOcUj9fVfqP72hSga",
+      "name": "Shallows",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032463
+    },
+    {
+      "trackId": "3aOcEH9JUJoi5lGAYW9Wsf",
+      "name": "Touch",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032462
+    },
+    {
+      "trackId": "0RHCkpiQtUcC6aEhjhLL1D",
+      "name": "Human",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032461
+    },
+    {
+      "trackId": "16BwvRjOxOmLKXVPmNjNDT",
+      "name": "Tomorrow",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032460
+    },
+    {
+      "trackId": "1WHo8i7PAnlk6EElCRUhuQ",
+      "name": "Lifeforms",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032460
+    },
+    {
+      "trackId": "6Ge8hGFQucHiGmy9BZbMQj",
+      "name": "Still",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032459
+    },
+    {
+      "trackId": "1vyrrrnb7182SL6iOMor3O",
+      "name": "Youth",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032458
+    },
+    {
+      "trackId": "1drUAdX3NY4dTieuxdedLY",
+      "name": "Smother",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032457
+    },
+    {
+      "trackId": "34FDwcjBvH90OMcEdchfHc",
+      "name": "Switzerland",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032456
+    },
+    {
+      "trackId": "35qDBpLRDvhz0az6Ib0hw4",
+      "name": "Winter",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032456
+    },
+    {
+      "trackId": "1zZcEoMG3ZEUU6hEPyPXh5",
+      "name": "Candles",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032453
+    },
+    {
+      "trackId": "3tOoVlYTFSTaEtGxPc3gGt",
+      "name": "The Woods",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032451
+    },
+    {
+      "trackId": "7bQfNecR1k52fPVQiZq0dJ",
+      "name": "Landfill",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032451
+    },
+    {
+      "trackId": "2r28VvWB0kMA3o4epSlcJG",
+      "name": "Love",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032450
+    },
+    {
+      "trackId": "6yAVbABh3EtTBFsnj0xUqn",
+      "name": "Youth",
+      "artists": "Daughter",
+      "keepInLibrary": 0,
+      "repeatIntent": "removed",
+      "loggedAt": 1784339032449
+    },
+    {
+      "trackId": "7H8fBamGUheu0DSpp3pj03",
+      "name": "Medicine",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784339032448
+    },
+    {
+      "trackId": "0P42eWQvmNe6I453EkicVo",
+      "name": "Home",
+      "artists": "Daughter",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784339032445
+    },
+    {
+      "trackId": "0EE1wyppif56kWOdETvVsg",
+      "name": "Devil Devil",
+      "artists": "MILCK",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784336689176
+    },
+    {
+      "trackId": "2bKhIGdMdcqCqQ2ZhSv5nE",
+      "name": "Middle",
+      "artists": "DJ Snake,Bipolar Sunshine",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784336631377
+    },
+    {
+      "trackId": "2mM9r7jFGUfEu3p5Nk8Cgm",
+      "name": "Cliff",
+      "artists": "Låpsley",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784336631376
+    },
+    {
+      "trackId": "0xCA70t1ZA4fa9UOE0lIJm",
+      "name": "I'm a Mess",
+      "artists": "Ed Sheeran",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784336631375
+    },
+    {
+      "trackId": "6Bj6CdIxDsBIQjDPsElCTs",
+      "name": "Little Numbers - Acoustic Version",
+      "artists": "BOY",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784336631374
+    },
+    {
+      "trackId": "1ClQ0J3D1pbaBtCAwadsqw",
+      "name": "Nobody Dies",
+      "artists": "Thao & The Get Down Stay Down",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784336631373
+    },
+    {
+      "trackId": "3qhobDAfBcVoOWZP8Ck8R2",
+      "name": "Ophelia",
+      "artists": "The Lumineers",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784336631372
+    },
+    {
+      "trackId": "0EJfFBsTiTDqariX5cZfrC",
+      "name": "Carl Sagan",
+      "artists": "Night Moves",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784336631371
+    },
+    {
+      "trackId": "6yHczwGhD6R0Mh1fe6IHkG",
+      "name": "Genghis Khan",
+      "artists": "Miike Snow",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784336631370
+    },
+    {
+      "trackId": "3CRDbSIZ4r5MsZ0YwxuEkn",
+      "name": "Stressed Out",
+      "artists": "Twenty One Pilots",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784336631369
+    },
+    {
+      "trackId": "5E0pS3sXgWdQZMKChqYXHE",
+      "name": "Basic Instinct",
+      "artists": "The Acid",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784336631367
+    },
+    {
+      "trackId": "2U6hcDLZHYRSd9Up0mMe9W",
+      "name": "Temporary Love",
+      "artists": "The Brinks",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784336631360
+    },
     {
       "trackId": "5LYJ631w9ps5h9tdvac7yP",
       "name": "Easy Lover",
@@ -1156,14 +1948,6 @@
       "loggedAt": 1783900221016
     },
     {
-      "trackId": "0FaTDETtzCRxYIf3noMnsF",
-      "name": "Dandelion",
-      "artists": "Daughter",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783900188935
-    },
-    {
       "trackId": "5916POJDlPQRBbe1SJc7uK",
       "name": "Good Girl",
       "artists": "Paris Paloma",
@@ -1178,14 +1962,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "currently_listening",
       "loggedAt": 1783900152605
-    },
-    {
-      "trackId": "4bTkbxCPOgyzHmiApGNtKd",
-      "name": "Home",
-      "artists": "Daughter",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783892730093
     },
     {
       "trackId": "3GS8qG28p2RF6M7S5rFdx5",
@@ -1892,14 +2668,6 @@
       "loggedAt": 1783888528415
     },
     {
-      "trackId": "2LadlqFWLPRJAQu3PEe9CN",
-      "name": "Be On Your Way",
-      "artists": "Daughter",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783888506110
-    },
-    {
       "trackId": "5J58slQI9ku9125VhQ070L",
       "name": "Beep",
       "artists": "The Pussycat Dolls,will.i.am",
@@ -1970,14 +2738,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "favorites_archive",
       "loggedAt": 1783887430910
-    },
-    {
-      "trackId": "0grO1Y8vkaJqWu4im2fZy2",
-      "name": "All I Wanted",
-      "artists": "Daughter",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783887411996
     },
     {
       "trackId": "0DJJdLSQKTPVnAA2iEuvsQ",
@@ -2058,14 +2818,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "favorites_archive",
       "loggedAt": 1783885328120
-    },
-    {
-      "trackId": "14iMoEpgyNjJ3y7bYJ9TTG",
-      "name": "Future Lover",
-      "artists": "Daughter",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783885190436
     },
     {
       "trackId": "5l8oNQsDDPNFUIV5M4lzRJ",
@@ -2386,30 +3138,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "currently_listening",
       "loggedAt": 1783818639237
-    },
-    {
-      "trackId": "2X8DqCikgiVk3214hbHEpz",
-      "name": "Doing The Right Thing",
-      "artists": "Daughter",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783818622016
-    },
-    {
-      "trackId": "0ue1SRXyvMme9iCSSWcuWb",
-      "name": "Numbers",
-      "artists": "Daughter",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783818577567
-    },
-    {
-      "trackId": "5E0pS3sXgWdQZMKChqYXHE",
-      "name": "Basic Instinct",
-      "artists": "The Acid",
-      "keepInLibrary": 1,
-      "repeatIntent": "favorites_archive",
-      "loggedAt": 1783818561314
     },
     {
       "trackId": "0Y0opRUBGuBOh7sogywclY",

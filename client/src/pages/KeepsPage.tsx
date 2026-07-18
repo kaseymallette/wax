@@ -36,13 +36,12 @@ import {
 import { Clock, EarOff, Headphones, Library, MoreHorizontal, Trash2 } from "lucide-react";
 
 const KEEP_DECISION_OPTIONS = REPEAT_INTENT_OPTIONS.filter(
-  (opt) => opt.value !== "undecided" && opt.value !== "removed",
+  (opt) => opt.value !== "undecided" && opt.value !== "removed" && opt.value !== "off_rotation",
 );
 const KEEP_DECISION_ORDER = [
   "currently_listening",
-  "save_for_later",
   "favorites_archive",
-  "off_rotation",
+  "save_for_later",
   "skip_for_now",
 ] as const;
 const KEEP_DECISION_RANK = new Map(KEEP_DECISION_ORDER.map((value, index) => [value, index]));
@@ -71,9 +70,13 @@ function keepCountBadgeClass(tag: (typeof TAG_FILTERS)[number]["value"]): string
   if (tag === "currently_listening") return "border-blue-500/40 bg-blue-500/15 text-blue-400";
   if (tag === "favorites_archive") return "border-emerald-500/40 bg-emerald-500/15 text-emerald-400";
   if (tag === "save_for_later") return "border-amber-500/40 bg-amber-500/15 text-amber-400";
-  if (tag === "skip_for_now") return "border-destructive/40 bg-destructive/15 text-destructive";
-  if (tag === "off_rotation") return "border-orange-500/40 bg-orange-500/15 text-orange-400";
+  if (tag === "skip_for_now") return "border-orange-500/40 bg-orange-500/15 text-orange-400";
   return "border-primary/40 bg-primary/15 text-primary";
+}
+
+function keepIntentChipClass(intent: string): string {
+  if (intent === "skip_for_now") return "bg-orange-500/15 text-orange-400";
+  return repeatIntentChipClass(intent);
 }
 
 export default function KeepsPage() {
@@ -217,22 +220,18 @@ export default function KeepsPage() {
               <p>Grouped into 7 daily playlists (Mon-Sun), up to 30 songs each.</p>
             </div>
             <div>
-              <p className="font-semibold text-foreground">Save for Later</p>
-              <p>Hold for future listens. Exported as one playlist.</p>
-            </div>
-            <div>
               <p className="font-semibold text-foreground">Favorites Archive</p>
               <p>Your all-time favorites not currently in rotation. Exported as one playlist.</p>
             </div>
           </div>
           <div className="space-y-3">
             <div>
-              <p className="font-semibold text-foreground">Off the Rotation</p>
-              <p>Had its run. Didn't make the all-time favorites cut. No playlist is generated.</p>
+              <p className="font-semibold text-foreground">Save for Later</p>
+              <p>Songs you want to listen to but don't have the time. Generated as one playlist.</p>
             </div>
             <div>
               <p className="font-semibold text-foreground">Skip for Now</p>
-              <p>Temporarily out of rotation. No playlist is generated.</p>
+              <p>Liked songs off the rotation. Generated as one playlist.</p>
             </div>
           </div>
         </div>
@@ -261,7 +260,7 @@ export default function KeepsPage() {
                   tag === f.value
                     ? f.value === "all"
                       ? "bg-primary/15 text-primary"
-                      : `${repeatIntentChipClass(f.value)} ring-1 ring-current`
+                      : `${keepIntentChipClass(f.value)} ring-1 ring-current`
                     : "bg-secondary/40 text-muted-foreground"
                 }`}
               >
@@ -371,7 +370,7 @@ export default function KeepsPage() {
                             {l.listened ? "Listened" : "Background"}
                           </span>
                           <span
-                            className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${repeatIntentChipClass(l.repeatIntent)}`}
+                            className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${keepIntentChipClass(l.repeatIntent)}`}
                           >
                             {repeatIntentLabel(l.repeatIntent)}
                           </span>
@@ -404,7 +403,7 @@ export default function KeepsPage() {
                               data-testid={`button-keep-tag-${l.id}-${opt.value}`}
                               className={`rounded-full border px-2 py-0.5 text-[10px] font-medium transition-colors hover-elevate ${
                                 l.repeatIntent === opt.value
-                                  ? `${repeatIntentChipClass(opt.value)} border-current`
+                                  ? `${keepIntentChipClass(opt.value)} border-current`
                                   : "border-border bg-secondary/40 text-muted-foreground"
                               }`}
                             >

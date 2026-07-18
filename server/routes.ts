@@ -10,6 +10,7 @@ import { storage } from "./storage";
 import { buildDailyPlaylists } from "./dailyPlaylists";
 import {
   listenPayloadSchema,
+  repeatIntentSchema,
   repeatIntentUpdateSchema,
   trackImportSchema,
   featureImportRowSchema,
@@ -221,6 +222,180 @@ export async function registerRoutes(
     const n = Number(v);
     return Number.isFinite(n) ? Math.round(n) : null;
   }
+
+  app.post("/api/evaluate/csv", upload.single("file"), async (req: Request, res) => {
+    const file = (req as any).file;
+    if (!file) return res.status(400).json({ error: "No file uploaded" });
+
+    try {
+      const raw = await fs.promises.readFile(file.path, "utf8");
+      const text = raw.replace(/^\uFEFF/, "");
+      const rows = parseCsv(text);
+      fs.promises.unlink(file.path).catch(() => {});
+
+      if (rows.length === 0) {
+        return res.status(400).json({ error: "CSV is empty or unparseable." });
+      }
+
+      const header = rows[0].map((h) => h.trim());
+      const idx = (...names: string[]) => {
+        for (const n of names) {
+          const i = header.findIndex((h) => h.toLowerCase() === n.toLowerCase());
+          if (i !== -1) return i;
+        }
+        return -1;
+      };
+
+      const iId = idx("Track URI", "Spotify Track Id", "Track Id", "track_id", "id");
+      const iName = idx("Song", "Track Name", "Title", "Song Name", "Track", "name", "track_name", "song_name");
+      const iArtists = idx("Artist Name(s)", "Artist Name", "Artists", "Artist", "Performer", "Performers", "artist", "artists");
+      const iAlbum = idx("Album Name", "Album", "album");
+
+      if (iId === -1 && (iName === -1 || iArtists === -1)) {
+        return res.status(400).json({
+          error:
+            "CSV must include Track ID/URI or include both Song and Artist columns.",
+        });
+      }
+
+      const sourceRows = rows
+        .slice(1)
+        .map((r) => ({
+          trackId: iId !== -1 ? extractId(r[iId]) : null,
+          name: iName !== -1 ? String(r[iName] ?? "").trim() : "",
+          artists: iArtists !== -1 ? String(r[iArtists] ?? "").trim() : "",
+          album: iAlbum !== -1 ? String(r[iAlbum] ?? "").trim() : "",
+        }))
+        .filter((r) => r.trackId || r.name || r.artists || r.album);
+
+      const ids = Array.from(new Set(sourceRows.map((r) => r.trackId).filter(Boolean) as string[]));
+      const byId = new Map(storage.listTracksByIds(ids, false).map((t) => [t.id, t]));
+
+      const normalize = (v: string) => v.trim().toLowerCase();
+      const needsFallback = sourceRows.some((r) => !r.trackId && r.name && r.artists);
+      const byArtistSong = new Map<string, ReturnType<typeof storage.listTracks>[number]>();
+      if (needsFallback) {
+        const allTracks = storage.listTracks({ status: "all", q: "", sort: "name", includeFeatures: false });
+        for (const t of allTracks) {
+          const key = `${normalize(t.name)}::${normalize(t.artists)}`;
+          if (!byArtistSong.has(key)) byArtistSong.set(key, t);
+        }
+      }
+
+      let matchedByTrackId = 0;
+      let matchedByArtistSong = 0;
+      let unmatched = 0;
+
+      const reviewRows = sourceRows.map((source, rowIndex) => {
+        let match: ReturnType<typeof storage.listTracks>[number] | undefined;
+        let matchType: "track_id" | "artist_song" | "unmatched" = "unmatched";
+
+        if (source.trackId) {
+          match = byId.get(source.trackId);
+          if (match) {
+            matchType = "track_id";
+            matchedByTrackId += 1;
+          }
+        }
+
+        if (!match && source.name && source.artists) {
+          const key = `${normalize(source.name)}::${normalize(source.artists)}`;
+          match = byArtistSong.get(key);
+          if (match) {
+            matchType = "artist_song";
+            matchedByArtistSong += 1;
+          }
+        }
+
+        if (!match) unmatched += 1;
+
+        return {
+          rowIndex,
+          source,
+          matchType,
+          track: match
+            ? {
+                id: match.id,
+                name: match.name,
+                artists: match.artists,
+                album: match.album,
+                repeatIntent: match.repeatIntent,
+              }
+            : null,
+        };
+      });
+
+      res.json({
+        rows: reviewRows,
+        totals: {
+          total: reviewRows.length,
+          matched: matchedByTrackId + matchedByArtistSong,
+          matchedByTrackId,
+          matchedByArtistSong,
+          unmatched,
+        },
+      });
+    } catch (e: any) {
+      fs.promises.unlink(file.path).catch(() => {});
+      res.status(400).json({ error: e?.message || "Could not parse that CSV." });
+    }
+  });
+
+  const evaluateDecisionSchema = z.object({
+    trackId: z.string().min(1),
+    keepInLibrary: z.union([z.boolean(), z.number().int().min(0).max(1)]),
+    repeatIntent: repeatIntentSchema.optional(),
+  });
+
+  app.post("/api/evaluate/apply", (req, res) => {
+    const parsed = z
+      .object({
+        decisions: z.array(evaluateDecisionSchema).min(1),
+      })
+      .safeParse(req.body);
+
+    if (!parsed.success) {
+      return res.status(400).json({ error: "Invalid evaluate decisions payload" });
+    }
+
+    const decisions: z.infer<typeof evaluateDecisionSchema>[] = parsed.data.decisions;
+
+    let applied = 0;
+    let failed = 0;
+    const errors: { trackId: string; error: string }[] = [];
+
+    for (const d of decisions) {
+      const keep = d.keepInLibrary === true || d.keepInLibrary === 1;
+      const repeatIntent = keep ? (d.repeatIntent ?? "skip_for_now") : "removed";
+      const wantAgain = repeatIntent === "currently_listening" || repeatIntent === "favorites_archive" || repeatIntent === "save_for_later";
+      const wouldAgain = repeatIntent === "currently_listening" || repeatIntent === "favorites_archive";
+
+      const result = storage.addListen({
+        trackId: d.trackId,
+        listened: true,
+        wantAgain,
+        wouldAgain,
+        keepInLibrary: keep,
+        repeatIntent,
+        activity: [],
+        notes: "",
+      });
+
+      if ("error" in result) {
+        failed += 1;
+        errors.push({ trackId: d.trackId, error: String(result.error ?? "Unknown error") });
+      } else {
+        applied += 1;
+      }
+    }
+
+    res.json({
+      ok: true,
+      applied,
+      failed,
+      errors,
+    });
+  });
 
   function toFeatureNumber(v: unknown): number | null {
     if (v === null || v === undefined || v === "") return null;
@@ -748,6 +923,10 @@ export async function registerRoutes(
     } catch (e: any) {
       res.status(500).json({ error: e?.message || "Could not generate daily playlists." });
     }
+  });
+
+  app.get("/api/playlists/full-library", (_req, res) => {
+    res.json(storage.listTracks({ status: "all", sort: "name", q: "", includeFeatures: false }));
   });
 
   const weekdayMapSchema = z.object({

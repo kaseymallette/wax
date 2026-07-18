@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
   SelectContent,
@@ -96,29 +97,28 @@ export default function PlaylistsPage() {
       return res.json();
     },
   });
-
   const playlists = query.data?.playlists ?? [];
   const diagnostics = query.data?.diagnostics;
   const keepTracks = keepTracksQuery.data ?? [];
-  const favoritesArchiveTracks = [...keepTracks.filter((t) => t.repeatIntent === "favorites_archive")].sort((a, b) => {
+  const compareArtistAlbumSong = (a: KeepTrack, b: KeepTrack) => {
     return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
-  });
-  const compareAddedAtDesc = (a: KeepTrack, b: KeepTrack) => {
-    const aAdded = a.addedAt ? Date.parse(a.addedAt) : Number.NaN;
-    const bAdded = b.addedAt ? Date.parse(b.addedAt) : Number.NaN;
-    const aHas = Number.isFinite(aAdded);
-    const bHas = Number.isFinite(bAdded);
-    if (aHas && bHas && aAdded !== bAdded) return bAdded - aAdded;
-    if (aHas && !bHas) return -1;
-    if (!aHas && bHas) return 1;
-    return a.name.localeCompare(b.name);
   };
+  const favoritesArchiveTracks = [...keepTracks.filter((t) => t.repeatIntent === "favorites_archive")].sort(compareArtistAlbumSong);
   const saveForLaterTracks = [...keepTracks.filter((t) => t.repeatIntent === "save_for_later")].sort((a, b) => {
-    return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
+    return compareArtistAlbumSong(a, b);
   });
   const currentlyListeningTracks = [...keepTracks.filter((t) => t.repeatIntent === "currently_listening")].sort((a, b) => {
-    return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
+    return compareArtistAlbumSong(a, b);
   });
+  const skipForNowTracks = [...keepTracks.filter((t) => t.repeatIntent === "skip_for_now")].sort((a, b) => {
+    return compareArtistAlbumSong(a, b);
+  });
+  const fullKeepsTracks = [...keepTracks.filter((t) => (
+    t.repeatIntent === "currently_listening" ||
+    t.repeatIntent === "favorites_archive" ||
+    t.repeatIntent === "save_for_later" ||
+    t.repeatIntent === "skip_for_now"
+  ))].sort((a, b) => compareArtistAlbumSong(a, b));
 
   useEffect(() => {
     if (playlists.length === 0) return;
@@ -193,39 +193,50 @@ export default function PlaylistsPage() {
     });
   };
 
+  const keepLists: { key: string; title: string; tracks: KeepTrack[] }[] = [
+    { key: "currently-listening", title: "Currently Listening", tracks: currentlyListeningTracks },
+    { key: "favorites-archive", title: "Favorites Archive", tracks: favoritesArchiveTracks },
+    { key: "save-for-later", title: "Save for Later", tracks: saveForLaterTracks },
+    { key: "skip-for-now", title: "Skip for Now", tracks: skipForNowTracks },
+    { key: "full-keeps", title: "Full Music Library", tracks: fullKeepsTracks },
+  ];
+
   return (
     <Layout>
       <h1 className="font-display text-xl font-bold">Playlists</h1>
-      <p className="text-sm text-muted-foreground">
-        7 daily playlists (Mon-Sun) are created from Currently Listening using BPM + mood clustering.
-      </p>
-      <p className="text-sm text-muted-foreground">
-        3 additional playlists are created: Currently Listening, Save for Later, and Favorites Archive.
-      </p>
+      <Tabs defaultValue="daily" className="mt-4">
+        <TabsList>
+          <TabsTrigger value="daily" data-testid="tab-playlists-daily">Daily Playlists</TabsTrigger>
+          <TabsTrigger value="keeps" data-testid="tab-playlists-keeps">Keeps</TabsTrigger>
+        </TabsList>
 
-      {query.isLoading ? (
-        <div className="mt-6 space-y-3">
-          {Array.from({ length: 7 }).map((_, i) => (
-            <Skeleton key={i} className="h-40 w-full rounded-xl" />
-          ))}
-        </div>
-      ) : !diagnostics ? (
-        <div className="mt-6 rounded-xl border border-border bg-card px-4 py-8 text-sm text-muted-foreground">
-          Could not load playlists.
-        </div>
-      ) : (
-        <>
-          <div className="mt-4 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground">
-            <div className="flex flex-wrap gap-3">
-              <span>Currently Listening: {diagnostics.currentlyListeningCount}</span>
-              <span>Usable for clustering: {diagnostics.usableTrackCount}</span>
-              <span>Missing features: {diagnostics.excludedMissingFeatures}</span>
-              {diagnostics.droppedForCapacity > 0 && <span>Dropped at cap: {diagnostics.droppedForCapacity}</span>}
+        <TabsContent value="daily">
+          <p className="text-sm text-muted-foreground">
+            7 daily playlists (Mon-Sun) are created from Currently Listening using BPM + mood clustering.
+          </p>
+          {query.isLoading ? (
+            <div className="mt-6 space-y-3">
+              {Array.from({ length: 7 }).map((_, i) => (
+                <Skeleton key={i} className="h-40 w-full rounded-xl" />
+              ))}
             </div>
-          </div>
+          ) : !diagnostics ? (
+            <div className="mt-6 rounded-xl border border-border bg-card px-4 py-8 text-sm text-muted-foreground">
+              Could not load playlists.
+            </div>
+          ) : (
+            <>
+              <div className="mt-4 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground">
+                <div className="flex flex-wrap gap-3">
+                  <span>Currently Listening: {diagnostics.currentlyListeningCount}</span>
+                  <span>Usable for clustering: {diagnostics.usableTrackCount}</span>
+                  <span>Missing features: {diagnostics.excludedMissingFeatures}</span>
+                  {diagnostics.droppedForCapacity > 0 && <span>Dropped at cap: {diagnostics.droppedForCapacity}</span>}
+                </div>
+              </div>
 
-          <div className="mt-6 space-y-4">
-            {playlists.map((playlist) => {
+              <div className="mt-6 space-y-4">
+                {playlists.map((playlist) => {
               const panelKey = `daily-${playlist.index}`;
               const isExpanded = expanded.has(panelKey);
               const preview = playlist.tracks.slice(0, 5);
@@ -315,12 +326,17 @@ export default function PlaylistsPage() {
                 </div>
               );
             })}
+              </div>
+            </>
+          )}
+        </TabsContent>
 
-            {[
-              { key: "currently-listening", title: "Currently Listening", tracks: currentlyListeningTracks },
-              { key: "save-for-later", title: "Save for Later", tracks: saveForLaterTracks },
-              { key: "favorites-archive", title: "Favorites Archive", tracks: favoritesArchiveTracks },
-            ].map((list) => {
+        <TabsContent value="keeps">
+          <p className="text-sm text-muted-foreground">
+            Keep-based playlists plus a Full Music Library view.
+          </p>
+          <div className="mt-6 space-y-4">
+            {keepLists.map((list) => {
               const isExpanded = expanded.has(list.key);
               const preview = list.tracks.slice(0, 5);
               const visibleTracks = isExpanded ? list.tracks : preview;
@@ -408,8 +424,8 @@ export default function PlaylistsPage() {
               );
             })}
           </div>
-        </>
-      )}
+        </TabsContent>
+      </Tabs>
     </Layout>
   );
 }

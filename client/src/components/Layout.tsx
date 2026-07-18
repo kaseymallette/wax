@@ -2,16 +2,17 @@ import { Link, useLocation } from "wouter";
 import { Logo } from "./Logo";
 import { useTheme } from "@/lib/theme";
 import { Button } from "@/components/ui/button";
-import { Shuffle, Library, Clock, Heart, ListMusic, BarChart3, Upload, Moon, Sun } from "lucide-react";
+import { Shuffle, Library, Clock, Heart, ListMusic, BarChart3, Upload, Moon, Sun, ListChecks } from "lucide-react";
 
 const NAV = [
-  { href: "/", label: "Shuffle", icon: Shuffle },
+  { href: "/", label: "Import", icon: Upload },
+  { href: "/evaluate", label: "Evaluate", icon: ListChecks },
+  { href: "/shuffle", label: "Shuffle", icon: Shuffle },
   { href: "/library", label: "Library", icon: Library },
   { href: "/recents", label: "Recents", icon: Clock },
   { href: "/keeps", label: "Keeps", icon: Heart },
   { href: "/playlists", label: "Playlists", icon: ListMusic },
   { href: "/stats", label: "Stats", icon: BarChart3 },
-  { href: "/import", label: "Import", icon: Upload },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -35,8 +36,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
             {NAV.map((item) => {
               const active =
                 item.href === "/"
-                  ? location === "/"
-                  : location.startsWith(item.href);
+                  ? location === "/" || location.startsWith("/import")
+                  : item.href === "/shuffle"
+                    ? location.startsWith("/shuffle")
+                    : location.startsWith(item.href);
               const Icon = item.icon;
               return (
                 <Link key={item.href} href={item.href} data-testid={`link-nav-${item.label.toLowerCase()}`}>

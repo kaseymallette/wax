@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/lib/theme";
 import Shuffle from "@/pages/Shuffle";
+import EvaluatePage from "@/pages/EvaluatePage";
 import LibraryPage from "@/pages/LibraryPage";
 import RecentsPage from "@/pages/RecentsPage";
 import KeepsPage from "@/pages/KeepsPage";
@@ -17,13 +18,15 @@ import NotFound from "@/pages/not-found";
 function AppRouter() {
   return (
     <Switch>
-      <Route path="/" component={Shuffle} />
+      <Route path="/" component={ImportPage} />
+      <Route path="/shuffle" component={Shuffle} />
+      <Route path="/import" component={ImportPage} />
+      <Route path="/evaluate" component={EvaluatePage} />
       <Route path="/library" component={LibraryPage} />
       <Route path="/recents" component={RecentsPage} />
       <Route path="/keeps" component={KeepsPage} />
       <Route path="/playlists" component={PlaylistsPage} />
       <Route path="/stats" component={StatsPage} />
-      <Route path="/import" component={ImportPage} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -45,6 +45,11 @@ const SORTS: { key: SortKey; label: string }[] = [
   { key: "name", label: "Name" },
 ];
 
+function libraryIntentChipClass(intent: string | null | undefined): string {
+  if (intent === "skip_for_now") return "bg-orange-500/15 text-orange-400";
+  return repeatIntentChipClass(intent);
+}
+
 export default function LibraryPage() {
   const { toast } = useToast();
   const [status, setStatus] = useState<StatusFilter>("all");
@@ -152,7 +157,7 @@ export default function LibraryPage() {
                   </div>
                 </div>
                 <div className="hidden sm:block">
-                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${repeatIntentChipClass(t.repeatIntent)}`}>
+                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${libraryIntentChipClass(t.repeatIntent)}`}>
                     {repeatIntentLabel(t.repeatIntent)}
                   </span>
                 </div>
@@ -278,7 +283,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
                 <span className="text-xs text-muted-foreground">Listen again</span>
                 {!editingRepeatIntent ? (
                   <>
-                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${repeatIntentChipClass(editing.repeatIntent)}`} data-testid="text-current-repeat-intent">
+                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${libraryIntentChipClass(editing.repeatIntent)}`} data-testid="text-current-repeat-intent">
                       {repeatIntentLabel(editing.repeatIntent)}
                     </span>
                     <button
@@ -300,7 +305,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
                           data-testid={`edit-repeat-intent-${opt.value}`}
                           className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover-elevate ${
                             editing.repeatIntent === opt.value
-                              ? repeatIntentChipClass(opt.value) + " border-current"
+                              ? libraryIntentChipClass(opt.value) + " border-current"
                               : "border-border bg-secondary/40 text-muted-foreground"
                           }`}
                         >
@@ -363,7 +368,7 @@ function TrackDialog({ editing, onClose }: { editing: TrackWithStats | null; onC
                               <EarOff className="h-3.5 w-3.5 text-muted-foreground" aria-label="Background" />
                             )}
                             {l.keepInLibrary ? (
-                              <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium ${repeatIntentChipClass(l.repeatIntent)}`}>
+                              <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium ${libraryIntentChipClass(l.repeatIntent)}`}>
                                 {repeatIntentLabel(l.repeatIntent)}
                               </span>
                             ) : null}

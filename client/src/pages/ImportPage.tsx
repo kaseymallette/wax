@@ -368,7 +368,7 @@ export default function ImportPage() {
             )}
             <div className="mt-6 flex gap-2">
               <Button variant="secondary" onClick={reset} data-testid="button-import-another">Import another</Button>
-              <Button onClick={() => (window.location.hash = "#/")} data-testid="button-go-shuffle">Start shuffling</Button>
+              <Button onClick={() => (window.location.hash = "#/shuffle")} data-testid="button-go-shuffle">Start shuffling</Button>
             </div>
           </div>
         )}

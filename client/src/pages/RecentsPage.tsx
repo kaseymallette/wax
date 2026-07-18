@@ -27,6 +27,11 @@ import {
 
 const PAGE_SIZE = 50;
 
+function recentsIntentChipClass(intent: string | null | undefined): string {
+  if (intent === "skip_for_now") return "bg-orange-500/15 text-orange-400";
+  return repeatIntentChipClass(intent);
+}
+
 function featureChips(t: TrackWithStats | undefined): string[] {
   if (!t) return [];
   const chips: string[] = [];
@@ -151,7 +156,7 @@ export default function RecentsPage() {
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">
             Head to Shuffle and log your first listen — it'll show up here as a journal of what you played and when.
           </p>
-          <Link href="/">
+          <Link href="/shuffle">
             <a><Button className="mt-6" size="lg" data-testid="button-go-shuffle">Go to Shuffle</Button></a>
           </Link>
         </div>
@@ -286,7 +291,7 @@ export default function RecentsPage() {
                             {l.listened ? <Headphones className="h-3 w-3" /> : <EarOff className="h-3 w-3" />}
                             {l.listened ? "Listened" : "Background"}
                           </span>
-                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${repeatIntentChipClass(l.repeatIntent)}`}>
+                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${recentsIntentChipClass(l.repeatIntent)}`}>
                             {repeatIntentLabel(l.repeatIntent)}
                           </span>
                           <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
