@@ -1,28 +1,83 @@
 #,Song,Artist,BPM,Camelot,Energy,Added At,Duration,Popularity,Genres,Album,Album Date,Dance,Acoustic,Instrumental,Valence,Speech,Live,Loud (Db),Key,Time Signature,Spotify Track Id,ISRC,Explicit
-1,"I Know What I Like (In Your Wardrobe) - 2007 Stereo Mix","Genesis",85,10B,82,2026-07-15,04:10,55,"progressive rock, art rock","Selling England by the Pound (2007 Stereo Mix)",1973-10-12,49,8,0,33,10,10,-9,D Major,4,31VLSfg86NJN74rUHQi7e8,GBAAA0701760,no
-2,"Cuckoo Cocoon - 2007 Stereo Mix","Genesis",82,9A,32,2026-07-15,02:12,38,"progressive rock, art rock","The Lamb Lies Down on Broadway (2007 Stereo Mix)",1974-11-18,31,97,0,21,0,10,-11,E Minor,4,7tN2IV0WjRFVgi9ybajwYQ,GBAAA0701779,no
-3,"Let's Go Crazy","Prince",196,1B,93,2026-07-16,04:39,71,"funk rock, funk","Purple Rain",1984-06-25,31,2,0,38,10,10,-6,B Major,4,6FMIVQPZg9cmMY8hPxAacD,USWB19903188,no
-4,"Beaches In Tennessee","Cage The Elephant",114,9A,91,2026-07-16,03:16,65,"","Beaches In Tennessee",2026-07-10,68,4,0,62,0,30,-3,E Minor,4,20TOJbuP4XyGBEFbwB8Vbm,USUG12605674,no
-5,"Do I Ever Belong?","Two Feet",150,2B,59,2026-07-16,02:50,53,"","Do I Ever Belong?",2026-07-10,59,14,1,37,0,50,-7,F#/G♭ Major,4,7iy66dzNBRSu0DRj1ZThTa,QMBZ92668775,no
-6,"If You Could Talk","Dexter and The Moonrocks",188,3A,62,2026-07-16,03:55,0,"","If You Could Talk",2026-07-15,58,9,0,54,0,0,-5,A#/B♭ Minor,4,6VeZUUTHx67EmtTM4682eA,USUG12606700,no
-7,"Hospital Beds","Cold War Kids",96,11B,67,2026-07-16,04:39,49,"","Robbers & Cowards",2007-05-11,54,14,8,13,0,10,-5,A Major,4,4Zhnwb8jvP09aIRAzQMG08,USCJ80600051,no
-8,"Staring at the Sun","Elderbrook,Rules",123,4B,74,2026-07-16,03:32,0,"deep house, stutter house","Staring at the Sun",2026-07-16,37,1,1,7,0,10,-8,G#/A♭ Major,4,2bqWo67hUC1mXH3HycjtOj,GBCFB2600413,no
-9,"Lucky Dimes","The Temper Trap",84,9A,96,2026-07-16,03:28,45,"","Sungazer",2026-07-10,23,6,1,50,20,30,-3,E Minor,3,6nyXEkO61ijAnNJ77Bid5o,AULI02563610,no
-10,"Into The Wild","The Temper Trap",118,1B,63,2026-07-16,03:41,43,"","Sungazer",2026-07-10,56,4,0,22,0,10,-4,B Major,4,0MO5nScLDab8HHZyvYh4Mr,AULI02565970,no
-11,"These Arms","The Temper Trap",130,12A,74,2026-07-16,04:17,43,"","Sungazer",2026-07-10,53,0,16,23,0,0,-5,C♯/D♭ Minor,4,0qx9BUk40KSvaCA3rpUkCN,AULI02566700,no
-12,"Bird on a Wire","The Temper Trap",172,4B,81,2026-07-16,04:32,43,"","Sungazer",2026-07-10,49,1,0,56,0,10,-3,G#/A♭ Major,4,4zYgyzWuDtd9P2fP54qeJ0,AULI02566710,yes
-13,"Giving Up Air","The Temper Trap",126,5A,78,2026-07-16,04:47,43,"","Sungazer",2026-07-10,53,0,0,23,0,10,-6,C Minor,4,1hUgRKylrpLNBKjblt3ZW9,AULI02564220,no
-14,"Sungazer","The Temper Trap",160,10A,71,2026-07-16,04:34,41,"","Sungazer",2026-07-10,43,5,0,21,0,0,-7,B Minor,4,6srwN44pQgxa8ifFKtHWLV,AULI02566460,no
-15,"Lifeline","The Temper Trap",152,7A,67,2026-07-16,04:53,42,"","Sungazer",2026-07-10,50,1,0,27,0,0,-6,D Minor,4,1apm5UngnEDzAIk6NsWUWz,AULI02566720,no
-16,"Runaways","The Temper Trap",126,6A,58,2026-07-16,04:19,55,"","Sungazer",2026-07-10,47,1,81,26,0,10,-7,G Minor,4,3fQLQSOhijzOC6W1NPhYle,AULI02566730,no
-17,"Halfway","The Temper Trap",147,9B,78,2026-07-16,02:54,40,"","Sungazer",2026-07-10,55,0,1,34,0,10,-5,G Major,4,1Hss0zKxdrpCxIrK4AUAOF,AULI02566740,no
-18,"Dystopia Radio","The Temper Trap",159,12A,98,2026-07-16,03:14,41,"","Sungazer",2026-07-10,43,0,0,42,0,10,-4,C♯/D♭ Minor,4,6AAqKzWTDyeITtZg0EsPs0,AULI02566750,no
-19,"Kuru","The Temper Trap",129,3B,45,2026-07-16,05:25,38,"","Sungazer",2026-07-10,30,56,9,6,0,10,-8,C♯/D♭ Major,4,1Kssqm7IyY21qXKoei29ok,AULI02566760,no
-20,"Call Your Mom","Noah Kahan",172,8B,22,2026-07-16,04:38,78,"","Stick Season (We'll All Be Here Forever)",2023-06-09,49,70,0,16,0,10,-12,C Major,4,3yn01PcU95PTbiZ3xvop2j,USUM72307686,no
-21,"Tom Sawyer","Rush",88,11B,90,2026-07-16,04:36,75,"progressive rock, classic rock, hard rock, rock, aor","Moving Pictures (2011 Remaster)",1981-02-12,54,0,2,67,0,0,-7,A Major,4,3QZ7uX97s82HFYSmQUAN1D,USMR18180103,no
-22,"Fly By Night","Rush",139,9B,70,2026-07-16,03:22,65,"progressive rock, classic rock, hard rock, rock, aor","Fly By Night",1975-02-15,50,9,0,58,0,0,-9,G Major,4,54TaGh2JKs1pO9daXNXI5q,USWWW0201912,no
-23,"25 or 6 to 4","Chicago",148,9B,87,2026-07-16,04:53,51,"yacht rock, soft rock","Chicago IX: Chicago's Greatest Hits",1975-11-10,61,24,4,77,0,0,-10,G Major,4,65eRcjlStTnk8opG5eIQ8Z,USRH10904151,no
-24,"Shine On You Crazy Diamond (Pts. 1-5)","Pink Floyd",138,6A,29,2026-07-16,13:32,75,"progressive rock, psychedelic rock, classic rock, art rock, rock","Wish You Were Here",1975-09-12,26,77,69,4,0,10,-12,G Minor,3,6pnwfWyaWjQiHCKTiZLItr,GBN9Y1100085,no
-25,"Shine On You Crazy Diamond (Pts. 6-9)","Pink Floyd",136,6A,49,2026-07-16,12:23,65,"progressive rock, psychedelic rock, classic rock, art rock, rock","Wish You Were Here",1975-09-12,29,58,90,12,0,30,-13,G Minor,3,21j1PsCiTaO8ZW88UZrh3A,GBN9Y1100089,no
-26,"Me and Bobby McGee","Janis Joplin",93,10B,46,2026-07-16,04:31,72,"classic rock, acid rock, psychedelic rock","Pearl (Legacy Edition)",1971-01-11,43,30,0,66,0,10,-11,D Major,4,1IqFh00G2kvvMm8pRMpehA,USSM17000790,no
-27,"You're No Good","Linda Ronstadt",105,4B,52,2026-07-16,03:44,65,"country rock, mariachi","Heart Like A Wheel",1974-00-00,67,25,1,63,0,10,-10,G#/A♭ Major,4,23DZLSxCK6kM8FF2RlzKDl,USCA28500304,no
+1,"Beaches In Tennessee","Cage The Elephant",114,9A,91,2026-07-16,03:16,69,"","Beaches In Tennessee",2026-07-10,68,4,0,62,0,30,-3,E Minor,4,20TOJbuP4XyGBEFbwB8Vbm,USUG12605674,no
+2,"Do I Ever Belong?","Two Feet",150,2B,59,2026-07-16,02:50,55,"","Do I Ever Belong?",2026-07-10,59,14,1,37,0,50,-7,F#/G♭ Major,4,7iy66dzNBRSu0DRj1ZThTa,QMBZ92668775,no
+3,"If You Could Talk","Dexter and The Moonrocks",188,3A,62,2026-07-16,03:55,60,"","If You Could Talk",2026-07-15,58,9,0,54,0,0,-5,A#/B♭ Minor,4,6VeZUUTHx67EmtTM4682eA,USUG12606700,no
+4,"Hospital Beds","Cold War Kids",96,11B,67,2026-07-16,04:39,49,"","Robbers & Cowards",2007-05-11,54,14,8,13,0,10,-5,A Major,4,4Zhnwb8jvP09aIRAzQMG08,USCJ80600051,no
+5,"Staring at the Sun","Elderbrook,Rules",123,4B,74,2026-07-16,03:32,54,"deep house, stutter house","Staring at the Sun",2026-07-16,37,1,1,7,0,10,-8,G#/A♭ Major,4,2bqWo67hUC1mXH3HycjtOj,GBCFB2600413,no
+6,"Lucky Dimes","The Temper Trap",84,9A,96,2026-07-16,03:28,48,"","Sungazer",2026-07-10,23,6,1,50,20,30,-3,E Minor,3,6nyXEkO61ijAnNJ77Bid5o,AULI02563610,no
+7,"Into The Wild","The Temper Trap",118,1B,63,2026-07-16,03:41,47,"","Sungazer",2026-07-10,56,4,0,22,0,10,-4,B Major,4,0MO5nScLDab8HHZyvYh4Mr,AULI02565970,no
+8,"These Arms","The Temper Trap",130,12A,74,2026-07-16,04:17,46,"","Sungazer",2026-07-10,53,0,16,23,0,0,-5,C♯/D♭ Minor,4,0qx9BUk40KSvaCA3rpUkCN,AULI02566700,no
+9,"Bird on a Wire","The Temper Trap",172,4B,81,2026-07-16,04:32,45,"","Sungazer",2026-07-10,49,1,0,56,0,10,-3,G#/A♭ Major,4,4zYgyzWuDtd9P2fP54qeJ0,AULI02566710,yes
+10,"Giving Up Air","The Temper Trap",126,5A,78,2026-07-16,04:47,49,"","Sungazer",2026-07-10,53,0,0,23,0,10,-6,C Minor,4,1hUgRKylrpLNBKjblt3ZW9,AULI02564220,no
+11,"Sungazer","The Temper Trap",160,10A,71,2026-07-16,04:34,45,"","Sungazer",2026-07-10,43,5,0,21,0,0,-7,B Minor,4,6srwN44pQgxa8ifFKtHWLV,AULI02566460,no
+12,"Lifeline","The Temper Trap",152,7A,67,2026-07-16,04:53,44,"","Sungazer",2026-07-10,50,1,0,27,0,0,-6,D Minor,4,1apm5UngnEDzAIk6NsWUWz,AULI02566720,no
+13,"Runaways","The Temper Trap",126,6A,58,2026-07-16,04:19,58,"","Sungazer",2026-07-10,47,1,81,26,0,10,-7,G Minor,4,3fQLQSOhijzOC6W1NPhYle,AULI02566730,no
+14,"Halfway","The Temper Trap",147,9B,78,2026-07-16,02:54,44,"","Sungazer",2026-07-10,55,0,1,34,0,10,-5,G Major,4,1Hss0zKxdrpCxIrK4AUAOF,AULI02566740,no
+15,"Dystopia Radio","The Temper Trap",159,12A,98,2026-07-16,03:14,44,"","Sungazer",2026-07-10,43,0,0,42,0,10,-4,C♯/D♭ Minor,4,6AAqKzWTDyeITtZg0EsPs0,AULI02566750,no
+16,"Kuru","The Temper Trap",129,3B,45,2026-07-16,05:25,42,"","Sungazer",2026-07-10,30,56,9,6,0,10,-8,C♯/D♭ Major,4,1Kssqm7IyY21qXKoei29ok,AULI02566760,no
+17,"Call Your Mom","Noah Kahan",172,8B,22,2026-07-16,04:38,78,"","Stick Season (We'll All Be Here Forever)",2023-06-09,49,70,0,16,0,10,-12,C Major,4,3yn01PcU95PTbiZ3xvop2j,USUM72307686,no
+18,"Tom Sawyer","Rush",88,11B,90,2026-07-16,04:36,75,"progressive rock, classic rock, hard rock, rock, aor","Moving Pictures (2011 Remaster)",1981-02-12,54,0,2,67,0,0,-7,A Major,4,3QZ7uX97s82HFYSmQUAN1D,USMR18180103,no
+19,"Fly By Night","Rush",139,9B,70,2026-07-16,03:22,65,"progressive rock, classic rock, hard rock, rock, aor","Fly By Night",1975-02-15,50,9,0,58,0,0,-9,G Major,4,54TaGh2JKs1pO9daXNXI5q,USWWW0201912,no
+20,"25 or 6 to 4","Chicago",148,9B,87,2026-07-16,04:53,51,"yacht rock, soft rock","Chicago IX: Chicago's Greatest Hits",1975-11-10,61,24,4,77,0,0,-10,G Major,4,65eRcjlStTnk8opG5eIQ8Z,USRH10904151,no
+21,"Shine On You Crazy Diamond (Pts. 1-5)","Pink Floyd",138,6A,29,2026-07-16,13:32,75,"progressive rock, psychedelic rock, classic rock, art rock, rock","Wish You Were Here",1975-09-12,26,77,69,4,0,10,-12,G Minor,3,6pnwfWyaWjQiHCKTiZLItr,GBN9Y1100085,no
+22,"Shine On You Crazy Diamond (Pts. 6-9)","Pink Floyd",136,6A,49,2026-07-16,12:23,65,"progressive rock, psychedelic rock, classic rock, art rock, rock","Wish You Were Here",1975-09-12,29,58,90,12,0,30,-13,G Minor,3,21j1PsCiTaO8ZW88UZrh3A,GBN9Y1100089,no
+23,"Me and Bobby McGee","Janis Joplin",93,10B,46,2026-07-16,04:31,72,"classic rock, acid rock, psychedelic rock","Pearl (Legacy Edition)",1971-01-11,43,30,0,66,0,10,-11,D Major,4,1IqFh00G2kvvMm8pRMpehA,USSM17000790,no
+24,"You're No Good","Linda Ronstadt",105,4B,52,2026-07-16,03:44,65,"country rock, mariachi","Heart Like A Wheel",1974-00-00,67,25,1,63,0,10,-10,G#/A♭ Major,4,23DZLSxCK6kM8FF2RlzKDl,USCA28500304,no
+25,"Mr. Bojangles - Remastered","Nitty Gritty Dirt Band",155,10B,57,2026-07-18,03:36,49,"bluegrass, country rock, country, classic country","Uncle Charlie And His Dog Teddy (Remastered)",2002-12-26,46,45,0,43,0,30,-11,D Major,3,58eQPs5CDTS7wITft4Klta,USCN10200399,no
+26,"HOW TO BE A LOVER","Goldie Boutilier",107,11A,55,2026-07-19,04:26,62,"","HOW TO BE A LOVER",2026-07-03,86,24,0,63,0,10,-8,F#/G♭ Minor,4,1xbP92TbLVfUlS2BtkTidi,QZHZ52612791,no
+27,"Universal Mind Control (UMC)","Common",120,3B,90,2026-07-19,03:26,34,"hip hop, jazz rap, neo soul","Go! Common Classics",2010-05-11,85,40,1,74,0,20,-7,C♯/D♭ Major,4,4I1P0QQcNEaWXstahyUaPp,USUM70820404,yes
+28,"Bring Em Out","T.I.",99,1B,89,2026-07-19,03:36,69,"southern hip hop","Urban Legend",2004-11-28,76,3,0,59,20,10,-3,B Major,4,3CcvahnsiArpTHYQEWV2Au,USAT20402495,yes
+29,"On To The Next One","JAŸ-Z,Swizz Beatz",117,3A,91,2026-07-19,04:16,60,"hip hop, east coast hip hop, rap, ","The Blueprint 3",2009-09-08,55,22,0,59,40,10,-2,A#/B♭ Minor,5,4ljDnzzqwnRIynr1g55um4,USJZ10900033,yes
+30,"0 To 100 / The Catch Up","Drake",177,10A,72,2026-07-19,04:35,73,"rap","0 To 100 / The Catch Up",2013-07-14,56,74,0,50,30,20,-4,B Minor,4,4jtyUzZm9WLc2AdaJ1dso7,USCM51400222,yes
+31,"Off That","JAŸ-Z,Drake",111,3B,93,2026-07-19,04:06,47,"hip hop, east coast hip hop, rap","The Blueprint 3",2009-09-08,56,28,0,81,20,10,-4,C♯/D♭ Major,4,637A7SaHyjxQEHyUMb30hx,USJZ10900034,yes
+32,"Empire State Of Mind","JAŸ-Z,Alicia Keys",174,1B,96,2026-07-19,04:36,90,"hip hop, east coast hip hop, rap, r&b, neo soul","The Blueprint 3",2009-09-08,49,3,0,81,30,40,-2,B Major,4,2igwFfvr1OAGX9SKDCPBwO,USJZ10900031,yes
+33,"Holy Grail","JAŸ-Z,Justin Timberlake",145,7A,53,2026-07-19,05:38,69,"hip hop, east coast hip hop, rap, ","Magna Carta... Holy Grail",2013-07-04,68,6,0,16,0,20,-7,D Minor,4,37jTPJgwCCmIGMPB45jrPV,QMJMT1300025,yes
+34,"Gotta Have It","JAŸ-Z,Kanye West",150,12B,57,2026-07-19,02:20,69,"hip hop, east coast hip hop, rap","Watch The Throne",2011-08-08,74,41,0,33,20,20,-7,E Major,4,6JFLZH9vCzgqnUToBdiHQb,USUM71111623,yes
+35,"Otis","JAŸ-Z,Kanye West,Otis Redding",95,6A,63,2026-07-19,02:58,73,"hip hop, east coast hip hop, rap, motown, soul, classic soul, soul blues","Watch The Throne",2011-08-08,75,55,0,43,30,50,-5,G Minor,4,14I61w6cyYUHiV2n28IYdP,USUM71111634,yes
+36,"Who Gon Stop Me","JAŸ-Z,Kanye West",134,5A,73,2026-07-19,04:16,48,"hip hop, east coast hip hop, rap","Watch The Throne",2011-08-08,59,4,0,38,10,70,-5,C Minor,4,2eqOjSC8dY1iFrQiJGPDOX,USUM71111640,yes
+37,"Murder To Excellence","JAŸ-Z,Kanye West",87,3B,82,2026-07-19,05:00,30,"hip hop, east coast hip hop, rap","Watch The Throne",2011-08-08,57,2,0,58,30,0,-5,C♯/D♭ Major,4,6IE4ozG51DjyY5Iuh82hqn,USUM71111672,yes
+38,"Why I Love You","JAŸ-Z,Kanye West,Mr Hudson",123,7B,81,2026-07-19,03:21,70,"hip hop, east coast hip hop, rap, ","Watch The Throne",2011-08-08,48,3,0,37,0,20,-4,F Major,4,4bDPr2VAjcfgUDmN9dGOC3,USUM71111678,yes
+39,"Soundtrack 2 My Life","Kid Cudi",86,8A,76,2026-07-19,03:55,70,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,48,47,0,44,10,30,-7,A Minor,4,0rFpcfF0YfvFUYsl99Bw9d,USUM70981690,yes
+40,"Make Her Say","Kid Cudi,Kanye West,Common",99,3A,71,2026-07-19,03:36,61,"rap, hip hop, jazz rap, neo soul","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,93,25,0,46,0,10,-5,A#/B♭ Minor,4,7dZAPeA3Of5j5Vaef0DQ6M,USUM70982959,yes
+41,"Simple As...","Kid Cudi",95,3B,74,2026-07-19,02:31,52,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,80,27,0,51,10,60,-5,C♯/D♭ Major,4,0RXspLL7GwiGm9KIDdT0ma,USUM70981701,yes
+42,"Solo Dolo (Nightmare)","Kid Cudi",79,6A,45,2026-07-19,04:26,54,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,77,52,0,60,0,10,-8,G Minor,4,6xeTNdPnP5imNgDzFMfVfD,USUM70981703,yes
+43,"Day 'N' Nite (nightmare)","Kid Cudi",138,10A,44,2026-07-19,03:41,77,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,88,48,0,80,0,10,-6,B Minor,4,5wfllwdjglyQislkskYLBv,USUM70957500,no
+44,"Alive (Nightmare)","Kid Cudi,Ratatat",102,11A,82,2026-07-19,04:06,62,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,71,26,0,70,0,20,-5,F#/G♭ Minor,4,3HG3QFERdP3Q1b6VGahwWs,USUM70981728,yes
+45,"Cudi Zone","Kid Cudi",135,8A,69,2026-07-19,04:19,65,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,71,55,0,60,0,30,-6,A Minor,4,03MWa1FMygR3RrQoQytsjS,USUM70981730,yes
+46,"Pursuit Of Happiness (Nightmare)","Kid Cudi,MGMT,Ratatat",115,8B,61,2026-07-19,04:55,77,"indie, ","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,63,48,0,29,0,30,-9,C Major,4,6MtKObWYda2qnNIpJI21uD,USUM70981907,yes
+47,"Up Up & Away","Kid Cudi",120,3A,88,2026-07-19,03:47,66,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,66,7,0,59,0,30,-6,A#/B♭ Minor,4,1RUTIdTnFs8lHSc0Zr4UJB,USUM70981911,yes
+48,"Man On The Moon","Kid Cudi",91,8B,66,2026-07-19,03:30,61,"","Man On The Moon: The End Of Day (Deluxe)",2009-01-01,65,64,0,50,0,30,-9,C Major,4,78T9DulqSBWqkaxczcGBfk,USUM70982483,yes
+49,"Scott Mescudi Vs. The World","Kid Cudi,CeeLo Green",109,10A,72,2026-07-19,03:55,56,"","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,78,28,59,58,0,10,-6,B Minor,4,5QemHQxj7PRkrw8lJl2W7C,USUM71025496,yes
+50,"REVOFEV","Kid Cudi",69,10A,54,2026-07-19,03:03,53,"","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,61,15,0,38,0,10,-6,B Minor,4,0Epl79nHvdyTdZRAiWpJah,USUM71022468,no
+51,"Marijuana","Kid Cudi",141,1A,40,2026-07-19,04:20,60,"","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,67,83,83,54,0,20,-10,G#/A♭ Minor,4,2GtaNlidzvK3hY78kCdsHa,USUM71025499,yes
+52,"Mojo So Dope","Kid Cudi",180,11A,79,2026-07-19,03:30,66,"","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,61,55,84,85,0,30,-8,F#/G♭ Minor,4,6hPSal3ragmfUt1I5mKZjn,USUM71025500,yes
+53,"Ashin’ Kusher","Kid Cudi",93,6B,64,2026-07-19,03:48,51,"","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,86,73,0,58,20,10,-6,A#/B♭ Major,4,6GSMozgAebBmuM2hCV15H3,USUM71025501,yes
+54,"Erase Me - Main","Kid Cudi,Kanye West",186,11B,63,2026-07-19,03:12,71,"rap","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,69,6,0,85,10,10,-6,A Major,4,6XkuklKiHYVTlVvWlTgQYP,USUM71020517,yes
+55,"The Mood","Kid Cudi",120,9A,83,2026-07-19,02:35,45,"","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,86,78,0,68,0,10,-6,E Minor,4,4yCuBvbBvoJ9eVE7QB2Rkg,USUM71025503,yes
+56,"MANIAC","Kid Cudi,Cage,St. Vincent",150,4A,66,2026-07-19,02:58,48,"horrorcore, underground hip hop, art pop","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,52,8,8,43,10,60,-10,F Minor,4,6R4flNWy1pWkjzwg3TCDlM,USUM71025504,no
+57,"Mr. Rager","Kid Cudi",102,9B,73,2026-07-19,04:54,76,"","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,67,39,88,58,0,10,-9,G Major,4,393MDhe62s8hbH8ETrlxe5,USUM71025042,no
+58,"These Worries","Kid Cudi,Mary J. Blige",88,1B,61,2026-07-19,04:15,51,"r&b","Man On The Moon II: The Legend Of Mr. Rager",2010-11-09,57,6,75,19,0,10,-6,B Major,4,2XQKestqcKNAxnmo5hh3Yo,USUM71025505,yes
+59,"Unfuckwittable","Kid Cudi",188,6B,83,2026-07-19,04:35,53,"","Indicud",2013-04-12,56,0,37,30,0,20,-4,A#/B♭ Major,4,0jUie9UEhrUFWo683TC3KW,USUM71303217,yes
+60,"Just What I Am","Kid Cudi,King Chip",140,3B,95,2026-07-19,03:48,69,"","Indicud",2013-04-12,65,0,0,35,10,40,-3,C♯/D♭ Major,4,20bJBbPapGQ4bqs0YcA9xY,USUM71210095,yes
+61,"King Wizard","Kid Cudi",140,4B,61,2026-07-19,04:16,52,"","Indicud",2013-04-12,72,4,3,38,0,10,-8,G#/A♭ Major,4,4bFOo0IbTRXQBXNWEpGxXX,USUM71212592,yes
+62,"Lord Of The Sad And Lonely","Kid Cudi",95,12A,78,2026-07-19,02:46,37,"","Indicud",2013-04-12,72,30,0,38,10,30,-5,C♯/D♭ Minor,4,1U70qs2xkXUNUUJTvlg0J2,USUM71303435,yes
+63,"Daydreamin' (feat. Jill Scott)","Lupe Fiasco,Jill Scott",81,4A,74,2026-07-19,03:54,69,"neo soul, quiet storm","Lupe Fiasco's Food & Liquor",2006-09-18,53,3,0,62,0,20,-4,F Minor,4,50M2QjfSM82wkJ1d0iV4mh,USAT20616187,yes
+64,"Loud","Mac Miller",140,3B,87,2026-07-19,02:50,67,"","Macadelic",2012-03-23,64,0,0,25,0,30,-4,C♯/D♭ Major,4,1RcCApDP3AP7bAm81iYsJ3,USQY51268310,yes
+65,"Knock Knock","Mac Miller",109,9A,93,2026-07-19,03:17,74,"","K.I.D.S. (Deluxe)",2010-08-13,68,11,0,48,10,70,-3,E Minor,4,6AjXmTomWUWZ6Za0X6ypjl,USA2P1122877,yes
+66,"Wake Up","Mac Miller",109,9A,78,2026-07-19,03:54,57,"","Best Day Ever (5th Anniversary Remastered Edition)",2016-06-03,74,5,0,64,10,20,-5,E Minor,4,6kfZ93lVSdav6RinRVEWDa,QZ3GT1600004,yes
+67,"When I'm Gone","Wiz Khalifa",92,11B,76,2026-07-19,04:08,58,"","Rolling Papers",2011-03-29,70,50,0,30,0,0,-7,A Major,4,0prF3F4FoKvxBObaeXLVHv,USAT21100292,yes
+68,"On My Level (feat. Too $hort)","Wiz Khalifa,Too $hort",143,3B,51,2026-07-19,04:32,68,"hyphy, west coast hip hop, g-funk, old school hip hop, gangster rap","Rolling Papers",2011-03-29,72,15,1,21,10,10,-7,C♯/D♭ Major,4,0osPX8TruIebOhKuG6GK8C,USAT21100053,yes
+69,"Black and Yellow","Wiz Khalifa",164,7A,83,2026-07-19,03:37,82,"","Rolling Papers",2011-03-29,68,6,0,54,0,20,-5,D Minor,4,5A6OHHy73AR5tLxgTc98zz,USAT21001800,yes
+70,"Roll Up","Wiz Khalifa",125,5B,81,2026-07-19,03:47,69,"","Rolling Papers",2011-03-29,52,5,0,60,10,0,-5,D#/E♭ Major,5,53DB6LJV9B8sz0p1s6tlGS,USAT21100050,yes
+71,"No Sleep","Wiz Khalifa",160,11B,71,2026-07-19,03:11,68,"","Rolling Papers",2011-03-29,65,11,0,77,0,40,-6,A Major,4,2kzRSiyignH8yzPTrWvyPo,USAT21100295,yes
+72,"Fly Solo","Wiz Khalifa",82,10A,72,2026-07-19,03:20,51,"","Rolling Papers",2011-03-29,74,44,0,92,0,10,-5,B Minor,4,6qa6a2fsCbLMkSIoZEfvTJ,USAT21100297,yes
+73,"Paperbond","Wiz Khalifa",150,6A,70,2026-07-19,03:28,58,"","O.N.I.F.C. (Deluxe)",2012-12-04,65,16,0,27,10,40,-5,G Minor,4,0wVAhoXZM7tl1pnLaupf1F,USAT21205602,yes
+74,"Bluffin (feat. Berner)","Wiz Khalifa,Berner",130,4B,71,2026-07-19,05:32,46,"","O.N.I.F.C. (Deluxe)",2012-12-04,83,2,0,28,10,70,-6,G#/A♭ Major,4,1q8kj0fpTfdGYgjuJd2UTM,USAT21205603,yes
+75,"Work Hard, Play Hard","Wiz Khalifa",140,1B,67,2026-07-19,03:39,65,"","O.N.I.F.C. (Deluxe)",2012-12-04,79,4,0,49,0,30,-4,B Major,4,1ms5tNNdPouTtcD2oVF9Oz,USAT21201652,yes
+76,"Initiation (feat. Lola Monroe)","Wiz Khalifa,Lola Monroe",150,12B,73,2026-07-19,04:29,37,"alternative r&b","O.N.I.F.C. (Deluxe)",2012-12-04,82,10,0,69,30,70,-7,E Major,4,2akHlWnK60UF1L9Til9rzK,USAT21205611,yes
+77,"Bout Me (feat. Problem & Iamsu)","Wiz Khalifa,Iamsu!,JasonMartin",100,10B,83,2026-07-19,03:28,40,"hyphy, west coast hip hop","O.N.I.F.C. (Deluxe)",2012-12-04,80,4,0,32,0,40,-5,D Major,4,0HRSsZiisdMuUrWhzb8ewK,USAT21207090,yes
+78,"What I Know Now (feat. Wiz Khalifa)","THEY.,Wiz Khalifa",80,2B,70,2026-07-19,03:00,51,"","What I Know Now (feat. Wiz Khalifa)",2018-10-10,62,8,0,44,0,10,-3,F#/G♭ Major,4,3wImXdE4bliIVSEl3lVue1,USWB11802070,yes
+79,"Better (feat. Wiz Khalifa)","GASHI,Wiz Khalifa",83,3A,66,2026-07-19,02:57,51,"","Brooklyn Cowboy",2024-10-11,64,5,0,9,0,20,-5,A#/B♭ Minor,4,7L5yUAQfKSm5ydJRjPx5Ok,QZTGW2400695,no
+80,"Strange Clouds (feat. Lil Wayne)","B.o.B,Lil Wayne",74,1A,67,2026-07-19,03:46,60,"rap, hip hop","Strange Clouds",2012-04-27,53,6,0,80,20,10,-7,G#/A♭ Minor,4,0yQw3d0iQDjMrxaVHFv77J,USAT21102143,yes
+81,"So Good","B.o.B",86,9B,90,2026-07-19,03:33,69,"","Strange Clouds",2012-04-27,66,4,0,59,10,20,-5,G Major,4,28GUjBGqZVcAV4PHSYzkj2,USAT21200255,no
+82,"Ray Bands","B.o.B",150,3B,82,2026-07-19,03:48,53,"","Strange Clouds",2012-04-27,74,2,0,49,0,20,-5,C♯/D♭ Major,4,2g6zbVqZvnc1dk6cYUhr5g,USAT21201763,yes
