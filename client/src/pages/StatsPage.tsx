@@ -71,26 +71,26 @@ const KEEP_INTENT_TABS = [
 
 function keepIntentTabClass(value: (typeof KEEP_INTENT_TABS)[number]["value"], active: boolean): string {
   if (!active) return "bg-secondary/40 text-muted-foreground";
-  if (value === "currently_listening") return "bg-blue-500/15 text-blue-400";
-  if (value === "favorites_archive") return "bg-emerald-500/15 text-emerald-400";
-  if (value === "save_for_later") return "bg-amber-500/15 text-amber-400";
-  if (value === "skip_for_now") return "bg-destructive/15 text-destructive";
+  if (value === "currently_listening") return "bg-emerald-500/15 text-emerald-400";
+  if (value === "favorites_archive") return "bg-blue-500/15 text-blue-400";
+  if (value === "save_for_later") return "bg-yellow-500/15 text-yellow-400";
+  if (value === "skip_for_now") return "bg-orange-500/15 text-orange-400";
   return "bg-primary/15 text-primary";
 }
 
 function keepIntentAccentTextClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
-  if (value === "currently_listening") return "text-blue-400";
-  if (value === "favorites_archive") return "text-emerald-400";
-  if (value === "save_for_later") return "text-amber-400";
-  if (value === "skip_for_now") return "text-destructive";
+  if (value === "currently_listening") return "text-emerald-400";
+  if (value === "favorites_archive") return "text-blue-400";
+  if (value === "save_for_later") return "text-yellow-400";
+  if (value === "skip_for_now") return "text-orange-400";
   return "text-primary";
 }
 
 function keepIntentPanelClass(value: (typeof KEEP_INTENT_TABS)[number]["value"]): string {
-  if (value === "currently_listening") return "border-blue-500/30 bg-blue-500/10";
-  if (value === "favorites_archive") return "border-emerald-500/30 bg-emerald-500/10";
-  if (value === "save_for_later") return "border-amber-500/30 bg-amber-500/10";
-  if (value === "skip_for_now") return "border-destructive/30 bg-destructive/10";
+  if (value === "currently_listening") return "border-emerald-500/30 bg-emerald-500/10";
+  if (value === "favorites_archive") return "border-blue-500/30 bg-blue-500/10";
+  if (value === "save_for_later") return "border-yellow-500/30 bg-yellow-500/10";
+  if (value === "skip_for_now") return "border-orange-500/30 bg-orange-500/10";
   return "border-border bg-secondary/20";
 }
 
