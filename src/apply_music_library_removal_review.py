@@ -115,10 +115,18 @@ def main() -> None:
     con = sqlite3.connect(str(db_path))
     try:
         cur = con.cursor()
-        cur.execute('SELECT "Track_ID" FROM tracks')
-        raw_track_ids: List[str] = [str(r[0] or "").strip() for r in cur.fetchall()]
+        cur.execute('SELECT rowid, "Track_ID" FROM tracks ORDER BY rowid ASC')
+        raw_rows: List[tuple[int, str]] = [(int(r[0]), str(r[1] or "").strip()) for r in cur.fetchall()]
 
-        matched_raw_ids: List[str] = [raw for raw in raw_track_ids if normalize_track_id(raw) in requested_yes_ids]
+        matched_by_track_id: dict[str, tuple[int, str]] = {}
+        for rowid, raw_track_id in raw_rows:
+            normalized = normalize_track_id(raw_track_id)
+            if normalized not in requested_yes_ids:
+                continue
+            if normalized not in matched_by_track_id:
+                matched_by_track_id[normalized] = (rowid, raw_track_id)
+
+        matched_rows: List[tuple[int, str]] = list(matched_by_track_id.values())
 
         print(f"Review CSV: {csv_path}")
         print(f"Music DB: {db_path}")
@@ -127,16 +135,17 @@ def main() -> None:
         print(f"Skipped approved but not eligible: {skipped_not_eligible}")
         print(f"Skipped approved but not in DB: {skipped_not_in_db}")
         print(f"Skipped missing track_id: {skipped_missing_id}")
-        print(f"Rows in tracks table: {len(raw_track_ids)}")
-        print(f"Rows matched for delete: {len(matched_raw_ids)}")
+        print(f"Rows in tracks table: {len(raw_rows)}")
+        print(f"Approved IDs found in DB: {len(matched_rows)}")
+        print(f"Rows selected for delete (one per Track_ID): {len(matched_rows)}")
 
-        if matched_raw_ids:
-            preview = matched_raw_ids[: max(0, args.preview_limit)]
-            print("Example Track_ID values to delete:")
-            for t in preview:
-                print(f"  - {t}")
-            if len(matched_raw_ids) > len(preview):
-                print(f"  ... +{len(matched_raw_ids) - len(preview)} more")
+        if matched_rows:
+            preview = matched_rows[: max(0, args.preview_limit)]
+            print("Example rows to delete:")
+            for rowid, track_id in preview:
+                print(f"  - rowid={rowid} Track_ID={track_id}")
+            if len(matched_rows) > len(preview):
+                print(f"  ... +{len(matched_rows) - len(preview)} more")
 
         if not args.apply:
             print("\nDry-run complete. Re-run with --apply to delete.")
@@ -150,9 +159,9 @@ def main() -> None:
             shutil.copy2(db_path, backup_path)
             print(f"Backup created: {backup_path}")
 
-        cur.executemany('DELETE FROM tracks WHERE "Track_ID" = ?', [(t,) for t in matched_raw_ids])
+        cur.executemany("DELETE FROM tracks WHERE rowid = ?", [(rowid,) for rowid, _track_id in matched_rows])
         con.commit()
-        print(f"\nDeleted {len(matched_raw_ids)} row(s) from tracks.")
+        print(f"\nDeleted {len(matched_rows)} row(s) from tracks.")
     finally:
         con.close()
 

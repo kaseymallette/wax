@@ -219,31 +219,10 @@ function writeDailyPlaylistCsv(
   writeCsv(filePath, header, lines);
 }
 
-function writeIntentPlaylistCsv(
-  filePath: string,
-  tracks: TrackWithStats[],
-  intent: "currently_listening" | "favorites_archive" | "save_for_later",
-) {
+function writeIntentPlaylistCsv(filePath: string, tracks: TrackWithStats[]) {
   const compareArtistAlbumThenName = (a: TrackWithStats, b: TrackWithStats) =>
     a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
-  const compareAddedAtDesc = (a: TrackWithStats, b: TrackWithStats) => {
-    const aAdded = a.addedAt ? Date.parse(a.addedAt) : Number.NaN;
-    const bAdded = b.addedAt ? Date.parse(b.addedAt) : Number.NaN;
-    const aHas = Number.isFinite(aAdded);
-    const bHas = Number.isFinite(bAdded);
-    if (aHas && bHas && aAdded !== bAdded) return bAdded - aAdded;
-    if (aHas && !bHas) return -1;
-    if (!aHas && bHas) return 1;
-    return a.name.localeCompare(b.name);
-  };
-
-  const sorted = [...tracks].sort((a, b) => {
-    if (intent === "favorites_archive" || intent === "currently_listening" || intent === "save_for_later") {
-      return compareArtistAlbumThenName(a, b);
-    }
-
-    return compareAddedAtDesc(a, b);
-  });
+  const sorted = [...tracks].sort(compareArtistAlbumThenName);
 
   const header = [
     "rank",
@@ -361,14 +340,26 @@ function main() {
   const favorites = tracks.filter((t) => t.repeatIntent === "favorites_archive");
   const currentlyListening = tracks.filter((t) => t.repeatIntent === "currently_listening");
   const saveForLater = tracks.filter((t) => t.repeatIntent === "save_for_later");
+  const skipForNow = tracks.filter((t) => t.repeatIntent === "skip_for_now");
+  const fullMusicLibrary = tracks.filter(
+    (t) =>
+      t.repeatIntent === "currently_listening" ||
+      t.repeatIntent === "favorites_archive" ||
+      t.repeatIntent === "save_for_later" ||
+      t.repeatIntent === "skip_for_now",
+  );
 
   const currentlyListeningPath = path.join(PLAYLISTS_DIR, "currently-listening.csv");
   const favoritesPath = path.join(PLAYLISTS_DIR, "favorites-archive.csv");
   const saveForLaterPath = path.join(PLAYLISTS_DIR, "save-for-later.csv");
+  const skipForNowPath = path.join(PLAYLISTS_DIR, "skip-for-now.csv");
+  const fullMusicLibraryPath = path.join(PLAYLISTS_DIR, "full-music-library.csv");
 
-  writeIntentPlaylistCsv(currentlyListeningPath, currentlyListening, "currently_listening");
-  writeIntentPlaylistCsv(favoritesPath, favorites, "favorites_archive");
-  writeIntentPlaylistCsv(saveForLaterPath, saveForLater, "save_for_later");
+  writeIntentPlaylistCsv(currentlyListeningPath, currentlyListening);
+  writeIntentPlaylistCsv(favoritesPath, favorites);
+  writeIntentPlaylistCsv(saveForLaterPath, saveForLater);
+  writeIntentPlaylistCsv(skipForNowPath, skipForNow);
+  writeIntentPlaylistCsv(fullMusicLibraryPath, fullMusicLibrary);
 
   const missingPath = writeMissingFeaturesLog(tracks);
 
@@ -382,12 +373,16 @@ function main() {
       currentlyListening: currentlyListening.length,
       favoritesArchive: favorites.length,
       saveForLater: saveForLater.length,
+      skipForNow: skipForNow.length,
+      fullMusicLibrary: fullMusicLibrary.length,
     },
     files: {
       daily: dailyFiles,
       currentlyListening: currentlyListeningPath,
       favoritesArchive: favoritesPath,
       saveForLater: saveForLaterPath,
+      skipForNow: skipForNowPath,
+      fullMusicLibrary: fullMusicLibraryPath,
       missingFeatures: missingPath,
     },
   };
@@ -398,6 +393,8 @@ function main() {
   console.log(`[buildPlaylists] wrote ${currentlyListeningPath}`);
   console.log(`[buildPlaylists] wrote ${favoritesPath}`);
   console.log(`[buildPlaylists] wrote ${saveForLaterPath}`);
+  console.log(`[buildPlaylists] wrote ${skipForNowPath}`);
+  console.log(`[buildPlaylists] wrote ${fullMusicLibraryPath}`);
   console.log(`[buildPlaylists] wrote ${SUMMARY_PATH}`);
   if (missingPath) {
     console.log(`[buildPlaylists] warning: missing features log -> ${missingPath}`);

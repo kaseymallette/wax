@@ -1,18 +1,20 @@
 {
   "user": "kaseysmom",
-  "generatedAt": 1784179556989,
+  "generatedAt": 1784441123935,
   "dbPath": "/Users/kaseymallette/github/wax/data.db",
   "diagnostics": {
-    "currentlyListeningCount": 185,
+    "currentlyListeningCount": 200,
     "playlistMaxSize": 30,
-    "usableTrackCount": 185,
-    "excludedMissingFeatures": 0,
+    "usableTrackCount": 182,
+    "excludedMissingFeatures": 18,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 185,
-    "favoritesArchive": 50,
-    "saveForLater": 57
+    "currentlyListening": 200,
+    "favoritesArchive": 72,
+    "saveForLater": 63,
+    "skipForNow": 609,
+    "fullMusicLibrary": 944
   },
   "files": {
     "daily": [
@@ -27,6 +29,8 @@
     "currentlyListening": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/save-for-later.csv",
-    "missingFeatures": null
+    "skipForNow": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/skip-for-now.csv",
+    "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/full-music-library.csv",
+    "missingFeatures": "/Users/kaseymallette/github/wax/users/kaseysmom/playlists/missing-features.log"
   }
 }
