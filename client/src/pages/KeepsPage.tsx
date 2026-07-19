@@ -50,7 +50,10 @@ const ORDERED_KEEP_DECISION_OPTIONS = [...KEEP_DECISION_OPTIONS].sort((a, b) => 
   const bRank = KEEP_DECISION_RANK.get(b.value) ?? Number.MAX_SAFE_INTEGER;
   return aRank - bRank;
 });
-const TAG_FILTERS = [{ value: "all", label: "All keeps" }, ...ORDERED_KEEP_DECISION_OPTIONS] as const;
+const TAG_FILTERS = [
+  { value: "all", label: "All keeps" },
+  ...ORDERED_KEEP_DECISION_OPTIONS,
+] as const;
 
 function featureChips(t: TrackWithStats | undefined): string[] {
   if (!t) return [];
@@ -70,12 +73,12 @@ function keepCountBadgeClass(tag: (typeof TAG_FILTERS)[number]["value"]): string
   if (tag === "currently_listening") return "border-emerald-500/40 bg-emerald-500/15 text-emerald-400";
   if (tag === "favorites_archive") return "border-blue-500/40 bg-blue-500/15 text-blue-400";
   if (tag === "save_for_later") return "border-yellow-500/40 bg-yellow-500/15 text-yellow-400";
-  if (tag === "skip_for_now") return "border-orange-500/40 bg-orange-500/15 text-orange-400";
+  if (tag === "skip_for_now") return "border-destructive/40 bg-destructive/15 text-destructive";
   return "border-primary/40 bg-primary/15 text-primary";
 }
 
 function keepIntentChipClass(intent: string): string {
-  if (intent === "skip_for_now") return "bg-orange-500/15 text-orange-400";
+  if (intent === "skip_for_now") return "bg-destructive/15 text-destructive";
   return repeatIntentChipClass(intent);
 }
 
@@ -90,9 +93,8 @@ export default function KeepsPage() {
     const p = new URLSearchParams();
     p.set("keepOnly", "1");
     p.set("limit", "500");
-    if (tag !== "all") p.set("repeatIntent", tag);
     return p.toString();
-  }, [tag]);
+  }, []);
 
   const keepsQuery = useQuery<ListenWithTrack[]>({
     queryKey: ["/api/listens", "keeps", params],
@@ -163,6 +165,14 @@ export default function KeepsPage() {
     const q = lookup.trim().toLowerCase();
     let out = latestKeeps;
 
+    if (tag !== "all") {
+      out = out.filter((l) => {
+        const track = keepTrackById.get(l.trackId);
+        if (!track) return false;
+        return track.repeatIntent === tag;
+      });
+    }
+
     if (q) {
       out = out.filter((l) => {
         const hay = `${l.name} ${l.artists} ${l.album}`.toLowerCase();
@@ -187,7 +197,7 @@ export default function KeepsPage() {
     }
 
     return sorted;
-  }, [latestKeeps, lookup, sortBy]);
+  }, [latestKeeps, lookup, sortBy, tag, keepTrackById]);
 
   const groups = useMemo(() => {
     const map: { key: string; header: string; items: ListenWithTrack[] }[] = [];

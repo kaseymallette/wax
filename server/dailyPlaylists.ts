@@ -23,6 +23,7 @@ export type DailyPlaylistTrack = {
   name: string;
   artists: string;
   album: string;
+  dailyPlaylistStatus: "include" | "review";
   albumArtUrl: string | null;
   spotifyUrl: string | null;
   bpm: number;
@@ -44,6 +45,7 @@ export type DailyPlaylistsResult = {
   playlists: DailyPlaylist[];
   diagnostics: {
     currentlyListeningCount: number;
+    excludedForReview: number;
     playlistMaxSize: number;
     usableTrackCount: number;
     excludedMissingFeatures: number;
@@ -301,10 +303,12 @@ function orderClusterMembers(cluster: Cluster): CandidateTrack[] {
 
 export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsResult {
   const currentlyListening = tracks.filter((t) => t.repeatIntent === "currently_listening");
+  const eligibleCurrentlyListening = currentlyListening.filter((t) => t.dailyPlaylistStatus !== "review");
+  const excludedForReview = currentlyListening.length - eligibleCurrentlyListening.length;
   const playlistMaxSize = playlistMaxSizeForCount(currentlyListening.length);
 
   const candidatesRaw: Array<{ track: TrackWithStats; raw: Vector2; moodValue: number }> = [];
-  for (const t of currentlyListening) {
+  for (const t of eligibleCurrentlyListening) {
     if (!isFiniteNumber(t.bpm) || !isFiniteNumber(t.energy) || !isFiniteNumber(t.dance) || !isFiniteNumber(t.valence)) {
       continue;
     }
@@ -316,7 +320,7 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
     });
   }
 
-  const excludedMissingFeatures = currentlyListening.length - candidatesRaw.length;
+  const excludedMissingFeatures = eligibleCurrentlyListening.length - candidatesRaw.length;
   const normalized = normalizeCandidates(candidatesRaw);
 
   const k = Math.min(PLAYLIST_COUNT, Math.max(1, normalized.length || 1));
@@ -330,11 +334,12 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
 
   const playlists: DailyPlaylist[] = clusters.slice(0, PLAYLIST_COUNT).map((cluster, i) => {
     const ordered = orderClusterMembers(cluster);
-    const tracksOut = ordered.map((c) => ({
+    const tracksOut: DailyPlaylistTrack[] = ordered.map((c) => ({
       id: c.track.id,
       name: c.track.name,
       artists: c.track.artists,
       album: c.track.album,
+      dailyPlaylistStatus: c.track.dailyPlaylistStatus === "review" ? "review" : "include",
       albumArtUrl: c.track.albumArtUrl,
       spotifyUrl: c.track.spotifyUrl,
       bpm: c.track.bpm ?? 0,
@@ -357,6 +362,7 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
     playlists,
     diagnostics: {
       currentlyListeningCount: currentlyListening.length,
+      excludedForReview,
       playlistMaxSize,
       usableTrackCount: normalized.length,
       excludedMissingFeatures,

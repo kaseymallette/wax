@@ -15,6 +15,7 @@ export const tracks = sqliteTable("tracks", {
   previewUrl: text("preview_url"),
   importedAt: integer("imported_at").notNull(),
   repeatIntent: text("repeat_intent").notNull().default("undecided"),
+  dailyPlaylistStatus: text("daily_playlist_status").notNull().default("include"),
 });
 
 // One row per listen. A track can be listened to many times.
@@ -93,6 +94,12 @@ export const listenPayloadSchema = z.object({
 
 export const repeatIntentUpdateSchema = z.object({
   repeatIntent: repeatIntentSchema,
+});
+
+export const dailyPlaylistStatusSchema = z.enum(["include", "review"]);
+
+export const dailyPlaylistStatusUpdateSchema = z.object({
+  dailyPlaylistStatus: dailyPlaylistStatusSchema,
 });
 
 export const trackImportSchema = z.object({

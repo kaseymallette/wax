@@ -46,7 +46,7 @@ const SORTS: { key: SortKey; label: string }[] = [
 ];
 
 function libraryIntentChipClass(intent: string | null | undefined): string {
-  if (intent === "skip_for_now") return "bg-orange-500/15 text-orange-400";
+  if (intent === "skip_for_now") return "bg-destructive/15 text-destructive";
   return repeatIntentChipClass(intent);
 }
 

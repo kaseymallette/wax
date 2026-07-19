@@ -39,6 +39,9 @@ const trackCols = sqlite.prepare(`PRAGMA table_info(tracks)`).all() as { name: s
 if (!trackCols.some((c) => c.name === "repeat_intent")) {
   sqlite.exec(`ALTER TABLE tracks ADD COLUMN repeat_intent TEXT NOT NULL DEFAULT 'undecided';`);
 }
+if (!trackCols.some((c) => c.name === "daily_playlist_status")) {
+  sqlite.exec(`ALTER TABLE tracks ADD COLUMN daily_playlist_status TEXT NOT NULL DEFAULT 'include';`);
+}
 sqlite.exec(`UPDATE tracks SET repeat_intent = 'skip_for_now' WHERE repeat_intent = 'skip';`);
 
 function normText(v: string | null | undefined): string {
@@ -54,6 +57,12 @@ function normalizeRepeatIntent(v: string | null | undefined): ListenWithTrack["r
   if (s === "off_rotation") return "off_rotation";
   if (s === "removed") return "removed";
   return "undecided";
+}
+
+function normalizeDailyPlaylistStatus(v: string | null | undefined): "include" | "review" {
+  const s = String(v ?? "include").trim().toLowerCase();
+  if (s === "review") return "review";
+  return "include";
 }
 
 function numOrNull(v: unknown): number | null {
@@ -291,6 +300,7 @@ function rowToTrackWithStats(r: any): TrackWithStats {
     previewUrl: r.preview_url ?? null,
     importedAt: r.imported_at,
     repeatIntent: normalizeRepeatIntent(r.repeat_intent),
+    dailyPlaylistStatus: normalizeDailyPlaylistStatus(r.daily_playlist_status),
     listenCount: Number(r.listen_count ?? 0),
     actualListenCount: Number(r.actual_listen_count ?? 0),
     lastListenedAt: r.last_listened_at ?? null,
@@ -336,6 +346,7 @@ export interface IStorage {
     | TrackWithStats
     | { error: string }
     | undefined;
+  setDailyPlaylistStatus(id: string, dailyPlaylistStatus: Track["dailyPlaylistStatus"]): TrackWithStats | undefined;
   addListen(payload: ListenPayload): { listen: Listen; track: TrackWithStats } | { error: string };
   listListens(opts: {
     trackId?: string;
@@ -872,6 +883,11 @@ export class DatabaseStorage implements IStorage {
     | undefined {
     const result = this.applyRepeatIntent(id, repeatIntent);
     if ("error" in result) return result;
+    return this.getTrack(id);
+  }
+
+  setDailyPlaylistStatus(id: string, dailyPlaylistStatus: Track["dailyPlaylistStatus"]): TrackWithStats | undefined {
+    sqlite.prepare(`UPDATE tracks SET daily_playlist_status = ? WHERE id = ?`).run(dailyPlaylistStatus, id);
     return this.getTrack(id);
   }
 

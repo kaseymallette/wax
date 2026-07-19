@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { apiRequest } from "@/lib/queryClient";
-import { ChevronDown, ChevronUp, Music2 } from "lucide-react";
+import { queryClient } from "@/lib/queryClient";
+import { Check, ChevronDown, ChevronUp, Circle, Music2, Square, X } from "lucide-react";
 
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 
@@ -21,6 +22,7 @@ type PlaylistTrack = {
   name: string;
   artists: string;
   album: string;
+  dailyPlaylistStatus: "include" | "review";
   albumArtUrl: string | null;
   spotifyUrl: string | null;
   bpm: number;
@@ -46,6 +48,7 @@ type Resp = {
   playlists: Playlist[];
   diagnostics: {
     currentlyListeningCount: number;
+    excludedForReview: number;
     playlistMaxSize: number;
     usableTrackCount: number;
     excludedMissingFeatures: number;
@@ -60,6 +63,7 @@ type KeepTrack = {
   album: string;
   addedAt: string | null;
   repeatIntent: string;
+  dailyPlaylistStatus: "include" | "review";
   albumYear: number | null;
   bpm: number | null;
   energy: number | null;
@@ -81,6 +85,25 @@ export default function PlaylistsPage() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [dayMap, setDayMap] = useState<Record<number, string>>({});
   const [dayMapInitialized, setDayMapInitialized] = useState(false);
+
+  const repeatIntentMutation = useMutation({
+    mutationFn: async ({
+      trackId,
+      repeatIntent,
+    }: {
+      trackId: string;
+      repeatIntent: "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now";
+    }) => {
+      const res = await apiRequest("PATCH", `/api/tracks/${trackId}/repeat-intent`, {
+        repeatIntent,
+      });
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/playlists/daily"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/tracks"] });
+    },
+  });
 
   const query = useQuery<Resp>({
     queryKey: ["/api/playlists/daily"],
@@ -235,6 +258,23 @@ export default function PlaylistsPage() {
                 </div>
               </div>
 
+              <div className="mt-3 rounded-xl border border-border bg-card px-3 py-2 text-xs text-muted-foreground">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="inline-flex items-center gap-1">
+                    <Check className="h-3.5 w-3.5 text-emerald-400" /> Currently Listening
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Square className="h-3.5 w-3.5 text-blue-400" /> Favorites Archive
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Circle className="h-3.5 w-3.5 text-yellow-400" /> Save for Later
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <X className="h-3.5 w-3.5 text-destructive" /> Skip for Now
+                  </span>
+                </div>
+              </div>
+
               <div className="mt-6 space-y-4">
                 {playlists.map((playlist) => {
               const panelKey = `daily-${playlist.index}`;
@@ -287,8 +327,86 @@ export default function PlaylistsPage() {
                               </p>
                               <p className="truncate text-xs text-muted-foreground">{t.artists}</p>
                             </div>
-                            <div className="shrink-0 text-[10px] text-muted-foreground">
-                              {Math.round(t.bpm)} BPM · Mood {t.mood.toFixed(2)}
+                            <div className="flex items-center gap-2">
+                              <div className="shrink-0 text-[10px] text-muted-foreground">
+                                {Math.round(t.bpm)} BPM · Mood {t.mood.toFixed(2)}
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    repeatIntentMutation.mutate({
+                                      trackId: t.id,
+                                      repeatIntent: "currently_listening",
+                                    })
+                                  }
+                                  disabled={
+                                    (repeatIntentMutation.isPending &&
+                                      repeatIntentMutation.variables?.trackId === t.id)
+                                  }
+                                  className={`inline-flex h-6 w-6 items-center justify-center rounded-full border text-xs transition-colors hover-elevate ${
+                                    "border-emerald-500/50 bg-emerald-500/15 text-emerald-400"
+                                  }`}
+                                  title="Currently Listening"
+                                  data-testid={`button-playlist-intent-currently-listening-${t.id}`}
+                                >
+                                  <Check className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    repeatIntentMutation.mutate({
+                                      trackId: t.id,
+                                      repeatIntent: "favorites_archive",
+                                    })
+                                  }
+                                  disabled={
+                                    (repeatIntentMutation.isPending &&
+                                      repeatIntentMutation.variables?.trackId === t.id)
+                                  }
+                                  className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/50 bg-blue-500/15 text-xs text-blue-400 transition-colors hover-elevate"
+                                  title="Favorites Archive"
+                                  data-testid={`button-playlist-intent-favorites-archive-${t.id}`}
+                                >
+                                  <Square className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    repeatIntentMutation.mutate({
+                                      trackId: t.id,
+                                      repeatIntent: "save_for_later",
+                                    })
+                                  }
+                                  disabled={
+                                    (repeatIntentMutation.isPending &&
+                                      repeatIntentMutation.variables?.trackId === t.id)
+                                  }
+                                  className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-yellow-500/50 bg-yellow-500/15 text-xs text-yellow-400 transition-colors hover-elevate"
+                                  title="Save for Later"
+                                  data-testid={`button-playlist-intent-save-for-later-${t.id}`}
+                                >
+                                  <Circle className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    repeatIntentMutation.mutate({
+                                      trackId: t.id,
+                                      repeatIntent: "skip_for_now",
+                                    })
+                                  }
+                                  disabled={
+                                    (repeatIntentMutation.isPending &&
+                                      repeatIntentMutation.variables?.trackId === t.id)
+                                  }
+                                  className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-destructive/50 bg-destructive/15 text-xs text-destructive transition-colors hover-elevate"
+                                  title="Skip for Now"
+                                  data-testid={`button-playlist-intent-skip-for-now-${t.id}`}
+                                >
+                                  <X className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>

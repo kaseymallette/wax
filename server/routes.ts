@@ -10,6 +10,7 @@ import { storage } from "./storage";
 import { buildDailyPlaylists } from "./dailyPlaylists";
 import {
   listenPayloadSchema,
+  dailyPlaylistStatusUpdateSchema,
   repeatIntentSchema,
   repeatIntentUpdateSchema,
   trackImportSchema,
@@ -841,6 +842,16 @@ export async function registerRoutes(
     }
     const track = storage.setRepeatIntent(req.params.id, parsed.data.repeatIntent);
     if (track && "error" in track) return res.status(400).json({ error: track.error });
+    if (!track) return res.status(404).json({ error: "Track not found" });
+    res.json(track);
+  });
+
+  app.patch("/api/tracks/:id/daily-playlist-status", (req, res) => {
+    const parsed = dailyPlaylistStatusUpdateSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ error: "Invalid daily playlist status" });
+    }
+    const track = storage.setDailyPlaylistStatus(req.params.id, parsed.data.dailyPlaylistStatus);
     if (!track) return res.status(404).json({ error: "Track not found" });
     res.json(track);
   });

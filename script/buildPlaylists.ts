@@ -5,6 +5,7 @@ import { buildDailyPlaylists } from "../server/dailyPlaylists";
 import type { TrackWithStats } from "../shared/schema";
 
 type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | "off_rotation" | "removed" | "undecided";
+type DailyPlaylistStatus = "include" | "review";
 
 type TrackAggRow = {
   id: string;
@@ -18,6 +19,7 @@ type TrackAggRow = {
   preview_url: string | null;
   imported_at: number;
   repeat_intent: RepeatIntent | null;
+  daily_playlist_status: DailyPlaylistStatus | null;
   listen_count: number;
   actual_listen_count: number;
   last_listened_at: number | null;
@@ -110,6 +112,12 @@ function normalizeRepeatIntent(v: unknown): RepeatIntent {
   return "undecided";
 }
 
+function normalizeDailyPlaylistStatus(v: unknown): DailyPlaylistStatus {
+  const s = String(v ?? "include").trim().toLowerCase();
+  if (s === "review") return "review";
+  return "include";
+}
+
 function rowToTrackWithStats(r: TrackAggRow): TrackWithStats {
   return {
     id: r.id,
@@ -123,6 +131,7 @@ function rowToTrackWithStats(r: TrackAggRow): TrackWithStats {
     previewUrl: r.preview_url ?? null,
     importedAt: r.imported_at,
     repeatIntent: normalizeRepeatIntent(r.repeat_intent),
+    dailyPlaylistStatus: normalizeDailyPlaylistStatus(r.daily_playlist_status),
     listenCount: Number(r.listen_count ?? 0),
     actualListenCount: Number(r.actual_listen_count ?? 0),
     lastListenedAt: r.last_listened_at ?? null,

@@ -22,7 +22,7 @@ export function repeatIntentChipClass(intent: string | null | undefined): string
   if (intent === "currently_listening") return "bg-emerald-500/15 text-emerald-400";
   if (intent === "favorites_archive") return "bg-blue-500/15 text-blue-400";
   if (intent === "save_for_later") return "bg-yellow-500/15 text-yellow-400";
-  if (intent === "skip_for_now") return "bg-orange-500/15 text-orange-400";
+  if (intent === "skip_for_now") return "bg-destructive/15 text-destructive";
   if (intent === "off_rotation") return "bg-orange-500/15 text-orange-400";
   if (intent === "removed") return "bg-destructive/20 text-destructive";
   return "bg-secondary/60 text-muted-foreground";
