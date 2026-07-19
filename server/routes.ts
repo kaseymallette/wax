@@ -7,7 +7,7 @@ import os from "node:os";
 import multer from "multer";
 import Database from "better-sqlite3";
 import { storage } from "./storage";
-import { buildDailyPlaylists } from "./dailyPlaylists";
+import { buildDailyPlaylists, type DailyPlaylistsResult } from "./dailyPlaylists";
 import {
   listenPayloadSchema,
   dailyPlaylistStatusUpdateSchema,
@@ -29,6 +29,10 @@ const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
 const WEEKDAY_MAP_PATH = path.resolve(
   process.cwd(),
   path.join("users", WAX_USER, "playlists", "weekday-map.json"),
+);
+const DAILY_LOCK_PATH = path.resolve(
+  process.cwd(),
+  path.join("users", WAX_USER, "playlists", "daily-lock.json"),
 );
 
 const upload = multer({
@@ -66,6 +70,82 @@ function readWeekdayMap(): Record<string, Weekday> {
 function writeWeekdayMap(mapping: Record<string, Weekday>): void {
   fs.mkdirSync(path.dirname(WEEKDAY_MAP_PATH), { recursive: true });
   fs.writeFileSync(WEEKDAY_MAP_PATH, `${JSON.stringify(mapping, null, 2)}\n`, "utf8");
+}
+
+type DailyLockFile = {
+  lockedAt: number;
+  data: DailyPlaylistsResult;
+};
+
+function buildLiveDailyPlaylists(): DailyPlaylistsResult {
+  const keepTracks = storage.listTracks({ status: "keep", sort: "last", q: "" });
+  return buildDailyPlaylists(keepTracks);
+}
+
+function buildLockedDailyPlaylists(lockData: DailyPlaylistsResult): DailyPlaylistsResult {
+  const keepTracks = storage.listTracks({ status: "keep", sort: "last", q: "" });
+  const trackById = new Map(keepTracks.map((t) => [t.id, t]));
+
+  const playlists = lockData.playlists.map((playlist) => {
+    const tracks = playlist.tracks
+      .filter((track) => trackById.get(track.id)?.repeatIntent === "currently_listening")
+      .map((track) => {
+        const live = trackById.get(track.id);
+        if (!live) return track;
+        return {
+          ...track,
+          name: live.name,
+          artists: live.artists,
+          album: live.album,
+          albumArtUrl: live.albumArtUrl,
+          spotifyUrl: live.spotifyUrl,
+          camelot: live.camelot,
+          albumYear: live.albumYear,
+        };
+      });
+
+    return {
+      ...playlist,
+      tracks,
+      trackCount: tracks.length,
+    };
+  });
+
+  return {
+    playlists,
+    diagnostics: {
+      ...lockData.diagnostics,
+      currentlyListeningCount: keepTracks.filter((t) => t.repeatIntent === "currently_listening").length,
+    },
+  };
+}
+
+function readDailyLock(): DailyLockFile | null {
+  try {
+    if (!fs.existsSync(DAILY_LOCK_PATH)) return null;
+    const raw = fs.readFileSync(DAILY_LOCK_PATH, "utf8");
+    const parsed = JSON.parse(raw) as Partial<DailyLockFile>;
+    if (!parsed || typeof parsed !== "object") return null;
+    if (!Number.isFinite(parsed.lockedAt)) return null;
+    if (!parsed.data || typeof parsed.data !== "object") return null;
+    if (!Array.isArray((parsed.data as DailyPlaylistsResult).playlists)) return null;
+    if (!(parsed.data as DailyPlaylistsResult).diagnostics) return null;
+    return {
+      lockedAt: Number(parsed.lockedAt),
+      data: parsed.data as DailyPlaylistsResult,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function writeDailyLock(lock: DailyLockFile): void {
+  fs.mkdirSync(path.dirname(DAILY_LOCK_PATH), { recursive: true });
+  fs.writeFileSync(DAILY_LOCK_PATH, `${JSON.stringify(lock, null, 2)}\n`, "utf8");
+}
+
+function removeDailyLock(): void {
+  if (fs.existsSync(DAILY_LOCK_PATH)) fs.unlinkSync(DAILY_LOCK_PATH);
 }
 
 function cleanupExpired() {
@@ -929,10 +1009,79 @@ export async function registerRoutes(
 
   app.get("/api/playlists/daily", (_req, res) => {
     try {
-      const keepTracks = storage.listTracks({ status: "keep", sort: "last", q: "" });
-      res.json(buildDailyPlaylists(keepTracks));
+      const lock = readDailyLock();
+      if (lock) {
+        const lockedView = buildLockedDailyPlaylists(lock.data);
+        return res.json({
+          ...lockedView,
+          isLocked: true,
+          lockedAt: lock.lockedAt,
+        });
+      }
+      const live = buildLiveDailyPlaylists();
+      res.json({
+        ...live,
+        isLocked: false,
+        lockedAt: null,
+      });
     } catch (e: any) {
       res.status(500).json({ error: e?.message || "Could not generate daily playlists." });
+    }
+  });
+
+  app.post("/api/playlists/daily-lock", (_req, res) => {
+    try {
+      const live = buildLiveDailyPlaylists();
+      const lock: DailyLockFile = {
+        lockedAt: Date.now(),
+        data: live,
+      };
+      writeDailyLock(lock);
+      res.json({
+        ok: true,
+        ...live,
+        isLocked: true,
+        lockedAt: lock.lockedAt,
+      });
+    } catch (e: any) {
+      res.status(500).json({ error: e?.message || "Could not lock daily playlists." });
+    }
+  });
+
+  app.delete("/api/playlists/daily-lock", (_req, res) => {
+    try {
+      removeDailyLock();
+      res.json({ ok: true });
+    } catch {
+      res.status(500).json({ error: "Could not unlock daily playlists." });
+    }
+  });
+
+  app.post("/api/playlists/daily-recluster", (_req, res) => {
+    try {
+      const live = buildLiveDailyPlaylists();
+      const existingLock = readDailyLock();
+      if (existingLock) {
+        const nextLock: DailyLockFile = {
+          lockedAt: Date.now(),
+          data: live,
+        };
+        writeDailyLock(nextLock);
+        return res.json({
+          ok: true,
+          ...live,
+          isLocked: true,
+          lockedAt: nextLock.lockedAt,
+        });
+      }
+      res.json({
+        ok: true,
+        ...live,
+        isLocked: false,
+        lockedAt: null,
+      });
+    } catch (e: any) {
+      res.status(500).json({ error: e?.message || "Could not recluster daily playlists." });
     }
   });
 

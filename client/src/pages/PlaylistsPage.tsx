@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { apiRequest } from "@/lib/queryClient";
 import { queryClient } from "@/lib/queryClient";
-import { Check, ChevronDown, ChevronUp, Circle, Music2, Square, X } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Circle, Lock, LockOpen, Music2, Square, X } from "lucide-react";
 
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 
@@ -54,6 +54,8 @@ type Resp = {
     excludedMissingFeatures: number;
     droppedForCapacity: number;
   };
+  isLocked: boolean;
+  lockedAt: number | null;
 };
 
 type KeepTrack = {
@@ -99,9 +101,32 @@ export default function PlaylistsPage() {
       });
       return res.json();
     },
-    onSuccess: () => {
+    onSuccess: async () => {
       queryClient.invalidateQueries({ queryKey: ["/api/playlists/daily"] });
       queryClient.invalidateQueries({ queryKey: ["/api/tracks"] });
+      await queryClient.refetchQueries({ queryKey: ["/api/playlists/daily"], type: "active" });
+    },
+  });
+
+  const lockMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", "/api/playlists/daily-lock");
+      return res.json();
+    },
+    onSuccess: async () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/playlists/daily"] });
+      await queryClient.refetchQueries({ queryKey: ["/api/playlists/daily"], type: "active" });
+    },
+  });
+
+  const unlockMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("DELETE", "/api/playlists/daily-lock");
+      return res.json();
+    },
+    onSuccess: async () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/playlists/daily"] });
+      await queryClient.refetchQueries({ queryKey: ["/api/playlists/daily"], type: "active" });
     },
   });
 
@@ -122,6 +147,8 @@ export default function PlaylistsPage() {
   });
   const playlists = query.data?.playlists ?? [];
   const diagnostics = query.data?.diagnostics;
+  const isLocked = query.data?.isLocked ?? false;
+  const lockedAt = query.data?.lockedAt ?? null;
   const keepTracks = keepTracksQuery.data ?? [];
   const compareArtistAlbumSong = (a: KeepTrack, b: KeepTrack) => {
     return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
@@ -250,11 +277,45 @@ export default function PlaylistsPage() {
           ) : (
             <>
               <div className="mt-4 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground">
-                <div className="flex flex-wrap gap-3">
-                  <span>Currently Listening: {diagnostics.currentlyListeningCount}</span>
-                  <span>Usable for clustering: {diagnostics.usableTrackCount}</span>
-                  <span>Missing features: {diagnostics.excludedMissingFeatures}</span>
-                  {diagnostics.droppedForCapacity > 0 && <span>Dropped at cap: {diagnostics.droppedForCapacity}</span>}
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap gap-3">
+                    <span>Currently Listening: {diagnostics.currentlyListeningCount}</span>
+                    <span>Usable for clustering: {diagnostics.usableTrackCount}</span>
+                    <span>Missing features: {diagnostics.excludedMissingFeatures}</span>
+                    {diagnostics.droppedForCapacity > 0 && <span>Dropped at cap: {diagnostics.droppedForCapacity}</span>}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
+                      isLocked
+                        ? "bg-blue-500/15 text-blue-400"
+                        : "bg-secondary/60 text-muted-foreground"
+                    }`}>
+                      {isLocked ? "Locked" : "Live"}
+                    </span>
+                    {lockedAt ? (
+                      <span className="text-[11px] text-muted-foreground">
+                        {new Date(lockedAt).toLocaleString()}
+                      </span>
+                    ) : null}
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => lockMutation.mutate()}
+                      disabled={lockMutation.isPending || isLocked}
+                      data-testid="button-daily-lock"
+                    >
+                      <Lock className="mr-1 h-3.5 w-3.5" /> Lock Playlists
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => unlockMutation.mutate()}
+                      disabled={unlockMutation.isPending || !isLocked}
+                      data-testid="button-daily-unlock"
+                    >
+                      <LockOpen className="mr-1 h-3.5 w-3.5" /> Unlock
+                    </Button>
+                  </div>
                 </div>
               </div>
 
