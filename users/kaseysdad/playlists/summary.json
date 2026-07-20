@@ -1,18 +1,21 @@
 {
   "user": "kaseysdad",
-  "generatedAt": 1784002336911,
+  "generatedAt": 1784515021647,
   "dbPath": "/Users/kaseymallette/github/wax/data.db",
   "diagnostics": {
-    "currentlyListeningCount": 112,
-    "playlistMaxSize": 20,
-    "usableTrackCount": 112,
+    "currentlyListeningCount": 168,
+    "excludedForReview": 0,
+    "playlistMaxSize": 25,
+    "usableTrackCount": 168,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
+    "currentlyListening": 168,
     "favoritesArchive": 0,
     "saveForLater": 36,
-    "offRotation": 0
+    "skipForNow": 74,
+    "fullMusicLibrary": 278
   },
   "files": {
     "daily": [
@@ -24,9 +27,11 @@
       "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-7.csv"
     ],
+    "currentlyListening": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/save-for-later.csv",
-    "offRotation": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/off-rotation.csv",
+    "skipForNow": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/skip-for-now.csv",
+    "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/full-music-library.csv",
     "missingFeatures": null
   }
 }
