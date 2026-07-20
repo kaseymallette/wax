@@ -1,8 +1,1032 @@
 {
-  "exportedAt": 1784365135048,
+  "exportedAt": 1784504206116,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 592,
+  "count": 719,
   "decisions": [
+    {
+      "trackId": "3IXRdLsQib8m0hBbQpe7T8",
+      "name": "Hang Me Up To Dry",
+      "artists": "Cold War Kids",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503749362
+    },
+    {
+      "trackId": "63CHa6rmamv9OsehkRD8oz",
+      "name": "Against All Odds (Take a Look at Me Now) - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503674632
+    },
+    {
+      "trackId": "5lByBSHBTVvhz6rAEkmrc6",
+      "name": "Do You Know, Do You Care? - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503637489
+    },
+    {
+      "trackId": "3iwy6SFYKp1g6HfVr9oEAI",
+      "name": "Like China - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503625515
+    },
+    {
+      "trackId": "65aiZMNuOKvP34ZK5XQmV8",
+      "name": "I Don't Care Anymore - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503608271
+    },
+    {
+      "trackId": "5zE9OJvFz9VYJJoz8MQkoG",
+      "name": "The Roof Is Leaking - 2015 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503593005
+    },
+    {
+      "trackId": "6MjfEIHOMW6MaDO3LpFcmW",
+      "name": "In the Air Tonight - 2015 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503576871
+    },
+    {
+      "trackId": "2bMMLLcRmr90rRuJfZudC3",
+      "name": "Put the Bucket Down (Dark-Side Mix)",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503547059
+    },
+    {
+      "trackId": "4HaatQPq9qWTY7xhCFbBB6",
+      "name": "Till Your Mind Is Shining (Dark-Side Mix)",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503539857
+    },
+    {
+      "trackId": "4fmEeHYRXtjw6y1aYogjBH",
+      "name": "A Hard Lesson (Dark-Side Mix)",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503532541
+    },
+    {
+      "trackId": "1gnaGdYFoXxReEwDchsaSx",
+      "name": "I Belong to the Sky (Dark-Side Mix)",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503525886
+    },
+    {
+      "trackId": "6B2vTF4zhKdR4v4RDXkz3G",
+      "name": "Shock The Monkey",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503507263
+    },
+    {
+      "trackId": "1SqdCJsKsRgQ8qEzjLtmPm",
+      "name": "The Rhythm Of The Heat",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503497453
+    },
+    {
+      "trackId": "1CM1wOqD2AIjt2MWd31LV2",
+      "name": "Solsbury Hill",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503479800
+    },
+    {
+      "trackId": "6m3yuXdLzDTgwJ1y1VnNaH",
+      "name": "I Don't Remember",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784503463517
+    },
+    {
+      "trackId": "0jngaR7DQWMye5yYn7fzqd",
+      "name": "No Self Control",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784503439080
+    },
+    {
+      "trackId": "5bg1GtXTNoVM2Nzv4ORAKP",
+      "name": "In Your Eyes - 2012 Remaster",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503428641
+    },
+    {
+      "trackId": "2claYrMjdarDxaKBO7ppTG",
+      "name": "We Do What We're Told (Milgram's 37) - 2012 Remaster",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503411308
+    },
+    {
+      "trackId": "6IuOHB4yZcU935GKqT1K6I",
+      "name": "Big Time - 2012 Remaster",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503395707
+    },
+    {
+      "trackId": "1wKkRvZnuVde5OYhKwTMeY",
+      "name": "Don't Give Up - 2012 Remaster",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784503378060
+    },
+    {
+      "trackId": "4AUS8KNz7zX8XFu9L38GT0",
+      "name": "Sledgehammer - 2012 Remaster",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503364938
+    },
+    {
+      "trackId": "3kJfwXimSnNMa4KFO3jixZ",
+      "name": "The Carpet Crawlers - 2025 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503314308
+    },
+    {
+      "trackId": "2wnIWZiOBo6OhxHS7SHkwF",
+      "name": "In the Cage - 2025 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503304019
+    },
+    {
+      "trackId": "38sIGnmCyfHtVxfZMIR2N6",
+      "name": "Cuckoo Cocoon - 2025 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784503295737
+    },
+    {
+      "trackId": "1gyQods9V876YtT0YBu1N1",
+      "name": "The Lamb Lies Down on Broadway - 2025 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502900113
+    },
+    {
+      "trackId": "0foadg5Kw7LQlCOjchP49d",
+      "name": "Afterglow - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502867355
+    },
+    {
+      "trackId": "5zADxJhJEzuOstzcUtXlXv",
+      "name": "Supper's Ready - 2007 Stereo Mix",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502845764
+    },
+    {
+      "trackId": "6evW6QebqwF51x6ucJxyYO",
+      "name": "Time Table - 2007 Stereo Mix",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502837816
+    },
+    {
+      "trackId": "2p7RcVGykyXz4xQZVuY6SZ",
+      "name": "Harold the Barrel",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784502824990
+    },
+    {
+      "trackId": "2Gr7Fvwzc3xP8R7xkUSMTR",
+      "name": "For Absent Friends",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502796280
+    },
+    {
+      "trackId": "1WDaN2MGhYmdQI1Osx7h6Q",
+      "name": "The Musical Box",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502787818
+    },
+    {
+      "trackId": "667vmbQnUl1Jzf3tZkIt2a",
+      "name": "The Knife",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784502776798
+    },
+    {
+      "trackId": "1N8bYACb8qyW2F53whKkDP",
+      "name": "White Mountain",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502756060
+    },
+    {
+      "trackId": "2lvM9dA12IIqBVU2aF5MaV",
+      "name": "Looking For Someone",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784502736304
+    },
+    {
+      "trackId": "0aeUuMypcIbr5y2oQUKyBV",
+      "name": "No Reply at All - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502717763
+    },
+    {
+      "trackId": "5p2BuFWxvBRxBT8lPmn5yF",
+      "name": "Heathaze - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502698595
+    },
+    {
+      "trackId": "0L9pdiL79AX0NnX3sOZOSk",
+      "name": "A Trick of the Tail",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502675129
+    },
+    {
+      "trackId": "7DwXVzYDo6GNSiEw3GGC1M",
+      "name": "Ripples",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502662177
+    },
+    {
+      "trackId": "6lp7cHPQtQyBlpOj0Uzs7B",
+      "name": "Silver Rainbow - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502645874
+    },
+    {
+      "trackId": "14AI8Qt9giIa8uzek1I24O",
+      "name": "Home by the Sea - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784502624567
+    },
+    {
+      "trackId": "1G9jeUXQNewsKfYPAMdLPj",
+      "name": "Second Home by the Sea - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502621110
+    },
+    {
+      "trackId": "1h3kqAwEqF5Tk15dsy5gZ1",
+      "name": "Dance on a Volcano - Live in Paris",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502561990
+    },
+    {
+      "trackId": "5k9PWIkHRCKtWYeHWIWmSh",
+      "name": "Squonk - Live in Paris",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502534849
+    },
+    {
+      "trackId": "2nHKSoU1OHlEGy7uc3owB8",
+      "name": "Los Endos - Live in Paris",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784502526337
+    },
+    {
+      "trackId": "6UpMG6BDOd5xecMTu5r3sj",
+      "name": "Firth of Fifth - 2007 Stereo Mix",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784502468940
+    },
+    {
+      "trackId": "2g6zbVqZvnc1dk6cYUhr5g",
+      "name": "Ray Bands",
+      "artists": "B.o.B",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872960
+    },
+    {
+      "trackId": "28GUjBGqZVcAV4PHSYzkj2",
+      "name": "So Good",
+      "artists": "B.o.B",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872959
+    },
+    {
+      "trackId": "0yQw3d0iQDjMrxaVHFv77J",
+      "name": "Strange Clouds (feat. Lil Wayne)",
+      "artists": "B.o.B,Lil Wayne",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872958
+    },
+    {
+      "trackId": "7L5yUAQfKSm5ydJRjPx5Ok",
+      "name": "Better (feat. Wiz Khalifa)",
+      "artists": "GASHI,Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872957
+    },
+    {
+      "trackId": "3wImXdE4bliIVSEl3lVue1",
+      "name": "What I Know Now (feat. Wiz Khalifa)",
+      "artists": "THEY.,Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872956
+    },
+    {
+      "trackId": "0HRSsZiisdMuUrWhzb8ewK",
+      "name": "Bout Me (feat. Problem & Iamsu)",
+      "artists": "Wiz Khalifa,Iamsu!,JasonMartin",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872955
+    },
+    {
+      "trackId": "2akHlWnK60UF1L9Til9rzK",
+      "name": "Initiation",
+      "artists": "Wiz Khalifa,Lola Monroe",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872954
+    },
+    {
+      "trackId": "1ms5tNNdPouTtcD2oVF9Oz",
+      "name": "Work Hard, Play Hard",
+      "artists": "Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872953
+    },
+    {
+      "trackId": "1q8kj0fpTfdGYgjuJd2UTM",
+      "name": "Bluffin (feat. Berner)",
+      "artists": "Wiz Khalifa,Berner",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872952
+    },
+    {
+      "trackId": "0wVAhoXZM7tl1pnLaupf1F",
+      "name": "Paperbond",
+      "artists": "Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872951
+    },
+    {
+      "trackId": "6qa6a2fsCbLMkSIoZEfvTJ",
+      "name": "Fly Solo",
+      "artists": "Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872950
+    },
+    {
+      "trackId": "2kzRSiyignH8yzPTrWvyPo",
+      "name": "No Sleep",
+      "artists": "Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872949
+    },
+    {
+      "trackId": "53DB6LJV9B8sz0p1s6tlGS",
+      "name": "Roll Up",
+      "artists": "Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872948
+    },
+    {
+      "trackId": "5A6OHHy73AR5tLxgTc98zz",
+      "name": "Black and Yellow",
+      "artists": "Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872947
+    },
+    {
+      "trackId": "0osPX8TruIebOhKuG6GK8C",
+      "name": "On My Level (feat. Too $hort)",
+      "artists": "Wiz Khalifa,Too $hort",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872946
+    },
+    {
+      "trackId": "0prF3F4FoKvxBObaeXLVHv",
+      "name": "When I'm Gone",
+      "artists": "Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872945
+    },
+    {
+      "trackId": "6kfZ93lVSdav6RinRVEWDa",
+      "name": "Wake Up",
+      "artists": "Mac Miller",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872944
+    },
+    {
+      "trackId": "6AjXmTomWUWZ6Za0X6ypjl",
+      "name": "Knock Knock",
+      "artists": "Mac Miller",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872943
+    },
+    {
+      "trackId": "1RcCApDP3AP7bAm81iYsJ3",
+      "name": "Loud",
+      "artists": "Mac Miller",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872942
+    },
+    {
+      "trackId": "50M2QjfSM82wkJ1d0iV4mh",
+      "name": "Daydreamin' (feat. Jill Scott)",
+      "artists": "Lupe Fiasco,Jill Scott",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872941
+    },
+    {
+      "trackId": "1U70qs2xkXUNUUJTvlg0J2",
+      "name": "Lord Of The Sad And Lonely",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872940
+    },
+    {
+      "trackId": "4bFOo0IbTRXQBXNWEpGxXX",
+      "name": "King Wizard",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872939
+    },
+    {
+      "trackId": "0jUie9UEhrUFWo683TC3KW",
+      "name": "Unfuckwittable",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872938
+    },
+    {
+      "trackId": "20bJBbPapGQ4bqs0YcA9xY",
+      "name": "Just What I Am",
+      "artists": "Kid Cudi,King Chip",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872938
+    },
+    {
+      "trackId": "2XQKestqcKNAxnmo5hh3Yo",
+      "name": "These Worries",
+      "artists": "Kid Cudi,Mary J. Blige",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872937
+    },
+    {
+      "trackId": "393MDhe62s8hbH8ETrlxe5",
+      "name": "Mr. Rager",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872936
+    },
+    {
+      "trackId": "6R4flNWy1pWkjzwg3TCDlM",
+      "name": "MANIAC",
+      "artists": "Kid Cudi,Cage,St. Vincent",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872935
+    },
+    {
+      "trackId": "4yCuBvbBvoJ9eVE7QB2Rkg",
+      "name": "The Mood",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872933
+    },
+    {
+      "trackId": "6XkuklKiHYVTlVvWlTgQYP",
+      "name": "Erase Me - Main",
+      "artists": "Kid Cudi,Kanye West",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872933
+    },
+    {
+      "trackId": "6GSMozgAebBmuM2hCV15H3",
+      "name": "Ashin’ Kusher",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872932
+    },
+    {
+      "trackId": "6hPSal3ragmfUt1I5mKZjn",
+      "name": "Mojo So Dope",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "favorites_archive",
+      "loggedAt": 1784501872931
+    },
+    {
+      "trackId": "2GtaNlidzvK3hY78kCdsHa",
+      "name": "Marijuana",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872930
+    },
+    {
+      "trackId": "0Epl79nHvdyTdZRAiWpJah",
+      "name": "REVOFEV",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872929
+    },
+    {
+      "trackId": "5QemHQxj7PRkrw8lJl2W7C",
+      "name": "Scott Mescudi Vs. The World",
+      "artists": "Kid Cudi,CeeLo Green",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872928
+    },
+    {
+      "trackId": "78T9DulqSBWqkaxczcGBfk",
+      "name": "Man On The Moon",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872927
+    },
+    {
+      "trackId": "1RUTIdTnFs8lHSc0Zr4UJB",
+      "name": "Up Up & Away",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872926
+    },
+    {
+      "trackId": "6MtKObWYda2qnNIpJI21uD",
+      "name": "Pursuit Of Happiness (Nightmare)",
+      "artists": "Kid Cudi,MGMT,Ratatat",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872925
+    },
+    {
+      "trackId": "03MWa1FMygR3RrQoQytsjS",
+      "name": "Cudi Zone",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872924
+    },
+    {
+      "trackId": "3HG3QFERdP3Q1b6VGahwWs",
+      "name": "Alive (Nightmare)",
+      "artists": "Kid Cudi,Ratatat",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872923
+    },
+    {
+      "trackId": "5wfllwdjglyQislkskYLBv",
+      "name": "Day 'N' Nite (nightmare)",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872922
+    },
+    {
+      "trackId": "6xeTNdPnP5imNgDzFMfVfD",
+      "name": "Solo Dolo (Nightmare)",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872921
+    },
+    {
+      "trackId": "0RXspLL7GwiGm9KIDdT0ma",
+      "name": "Simple As...",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872920
+    },
+    {
+      "trackId": "7dZAPeA3Of5j5Vaef0DQ6M",
+      "name": "Make Her Say",
+      "artists": "Kid Cudi,Kanye West,Common",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872919
+    },
+    {
+      "trackId": "0rFpcfF0YfvFUYsl99Bw9d",
+      "name": "Soundtrack 2 My Life",
+      "artists": "Kid Cudi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872918
+    },
+    {
+      "trackId": "4bDPr2VAjcfgUDmN9dGOC3",
+      "name": "Why I Love You",
+      "artists": "JAŸ-Z,Kanye West,Mr Hudson",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872917
+    },
+    {
+      "trackId": "6IE4ozG51DjyY5Iuh82hqn",
+      "name": "Murder To Excellence",
+      "artists": "JAŸ-Z,Kanye West",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872915
+    },
+    {
+      "trackId": "2eqOjSC8dY1iFrQiJGPDOX",
+      "name": "Who Gon Stop Me",
+      "artists": "JAŸ-Z,Kanye West",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872914
+    },
+    {
+      "trackId": "14I61w6cyYUHiV2n28IYdP",
+      "name": "Otis",
+      "artists": "JAŸ-Z,Kanye West,Otis Redding",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872913
+    },
+    {
+      "trackId": "6JFLZH9vCzgqnUToBdiHQb",
+      "name": "Gotta Have It",
+      "artists": "JAŸ-Z,Kanye West",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872912
+    },
+    {
+      "trackId": "37jTPJgwCCmIGMPB45jrPV",
+      "name": "Holy Grail",
+      "artists": "JAŸ-Z,Justin Timberlake",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872911
+    },
+    {
+      "trackId": "2igwFfvr1OAGX9SKDCPBwO",
+      "name": "Empire State Of Mind",
+      "artists": "JAŸ-Z,Alicia Keys",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872910
+    },
+    {
+      "trackId": "637A7SaHyjxQEHyUMb30hx",
+      "name": "Off That",
+      "artists": "JAŸ-Z,Drake",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872909
+    },
+    {
+      "trackId": "4jtyUzZm9WLc2AdaJ1dso7",
+      "name": "0 To 100 / The Catch Up",
+      "artists": "Drake",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872908
+    },
+    {
+      "trackId": "4ljDnzzqwnRIynr1g55um4",
+      "name": "On To The Next One",
+      "artists": "JAŸ-Z,Swizz Beatz",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872906
+    },
+    {
+      "trackId": "3CcvahnsiArpTHYQEWV2Au",
+      "name": "Bring Em Out",
+      "artists": "T.I.",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872905
+    },
+    {
+      "trackId": "4I1P0QQcNEaWXstahyUaPp",
+      "name": "Universal Mind Control (UMC)",
+      "artists": "Common",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872903
+    },
+    {
+      "trackId": "1xbP92TbLVfUlS2BtkTidi",
+      "name": "HOW TO BE A LOVER",
+      "artists": "Goldie Boutilier",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872902
+    },
+    {
+      "trackId": "58eQPs5CDTS7wITft4Klta",
+      "name": "Mr. Bojangles - Remastered",
+      "artists": "Nitty Gritty Dirt Band",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872901
+    },
+    {
+      "trackId": "23DZLSxCK6kM8FF2RlzKDl",
+      "name": "You're No Good",
+      "artists": "Linda Ronstadt",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872900
+    },
+    {
+      "trackId": "1IqFh00G2kvvMm8pRMpehA",
+      "name": "Me and Bobby McGee",
+      "artists": "Janis Joplin",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872899
+    },
+    {
+      "trackId": "21j1PsCiTaO8ZW88UZrh3A",
+      "name": "Shine On You Crazy Diamond (Pts. 6-9)",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872897
+    },
+    {
+      "trackId": "6pnwfWyaWjQiHCKTiZLItr",
+      "name": "Shine On You Crazy Diamond (Pts. 1-5)",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872896
+    },
+    {
+      "trackId": "65eRcjlStTnk8opG5eIQ8Z",
+      "name": "25 or 6 to 4",
+      "artists": "Chicago",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872895
+    },
+    {
+      "trackId": "54TaGh2JKs1pO9daXNXI5q",
+      "name": "Fly By Night",
+      "artists": "Rush",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872894
+    },
+    {
+      "trackId": "3QZ7uX97s82HFYSmQUAN1D",
+      "name": "Tom Sawyer",
+      "artists": "Rush",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872893
+    },
+    {
+      "trackId": "3yn01PcU95PTbiZ3xvop2j",
+      "name": "Call Your Mom",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "skip_for_now",
+      "loggedAt": 1784501872892
+    },
+    {
+      "trackId": "1Kssqm7IyY21qXKoei29ok",
+      "name": "Kuru",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872891
+    },
+    {
+      "trackId": "6AAqKzWTDyeITtZg0EsPs0",
+      "name": "Dystopia Radio",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872890
+    },
+    {
+      "trackId": "1Hss0zKxdrpCxIrK4AUAOF",
+      "name": "Halfway",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872889
+    },
+    {
+      "trackId": "3fQLQSOhijzOC6W1NPhYle",
+      "name": "Runaways",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872888
+    },
+    {
+      "trackId": "1apm5UngnEDzAIk6NsWUWz",
+      "name": "Lifeline",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872887
+    },
+    {
+      "trackId": "6srwN44pQgxa8ifFKtHWLV",
+      "name": "Sungazer",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872885
+    },
+    {
+      "trackId": "1hUgRKylrpLNBKjblt3ZW9",
+      "name": "Giving Up Air",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872884
+    },
+    {
+      "trackId": "4zYgyzWuDtd9P2fP54qeJ0",
+      "name": "Bird on a Wire",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872883
+    },
+    {
+      "trackId": "0qx9BUk40KSvaCA3rpUkCN",
+      "name": "These Arms",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872882
+    },
+    {
+      "trackId": "0MO5nScLDab8HHZyvYh4Mr",
+      "name": "Into The Wild",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872880
+    },
+    {
+      "trackId": "6nyXEkO61ijAnNJ77Bid5o",
+      "name": "Lucky Dimes",
+      "artists": "The Temper Trap",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872879
+    },
+    {
+      "trackId": "2bqWo67hUC1mXH3HycjtOj",
+      "name": "Staring at the Sun",
+      "artists": "Elderbrook,Rules",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784501872878
+    },
+    {
+      "trackId": "4Zhnwb8jvP09aIRAzQMG08",
+      "name": "Hospital Beds",
+      "artists": "Cold War Kids",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872875
+    },
+    {
+      "trackId": "6VeZUUTHx67EmtTM4682eA",
+      "name": "If You Could Talk",
+      "artists": "Dexter and The Moonrocks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872874
+    },
+    {
+      "trackId": "7iy66dzNBRSu0DRj1ZThTa",
+      "name": "Do I Ever Belong?",
+      "artists": "Two Feet",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872872
+    },
+    {
+      "trackId": "20TOJbuP4XyGBEFbwB8Vbm",
+      "name": "Beaches In Tennessee",
+      "artists": "Cage The Elephant",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784501872863
+    },
+    {
+      "trackId": "1Sca7ILWxXYzWL2WhJtPtI",
+      "name": "Hot Boy Things",
+      "artists": "Nick Hissom",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784496754338
+    },
     {
       "trackId": "6MLuGGBIYvnXOr86YwQOuz",
       "name": "Love In The 21st Century",
@@ -104,7 +1128,7 @@
       "name": "Baby Came Home",
       "artists": "The Neighbourhood",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1784351963065
     },
     {
@@ -240,7 +1264,7 @@
       "name": "Staying Up",
       "artists": "The Neighbourhood",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1784351863623
     },
     {
@@ -248,7 +1272,7 @@
       "name": "Cry Baby",
       "artists": "The Neighbourhood",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1784351863621
     },
     {
@@ -408,7 +1432,7 @@
       "name": "Better for It",
       "artists": "Foreign Air",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1784351863577
     },
     {
@@ -480,7 +1504,7 @@
       "name": "Artificial Paradise",
       "artists": "Vlad Holiday",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1784351863568
     },
     {
@@ -736,7 +1760,7 @@
       "name": "Touchin on My",
       "artists": "3OH!3",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1784350474700
     },
     {
@@ -744,7 +1768,7 @@
       "name": "I'm Not the One",
       "artists": "3OH!3",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1784350464981
     },
     {
@@ -1504,7 +2528,7 @@
       "name": "Black Holes (Solid Ground)",
       "artists": "The Blue Stones",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1784349479894
     },
     {
@@ -1960,7 +2984,7 @@
       "name": "Run",
       "artists": "Daughter",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1784339032479
     },
     {
@@ -2184,7 +3208,7 @@
       "name": "The Comedown",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1784147902472
     },
     {
@@ -2192,7 +3216,7 @@
       "name": "Tropics",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1784147892656
     },
     {
@@ -2200,7 +3224,7 @@
       "name": "Texas Hold‘em",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1784147885019
     },
     {
@@ -2208,7 +3232,7 @@
       "name": "Murder",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1784147873968
     },
     {
@@ -2232,7 +3256,7 @@
       "name": "Painkillers",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1784147770095
     },
     {
@@ -2240,7 +3264,7 @@
       "name": "Mission to Mars",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1784147763008
     },
     {
@@ -2248,7 +3272,7 @@
       "name": "Hide",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1784147757090
     },
     {
@@ -2416,7 +3440,7 @@
       "name": "25 To Life",
       "artists": "Eminem",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783904409359
     },
     {
@@ -2472,7 +3496,7 @@
       "name": "Hospital Beds - Live Rising",
       "artists": "Cold War Kids",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1783904069486
     },
     {
@@ -2536,7 +3560,7 @@
       "name": "505",
       "artists": "Arctic Monkeys",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1783903226123
     },
     {
@@ -2544,7 +3568,7 @@
       "name": "Gold",
       "artists": "Sir Sly",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783903209998
     },
     {
@@ -2552,7 +3576,7 @@
       "name": "NUEVAYoL",
       "artists": "Bad Bunny",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783903186983
     },
     {
@@ -2616,7 +3640,7 @@
       "name": "Tití Me Preguntó",
       "artists": "Bad Bunny",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783902864312
     },
     {
@@ -2744,7 +3768,7 @@
       "name": "Woman Is King",
       "artists": "Bishop Briggs",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783902492940
     },
     {
@@ -2752,7 +3776,7 @@
       "name": "English Town",
       "artists": "Matchbox Twenty",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783902476500
     },
     {
@@ -2968,7 +3992,7 @@
       "name": "Backseat",
       "artists": "Balu Brigada",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783901562845
     },
     {
@@ -3008,7 +4032,7 @@
       "name": "Snap Out Of It",
       "artists": "Arctic Monkeys",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783901364151
     },
     {
@@ -3084,14 +4108,6 @@
       "loggedAt": 1783901187145
     },
     {
-      "trackId": "3IXRdLsQib8m0hBbQpe7T8",
-      "name": "Hang Me Up To Dry",
-      "artists": "Cold War Kids",
-      "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
-      "loggedAt": 1783901141464
-    },
-    {
       "trackId": "4pEU0NT64oiem9lDT7nuJn",
       "name": "Running In Circles",
       "artists": "Dead Poet Society",
@@ -3136,7 +4152,7 @@
       "name": "Interzone - 2019 Digital Master",
       "artists": "Joy Division",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1783900921033
     },
     {
@@ -3144,7 +4160,7 @@
       "name": "Shadowplay - 2019 Digital Master",
       "artists": "Joy Division",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1783900895249
     },
     {
@@ -3256,7 +4272,7 @@
       "name": "It Takes More",
       "artists": "Taking Back Sunday",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783900501370
     },
     {
@@ -3264,7 +4280,7 @@
       "name": "Flicker, Fade",
       "artists": "Taking Back Sunday",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783900472760
     },
     {
@@ -3296,7 +4312,7 @@
       "name": "Wonderful Nothing",
       "artists": "Glass Animals",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783900355055
     },
     {
@@ -3608,7 +4624,7 @@
       "name": "Falling",
       "artists": "Florence + The Machine",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783891553348
     },
     {
@@ -3752,7 +4768,7 @@
       "name": "Holy War",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783889556774
     },
     {
@@ -3776,7 +4792,7 @@
       "name": "Fever Pitch",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783889515247
     },
     {
@@ -3848,7 +4864,7 @@
       "name": "LOL",
       "artists": "Rainbow Kitten Surprise",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "favorites_archive",
       "loggedAt": 1783889024272
     },
     {
@@ -3992,7 +5008,7 @@
       "name": "Rap God",
       "artists": "Eminem",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "skip_for_now",
       "loggedAt": 1783887751340
     },
     {
@@ -4384,7 +5400,7 @@
       "name": "Stem the Flow",
       "artists": "Paris Paloma",
       "keepInLibrary": 1,
-      "repeatIntent": "currently_listening",
+      "repeatIntent": "save_for_later",
       "loggedAt": 1783819507634
     },
     {

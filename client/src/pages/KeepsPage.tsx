@@ -33,7 +33,24 @@ import {
   repeatIntentChipClass,
   repeatIntentLabel,
 } from "@/lib/wax";
-import { Clock, EarOff, Headphones, Library, MoreHorizontal, Trash2 } from "lucide-react";
+import { Clock, Library, MoreHorizontal, Trash2 } from "lucide-react";
+
+type KeepEntry = ListenWithTrack & { synthetic?: boolean };
+
+function asListenRepeatIntent(intent: string): ListenWithTrack["repeatIntent"] {
+  if (
+    intent === "currently_listening" ||
+    intent === "favorites_archive" ||
+    intent === "save_for_later" ||
+    intent === "skip_for_now" ||
+    intent === "off_rotation" ||
+    intent === "removed" ||
+    intent === "undecided"
+  ) {
+    return intent;
+  }
+  return "undecided";
+}
 
 const KEEP_DECISION_OPTIONS = REPEAT_INTENT_OPTIONS.filter(
   (opt) => opt.value !== "undecided" && opt.value !== "removed" && opt.value !== "off_rotation",
@@ -159,18 +176,52 @@ export default function KeepsPage() {
       if (!keepTrackIds.has(l.trackId)) continue;
       if (!byTrack.has(l.trackId)) byTrack.set(l.trackId, l);
     }
-    return Array.from(byTrack.values());
+    return byTrack;
   }, [keeps, keepTrackIds]);
+
+  const keepEntries = useMemo<KeepEntry[]>(() => {
+    const entries: KeepEntry[] = [];
+    let syntheticId = -1;
+    const now = Date.now();
+
+    for (const track of keepTracksQuery.data ?? []) {
+      const existing = latestKeeps.get(track.id);
+      if (existing) {
+        entries.push(existing);
+        continue;
+      }
+
+      entries.push({
+        id: syntheticId,
+        trackId: track.id,
+        repeatIntent: asListenRepeatIntent(track.repeatIntent),
+        listened: 0,
+        wantAgain: 0,
+        wouldAgain: 0,
+        keepInLibrary: 1,
+        activity: [],
+        notes: "",
+        loggedAt: now,
+        name: track.name,
+        artists: track.artists,
+        album: track.album,
+        albumArtUrl: track.albumArtUrl,
+        spotifyUrl: track.spotifyUrl,
+        previewUrl: track.previewUrl,
+        synthetic: true,
+      });
+      syntheticId -= 1;
+    }
+
+    return entries;
+  }, [keepTracksQuery.data, latestKeeps]);
+
   const visibleKeeps = useMemo(() => {
     const q = lookup.trim().toLowerCase();
-    let out = latestKeeps;
+    let out = keepEntries;
 
     if (tag !== "all") {
-      out = out.filter((l) => {
-        const track = keepTrackById.get(l.trackId);
-        if (!track) return false;
-        return track.repeatIntent === tag;
-      });
+      out = out.filter((l) => l.repeatIntent === tag);
     }
 
     if (q) {
@@ -197,10 +248,10 @@ export default function KeepsPage() {
     }
 
     return sorted;
-  }, [latestKeeps, lookup, sortBy, tag, keepTrackById]);
+  }, [keepEntries, lookup, sortBy, tag]);
 
   const groups = useMemo(() => {
-    const map: { key: string; header: string; items: ListenWithTrack[] }[] = [];
+    const map: { key: string; header: string; items: KeepEntry[] }[] = [];
     let lastKey = "";
     for (const l of visibleKeeps) {
       const k = dayKey(l.loggedAt);
@@ -361,24 +412,22 @@ export default function KeepsPage() {
                                   </DropdownMenuItem>
                                 </a>
                               </Link>
-                              <DropdownMenuItem
-                                className="text-destructive focus:text-destructive"
-                                onClick={() => setConfirmDelete(l.id)}
-                                data-testid={`menu-keep-delete-${l.id}`}
-                              >
-                                <Trash2 className="mr-2 h-4 w-4" /> Delete entry
-                              </DropdownMenuItem>
+                              {!l.synthetic && (
+                                <DropdownMenuItem
+                                  className="text-destructive focus:text-destructive"
+                                  onClick={() => setConfirmDelete(l.id)}
+                                  data-testid={`menu-keep-delete-${l.id}`}
+                                >
+                                  <Trash2 className="mr-2 h-4 w-4" /> Delete entry
+                                </DropdownMenuItem>
+                              )}
                             </DropdownMenuContent>
                           </DropdownMenu>
                         </div>
                         <div className="mt-1 text-[11px] text-muted-foreground/80">
-                          {absoluteTime(l.loggedAt)} · {relativeTime(l.loggedAt)}
+                          {`${absoluteTime(l.loggedAt)} · ${relativeTime(l.loggedAt)}`}
                         </div>
                         <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                          <span className="inline-flex items-center gap-1 rounded-full bg-secondary/60 px-2 py-0.5 text-[10px] text-muted-foreground">
-                            {l.listened ? <Headphones className="h-3 w-3" /> : <EarOff className="h-3 w-3" />}
-                            {l.listened ? "Listened" : "Background"}
-                          </span>
                           <span
                             className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${keepIntentChipClass(l.repeatIntent)}`}
                           >
