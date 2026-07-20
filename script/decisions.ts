@@ -63,6 +63,14 @@ function deriveAgainFlags(keepInLibrary: 0 | 1, repeatIntent: string): { wantAga
   return { wantAgain, wouldAgain };
 }
 
+function deriveKeepInLibraryFromIntent(intent: string): 0 | 1 {
+  const normalized = normalizeRepeatIntent(intent);
+  if (normalized === "removed") return 0;
+  if (normalized === "off_rotation") return 0;
+  if (normalized === "undecided") return 1;
+  return 1;
+}
+
 function exportDecisions() {
   const db = new Database(DB_PATH, { readonly: true, fileMustExist: true });
   try {
@@ -87,16 +95,18 @@ function exportDecisions() {
           t.artists AS artists,
           latest.keep_in_library AS keepInLibrary,
           t.repeat_intent AS repeatIntent,
-          latest.logged_at AS loggedAt
+          COALESCE(latest.logged_at, t.imported_at) AS loggedAt
         FROM tracks t
-        JOIN latest ON latest.track_id = t.id
-        ORDER BY latest.logged_at DESC, t.id ASC
+        LEFT JOIN latest ON latest.track_id = t.id
+        WHERE latest.track_id IS NOT NULL
+           OR COALESCE(TRIM(t.repeat_intent), 'undecided') <> 'undecided'
+        ORDER BY COALESCE(latest.logged_at, t.imported_at) DESC, t.id ASC
       `)
       .all() as Array<{
       trackId: string;
       name: string;
       artists: string;
-      keepInLibrary: number;
+      keepInLibrary: number | null;
       repeatIntent: string;
       loggedAt: number;
     }>;
@@ -105,7 +115,9 @@ function exportDecisions() {
       trackId: String(r.trackId).trim(),
       name: r.name ?? "",
       artists: r.artists ?? "",
-      keepInLibrary: r.keepInLibrary === 0 ? 0 : 1,
+      keepInLibrary: r.keepInLibrary === null
+        ? deriveKeepInLibraryFromIntent(r.repeatIntent)
+        : (r.keepInLibrary === 0 ? 0 : 1),
       repeatIntent: normalizeRepeatIntent(r.repeatIntent),
       loggedAt: Number.isFinite(r.loggedAt) ? Number(r.loggedAt) : Date.now(),
     }));

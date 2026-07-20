@@ -1,8 +1,680 @@
 {
-  "exportedAt": 1784000730175,
+  "exportedAt": 1784509771308,
   "sourceDbPath": "/Users/kaseymallette/github/wax/data.db",
-  "count": 72,
+  "count": 148,
   "decisions": [
+    {
+      "trackId": "0E5VCfEC70ubAAHfjRasAK",
+      "name": "Hot Patootie - Bless My Soul",
+      "artists": "Meat Loaf",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002182913
+    },
+    {
+      "trackId": "2ph0hzV1kCVhR82E2La4q5",
+      "name": "Two Out of Three Ain't Bad",
+      "artists": "Meat Loaf",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002179087
+    },
+    {
+      "trackId": "391CwgcBxvUHmEKda2b5In",
+      "name": "I'd Do Anything For Love (But I Won't Do That) - Single Edit",
+      "artists": "Meat Loaf",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002163199
+    },
+    {
+      "trackId": "2g7gviEeJr6pyxO7G35EWQ",
+      "name": "Paradise By the Dashboard Light",
+      "artists": "Meat Loaf",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002155111
+    },
+    {
+      "trackId": "0vFOzaXqZHahrZp6enQwQb",
+      "name": "Money",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002089837
+    },
+    {
+      "trackId": "3TO7bbrUKrOSPGRTB5MeCz",
+      "name": "Time",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002082155
+    },
+    {
+      "trackId": "5HAjss9faCAowGY8dM24r6",
+      "name": "Is There Anybody Out There",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002074989
+    },
+    {
+      "trackId": "24IdPCimVnJJDRuB5YSDiS",
+      "name": "I Don't Care Anymore - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002016185
+    },
+    {
+      "trackId": "63CHa6rmamv9OsehkRD8oz",
+      "name": "Against All Odds (Take a Look at Me Now) - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784002010005
+    },
+    {
+      "trackId": "3iD7f8biGSkrgGB609uzCR",
+      "name": "True Colors - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001973988
+    },
+    {
+      "trackId": "4F2t297QK40XFcIHqkmLHs",
+      "name": "I Wish It Would Rain Down - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001946902
+    },
+    {
+      "trackId": "5LYJ631w9ps5h9tdvac7yP",
+      "name": "Easy Lover",
+      "artists": "Philip Bailey,Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001924713
+    },
+    {
+      "trackId": "2s6wCS3vDZFPY9NOTlPXJZ",
+      "name": "Take Me Home - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001900061
+    },
+    {
+      "trackId": "18AXbzPzBS8Y3AkgSxzJPb",
+      "name": "In The Air Tonight - 2015 Remastered",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001886807
+    },
+    {
+      "trackId": "1Q5kgpp4pmyGqPwNBzkSrw",
+      "name": "Roadhouse Blues",
+      "artists": "The Doors",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001867845
+    },
+    {
+      "trackId": "1Jmqubf9kGkWeYQXQKImL5",
+      "name": "People Are Strange",
+      "artists": "The Doors",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001856306
+    },
+    {
+      "trackId": "6DmfWj5kOa1fX8AwN9byOn",
+      "name": "L.A. Woman",
+      "artists": "The Doors",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001842492
+    },
+    {
+      "trackId": "6ToM0uwxtPKo9CMpbPGYvM",
+      "name": "Break on Through (To the Other Side)",
+      "artists": "The Doors",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001811936
+    },
+    {
+      "trackId": "23IJ5wLRhEZ9DOuia5mPiZ",
+      "name": "Who Are You",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001793861
+    },
+    {
+      "trackId": "0HLIhUYvZdxemJ5vHJsSBy",
+      "name": "Tommy Can You Hear Me",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001774818
+    },
+    {
+      "trackId": "6LbbHFEajG9e4m0G3L47c4",
+      "name": "Pinball Wizard",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001760381
+    },
+    {
+      "trackId": "45s88Xopo6KvHc0PQ05aGg",
+      "name": "My Generation - Mono Version",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001752249
+    },
+    {
+      "trackId": "7tbp39GZvDA0cItgHynVnG",
+      "name": "I'm Free",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001739272
+    },
+    {
+      "trackId": "4Mqs0h95KAeNiGp7u4udlt",
+      "name": "Love Reign O'er Me",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001731207
+    },
+    {
+      "trackId": "5fBiYwfgFmyFSP6EW1A9EY",
+      "name": "Happy Jack",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001717513
+    },
+    {
+      "trackId": "3qiyyUfYe7CRYLucrPmulD",
+      "name": "Baba O'Riley",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001696454
+    },
+    {
+      "trackId": "489qD0Sn4Zs7XBMsExTP5R",
+      "name": "Waves",
+      "artists": "Bon Jovi,Jason Isbell",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001566693
+    },
+    {
+      "trackId": "6qZ5GReTiCxI4dzYqGURtf",
+      "name": "Seeds",
+      "artists": "Bon Jovi,Ryan Tedder",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001551207
+    },
+    {
+      "trackId": "08G3FAarAmXbX5szqZ3vwV",
+      "name": "Living Proof",
+      "artists": "Bon Jovi,Jelly Roll",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001523554
+    },
+    {
+      "trackId": "4MJpRELMm9Sa70kJqwi8by",
+      "name": "Living in Paradise",
+      "artists": "Bon Jovi,Avril Lavigne",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001519550
+    },
+    {
+      "trackId": "7mCHJYr4E23AXPt5ntMCPA",
+      "name": "Legendary",
+      "artists": "Bon Jovi,James Bay",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001505384
+    },
+    {
+      "trackId": "4eeUqdnR6FHq6F9DL4ndbK",
+      "name": "Hallelujah - Live",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001486041
+    },
+    {
+      "trackId": "50ZpPgU81payZxI2H7QXNM",
+      "name": "Born To Be My Baby",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001473414
+    },
+    {
+      "trackId": "09ln4QumFqjIkfCFiW9aRk",
+      "name": "(You Want To) Make A Memory - Pop Album Version",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001461531
+    },
+    {
+      "trackId": "6tVwi09OwB7zVYV0NUajeP",
+      "name": "We Weren't Born To Follow",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001447377
+    },
+    {
+      "trackId": "0ZLBD6hHGN9LYOtNlu2n8e",
+      "name": "This Ain't A Love Song",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001433289
+    },
+    {
+      "trackId": "4nnJRbVecvQwqf3OQP4mja",
+      "name": "These Days",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001429385
+    },
+    {
+      "trackId": "577MNC3o3L0lNIzx9abqOk",
+      "name": "Thank You For Loving Me",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001425055
+    },
+    {
+      "trackId": "5EWtBjCLy21d1hY9zdaEe8",
+      "name": "Keep The Faith",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001420769
+    },
+    {
+      "trackId": "0vTKR5TQD03kASmEGlyDF3",
+      "name": "In These Arms",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001416415
+    },
+    {
+      "trackId": "2TIKWWCf6qAtVP6AGa7e9k",
+      "name": "I'll Wait - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001389179
+    },
+    {
+      "trackId": "4RS9PmtHQe7I0o5fEeweOY",
+      "name": "Dance the Night Away - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001368848
+    },
+    {
+      "trackId": "6fybp4N6eW3bsFAvARxyVe",
+      "name": "Ain't Talkin' 'Bout Love - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001358104
+    },
+    {
+      "trackId": "6pk6E0SZxILzfaAGFngxEs",
+      "name": "Willing and Able",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001335118
+    },
+    {
+      "trackId": "0BCWfP8NXjwmINTW1MyMu1",
+      "name": "We Go Way Back",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001330585
+    },
+    {
+      "trackId": "77zqs8ucHCSk5jh9TYec4b",
+      "name": "The Great Divide",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001325585
+    },
+    {
+      "trackId": "0Shd736f6A7tJxzCTUI69X",
+      "name": "Spoiled",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001321125
+    },
+    {
+      "trackId": "7N3d1hsZZpmmnovfAtnVFU",
+      "name": "Porch Light",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001316785
+    },
+    {
+      "trackId": "7mOe6qQYMq1MCzJcifwPu4",
+      "name": "Paid Time Off",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001312300
+    },
+    {
+      "trackId": "18nzftpeT2fUyazRK3rDek",
+      "name": "Headed North",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001306987
+    },
+    {
+      "trackId": "4rECUI03C2RMqr5GYvqjlJ",
+      "name": "Haircut",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001295398
+    },
+    {
+      "trackId": "4fEUmNN8KK5sNqvKjBstKg",
+      "name": "End of August",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001268272
+    },
+    {
+      "trackId": "5tGnphp8D9Doa2ZULhJSMx",
+      "name": "Downfall",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001264227
+    },
+    {
+      "trackId": "6OICC2Us0JVbUgGXFJJOzZ",
+      "name": "Deny Deny Deny",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001259100
+    },
+    {
+      "trackId": "6rlU0kRQNjMZ7t5I92yCIi",
+      "name": "Dashboard",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001251935
+    },
+    {
+      "trackId": "3x0J8f16jDLhOr4ohzoq9u",
+      "name": "Dan",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001245533
+    },
+    {
+      "trackId": "3WRgRy12YW4I9mjodKXWwy",
+      "name": "American Cars",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001240575
+    },
+    {
+      "trackId": "4y3VBhJPEztyRmNxfK3tZ5",
+      "name": "All Them Horses",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001235862
+    },
+    {
+      "trackId": "3EnTGnmNu1TDEcpbbTajuo",
+      "name": "23",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001232368
+    },
+    {
+      "trackId": "07UFnnK3uPIuKv5Rs9TmXl",
+      "name": "Orange Juice",
+      "artists": "Noah Kahan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001225993
+    },
+    {
+      "trackId": "6MAev6g8Vz8UF7QfFlb6JD",
+      "name": "White Blank Page",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001215279
+    },
+    {
+      "trackId": "27U4sg4Z7tCnQ55jETIXDA",
+      "name": "Where Are You Now",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001193584
+    },
+    {
+      "trackId": "3cAV6C1QhgW6B83LjvE9T4",
+      "name": "Tompkins Square Park",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001172590
+    },
+    {
+      "trackId": "2KQrrkOaaQWltWn6toCmfL",
+      "name": "The Wolf",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001161337
+    },
+    {
+      "trackId": "4BaLBeCtY9oH9puj2et3wI",
+      "name": "The Banjo Song",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001151961
+    },
+    {
+      "trackId": "0CZZIdd7BD7Js6BHjSZJfA",
+      "name": "Stay",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001148312
+    },
+    {
+      "trackId": "6BM4A4rhnKIxG61jN4A2jC",
+      "name": "Snake Eyes",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001142194
+    },
+    {
+      "trackId": "66hQIeTsDIolA9DXZ1Rhsc",
+      "name": "Shadow Of A Man",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001120469
+    },
+    {
+      "trackId": "6LCqNwWz1HrZfNp5QbTSzF",
+      "name": "Run Together",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001115718
+    },
+    {
+      "trackId": "4IW7Ch9TZVLnNITiQekiF7",
+      "name": "Rubber Band Man (with Hozier)",
+      "artists": "Mumford & Sons,Hozier",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001096927
+    },
+    {
+      "trackId": "5hrkUQIt4IYTAx3CeaUrwR",
+      "name": "Prizefighter",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001092535
+    },
+    {
+      "trackId": "3ZQYhvXr4SXcmiWqmEnRS0",
+      "name": "Lover of the Light",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001074506
+    },
+    {
+      "trackId": "3xDgeeYwO2MWnd4Rt43vwq",
+      "name": "Icarus (with Gigi Perez)",
+      "artists": "Mumford & Sons,Gigi Perez",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001047340
+    },
+    {
+      "trackId": "52SEMLGZBkz5TG0kRtMp47",
+      "name": "I'll Tell You Everything",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001042753
+    },
+    {
+      "trackId": "0vE7cenp4SPtOMqxMBjq5y",
+      "name": "Here - Mumford & Sons Version",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001038069
+    },
+    {
+      "trackId": "4o00WujxVwpSm8Cp7SkEvf",
+      "name": "Here (with Sierra Ferrell) - Apple Music Sessions",
+      "artists": "Mumford & Sons,Sierra Ferrell",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784001033716
+    },
+    {
+      "trackId": "0cIQEeA1OD5XzUjuplVfiT",
+      "name": "Ditmas",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784001009850
+    },
+    {
+      "trackId": "4iJ3ZOcL5REtkoX7GNLPvQ",
+      "name": "Here (with Chris Stapleton)",
+      "artists": "Mumford & Sons,Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000970996
+    },
+    {
+      "trackId": "7A9rw57UOQavL06dcvpJ3G",
+      "name": "Conversation With My Son (Gangsters & Angels)",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784000942056
+    },
+    {
+      "trackId": "29VPLXU0isqFzRJAwdIdBm",
+      "name": "Clover",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784000936662
+    },
+    {
+      "trackId": "5qDy4LfAmyGB1Rn8Zykgsh",
+      "name": "Begin Again",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784000932478
+    },
+    {
+      "trackId": "6ZHLftvGoRASnCOx2YEkHE",
+      "name": "Badlands (with Gracie Abrams)",
+      "artists": "Mumford & Sons,Gracie Abrams",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784000928424
+    },
+    {
+      "trackId": "0J2hNHOmXLd7MInTXQksXr",
+      "name": "Alleycat",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "save_for_later",
+      "loggedAt": 1784000923569
+    },
+    {
+      "trackId": "2kXjRzwcTZhGLnVjUud8l3",
+      "name": "Little Lion Man",
+      "artists": "Mumford & Sons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1784000900912
+    },
     {
       "trackId": "660u9agQuREtEDmETVWSts",
       "name": "Three Imaginary Boys - 2005 Remaster",
@@ -188,14 +860,6 @@
       "loggedAt": 1784000033676
     },
     {
-      "trackId": "7nDFTHHwfe32a8qdp9XqPy",
-      "name": "False Confidence",
-      "artists": "Noah Kahan",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1784000016241
-    },
-    {
       "trackId": "3iU2qsthCTo5EeTE03l3Si",
       "name": "Doors",
       "artists": "Noah Kahan",
@@ -242,14 +906,6 @@
       "keepInLibrary": 1,
       "repeatIntent": "currently_listening",
       "loggedAt": 1783999877715
-    },
-    {
-      "trackId": "5UKeFkVeUfvP6S43I8s9mt",
-      "name": "Jailbreak",
-      "artists": "AC/DC",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1783999861147
     },
     {
       "trackId": "7nemcVsXVFZF01iqpIIo2Y",
@@ -308,14 +964,6 @@
       "loggedAt": 1783999794933
     },
     {
-      "trackId": "5439qJTu5mVH9aeriwp03u",
-      "name": "Who Says You Can't Go Home",
-      "artists": "Bon Jovi,Jennifer Nettles",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1783999372670
-    },
-    {
       "trackId": "07HqIg8BnB1lJElnw2ZiSR",
       "name": "I'll Be There For You",
       "artists": "Bon Jovi",
@@ -372,14 +1020,6 @@
       "loggedAt": 1783999143941
     },
     {
-      "trackId": "5R8dQOPq8haW94K7mgERlO",
-      "name": "Poker Face",
-      "artists": "Lady Gaga",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1783998743920
-    },
-    {
       "trackId": "2VxeLyX666F8uXCJ0dZF8B",
       "name": "Shallow",
       "artists": "Lady Gaga,Bradley Cooper",
@@ -404,44 +1044,12 @@
       "loggedAt": 1783998638773
     },
     {
-      "trackId": "1icygp76kVbs429RikF0jJ",
-      "name": "You Make Me Sick - Radio Mix",
-      "artists": "P!nk",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1783998603610
-    },
-    {
       "trackId": "2hns6Dv29Yrg68AVTJiAyA",
       "name": "Who Knew",
       "artists": "P!nk",
       "keepInLibrary": 1,
       "repeatIntent": "currently_listening",
       "loggedAt": 1783998586772
-    },
-    {
-      "trackId": "3QRZknOUCPCpOvK21j0rXb",
-      "name": "Gone to California",
-      "artists": "P!nk",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1783998560827
-    },
-    {
-      "trackId": "1uexV2mYuZmLhVz4G5LUZv",
-      "name": "Funhouse",
-      "artists": "P!nk",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1783998534824
-    },
-    {
-      "trackId": "0eXz79Tu1iKOtxAcN1WnvA",
-      "name": "Don't Let Me Get Me - Radio Edit",
-      "artists": "P!nk",
-      "keepInLibrary": 1,
-      "repeatIntent": "skip_for_now",
-      "loggedAt": 1783998482231
     },
     {
       "trackId": "3bIF9Iee2Xmt8dQ71pUPGF",
