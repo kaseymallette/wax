@@ -15,6 +15,7 @@
     "decisions:import": "tsx script/decisions.ts import",
     "decisions:audit": "tsx script/auditDecisionSnapshotCoverage.ts",
     "decisions:export-missing": "tsx script/exportMissingDecisionSnapshotTracks.ts",
+    "decisions:sync:full-library": "tsx script/syncDecisionsToFullLibrary.ts",
     "db:user:init": "tsx script/initUserDbFromFullMusicLibrary.ts",
     "snapshot:user": "tsx script/userSnapshot.ts",
     "restore:user": "tsx script/userRestore.ts",

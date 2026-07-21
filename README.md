@@ -142,6 +142,14 @@ This checks `users/<name>/decisions-latest.json` (default users: `kasey,kaseysmo
 - `WAX_AUDIT_SAMPLE_LIMIT` sample missing rows to print (default `10`)
 - `WAX_AUDIT_STRICT=1` exit non-zero if any missing tracks are found
 
+To reset decisions files so they exactly match each user's reviewed library (`full-music-library.csv`) with keep intents only:
+
+```bash
+npm run decisions:sync:full-library
+```
+
+This rewrites `users/<name>/decisions-latest.json` for default users (`kasey,kaseysmom,kaseysdad`), removing `removed`/`undecided` entries and aligning decision count to the number of songs in `users/<name>/playlists/full-music-library.csv`.
+
 Export missing snapshot tracks to CSV (including an import-ready file for `music:add:csv`):
 
 ```bash
