@@ -12,12 +12,12 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
 import path from "node:path";
 
-const WAX_USER = (process.env.WAX_USER || "kasey").trim() || "kasey";
-const DB_PATH = path.resolve(
+export const ACTIVE_WAX_USER = (process.env.WAX_USER || "kasey").trim() || "kasey";
+export const ACTIVE_DB_PATH = path.resolve(
   process.cwd(),
-  process.env.WAX_DB_PATH || path.join("users", WAX_USER, "music_library.db"),
+  process.env.WAX_DB_PATH || path.join("users", ACTIVE_WAX_USER, "music_library.db"),
 );
-const sqlite = new Database(DB_PATH);
+const sqlite = new Database(ACTIVE_DB_PATH);
 sqlite.pragma("journal_mode = WAL");
 sqlite.pragma("foreign_keys = ON");
 

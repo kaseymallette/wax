@@ -70,6 +70,25 @@ npm run dev
 
 Then open **http://127.0.0.1:3000**.
 
+### Import your music library
+
+You can import a Spotify export (`.db`, `.sqlite`, or Exportify `.csv`) directly in the app.
+
+If you need a playlist CSV from Spotify:
+
+1. Build or open a playlist in Spotify.
+2. Copy the playlist link.
+3. Go to [Chosic Playlist Exporter](https://www.chosic.com/spotify-playlist-exporter/) and export as CSV.
+4. Upload that CSV in Wax Import.
+
+In Wax:
+
+1. Open the app and go to the Import flow.
+2. Upload your `.db`, `.sqlite`, or exported `.csv` file.
+3. If prompted, map columns and complete import.
+
+### Navigate the app
+
 Wax lands on **Import** by default (`/`). The top nav order is **Import → Evaluate → Shuffle → Library → Recents → Keeps → Playlists → Stats**.
 
 - Use **Import** to load your library CSV/DB.
@@ -83,29 +102,12 @@ Wax lands on **Import** by default (`/`). The top nav order is **Import → Eval
 
 For full-song playback in the embed, sign into Spotify in any tab of the same browser. Premium plays the whole track; Free gives you 30-second previews.
 
-### Import your music library
+## Users
 
-1. Open the app and go to the import flow.
-2. Upload your Spotify export (`.db`, `.sqlite`, or Exportify `.csv`).
-3. If prompted, map columns and complete import.
+### Switch between users
 
-### Export decisions per user
-
-`decisions-latest.json` files are tracked in git for each user. Export your latest keep/remove decisions with:
-
-```bash
-WAX_USER=kasey npm run decisions:export  # writes users/kasey/decisions-latest.json
-WAX_USER=kaseysdad npm run decisions:export  # writes users/kaseysdad/decisions-latest.json
-WAX_USER=kaseysmom npm run decisions:export  # writes users/kaseysmom/decisions-latest.json
-```
-
-Use a different `WAX_USER` value per family member (for example: `kasey`, `kaseysdad`, `kaseysmom`) so each person has their own tracked decisions file under `users/`.
-
-### Switch users (per-user DB)
-
-Per-user DBs are now the default workflow. You no longer need to clean and reimport a shared `data.db` to switch users.
-
-Use each user's DB directly:
+This starts the app using that user's DB file (`users/<name>/music_library.db`).
+Use this when you want to work in one person's library/decisions without touching another user's DB.
 
 ```bash
 WAX_USER=kasey npm run dev:user
@@ -113,238 +115,53 @@ WAX_USER=kaseysdad npm run dev:user
 WAX_USER=kaseysmom npm run dev:user
 ```
 
-If you want to reapply the tracked decisions snapshot before starting dev:
+### Export decisions for each user
 
-```bash
-WAX_USER=kasey npm run user:import
-WAX_USER=kasey npm run dev:user
-```
-
-Build playlists from that same per-user DB:
-
-```bash
-WAX_USER=kasey npm run user:playlists
-```
-
-Save latest DB decisions back into the tracked JSON snapshot:
+This writes the latest decisions from that user's DB (`users/<name>/music_library.db`) to
+`users/<name>/decisions-latest.json` so it can be tracked in git/history.
 
 ```bash
 WAX_USER=kasey npm run user:export
+WAX_USER=kaseysdad npm run user:export
+WAX_USER=kaseysmom npm run user:export
 ```
 
-`dev:user`, `user:import`, `user:playlists`, and `user:export` all target `users/<WAX_USER>/music_library.db` unless you override `WAX_DB_PATH`.
+### Build playlists for each user
 
-If counts look off after import, audit snapshot coverage against your current `tracks` table:
-
-```bash
-npm run decisions:audit
-```
-
-This checks `users/<name>/decisions-latest.json` against each user's `users/<name>/music_library.db` by default and reports missing track IDs by repeat-intent. Optional env vars:
-
-- `WAX_USERS` comma-separated users to audit
-- `WAX_AUDIT_DB_PATH` override with a single DB path to check for all users
-- `WAX_AUDIT_SAMPLE_LIMIT` sample missing rows to print (default `10`)
-- `WAX_AUDIT_STRICT=1` exit non-zero if any missing tracks are found
-
-To reset decisions files so they exactly match each user's reviewed library (`full-music-library.csv`) with keep intents only:
+This reads that user's DB (`users/<name>/music_library.db`) and generates playlist CSVs in
+`users/<name>/playlists/`.
 
 ```bash
-npm run decisions:sync:full-library
-```
-
-This rewrites `users/<name>/decisions-latest.json` for default users (`kasey,kaseysmom,kaseysdad`), removing `removed`/`undecided` entries and aligning decision count to the number of songs in `users/<name>/playlists/full-music-library.csv`.
-
-Export missing snapshot tracks to CSV (including an import-ready file for `music:add:csv`):
-
-```bash
-npm run decisions:export-missing
-```
-
-Writes:
-
-- `outputs/missing-decision-tracks.csv` (detailed per-user missing rows)
-- `outputs/missing-tracks-for-music-library.csv` (deduped by `Track_ID`, ready for `music:add:csv`)
-
-Then dry-run add back to `spotify_music_library.db`:
-
-```bash
-WAX_ADD_CSV=outputs/missing-tracks-for-music-library.csv npm run music:add:csv:dry
-```
-
-### Initialize per-user DB from reviewed library
-
-If you want each user to work from their reviewed set only, bootstrap a per-user DB from `users/<name>/playlists/full-music-library.csv`:
-
-```bash
-npm run db:user:init
-```
-
-Default users are `kasey,kaseysmom,kaseysdad`, and the DB file written is `users/<name>/music_library.db`.
-
-Then run follow-up commands against that user DB:
-
-```bash
-WAX_USER=kaseysmom npm run user:import
+WAX_USER=kasey npm run user:playlists
+WAX_USER=kaseysdad npm run user:playlists
 WAX_USER=kaseysmom npm run user:playlists
 ```
 
-Optional env vars for `db:user:init`:
+### Remove songs marked `removed` from each user DB
 
-- `WAX_USERS` comma-separated users
-- `WAX_USER_DB_FILENAME` output DB filename (default `music_library.db`)
-- `WAX_FULL_LIBRARY_FILENAME` source CSV filename (default `full-music-library.csv`)
-- `WAX_PLAYLISTS_SUBDIR` source subfolder under each user (default `playlists`)
-
-### Add songs to `music-library` DB
-
-Add new songs from a CSV directly into `data/music-library/spotify_music_library.db` (table: `tracks`).
-
-1. Prepare a CSV from a Spotify playlist:
-
-   - Build or open a playlist in Spotify.
-   - Copy the playlist link.
-   - Go to [Chosic Playlist Exporter](https://www.chosic.com/spotify-playlist-exporter/) and export the playlist as CSV.
-   - Save the exported file in `data/music-library/` (for example: `data/music-library/new_music.csv`).
-
-2. Dry-run first:
+This deletes tracks marked with repeat intent `removed` from that user's DB (`users/<name>/music_library.db`).
 
 ```bash
-python3 src/add_to_music_library.py \
-  --csv data/music-library/new_music.csv \
-  --db data/music-library/spotify_music_library.db
+WAX_USER=kasey npm run user:remove
+WAX_USER=kaseysdad npm run user:remove
+WAX_USER=kaseysmom npm run user:remove
 ```
 
-3. Apply with backup:
+### Check duplicate tracks in each user DB
+
+This checks a user's `users/<name>/music_library.db` for duplicate artist+song groups and writes a per-user CSV report.
 
 ```bash
-python3 src/add_to_music_library.py \
-  --csv data/music-library/new_music.csv \
-  --db data/music-library/spotify_music_library.db \
-  --apply --backup
-```
-
-NPM shortcuts (set CSV path via `WAX_ADD_CSV`):
-
-```bash
-WAX_ADD_CSV=data/music-library/new_music.csv npm run music:add:csv:dry
-WAX_ADD_CSV=data/music-library/new_music.csv npm run music:add:csv
-```
-
-Notes:
-
-- Script is dry-run by default unless `--apply` is provided.
-- New rows are detected by `Track_ID`; existing IDs are skipped.
-- `--backup` writes a timestamped DB backup into `backups/`.
-- CSV should include a track-id column (`Track_ID`, `track_id`, `Track Id`, `Spotify Track Id`, `Track URI`, or `id`).
-
-### Remove songs from `music-library` DB
-
-If you want to physically remove tracks from `data/music-library/spotify_music_library.db` based on your latest **Remove from library** decisions:
-
-1. Run a dry-run first:
-
-```bash
-python3 src/remove_from_music_library.py \
-  --owner-user kasey \
-  --decisions users/kasey/decisions-latest.json \
-  --users-root users \
-  --db data/music-library/spotify_music_library.db
-```
-
-2. Then apply (with backup):
-
-```bash
-python3 src/remove_from_music_library.py \
-  --owner-user kasey \
-  --decisions users/kasey/decisions-latest.json \
-  --users-root users \
-  --db data/music-library/spotify_music_library.db \
-  --apply --backup
-```
-
-`--backup` writes a timestamped DB backup into `backups/`.
-
-Safety behavior:
-
-- Deletion candidates come from the owner user's latest `keepInLibrary=0` decisions.
-- Tracks are protected if any other user's latest decision keeps them (`keepInLibrary=1`).
-- Script is dry-run by default unless `--apply` is provided.
-
-### Review removes in a spreadsheet (recommended)
-
-If you want to approve removals one-by-one (yes/no) before deleting from `music-library`:
-
-1. Generate a review CSV for a user:
-
-```bash
-WAX_USER=kaseysmom npm run music:remove:review
+WAX_USER=kasey npm run user:dupes
+WAX_USER=kaseysdad npm run user:dupes
+WAX_USER=kaseysmom npm run user:dupes
 ```
 
 This writes:
 
-- `outputs/kaseysmom-removal-review.csv`
+- `users/<user>/duplicate-tracks.csv`
 
-2. Open the CSV in Excel/Google Sheets and fill `your_decision` with `yes` or `no`.
-
-- `yes` = approve removal
-- `no` (or blank) = keep song in DB
-- Use `notes` for comments
-
-3. Dry-run the approved removals:
-
-```bash
-WAX_USER=kaseysmom npm run music:remove:approved:dry
-```
-
-4. Apply approved removals (with backup):
-
-```bash
-WAX_USER=kaseysmom npm run music:remove:approved
-```
-
-Review CSV columns include safety context:
-
-- `kept_by_other_user` (`yes`/`no`)
-- `eligible_for_delete` (`yes`/`no`)
-- `in_music_library_db` (`yes`/`no`)
-
-Only rows with `your_decision=yes` and `eligible_for_delete=yes` are deleted.
-
-### Check duplicate tracks in `music-library` DB
-
-Use this to find duplicate `Track_Key` values in the `tracks` table, with optional normalization that ignores common `remaster` / `remastered` text and year/version suffixes like `2019 Digital Master`.
-
-Quick command (exports CSV):
-
-```bash
-npm run music:dupes:csv
-```
-
-This writes:
-
-- `outputs/duplicate-track-keys.csv`
-
-Direct script usage (more options):
-
-```bash
-python3 src/check_duplicate_track_keys.py \
-  --db data/music-library/spotify_music_library.db \
-  --table tracks \
-  --column Track_Key \
-  --ignore-remaster \
-  --ignore-year-version \
-  --show-rows \
-  --csv-out outputs/duplicate-track-keys.csv
-```
-
-Interpretation notes:
-
-- Duplicate groups are review candidates, not automatic deletes.
-- Many duplicates are expected from remasters, deluxe editions, and compilation releases.
-- Confirm by `Track_ID`, album, and version details before removing anything.
-
-### Back up your data
+### Back up user data
 
 Each user DB (`users/<name>/music_library.db`) is local and not tracked in git. You can back up and restore a user's DB with:
 

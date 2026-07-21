@@ -7,6 +7,7 @@ import os from "node:os";
 import multer from "multer";
 import Database from "better-sqlite3";
 import { storage } from "./storage";
+import { ACTIVE_DB_PATH, ACTIVE_WAX_USER } from "./storage";
 import { buildDailyPlaylists, type DailyPlaylistsResult } from "./dailyPlaylists";
 import {
   listenPayloadSchema,
@@ -163,6 +164,13 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express,
 ): Promise<Server> {
+  app.get("/api/runtime", (_req, res) => {
+    res.json({
+      waxUser: ACTIVE_WAX_USER,
+      dbPath: ACTIVE_DB_PATH,
+    });
+  });
+
   // --- Upload a SQLite file and inspect its schema ---
   app.post("/api/upload", upload.single("file"), (req: Request, res) => {
     const file = (req as any).file;
@@ -755,6 +763,8 @@ export async function registerRoutes(
         total,
         done,
         libraryTotal: storage.trackCount(),
+        waxUser: ACTIVE_WAX_USER,
+        targetDbPath: ACTIVE_DB_PATH,
         autoFeatureImport:
           autoFeatureImport && autoFeatureImport.sources.length > 0
             ? {
@@ -856,6 +866,8 @@ export async function registerRoutes(
         updated,
         skipped,
         libraryTotal: afterCount,
+        waxUser: ACTIVE_WAX_USER,
+        targetDbPath: ACTIVE_DB_PATH,
         autoFeatureImport:
           autoFeatureImport.sources.length > 0
             ? {
