@@ -103,7 +103,7 @@ Use a different `WAX_USER` value per family member (for example: `kasey`, `kasey
 
 ### Switch users (per-user DB)
 
-You no longer need to clean `data.db`, restart twice, and reimport in the UI just to switch users.
+Per-user DBs are now the default workflow. You no longer need to clean and reimport a shared `data.db` to switch users.
 
 Use each user's DB directly:
 
@@ -120,7 +120,19 @@ WAX_USER=kasey npm run user:import
 WAX_USER=kasey npm run dev:user
 ```
 
-`dev:user` and `user:import` automatically target `users/<WAX_USER>/music_library.db` unless you override `WAX_DB_PATH`.
+Build playlists from that same per-user DB:
+
+```bash
+WAX_USER=kasey npm run user:playlists
+```
+
+Save latest DB decisions back into the tracked JSON snapshot:
+
+```bash
+WAX_USER=kasey npm run user:export
+```
+
+`dev:user`, `user:import`, `user:playlists`, and `user:export` all target `users/<WAX_USER>/music_library.db` unless you override `WAX_DB_PATH`.
 
 If counts look off after import, audit snapshot coverage against your current `tracks` table:
 
@@ -128,10 +140,10 @@ If counts look off after import, audit snapshot coverage against your current `t
 npm run decisions:audit
 ```
 
-This checks `users/<name>/decisions-latest.json` (default users: `kasey,kaseysmom,kaseysdad`) against a DB path and reports missing track IDs by repeat-intent. Optional env vars:
+This checks `users/<name>/decisions-latest.json` against each user's `users/<name>/music_library.db` by default and reports missing track IDs by repeat-intent. Optional env vars:
 
 - `WAX_USERS` comma-separated users to audit
-- `WAX_AUDIT_DB_PATH` DB path to check (default `data.db`)
+- `WAX_AUDIT_DB_PATH` override with a single DB path to check for all users
 - `WAX_AUDIT_SAMPLE_LIMIT` sample missing rows to print (default `10`)
 - `WAX_AUDIT_STRICT=1` exit non-zero if any missing tracks are found
 
@@ -170,11 +182,11 @@ npm run db:user:init
 
 Default users are `kasey,kaseysmom,kaseysdad`, and the DB file written is `users/<name>/music_library.db`.
 
-Then run follow-up commands against that user DB with `WAX_DB_PATH`:
+Then run follow-up commands against that user DB:
 
 ```bash
-WAX_USER=kaseysmom WAX_DB_PATH=users/kaseysmom/music_library.db npm run decisions:import
-WAX_USER=kaseysmom WAX_DB_PATH=users/kaseysmom/music_library.db npm run playlists:build
+WAX_USER=kaseysmom npm run user:import
+WAX_USER=kaseysmom npm run user:playlists
 ```
 
 Optional env vars for `db:user:init`:
@@ -334,11 +346,11 @@ Interpretation notes:
 
 ### Back up your data
 
-`data.db` is your local listening history and is not tracked in git. You can back it up and restore it with:
+Each user DB (`users/<name>/music_library.db`) is local and not tracked in git. You can back up and restore a user's DB with:
 
 ```bash
-npm run backup-db   # creates backups/data.db.<timestamp>.bak
-npm run restore-db  # restores latest backup in backups/
+WAX_USER=kasey npm run backup-db
+WAX_USER=kasey npm run restore-db
 ```
 
 ## Spotify API playlists
@@ -361,9 +373,9 @@ Wax uses one default playlist-generation flow (CSV-first for review, then Spotif
 Run:
 
 ```bash
-WAX_USER=kasey npm run playlists:build
-WAX_USER=kaseysdad npm run playlists:build
-WAX_USER=kaseysmom npm run playlists:build
+WAX_USER=kasey npm run user:playlists
+WAX_USER=kaseysdad npm run user:playlists
+WAX_USER=kaseysmom npm run user:playlists
 ```
 
 Capture a weekly snapshot of `daily-1..7.csv` for all users into a separate SQLite DB (`data/wax_daily_playlists.db` by default):
@@ -519,8 +531,7 @@ WAX_USER=kaseysmom npm run restore:user -- 20260618-180500
 
 ### Where your data lives
 
-- **`data.db`** in the project root by default.
-- **`users/<name>/music_library.db`** when running with `WAX_DB_PATH` (used by `npm run dev:user`).
+- **`users/<name>/music_library.db`** is the default app DB (selected by `WAX_USER`, or `kasey` when unset).
 - **`data/wax_daily_playlists.db`** weekly snapshots of each user's `daily-1..7` playlists (cross-user history table: `daily_playlist_history`).
 - **`users/<name>/decisions-latest.json`** for each user's latest keep/remove + repeat-intent snapshot.
 - **`users/<name>/playlists/`** for generated CSV playlists and `summary.json`.
@@ -568,7 +579,7 @@ This keeps merges focused on user decision/playlist files and avoids pulling unr
 
 ### Data model
 
-Three core tables in `data.db`:
+Three core tables in each user's DB (`users/<name>/music_library.db`):
 
 - **`tracks`** — your imported library. One row per Spotify track ID. Includes `repeat_intent` (track-level keep preference tag).
 - **`listens`** — your decision log. One row per Shuffle/Library log event, including `keep_in_library` (0/1), `repeat_intent`-driven decisions, `activity` (JSON array), `notes`, and `logged_at` (unix ms).
@@ -583,7 +594,7 @@ Playlist outputs are file-based (`users/<name>/playlists/*.csv`), not separate D
 ```python
 import sqlite3, json, pandas as pd
 
-con = sqlite3.connect("data.db")
+con = sqlite3.connect("users/kasey/music_library.db")
 df = pd.read_sql_query("""
     SELECT t.id AS track_id, t.name, t.artists, t.album, t.repeat_intent,
            l.keep_in_library,
@@ -631,7 +642,7 @@ NODE_ENV=production PORT=3000 node dist/index.cjs
 - **`better-sqlite3` install fails** → needs a C++ toolchain. macOS: `xcode-select --install`. Ubuntu: `sudo apt install build-essential python3`. Node 22+ is recommended; Node 26 has no prebuilt binaries yet.
 - **Old UI shows after pulling new code** → Vite cache: `rm -rf node_modules/.vite dist && npm run dev`, then hard-refresh the browser (Cmd+Shift+R).
 - **Tracks show as "Unknown track" after CSV import** → your CSV's name column wasn't auto-detected. Wax recognizes `Song`, `Title`, `Track`, `Track Name`, `Song Name`. Rename your column or open an issue.
-- **Lost data after rebuild** → `data.db` lives at the project root, not in `dist/`. Don't delete it.
+- **Lost data after rebuild** → your active DB is `users/<WAX_USER>/music_library.db` (default user is `kasey`). Don't delete it.
 
 ### Tech stack
 

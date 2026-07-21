@@ -21,7 +21,8 @@ const mode = (process.argv[2] || "").trim().toLowerCase();
 if (mode !== "backup" && mode !== "restore" && mode !== "clean") usage();
 
 const repoRoot = process.cwd();
-const dbPath = path.resolve(repoRoot, process.env.WAX_DB_PATH || "data.db");
+const WAX_USER = String(process.env.WAX_USER || "kasey").trim() || "kasey";
+const dbPath = path.resolve(repoRoot, process.env.WAX_DB_PATH || path.join("users", WAX_USER, "music_library.db"));
 const backupsDir = path.resolve(repoRoot, process.env.WAX_BACKUPS_DIR || "backups");
 const dbBase = path.basename(dbPath);
 

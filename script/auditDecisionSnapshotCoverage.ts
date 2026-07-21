@@ -19,13 +19,19 @@ type DecisionSnapshotFile = {
 };
 
 const REPO_ROOT = process.cwd();
-const DB_PATH = path.resolve(REPO_ROOT, process.env.WAX_AUDIT_DB_PATH || "data.db");
+const DB_PATH_OVERRIDE_RAW = String(process.env.WAX_AUDIT_DB_PATH || "").trim();
+const DB_PATH_OVERRIDE = DB_PATH_OVERRIDE_RAW ? path.resolve(REPO_ROOT, DB_PATH_OVERRIDE_RAW) : "";
 const USERS = String(process.env.WAX_USERS || "kasey,kaseysmom,kaseysdad")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
 const SAMPLE_LIMIT = Math.max(1, Number(process.env.WAX_AUDIT_SAMPLE_LIMIT || 10));
 const STRICT = ["1", "true", "yes"].includes(String(process.env.WAX_AUDIT_STRICT || "").trim().toLowerCase());
+
+function dbPathForUser(user: string): string {
+  if (DB_PATH_OVERRIDE) return DB_PATH_OVERRIDE;
+  return path.resolve(REPO_ROOT, "users", user, "music_library.db");
+}
 
 function normalizeRepeatIntent(v: unknown): string {
   const s = String(v ?? "undecided").trim().toLowerCase();
@@ -62,28 +68,24 @@ function main() {
   if (USERS.length === 0) {
     throw new Error("No users specified. Set WAX_USERS.");
   }
-  if (!fs.existsSync(DB_PATH)) {
-    throw new Error(`Audit DB not found: ${DB_PATH}`);
-  }
+  let totalMissing = 0;
 
-  const db = new Database(DB_PATH, { readonly: true, fileMustExist: true });
-  try {
-    const hasTrackStmt = db.prepare(`SELECT id FROM tracks WHERE TRIM(id) = TRIM(?) LIMIT 1`);
+  for (const user of USERS) {
+    const dbPath = dbPathForUser(user);
+    if (!fs.existsSync(dbPath)) {
+      throw new Error(`Audit DB not found for '${user}': ${dbPath}`);
+    }
 
-    let totalMissing = 0;
-    console.log(`[decisions:audit] db=${DB_PATH}`);
-
-    for (const user of USERS) {
+    const db = new Database(dbPath, { readonly: true, fileMustExist: true });
+    try {
+      const hasTrackStmt = db.prepare(`SELECT id FROM tracks WHERE TRIM(id) = TRIM(?) LIMIT 1`);
       const decisions = loadSnapshot(user);
       const missing: DecisionSnapshot[] = [];
-      const presentByIntent = new Map<string, number>();
       const missingByIntent = new Map<string, number>();
 
       for (const row of decisions) {
         const found = hasTrackStmt.get(row.trackId) as { id: string } | undefined;
-        if (found?.id) {
-          presentByIntent.set(row.repeatIntent, (presentByIntent.get(row.repeatIntent) || 0) + 1);
-        } else {
+        if (!found?.id) {
           missing.push(row);
           missingByIntent.set(row.repeatIntent, (missingByIntent.get(row.repeatIntent) || 0) + 1);
         }
@@ -93,6 +95,7 @@ function main() {
       const presentCount = decisions.length - missing.length;
 
       console.log(`\n[decisions:audit] user=${user}`);
+      console.log(`  db=${dbPath}`);
       console.log(`  snapshot=${decisions.length} present=${presentCount} missing=${missing.length}`);
 
       const missingIntentSummary = [...missingByIntent.entries()].sort((a, b) => b[1] - a[1]);
@@ -111,17 +114,17 @@ function main() {
           console.log(`    - ${row.trackId} | ${row.repeatIntent} | ${row.artists} | ${row.name}`);
         }
       }
+    } finally {
+      db.close();
     }
-
-    if (totalMissing > 0 && STRICT) {
-      console.error(`\n[decisions:audit] FAIL: missing tracks detected (${totalMissing})`);
-      process.exit(1);
-    }
-
-    console.log(`\n[decisions:audit] done total_missing=${totalMissing}`);
-  } finally {
-    db.close();
   }
+
+  if (totalMissing > 0 && STRICT) {
+    console.error(`\n[decisions:audit] FAIL: missing tracks detected (${totalMissing})`);
+    process.exit(1);
+  }
+
+  console.log(`\n[decisions:audit] done total_missing=${totalMissing}`);
 }
 
 main();

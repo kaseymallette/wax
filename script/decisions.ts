@@ -18,8 +18,12 @@ type DecisionSnapshotFile = {
   decisions: DecisionSnapshot[];
 };
 
-const DB_PATH = path.resolve(process.cwd(), process.env.WAX_DB_PATH || "data.db");
-const SNAPSHOT_USER = String(process.env.WAX_USER || "default").trim() || "default";
+const WAX_USER = String(process.env.WAX_USER || "kasey").trim() || "kasey";
+const DB_PATH = path.resolve(
+  process.cwd(),
+  process.env.WAX_DB_PATH || path.join("users", WAX_USER, "music_library.db"),
+);
+const SNAPSHOT_USER = WAX_USER;
 const SNAPSHOT_PATH = path.resolve(
   process.cwd(),
   process.env.WAX_DECISIONS_PATH || path.join("users", SNAPSHOT_USER, "decisions-latest.json"),

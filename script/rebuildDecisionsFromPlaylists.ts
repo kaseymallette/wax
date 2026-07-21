@@ -144,7 +144,7 @@ function main() {
 
   const payload: DecisionSnapshotFile = {
     exportedAt: now,
-    sourceDbPath: path.resolve(process.cwd(), "data.db"),
+    sourceDbPath: path.join(userDir, "music_library.db"),
     count: decisions.length,
     decisions,
   };

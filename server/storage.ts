@@ -12,7 +12,11 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
 import path from "node:path";
 
-const DB_PATH = path.resolve(process.cwd(), process.env.WAX_DB_PATH || "data.db");
+const WAX_USER = (process.env.WAX_USER || "kasey").trim() || "kasey";
+const DB_PATH = path.resolve(
+  process.cwd(),
+  process.env.WAX_DB_PATH || path.join("users", WAX_USER, "music_library.db"),
+);
 const sqlite = new Database(DB_PATH);
 sqlite.pragma("journal_mode = WAL");
 sqlite.pragma("foreign_keys = ON");

@@ -33,9 +33,12 @@ type TrackAggRow = {
   album_year: number | null;
 };
 
-const WAX_USER = (process.env.WAX_USER || "default").trim() || "default";
+const WAX_USER = (process.env.WAX_USER || "kasey").trim() || "kasey";
 const REPO_ROOT = process.cwd();
-const DB_PATH = path.resolve(REPO_ROOT, process.env.WAX_DB_PATH || "data.db");
+const DB_PATH = path.resolve(
+  REPO_ROOT,
+  process.env.WAX_DB_PATH || path.join("users", WAX_USER, "music_library.db"),
+);
 const PLAYLISTS_DIR = path.resolve(
   REPO_ROOT,
   process.env.WAX_PLAYLISTS_DIR || path.join("users", WAX_USER, "playlists"),
