@@ -114,6 +114,42 @@ For full-song playback in the embed, sign into Spotify in any tab of the same br
   - `176+` tracks → max `30` per playlist
 - Also writes one CSV each for `currently_listening`, `favorites_archive`, `save_for_later`, `skip_for_now`, and `full_music_library`.
 
+## Spotify API playlists
+
+1. Register a Spotify app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
+   - App name: `Wax`
+   - App description: `WAX playlists`
+   - Add redirect URI exactly: `http://127.0.0.1:8888/callback`
+   - Enable **Web API** and save.
+
+2. Copy the app credentials from Spotify app settings:
+   - `Client ID`
+   - `Client secret`
+
+3. Create `.env` from the example and fill in credentials:
+
+```bash
+cp .env.example .env
+```
+
+```bash
+SPOTIFY_CLIENT_ID=paste_your_client_id_here
+SPOTIFY_CLIENT_SECRET=paste_your_client_secret_here
+SPOTIFY_REDIRECT_URI=http://127.0.0.1:8888/callback
+SPOTIFY_REFRESH_TOKEN=
+WAX_USER=kasey
+# or WAX_USER=kaseysdad
+# or WAX_USER=kaseysmom
+```
+
+4. Authorize once to get a refresh token:
+
+```bash
+npm run spotify:auth
+```
+
+Copy the `SPOTIFY_REFRESH_TOKEN=...` line from terminal output into `.env`.
+
 ## Users
 
 ### Switch between users
@@ -217,48 +253,6 @@ WAX_USER=kaseysdad npm run restore-db
 WAX_USER=kaseysmom npm run backup-db
 WAX_USER=kaseysmom npm run restore-db
 ```
-
-## Spotify API playlists
-
-Wax uses one default playlist-generation flow (CSV-first for review, then Spotify push).
-
-### Spotify push agent
-
-You only do setup once (steps 1–4). After that, pushing is a single command.
-
-1. Register a Spotify app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
-   - App name: `Wax`
-   - App description: `WAX playlists`
-   - Add redirect URI exactly: `http://127.0.0.1:8888/callback`
-   - Enable **Web API** and save.
-
-2. Copy the app credentials from Spotify app settings:
-   - `Client ID`
-   - `Client secret`
-
-3. Create `.env` from the example and fill in credentials:
-
-```bash
-cp .env.example .env
-```
-
-```bash
-SPOTIFY_CLIENT_ID=paste_your_client_id_here
-SPOTIFY_CLIENT_SECRET=paste_your_client_secret_here
-SPOTIFY_REDIRECT_URI=http://127.0.0.1:8888/callback
-SPOTIFY_REFRESH_TOKEN=
-WAX_USER=kasey
-# or WAX_USER=kaseysdad
-# or WAX_USER=kaseysmom
-```
-
-4. Authorize once to get a refresh token:
-
-```bash
-npm run spotify:auth
-```
-
-Copy the `SPOTIFY_REFRESH_TOKEN=...` line from terminal output into `.env`.
 
 ## Support
 
