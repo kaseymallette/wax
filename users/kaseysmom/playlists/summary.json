@@ -1,9 +1,10 @@
 {
   "user": "kaseysmom",
-  "generatedAt": 1784441123935,
-  "dbPath": "/Users/kaseymallette/github/wax/data.db",
+  "generatedAt": 1784598113375,
+  "dbPath": "/Users/kaseymallette/github/wax/users/kaseysmom/music_library.db",
   "diagnostics": {
     "currentlyListeningCount": 200,
+    "excludedForReview": 0,
     "playlistMaxSize": 30,
     "usableTrackCount": 182,
     "excludedMissingFeatures": 18,

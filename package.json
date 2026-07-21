@@ -9,6 +9,7 @@
     "user:import": "WAX_DB_PATH=${WAX_DB_PATH:-users/${WAX_USER:-kasey}/music_library.db} npm run decisions:import",
     "user:export": "WAX_DB_PATH=${WAX_DB_PATH:-users/${WAX_USER:-kasey}/music_library.db} npm run decisions:export",
     "user:playlists": "WAX_DB_PATH=${WAX_DB_PATH:-users/${WAX_USER:-kasey}/music_library.db} npm run playlists:build",
+    "user:snapshots:weekly": "WAX_USERS=${WAX_USERS:-${WAX_USER:-kasey}} WAX_DAILY_DB_PATH=${WAX_DAILY_DB_PATH:-users/${WAX_USER:-kasey}/weekly-playlists.db} tsx script/captureWeeklyDailyPlaylists.ts",
     "user:remove": "WAX_DB_PATH=${WAX_DB_PATH:-users/${WAX_USER:-kasey}/music_library.db} tsx script/removeMarkedTracksFromUserDb.ts",
     "user:dupes": "WAX_DB_PATH=${WAX_DB_PATH:-users/${WAX_USER:-kasey}/music_library.db} tsx script/checkUserDbDuplicates.ts",
     "build": "tsx script/build.ts",
