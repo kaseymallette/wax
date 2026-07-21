@@ -1,0 +1,52 @@
+user,track_id,name,artists,repeat_intent,keep_in_library,logged_at_iso,logged_at_unix_ms,spotify_url
+kaseysmom,4NK49OnNDP3oJcTGs89XSg,Beggar's Song,Matt Maeson,currently_listening,1,2026-07-19T06:00:38.833Z,1784440838833,https://open.spotify.com/track/4NK49OnNDP3oJcTGs89XSg
+kaseysmom,2wdX7seKD9pK35aZF3kMbY,Don't Turn Off The Lights,Enrique Iglesias,favorites_archive,1,2026-07-19T06:00:38.655Z,1784440838655,https://open.spotify.com/track/2wdX7seKD9pK35aZF3kMbY
+kaseysmom,42tYHqMxXxXHAAWqLaoOfQ,MacArthur Park - Single Version,Donna Summer,favorites_archive,1,2026-07-19T06:00:38.621Z,1784440838621,https://open.spotify.com/track/42tYHqMxXxXHAAWqLaoOfQ
+kaseysmom,00RYw42tKwXecTaVay3BKl,Howling At The Moon,Phantogram,skip_for_now,1,2026-07-19T06:00:39.699Z,1784440839699,https://open.spotify.com/track/00RYw42tKwXecTaVay3BKl
+kaseysmom,02jcEwywffn3Tsb48fXmlW,Get the Party Started,P!nk,skip_for_now,1,2026-07-19T06:00:38.733Z,1784440838733,https://open.spotify.com/track/02jcEwywffn3Tsb48fXmlW
+kaseysmom,0cGG2EouYCEEC3xfa0tDFV,Tainted Love,Soft Cell,skip_for_now,1,2026-07-19T06:00:39.299Z,1784440839299,https://open.spotify.com/track/0cGG2EouYCEEC3xfa0tDFV
+kaseysmom,0elmUoU7eMPwZX1Mw1MnQo,The Way You Look Tonight,Frank Sinatra,skip_for_now,1,2026-07-19T06:00:39.461Z,1784440839461,https://open.spotify.com/track/0elmUoU7eMPwZX1Mw1MnQo
+kaseysmom,0jHieRglaHjl3bopesFBc7,The Mask,Matt Maeson,skip_for_now,1,2026-07-19T06:00:38.828Z,1784440838828,https://open.spotify.com/track/0jHieRglaHjl3bopesFBc7
+kaseysmom,0K2WjMLZYr09LKwurGRYRE,"Theme From New York, New York - 2008 Remastered",Frank Sinatra,skip_for_now,1,2026-07-19T06:00:39.417Z,1784440839417,https://open.spotify.com/track/0K2WjMLZYr09LKwurGRYRE
+kaseysmom,0OxeH4biPKnJ022yE6fUu3,I've Got You Under My Skin,Frank Sinatra,skip_for_now,1,2026-07-19T06:00:39.466Z,1784440839466,https://open.spotify.com/track/0OxeH4biPKnJ022yE6fUu3
+kaseysmom,0U87auHx1iZTEFcq9KVdmO,Boulevard of Broken Dreams,Green Day,skip_for_now,1,2026-07-19T06:00:39.560Z,1784440839560,https://open.spotify.com/track/0U87auHx1iZTEFcq9KVdmO
+kaseysmom,12rhvKDK2FfHTZZ1sSAHDG,Cringe,Matt Maeson,skip_for_now,1,2026-07-19T06:00:38.827Z,1784440838827,https://open.spotify.com/track/12rhvKDK2FfHTZZ1sSAHDG
+kaseysmom,1hlveB9M6ijHZRbzZ2teyh,We're Not Gonna Take It,Twisted Sister,skip_for_now,1,2026-07-19T06:00:39.633Z,1784440839633,https://open.spotify.com/track/1hlveB9M6ijHZRbzZ2teyh
+kaseysmom,1LmN9SSHISbtp9LoaR5ZVJ,Payphone,"Maroon 5,Wiz Khalifa",skip_for_now,1,2026-07-19T06:00:39.158Z,1784440839158,https://open.spotify.com/track/1LmN9SSHISbtp9LoaR5ZVJ
+kaseysmom,1NhPKVLsHhFUHIOZ32QnS2,Secrets,OneRepublic,skip_for_now,1,2026-07-19T06:00:39.282Z,1784440839282,https://open.spotify.com/track/1NhPKVLsHhFUHIOZ32QnS2
+kaseysmom,1tL40tfdtUaSLek4DvDDr3,Hate Me,Blue October,skip_for_now,1,2026-07-19T06:00:39.732Z,1784440839732,https://open.spotify.com/track/1tL40tfdtUaSLek4DvDDr3
+kaseysmom,20jYtEun4dUdYZ9foaOC48,My Humps,Black Eyed Peas,skip_for_now,1,2026-07-19T06:00:38.728Z,1784440838728,https://open.spotify.com/track/20jYtEun4dUdYZ9foaOC48
+kaseysmom,2mtB7ekPzvNoieI62jYeJD,Wing$,"Macklemore & Ryan Lewis,Macklemore,Ryan Lewis",skip_for_now,1,2026-07-19T06:00:39.607Z,1784440839607,https://open.spotify.com/track/2mtB7ekPzvNoieI62jYeJD
+kaseysmom,2ntpyUU3itxHWcJnOJmVic,Truly Madly Deeply,Savage Garden,skip_for_now,1,2026-07-19T06:00:38.862Z,1784440838862,https://open.spotify.com/track/2ntpyUU3itxHWcJnOJmVic
+kaseysmom,2TofEeQobQ9YoK7EFds698,You Give Love A Bad Name,Bon Jovi,skip_for_now,1,2026-07-19T06:00:39.763Z,1784440839763,https://open.spotify.com/track/2TofEeQobQ9YoK7EFds698
+kaseysmom,2vXVfpRRCin0m7b26He4aw,Summer Wind - 2008 Remastered,Frank Sinatra,skip_for_now,1,2026-07-19T06:00:38.888Z,1784440838888,https://open.spotify.com/track/2vXVfpRRCin0m7b26He4aw
+kaseysmom,2YpeDb67231RjR0MgVLzsG,Old Town Road (feat. Billy Ray Cyrus) - Remix,"Lil Nas X,Billy Ray Cyrus",skip_for_now,1,2026-07-19T06:00:38.793Z,1784440838793,https://open.spotify.com/track/2YpeDb67231RjR0MgVLzsG
+kaseysmom,3mKdw0slI6wmnb1FBrvwn2,I Get A Kick Out Of You,Frank Sinatra,skip_for_now,1,2026-07-19T06:00:39.465Z,1784440839465,https://open.spotify.com/track/3mKdw0slI6wmnb1FBrvwn2
+kaseysmom,3QuEpyj4kTRWiWuckd1hcK,Just Dance,"Lady Gaga,Colby O'Donis",skip_for_now,1,2026-07-19T06:00:39.154Z,1784440839154,https://open.spotify.com/track/3QuEpyj4kTRWiWuckd1hcK
+kaseysmom,3spdoTYpuCpmq19tuD0bOe,My Way,Frank Sinatra,skip_for_now,1,2026-07-19T06:00:39.462Z,1784440839462,https://open.spotify.com/track/3spdoTYpuCpmq19tuD0bOe
+kaseysmom,3x2bXiU0o4WbsPkawXlfDA,Who Are You,The Who,skip_for_now,1,2026-07-19T06:00:39.022Z,1784440839022,https://open.spotify.com/track/3x2bXiU0o4WbsPkawXlfDA
+kaseysmom,3x2ksaXI6EZUWidE2BiLXy,You're Still The One,Shania Twain,skip_for_now,1,2026-07-19T06:00:39.589Z,1784440839589,https://open.spotify.com/track/3x2ksaXI6EZUWidE2BiLXy
+kaseysmom,47y8hRlWLEJ4VafE6LMjEZ,A Little Less Conversation,Elvis Presley,skip_for_now,1,2026-07-19T06:00:38.752Z,1784440838752,https://open.spotify.com/track/47y8hRlWLEJ4VafE6LMjEZ
+kaseysmom,4cktbXiXOapiLBMprHFErI,Memories,Maroon 5,skip_for_now,1,2026-07-19T06:00:39.192Z,1784440839192,https://open.spotify.com/track/4cktbXiXOapiLBMprHFErI
+kaseysmom,4FmCUATNIarCQh72JYdvnm,That's Life,Frank Sinatra,skip_for_now,1,2026-07-19T06:00:39.464Z,1784440839464,https://open.spotify.com/track/4FmCUATNIarCQh72JYdvnm
+kaseysmom,4jDMK7mlKrAAwygtaJOsTj,Mothers,Daughter,skip_for_now,1,2026-07-19T06:00:39.348Z,1784440839348,https://open.spotify.com/track/4jDMK7mlKrAAwygtaJOsTj
+kaseysmom,4p1PizAGdglm2sVvPuFPWs,Love Is A Battlefield,Pat Benatar,skip_for_now,1,2026-07-19T06:00:39.508Z,1784440839508,https://open.spotify.com/track/4p1PizAGdglm2sVvPuFPWs
+kaseysmom,4V9JDRqKjN8F2HWdlEDxvI,Harder To Breathe,Maroon 5,skip_for_now,1,2026-07-19T06:00:39.167Z,1784440839167,https://open.spotify.com/track/4V9JDRqKjN8F2HWdlEDxvI
+kaseysmom,4xh7W7tlNMIczFhupCPniY,Go Your Own Way - 2004 Remaster,Fleetwood Mac,skip_for_now,1,2026-07-19T06:00:39.623Z,1784440839623,https://open.spotify.com/track/4xh7W7tlNMIczFhupCPniY
+kaseysmom,5f7KV4oOHZylrpa5XKFu6G,Centerfield,John Fogerty,skip_for_now,1,2026-07-19T06:00:39.302Z,1784440839302,https://open.spotify.com/track/5f7KV4oOHZylrpa5XKFu6G
+kaseysmom,5MzjQ95rdB2xt9DNa2IzaC,Don't Phunk With My Heart,Black Eyed Peas,skip_for_now,1,2026-07-19T06:00:38.741Z,1784440838741,https://open.spotify.com/track/5MzjQ95rdB2xt9DNa2IzaC
+kaseysmom,5NOKqfyuSU3e1sqvildQmM,Downstairs,Matt Maeson,skip_for_now,1,2026-07-19T06:00:39.363Z,1784440839363,https://open.spotify.com/track/5NOKqfyuSU3e1sqvildQmM
+kaseysmom,5qII2n90lVdPDcgXEEVHNy,Sunday Morning,Maroon 5,skip_for_now,1,2026-07-19T06:00:39.157Z,1784440839157,https://open.spotify.com/track/5qII2n90lVdPDcgXEEVHNy
+kaseysmom,5RKQ5NdjSh2QzD4MaunT91,Don't Stop Believin' (2022 Remaster),Journey,skip_for_now,1,2026-07-19T06:00:39.555Z,1784440839555,https://open.spotify.com/track/5RKQ5NdjSh2QzD4MaunT91
+kaseysmom,6b9NzxGrLgueouFOAr5Jw3,Sweetest Goodbye,Maroon 5,skip_for_now,1,2026-07-19T06:00:39.170Z,1784440839170,https://open.spotify.com/track/6b9NzxGrLgueouFOAr5Jw3
+kaseysmom,6bLU8e0LGyztE9iD5DWBQ1,Hallucinogenics,Matt Maeson,skip_for_now,1,2026-07-19T06:00:38.826Z,1784440838826,https://open.spotify.com/track/6bLU8e0LGyztE9iD5DWBQ1
+kaseysmom,6CjtS2JZH9RkDz5UVInsa9,Thrift Shop (feat. Wanz),"Macklemore & Ryan Lewis,Macklemore,Ryan Lewis,Wanz",skip_for_now,1,2026-07-19T06:00:39.216Z,1784440839216,https://open.spotify.com/track/6CjtS2JZH9RkDz5UVInsa9
+kaseysmom,6ECp64rv50XVz93WvxXMGF,This Love,Maroon 5,skip_for_now,1,2026-07-19T06:00:39.172Z,1784440839172,https://open.spotify.com/track/6ECp64rv50XVz93WvxXMGF
+kaseysmom,6L5c6wFGDQswebVAS3BmUw,Leather and Lace,"Stevie Nicks,Don Henley",skip_for_now,1,2026-07-19T06:00:39.069Z,1784440839069,https://open.spotify.com/track/6L5c6wFGDQswebVAS3BmUw
+kaseysmom,6liaHE9iHh23PLVvw7lK8V,Closing Time,Semisonic,skip_for_now,1,2026-07-19T06:00:38.902Z,1784440838902,https://open.spotify.com/track/6liaHE9iHh23PLVvw7lK8V
+kaseysmom,6Qyc6fS4DsZjB2mRW9DsQs,Iris,The Goo Goo Dolls,skip_for_now,1,2026-07-19T06:00:38.854Z,1784440838854,https://open.spotify.com/track/6Qyc6fS4DsZjB2mRW9DsQs
+kaseysmom,6WZ7g8fpIXkf1ySWn3GA5O,Summertime,New Kids On The Block,skip_for_now,1,2026-07-19T06:00:39.262Z,1784440839262,https://open.spotify.com/track/6WZ7g8fpIXkf1ySWn3GA5O
+kaseysmom,74VR3AkGPhbYXnxcOYa16x,Strangers In The Night,Frank Sinatra,skip_for_now,1,2026-07-19T06:00:39.468Z,1784440839468,https://open.spotify.com/track/74VR3AkGPhbYXnxcOYa16x
+kaseysmom,7ACxUo21jtTHzy7ZEV56vU,Crazy Train,Ozzy Osbourne,skip_for_now,1,2026-07-19T06:00:39.040Z,1784440839040,https://open.spotify.com/track/7ACxUo21jtTHzy7ZEV56vU
+kaseysmom,7K71priwuwcWwbgfHVQJdq,Lovesong,The Cure,skip_for_now,1,2026-07-19T06:00:39.341Z,1784440839341,https://open.spotify.com/track/7K71priwuwcWwbgfHVQJdq
+kaseysmom,7wuJGgpTNzbUyn26IOY6rj,Total Eclipse of the Heart,Bonnie Tyler,skip_for_now,1,2026-07-19T06:00:38.869Z,1784440838869,https://open.spotify.com/track/7wuJGgpTNzbUyn26IOY6rj

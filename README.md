@@ -129,6 +129,60 @@ WAX_USER=kaseysmom npm run decisions:import
 
 This restores each track's latest keep/remove + repeat-intent decision. It does not restore full listen history, notes, or activity timeline.
 
+If counts look off after import, audit snapshot coverage against your current `tracks` table:
+
+```bash
+npm run decisions:audit
+```
+
+This checks `users/<name>/decisions-latest.json` (default users: `kasey,kaseysmom,kaseysdad`) against `data.db` and reports missing track IDs by repeat-intent. Optional env vars:
+
+- `WAX_USERS` comma-separated users to audit
+- `WAX_AUDIT_DB_PATH` DB path to check (default `data.db`)
+- `WAX_AUDIT_SAMPLE_LIMIT` sample missing rows to print (default `10`)
+- `WAX_AUDIT_STRICT=1` exit non-zero if any missing tracks are found
+
+Export missing snapshot tracks to CSV (including an import-ready file for `music:add:csv`):
+
+```bash
+npm run decisions:export-missing
+```
+
+Writes:
+
+- `outputs/missing-decision-tracks.csv` (detailed per-user missing rows)
+- `outputs/missing-tracks-for-music-library.csv` (deduped by `Track_ID`, ready for `music:add:csv`)
+
+Then dry-run add back to `spotify_music_library.db`:
+
+```bash
+WAX_ADD_CSV=outputs/missing-tracks-for-music-library.csv npm run music:add:csv:dry
+```
+
+### Initialize per-user DB from reviewed library
+
+If you want each user to work from their reviewed set only, bootstrap a per-user DB from `users/<name>/playlists/full-music-library.csv`:
+
+```bash
+npm run db:user:init
+```
+
+Default users are `kasey,kaseysmom,kaseysdad`, and the DB file written is `users/<name>/music_library.db`.
+
+Then run follow-up commands against that user DB with `WAX_DB_PATH`:
+
+```bash
+WAX_USER=kaseysmom WAX_DB_PATH=users/kaseysmom/music_library.db npm run decisions:import
+WAX_USER=kaseysmom WAX_DB_PATH=users/kaseysmom/music_library.db npm run playlists:build
+```
+
+Optional env vars for `db:user:init`:
+
+- `WAX_USERS` comma-separated users
+- `WAX_USER_DB_FILENAME` output DB filename (default `music_library.db`)
+- `WAX_FULL_LIBRARY_FILENAME` source CSV filename (default `full-music-library.csv`)
+- `WAX_PLAYLISTS_SUBDIR` source subfolder under each user (default `playlists`)
+
 ### Add songs to `music-library` DB
 
 Add new songs from a CSV directly into `data/music-library/spotify_music_library.db` (table: `tracks`).
@@ -311,6 +365,25 @@ WAX_USER=kaseysdad npm run playlists:build
 WAX_USER=kaseysmom npm run playlists:build
 ```
 
+Capture a weekly snapshot of `daily-1..7.csv` for all users into a separate SQLite DB (`data/wax_daily_playlists.db` by default):
+
+```bash
+npm run playlists:capture:weekly
+```
+
+Optional env vars:
+
+- `WAX_USERS` comma-separated user list (default: `kasey,kaseysmom,kaseysdad`)
+- `WAX_WEEK_START` reference date (`YYYY-MM-DD`); capture is keyed to that ISO week (Monday start)
+- `WAX_DAILY_DB_PATH` output DB path (default: `data/wax_daily_playlists.db`)
+
+Examples:
+
+```bash
+WAX_WEEK_START=2026-07-20 npm run playlists:capture:weekly
+WAX_USERS=kasey,kaseysmom,kaseysdad WAX_DAILY_DB_PATH=data/wax_daily_playlists.db npm run playlists:capture:weekly
+```
+
 Outputs:
 
 - `users/<name>/playlists/daily-1.csv`
@@ -446,6 +519,7 @@ WAX_USER=kaseysmom npm run restore:user -- 20260618-180500
 ### Where your data lives
 
 - **`data.db`** in the project root. Back this file up if you care about it.
+- **`data/wax_daily_playlists.db`** weekly snapshots of each user's `daily-1..7` playlists (cross-user history table: `daily_playlist_history`).
 - **`users/<name>/decisions-latest.json`** for each user's latest keep/remove + repeat-intent snapshot.
 - **`users/<name>/playlists/`** for generated CSV playlists and `summary.json`.
 

@@ -7,4 +7,10 @@ dist/
 data.db
 data.db-wal
 data.db-shm
+data/wax_daily_playlists.db
+data/wax_daily_playlists.db-wal
+data/wax_daily_playlists.db-shm
+users/*/music_library.db
+users/*/music_library.db-wal
+users/*/music_library.db-shm
 backups/
