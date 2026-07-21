@@ -101,33 +101,26 @@ WAX_USER=kaseysmom npm run decisions:export  # writes users/kaseysmom/decisions-
 
 Use a different `WAX_USER` value per family member (for example: `kasey`, `kaseysdad`, `kaseysmom`) so each person has their own tracked decisions file under `users/`.
 
-### Reimport library + restore decisions
+### Switch users (per-user DB)
 
-If you want a clean reimport (no duplicate old imports/listens), do this:
+You no longer need to clean `data.db`, restart twice, and reimport in the UI just to switch users.
 
-1. Stop the app.
-2. Remove your local DB files:
-
-```bash
-npm run clean-db
-```
-
-3. Start the app again:
+Use each user's DB directly:
 
 ```bash
-npm run dev
+WAX_USER=kasey npm run dev:user
+WAX_USER=kaseysdad npm run dev:user
+WAX_USER=kaseysmom npm run dev:user
 ```
 
-4. Reimport your library in the UI.
-5. Reapply your decisions snapshot:
+If you want to reapply the tracked decisions snapshot before starting dev:
 
 ```bash
-WAX_USER=kasey npm run decisions:import
-WAX_USER=kaseysdad npm run decisions:import
-WAX_USER=kaseysmom npm run decisions:import
+WAX_USER=kasey npm run user:import
+WAX_USER=kasey npm run dev:user
 ```
 
-This restores each track's latest keep/remove + repeat-intent decision. It does not restore full listen history, notes, or activity timeline.
+`dev:user` and `user:import` automatically target `users/<WAX_USER>/music_library.db` unless you override `WAX_DB_PATH`.
 
 If counts look off after import, audit snapshot coverage against your current `tracks` table:
 
@@ -135,7 +128,7 @@ If counts look off after import, audit snapshot coverage against your current `t
 npm run decisions:audit
 ```
 
-This checks `users/<name>/decisions-latest.json` (default users: `kasey,kaseysmom,kaseysdad`) against `data.db` and reports missing track IDs by repeat-intent. Optional env vars:
+This checks `users/<name>/decisions-latest.json` (default users: `kasey,kaseysmom,kaseysdad`) against a DB path and reports missing track IDs by repeat-intent. Optional env vars:
 
 - `WAX_USERS` comma-separated users to audit
 - `WAX_AUDIT_DB_PATH` DB path to check (default `data.db`)
@@ -526,7 +519,8 @@ WAX_USER=kaseysmom npm run restore:user -- 20260618-180500
 
 ### Where your data lives
 
-- **`data.db`** in the project root. Back this file up if you care about it.
+- **`data.db`** in the project root by default.
+- **`users/<name>/music_library.db`** when running with `WAX_DB_PATH` (used by `npm run dev:user`).
 - **`data/wax_daily_playlists.db`** weekly snapshots of each user's `daily-1..7` playlists (cross-user history table: `daily_playlist_history`).
 - **`users/<name>/decisions-latest.json`** for each user's latest keep/remove + repeat-intent snapshot.
 - **`users/<name>/playlists/`** for generated CSV playlists and `summary.json`.

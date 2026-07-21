@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "NODE_ENV=development tsx server/index.ts",
+    "dev:user": "WAX_DB_PATH=${WAX_DB_PATH:-users/${WAX_USER:-kasey}/music_library.db} NODE_ENV=development tsx server/index.ts",
+    "user:import": "WAX_DB_PATH=${WAX_DB_PATH:-users/${WAX_USER:-kasey}/music_library.db} npm run decisions:import",
     "build": "tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
