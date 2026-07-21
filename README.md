@@ -137,7 +137,7 @@ WAX_USER=kaseysdad npm run user:playlists
 WAX_USER=kaseysmom npm run user:playlists
 ```
 
-### Remove songs marked `removed` from each user DB
+### Remove songs from each user DB
 
 This deletes tracks marked with repeat intent `removed` from that user's DB (`users/<name>/music_library.db`).
 
@@ -168,6 +168,10 @@ Each user DB (`users/<name>/music_library.db`) is local and not tracked in git. 
 ```bash
 WAX_USER=kasey npm run backup-db
 WAX_USER=kasey npm run restore-db
+WAX_USER=kaseysdad npm run backup-db
+WAX_USER=kaseysdad npm run restore-db
+WAX_USER=kaseysmom npm run backup-db
+WAX_USER=kaseysmom npm run restore-db
 ```
 
 ## Spotify API playlists
