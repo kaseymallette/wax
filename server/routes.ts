@@ -818,6 +818,13 @@ export async function registerRoutes(
       const iDuration = idx("Track Duration (ms)", "Duration (ms)", "Duration", "duration_ms", "length_ms");
       const iAdded    = idx("Added At", "Date Added", "added_at", "date_added");
       const iPreview  = idx("Track Preview URL", "Preview URL", "Preview", "preview_url");
+      const iBpm      = idx("BPM", "Tempo", "bpm");
+      const iCamelot  = idx("Camelot", "Key", "camelot", "key");
+      const iEnergy   = idx("Energy", "energy");
+      const iDance    = idx("Dance", "Danceability", "dance", "danceability");
+      const iValence  = idx("Valence", "valence");
+      const iPopularity = idx("Popularity", "popularity");
+      const iAlbumDate = idx("Album Date", "album_date", "Release Date", "release_date", "Year", "year");
 
       if (iId === -1) {
         return res.status(400).json({
@@ -855,6 +862,49 @@ export async function registerRoutes(
       const afterCount = storage.trackCount();
       const newTracks = afterCount - beforeCount; // tracks that didn't already exist
       const updated = items.length - newTracks;   // tracks that already existed (metadata refreshed, ratings untouched)
+      const hasUploadFeatureColumns =
+        iName !== -1 &&
+        iArtists !== -1 &&
+        iBpm !== -1 &&
+        iEnergy !== -1 &&
+        iDance !== -1 &&
+        iValence !== -1;
+
+      let uploadedFeatureImport:
+        | {
+            ok: boolean;
+            source: string;
+            importedRows: number;
+            skipped: number;
+            imported: number;
+            matchedByTrackId: number;
+            matchedByArtistSong: number;
+            unmatched: number;
+          }
+        | { ok: false; source: string; error: string }
+        | undefined;
+
+      if (hasUploadFeatureColumns) {
+        const uploadSourceName = file.originalname || "uploaded.csv";
+        try {
+          const { items: featureRows, skipped: featureSkipped } = parseFeatureCsvRows(rows, uploadSourceName);
+          const summary = storage.importFeatureRows(featureRows);
+          uploadedFeatureImport = {
+            ok: true,
+            source: uploadSourceName,
+            importedRows: featureRows.length,
+            skipped: featureSkipped,
+            ...summary,
+          };
+        } catch (e: any) {
+          uploadedFeatureImport = {
+            ok: false,
+            source: uploadSourceName,
+            error: e?.message || "Could not import features from uploaded CSV",
+          };
+        }
+      }
+
       const autoFeatureImport = importDefaultFeatureSources();
 
       res.json({
@@ -868,6 +918,7 @@ export async function registerRoutes(
         libraryTotal: afterCount,
         waxUser: ACTIVE_WAX_USER,
         targetDbPath: ACTIVE_DB_PATH,
+        uploadedFeatureImport,
         autoFeatureImport:
           autoFeatureImport.sources.length > 0
             ? {
