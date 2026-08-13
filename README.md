@@ -163,6 +163,36 @@ WAX_USER=kaseysdad npm run dev:user
 WAX_USER=kaseysmom npm run dev:user
 ```
 
+### Switch between profiles
+
+This switches between different profiles for the same user. Each profile has its own set of playlists and settings.
+
+```bash
+WAX_USER=kasey-country-blues npm run dev:user
+WAX_USER=kasey-pop-hip-hop npm run dev:user
+```   
+
+### Export decisions for each user
+
+This writes the latest decisions from that user's DB (`users/<name>/music_library.db`) to
+`users/<name>/decisions-latest.json` so it can be tracked in git/history.
+
+```bash
+WAX_USER=kasey npm run user:export
+WAX_USER=kaseysdad npm run user:export
+WAX_USER=kaseysmom npm run user:export
+```
+
+### Export decisions for each profile
+
+This writes the latest decisions from that profile's DB (`users/<name>/<profile>/music_library.db`) to
+`users/<name>/<profile>/decisions-latest.json` so it can be tracked in git/history.
+
+```bash
+WAX_USER=kasey-country-blues npm run user:export
+WAX_USER=kasey-pop-hip-hop npm run user:export
+```
+
 ### Build playlists for each user
 
 This reads that user's DB (`users/<name>/music_library.db`) and generates playlist CSVs in
@@ -172,6 +202,16 @@ This reads that user's DB (`users/<name>/music_library.db`) and generates playli
 WAX_USER=kasey npm run user:playlists
 WAX_USER=kaseysdad npm run user:playlists
 WAX_USER=kaseysmom npm run user:playlists
+```
+
+### Build playlists for each profile
+
+This reads that profile's DB (`users/<name>/<profile>/music_library.db`) and generates playlist CSVs in
+`users/<name>/<profile>/playlists/`.
+
+```bash
+WAX_USER=kasey-country-blues npm run user:playlists
+WAX_USER=kasey-pop-hip-hop npm run user:playlists
 ```
 
 ### Push playlists using Spotify API
@@ -192,6 +232,22 @@ WAX_USER=kaseysdad npm run spotify:push
 WAX_USER=kaseysmom npm run spotify:push
 ```
 
+### Push playlists for each profile
+
+This pushes playlists for each profile to Spotify.
+
+Dry run:
+```bash
+WAX_USER=kasey-country-blues npm run spotify:push:dry
+WAX_USER=kasey-pop-hip-hop npm run spotify:push:dry
+```
+
+Push to Spotify:
+```bash
+WAX_USER=kasey-country-blues npm run spotify:push
+WAX_USER=kasey-pop-hip-hop npm run spotify:push
+```
+
 ### Save weekly snapshots for each user
 
 This captures that user's weekly playlists into a user-specific snapshot DB, including unassigned tracks from `currently-listening.csv`.
@@ -206,16 +262,7 @@ This writes:
 
 - `users/<user>/weekly-playlists.db`
 
-### Export decisions for each user
 
-This writes the latest decisions from that user's DB (`users/<name>/music_library.db`) to
-`users/<name>/decisions-latest.json` so it can be tracked in git/history.
-
-```bash
-WAX_USER=kasey npm run user:export
-WAX_USER=kaseysdad npm run user:export
-WAX_USER=kaseysmom npm run user:export
-```
 
 ### Remove songs in each user DB
 
