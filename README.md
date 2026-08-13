@@ -262,7 +262,18 @@ This writes:
 
 - `users/<user>/weekly-playlists.db`
 
+### Save weekly playlists for profiles
 
+This captures that profile's weekly playlists into a profile-specific snapshot DB, including unassigned tracks from `currently-listening.csv`.
+
+```bash
+WAX_USER=kasey-country-blues npm run user:snapshots:weekly
+WAX_USER=kasey-pop-hip-hop npm run user:snapshots:weekly
+```
+
+This writes:
+
+- `users/<user>/<profile>/weekly-playlists.db`
 
 ### Remove songs in each user DB
 
