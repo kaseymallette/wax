@@ -45,7 +45,9 @@ type RowDecision = {
   repeatIntent: string;
 };
 
-const KEEP_OPTIONS = REPEAT_INTENT_OPTIONS.filter((opt) => opt.value !== "undecided" && opt.value !== "removed");
+const KEEP_OPTIONS = REPEAT_INTENT_OPTIONS.filter(
+  (opt) => opt.value !== "undecided" && opt.value !== "removed" && opt.value !== "off_rotation",
+);
 
 function defaultKeepIntent(trackRepeatIntent: string | undefined): string {
   const normalized = String(trackRepeatIntent ?? "").trim();
@@ -137,9 +139,8 @@ export default function EvaluatePage() {
       const seed: Record<number, RowDecision> = {};
       for (const row of data.rows) {
         if (!row.track) continue;
-        const initialDecision: RowDecision["decision"] = row.track.repeatIntent === "removed" ? "remove" : "keep";
         seed[row.rowIndex] = {
-          decision: initialDecision,
+          decision: null,
           repeatIntent: defaultKeepIntent(row.track.repeatIntent),
         };
       }

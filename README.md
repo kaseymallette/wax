@@ -14,49 +14,47 @@ Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot
 
 ## Screenshots
 
-### 01. Dev setup + launch
+> The screenshots below are from the `test` user, using a 999-song playlist import from `Billboards_Greatest_Hits_of_All_Time.csv`.
 
-![Dev setup + launch](images/01_run_dev.png)
+### 01. Run dev 
 
-### 02. Import library source
+![Dev setup http://127.0.0.1:8888/callback](images/01_run_dev.png)
 
-![Import library source](images/02_import_library.png)
+### 02. Import library
 
-### 03. Map import columns
+![Import library](images/02_import.png)
 
-![Map import columns](images/03_map_columns.png)
+### 03. Evaluate playlist
 
-### 04. Import confirmation
+![Evaluate playlist](images/03_evaluate.png)
 
-![Import confirmation](images/04_import_complete.png)
+### 04. Shuffle Preview Song
 
-### 05. Shuffle
+![Shuffle preview](images/04_shuffle_preview.png)
 
-![Shuffle](images/05_shuffle_up_next.png)
+### 05. Shuffle Keep or Remove
 
-### 06. Keep Workflow
+![Shuffle keep](images/05_shuffle_keep.png)
 
-![Shuffle keep workflow](images/06_shuffle_keep.png)
+### 06. Search Library
 
-### 07. Library search + browse
+![Search library](images/06_library.png)
 
-![Library search and browse](images/07_library_search.png)
+### 07. Recents
 
-### 08. Recents timeline
+![Recents](images/07_recents.png)
 
-![Recents timeline](images/08_recents.png)
+### 08. Keeps
 
-### 09. Keeps workspace
+![Keeps](images/08_keeps.png)
 
-![Keeps workspace](images/09_keeps.png)
+### 09. Daily playlists
 
-### 10. Playlists workspace
+![Daily playlists](images/09_playlists.png)
 
-![Playlists workspace](images/10_playlists.png)
+### 10. Stats
 
-### 11. Stats dashboard
-
-![Stats dashboard](images/11_stats.png)
+![Stats](images/10_stats.png)
 
 ## Quick start
 
