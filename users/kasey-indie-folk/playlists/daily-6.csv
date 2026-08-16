@@ -1,0 +1,22 @@
+rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
+1,7HXzuAd8UNJj2yCAS0NWbB,Opening Night,"Arctic Monkeys,War Child Records",Opening Night,currently_listening,123.00,183.00,46.00,77.00,60.00,8B,1,2026-08-16T09:09:09.336Z,https://open.spotify.com/track/7HXzuAd8UNJj2yCAS0NWbB
+2,7DkTneByAopqOjXFG6XlZK,No Room in Frame,Death Cab for Cutie,Kintsugi,currently_listening,125.00,180.00,72.00,64.00,44.00,12B,1,2026-08-16T09:09:09.367Z,https://open.spotify.com/track/7DkTneByAopqOjXFG6XlZK
+3,4UkKlwIBnOdUwvnmem04P9,Good Boy,Paris Paloma,Good Girl,currently_listening,124.00,177.00,78.00,63.00,36.00,12B,1,2026-08-16T09:09:09.309Z,https://open.spotify.com/track/4UkKlwIBnOdUwvnmem04P9
+4,5916POJDlPQRBbe1SJc7uK,Good Girl,Paris Paloma,Good Girl,currently_listening,129.00,166.00,77.00,62.00,27.00,9B,1,2026-08-16T09:09:09.309Z,https://open.spotify.com/track/5916POJDlPQRBbe1SJc7uK
+5,5Ut5dDKfBUCMsWQbc3Lgyi,Holiest,"Glass Animals,Tei Shi",Gooey,currently_listening,132.00,164.00,63.00,51.00,50.00,4A,1,2026-08-16T09:09:09.355Z,https://open.spotify.com/track/5Ut5dDKfBUCMsWQbc3Lgyi
+6,7DTAZBykDP2m8LkYehrwhl,Friendly Fire,Rainbow Kitten Surprise,bones,currently_listening,135.00,162.00,70.00,54.00,38.00,7B,1,2026-08-16T09:09:09.314Z,https://open.spotify.com/track/7DTAZBykDP2m8LkYehrwhl
+7,5y3ldTHd9MASxvKPfW10xk,Wolves Without Teeth,Of Monsters and Men,Beneath The Skin (Remastered),currently_listening,136.00,152.00,72.00,36.00,44.00,10A,1,2026-08-16T09:09:09.352Z,https://open.spotify.com/track/5y3ldTHd9MASxvKPfW10xk
+8,0L3di3gB5KlamEABLJK8KK,Your Biggest Fan,Never Shout Never,Me and My Uke,currently_listening,125.00,158.00,31.00,74.00,53.00,8B,1,2026-08-16T09:09:09.331Z,https://open.spotify.com/track/0L3di3gB5KlamEABLJK8KK
+9,2RJnW5OLYkMUcxn9Hv8XIg,Cursive (feat. Manchester Orchestra),"Matt Maeson,Manchester Orchestra",A Quiet and Harmless Living,currently_listening,142.00,138.00,52.00,55.00,31.00,10B,1,2026-08-16T09:09:09.340Z,https://open.spotify.com/track/2RJnW5OLYkMUcxn9Hv8XIg
+10,2pY0EPtqQb0GJGUY7EzxqP,Do It Like A Girl,Morgan St. Jean,Do It Like A Girl,currently_listening,148.00,124.00,40.00,52.00,32.00,7A,1,2026-08-16T09:09:09.374Z,https://open.spotify.com/track/2pY0EPtqQb0GJGUY7EzxqP
+11,1iFycgjdLFVJJ6xGstOg9V,Push Off,The Palms,Push Off,currently_listening,156.00,116.00,50.00,47.00,19.00,3A,1,2026-08-16T09:09:09.374Z,https://open.spotify.com/track/1iFycgjdLFVJJ6xGstOg9V
+12,2JRkfugsvOPvTLmd0dVppc,It Was A Sin,The Revivalists,Men Amongst Mountains,currently_listening,156.00,116.00,60.00,43.00,13.00,9B,1,2026-08-16T09:09:09.348Z,https://open.spotify.com/track/2JRkfugsvOPvTLmd0dVppc
+13,3ILLqwupo1Aa6PBNXxV4ey,Suit and Jacket,Judah & the Lion,Folk Hop n' Roll (Deluxe),currently_listening,164.00,114.00,58.00,45.00,11.00,6B,1,2026-08-16T09:09:09.348Z,https://open.spotify.com/track/3ILLqwupo1Aa6PBNXxV4ey
+14,0WXqirpUQC71A7BpoHBd20,Fossa,Daughter,Not To Disappear,currently_listening,176.00,110.00,81.00,16.00,13.00,9B,1,2026-08-16T09:09:09.338Z,https://open.spotify.com/track/0WXqirpUQC71A7BpoHBd20
+15,6BM4A4rhnKIxG61jN4A2jC,Snake Eyes,Mumford & Sons,Wilder Mind (Deluxe),currently_listening,180.00,121.00,64.00,37.00,20.00,8A,1,2026-08-16T09:09:09.330Z,https://open.spotify.com/track/6BM4A4rhnKIxG61jN4A2jC
+16,4wFXTN7ADsBxIyJfzvaHGf,What's Wrong?,Foreign Air,Smile,currently_listening,176.00,133.00,72.00,31.00,30.00,6B,1,2026-08-16T09:09:09.368Z,https://open.spotify.com/track/4wFXTN7ADsBxIyJfzvaHGf
+17,1JcIXOir94YUYBt2cXTzn2,Growing Sideways,Noah Kahan,Stick Season,currently_listening,178.00,137.00,29.00,52.00,56.00,9B,1,2026-08-16T09:09:09.326Z,https://open.spotify.com/track/1JcIXOir94YUYBt2cXTzn2
+18,7GsPODZDKmvL7BCq4YWqn6,A Memory Away,Matt Maeson,Never Had to Leave,currently_listening,164.00,136.00,51.00,59.00,26.00,9B,1,2026-08-16T09:09:09.322Z,https://open.spotify.com/track/7GsPODZDKmvL7BCq4YWqn6
+19,7siD4wJRiNcC4680aiqOZg,The Hearse,Matt Maeson,The Hearse,currently_listening,156.00,141.00,63.00,49.00,29.00,12A,1,2026-08-16T09:09:09.352Z,https://open.spotify.com/track/7siD4wJRiNcC4680aiqOZg
+20,0jkzxxDG8z3Y5OmfNl1VM0,Homesick,Noah Kahan,Stick Season,currently_listening,170.00,154.00,62.00,51.00,41.00,2B,1,2026-08-16T09:09:09.326Z,https://open.spotify.com/track/0jkzxxDG8z3Y5OmfNl1VM0
+21,6xU0ojuUR3dAhbnrJPQr1I,Gooey,Glass Animals,Gooey,currently_listening,183.00,97.00,37.00,49.00,11.00,10A,1,2026-08-16T09:09:09.355Z,https://open.spotify.com/track/6xU0ojuUR3dAhbnrJPQr1I
