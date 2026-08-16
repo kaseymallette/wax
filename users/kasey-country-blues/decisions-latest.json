@@ -1,0 +1,1207 @@
+{
+  "exportedAt": 1786871301351,
+  "sourceDbPath": "/Users/kaseymallette/github/wax/users/kasey-country-blues/music_library.db",
+  "count": 150,
+  "decisions": [
+    {
+      "trackId": "01zPnSlKCw9WLbY0kvNep0",
+      "name": "Desperation",
+      "artists": "Eminem,Jamie N Commons",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226334
+    },
+    {
+      "trackId": "0lwUIYJfWGB8qUEAJtYfb6",
+      "name": "Broken Bones",
+      "artists": "KALEO",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226334
+    },
+    {
+      "trackId": "2qDqybiDVMxdEN20HcJJEr",
+      "name": "Cold Math (settling up)",
+      "artists": "Rhett Blood",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226333
+    },
+    {
+      "trackId": "52MSDG99lVCtdqVHmqGgJF",
+      "name": "Spaghetti Western",
+      "artists": "Maudlin Strangers",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226333
+    },
+    {
+      "trackId": "0kE09o4Jdeu7vqjmkV1YJP",
+      "name": "Wild Ones (feat. Jelly Roll)",
+      "artists": "Jessie Murph,Jelly Roll",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226332
+    },
+    {
+      "trackId": "1FhgmMvNlh3nJ1Ldc2eE6H",
+      "name": "High Road (feat. Jessie Murph)",
+      "artists": "Koe Wetzel,Jessie Murph",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226332
+    },
+    {
+      "trackId": "23sgFrguc8l77dr0IFhsNg",
+      "name": "SHE GOT A COWBOY ON A LASSO",
+      "artists": "Boots & Beers",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226332
+    },
+    {
+      "trackId": "3RzL5fTJeqNqLwqSpKJ3xh",
+      "name": "Bad As The Rest",
+      "artists": "Jessie Murph",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226331
+    },
+    {
+      "trackId": "7L5yUAQfKSm5ydJRjPx5Ok",
+      "name": "Better (feat. Wiz Khalifa)",
+      "artists": "GASHI,Wiz Khalifa",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226331
+    },
+    {
+      "trackId": "2b8QQqf8Vwb7bfz22ja8Fk",
+      "name": "Over And Over",
+      "artists": "Nelly,Tim McGraw",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226330
+    },
+    {
+      "trackId": "1fAeFPXsX08Ovnn9iV1x27",
+      "name": "Halfway To Hell",
+      "artists": "Jelly Roll",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226329
+    },
+    {
+      "trackId": "4mCf3vQf7z0Yseo0RxAi3V",
+      "name": "Desperado",
+      "artists": "Rihanna",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226329
+    },
+    {
+      "trackId": "2v7nHAyV9SyyuAJKX3Ntaj",
+      "name": "Cocaine Country Dancing",
+      "artists": "Paul Cauthen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226328
+    },
+    {
+      "trackId": "4jB3Mw900goYibsFAueHph",
+      "name": "Black Creek",
+      "artists": "Brent Cobb",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226328
+    },
+    {
+      "trackId": "0y0W8zIjxv0swTYlg450tP",
+      "name": "Sleepless in a Hotel Room",
+      "artists": "Luke Combs",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226327
+    },
+    {
+      "trackId": "29mTi7k11emagueZvOaXgS",
+      "name": "Years",
+      "artists": "Sierra Ferrell",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226327
+    },
+    {
+      "trackId": "4hx9NTugoBdIG8MkAi2fzI",
+      "name": "Tell Me When It’s Over",
+      "artists": "Sheryl Crow,Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226327
+    },
+    {
+      "trackId": "3WMj8moIAXJhHsyLaqIIHI",
+      "name": "Something in the Orange",
+      "artists": "Zach Bryan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226326
+    },
+    {
+      "trackId": "5H9h29GQs6zrhOuu1BKZIc",
+      "name": "No Angels",
+      "artists": "Samantha Fish",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226326
+    },
+    {
+      "trackId": "5rDkA2TFOImbiVenmnE9r4",
+      "name": "Ring of Fire",
+      "artists": "Johnny Cash",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226326
+    },
+    {
+      "trackId": "1huWqmpiYksaPppQHLDhZP",
+      "name": "Outside Of This Town",
+      "artists": "Christone  Kingfish  Ingram",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226325
+    },
+    {
+      "trackId": "4wszHgvhXYlN2Io813hLQ1",
+      "name": "The Well",
+      "artists": "Marcus King",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226325
+    },
+    {
+      "trackId": "5HxpkQqAknfdYLPAYK5i5N",
+      "name": "I'm Done Runnin'",
+      "artists": "Samantha Fish",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226325
+    },
+    {
+      "trackId": "2NPHU2WJaI3rrtCNNuQ8L1",
+      "name": "Raise Hell",
+      "artists": "Dorothy",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226324
+    },
+    {
+      "trackId": "5ZtPofuIcSv3Lov9TiNyiE",
+      "name": "Gone",
+      "artists": "KELS",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226324
+    },
+    {
+      "trackId": "5nlAKJhde77caBJIHMfDcV",
+      "name": "Bright Lights",
+      "artists": "Gary Clark Jr.",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226324
+    },
+    {
+      "trackId": "0XfwXFXOI7oys9rsZ2sjrt",
+      "name": "I Lied to You",
+      "artists": "Miles Caton,Sinners Movie",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226323
+    },
+    {
+      "trackId": "6tInq1Sn2eehdsQGA9Aafh",
+      "name": "Midnight Train To Memphis",
+      "artists": "Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226323
+    },
+    {
+      "trackId": "6yggZbtgrxPNwWOs06cS8L",
+      "name": "Bury My Bones",
+      "artists": "Whiskey Myers",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226323
+    },
+    {
+      "trackId": "0MpQPb1hrwk4dPiyWEGmer",
+      "name": "She Calls Me Back (with Kacey Musgraves)",
+      "artists": "Noah Kahan,Kacey Musgraves",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226322
+    },
+    {
+      "trackId": "2L8fPEM1Hhizt5LnkNECca",
+      "name": "People Hatin'",
+      "artists": "The Red Clay Strays",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226322
+    },
+    {
+      "trackId": "0froGQFzaDPiXzxxk0LuOi",
+      "name": "Ain't Enough Road",
+      "artists": "Jordan Davis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226321
+    },
+    {
+      "trackId": "5ovPv5nkmtM7fCPvr3OOE6",
+      "name": "Here (with Chris Stapleton)",
+      "artists": "Mumford & Sons,Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226321
+    },
+    {
+      "trackId": "7iGdNkROFlxqUJkHNlkoQV",
+      "name": "The Cowboy In Me",
+      "artists": "Tim McGraw",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226321
+    },
+    {
+      "trackId": "024avm1IHjbHmvpFQyl38J",
+      "name": "Can't Sit Still",
+      "artists": "Lainey Wilson",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226320
+    },
+    {
+      "trackId": "2R0eqSxBNxlKmfLjAwaj0C",
+      "name": "When The Stars Go Blue",
+      "artists": "Tim McGraw",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226320
+    },
+    {
+      "trackId": "5KP3uYT70kYwQYLXUwLlua",
+      "name": "Excuse The Mess",
+      "artists": "Ella Langley",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226320
+    },
+    {
+      "trackId": "1AnGZEUVTHgeLJSiejKhNA",
+      "name": "Off The Map",
+      "artists": "Dierks Bentley",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226319
+    },
+    {
+      "trackId": "1XjHRolIXL2M1EEOUsGGR4",
+      "name": "cowboy like me",
+      "artists": "Taylor Swift",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226319
+    },
+    {
+      "trackId": "5WFDseVq6n2LnKQMByCYnj",
+      "name": "My List",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226319
+    },
+    {
+      "trackId": "2uqYupMHANxnwgeiXTZXzd",
+      "name": "Austin (Boots Stop Workin')",
+      "artists": "Dasha",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226318
+    },
+    {
+      "trackId": "5DWmvAL8WPuncj8tSxFVNC",
+      "name": "Last Call",
+      "artists": "Lee Ann Womack",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226318
+    },
+    {
+      "trackId": "4GkLx8Yg80COws7FSmq8bQ",
+      "name": "WILD AS THE WIND",
+      "artists": "Hayley Jensen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226317
+    },
+    {
+      "trackId": "5wbN8wztvxqI5jsgrFDuM2",
+      "name": "Too Little, Too Late",
+      "artists": "Orville Peck",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226317
+    },
+    {
+      "trackId": "05LCkBsBCDEcQv9nqZab41",
+      "name": "The Day I Hang It Up",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226316
+    },
+    {
+      "trackId": "33aow0AcXYvT1FoWNzMcqN",
+      "name": "Lil Bit (feat. Florida Georgia Line)",
+      "artists": "Nelly,Florida Georgia Line",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226316
+    },
+    {
+      "trackId": "4xej9vaOrovFRzZVKr8KlF",
+      "name": "Burn it Down (feat. Leon Bridges)",
+      "artists": "Shaboozey,Leon Bridges",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226316
+    },
+    {
+      "trackId": "2E9n1Zpby16xLUPoujMUSd",
+      "name": "Crazy Ex-Girlfriend",
+      "artists": "Miranda Lambert",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226315
+    },
+    {
+      "trackId": "2mXsZsJBThTaJXbNcg5QD4",
+      "name": "Mama's Broken Heart",
+      "artists": "Miranda Lambert",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226315
+    },
+    {
+      "trackId": "20DfkHC5grnKNJCzZQB6KC",
+      "name": "Good Girl",
+      "artists": "Carrie Underwood",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226314
+    },
+    {
+      "trackId": "3z1PqYwMtct2Dm4R9lhWnT",
+      "name": "Gunpowder & Lead",
+      "artists": "Miranda Lambert",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226314
+    },
+    {
+      "trackId": "6s9m5J92By7jii22Q2XtY2",
+      "name": "Somethin' Bad (with Carrie Underwood)",
+      "artists": "Miranda Lambert,Carrie Underwood",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226313
+    },
+    {
+      "trackId": "2DJ0lLxggpQAw58tpsNSBC",
+      "name": "King of Possibilities",
+      "artists": "Goldie Boutilier",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226312
+    },
+    {
+      "trackId": "2EkbykDiLsmMBL5I27RH5e",
+      "name": "Manic Pixie Dream Girl",
+      "artists": "ILUKA",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226312
+    },
+    {
+      "trackId": "79iQ3xyBMKGrwBoAk1CVax",
+      "name": "Woman Gone Mad",
+      "artists": "ILUKA",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226312
+    },
+    {
+      "trackId": "2SeDdNjPvN3uwkolnG2ODi",
+      "name": "Cowboy Gangster Politician",
+      "artists": "Goldie Boutilier",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226311
+    },
+    {
+      "trackId": "3pdYo6FJHk8ZBr7r3MJvCe",
+      "name": "Body Heat",
+      "artists": "Goldie Boutilier",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226311
+    },
+    {
+      "trackId": "6Y4rniIxibegzsg8cdWAWV",
+      "name": "BODYGUARD",
+      "artists": "Beyoncé",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226311
+    },
+    {
+      "trackId": "1LSWDkZxVngIpfjvMs6Q56",
+      "name": "ALLIIGATOR TEARS",
+      "artists": "Beyoncé",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226310
+    },
+    {
+      "trackId": "2PmMh2t7jAtN6cqFooA0Xy",
+      "name": "JOLENE",
+      "artists": "Beyoncé",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226310
+    },
+    {
+      "trackId": "2UDARQiksl207HcSduDpov",
+      "name": "LEVII'S JEANS",
+      "artists": "Beyoncé,Post Malone",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226310
+    },
+    {
+      "trackId": "6XXxKsu3RJeN3ZvbMYrgQW",
+      "name": "16 CARRIAGES",
+      "artists": "Beyoncé",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226309
+    },
+    {
+      "trackId": "7wLShogStyDeZvL0a6daN5",
+      "name": "TEXAS HOLD 'EM",
+      "artists": "Beyoncé",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226309
+    },
+    {
+      "trackId": "0BUxYYHPvkYOOGgX4aI2W4",
+      "name": "Ain’t In Kansas Anymore",
+      "artists": "Miranda Lambert",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226308
+    },
+    {
+      "trackId": "0RiCTMPN7UURLEZgRvjDLm",
+      "name": "Out of Oklahoma",
+      "artists": "Lainey Wilson",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226308
+    },
+    {
+      "trackId": "267pym8JqsQQdIs7dadMJR",
+      "name": "A Little Less Talk And A Lot More Action",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226299
+    },
+    {
+      "trackId": "54lwAukbN9gFGnDprkHjRD",
+      "name": "Ain't No Love In Oklahoma",
+      "artists": "Luke Combs",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226299
+    },
+    {
+      "trackId": "3bvr2R5FUjrC3orh47Qe5V",
+      "name": "How Am I Doin'",
+      "artists": "Dierks Bentley",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226298
+    },
+    {
+      "trackId": "4TJUS843fKiqqIzycM74Oy",
+      "name": "Should've Been A Cowboy",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226298
+    },
+    {
+      "trackId": "1hTSImeofoaFWptq9JSFpP",
+      "name": "Baggage Claim",
+      "artists": "Miranda Lambert",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226297
+    },
+    {
+      "trackId": "6QUs5z2uEbSGZJpPGMfgQA",
+      "name": "Hell Yeah",
+      "artists": "Montgomery Gentry",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226297
+    },
+    {
+      "trackId": "4CweTlvTQyGt8T2vrt149a",
+      "name": "Move Like U Stole It",
+      "artists": "ZZ Ward",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226296
+    },
+    {
+      "trackId": "6OqdF0vHI9xkqswI7EK0cD",
+      "name": "Cowboy Casanova",
+      "artists": "Carrie Underwood",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226296
+    },
+    {
+      "trackId": "3ki2sYrrJ9bOW5hLF8oRI8",
+      "name": "Tempt My Trouble",
+      "artists": "Bishop Briggs",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226295
+    },
+    {
+      "trackId": "3pHvVcToKzumdjDX9tFEA9",
+      "name": "Sugar and Spice",
+      "artists": "Jocelyn & Chris Arndt",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226295
+    },
+    {
+      "trackId": "63tqSZIWPIbNCcOb9A2gHY",
+      "name": "Put the Gun Down",
+      "artists": "ZZ Ward",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226295
+    },
+    {
+      "trackId": "3etNLnzuLqShLyEbSwIiQF",
+      "name": "Thieves & Kings",
+      "artists": "The Peach Kings",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226294
+    },
+    {
+      "trackId": "7iXR11NaUdhfbAl9Aux0vP",
+      "name": "Fisherman",
+      "artists": "The Peach Kings",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226294
+    },
+    {
+      "trackId": "0wDHfPk4QxF6TVk3j0Zojy",
+      "name": "Say What",
+      "artists": "The Peach Kings",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226293
+    },
+    {
+      "trackId": "45xKkc83u4BOkfDwLLP1ey",
+      "name": "Misbehave",
+      "artists": "Frances Lion",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226293
+    },
+    {
+      "trackId": "5ir3dzVbAA2lZYisuUWU33",
+      "name": "Oh No",
+      "artists": "Frances Lion",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226293
+    },
+    {
+      "trackId": "27QKdaqsOcLodD31PuYFZJ",
+      "name": "Vegas",
+      "artists": "Shaboozey",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226292
+    },
+    {
+      "trackId": "69m9WDPBvemwujQwdONslk",
+      "name": "There's Your Trouble",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226292
+    },
+    {
+      "trackId": "6cjwec9ii5uLK7CDfPBYt1",
+      "name": "Wide Open Spaces",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226292
+    },
+    {
+      "trackId": "2GeK971PzUJqSJc7mFVIMI",
+      "name": "Anabelle",
+      "artists": "Shaboozey",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226291
+    },
+    {
+      "trackId": "6cumvBZMlyO9aO4OjTDFZ2",
+      "name": "Let It Burn",
+      "artists": "Shaboozey",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226291
+    },
+    {
+      "trackId": "2bKazIbV8uwFTyMdUS0vct",
+      "name": "Ain't Gonna Drown",
+      "artists": "Elle King",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226290
+    },
+    {
+      "trackId": "3nEotpBFeXq0OJstuHzwDP",
+      "name": "God Needs The Devil",
+      "artists": "Jonah Kagen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226290
+    },
+    {
+      "trackId": "5fZJQrFKWQLb7FpJXZ1g7K",
+      "name": "A Bar Song (Tipsy)",
+      "artists": "Shaboozey",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226290
+    },
+    {
+      "trackId": "22VHOlVYBqytsrAqV8yXBK",
+      "name": "Dial Drunk (with Post Malone)",
+      "artists": "Noah Kahan,Post Malone",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226289
+    },
+    {
+      "trackId": "3Uig25Z3vRcgy59uN1As9J",
+      "name": "Sin Wagon",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226289
+    },
+    {
+      "trackId": "4GuMdwLD8vYsv1j50F8LcK",
+      "name": "Hello Mr. Heartache",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226288
+    },
+    {
+      "trackId": "6wxVOknGabpV763hFCIkV8",
+      "name": "Hole in My Head",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226288
+    },
+    {
+      "trackId": "0r8iDf65NHgFgZOGLwj5r8",
+      "name": "What Was I Thinkin'",
+      "artists": "Dierks Bentley",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226287
+    },
+    {
+      "trackId": "7rqaqQurHzR5xHAhdm1gmM",
+      "name": "Goodbye Earl",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226287
+    },
+    {
+      "trackId": "5wane5dFpp8xgriui6y0c7",
+      "name": "Ol' Red",
+      "artists": "Blake Shelton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226286
+    },
+    {
+      "trackId": "6fhgO6p9DsTyHqPctyzDkV",
+      "name": "Sleeping on the Blacktop",
+      "artists": "Colter Wall",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226282
+    },
+    {
+      "trackId": "1Wjey1LS5vH3w4ZOorM09u",
+      "name": "Frying Pan",
+      "artists": "Bad Flamingo",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226281
+    },
+    {
+      "trackId": "4vjetK09luLFKuWbtKm791",
+      "name": "Summer of Love",
+      "artists": "Bad Flamingo",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226278
+    },
+    {
+      "trackId": "70VSFe3tTnCLpue9StG69U",
+      "name": "Fire",
+      "artists": "Bad Flamingo",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226278
+    },
+    {
+      "trackId": "6KkTEaHcD5rXG4cVjWjbWn",
+      "name": "Howlin at the Moon",
+      "artists": "Bad Flamingo",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226277
+    },
+    {
+      "trackId": "3TCQaTVKBHYMBPVx1sTB8v",
+      "name": "March March",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226276
+    },
+    {
+      "trackId": "3oNXDpo7ziScRfWi8d9O37",
+      "name": "Keep Off of You",
+      "artists": "Bad Flamingo",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226276
+    },
+    {
+      "trackId": "2iA9BkvtzkdGT4wxqqwzKh",
+      "name": "Tights On My Boat",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226275
+    },
+    {
+      "trackId": "08kXaWxw2QkXSQTlyH9GMc",
+      "name": "Sleep at Night",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226274
+    },
+    {
+      "trackId": "4UN6sBmFTt2IqxN3IRqJT3",
+      "name": "Gaslighter",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226273
+    },
+    {
+      "trackId": "3VHevS1BocAcrihLnl11DG",
+      "name": "I Wanna Talk About Me",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226272
+    },
+    {
+      "trackId": "0lzcNtphdk0YXXVr4KvFws",
+      "name": "I Can't Take You Anywhere",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226271
+    },
+    {
+      "trackId": "6nN58NDV8VnjvtBmR00qq4",
+      "name": "I'm Just Talkin' About Tonight",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226270
+    },
+    {
+      "trackId": "0elXsqvn9hJOoEB7Vr4wsv",
+      "name": "Blue Bedroom",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226268
+    },
+    {
+      "trackId": "7rDcULv8vV16vetBjPJhuE",
+      "name": "How Do You Like Me Now?!",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226267
+    },
+    {
+      "trackId": "5s7m2xNZWgz5FqVSIvJcGA",
+      "name": "Save a Horse (Ride a Cowboy)",
+      "artists": "Big & Rich",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226265
+    },
+    {
+      "trackId": "5jROdl6MhcmP3O7h2sVgtw",
+      "name": "Parachute",
+      "artists": "Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226264
+    },
+    {
+      "trackId": "178OI1A3qjROeFeh8lmNwW",
+      "name": "Traveller",
+      "artists": "Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226263
+    },
+    {
+      "trackId": "5j4hSQH0KaAc8f6cimnXIT",
+      "name": "Fire Away",
+      "artists": "Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226262
+    },
+    {
+      "trackId": "3fqwjXwUGN6vbzIwvyFMhx",
+      "name": "Tennessee Whiskey",
+      "artists": "Chris Stapleton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226261
+    },
+    {
+      "trackId": "0OWhKvvsHptt6vnnNUSM9a",
+      "name": "Oklahoma Smokeshow",
+      "artists": "Zach Bryan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226260
+    },
+    {
+      "trackId": "2HbpYFQbairMoU2YFyOP2x",
+      "name": "Motorcycle Drive By",
+      "artists": "Zach Bryan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226259
+    },
+    {
+      "trackId": "19QT1L9qUNKHYNbYqawaX8",
+      "name": "Beautiful Mess",
+      "artists": "Diamond Rio",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226258
+    },
+    {
+      "trackId": "50Emgupm363qIrYBe20FR3",
+      "name": "Quittin' Time",
+      "artists": "Zach Bryan",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226258
+    },
+    {
+      "trackId": "1JMARJs6JkIuJqGWkZsnYS",
+      "name": "Sick And Tired",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226257
+    },
+    {
+      "trackId": "3oBcE3f0ci42Qmgraj1SId",
+      "name": "Never Call Again",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226257
+    },
+    {
+      "trackId": "22YvUcGzVLjtK3u2fSMAZr",
+      "name": "Need To",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226256
+    },
+    {
+      "trackId": "2B0abNU9B6RcGaIY6jaQYY",
+      "name": "Light A Fire",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226256
+    },
+    {
+      "trackId": "4vbW5aT9UQGRqEScStQPPy",
+      "name": "No One Needs To Know",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226255
+    },
+    {
+      "trackId": "6Lst3nF4McKOTLSLuTvLhw",
+      "name": "(If You're Not In It For Love) I'm Outta Here!",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226255
+    },
+    {
+      "trackId": "0p1HtkrNYxv0iDfEKwXSTp",
+      "name": "Sangria",
+      "artists": "Blake Shelton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226254
+    },
+    {
+      "trackId": "0pdfN7nOHMYmKykzu1cyfm",
+      "name": "Any Man Of Mine",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226254
+    },
+    {
+      "trackId": "5dPSCeB8Ly3RxNLme5bomi",
+      "name": "Ain't Nothing 'Bout You",
+      "artists": "Brooks & Dunn",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226254
+    },
+    {
+      "trackId": "1xK2NkwOfT8qZYWPossXGz",
+      "name": "What About Now",
+      "artists": "Lonestar",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226253
+    },
+    {
+      "trackId": "6xAF3xYDK915NEvC6WNbj9",
+      "name": "Don't Be Stupid (You Know I Love You)",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226253
+    },
+    {
+      "trackId": "39IoZIC8eEirT1v70rqSPq",
+      "name": "Honey, I'm Home",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226252
+    },
+    {
+      "trackId": "4FUfoWMypAyWbOavmYyeNu",
+      "name": "That Don't Impress Me Much",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226252
+    },
+    {
+      "trackId": "7Hgcw6qYU1ukRdRGvEkJk3",
+      "name": "There Is No Arizona",
+      "artists": "Jamie O'Neal",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226252
+    },
+    {
+      "trackId": "5XrfFo0JFOnWD9ZMNXGkQh",
+      "name": "If It Makes You Happy",
+      "artists": "Sheryl Crow",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226251
+    },
+    {
+      "trackId": "6LCEyZZHFF4ebF1Mike1s5",
+      "name": "Not Ready to Make Nice",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226251
+    },
+    {
+      "trackId": "1zUQcIZZK3QpJKeBNbS9wk",
+      "name": "Speed",
+      "artists": "Montgomery Gentry",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226250
+    },
+    {
+      "trackId": "4bVuIlGQBMWS7vIhcx8Ae4",
+      "name": "What Hurts The Most",
+      "artists": "Rascal Flatts",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226250
+    },
+    {
+      "trackId": "2A22iI0x4EYAVXNpKPhNEM",
+      "name": "weren't for the wind",
+      "artists": "Ella Langley",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226249
+    },
+    {
+      "trackId": "4bZRYFisUYwyOLJDPYnj6u",
+      "name": "Rollin' (The Ballad of Big & Rich)",
+      "artists": "Big & Rich",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226249
+    },
+    {
+      "trackId": "4JAmBKnHyq2avqNvJ81Mao",
+      "name": "Last One To Know",
+      "artists": "Gavin Adcock",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226248
+    },
+    {
+      "trackId": "4yXzILmU9N1zWzTD3Pn4xL",
+      "name": "Texas",
+      "artists": "Blake Shelton",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226245
+    },
+    {
+      "trackId": "7KRgvWk0O6gyT00LFHkt1P",
+      "name": "She Hates Me",
+      "artists": "Dierks Bentley",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226243
+    },
+    {
+      "trackId": "0bqQJ1XypPlUvY9su0f8u5",
+      "name": "Blame It On My Broken Heart",
+      "artists": "Avery Anna",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226242
+    },
+    {
+      "trackId": "13TtTCE6v8vwTSgWJPjwLl",
+      "name": "girl you're taking home",
+      "artists": "Ella Langley",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226240
+    },
+    {
+      "trackId": "5Pgwi0iizu96RHxJ4xL3SH",
+      "name": "Strawberry Wine",
+      "artists": "Deana Carter",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226240
+    },
+    {
+      "trackId": "0vtvjbeDqVSDl9rdpaQK6N",
+      "name": "Whose Bed Have Your Boots Been Under?",
+      "artists": "Shania Twain",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226239
+    },
+    {
+      "trackId": "5DIBVDJOHh7djepAjKHWCO",
+      "name": "Heart Like A Truck",
+      "artists": "Lainey Wilson",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226239
+    },
+    {
+      "trackId": "6hDkCNq4s5ozvE86RqRIIz",
+      "name": "Dream Walkin'",
+      "artists": "Toby Keith",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226238
+    },
+    {
+      "trackId": "6fDAGY50m6cnVBY8aUTi9d",
+      "name": "Texas Man",
+      "artists": "The Chicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871226236
+    }
+  ]
+}
