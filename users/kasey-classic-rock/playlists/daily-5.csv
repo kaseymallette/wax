@@ -1,0 +1,22 @@
+rank,track_id,name,artists,album,repeat_intent,bpm,mood,energy,dance,valence,camelot,listen_count,last_listened_at,spotify_url
+1,1KBuhAHzia2qoD4u6YhvER,Stiff Upper Lip,AC/DC,Stiff Upper Lip,currently_listening,124.00,215.00,85.00,59.00,71.00,9B,1,2026-08-16T09:04:20.621Z,https://open.spotify.com/track/1KBuhAHzia2qoD4u6YhvER
+2,2j0zExWFB0PowLOeoZosjK,Touch Too Much,AC/DC,Highway to Hell,currently_listening,123.00,204.00,91.00,52.00,61.00,9B,1,2026-08-16T09:04:20.602Z,https://open.spotify.com/track/2j0zExWFB0PowLOeoZosjK
+3,3GkmgQTR6GEsx9OMQoJYRA,Michigan,Styx,Circling From Above,currently_listening,130.00,202.00,86.00,63.00,53.00,3A,1,2026-08-16T09:04:20.654Z,https://open.spotify.com/track/3GkmgQTR6GEsx9OMQoJYRA
+4,5qBlmem6wERDlBt0fwLmx9,King Of Love,Styx,Circling From Above,currently_listening,132.00,201.00,82.00,62.00,57.00,6A,1,2026-08-16T09:04:20.654Z,https://open.spotify.com/track/5qBlmem6wERDlBt0fwLmx9
+5,6pivm7pNF4GyBkHNGseHCS,Shot Down in Flames,AC/DC,Highway to Hell,currently_listening,131.00,206.00,86.00,53.00,67.00,9B,1,2026-08-16T09:04:20.603Z,https://open.spotify.com/track/6pivm7pNF4GyBkHNGseHCS
+6,4hWUOIDHda9XOb1zDchftP,Too Much Time On My Hands,Styx,Paradise Theatre,currently_listening,131.00,209.00,40.00,80.00,89.00,10A,1,2026-08-16T09:04:20.597Z,https://open.spotify.com/track/4hWUOIDHda9XOb1zDchftP
+7,3UQQ7g6J8fiMB7oldQzBoq,Sin City,AC/DC,Powerage,currently_listening,128.00,152.00,76.00,54.00,22.00,11B,1,2026-08-16T09:04:20.621Z,https://open.spotify.com/track/3UQQ7g6J8fiMB7oldQzBoq
+8,3bHnoz2pfij19QUDhoLrcy,Baba O'Riley - Remastered 2022,The Who,Who's Next (Remastered 2022),currently_listening,116.00,125.00,64.00,40.00,21.00,7B,1,2026-08-16T09:04:20.605Z,https://open.spotify.com/track/3bHnoz2pfij19QUDhoLrcy
+9,4Mqs0h95KAeNiGp7u4udlt,Love Reign O'er Me,The Who,Quadrophenia (Super Deluxe Edition),currently_listening,116.00,124.00,72.00,30.00,22.00,3B,1,2026-08-16T09:04:20.636Z,https://open.spotify.com/track/4Mqs0h95KAeNiGp7u4udlt
+10,3TO7bbrUKrOSPGRTB5MeCz,Time,Pink Floyd,The Dark Side of the Moon,currently_listening,120.00,120.00,48.00,36.00,36.00,11B,1,2026-08-16T09:04:20.590Z,https://open.spotify.com/track/3TO7bbrUKrOSPGRTB5MeCz
+11,6mFkJmJqdDVQ1REhVfGgd1,Wish You Were Here,Pink Floyd,Wish You Were Here,currently_listening,123.00,112.00,26.00,48.00,38.00,9B,1,2026-08-16T09:04:20.612Z,https://open.spotify.com/track/6mFkJmJqdDVQ1REhVfGgd1
+12,5HNCy40Ni5BZJFw1TKzRsC,Comfortably Numb,Pink Floyd,The Wall,currently_listening,127.00,101.00,37.00,47.00,17.00,10A,1,2026-08-16T09:04:20.611Z,https://open.spotify.com/track/5HNCy40Ni5BZJFw1TKzRsC
+13,21j1PsCiTaO8ZW88UZrh3A,Shine On You Crazy Diamond (Pts. 6-9),Pink Floyd,Wish You Were Here,currently_listening,136.00,90.00,49.00,29.00,12.00,6A,1,2026-08-16T09:04:20.615Z,https://open.spotify.com/track/21j1PsCiTaO8ZW88UZrh3A
+14,54g63GAn77x9NcjiLzy7cW,Queen Of Spades,Styx,Pieces Of Eight,currently_listening,135.00,83.00,45.00,26.00,12.00,12A,1,2026-08-16T09:04:20.593Z,https://open.spotify.com/track/54g63GAn77x9NcjiLzy7cW
+15,7tFiyTwD0nx5a1eklYtX2J,Bohemian Rhapsody - Remastered 2011,Queen,A Night At The Opera (Deluxe Remastered Version),currently_listening,144.00,102.00,40.00,39.00,23.00,5A,1,2026-08-16T09:04:20.596Z,https://open.spotify.com/track/7tFiyTwD0nx5a1eklYtX2J
+16,2hitsKa8SthKhRJBXUHbIv,Our House,"Crosby, Stills, Nash & Young",Deja Vu,currently_listening,140.00,118.00,21.00,59.00,38.00,11B,1,2026-08-16T09:04:20.641Z,https://open.spotify.com/track/2hitsKa8SthKhRJBXUHbIv
+17,7F02x6EKYIQV3VcTaTm7oN,Hey You,Pink Floyd,The Wall,currently_listening,112.00,108.00,30.00,59.00,19.00,8B,1,2026-08-16T09:04:20.608Z,https://open.spotify.com/track/7F02x6EKYIQV3VcTaTm7oN
+18,7K6xMPtAjTuLPNlJMLf5bS,"Another Brick in the Wall, Pt. 1",Pink Floyd,The Wall,currently_listening,100.00,75.00,5.00,61.00,9.00,8B,1,2026-08-16T09:04:20.607Z,https://open.spotify.com/track/7K6xMPtAjTuLPNlJMLf5bS
+19,7HVLE4CWBQjQi3Vyiz0fbe,"See Me, Feel Me - Single Version",The Who,The Who Hits 50 (Deluxe),currently_listening,94.00,80.00,34.00,38.00,8.00,8B,1,2026-08-16T09:04:20.637Z,https://open.spotify.com/track/7HVLE4CWBQjQi3Vyiz0fbe
+20,5HAjss9faCAowGY8dM24r6,Is There Anybody Out There?,Pink Floyd,The Wall,currently_listening,119.00,42.00,7.00,31.00,4.00,8A,1,2026-08-16T09:04:20.610Z,https://open.spotify.com/track/5HAjss9faCAowGY8dM24r6
+21,6pnwfWyaWjQiHCKTiZLItr,Shine On You Crazy Diamond (Pts. 1-5),Pink Floyd,Wish You Were Here,currently_listening,138.00,59.00,29.00,26.00,4.00,6A,1,2026-08-16T09:04:20.614Z,https://open.spotify.com/track/6pnwfWyaWjQiHCKTiZLItr

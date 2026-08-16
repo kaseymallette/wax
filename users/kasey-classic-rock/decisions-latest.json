@@ -1,0 +1,1207 @@
+{
+  "exportedAt": 1786871149704,
+  "sourceDbPath": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/music_library.db",
+  "count": 150,
+  "decisions": [
+    {
+      "trackId": "4f3RDq9nYPBeR1yMSgnmBm",
+      "name": "You've Got Another Thing Comin'",
+      "artists": "Judas Priest",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060660
+    },
+    {
+      "trackId": "5X79VgaOn8pDTpTKu3PixN",
+      "name": "We're Not Gonna Take It",
+      "artists": "Twisted Sister",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060659
+    },
+    {
+      "trackId": "3e0FzZjTXOUtiJGSClOBrI",
+      "name": "Fly Like An Eagle",
+      "artists": "Steve Miller Band",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060658
+    },
+    {
+      "trackId": "7vidktgNZFQylTgH1GEnMs",
+      "name": "Cold as Ice",
+      "artists": "Foreigner",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060658
+    },
+    {
+      "trackId": "0GTK6TesV108Jj5D3MHsYb",
+      "name": "Owner of a Lonely Heart",
+      "artists": "Yes",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060657
+    },
+    {
+      "trackId": "2QfiRTz5Yc8DdShCxG1tB2",
+      "name": "Johnny B. Goode",
+      "artists": "Chuck Berry",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060657
+    },
+    {
+      "trackId": "64UioB4Nmwgn2f4cbIpAkl",
+      "name": "It's Still Rock and Roll to Me",
+      "artists": "Billy Joel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060657
+    },
+    {
+      "trackId": "2AxCeJ6PSsBYiTckM0HLY7",
+      "name": "Voodoo Child (Slight Return)",
+      "artists": "Jimi Hendrix",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060656
+    },
+    {
+      "trackId": "6s0NHplywwr1IjnQpUpWJk",
+      "name": "Bad To The Bone",
+      "artists": "George Thorogood & The Destroyers",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060656
+    },
+    {
+      "trackId": "2aoo2jlRnM3A0NyLQqMN2f",
+      "name": "All Along the Watchtower",
+      "artists": "Jimi Hendrix",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060655
+    },
+    {
+      "trackId": "3QZ7uX97s82HFYSmQUAN1D",
+      "name": "Tom Sawyer",
+      "artists": "Rush",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060655
+    },
+    {
+      "trackId": "3ieDOGcOqVxScs2VZBzidt",
+      "name": "Learning to Fly",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060655
+    },
+    {
+      "trackId": "2GE4yOplmkZaV8w9vByoND",
+      "name": "Build And Destroy",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060654
+    },
+    {
+      "trackId": "3GkmgQTR6GEsx9OMQoJYRA",
+      "name": "Michigan",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060654
+    },
+    {
+      "trackId": "5qBlmem6wERDlBt0fwLmx9",
+      "name": "King Of Love",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060654
+    },
+    {
+      "trackId": "2HHtWyy5CgaQbC7XSoOb0e",
+      "name": "Eye of the Tiger",
+      "artists": "Survivor",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060653
+    },
+    {
+      "trackId": "39lSeqnyjZJejRuaREfyLL",
+      "name": "Hungry Like the Wolf - 2009 Remaster",
+      "artists": "Duran Duran",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060653
+    },
+    {
+      "trackId": "5QTxFnGygVM4jFQiBovmRo",
+      "name": "(Don't Fear) The Reaper",
+      "artists": "Blue Öyster Cult",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060653
+    },
+    {
+      "trackId": "436yrzQWA32vb1sTZKXg9r",
+      "name": "Witchy Woman - 2013 Remaster",
+      "artists": "Eagles",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060652
+    },
+    {
+      "trackId": "7txxAtOMwLLnQTpKeBL6bp",
+      "name": "Mother",
+      "artists": "Danzig",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060652
+    },
+    {
+      "trackId": "36vTL8WP4ZoD1bbUaW0V3E",
+      "name": "Bad Company - 2015 Remaster",
+      "artists": "Bad Company",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060651
+    },
+    {
+      "trackId": "3dmqIB2Qxe2XZobw9gXxJ6",
+      "name": "Mary Jane's Last Dance",
+      "artists": "Tom Petty and the Heartbreakers",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060651
+    },
+    {
+      "trackId": "4rAnSE0E0f33unxXsQa5Fr",
+      "name": "Lunatic Fringe",
+      "artists": "Red Rider",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060651
+    },
+    {
+      "trackId": "3Xls4cNOwy01dtrNXb1inG",
+      "name": "White Room",
+      "artists": "Cream",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060650
+    },
+    {
+      "trackId": "3gxEZXUjrNbl3TlSrTGbR5",
+      "name": "Modern Love - 2018 Remaster",
+      "artists": "David Bowie",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060650
+    },
+    {
+      "trackId": "0No5Hr1LxZjJHGsQSTy2bm",
+      "name": "I Can't Dance - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060649
+    },
+    {
+      "trackId": "1JkZg3eMQTmTn93E8Yd3UL",
+      "name": "I Want You to Want Me",
+      "artists": "Cheap Trick",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060649
+    },
+    {
+      "trackId": "22ML0MuFKfw16WejbxsLOy",
+      "name": "Heartbreaker",
+      "artists": "Pat Benatar",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060648
+    },
+    {
+      "trackId": "2TofEeQobQ9YoK7EFds698",
+      "name": "You Give Love A Bad Name",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060648
+    },
+    {
+      "trackId": "3Pu3IChaAoa5EjgUBv5F6x",
+      "name": "Ballroom Blitz",
+      "artists": "Sweet",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060648
+    },
+    {
+      "trackId": "1CQqupcyMg7176PPmIVmSj",
+      "name": "Renegade",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060647
+    },
+    {
+      "trackId": "52m7IQitPjIy1PrULHhS9F",
+      "name": "Wanted Dead Or Alive",
+      "artists": "Bon Jovi",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060647
+    },
+    {
+      "trackId": "4OJFkrRQqol4FsPesF8eu4",
+      "name": "Saturday in the Park - 2002 Remaster",
+      "artists": "Chicago",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060646
+    },
+    {
+      "trackId": "5JQaG1VrTu4fbieUsDUdrt",
+      "name": "Play the Game Tonight",
+      "artists": "Kansas",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060646
+    },
+    {
+      "trackId": "6zeE5tKyr8Nu882DQhhSQI",
+      "name": "Dust in the Wind",
+      "artists": "Kansas",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060646
+    },
+    {
+      "trackId": "1Jmqubf9kGkWeYQXQKImL5",
+      "name": "People Are Strange",
+      "artists": "The Doors",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060645
+    },
+    {
+      "trackId": "3lN8PP6R2IxbLP05QpYXng",
+      "name": "Born To Be Wild - Single Version",
+      "artists": "Steppenwolf",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060645
+    },
+    {
+      "trackId": "5gys5nzVQIYhgHIfiOJYva",
+      "name": "Take It On the Run",
+      "artists": "REO Speedwagon",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060644
+    },
+    {
+      "trackId": "6ToM0uwxtPKo9CMpbPGYvM",
+      "name": "Break on Through (To the Other Side)",
+      "artists": "The Doors",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060644
+    },
+    {
+      "trackId": "0cO7JEo8deKuQMWpDyjenY",
+      "name": "Time for Me to Fly",
+      "artists": "REO Speedwagon",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060643
+    },
+    {
+      "trackId": "16x9viSmRS3PII71Pdeowc",
+      "name": "Roll with the Changes",
+      "artists": "REO Speedwagon",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060643
+    },
+    {
+      "trackId": "0cKk8BKEi7zXbdrYdyqBP5",
+      "name": "Behind Blue Eyes",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060642
+    },
+    {
+      "trackId": "2hitsKa8SthKhRJBXUHbIv",
+      "name": "Our House",
+      "artists": "Crosby, Stills, Nash & Young",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060641
+    },
+    {
+      "trackId": "5D2eCwqbHcqOnfHOCM6TnV",
+      "name": "No More Mr. Nice Guy",
+      "artists": "Alice Cooper",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060641
+    },
+    {
+      "trackId": "4ZuC5MfGjRQs3pZtPxqMYP",
+      "name": "Shadowplay - 2007 Remaster",
+      "artists": "Joy Division",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060640
+    },
+    {
+      "trackId": "4dneV7C1yDt9UtyxrQY375",
+      "name": "Boys Don't Cry - Single Version",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060640
+    },
+    {
+      "trackId": "5fbQCQt91LsVgXusFS0CCD",
+      "name": "Disorder - 2007 Remaster",
+      "artists": "Joy Division",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060640
+    },
+    {
+      "trackId": "1FqozwZRQt0hBBJX6e48j7",
+      "name": "Meathook",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060639
+    },
+    {
+      "trackId": "660u9agQuREtEDmETVWSts",
+      "name": "Three Imaginary Boys - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060639
+    },
+    {
+      "trackId": "6TjjZllUyDPIBiFuHZSVtm",
+      "name": "Grinding Halt - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060639
+    },
+    {
+      "trackId": "0jrRDpGv6FFizspjJJoH5i",
+      "name": "10:15 Saturday Night - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060638
+    },
+    {
+      "trackId": "5KUfM9sjoGogDnrBulbVcW",
+      "name": "Ask the Lonely",
+      "artists": "Journey",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060638
+    },
+    {
+      "trackId": "60hT5qY7Ck8D4laJYXdZ9O",
+      "name": "Accuracy - 2005 Remaster",
+      "artists": "The Cure",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060638
+    },
+    {
+      "trackId": "2EMmHEhCZSMMEM85HTFJvj",
+      "name": "My Generation",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060637
+    },
+    {
+      "trackId": "7HVLE4CWBQjQi3Vyiz0fbe",
+      "name": "See Me, Feel Me - Single Version",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060637
+    },
+    {
+      "trackId": "4Mqs0h95KAeNiGp7u4udlt",
+      "name": "Love Reign O'er Me",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060636
+    },
+    {
+      "trackId": "75AhlGB9aFWTxDfbmbdiCH",
+      "name": "Cut My Hair",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060636
+    },
+    {
+      "trackId": "7tbp39GZvDA0cItgHynVnG",
+      "name": "I'm Free",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060636
+    },
+    {
+      "trackId": "0HLIhUYvZdxemJ5vHJsSBy",
+      "name": "Tommy Can You Hear Me?",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060635
+    },
+    {
+      "trackId": "207qLd1ovrqfYVBBDrNMUM",
+      "name": "Dance This Mess Around",
+      "artists": "The B-52's",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060635
+    },
+    {
+      "trackId": "6LbbHFEajG9e4m0G3L47c4",
+      "name": "Pinball Wizard",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060635
+    },
+    {
+      "trackId": "1y5V5qja332UyMeUurFhDS",
+      "name": "Private Idaho",
+      "artists": "The B-52's",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060634
+    },
+    {
+      "trackId": "2Q5wSOwq6BDSu7sSVMNrtT",
+      "name": "Rock Lobster",
+      "artists": "The B-52's",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060634
+    },
+    {
+      "trackId": "4W4wYHtsrgDiivRASVOINL",
+      "name": "Love Shack",
+      "artists": "The B-52's",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060634
+    },
+    {
+      "trackId": "2HXixVqzzm9rEUIMAWzshl",
+      "name": "I Hate Myself for Loving You",
+      "artists": "Joan Jett & the Blackhearts",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060633
+    },
+    {
+      "trackId": "3VwCHFahYwyUSR0Rse4Boo",
+      "name": "Bad Reputation",
+      "artists": "Joan Jett & the Blackhearts",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060633
+    },
+    {
+      "trackId": "0M6nWBLX8aVmepP7Jvvu1K",
+      "name": "Cherry Bomb",
+      "artists": "Joan Jett & the Blackhearts",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060632
+    },
+    {
+      "trackId": "0yfNXxlyXdmP0ue1iJijx1",
+      "name": "Come Undone",
+      "artists": "Duran Duran",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060632
+    },
+    {
+      "trackId": "5EmjBlrR2TzVzyveICMllj",
+      "name": "Dirty Deeds",
+      "artists": "Joan Jett & the Blackhearts",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060632
+    },
+    {
+      "trackId": "0wokCRaKD0zPNhMRXAgVsr",
+      "name": "Ordinary World",
+      "artists": "Duran Duran",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060631
+    },
+    {
+      "trackId": "2g7gviEeJr6pyxO7G35EWQ",
+      "name": "Paradise By the Dashboard Light",
+      "artists": "Meat Loaf",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060631
+    },
+    {
+      "trackId": "2ph0hzV1kCVhR82E2La4q5",
+      "name": "Two Out of Three Ain't Bad",
+      "artists": "Meat Loaf",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060631
+    },
+    {
+      "trackId": "3SPcBPzvbmWLl8NU5efx4W",
+      "name": "Telephone Line",
+      "artists": "Electric Light Orchestra",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060630
+    },
+    {
+      "trackId": "4KfSdst7rW39C0sfhArdrz",
+      "name": "Barracuda",
+      "artists": "Heart",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060630
+    },
+    {
+      "trackId": "7Gjj6NxSsVwXfOXUjvjCXv",
+      "name": "Sisters of the Moon - 2015 Remaster",
+      "artists": "Fleetwood Mac",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060630
+    },
+    {
+      "trackId": "5TnzOUFWoZHUEtOWlxrIlY",
+      "name": "Everybody Wants Some!! - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060629
+    },
+    {
+      "trackId": "6QDbGdbJ57Mtkflsg42WV5",
+      "name": "Hot for Teacher - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060629
+    },
+    {
+      "trackId": "1i0hnGnt14GL713mmOgJHh",
+      "name": "Got You by the Balls",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060628
+    },
+    {
+      "trackId": "3KhF2YiNpJvGpfiCW45R6D",
+      "name": "Runnin' with the Devil - 2015 Remaster",
+      "artists": "Van Halen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060628
+    },
+    {
+      "trackId": "3Y23ZSLRdk0d8YWAu4SnFb",
+      "name": "Goodbye and Good Riddance to Bad Luck",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060628
+    },
+    {
+      "trackId": "1SbRJXUX4yNmAr7CZumctk",
+      "name": "Rock Your Heart Out",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060627
+    },
+    {
+      "trackId": "5u5F7qLDvZjBSktaDp4HxB",
+      "name": "Moneytalks",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060627
+    },
+    {
+      "trackId": "1W0rNaAXmNzvfgp47JzcVQ",
+      "name": "Breaking the Rules",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060626
+    },
+    {
+      "trackId": "5ahPl557niKxia8Kquw1yh",
+      "name": "Evil Walks",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060626
+    },
+    {
+      "trackId": "7w04gIWA7mIbqR03Ghyrkl",
+      "name": "Night Prowler",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060626
+    },
+    {
+      "trackId": "7sZKoFbEu4mPuCMX5cxLSb",
+      "name": "Beating Around the Bush",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060625
+    },
+    {
+      "trackId": "1Qvghv6QpCSB3RiycaDiWz",
+      "name": "She's Got Balls",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060624
+    },
+    {
+      "trackId": "6FWoYwZa13llS7nj0SG65F",
+      "name": "Live Wire",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060624
+    },
+    {
+      "trackId": "17lu4tymfnhmcIDlzBbtAb",
+      "name": "For Those About to Rock (We Salute You)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060623
+    },
+    {
+      "trackId": "7LRMbd3LEoV5wZJvXT1Lwb",
+      "name": "T.N.T.",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060623
+    },
+    {
+      "trackId": "7nemcVsXVFZF01iqpIIo2Y",
+      "name": "It's a Long Way to the Top (If You Wanna Rock 'N' Roll)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060623
+    },
+    {
+      "trackId": "2KmSnPWWCIsEomVsKnbE1a",
+      "name": "Big Balls",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060622
+    },
+    {
+      "trackId": "2d4e45fmUnguxh6yqC7gNT",
+      "name": "Dirty Deeds Done Dirt Cheap",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060622
+    },
+    {
+      "trackId": "4cKoFvIkCA88axbQ6hfbRC",
+      "name": "Problem Child",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060622
+    },
+    {
+      "trackId": "0sfdiwck2xr4PteGOdyOfz",
+      "name": "Shot In The Dark",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060621
+    },
+    {
+      "trackId": "1KBuhAHzia2qoD4u6YhvER",
+      "name": "Stiff Upper Lip",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060621
+    },
+    {
+      "trackId": "3UQQ7g6J8fiMB7oldQzBoq",
+      "name": "Sin City",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060621
+    },
+    {
+      "trackId": "57bgtoPSgt236HzfBOd8kj",
+      "name": "Thunderstruck",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060620
+    },
+    {
+      "trackId": "6jtUOVRO4p09Z7E35ERRL7",
+      "name": "Demon Fire",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060620
+    },
+    {
+      "trackId": "08mG3Y1vljYA6bvDt4Wqkj",
+      "name": "Back In Black",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060619
+    },
+    {
+      "trackId": "1CM1wOqD2AIjt2MWd31LV2",
+      "name": "Solsbury Hill",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060619
+    },
+    {
+      "trackId": "4X5nq5swAfwEMqDOOJpEA8",
+      "name": "Biko",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060619
+    },
+    {
+      "trackId": "0jngaR7DQWMye5yYn7fzqd",
+      "name": "No Self Control",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060618
+    },
+    {
+      "trackId": "4TVnzZW8dIPjMjg5e8gKhH",
+      "name": "Games Without Frontiers",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060618
+    },
+    {
+      "trackId": "6m3yuXdLzDTgwJ1y1VnNaH",
+      "name": "I Don't Remember",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060618
+    },
+    {
+      "trackId": "1gyQods9V876YtT0YBu1N1",
+      "name": "The Lamb Lies Down on Broadway - 2025 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060617
+    },
+    {
+      "trackId": "2claYrMjdarDxaKBO7ppTG",
+      "name": "We Do What We're Told (Milgram's 37) - 2012 Remaster",
+      "artists": "Peter Gabriel",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060617
+    },
+    {
+      "trackId": "2p7RcVGykyXz4xQZVuY6SZ",
+      "name": "Harold the Barrel",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060617
+    },
+    {
+      "trackId": "1G9jeUXQNewsKfYPAMdLPj",
+      "name": "Second Home by the Sea - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060616
+    },
+    {
+      "trackId": "2lvM9dA12IIqBVU2aF5MaV",
+      "name": "Looking For Someone",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060616
+    },
+    {
+      "trackId": "6lp7cHPQtQyBlpOj0Uzs7B",
+      "name": "Silver Rainbow - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060616
+    },
+    {
+      "trackId": "14AI8Qt9giIa8uzek1I24O",
+      "name": "Home by the Sea - 2007 Remaster",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060615
+    },
+    {
+      "trackId": "21j1PsCiTaO8ZW88UZrh3A",
+      "name": "Shine On You Crazy Diamond (Pts. 6-9)",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060615
+    },
+    {
+      "trackId": "6UpMG6BDOd5xecMTu5r3sj",
+      "name": "Firth of Fifth - 2007 Stereo Mix",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060615
+    },
+    {
+      "trackId": "6pnwfWyaWjQiHCKTiZLItr",
+      "name": "Shine On You Crazy Diamond (Pts. 1-5)",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060614
+    },
+    {
+      "trackId": "0vFOzaXqZHahrZp6enQwQb",
+      "name": "Money",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060612
+    },
+    {
+      "trackId": "6mFkJmJqdDVQ1REhVfGgd1",
+      "name": "Wish You Were Here",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060612
+    },
+    {
+      "trackId": "5HNCy40Ni5BZJFw1TKzRsC",
+      "name": "Comfortably Numb",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060611
+    },
+    {
+      "trackId": "2gTnu5RZNVFVnWdjLnyUA5",
+      "name": "Nobody Home",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060610
+    },
+    {
+      "trackId": "5HAjss9faCAowGY8dM24r6",
+      "name": "Is There Anybody Out There?",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060610
+    },
+    {
+      "trackId": "0ZXkKRO789QKBR6ME7pIDF",
+      "name": "Goodbye Cruel World",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060608
+    },
+    {
+      "trackId": "5A7eooPKJHtr0UJmatjH4a",
+      "name": "Another Brick in the Wall, Pt. 3",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060608
+    },
+    {
+      "trackId": "7F02x6EKYIQV3VcTaTm7oN",
+      "name": "Hey You",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060608
+    },
+    {
+      "trackId": "4gMgiXfqyzZLMhsksGmbQV",
+      "name": "Another Brick in the Wall, Pt. 2",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060607
+    },
+    {
+      "trackId": "7K6xMPtAjTuLPNlJMLf5bS",
+      "name": "Another Brick in the Wall, Pt. 1",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060607
+    },
+    {
+      "trackId": "0Wa5Q145xoXkfhaCRgA67U",
+      "name": "Kashmir - Remaster",
+      "artists": "Led Zeppelin",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060606
+    },
+    {
+      "trackId": "0hCB0YR03f6AmQaHbwWDe8",
+      "name": "Whole Lotta Love - 1990 Remaster",
+      "artists": "Led Zeppelin",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060606
+    },
+    {
+      "trackId": "3buvRn4CDX86EO9LHTITGn",
+      "name": "Heartbreaker - Remaster",
+      "artists": "Led Zeppelin",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060606
+    },
+    {
+      "trackId": "23IJ5wLRhEZ9DOuia5mPiZ",
+      "name": "Who Are You",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060605
+    },
+    {
+      "trackId": "3bHnoz2pfij19QUDhoLrcy",
+      "name": "Baba O'Riley - Remastered 2022",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060605
+    },
+    {
+      "trackId": "1I6l01BaBgBCVkfQCpIlR6",
+      "name": "Truckin' - 2013 Remaster",
+      "artists": "Grateful Dead",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060604
+    },
+    {
+      "trackId": "5YUIDMCtzUflSrONeYMWac",
+      "name": "Fire on the Mountain",
+      "artists": "The Marshall Tucker Band",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060604
+    },
+    {
+      "trackId": "7LbfuQVct78YoghmoPtsQ8",
+      "name": "Casey Jones - 2013 Remaster",
+      "artists": "Grateful Dead",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060604
+    },
+    {
+      "trackId": "6pivm7pNF4GyBkHNGseHCS",
+      "name": "Shot Down in Flames",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060603
+    },
+    {
+      "trackId": "2j0zExWFB0PowLOeoZosjK",
+      "name": "Touch Too Much",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060602
+    },
+    {
+      "trackId": "5xquYn2sr3uEcyuKU9BmCJ",
+      "name": "Walk All Over You",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060602
+    },
+    {
+      "trackId": "6Wn3pdFtAcnYJyJVITwt7N",
+      "name": "Girls Got Rhythm",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060601
+    },
+    {
+      "trackId": "2zYzyRzz6pRmhPzyfMEC8s",
+      "name": "Highway to Hell",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060600
+    },
+    {
+      "trackId": "3UQA4UTVqcI0VtSQ38nlq1",
+      "name": "Let It Ride",
+      "artists": "Bachman-Turner Overdrive",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060599
+    },
+    {
+      "trackId": "7L3b6iaVhDVjfo52Hbvh9Z",
+      "name": "Edge of Seventeen - 2016 Remaster",
+      "artists": "Stevie Nicks",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060598
+    },
+    {
+      "trackId": "4hWUOIDHda9XOb1zDchftP",
+      "name": "Too Much Time On My Hands",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060597
+    },
+    {
+      "trackId": "69QHm3pustz01CJRwdo20z",
+      "name": "Hells Bells",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060597
+    },
+    {
+      "trackId": "7tFiyTwD0nx5a1eklYtX2J",
+      "name": "Bohemian Rhapsody - Remastered 2011",
+      "artists": "Queen",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060596
+    },
+    {
+      "trackId": "24IdPCimVnJJDRuB5YSDiS",
+      "name": "I Don't Care Anymore - 2016 Remaster",
+      "artists": "Phil Collins",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060595
+    },
+    {
+      "trackId": "15rjQH7nTcTomKwfVMd4xl",
+      "name": "Go Your Own Way",
+      "artists": "Fleetwood Mac",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060594
+    },
+    {
+      "trackId": "54g63GAn77x9NcjiLzy7cW",
+      "name": "Queen Of Spades",
+      "artists": "Styx",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060593
+    },
+    {
+      "trackId": "5PKnZzkjs2y3WTbIYtv5Fq",
+      "name": "Magic Bus - Mono Edit",
+      "artists": "The Who",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060592
+    },
+    {
+      "trackId": "7zscdQe9CjzXnqT3P1Ey7K",
+      "name": "If You Want Blood (You've Got It)",
+      "artists": "AC/DC",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060591
+    },
+    {
+      "trackId": "3TO7bbrUKrOSPGRTB5MeCz",
+      "name": "Time",
+      "artists": "Pink Floyd",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060590
+    },
+    {
+      "trackId": "31VLSfg86NJN74rUHQi7e8",
+      "name": "I Know What I Like (In Your Wardrobe) - 2007 Stereo Mix",
+      "artists": "Genesis",
+      "keepInLibrary": 1,
+      "repeatIntent": "currently_listening",
+      "loggedAt": 1786871060587
+    }
+  ]
+}
