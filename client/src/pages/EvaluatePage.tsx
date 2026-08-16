@@ -50,7 +50,7 @@ const KEEP_OPTIONS = REPEAT_INTENT_OPTIONS.filter((opt) => opt.value !== "undeci
 function defaultKeepIntent(trackRepeatIntent: string | undefined): string {
   const normalized = String(trackRepeatIntent ?? "").trim();
   if (KEEP_OPTIONS.some((opt) => opt.value === normalized)) return normalized;
-  return "skip_for_now";
+  return "currently_listening";
 }
 
 export default function EvaluatePage() {
@@ -82,7 +82,7 @@ export default function EvaluatePage() {
 
   const setRowDecision = (rowIndex: number, next: Partial<RowDecision>) => {
     setDecisions((prev) => {
-      const current = prev[rowIndex] ?? { decision: null, repeatIntent: "skip_for_now" };
+      const current = prev[rowIndex] ?? { decision: null, repeatIntent: "currently_listening" };
       return {
         ...prev,
         [rowIndex]: {

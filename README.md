@@ -168,8 +168,13 @@ WAX_USER=kaseysmom npm run dev:user
 This switches between different profiles for the same user. Each profile has its own set of playlists and settings.
 
 ```bash
+WAX_USER=kasey-alt-rock npm run dev:user
+WAX_USER=kasey-classic-rock npm run dev:user
 WAX_USER=kasey-country-blues npm run dev:user
+WAX_USER=kasey-indie-folk npm run dev:user
 WAX_USER=kasey-pop-hip-hop npm run dev:user
+
+
 ```   
 
 ### Export decisions for each user
@@ -189,7 +194,10 @@ This writes the latest decisions from that profile's DB (`users/<name>/<profile>
 `users/<name>/<profile>/decisions-latest.json` so it can be tracked in git/history.
 
 ```bash
+WAX_USER=kasey-alt-rock npm run user:export
+WAX_USER=kasey-classic-rock npm run user:export
 WAX_USER=kasey-country-blues npm run user:export
+WAX_USER=kasey-indie-folk npm run user:export
 WAX_USER=kasey-pop-hip-hop npm run user:export
 ```
 
@@ -210,7 +218,10 @@ This reads that profile's DB (`users/<name>/<profile>/music_library.db`) and gen
 `users/<name>/<profile>/playlists/`.
 
 ```bash
+WAX_USER=kasey-alt-rock npm run user:playlists
+WAX_USER=kasey-classic-rock npm run user:playlists
 WAX_USER=kasey-country-blues npm run user:playlists
+WAX_USER=kasey-indie-folk npm run user:playlists
 WAX_USER=kasey-pop-hip-hop npm run user:playlists
 ```
 
@@ -238,13 +249,19 @@ This pushes playlists for each profile to Spotify.
 
 Dry run:
 ```bash
+WAX_USER=kasey-alt-rock npm run spotify:push:dry
+WAX_USER=kasey-classic-rock npm run spotify:push:dry
 WAX_USER=kasey-country-blues npm run spotify:push:dry
+WAX_USER=kasey-indie-folk npm run spotify:push:dry
 WAX_USER=kasey-pop-hip-hop npm run spotify:push:dry
 ```
 
 Push to Spotify:
 ```bash
+WAX_USER=kasey-alt-rock npm run spotify:push
+WAX_USER=kasey-classic-rock npm run spotify:push
 WAX_USER=kasey-country-blues npm run spotify:push
+WAX_USER=kasey-indie-folk npm run spotify:push
 WAX_USER=kasey-pop-hip-hop npm run spotify:push
 ```
 
@@ -267,7 +284,10 @@ This writes:
 This captures that profile's weekly playlists into a profile-specific snapshot DB, including unassigned tracks from `currently-listening.csv`.
 
 ```bash
+WAX_USER=kasey-alt-rock npm run user:snapshots:weekly
+WAX_USER=kasey-classic-rock npm run user:snapshots:weekly
 WAX_USER=kasey-country-blues npm run user:snapshots:weekly
+WAX_USER=kasey-indie-folk npm run user:snapshots:weekly
 WAX_USER=kasey-pop-hip-hop npm run user:snapshots:weekly
 ```
 

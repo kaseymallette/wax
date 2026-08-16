@@ -271,17 +271,36 @@ function rebalanceClusterSizes(clusters: Cluster[], totalTracks: number): void {
 }
 
 function orderClusterMembers(cluster: Cluster): CandidateTrack[] {
-  if (cluster.members.length <= 2) return [...cluster.members];
+  if (cluster.members.length <= 1) return [...cluster.members];
 
   const remaining = [...cluster.members];
-  remaining.sort((a, b) => {
-    const da = distance(a.normalized, cluster.centroid);
-    const db = distance(b.normalized, cluster.centroid);
-    if (da !== db) return da - db;
-    return a.track.id.localeCompare(b.track.id);
-  });
 
-  const ordered: CandidateTrack[] = [remaining.shift()!];
+  // Seed each daily playlist with the highest-mood track, then smooth transitions
+  // using nearest-neighbor ordering for the rest of the cluster.
+  let startIdx = 0;
+  for (let i = 1; i < remaining.length; i += 1) {
+    const current = remaining[i];
+    const best = remaining[startIdx];
+    const currentMood = current.moodValue;
+    const bestMood = best.moodValue;
+    if (currentMood > bestMood) {
+      startIdx = i;
+      continue;
+    }
+    if (currentMood === bestMood) {
+      const currentBpm = current.track.bpm ?? Number.NEGATIVE_INFINITY;
+      const bestBpm = best.track.bpm ?? Number.NEGATIVE_INFINITY;
+      if (currentBpm > bestBpm) {
+        startIdx = i;
+        continue;
+      }
+      if (currentBpm === bestBpm && current.track.id.localeCompare(best.track.id) < 0) {
+        startIdx = i;
+      }
+    }
+  }
+
+  const ordered: CandidateTrack[] = [remaining.splice(startIdx, 1)[0]];
   while (remaining.length > 0) {
     const current = ordered[ordered.length - 1];
     let nextIdx = 0;
