@@ -329,7 +329,11 @@ main, header, footer { position: relative; z-index: 1; }
   color: var(--color-text-muted);
   font-size: var(--text-sm);
   margin-top: var(--space-1);
-  max-width: 44ch;
+  max-width: 50ch;
+}
+.week-desc-detail {
+  display: inline-block;
+  white-space: nowrap;
 }
 .day-rail {
   display: flex;
@@ -663,6 +667,7 @@ main, header, footer { position: relative; z-index: 1; }
 }
 
 @media (max-width: 640px) {
+  .week-desc-detail { white-space: normal; }
   .header-inner { padding-inline: var(--space-3); }
   .week-label { display: none; }
   .stations,
