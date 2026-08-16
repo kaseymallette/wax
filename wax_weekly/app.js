@@ -132,7 +132,7 @@
     });
 
     $('station-title').textContent = meta.name;
-    $('station-desc').textContent = meta.desc + ' Seven playlists last updated on ' + updatedText + '.';
+    $('station-desc').textContent = meta.desc + ' Seven playlists for each day of the week.';
     $('playlist-eyebrow').textContent = meta.name + ' · Playlist ' + (currentDay + 1) + ' of 7';
     $('playlist-day').textContent = day.day;
 

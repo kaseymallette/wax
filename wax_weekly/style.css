@@ -466,21 +466,34 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .play-overlay {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, oklch(0 0 0 / 0.15), oklch(0 0 0 / 0.55));
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-full);
+  background: oklch(0 0 0 / 0.68);
   color: #fff;
-  opacity: 0;
-  transition: opacity var(--transition-interactive);
+  opacity: 0.92;
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.45);
+  transition:
+    opacity var(--transition-interactive),
+    transform var(--transition-interactive),
+    background var(--transition-interactive);
 }
 .play-icon {
-  width: 40%;
-  height: 40%;
-  filter: drop-shadow(0 2px 4px oklch(0 0 0 / 0.4));
+  width: 48%;
+  height: 48%;
+  filter: drop-shadow(0 1px 2px oklch(0 0 0 / 0.45));
 }
 .play-btn:hover .play-overlay,
-.play-btn:focus-visible .play-overlay { opacity: 1; }
+.play-btn:focus-visible .play-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.08);
+  background: oklch(0 0 0 / 0.78);
+}
 .play-btn[aria-expanded='true'] .play-overlay { opacity: 1; }
 .play-btn[aria-expanded='true'] {
   outline: 2px solid var(--accent);
