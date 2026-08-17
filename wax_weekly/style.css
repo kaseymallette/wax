@@ -331,6 +331,12 @@ main, header, footer { position: relative; z-index: 1; }
   margin-top: var(--space-1);
   max-width: 44ch;
 }
+.week-desc-line {
+  display: block;
+}
+.week-desc-format {
+  white-space: nowrap;
+}
 .day-rail {
   display: flex;
   gap: var(--space-1);
@@ -393,7 +399,10 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .playlist-stats {
   display: flex;
-  gap: var(--space-6);
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: clamp(var(--space-3), 1.6vw, var(--space-5));
+  flex-wrap: wrap;
 }
 .stat dt {
   font-size: var(--text-xs);
@@ -424,7 +433,7 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .track-row {
   display: grid;
-  grid-template-columns: 2rem 3rem minmax(0, 1.2fr) minmax(0, 0.9fr) 3.2rem 2.8rem 6.5rem 2.75rem;
+  grid-template-columns: 2rem 3rem minmax(0, 1.25fr) minmax(0, 0.75fr) 3.2rem 2.8rem 3.5rem 9rem 2.75rem;
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-6);
@@ -466,21 +475,34 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .play-overlay {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, oklch(0 0 0 / 0.15), oklch(0 0 0 / 0.55));
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-full);
+  background: oklch(0 0 0 / 0.68);
   color: #fff;
-  opacity: 0;
-  transition: opacity var(--transition-interactive);
+  opacity: 0.92;
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.45);
+  transition:
+    opacity var(--transition-interactive),
+    transform var(--transition-interactive),
+    background var(--transition-interactive);
 }
 .play-icon {
-  width: 40%;
-  height: 40%;
-  filter: drop-shadow(0 2px 4px oklch(0 0 0 / 0.4));
+  width: 48%;
+  height: 48%;
+  filter: drop-shadow(0 1px 2px oklch(0 0 0 / 0.45));
 }
 .play-btn:hover .play-overlay,
-.play-btn:focus-visible .play-overlay { opacity: 1; }
+.play-btn:focus-visible .play-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.08);
+  background: oklch(0 0 0 / 0.78);
+}
 .play-btn[aria-expanded='true'] .play-overlay { opacity: 1; }
 .play-btn[aria-expanded='true'] {
   outline: 2px solid var(--accent);
@@ -548,37 +570,29 @@ main, header, footer { position: relative; z-index: 1; }
   min-width: 2.6rem;
   text-align: center;
 }
-.track-meters {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.meter {
-  display: grid;
-  grid-template-columns: 0.9rem 1fr;
-  align-items: center;
-  gap: var(--space-1);
-}
-.meter b {
-  font-size: 0.625rem;
+.track-mood {
+  justify-self: center;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-text-faint);
-  line-height: 1;
+  color: var(--color-text);
 }
-.meter-bar {
-  display: block;
-  height: 3px;
-  border-radius: var(--radius-full);
-  background: var(--color-surface-dynamic);
-  overflow: hidden;
+.track-components {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
 }
-.meter-fill {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--accent);
-  opacity: 0.85;
+.component-value b {
+  color: var(--accent);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
+.component-sep { color: var(--color-text-faint); }
 .track-link {
   justify-self: end;
   width: 2.5rem;
@@ -600,7 +614,7 @@ main, header, footer { position: relative; z-index: 1; }
 /* column header row */
 .track-cols {
   display: grid;
-  grid-template-columns: 2rem 3rem minmax(0, 1.2fr) minmax(0, 0.9fr) 3.2rem 2.8rem 6.5rem 2.75rem;
+  grid-template-columns: 2rem 3rem minmax(0, 1.25fr) minmax(0, 0.75fr) 3.2rem 2.8rem 3.5rem 9rem 2.75rem;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-6);
   font-size: var(--text-xs);
@@ -609,7 +623,7 @@ main, header, footer { position: relative; z-index: 1; }
   color: var(--color-text-faint);
   background: oklch(from var(--color-surface-offset) l c h / 0.4);
 }
-.track-cols span {
+.track-cols > span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -617,6 +631,61 @@ main, header, footer { position: relative; z-index: 1; }
 .track-cols .col-rank { text-align: right; }
 .track-cols .col-bpm { text-align: right; }
 .track-cols .col-key { text-align: center; }
+.col-mood,
+.col-components {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  position: relative;
+  overflow: visible !important;
+}
+.col-mood { justify-content: center; }
+.component-info-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.component-info-button {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
+}
+.component-info-tooltip {
+  position: absolute;
+  right: 0;
+  top: calc(100% + var(--space-2));
+  z-index: 12;
+  width: 15rem;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity var(--transition-interactive), transform var(--transition-interactive), visibility var(--transition-interactive);
+}
+.mood-formula-tooltip {
+  right: 0;
+  width: 17rem;
+}
+.component-info-button:hover + .component-info-tooltip,
+.component-info-button:focus + .component-info-tooltip,
+.component-info-wrap:focus-within .component-info-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -638,13 +707,13 @@ main, header, footer { position: relative; z-index: 1; }
   }
   .track-row,
   .track-cols {
-    grid-template-columns: 1.75rem 2.75rem minmax(0, 1fr) 3.2rem 2.8rem 2.5rem;
+    grid-template-columns: 1.75rem 2.75rem minmax(0, 1fr) 3.2rem 2.8rem 3.4rem 2.5rem;
   }
   .play-btn { width: 2.75rem; height: 2.75rem; }
   .track-album,
-  .track-meters,
+  .track-components,
   .track-cols .col-album,
-  .track-cols .col-feel {
+  .track-cols .col-components {
     display: none;
   }
 }
@@ -682,17 +751,104 @@ main, header, footer { position: relative; z-index: 1; }
   }
   .playlist-head { padding: var(--space-5) var(--space-4) var(--space-4); }
   .playlist-stats {
-    gap: var(--space-5);
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: var(--space-4) var(--space-3);
+  }
+  /* On phones, keep Track + BPM visible first and let the rest of the
+     song metadata scroll horizontally instead of disappearing. */
+  .track-list {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+  .track-list > li {
+    min-width: 58rem;
   }
   .track-row,
   .track-cols {
     padding-inline: var(--space-4);
-    grid-template-columns: 1.5rem 2.5rem minmax(0, 1fr) 3rem 2.5rem;
+    grid-template-columns: 1.5rem 2.5rem 12rem 3.5rem 3.2rem 2.8rem 9rem 12rem 2.5rem;
     gap: var(--space-2);
   }
+
+  /* Mobile column order: identity, BPM, Mood, then the deeper metadata. */
+  .track-rank, .track-cols .col-rank { grid-column: 1; }
+  .play-btn, .track-cols .col-play { grid-column: 2; }
+  .track-main, .track-cols .col-track { grid-column: 3; }
+  .track-bpm, .track-cols .col-bpm { grid-column: 4; }
+  .track-mood, .track-cols .col-mood { grid-column: 5; }
+  .track-key, .track-cols .col-key { grid-column: 6; }
+  .track-components, .track-cols .col-components { grid-column: 7; }
+  .track-album, .track-cols .col-album { grid-column: 8; }
+  .track-link, .track-cols .col-x { grid-column: 9; }
+
+  .track-album,
+  .track-bpm,
+  .track-key,
+  .track-components,
+  .track-cols .col-album,
+  .track-cols .col-bpm,
+  .track-cols .col-key,
+  .track-cols .col-components {
+    display: initial;
+  }
+  .track-components { display: flex; }
+  .track-cols .col-mood,
+  .track-cols .col-components { display: flex; }
   .play-btn { width: 2.5rem; height: 2.5rem; }
   .track-embed { padding-inline: var(--space-4); }
-  .track-key { display: none; }
-  .track-cols .col-key { display: none; }
+}
+
+/* ---------- Playlist action ---------- */
+.playlist-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid oklch(from var(--accent) l c h / 0.55);
+  border-radius: var(--radius-full);
+  background: oklch(from var(--accent) l c h / 0.12);
+  color: var(--accent);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.playlist-link[hidden] { display: none; }
+.playlist-link svg { width: 0.9rem; height: 0.9rem; flex: 0 0 auto; }
+.playlist-link:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.playlist-link:active { transform: translateY(0) scale(0.98); }
+
+/* ---------- Info buttons ---------- */
+.info-button {
+  width: 1rem;
+  height: 1rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--color-text-faint);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  font-family: Georgia, serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.info-button:hover,
+.info-button:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
 }
