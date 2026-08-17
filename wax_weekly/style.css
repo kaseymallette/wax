@@ -399,7 +399,10 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .playlist-stats {
   display: flex;
-  gap: var(--space-6);
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: clamp(var(--space-3), 1.6vw, var(--space-5));
+  flex-wrap: wrap;
 }
 .stat dt {
   font-size: var(--text-xs);
@@ -636,6 +639,11 @@ main, header, footer { position: relative; z-index: 1; }
   position: relative;
   overflow: visible !important;
 }
+.component-info-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
 .component-info-wrap {
   position: relative;
   display: inline-flex;
@@ -670,6 +678,10 @@ main, header, footer { position: relative; z-index: 1; }
   transform: translateY(-4px);
   pointer-events: none;
   transition: opacity var(--transition-interactive), transform var(--transition-interactive), visibility var(--transition-interactive);
+}
+.mood-formula-tooltip {
+  right: -1.25rem;
+  width: 17rem;
 }
 .component-info-button:hover + .component-info-tooltip,
 .component-info-button:focus + .component-info-tooltip,
@@ -743,8 +755,10 @@ main, header, footer { position: relative; z-index: 1; }
   }
   .playlist-head { padding: var(--space-5) var(--space-4) var(--space-4); }
   .playlist-stats {
-    gap: var(--space-5);
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: var(--space-4) var(--space-3);
   }
   .track-row,
   .track-cols {
@@ -789,13 +803,7 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .playlist-link:active { transform: translateY(0) scale(0.98); }
 
-/* ---------- Mood score help ---------- */
-.stat-mood { position: relative; }
-.stat-mood dt {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
+/* ---------- Info buttons ---------- */
 .info-button {
   width: 1rem;
   height: 1rem;
@@ -816,38 +824,4 @@ main, header, footer { position: relative; z-index: 1; }
 .info-button:focus-visible {
   color: var(--accent);
   border-color: var(--accent);
-}
-.info-tooltip {
-  position: absolute;
-  right: 0;
-  bottom: calc(100% + var(--space-2));
-  z-index: 8;
-  width: min(18rem, 75vw);
-  padding: var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-2);
-  color: var(--color-text);
-  box-shadow: var(--shadow-md);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  line-height: 1.45;
-  text-transform: none;
-  letter-spacing: normal;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(4px);
-  pointer-events: none;
-  transition: opacity var(--transition-interactive), transform var(--transition-interactive), visibility var(--transition-interactive);
-}
-.info-button:hover + .info-tooltip,
-.info-button:focus + .info-tooltip,
-.stat-mood:focus-within .info-tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-@media (max-width: 640px) {
-  .info-tooltip { right: auto; left: 0; }
 }

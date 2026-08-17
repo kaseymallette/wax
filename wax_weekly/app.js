@@ -148,12 +148,14 @@
 
     animateNumber($('stat-tracks'), tracks.length, 0);
     animateNumber($('stat-bpm'), avg(tracks, 'bpm') || 0, 0);
-    animateNumber($('stat-energy'), avg(tracks, 'e') || 0, 0);
     animateNumber($('stat-mood'), avg(tracks, 'm') || 0, 0);
+    animateNumber($('stat-energy'), avg(tracks, 'e') || 0, 0);
+    animateNumber($('stat-dance'), avg(tracks, 'd') || 0, 0);
+    animateNumber($('stat-valence'), avg(tracks, 'v') || 0, 0);
 
     const list = $('track-list');
     list.innerHTML =
-      '<li class="track-cols" role="presentation"><span class="col-rank">#</span><span class="col-play"></span><span class="col-track">Track</span><span class="col-album">Album</span><span class="col-bpm">BPM</span><span class="col-key">Key</span><span class="col-mood">Mood</span><span class="col-components"><span>Components</span><span class="component-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="components-help" aria-label="What the component abbreviations mean">i</button><span class="component-info-tooltip" id="components-help" role="tooltip">E = Energy · D = Danceability · V = Valence</span></span></span><span class="col-x"></span></li>' +
+      '<li class="track-cols" role="presentation"><span class="col-rank">#</span><span class="col-play"></span><span class="col-track">Track</span><span class="col-album">Album</span><span class="col-bpm">BPM</span><span class="col-key">Key</span><span class="col-mood">Mood</span><span class="col-components"><span>Components</span><span class="component-info-group"><span class="component-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="components-help" aria-label="What the component abbreviations mean">i</button><span class="component-info-tooltip" id="components-help" role="tooltip">E = Energy · D = Danceability · V = Valence. Each component is scored from 0–100.</span></span><span class="component-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="mood-formula-help" aria-label="How the mood score is calculated">i</button><span class="component-info-tooltip mood-formula-tooltip" id="mood-formula-help" role="tooltip">Mood = Energy + Danceability + Valence, so each song’s Mood score ranges from 0–300.</span></span></span></span><span class="col-x"></span></li>' +
       tracks
         .map((t) => {
           const id = trackId(t.u);
