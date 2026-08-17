@@ -786,6 +786,12 @@ main, header, footer { position: relative; z-index: 1; }
   .track-album, .track-cols .col-album { grid-column: 8; }
   .track-link, .track-cols .col-x { grid-column: 9; }
 
+  /* Keep all reassigned mobile columns on one physical row. */
+  .track-row > *,
+  .track-cols > * {
+    grid-row: 1;
+  }
+
   .track-album,
   .track-bpm,
   .track-key,
