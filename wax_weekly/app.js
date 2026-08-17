@@ -153,18 +153,17 @@
 
     const list = $('track-list');
     list.innerHTML =
-      '<li class="track-cols" aria-hidden="true"><span class="col-rank">#</span><span class="col-play"></span><span class="col-track">Track</span><span class="col-album">Album</span><span class="col-bpm">BPM</span><span class="col-key">Key</span><span class="col-feel" title="Energy, Dance, Valence">E · D · V</span><span class="col-x"></span></li>' +
+      '<li class="track-cols" role="presentation"><span class="col-rank">#</span><span class="col-play"></span><span class="col-track">Track</span><span class="col-album">Album</span><span class="col-bpm">BPM</span><span class="col-key">Key</span><span class="col-mood">Mood</span><span class="col-components"><span>Components</span><span class="component-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="components-help" aria-label="What the component abbreviations mean">i</button><span class="component-info-tooltip" id="components-help" role="tooltip">E = Energy · D = Danceability · V = Valence</span></span></span><span class="col-x"></span></li>' +
       tracks
         .map((t) => {
           const id = trackId(t.u);
           const art = id && ART[id] ? ART[id] : null;
-          const meters = ['e', 'd', 'v']
-            .map(
-              (k, j) =>
-                '<span class="meter"><b>' + ['E', 'D', 'V'][j] + '</b><span class="meter-bar"><span class="meter-fill" style="width:' +
-                Math.max(0, Math.min(100, t[k] || 0)) + '%"></span></span></span>'
-            )
-            .join('');
+          const components =
+            '<span class="component-value"><b>E</b> ' + Math.round(t.e || 0) + '</span>' +
+            '<span class="component-sep">·</span>' +
+            '<span class="component-value"><b>D</b> ' + Math.round(t.d || 0) + '</span>' +
+            '<span class="component-sep">·</span>' +
+            '<span class="component-value"><b>V</b> ' + Math.round(t.v || 0) + '</span>';
           const artInner = art
             ? '<img class="art-img" src="' + esc(art) + '" alt="" loading="lazy" decoding="async" width="48" height="48" />'
             : '<span class="art-img art-fallback">' + VINYL + '</span>';
@@ -180,7 +179,8 @@
             '<span class="track-album">' + esc(t.al) + '</span>' +
             '<span class="track-bpm">' + (t.bpm != null ? Math.round(t.bpm) : '–') + '</span>' +
             '<span class="track-key">' + (t.k || '–') + '</span>' +
-            '<span class="track-meters">' + meters + '</span>' +
+            '<span class="track-mood">' + (t.m != null ? Math.round(t.m) : '–') + '</span>' +
+            '<span class="track-components">' + components + '</span>' +
             (t.u
               ? '<a class="track-link" href="' + esc(t.u) + '" target="_blank" rel="noopener noreferrer" aria-label="Open ' + esc(t.t) + ' on Spotify">' + LINKOUT + '</a>'
               : '<span></span>') +
