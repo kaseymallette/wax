@@ -1,26 +1,73 @@
 # Wax
 
-A local-first listening journal for your music library. Upload tracks, shuffle with intent, tag what to keep, and generate export-ready playlists you can push to Spotify.
+Wax is a local-first music curation system built to turn a personally managed listening library into deliberate weekly rotation. It uses **K-means clustering on BPM and Mood**, where **Mood = Energy + Dance + Valence**, to distribute songs across daily playlists, **K-nearest neighbors** to sequence each playlist, and the **Spotify Web API** to publish the results.
+
+[Wax Weekly](https://waxweekly.com) turns the Wax workflow into a weekly listening experience across five genre-bending profiles: **Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop**. Every song is curated by me, then distributed and sequenced using Wax.
 
 ## Introduction
 
-Wax is built for deliberate curation instead of endless skipping. Import your library (`.db`, `.sqlite`, or Exportify `.csv`), run Shuffle, and log decisions quickly with keep/remove plus repeat intent.
+Wax started with a simple frustration: **I wanted to listen to playlists on shuffle and hear every song.**
 
-Tracks start as *Undecided*, and keeps are organized into five intent buckets: *Currently Listening*, *Save for Later*, *Off the Rotation*, *Favorites Archive*, and *Skip for Now*. These intents drive weighted shuffle, Keeps/Stats views, and playlist generation.
+There is a real problem with random playback, and it's not just me who thinks they've heard the same song for the fourth time. In 2025, Spotify introduced **Fewer Repeats** after listeners reported that Shuffle felt repetitive, with certain songs and artists surfacing again and again. Spotify’s engineers attributed that experience to statistical randomness itself: a random sequence does not guarantee an even distribution, even when every track has an equal chance of appearing. [Spotify Engineering, “Shuffle: Making Random Feel More Human”](https://engineering.atspotify.com/2025/11/shuffle-making-random-feel-more-human). 
 
-The default playlist flow creates 7 daily playlists from *Currently Listening* (BPM + mood clustering, dynamic per-playlist cap tiers from 5 up to 30 tracks), plus one playlist each for *Currently Listening* (all tracks), *Save for Later*, and *Favorites Archive*. Everything exports to CSV first, then can be pushed to Spotify with the built-in push script.
+Given that I often shuffled my entire Liked Songs library, which contained thousands of songs, making it through a complete random sequence was nearly impossible. I would search for a song, switch playlists, change genres, or navigate somewhere else, replacing the queue before the sequence ever finished. The next time I hit Shuffle, songs I had already heard had another chance of landing near the front of the queue.
 
-Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot), energy, dance, and valence. Mood score is `energy + dance + valence` on a 0–300 scale.
+So I started making smaller playlists. Even then, I noticed that not every song appeared in the playback queue when I hit Shuffle. **Fewer Repeats** generates several random versions of a playlist, then uses listening history to choose which sequence to play. I wanted something simpler: **a guarantee that every song I selected would make it into the rotation.** With access to more music than anyone can realistically listen to, discovery is only half the problem. The real challenge is keeping great songs from disappearing back into an endless library.
 
-## Wax Weekly
+Instead of generating another random order, I wanted to know that the songs in my active listening library were being **deliberately distributed across the week.** I wanted repetition, because I like hearing songs again. I wanted novelty, because I did not want to hear the same subset constantly. And I wanted the individual playlists to have enough musical continuity that they still felt good to listen to from beginning to end.
+
+**So I built my own system.**
+
+## Methods
+
+### Managing the Listening Pool
+
+I built a local application to manage my music database and CSV files containing track metadata and audio-feature data. Songs can be moved between four states depending on how I currently want to listen to them:
+
+- **Currently Listening** — songs included in active playlist generation
+- **Favorites / Archive** — songs I want to keep but remove from the current rotation
+- **Skip for Now** — songs temporarily removed from rotation
+- **Save for Later** — songs I want to revisit
+
+This keeps the curation itself human-in-the-loop: I decide which songs belong in the active listening pool.
+
+### Playlist Generation
+
+For each genre collection, I used two dimensions to organize the active listening pool: **BPM** and **Mood**.
+
+Mood is a composite score calculated from three audio features:
+
+`Mood = Energy + Danceability + Valence`
+
+I used **K-means clustering** on BPM and Mood to divide the active listening pool into equal-sized daily playlists. This gives every selected song a place in the weekly rotation while grouping tracks with similar musical characteristics.
+
+### Playlist Sequencing
+
+For each playlist, I begin with the track that has the highest Mood score. I then use **K-nearest neighbors** in BPM-Mood space to move from that track to the nearest remaining track, repeating the process until the entire playlist has been ordered.
+
+In other words, **K-means determines which songs belong together; K-nearest neighbors determines how they flow from one song to the next.**
+
+### Publishing to Spotify
+
+Once the playlists have been clustered and ordered, I create the daily playlists programmatically using the **Spotify Web API**.
+
+Spotify remains the playback platform, but Wax determines which songs are in the rotation, how they are distributed across the week, and the order in which to play them.
+
+### Custom Web Interface
+
+After generating the playlists, I built a custom web interface to showcase the weekly output across five genre-bending collections: **Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop**.
+
+Built from scratch using **HTML, CSS, and JavaScript**, the site provides an interactive interface for navigating each genre and day of the week, viewing playlist statistics and track metadata, previewing songs through Spotify, and opening tracks directly in Spotify.
+
+## Results
+
+### Wax Weekly
 
 ![Wax Weekly homepage](images/wax_weekly_homepage.png)
 
 [Wax Weekly](https://waxweekly.com) is the public listening experience built from Wax.
 
-Five genre profiles: Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop. Each profile is curated into 7 daily playlists across the week. The current collection includes 800 tracks organized using Wax's BPM + mood playlist workflow.
-
-The Wax Weekly website was built from scratch as a standalone web experience using HTML, CSS, and JavaScript. It turns the playlist data generated by Wax into a browsable interface with daily playlists, track metadata, audio previews, playlist statistics, and direct links to Spotify.
+The current collection includes 800 tracks across five genre-bending profiles, with daily playlists of 20-25 songs for each profile: **Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop**. 
 
 The site is deployed through Cloudflare Pages from the `wax_weekly/` directory in this repository and hosted on my custom domain.
 
@@ -41,47 +88,47 @@ wax_weekly/
 └── _headers      # Cloudflare cache-control headers
 ```
 
-## Local Wax App Walkthrough
+### Local Wax App Walkthrough
 
 > The screenshots below are from the `test` user, using a 999-song playlist import from `Billboards_Greatest_Hits_of_All_Time.csv`.
 
-### 01. Run dev 
+**01. Run dev**
 
-![Dev setup http://127.0.0.1:8888/callback](images/01_run_dev.png)
+![Run dev](images/01_run_dev.png)
 
-### 02. Import library
+**02. Import library**
 
 ![Import library](images/02_import.png)
 
-### 03. Evaluate playlist
+**03. Evaluate playlist**
 
 ![Evaluate playlist](images/03_evaluate.png)
 
-### 04. Shuffle Preview Song
+**04. Shuffle Preview Song**
 
 ![Shuffle preview](images/04_shuffle_preview.png)
 
-### 05. Shuffle Keep or Remove
+**05. Shuffle Keep or Remove**
 
 ![Shuffle keep](images/05_shuffle_keep.png)
 
-### 06. Search Library
+**06. Search Library**
 
 ![Search library](images/06_library.png)
 
-### 07. Recents
+**07. Recents**
 
 ![Recents](images/07_recents.png)
 
-### 08. Keeps
+**08. Keeps**
 
 ![Keeps](images/08_keeps.png)
 
-### 09. Daily playlists
+**09. Daily playlists**
 
 ![Daily playlists](images/09_playlists.png)
 
-### 10. Stats
+**10. Stats**
 
 ![Stats](images/10_stats.png)
 
@@ -92,7 +139,6 @@ git clone https://github.com/kaseymallette/wax.git
 cd wax
 npm install
 npm run dev
-
 ```
 
 Then open **http://127.0.0.1:3000**.
