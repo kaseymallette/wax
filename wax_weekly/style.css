@@ -331,6 +331,12 @@ main, header, footer { position: relative; z-index: 1; }
   margin-top: var(--space-1);
   max-width: 44ch;
 }
+.week-desc-line {
+  display: block;
+}
+.week-desc-format {
+  white-space: nowrap;
+}
 .day-rail {
   display: flex;
   gap: var(--space-1);

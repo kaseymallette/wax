@@ -132,7 +132,7 @@
     });
 
     $('station-title').textContent = meta.name;
-    $('station-desc').textContent = meta.desc + ' Seven playlists for each day of the week.';
+    $('station-desc').innerHTML = '<span class="week-desc-line">' + esc(meta.desc) + '</span><span class="week-desc-line week-desc-format">Seven playlists for each day of the week.</span>';
     $('playlist-eyebrow').textContent = meta.name + ' · Playlist ' + (currentDay + 1) + ' of 7';
     $('playlist-day').textContent = day.day;
 
