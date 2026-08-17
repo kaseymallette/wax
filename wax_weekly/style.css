@@ -433,7 +433,7 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .track-row {
   display: grid;
-  grid-template-columns: 2rem 3rem minmax(0, 1.25fr) minmax(0, 0.75fr) 3.2rem 2.8rem 3.5rem 9rem 2.75rem;
+  grid-template-columns: 2rem 3rem minmax(0, 1.25fr) minmax(0, 0.75fr) 3.2rem 3.5rem 2.8rem 9rem 2.75rem;
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-6);
@@ -614,7 +614,7 @@ main, header, footer { position: relative; z-index: 1; }
 /* column header row */
 .track-cols {
   display: grid;
-  grid-template-columns: 2rem 3rem minmax(0, 1.25fr) minmax(0, 0.75fr) 3.2rem 2.8rem 3.5rem 9rem 2.75rem;
+  grid-template-columns: 2rem 3rem minmax(0, 1.25fr) minmax(0, 0.75fr) 3.2rem 3.5rem 2.8rem 9rem 2.75rem;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-6);
   font-size: var(--text-xs);
@@ -707,7 +707,7 @@ main, header, footer { position: relative; z-index: 1; }
   }
   .track-row,
   .track-cols {
-    grid-template-columns: 1.75rem 2.75rem minmax(0, 1fr) 3.2rem 2.8rem 3.4rem 2.5rem;
+    grid-template-columns: 1.75rem 2.75rem minmax(0, 1fr) 3.2rem 3.4rem 2.8rem 2.5rem;
   }
   .play-btn { width: 2.75rem; height: 2.75rem; }
   .track-album,

@@ -155,7 +155,7 @@
 
     const list = $('track-list');
     list.innerHTML =
-      '<li class="track-cols" role="presentation"><span class="col-rank">#</span><span class="col-play"></span><span class="col-track">Track</span><span class="col-album">Album</span><span class="col-bpm">BPM</span><span class="col-key">Key</span><span class="col-mood"><span>Mood</span><span class="component-info-wrap mood-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="mood-formula-help" aria-label="How the mood score is calculated">i</button><span class="component-info-tooltip mood-formula-tooltip" id="mood-formula-help" role="tooltip">Mood = Energy + Danceability + Valence, so each song’s Mood score ranges from 0–300.</span></span></span><span class="col-components"><span>Components</span><span class="component-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="components-help" aria-label="What the component abbreviations mean">i</button><span class="component-info-tooltip" id="components-help" role="tooltip">E = Energy · D = Danceability · V = Valence. Each component is scored from 0–100.</span></span></span><span class="col-x"></span></li>' +
+      '<li class="track-cols" role="presentation"><span class="col-rank">#</span><span class="col-play"></span><span class="col-track">Track</span><span class="col-album">Album</span><span class="col-bpm">BPM</span><span class="col-mood"><span>Mood</span><span class="component-info-wrap mood-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="mood-formula-help" aria-label="How the mood score is calculated">i</button><span class="component-info-tooltip mood-formula-tooltip" id="mood-formula-help" role="tooltip">Mood = Energy + Danceability + Valence, so each song’s Mood score ranges from 0–300.</span></span></span><span class="col-key">Key</span><span class="col-components"><span>Components</span><span class="component-info-wrap"><button type="button" class="info-button component-info-button" aria-describedby="components-help" aria-label="What the component abbreviations mean">i</button><span class="component-info-tooltip" id="components-help" role="tooltip">E = Energy · D = Danceability · V = Valence. Each component is scored from 0–100.</span></span></span><span class="col-x"></span></li>' +
       tracks
         .map((t) => {
           const id = trackId(t.u);
@@ -180,8 +180,8 @@
             '<span class="track-main"><span class="track-name">' + esc(t.t) + '</span><span class="track-artist">' + esc(t.a) + '</span></span>' +
             '<span class="track-album">' + esc(t.al) + '</span>' +
             '<span class="track-bpm">' + (t.bpm != null ? Math.round(t.bpm) : '–') + '</span>' +
-            '<span class="track-key">' + (t.k || '–') + '</span>' +
             '<span class="track-mood">' + (t.m != null ? Math.round(t.m) : '–') + '</span>' +
+            '<span class="track-key">' + (t.k || '–') + '</span>' +
             '<span class="track-components">' + components + '</span>' +
             (t.u
               ? '<a class="track-link" href="' + esc(t.u) + '" target="_blank" rel="noopener noreferrer" aria-label="Open ' + esc(t.t) + ' on Spotify">' + LINKOUT + '</a>'
