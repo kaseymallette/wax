@@ -308,25 +308,28 @@ main, header, footer { position: relative; z-index: 1; }
 /* ---------- Wax intro ---------- */
 .wax-intro {
   max-width: 48rem;
-  margin-top: var(--space-6);
+  margin: var(--space-6) auto var(--space-6);
+  text-align: center;
 }
-.wax-intro p {
+.wax-tagline {
+  margin-inline: auto;
   font-family: var(--font-display);
   font-size: var(--text-lg);
-  line-height: 1.4;
+  line-height: 1.35;
   color: var(--color-text);
 }
-.wax-intro strong {
-  font-weight: 700;
+.wax-byline {
+  margin: var(--space-2) auto 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
 }
 .wax-intro-link,
 .header-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
+  gap: var(--space-1);
   color: var(--accent);
-  font-size: var(--text-sm);
+  font-size: inherit;
   font-weight: 600;
   text-decoration: none;
 }
@@ -977,9 +980,13 @@ main, header, footer { position: relative; z-index: 1; }
 @media (max-width: 640px) {
   .wax-intro {
     margin-top: var(--space-5);
+    margin-bottom: var(--space-5);
   }
-  .wax-intro p {
+  .wax-tagline {
     font-size: var(--text-base);
+  }
+  .wax-byline {
+    font-size: var(--text-xs);
   }
   .about-main {
     padding-inline: var(--space-3);
