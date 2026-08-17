@@ -16,7 +16,7 @@ Wax also tracks core audio features for analysis and ordering: BPM, key (Camelot
 
 ![Wax Weekly homepage](images/wax_weekly_homepage.png)
 
-Wax Weekly is the public listening experience built from Wax.
+[Wax Weekly](https://waxweekly.com) is the public listening experience built from Wax.
 
 Five genre profiles: Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop. Each profile is curated into 7 daily playlists across the week. The current collection includes 800 tracks organized using Wax's BPM + mood playlist workflow.
 
@@ -26,7 +26,7 @@ The site is deployed through Cloudflare Pages from the `wax_weekly/` directory i
 
 **Live site:** [waxweekly.com](https://waxweekly.com)  
 **Source:** [`wax_weekly/`](https://github.com/kaseymallette/wax/tree/main/wax_weekly)  
-**Curated by Kasey Mallette**
+**Curated by:** Kasey Mallette
 
 ### Wax Weekly directory
 
