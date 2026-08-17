@@ -1,0 +1,12 @@
+# Keep the HTML and changing Wax Weekly assets revalidated so embedded browsers do not stay on stale weekly data.
+/
+  Cache-Control: no-cache, must-revalidate
+
+/index.html
+  Cache-Control: no-cache, must-revalidate
+
+/*.css
+  Cache-Control: no-cache, must-revalidate
+
+/*.js
+  Cache-Control: no-cache, must-revalidate
