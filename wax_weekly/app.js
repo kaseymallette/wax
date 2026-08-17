@@ -132,9 +132,19 @@
     });
 
     $('station-title').textContent = meta.name;
-    $('station-desc').innerHTML = esc(meta.desc) + '<br><span class="week-desc-detail">Seven playlists for each day of the week.</span>';
+    $('station-desc').textContent = meta.desc + ' Seven playlists for each day of the week.';
     $('playlist-eyebrow').textContent = meta.name + ' · Playlist ' + (currentDay + 1) + ' of 7';
     $('playlist-day').textContent = day.day;
+
+    const playlistLink = $('playlist-link');
+    if (day.playlist_url) {
+      playlistLink.href = day.playlist_url;
+      playlistLink.hidden = false;
+      playlistLink.setAttribute('aria-label', 'Play the ' + meta.name + ' ' + day.day + ' playlist on Spotify');
+    } else {
+      playlistLink.hidden = true;
+      playlistLink.removeAttribute('href');
+    }
 
     animateNumber($('stat-tracks'), tracks.length, 0);
     animateNumber($('stat-bpm'), avg(tracks, 'bpm') || 0, 0);

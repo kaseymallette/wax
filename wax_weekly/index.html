@@ -69,12 +69,19 @@
           <div class="playlist-title">
             <span class="playlist-eyebrow" id="playlist-eyebrow"></span>
             <h2 id="playlist-day"></h2>
+            <a class="playlist-link" id="playlist-link" href="#" target="_blank" rel="noopener noreferrer" hidden>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72c0 .79.87 1.27 1.54.84l10.79-6.86a1 1 0 0 0 0-1.68L9.54 4.3C8.87 3.87 8 4.35 8 5.14z"/></svg>
+              <span>Play playlist on Spotify</span>
+            </a>
           </div>
           <dl class="playlist-stats">
             <div class="stat"><dt>Tracks</dt><dd id="stat-tracks">–</dd></div>
             <div class="stat"><dt>Avg BPM</dt><dd id="stat-bpm">–</dd></div>
             <div class="stat"><dt>Avg energy</dt><dd id="stat-energy">–</dd></div>
-            <div class="stat"><dt>Avg feel</dt><dd id="stat-mood">–</dd></div>
+            <div class="stat stat-mood">
+              <dt><span>Avg mood</span><button type="button" class="info-button" aria-describedby="mood-help" aria-label="How the mood score is calculated">i</button><span class="info-tooltip" id="mood-help" role="tooltip">Mood = Energy + Danceability + Valence. Each component is scored 0–100, so mood ranges from 0–300.</span></dt>
+              <dd id="stat-mood">–</dd>
+            </div>
           </dl>
         </div>
 
@@ -84,7 +91,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>Seven daily playlists per station, clustered by BPM and feel from the Currently Listening pool. Last updated on <span id="footer-week"></span>.</p>
+    <p>Seven daily playlists per station, clustered by BPM and mood from the Currently Listening pool. Last updated on <span id="footer-week"></span>.</p>
   </footer>
 
   <script src="./data.js"></script>

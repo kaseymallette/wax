@@ -329,11 +329,7 @@ main, header, footer { position: relative; z-index: 1; }
   color: var(--color-text-muted);
   font-size: var(--text-sm);
   margin-top: var(--space-1);
-  max-width: 50ch;
-}
-.week-desc-detail {
-  display: inline-block;
-  white-space: nowrap;
+  max-width: 44ch;
 }
 .day-rail {
   display: flex;
@@ -667,7 +663,6 @@ main, header, footer { position: relative; z-index: 1; }
 }
 
 @media (max-width: 640px) {
-  .week-desc-detail { white-space: normal; }
   .header-inner { padding-inline: var(--space-3); }
   .week-label { display: none; }
   .stations,
@@ -713,4 +708,94 @@ main, header, footer { position: relative; z-index: 1; }
   .track-embed { padding-inline: var(--space-4); }
   .track-key { display: none; }
   .track-cols .col-key { display: none; }
+}
+
+/* ---------- Playlist action ---------- */
+.playlist-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid oklch(from var(--accent) l c h / 0.55);
+  border-radius: var(--radius-full);
+  background: oklch(from var(--accent) l c h / 0.12);
+  color: var(--accent);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.playlist-link[hidden] { display: none; }
+.playlist-link svg { width: 0.9rem; height: 0.9rem; flex: 0 0 auto; }
+.playlist-link:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.playlist-link:active { transform: translateY(0) scale(0.98); }
+
+/* ---------- Mood score help ---------- */
+.stat-mood { position: relative; }
+.stat-mood dt {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.info-button {
+  width: 1rem;
+  height: 1rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--color-text-faint);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  font-family: Georgia, serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.info-button:hover,
+.info-button:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.info-tooltip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + var(--space-2));
+  z-index: 8;
+  width: min(18rem, 75vw);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity var(--transition-interactive), transform var(--transition-interactive), visibility var(--transition-interactive);
+}
+.info-button:hover + .info-tooltip,
+.info-button:focus + .info-tooltip,
+.stat-mood:focus-within .info-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .info-tooltip { right: auto; left: 0; }
 }
