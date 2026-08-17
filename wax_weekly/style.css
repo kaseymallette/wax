@@ -630,8 +630,8 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .track-cols .col-rank { text-align: right; }
 .track-cols .col-bpm { text-align: right; }
-.track-cols .col-key,
-.track-cols .col-mood { text-align: center; }
+.track-cols .col-key { text-align: center; }
+.col-mood,
 .col-components {
   display: flex;
   align-items: center;
@@ -639,11 +639,7 @@ main, header, footer { position: relative; z-index: 1; }
   position: relative;
   overflow: visible !important;
 }
-.component-info-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
+.col-mood { justify-content: center; }
 .component-info-wrap {
   position: relative;
   display: inline-flex;
@@ -680,7 +676,7 @@ main, header, footer { position: relative; z-index: 1; }
   transition: opacity var(--transition-interactive), transform var(--transition-interactive), visibility var(--transition-interactive);
 }
 .mood-formula-tooltip {
-  right: -1.25rem;
+  right: 0;
   width: 17rem;
 }
 .component-info-button:hover + .component-info-tooltip,
