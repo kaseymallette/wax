@@ -349,6 +349,7 @@ main, header, footer { position: relative; z-index: 1; }
 .wax-intro-link {
   justify-content: center;
   margin-top: 0;
+  font-size: var(--text-base);
 }
 .header-link {
   margin-top: var(--space-3);
