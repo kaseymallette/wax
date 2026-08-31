@@ -6,7 +6,6 @@ import Papa from "papaparse";
 type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
 
 const WEEKDAYS: Weekday[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
 
 type DailyPlaylistCsvRow = {
   rank?: string;
@@ -103,41 +102,6 @@ function parseWeekStartFromEnv(raw: string | undefined): Date {
     throw new Error(`WAX_WEEK_START is not a valid calendar date: '${s}'.`);
   }
   return d;
-}
-
-function loadWeekdayMap(playlistsDir: string): Record<number, Weekday> {
-  const fallback: Record<number, Weekday> = {
-    1: "Monday",
-    2: "Tuesday",
-    3: "Wednesday",
-    4: "Thursday",
-    5: "Friday",
-    6: "Saturday",
-    7: "Sunday",
-  };
-
-  const mapPath = path.join(playlistsDir, "weekday-map.json");
-  if (!fs.existsSync(mapPath)) return fallback;
-
-  try {
-    const parsed = JSON.parse(fs.readFileSync(mapPath, "utf8")) as Record<string, unknown>;
-    const next: Record<number, Weekday> = { ...fallback };
-    const seen = new Set<Weekday>();
-
-    for (const [rawIndex, rawDay] of Object.entries(parsed)) {
-      const index = Number(rawIndex);
-      if (!Number.isInteger(index) || index < 1 || index > 7) continue;
-      if (typeof rawDay !== "string") continue;
-      if (!WEEKDAY_SET.has(rawDay as Weekday)) continue;
-      if (seen.has(rawDay as Weekday)) continue;
-      next[index] = rawDay as Weekday;
-      seen.add(rawDay as Weekday);
-    }
-
-    return next;
-  } catch {
-    return fallback;
-  }
 }
 
 function parseDailyCsv(filePath: string): NormalizedDailyPlaylistRow[] {
@@ -338,7 +302,6 @@ function main() {
         continue;
       }
 
-      const weekdayMap = loadWeekdayMap(playlistsDir);
       let userRows = 0;
 
       for (let playlistNumber = 1; playlistNumber <= 7; playlistNumber += 1) {
@@ -349,7 +312,8 @@ function main() {
         }
 
         const rows = parseDailyCsv(csvPath);
-        const dayOfWeek = weekdayMap[playlistNumber] ?? WEEKDAYS[playlistNumber - 1];
+        // daily-N.csv is already emitted in final weekday slot order, so use slot index directly.
+        const dayOfWeek = WEEKDAYS[playlistNumber - 1];
 
         for (const row of rows) {
           insertStmt.run({
