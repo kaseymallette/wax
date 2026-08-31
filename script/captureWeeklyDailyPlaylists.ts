@@ -185,6 +185,20 @@ function parseDailyCsv(filePath: string): NormalizedDailyPlaylistRow[] {
 }
 
 function ensureSchema(db: Database.Database) {
+  const columns = db.prepare("PRAGMA table_info(daily_playlist_history)").all() as Array<{ name: string }>;
+  const hasLastUpdated = columns.some((c) => c.name === "last_updated");
+  const hasCapturedAt = columns.some((c) => c.name === "captured_at");
+
+  // Migrate legacy snapshot DBs to the new column name.
+  if (hasCapturedAt && !hasLastUpdated) {
+    try {
+      db.exec("ALTER TABLE daily_playlist_history RENAME COLUMN captured_at TO last_updated;");
+    } catch {
+      db.exec("ALTER TABLE daily_playlist_history ADD COLUMN last_updated INTEGER;");
+      db.exec("UPDATE daily_playlist_history SET last_updated = captured_at WHERE last_updated IS NULL;");
+    }
+  }
+
   db.exec(`
     CREATE TABLE IF NOT EXISTS daily_playlist_history (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -209,7 +223,7 @@ function ensureSchema(db: Database.Database) {
       listen_count INTEGER,
       last_listened_at TEXT,
       spotify_url TEXT,
-      captured_at INTEGER NOT NULL,
+      last_updated INTEGER NOT NULL,
       UNIQUE(user, week_start_date, playlist_number, rank, track_id)
     );
 
@@ -232,7 +246,7 @@ function main() {
   const playlistsRoot = path.resolve(repoRoot, process.env.WAX_PLAYLISTS_ROOT ?? "users");
   const referenceDate = parseWeekStartFromEnv(process.env.WAX_WEEK_START);
   const week = computeIsoWeekInfo(referenceDate);
-  const capturedAt = Date.now();
+  const lastUpdated = Date.now();
 
   if (!users.length) {
     throw new Error("No users supplied. Set WAX_USERS (comma-separated).");
@@ -272,7 +286,7 @@ function main() {
       listen_count,
       last_listened_at,
       spotify_url,
-      captured_at
+      last_updated
     ) VALUES (
       @user,
       @weekStartDate,
@@ -295,7 +309,7 @@ function main() {
       @listenCount,
       @lastListenedAt,
       @spotifyUrl,
-      @capturedAt
+      @lastUpdated
     )
     ON CONFLICT(user, week_start_date, playlist_number, rank, track_id) DO UPDATE SET
       day_of_week = excluded.day_of_week,
@@ -312,7 +326,7 @@ function main() {
       listen_count = excluded.listen_count,
       last_listened_at = excluded.last_listened_at,
       spotify_url = excluded.spotify_url,
-      captured_at = excluded.captured_at
+      last_updated = excluded.last_updated
   `);
 
   let totalRows = 0;
@@ -360,7 +374,7 @@ function main() {
             listenCount: row.listenCount,
             lastListenedAt: row.lastListenedAt,
             spotifyUrl: row.spotifyUrl,
-            capturedAt,
+            lastUpdated,
           });
           userRows += 1;
           totalRows += 1;

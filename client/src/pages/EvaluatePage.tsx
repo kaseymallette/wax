@@ -140,8 +140,8 @@ export default function EvaluatePage() {
       for (const row of data.rows) {
         if (!row.track) continue;
         seed[row.rowIndex] = {
-          decision: null,
-          repeatIntent: defaultKeepIntent(row.track.repeatIntent),
+          decision: "keep",
+          repeatIntent: "currently_listening",
         };
       }
       setDecisions(seed);

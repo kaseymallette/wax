@@ -1,7 +1,10 @@
 import Database from "better-sqlite3";
 import fs from "node:fs";
 import path from "node:path";
-import { buildDailyPlaylists } from "../server/dailyPlaylists";
+import {
+  buildDailyPlaylists,
+  DAILY_PLAYLIST_ORDERING_MODE,
+} from "../server/dailyPlaylists";
 import type { TrackWithStats } from "../shared/schema";
 
 type RepeatIntent = "currently_listening" | "favorites_archive" | "save_for_later" | "skip_for_now" | "off_rotation" | "removed" | "undecided";
@@ -46,6 +49,7 @@ const PLAYLISTS_DIR = path.resolve(
 const SUMMARY_PATH = path.join(PLAYLISTS_DIR, "summary.json");
 const MISSING_FEATURES_PATH = path.join(PLAYLISTS_DIR, "missing-features.log");
 const WEEKDAY_MAP_PATH = path.join(PLAYLISTS_DIR, "weekday-map.json");
+const DAILY_ORDERING_PATH = path.join(PLAYLISTS_DIR, "daily-ordering.json");
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 type Weekday = (typeof WEEKDAYS)[number];
 const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
@@ -88,6 +92,32 @@ function loadWeekdayMap(): Record<number, Weekday> {
     }
 
     return next;
+  } catch {
+    return fallback;
+  }
+}
+
+function loadDailyOrdering(): { firstTrackByPlaylist: Record<number, string> } {
+  const fallback = { firstTrackByPlaylist: {} as Record<number, string> };
+  try {
+    if (!fs.existsSync(DAILY_ORDERING_PATH)) return fallback;
+    const raw = fs.readFileSync(DAILY_ORDERING_PATH, "utf8");
+    const parsed = JSON.parse(raw) as {
+      firstTrackByPlaylist?: Record<string, unknown>;
+      mapping?: Record<string, unknown>;
+    };
+
+    const firstTrackByPlaylist: Record<number, string> = {};
+    for (const [rawIndex, rawTrackId] of Object.entries(parsed.firstTrackByPlaylist ?? parsed.mapping ?? {})) {
+      const index = Number(rawIndex);
+      if (!Number.isInteger(index) || index < 1 || index > 7) continue;
+      if (typeof rawTrackId !== "string") continue;
+      const trackId = rawTrackId.trim();
+      if (!trackId) continue;
+      firstTrackByPlaylist[index] = trackId;
+    }
+
+    return { firstTrackByPlaylist };
   } catch {
     return fallback;
   }
@@ -329,7 +359,10 @@ function main() {
   }
 
   const byId = new Map(tracks.map((t) => [t.id, t]));
-  const daily = buildDailyPlaylists(tracks);
+  const dailyOrdering = loadDailyOrdering();
+  const daily = buildDailyPlaylists(tracks, {
+    firstTrackByPlaylist: dailyOrdering.firstTrackByPlaylist,
+  });
   const weekdayMap = loadWeekdayMap();
   const dailyByIndex = new Map(daily.playlists.map((p) => [p.index, p]));
   const dailyIndexByWeekday = new Map<Weekday, number>();
@@ -390,12 +423,17 @@ function main() {
     },
     files: {
       daily: dailyFiles,
+      dailyOrdering: DAILY_ORDERING_PATH,
       currentlyListening: currentlyListeningPath,
       favoritesArchive: favoritesPath,
       saveForLater: saveForLaterPath,
       skipForNow: skipForNowPath,
       fullMusicLibrary: fullMusicLibraryPath,
       missingFeatures: missingPath,
+    },
+    dailyOrdering: {
+      mode: DAILY_PLAYLIST_ORDERING_MODE,
+      firstTrackByPlaylist: dailyOrdering.firstTrackByPlaylist,
     },
   };
   fs.writeFileSync(SUMMARY_PATH, `${JSON.stringify(summary, null, 2)}\n`, "utf8");

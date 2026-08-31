@@ -8,7 +8,11 @@ import multer from "multer";
 import Database from "better-sqlite3";
 import { storage } from "./storage";
 import { ACTIVE_DB_PATH, ACTIVE_WAX_USER } from "./storage";
-import { buildDailyPlaylists, type DailyPlaylistsResult } from "./dailyPlaylists";
+import {
+  buildDailyPlaylists,
+  DAILY_PLAYLIST_ORDERING_MODE,
+  type DailyPlaylistsResult,
+} from "./dailyPlaylists";
 import {
   listenPayloadSchema,
   dailyPlaylistStatusUpdateSchema,
@@ -34,6 +38,10 @@ const WEEKDAY_MAP_PATH = path.resolve(
 const DAILY_LOCK_PATH = path.resolve(
   process.cwd(),
   path.join("users", WAX_USER, "playlists", "daily-lock.json"),
+);
+const DAILY_ORDERING_PATH = path.resolve(
+  process.cwd(),
+  path.join("users", WAX_USER, "playlists", "daily-ordering.json"),
 );
 
 const upload = multer({
@@ -73,14 +81,55 @@ function writeWeekdayMap(mapping: Record<string, Weekday>): void {
   fs.writeFileSync(WEEKDAY_MAP_PATH, `${JSON.stringify(mapping, null, 2)}\n`, "utf8");
 }
 
+type DailyOrderingFile = {
+  firstTrackByPlaylist: Record<string, string>;
+};
+
+function normalizeFirstTrackMap(input: unknown): Record<string, string> {
+  if (!input || typeof input !== "object") return {};
+  const out: Record<string, string> = {};
+  for (const [rawIndex, rawTrackId] of Object.entries(input as Record<string, unknown>)) {
+    const index = Number(rawIndex);
+    if (!Number.isInteger(index) || index < 1 || index > 7) continue;
+    if (typeof rawTrackId !== "string") continue;
+    const trackId = rawTrackId.trim();
+    if (!trackId) continue;
+    out[String(index)] = trackId;
+  }
+  return out;
+}
+
+function readDailyOrdering(): DailyOrderingFile {
+  try {
+    if (!fs.existsSync(DAILY_ORDERING_PATH)) return { firstTrackByPlaylist: {} };
+    const raw = fs.readFileSync(DAILY_ORDERING_PATH, "utf8");
+    const parsed = JSON.parse(raw) as {
+      firstTrackByPlaylist?: unknown;
+      mapping?: unknown;
+    };
+    return {
+      firstTrackByPlaylist: normalizeFirstTrackMap(parsed.firstTrackByPlaylist ?? parsed.mapping),
+    };
+  } catch {
+    return { firstTrackByPlaylist: {} };
+  }
+}
+
+function writeDailyOrdering(ordering: DailyOrderingFile): void {
+  fs.mkdirSync(path.dirname(DAILY_ORDERING_PATH), { recursive: true });
+  fs.writeFileSync(DAILY_ORDERING_PATH, `${JSON.stringify(ordering, null, 2)}\n`, "utf8");
+}
+
 type DailyLockFile = {
   lockedAt: number;
   data: DailyPlaylistsResult;
 };
 
-function buildLiveDailyPlaylists(): DailyPlaylistsResult {
+function buildLiveDailyPlaylists(ordering = readDailyOrdering()): DailyPlaylistsResult {
   const keepTracks = storage.listTracks({ status: "keep", sort: "last", q: "" });
-  return buildDailyPlaylists(keepTracks);
+  return buildDailyPlaylists(keepTracks, {
+    firstTrackByPlaylist: ordering.firstTrackByPlaylist,
+  });
 }
 
 function buildLockedDailyPlaylists(lockData: DailyPlaylistsResult): DailyPlaylistsResult {
@@ -107,6 +156,7 @@ function buildLockedDailyPlaylists(lockData: DailyPlaylistsResult): DailyPlaylis
 
     return {
       ...playlist,
+      orderingMode: DAILY_PLAYLIST_ORDERING_MODE,
       tracks,
       trackCount: tracks.length,
     };
@@ -455,7 +505,7 @@ export async function registerRoutes(
 
     for (const d of decisions) {
       const keep = d.keepInLibrary === true || d.keepInLibrary === 1;
-      const repeatIntent = keep ? (d.repeatIntent ?? "skip_for_now") : "removed";
+      const repeatIntent = keep ? (d.repeatIntent ?? "currently_listening") : "removed";
       const wantAgain = repeatIntent === "currently_listening" || repeatIntent === "favorites_archive" || repeatIntent === "save_for_later";
       const wouldAgain = repeatIntent === "currently_listening" || repeatIntent === "favorites_archive";
 
@@ -1155,6 +1205,10 @@ export async function registerRoutes(
   const weekdayMapSchema = z.object({
     mapping: z.record(z.string()),
   });
+  const dailyOrderingSchema = z.object({
+    playlistIndex: z.number().int().min(1).max(7),
+    firstTrackId: z.string().trim().min(1).nullable(),
+  });
 
   app.get("/api/playlists/weekday-map", (_req, res) => {
     res.json({ mapping: readWeekdayMap() });
@@ -1178,6 +1232,42 @@ export async function registerRoutes(
       res.json({ ok: true, mapping });
     } catch {
       res.status(500).json({ error: "Could not save weekday map" });
+    }
+  });
+
+  app.get("/api/playlists/daily-ordering", (_req, res) => {
+    const ordering = readDailyOrdering();
+    res.json({
+      mode: DAILY_PLAYLIST_ORDERING_MODE,
+      firstTrackByPlaylist: ordering.firstTrackByPlaylist,
+    });
+  });
+
+  app.put("/api/playlists/daily-ordering", (req, res) => {
+    const parsed = dailyOrderingSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ error: "Invalid daily ordering payload" });
+    }
+    const { playlistIndex, firstTrackId } = parsed.data;
+    const current = readDailyOrdering();
+    const nextFirstTrackByPlaylist = { ...current.firstTrackByPlaylist };
+    if (firstTrackId === null) {
+      delete nextFirstTrackByPlaylist[String(playlistIndex)];
+    } else {
+      nextFirstTrackByPlaylist[String(playlistIndex)] = firstTrackId;
+    }
+    const next: DailyOrderingFile = {
+      firstTrackByPlaylist: nextFirstTrackByPlaylist,
+    };
+    try {
+      writeDailyOrdering(next);
+      return res.json({
+        ok: true,
+        mode: DAILY_PLAYLIST_ORDERING_MODE,
+        firstTrackByPlaylist: next.firstTrackByPlaylist,
+      });
+    } catch {
+      return res.status(500).json({ error: "Could not save daily first track" });
     }
   });
 
