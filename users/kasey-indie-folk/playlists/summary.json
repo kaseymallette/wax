@@ -1,21 +1,21 @@
 {
   "user": "kasey-indie-folk",
-  "generatedAt": 1786871413213,
+  "generatedAt": 1788153850294,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 150,
+    "currentlyListeningCount": 189,
     "excludedForReview": 0,
-    "playlistMaxSize": 25,
-    "usableTrackCount": 150,
+    "playlistMaxSize": 30,
+    "usableTrackCount": 189,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 150,
+    "currentlyListening": 189,
     "favoritesArchive": 0,
     "saveForLater": 0,
-    "skipForNow": 0,
-    "fullMusicLibrary": 150
+    "skipForNow": 1,
+    "fullMusicLibrary": 190
   },
   "files": {
     "daily": [
@@ -27,11 +27,24 @@
       "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/daily-7.csv"
     ],
+    "dailyOrdering": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/daily-ordering.json",
     "currentlyListening": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/save-for-later.csv",
     "skipForNow": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/skip-for-now.csv",
     "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/playlists/full-music-library.csv",
     "missingFeatures": null
+  },
+  "dailyOrdering": {
+    "mode": "nearest_neighbors",
+    "firstTrackByPlaylist": {
+      "1": "6Zu6diJy73z6IMOMtYQiSy",
+      "2": "6aBmVhShJV8rY9YAh4xxo6",
+      "3": "50kY9njISacBSyPLyR8cwk",
+      "4": "47cNDW1xyM03mT2kseO41a",
+      "5": "7JvNsKLxsUTGj7hR0Hkw2Z",
+      "6": "7DTAZBykDP2m8LkYehrwhl",
+      "7": "1O7JuVMcMWueSkIAf1C6P1"
+    }
   }
 }

@@ -1,21 +1,21 @@
 {
   "user": "kasey-alt-rock",
-  "generatedAt": 1786870938279,
+  "generatedAt": 1788082772677,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-alt-rock/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 175,
+    "currentlyListeningCount": 193,
     "excludedForReview": 0,
-    "playlistMaxSize": 25,
-    "usableTrackCount": 175,
+    "playlistMaxSize": 30,
+    "usableTrackCount": 193,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 175,
+    "currentlyListening": 193,
     "favoritesArchive": 0,
     "saveForLater": 0,
-    "skipForNow": 0,
-    "fullMusicLibrary": 175
+    "skipForNow": 7,
+    "fullMusicLibrary": 200
   },
   "files": {
     "daily": [
@@ -27,11 +27,24 @@
       "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/daily-7.csv"
     ],
+    "dailyOrdering": "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/daily-ordering.json",
     "currentlyListening": "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/save-for-later.csv",
     "skipForNow": "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/skip-for-now.csv",
     "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kasey-alt-rock/playlists/full-music-library.csv",
     "missingFeatures": null
+  },
+  "dailyOrdering": {
+    "mode": "nearest_neighbors",
+    "firstTrackByPlaylist": {
+      "1": "5UiwpYH8hfVR6CAvzzrP7B",
+      "2": "5jGxeAkNbep75x8JLeb52H",
+      "3": "1EDPVGbyPKJPeGqATwXZvN",
+      "4": "7DHdCB4fCWeIgNkUJBaaRq",
+      "5": "35Bv4QuokBrmWya208VcK2",
+      "6": "6tmlwJjSw8QLZnBjwZ4Mej",
+      "7": "7aKPErDLvieg4nJTWqCrNc"
+    }
   }
 }

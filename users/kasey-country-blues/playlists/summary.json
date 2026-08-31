@@ -1,21 +1,21 @@
 {
   "user": "kasey-country-blues",
-  "generatedAt": 1786871308034,
+  "generatedAt": 1788152831714,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-country-blues/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 150,
+    "currentlyListeningCount": 165,
     "excludedForReview": 0,
     "playlistMaxSize": 25,
-    "usableTrackCount": 150,
+    "usableTrackCount": 165,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 150,
+    "currentlyListening": 165,
     "favoritesArchive": 0,
     "saveForLater": 0,
     "skipForNow": 0,
-    "fullMusicLibrary": 150
+    "fullMusicLibrary": 165
   },
   "files": {
     "daily": [
@@ -27,11 +27,24 @@
       "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/daily-7.csv"
     ],
+    "dailyOrdering": "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/daily-ordering.json",
     "currentlyListening": "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/save-for-later.csv",
     "skipForNow": "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/skip-for-now.csv",
     "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kasey-country-blues/playlists/full-music-library.csv",
     "missingFeatures": null
+  },
+  "dailyOrdering": {
+    "mode": "nearest_neighbors",
+    "firstTrackByPlaylist": {
+      "1": "2PmMh2t7jAtN6cqFooA0Xy",
+      "2": "0XfwXFXOI7oys9rsZ2sjrt",
+      "3": "3nEotpBFeXq0OJstuHzwDP",
+      "4": "23sgFrguc8l77dr0IFhsNg",
+      "5": "2qDqybiDVMxdEN20HcJJEr",
+      "6": "1wgXZFadykcGX9W1olAOmp",
+      "7": "1dDfNKasu3ETniVIYLAZNM"
+    }
   }
 }

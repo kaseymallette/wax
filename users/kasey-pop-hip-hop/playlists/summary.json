@@ -1,20 +1,20 @@
 {
   "user": "kasey-pop-hip-hop",
-  "generatedAt": 1786871541548,
+  "generatedAt": 1788155313144,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 175,
+    "currentlyListeningCount": 173,
     "excludedForReview": 0,
     "playlistMaxSize": 25,
-    "usableTrackCount": 175,
+    "usableTrackCount": 173,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 175,
+    "currentlyListening": 173,
     "favoritesArchive": 0,
     "saveForLater": 0,
-    "skipForNow": 0,
+    "skipForNow": 2,
     "fullMusicLibrary": 175
   },
   "files": {
@@ -27,11 +27,24 @@
       "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/daily-7.csv"
     ],
+    "dailyOrdering": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/daily-ordering.json",
     "currentlyListening": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/save-for-later.csv",
     "skipForNow": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/skip-for-now.csv",
     "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/playlists/full-music-library.csv",
     "missingFeatures": null
+  },
+  "dailyOrdering": {
+    "mode": "nearest_neighbors",
+    "firstTrackByPlaylist": {
+      "1": "5IYWdpFJAeKLggc7B8xtJm",
+      "2": "0wbNcKAkExGmWiicedOyiR",
+      "3": "1IHWl5LamUGEuP4ozKQSXZ",
+      "4": "7r6PigmGzlB3YPB7wvBBbi",
+      "5": "3stOygN0I7CIvkEB2LJGbv",
+      "6": "37jTPJgwCCmIGMPB45jrPV",
+      "7": "0UNTBB02C1aB55Fu4H63qd"
+    }
   }
 }
