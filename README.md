@@ -88,6 +88,18 @@ wax_weekly/
 └── _headers      # Cloudflare cache-control headers
 ```
 
+Refresh `wax_weekly/data.js` + `wax_weekly/art.js` from weekly snapshot DBs (latest available snapshot per public station):
+
+```bash
+npm run weekly:site:build
+```
+
+Optional: force a specific week start (UTC Monday):
+
+```bash
+WAX_WEEKLY_WEEK_START=2026-08-31 npm run weekly:site:build
+```
+
 ### Local Wax App Walkthrough
 
 > The screenshots below are from the `test` user, using a 999-song playlist import from `Billboards_Greatest_Hits_of_All_Time.csv`.

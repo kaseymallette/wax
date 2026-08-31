@@ -34,7 +34,13 @@
   applyTheme();
 
   /* ---------- Last updated label ---------- */
-  const updatedText = 'August 16, 2026';
+  function fmtDateUtc(d) {
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  }
+  const updatedAt = Number.isFinite(DATA.last_updated)
+    ? new Date(Number(DATA.last_updated))
+    : (DATA.week_start ? new Date(DATA.week_start + 'T00:00:00Z') : new Date());
+  const updatedText = fmtDateUtc(updatedAt);
   $('week-label').textContent = 'Last updated on ' + updatedText;
   $('footer-week').textContent = updatedText;
 
