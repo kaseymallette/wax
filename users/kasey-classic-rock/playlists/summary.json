@@ -1,21 +1,21 @@
 {
   "user": "kasey-classic-rock",
-  "generatedAt": 1786871155455,
+  "generatedAt": 1788151663887,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 150,
+    "currentlyListeningCount": 160,
     "excludedForReview": 0,
     "playlistMaxSize": 25,
-    "usableTrackCount": 150,
+    "usableTrackCount": 160,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 150,
+    "currentlyListening": 160,
     "favoritesArchive": 0,
     "saveForLater": 0,
-    "skipForNow": 0,
-    "fullMusicLibrary": 150
+    "skipForNow": 1,
+    "fullMusicLibrary": 161
   },
   "files": {
     "daily": [
@@ -27,11 +27,24 @@
       "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/daily-7.csv"
     ],
+    "dailyOrdering": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/daily-ordering.json",
     "currentlyListening": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/save-for-later.csv",
     "skipForNow": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/skip-for-now.csv",
     "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/playlists/full-music-library.csv",
     "missingFeatures": null
+  },
+  "dailyOrdering": {
+    "mode": "nearest_neighbors",
+    "firstTrackByPlaylist": {
+      "1": "0yfNXxlyXdmP0ue1iJijx1",
+      "2": "69QHm3pustz01CJRwdo20z",
+      "3": "5PKnZzkjs2y3WTbIYtv5Fq",
+      "4": "54g63GAn77x9NcjiLzy7cW",
+      "5": "6hu1f1cXSw7OAqhpSQ2zDy",
+      "6": "5TnzOUFWoZHUEtOWlxrIlY",
+      "7": "6QDbGdbJ57Mtkflsg42WV5"
+    }
   }
 }

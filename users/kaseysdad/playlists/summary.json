@@ -1,21 +1,21 @@
 {
   "user": "kaseysdad",
-  "generatedAt": 1784515021647,
-  "dbPath": "/Users/kaseymallette/github/wax/data.db",
+  "generatedAt": 1788077325101,
+  "dbPath": "/Users/kaseymallette/github/wax/users/kaseysdad/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 168,
+    "currentlyListeningCount": 201,
     "excludedForReview": 0,
-    "playlistMaxSize": 25,
-    "usableTrackCount": 168,
+    "playlistMaxSize": 30,
+    "usableTrackCount": 201,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 168,
+    "currentlyListening": 201,
     "favoritesArchive": 0,
     "saveForLater": 36,
-    "skipForNow": 74,
-    "fullMusicLibrary": 278
+    "skipForNow": 76,
+    "fullMusicLibrary": 313
   },
   "files": {
     "daily": [
@@ -27,11 +27,24 @@
       "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-6.csv",
       "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-7.csv"
     ],
+    "dailyOrdering": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/daily-ordering.json",
     "currentlyListening": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/currently-listening.csv",
     "favoritesArchive": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/favorites-archive.csv",
     "saveForLater": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/save-for-later.csv",
     "skipForNow": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/skip-for-now.csv",
     "fullMusicLibrary": "/Users/kaseymallette/github/wax/users/kaseysdad/playlists/full-music-library.csv",
     "missingFeatures": null
+  },
+  "dailyOrdering": {
+    "mode": "nearest_neighbors",
+    "firstTrackByPlaylist": {
+      "1": "5PKnZzkjs2y3WTbIYtv5Fq",
+      "2": "nearest_neighbors",
+      "3": "45s88Xopo6KvHc0PQ05aGg",
+      "4": "6fJld32axCH9Aw7XlVLoGG",
+      "5": "nearest_neighbors",
+      "6": "3UQA4UTVqcI0VtSQ38nlq1",
+      "7": "nearest_neighbors"
+    }
   }
 }
