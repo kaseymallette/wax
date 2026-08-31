@@ -5,6 +5,8 @@ const PLAYLIST_MAX_SIZE = 30;
 const KMEANS_MAX_ITERS = 25;
 
 type Vector2 = { bpm: number; mood: number };
+export const DAILY_PLAYLIST_ORDERING_MODE = "nearest_neighbors" as const;
+export type DailyPlaylistOrderingMode = typeof DAILY_PLAYLIST_ORDERING_MODE;
 
 type CandidateTrack = {
   track: TrackWithStats;
@@ -38,6 +40,7 @@ export type DailyPlaylistTrack = {
 export type DailyPlaylist = {
   index: number;
   trackCount: number;
+  orderingMode: DailyPlaylistOrderingMode;
   tracks: DailyPlaylistTrack[];
 };
 
@@ -51,6 +54,12 @@ export type DailyPlaylistsResult = {
     excludedMissingFeatures: number;
     droppedForCapacity: number;
   };
+};
+
+export type DailyPlaylistOrderingMap = Partial<Record<number, DailyPlaylistOrderingMode>>;
+
+type BuildDailyPlaylistsOptions = {
+  firstTrackByPlaylist?: Record<string | number, string>;
 };
 
 function playlistMaxSizeForCount(currentlyListeningCount: number): number {
@@ -270,31 +279,34 @@ function rebalanceClusterSizes(clusters: Cluster[], totalTracks: number): void {
   }
 }
 
-function orderClusterMembers(cluster: Cluster): CandidateTrack[] {
+function orderClusterMembers(
+  cluster: Cluster,
+  playlistIndex: number,
+  firstTrackByPlaylist?: Record<string | number, string>,
+): CandidateTrack[] {
   if (cluster.members.length <= 1) return [...cluster.members];
 
   const remaining = [...cluster.members];
+  const centroid: Vector2 = {
+    bpm: mean(remaining.map((m) => m.normalized.bpm)),
+    mood: mean(remaining.map((m) => m.normalized.mood)),
+  };
 
-  // Seed each daily playlist with the highest-mood track, then smooth transitions
-  // using nearest-neighbor ordering for the rest of the cluster.
-  let startIdx = 0;
-  for (let i = 1; i < remaining.length; i += 1) {
-    const current = remaining[i];
-    const best = remaining[startIdx];
-    const currentMood = current.moodValue;
-    const bestMood = best.moodValue;
-    if (currentMood > bestMood) {
-      startIdx = i;
-      continue;
-    }
-    if (currentMood === bestMood) {
-      const currentBpm = current.track.bpm ?? Number.NEGATIVE_INFINITY;
-      const bestBpm = best.track.bpm ?? Number.NEGATIVE_INFINITY;
-      if (currentBpm > bestBpm) {
+  const requestedFirstTrackId = firstTrackByPlaylist?.[playlistIndex] ?? firstTrackByPlaylist?.[String(playlistIndex)];
+  let startIdx = requestedFirstTrackId
+    ? remaining.findIndex((member) => member.track.id === requestedFirstTrackId)
+    : -1;
+  if (startIdx < 0) {
+    startIdx = 0;
+    let bestStartDistance = distance(remaining[0].normalized, centroid);
+    for (let i = 1; i < remaining.length; i += 1) {
+      const d = distance(remaining[i].normalized, centroid);
+      if (d < bestStartDistance) {
         startIdx = i;
+        bestStartDistance = d;
         continue;
       }
-      if (currentBpm === bestBpm && current.track.id.localeCompare(best.track.id) < 0) {
+      if (d === bestStartDistance && remaining[i].track.id.localeCompare(remaining[startIdx].track.id) < 0) {
         startIdx = i;
       }
     }
@@ -320,7 +332,7 @@ function orderClusterMembers(cluster: Cluster): CandidateTrack[] {
   return ordered;
 }
 
-export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsResult {
+export function buildDailyPlaylists(tracks: TrackWithStats[], options: BuildDailyPlaylistsOptions = {}): DailyPlaylistsResult {
   const currentlyListening = tracks.filter((t) => t.repeatIntent === "currently_listening");
   const eligibleCurrentlyListening = currentlyListening.filter((t) => t.dailyPlaylistStatus !== "review");
   const excludedForReview = currentlyListening.length - eligibleCurrentlyListening.length;
@@ -352,7 +364,9 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
   rebalanceClusterSizes(clusters, normalized.length - droppedForCapacity);
 
   const playlists: DailyPlaylist[] = clusters.slice(0, PLAYLIST_COUNT).map((cluster, i) => {
-    const ordered = orderClusterMembers(cluster);
+    const playlistIndex = i + 1;
+    const orderingMode = DAILY_PLAYLIST_ORDERING_MODE;
+    const ordered = orderClusterMembers(cluster, playlistIndex, options.firstTrackByPlaylist);
     const tracksOut: DailyPlaylistTrack[] = ordered.map((c) => ({
       id: c.track.id,
       name: c.track.name,
@@ -371,8 +385,9 @@ export function buildDailyPlaylists(tracks: TrackWithStats[]): DailyPlaylistsRes
     }));
 
     return {
-      index: i + 1,
+      index: playlistIndex,
       trackCount: tracksOut.length,
+      orderingMode,
       tracks: tracksOut,
     };
   });

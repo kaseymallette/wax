@@ -16,6 +16,8 @@ import { queryClient } from "@/lib/queryClient";
 import { Check, ChevronDown, ChevronUp, Circle, Lock, LockOpen, Music2, Square, X } from "lucide-react";
 
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
+const DAILY_ORDERING_MODE = "nearest_neighbors" as const;
+const AUTO_FIRST_TRACK = "__auto__";
 
 type PlaylistTrack = {
   id: string;
@@ -41,7 +43,13 @@ type WeekdayMapResp = {
 type Playlist = {
   index: number;
   trackCount: number;
+  orderingMode: typeof DAILY_ORDERING_MODE;
   tracks: PlaylistTrack[];
+};
+
+type DailyOrderingResp = {
+  mode: typeof DAILY_ORDERING_MODE;
+  firstTrackByPlaylist: Record<string, string>;
 };
 
 type Resp = {
@@ -108,6 +116,38 @@ export default function PlaylistsPage() {
     },
   });
 
+  const reclusterMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", "/api/playlists/daily-recluster");
+      return res.json();
+    },
+    onSuccess: async () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/playlists/daily"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/playlists/daily-ordering"] });
+      await queryClient.refetchQueries({ queryKey: ["/api/playlists/daily"], type: "active" });
+    },
+  });
+
+  const firstTrackMutation = useMutation({
+    mutationFn: async ({
+      playlistIndex,
+      firstTrackId,
+    }: {
+      playlistIndex: number;
+      firstTrackId: string | null;
+    }) => {
+      const res = await apiRequest("PUT", "/api/playlists/daily-ordering", {
+        playlistIndex,
+        firstTrackId,
+      });
+      return res.json();
+    },
+    onSuccess: async () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/playlists/daily"] });
+      await queryClient.refetchQueries({ queryKey: ["/api/playlists/daily"], type: "active" });
+    },
+  });
+
   const lockMutation = useMutation({
     mutationFn: async () => {
       const res = await apiRequest("POST", "/api/playlists/daily-lock");
@@ -145,11 +185,19 @@ export default function PlaylistsPage() {
       return res.json();
     },
   });
+  const orderingQuery = useQuery<DailyOrderingResp>({
+    queryKey: ["/api/playlists/daily-ordering"],
+    queryFn: async () => {
+      const res = await apiRequest("GET", "/api/playlists/daily-ordering");
+      return res.json();
+    },
+  });
   const playlists = query.data?.playlists ?? [];
   const diagnostics = query.data?.diagnostics;
   const isLocked = query.data?.isLocked ?? false;
   const lockedAt = query.data?.lockedAt ?? null;
   const keepTracks = keepTracksQuery.data ?? [];
+  const firstTrackByPlaylist = orderingQuery.data?.firstTrackByPlaylist ?? {};
   const compareArtistAlbumSong = (a: KeepTrack, b: KeepTrack) => {
     return a.artists.localeCompare(b.artists) || a.album.localeCompare(b.album) || a.name.localeCompare(b.name);
   };
@@ -300,6 +348,15 @@ export default function PlaylistsPage() {
                     <Button
                       size="sm"
                       variant="secondary"
+                      onClick={() => reclusterMutation.mutate()}
+                      disabled={reclusterMutation.isPending}
+                      data-testid="button-daily-recluster"
+                    >
+                      <Music2 className="mr-1 h-3.5 w-3.5" /> Recluster
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="secondary"
                       onClick={() => lockMutation.mutate()}
                       disabled={lockMutation.isPending || isLocked}
                       data-testid="button-daily-lock"
@@ -342,6 +399,14 @@ export default function PlaylistsPage() {
               const isExpanded = expanded.has(panelKey);
               const preview = playlist.tracks.slice(0, 5);
               const visibleTracks = isExpanded ? playlist.tracks : preview;
+              const tracksForFirstSongSelect = [...playlist.tracks].sort((a, b) => {
+                return a.name.localeCompare(b.name) || a.artists.localeCompare(b.artists) || a.id.localeCompare(b.id);
+              });
+              const persistedFirstTrackId = firstTrackByPlaylist[String(playlist.index)];
+              const persistedExists = persistedFirstTrackId
+                ? playlist.tracks.some((track) => track.id === persistedFirstTrackId)
+                : false;
+              const selectedFirstTrackValue = persistedExists ? persistedFirstTrackId : AUTO_FIRST_TRACK;
               return (
                 <div key={playlist.index} className="rounded-xl border border-border bg-card p-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
@@ -350,6 +415,31 @@ export default function PlaylistsPage() {
                       <p className="text-xs text-muted-foreground">{playlist.trackCount} songs (max {diagnostics.playlistMaxSize})</p>
                     </div>
                     <div className="flex items-center gap-2">
+                      <div className="rounded-md border border-border bg-secondary/20 px-3 py-2 text-xs text-muted-foreground">
+                        Nearest Neighbors
+                      </div>
+                      <Select
+                        value={selectedFirstTrackValue}
+                        onValueChange={(value) =>
+                          firstTrackMutation.mutate({
+                            playlistIndex: playlist.index,
+                            firstTrackId: value === AUTO_FIRST_TRACK ? null : value,
+                          })
+                        }
+                        disabled={firstTrackMutation.isPending || isLocked}
+                      >
+                        <SelectTrigger className="w-64" data-testid={`select-playlist-first-track-${playlist.index}`}>
+                          <SelectValue placeholder="First song" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value={AUTO_FIRST_TRACK}>Auto pick first song</SelectItem>
+                          {tracksForFirstSongSelect.map((track) => (
+                            <SelectItem key={track.id} value={track.id}>
+                              {track.name} - {track.artists}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <Select
                         value={dayMap[playlist.index] ?? "Monday"}
                         onValueChange={(day) => updateDay(playlist.index, day)}
