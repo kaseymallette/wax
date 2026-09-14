@@ -1,21 +1,21 @@
 {
   "user": "kasey-classic-rock",
-  "generatedAt": 1788151663887,
+  "generatedAt": 1789372894416,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-classic-rock/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 160,
+    "currentlyListeningCount": 170,
     "excludedForReview": 0,
     "playlistMaxSize": 25,
-    "usableTrackCount": 160,
+    "usableTrackCount": 170,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 160,
+    "currentlyListening": 170,
     "favoritesArchive": 0,
     "saveForLater": 0,
-    "skipForNow": 1,
-    "fullMusicLibrary": 161
+    "skipForNow": 0,
+    "fullMusicLibrary": 170
   },
   "files": {
     "daily": [
@@ -38,13 +38,13 @@
   "dailyOrdering": {
     "mode": "nearest_neighbors",
     "firstTrackByPlaylist": {
-      "1": "0yfNXxlyXdmP0ue1iJijx1",
-      "2": "69QHm3pustz01CJRwdo20z",
+      "1": "6TjjZllUyDPIBiFuHZSVtm",
+      "2": "31VLSfg86NJN74rUHQi7e8",
       "3": "5PKnZzkjs2y3WTbIYtv5Fq",
-      "4": "54g63GAn77x9NcjiLzy7cW",
-      "5": "6hu1f1cXSw7OAqhpSQ2zDy",
-      "6": "5TnzOUFWoZHUEtOWlxrIlY",
-      "7": "6QDbGdbJ57Mtkflsg42WV5"
+      "4": "6QDbGdbJ57Mtkflsg42WV5",
+      "5": "3TO7bbrUKrOSPGRTB5MeCz",
+      "6": "57bgtoPSgt236HzfBOd8kj",
+      "7": "0jrRDpGv6FFizspjJJoH5i"
     }
   }
 }
