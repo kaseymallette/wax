@@ -1,21 +1,21 @@
 {
   "user": "kasey-indie-folk",
-  "generatedAt": 1788153850294,
+  "generatedAt": 1789374093354,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-indie-folk/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 189,
+    "currentlyListeningCount": 203,
     "excludedForReview": 0,
     "playlistMaxSize": 30,
-    "usableTrackCount": 189,
+    "usableTrackCount": 203,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 189,
+    "currentlyListening": 203,
     "favoritesArchive": 0,
     "saveForLater": 0,
-    "skipForNow": 1,
-    "fullMusicLibrary": 190
+    "skipForNow": 0,
+    "fullMusicLibrary": 203
   },
   "files": {
     "daily": [
@@ -38,13 +38,13 @@
   "dailyOrdering": {
     "mode": "nearest_neighbors",
     "firstTrackByPlaylist": {
-      "1": "6Zu6diJy73z6IMOMtYQiSy",
-      "2": "6aBmVhShJV8rY9YAh4xxo6",
-      "3": "50kY9njISacBSyPLyR8cwk",
+      "1": "5NOKqfyuSU3e1sqvildQmM",
+      "2": "4KAs4IcxluXDFGuV4XCEJa",
+      "3": "3NDPcoeno6oasqi6Hs75Ax",
       "4": "47cNDW1xyM03mT2kseO41a",
-      "5": "7JvNsKLxsUTGj7hR0Hkw2Z",
-      "6": "7DTAZBykDP2m8LkYehrwhl",
-      "7": "1O7JuVMcMWueSkIAf1C6P1"
+      "5": "3ApAsbQP7d5GlFwwdExaTY",
+      "6": "7buthCT0ygAmfSN8iAjmMU",
+      "7": "4LftJwczbSOnmeRDMfPpOm"
     }
   }
 }
