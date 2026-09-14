@@ -1,21 +1,21 @@
 {
   "user": "kasey-pop-hip-hop",
-  "generatedAt": 1788155313144,
+  "generatedAt": 1789375719429,
   "dbPath": "/Users/kaseymallette/github/wax/users/kasey-pop-hip-hop/music_library.db",
   "diagnostics": {
-    "currentlyListeningCount": 173,
+    "currentlyListeningCount": 207,
     "excludedForReview": 0,
-    "playlistMaxSize": 25,
-    "usableTrackCount": 173,
+    "playlistMaxSize": 30,
+    "usableTrackCount": 207,
     "excludedMissingFeatures": 0,
     "droppedForCapacity": 0
   },
   "counts": {
-    "currentlyListening": 173,
+    "currentlyListening": 207,
     "favoritesArchive": 0,
     "saveForLater": 0,
-    "skipForNow": 2,
-    "fullMusicLibrary": 175
+    "skipForNow": 0,
+    "fullMusicLibrary": 207
   },
   "files": {
     "daily": [
@@ -38,13 +38,13 @@
   "dailyOrdering": {
     "mode": "nearest_neighbors",
     "firstTrackByPlaylist": {
-      "1": "5IYWdpFJAeKLggc7B8xtJm",
-      "2": "0wbNcKAkExGmWiicedOyiR",
-      "3": "1IHWl5LamUGEuP4ozKQSXZ",
-      "4": "7r6PigmGzlB3YPB7wvBBbi",
-      "5": "3stOygN0I7CIvkEB2LJGbv",
+      "1": "3qpJzh7qdmHVokaYdeZWfR",
+      "2": "2c5Isyd07hWsl7AQia2Dig",
+      "3": "6R4flNWy1pWkjzwg3TCDlM",
+      "4": "1TV4lMxAi2EjmiDpyzYZHi",
+      "5": "1SF8piqsZWn86DajVKih8F",
       "6": "37jTPJgwCCmIGMPB45jrPV",
-      "7": "0UNTBB02C1aB55Fu4H63qd"
+      "7": "3stOygN0I7CIvkEB2LJGbv"
     }
   }
 }
