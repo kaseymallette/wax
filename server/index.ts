@@ -2,7 +2,6 @@ import "dotenv/config";
 import express, { Response, NextFunction } from 'express';
 import type { Request } from 'express';
 import { registerRoutes } from "./routes";
-import { ACTIVE_DB_PATH, ACTIVE_WAX_USER } from "./storage";
 import { serveStatic } from "./static";
 import { createServer } from "node:http";
 
@@ -99,7 +98,7 @@ app.use((req, res, next) => {
     },
     () => {
       log(`serving on http://${host}:${port}`);
-      log(`active user=${ACTIVE_WAX_USER} db=${ACTIVE_DB_PATH}`);
+      log("runtime=v2-phase1");
     },
   );
 })();

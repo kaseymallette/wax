@@ -5,28 +5,14 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/lib/theme";
-import Shuffle from "@/pages/Shuffle";
-import EvaluatePage from "@/pages/EvaluatePage";
-import LibraryPage from "@/pages/LibraryPage";
-import RecentsPage from "@/pages/RecentsPage";
-import KeepsPage from "@/pages/KeepsPage";
 import PlaylistsPage from "@/pages/PlaylistsPage";
-import StatsPage from "@/pages/StatsPage";
-import ImportPage from "@/pages/ImportPage";
 import NotFound from "@/pages/not-found";
 
 function AppRouter() {
   return (
     <Switch>
-      <Route path="/" component={ImportPage} />
-      <Route path="/shuffle" component={Shuffle} />
-      <Route path="/import" component={ImportPage} />
-      <Route path="/evaluate" component={EvaluatePage} />
-      <Route path="/library" component={LibraryPage} />
-      <Route path="/recents" component={RecentsPage} />
-      <Route path="/keeps" component={KeepsPage} />
+      <Route path="/" component={PlaylistsPage} />
       <Route path="/playlists" component={PlaylistsPage} />
-      <Route path="/stats" component={StatsPage} />
       <Route component={NotFound} />
     </Switch>
   );

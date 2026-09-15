@@ -75,6 +75,9 @@ Delete these components as part of implementation (not preserve/migrate):
 - V1 persistent data model + scripts:
   - persistent library/listen/repeat-intent oriented storage flow in `server/storage.ts`,
   - scripts dedicated to library/decision lifecycle (`decisions:*`, `user:import`, `user:remove`, `user:dupes`, library backup/restore lifecycle tied to V1 model, etc.).
+- Legacy user data directories:
+  - remove all existing entries under `users/`, including profile-style and person-style folders and `users/test`,
+  - V2 starts from a clean configuration-first model because the architecture is being redone and V1 user artifacts are intentionally not preserved.
 
 Note: keep and reuse algorithm/publish/snapshot code paths only where behavior matches V2 after refactor.
 
@@ -145,6 +148,7 @@ Validation rules:
 
 - No UI path remains for Import/Evaluate/Shuffle/Library/Recents/Keeps/Stats.
 - No runtime dependency on V1 persistent listening-state data.
+- `users/` has been fully cleaned of legacy V1 user folders (including `users/test`) before V2 runtime setup begins.
 
 ---
 
