@@ -1,7 +1,4 @@
-import type { TrackWithStats } from "@shared/schema";
-
 const PLAYLIST_COUNT = 7;
-const PLAYLIST_MAX_SIZE = 30;
 const KMEANS_MAX_ITERS = 25;
 
 type Vector2 = { bpm: number; mood: number };
@@ -9,7 +6,7 @@ export const DAILY_PLAYLIST_ORDERING_MODE = "nearest_neighbors" as const;
 export type DailyPlaylistOrderingMode = typeof DAILY_PLAYLIST_ORDERING_MODE;
 
 type CandidateTrack = {
-  track: TrackWithStats;
+  track: PlaylistSourceTrack;
   raw: Vector2;
   normalized: Vector2;
   moodValue: number;
@@ -58,18 +55,25 @@ export type DailyPlaylistsResult = {
 
 export type DailyPlaylistOrderingMap = Partial<Record<number, DailyPlaylistOrderingMode>>;
 
+export type PlaylistSourceTrack = {
+  id: string;
+  name: string;
+  artists: string;
+  album: string;
+  dailyPlaylistStatus?: "include" | "review";
+  albumArtUrl?: string | null;
+  spotifyUrl?: string | null;
+  bpm?: number | null;
+  camelot?: string | null;
+  energy?: number | null;
+  valence?: number | null;
+  dance?: number | null;
+  albumYear?: number | null;
+};
+
 type BuildDailyPlaylistsOptions = {
   firstTrackByPlaylist?: Record<string | number, string>;
 };
-
-function playlistMaxSizeForCount(currentlyListeningCount: number): number {
-  if (currentlyListeningCount <= 35) return 5;
-  if (currentlyListeningCount <= 70) return 10;
-  if (currentlyListeningCount <= 105) return 15;
-  if (currentlyListeningCount <= 140) return 20;
-  if (currentlyListeningCount <= 175) return 25;
-  return PLAYLIST_MAX_SIZE;
-}
 
 function isFiniteNumber(v: unknown): v is number {
   return typeof v === "number" && Number.isFinite(v);
@@ -93,7 +97,7 @@ function stdDev(values: number[], avg: number): number {
   return std > 0 ? std : 1;
 }
 
-function normalizeCandidates(candidates: Array<{ track: TrackWithStats; raw: Vector2; moodValue: number }>): CandidateTrack[] {
+function normalizeCandidates(candidates: Array<{ track: PlaylistSourceTrack; raw: Vector2; moodValue: number }>): CandidateTrack[] {
   const bpmValues = candidates.map((c) => c.raw.bpm);
   const moodValues = candidates.map((c) => c.raw.mood);
   const bpmMean = mean(bpmValues);
@@ -185,48 +189,6 @@ function runKMeans(points: CandidateTrack[], k: number): Cluster[] {
     clusters[idx].members.push(point);
   }
   return clusters;
-}
-
-function enforcePlaylistCap(clusters: Cluster[], playlistMaxSize: number): { droppedForCapacity: number } {
-  let droppedForCapacity = 0;
-
-  const withOverflow = () => clusters.findIndex((c) => c.members.length > playlistMaxSize);
-
-  let overflowIdx = withOverflow();
-  while (overflowIdx !== -1) {
-    const cluster = clusters[overflowIdx];
-    const ranked = [...cluster.members].sort((a, b) => {
-      const da = distance(a.normalized, cluster.centroid);
-      const db = distance(b.normalized, cluster.centroid);
-      if (db !== da) return db - da;
-      return a.track.id.localeCompare(b.track.id);
-    });
-
-    const overflow = ranked.slice(playlistMaxSize);
-    cluster.members = ranked.slice(0, playlistMaxSize);
-
-    for (const candidate of overflow) {
-      const targets = clusters
-        .map((c, idx) => ({ idx, c }))
-        .filter(({ idx, c }) => idx !== overflowIdx && c.members.length < playlistMaxSize)
-        .sort((a, b) => {
-          const da = distance(candidate.normalized, a.c.centroid);
-          const db = distance(candidate.normalized, b.c.centroid);
-          if (da !== db) return da - db;
-          return a.c.members.length - b.c.members.length;
-        });
-
-      if (targets.length === 0) {
-        droppedForCapacity += 1;
-      } else {
-        clusters[targets[0].idx].members.push(candidate);
-      }
-    }
-
-    overflowIdx = withOverflow();
-  }
-
-  return { droppedForCapacity };
 }
 
 function rebalanceClusterSizes(clusters: Cluster[], totalTracks: number): void {
@@ -332,14 +294,12 @@ function orderClusterMembers(
   return ordered;
 }
 
-export function buildDailyPlaylists(tracks: TrackWithStats[], options: BuildDailyPlaylistsOptions = {}): DailyPlaylistsResult {
-  const currentlyListening = tracks.filter((t) => t.repeatIntent === "currently_listening");
-  const eligibleCurrentlyListening = currentlyListening.filter((t) => t.dailyPlaylistStatus !== "review");
-  const excludedForReview = currentlyListening.length - eligibleCurrentlyListening.length;
-  const playlistMaxSize = playlistMaxSizeForCount(currentlyListening.length);
+export function buildDailyPlaylists(tracks: PlaylistSourceTrack[], options: BuildDailyPlaylistsOptions = {}): DailyPlaylistsResult {
+  const eligibleTracks = tracks.filter((t) => t.dailyPlaylistStatus !== "review");
+  const excludedForReview = tracks.length - eligibleTracks.length;
 
-  const candidatesRaw: Array<{ track: TrackWithStats; raw: Vector2; moodValue: number }> = [];
-  for (const t of eligibleCurrentlyListening) {
+  const candidatesRaw: Array<{ track: PlaylistSourceTrack; raw: Vector2; moodValue: number }> = [];
+  for (const t of eligibleTracks) {
     if (!isFiniteNumber(t.bpm) || !isFiniteNumber(t.energy) || !isFiniteNumber(t.dance) || !isFiniteNumber(t.valence)) {
       continue;
     }
@@ -351,7 +311,7 @@ export function buildDailyPlaylists(tracks: TrackWithStats[], options: BuildDail
     });
   }
 
-  const excludedMissingFeatures = eligibleCurrentlyListening.length - candidatesRaw.length;
+  const excludedMissingFeatures = eligibleTracks.length - candidatesRaw.length;
   const normalized = normalizeCandidates(candidatesRaw);
 
   const k = Math.min(PLAYLIST_COUNT, Math.max(1, normalized.length || 1));
@@ -360,8 +320,7 @@ export function buildDailyPlaylists(tracks: TrackWithStats[], options: BuildDail
     clusters.push({ centroid: { bpm: 0, mood: 0 }, members: [] });
   }
 
-  const { droppedForCapacity } = enforcePlaylistCap(clusters, playlistMaxSize);
-  rebalanceClusterSizes(clusters, normalized.length - droppedForCapacity);
+  rebalanceClusterSizes(clusters, normalized.length);
 
   const playlists: DailyPlaylist[] = clusters.slice(0, PLAYLIST_COUNT).map((cluster, i) => {
     const playlistIndex = i + 1;
@@ -373,15 +332,15 @@ export function buildDailyPlaylists(tracks: TrackWithStats[], options: BuildDail
       artists: c.track.artists,
       album: c.track.album,
       dailyPlaylistStatus: c.track.dailyPlaylistStatus === "review" ? "review" : "include",
-      albumArtUrl: c.track.albumArtUrl,
-      spotifyUrl: c.track.spotifyUrl,
+      albumArtUrl: c.track.albumArtUrl ?? null,
+      spotifyUrl: c.track.spotifyUrl ?? null,
       bpm: c.track.bpm ?? 0,
       mood: c.moodValue,
-      camelot: c.track.camelot,
+      camelot: c.track.camelot ?? null,
       energy: c.track.energy ?? 0,
       valence: c.track.valence ?? 0,
       dance: c.track.dance ?? 0,
-      albumYear: c.track.albumYear,
+      albumYear: c.track.albumYear ?? null,
     }));
 
     return {
@@ -395,12 +354,12 @@ export function buildDailyPlaylists(tracks: TrackWithStats[], options: BuildDail
   return {
     playlists,
     diagnostics: {
-      currentlyListeningCount: currentlyListening.length,
+      currentlyListeningCount: tracks.length,
       excludedForReview,
-      playlistMaxSize,
+      playlistMaxSize: Math.ceil((normalized.length || 1) / PLAYLIST_COUNT),
       usableTrackCount: normalized.length,
       excludedMissingFeatures,
-      droppedForCapacity,
+      droppedForCapacity: 0,
     },
   };
 }
