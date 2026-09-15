@@ -116,6 +116,7 @@ Validation rules:
   - actual count,
   - required range (`70–700`),
 - no auto-truncate, repair, archive, or splitting.
+- profile IDs and published playlist naming follow `user-profile` (for example, `kaseysmom-pop`).
 
 ---
 
