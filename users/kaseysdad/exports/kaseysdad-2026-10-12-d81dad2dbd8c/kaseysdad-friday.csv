@@ -1,0 +1,34 @@
+rank,track_id,name,artists,album,bpm,mood,energy,dance,valence,camelot,spotify_url
+1,1YLJVmuzeM2YSUkCCaTNUB,Dog Days Are Over,Florence + The Machine,Lungs (Deluxe Edition),150,155,81,49,25,9B,https://open.spotify.com/track/1YLJVmuzeM2YSUkCCaTNUB
+2,2KQrrkOaaQWltWn6toCmfL,The Wolf,Mumford & Sons,Wilder Mind (Deluxe),153,151,71,43,37,10B,https://open.spotify.com/track/2KQrrkOaaQWltWn6toCmfL
+3,5ykbOijJEfRhuo2Td1m0Qd,7,Catfish and the Bottlemen,The Ride,155,152,71,53,28,6B,https://open.spotify.com/track/5ykbOijJEfRhuo2Td1m0Qd
+4,4iJ3ZOcL5REtkoX7GNLPvQ,Here (with Chris Stapleton),"Mumford & Sons,Chris Stapleton",Prizefighter (Extended Edition),156,156,60,55,41,6B,https://open.spotify.com/track/4iJ3ZOcL5REtkoX7GNLPvQ
+5,7so0lgd0zP2Sbgs2d7a1SZ,Die With A Smile,"Lady Gaga,Bruno Mars",MAYHEM,158,162,60,52,50,11A,https://open.spotify.com/track/7so0lgd0zP2Sbgs2d7a1SZ
+6,3etNLnzuLqShLyEbSwIiQF,Thieves & Kings,The Peach Kings,Thieves & Kings,160,160,73,43,44,11B,https://open.spotify.com/track/3etNLnzuLqShLyEbSwIiQF
+7,7ppPZa3TRUSGKaks9wH7VT,Don't Look Back In Anger,Oasis,(What's The Story) Morning Glory?,164,148,92,35,21,8B,https://open.spotify.com/track/7ppPZa3TRUSGKaks9wH7VT
+8,63HLXPAJ7yfSdvT9ad50rt,What If,Simple Plan,Simple Plan,160,143,93,34,16,5B,https://open.spotify.com/track/63HLXPAJ7yfSdvT9ad50rt
+9,0oWraSo5ASJ0h1BEagTyEw,Hold My Hand,Lady Gaga,Hold My Hand (Music From The Motion Picture  Top Gun: Maverick ),148,136,62,52,22,9B,https://open.spotify.com/track/0oWraSo5ASJ0h1BEagTyEw
+10,2RChe0r2cMoyOvuKobZy44,Always,Bon Jovi,Cross Road,141,137,66,38,33,12B,https://open.spotify.com/track/2RChe0r2cMoyOvuKobZy44
+11,3pLTOP0G0etiWUknFoRpsr,The Cave,Mumford & Sons,Sigh No More,142,141,49,58,34,12B,https://open.spotify.com/track/3pLTOP0G0etiWUknFoRpsr
+12,5xyACR2lzIyzFepF4qlAas,Not Meant to Be,Theory of a Deadman,Scars & Souvenirs (Special Edition),143,146,78,42,26,3B,https://open.spotify.com/track/5xyACR2lzIyzFepF4qlAas
+13,2kXjRzwcTZhGLnVjUud8l3,Little Lion Man,Mumford & Sons,Sigh No More,139,147,51,52,44,7B,https://open.spotify.com/track/2kXjRzwcTZhGLnVjUud8l3
+14,6FOpPA0a80RuBqqgDozvja,So Far Away,Staind,14 Shades of Grey,139,147,90,41,16,2B,https://open.spotify.com/track/6FOpPA0a80RuBqqgDozvja
+15,4G8gkOterJn0Ywt6uhqbhp,Radioactive,Imagine Dragons,Night Visions,136,147,78,45,24,11B,https://open.spotify.com/track/4G8gkOterJn0Ywt6uhqbhp
+16,1JBa9B1iA4yNVpJ5wVGrZH,From Yesterday,Thirty Seconds To Mars,A Beautiful Lie,135,148,88,47,13,6B,https://open.spotify.com/track/1JBa9B1iA4yNVpJ5wVGrZH
+17,2sewj0rFvlr3aEM3bGy12n,Twice,Catfish and the Bottlemen,The Ride,137,152,82,41,29,8B,https://open.spotify.com/track/2sewj0rFvlr3aEM3bGy12n
+18,6p8DGrcAUBuLUgDIKcUn0P,hometown,cleopatrick,hometown,139,151,83,32,36,6A,https://open.spotify.com/track/6p8DGrcAUBuLUgDIKcUn0P
+19,24IdPCimVnJJDRuB5YSDiS,I Don't Care Anymore - 2016 Remaster,Phil Collins,"Hello, I Must Be Going! (Deluxe Edition)",140,156,42,70,44,1B,https://open.spotify.com/track/24IdPCimVnJJDRuB5YSDiS
+20,5DIBVDJOHh7djepAjKHWCO,Heart Like A Truck,Lainey Wilson,Bell Bottom Country,140,161,63,59,39,11B,https://open.spotify.com/track/5DIBVDJOHh7djepAjKHWCO
+21,6hzj2O98TysOt0tu6Yc9OJ,Event Horizon,NOMARKMORE,Exhibition Number Zero,140,162,32,74,56,4A,https://open.spotify.com/track/6hzj2O98TysOt0tu6Yc9OJ
+22,4F2t297QK40XFcIHqkmLHs,I Wish It Would Rain Down - 2016 Remaster,Phil Collins,...But Seriously (Deluxe Edition),126,154,67,51,36,4B,https://open.spotify.com/track/4F2t297QK40XFcIHqkmLHs
+23,4nnJRbVecvQwqf3OQP4mja,These Days,Bon Jovi,These Days,131,138,83,34,21,9A,https://open.spotify.com/track/4nnJRbVecvQwqf3OQP4mja
+24,5HPj0yTUFEFNia8SWgjq46,Open Your Eyes,Snow Patrol,Eyes Open,131,137,78,53,6,9B,https://open.spotify.com/track/5HPj0yTUFEFNia8SWgjq46
+25,6IfMKPhf1Qo8IZib5jOhWt,"No Light, No Light",Florence + The Machine,Ceremonials,132,135,76,43,16,8B,https://open.spotify.com/track/6IfMKPhf1Qo8IZib5jOhWt
+26,5Z8EDau8uNcP1E8JvmfkZe,School's Out,Alice Cooper,School's Out,134,139,75,29,35,7B,https://open.spotify.com/track/5Z8EDau8uNcP1E8JvmfkZe
+27,5wANPM4fQCJwkGd4rN57mH,drivers license,Olivia Rodrigo,SOUR,144,113,43,56,14,6B,https://open.spotify.com/track/5wANPM4fQCJwkGd4rN57mH
+28,09ln4QumFqjIkfCFiW9aRk,(You Want To) Make A Memory - Pop Album Version,Bon Jovi,Lost Highway,148,107,42,51,14,8B,https://open.spotify.com/track/09ln4QumFqjIkfCFiW9aRk
+29,6BM4A4rhnKIxG61jN4A2jC,Snake Eyes,Mumford & Sons,Wilder Mind (Deluxe),180,121,64,37,20,8A,https://open.spotify.com/track/6BM4A4rhnKIxG61jN4A2jC
+30,1JcIXOir94YUYBt2cXTzn2,Growing Sideways,Noah Kahan,Stick Season,178,137,29,52,56,9B,https://open.spotify.com/track/1JcIXOir94YUYBt2cXTzn2
+31,4rcHWl68ai6KvpXlc8vbnE,Keep on Loving You,REO Speedwagon,Hi Infidelity (30th Anniversary Edition),175,144,72,31,41,8B,https://open.spotify.com/track/4rcHWl68ai6KvpXlc8vbnE
+32,18AXbzPzBS8Y3AkgSxzJPb,In the Air Tonight - 2015 Remaster,Phil Collins,Face Value (Deluxe Editon),190,99,24,45,30,8B,https://open.spotify.com/track/18AXbzPzBS8Y3AkgSxzJPb
+33,4eeUqdnR6FHq6F9DL4ndbK,Hallelujah - Live,Bon Jovi,2000s Pop Rock For Kids,175,64,28,22,14,1A,https://open.spotify.com/track/4eeUqdnR6FHq6F9DL4ndbK
