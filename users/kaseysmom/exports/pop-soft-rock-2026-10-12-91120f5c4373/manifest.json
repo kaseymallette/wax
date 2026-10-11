@@ -1,0 +1,35 @@
+{
+  "profileId": "kaseysmom-pop-soft-rock",
+  "revision": "91120f5c43735cdac2fff3f07ab6dde3251911cace86ab324a1bca4e52aec657",
+  "files": [
+    {
+      "day": 1,
+      "filename": "pop-soft-rock-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "pop-soft-rock-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "pop-soft-rock-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "pop-soft-rock-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "pop-soft-rock-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "pop-soft-rock-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "pop-soft-rock-sunday.csv"
+    }
+  ],
+  "weekStart": "2026-10-12"
+}

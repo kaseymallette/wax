@@ -1,0 +1,35 @@
+{
+  "profileId": "kaseysdad",
+  "weekStart": "2026-10-12",
+  "revision": "d81dad2dbd8c8de2716e6f1fba0e4c7e3f1410463cb59d8bace7c64610fb7349",
+  "files": [
+    {
+      "day": 1,
+      "filename": "kaseysdad-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "kaseysdad-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "kaseysdad-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "kaseysdad-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "kaseysdad-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "kaseysdad-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "kaseysdad-sunday.csv"
+    }
+  ]
+}

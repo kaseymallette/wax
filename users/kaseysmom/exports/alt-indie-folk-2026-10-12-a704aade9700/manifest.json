@@ -1,0 +1,35 @@
+{
+  "profileId": "kaseysmom-alt-indie-folk",
+  "revision": "a704aade970010831ee85e5c8cf08693cb54a6eacc3ed414e4f93711f7e09d2d",
+  "files": [
+    {
+      "day": 1,
+      "filename": "alt-indie-folk-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "alt-indie-folk-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "alt-indie-folk-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "alt-indie-folk-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "alt-indie-folk-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "alt-indie-folk-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "alt-indie-folk-sunday.csv"
+    }
+  ],
+  "weekStart": "2026-10-12"
+}
