@@ -17,5 +17,4 @@ backups/
 
 users/*/state/
 
-users/*/exports/
 users/*/snapshots/
