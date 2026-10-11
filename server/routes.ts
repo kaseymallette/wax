@@ -2,286 +2,120 @@ import type { Express } from "express";
 import type { Server } from "node:http";
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { z } from "zod";
-import {
-  buildDailyPlaylists,
-  DAILY_PLAYLIST_ORDERING_MODE,
-  type DailyPlaylistsResult,
-} from "./dailyPlaylists";
+import { loadPreflight, readProfileTracks } from "./profileConfig";
+import { hash, weekStart, writeJson, hasSavedExport, exportFiles, readJob, publishProfile, type PublishInput } from "./profilePublish";
+import { createSpotifyPublisher } from "./spotifyPublisher";
+import { buildDailyPlaylists, remapOpeningSongs } from "./dailyPlaylists";
 
-const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
-type Weekday = (typeof WEEKDAYS)[number];
-const WEEKDAY_SET = new Set<Weekday>(WEEKDAYS);
-
-const STATE_DIR = path.resolve(process.cwd(), "state");
-const WEEKDAY_MAP_PATH = path.join(STATE_DIR, "weekday-map.json");
-const DAILY_LOCK_PATH = path.join(STATE_DIR, "daily-lock.json");
-const DAILY_ORDERING_PATH = path.join(STATE_DIR, "daily-ordering.json");
-
-type DailyOrderingFile = {
-  firstTrackByPlaylist: Record<string, string>;
-};
-
-type DailyLockFile = {
-  lockedAt: number;
-  data: DailyPlaylistsResult;
-};
-
-function normalizeWeekdayMap(input: unknown): Record<string, Weekday> {
-  if (!input || typeof input !== "object") return {};
-  const out: Record<string, Weekday> = {};
-  for (const [rawIndex, rawDay] of Object.entries(input as Record<string, unknown>)) {
-    const index = Number(rawIndex);
-    if (!Number.isInteger(index) || index < 1 || index > 7) continue;
-    if (typeof rawDay !== "string") continue;
-    if (!WEEKDAY_SET.has(rawDay as Weekday)) continue;
-    out[String(index)] = rawDay as Weekday;
-  }
-  return out;
-}
-
-function normalizeFirstTrackMap(input: unknown): Record<string, string> {
-  if (!input || typeof input !== "object") return {};
-  const out: Record<string, string> = {};
-  for (const [rawIndex, rawTrackId] of Object.entries(input as Record<string, unknown>)) {
-    const index = Number(rawIndex);
-    if (!Number.isInteger(index) || index < 1 || index > 7) continue;
-    if (typeof rawTrackId !== "string") continue;
-    const trackId = rawTrackId.trim();
-    if (!trackId) continue;
-    out[String(index)] = trackId;
-  }
-  return out;
-}
-
-function readWeekdayMap(): Record<string, Weekday> {
-  try {
-    if (!fs.existsSync(WEEKDAY_MAP_PATH)) return {};
-    const raw = fs.readFileSync(WEEKDAY_MAP_PATH, "utf8");
-    return normalizeWeekdayMap(JSON.parse(raw));
-  } catch {
-    return {};
-  }
-}
-
-function writeWeekdayMap(mapping: Record<string, Weekday>): void {
-  fs.mkdirSync(path.dirname(WEEKDAY_MAP_PATH), { recursive: true });
-  fs.writeFileSync(WEEKDAY_MAP_PATH, `${JSON.stringify(mapping, null, 2)}\n`, "utf8");
-}
-
-function readDailyOrdering(): DailyOrderingFile {
-  try {
-    if (!fs.existsSync(DAILY_ORDERING_PATH)) return { firstTrackByPlaylist: {} };
-    const raw = fs.readFileSync(DAILY_ORDERING_PATH, "utf8");
-    const parsed = JSON.parse(raw) as { firstTrackByPlaylist?: unknown; mapping?: unknown };
-    return {
-      firstTrackByPlaylist: normalizeFirstTrackMap(parsed.firstTrackByPlaylist ?? parsed.mapping),
-    };
-  } catch {
-    return { firstTrackByPlaylist: {} };
-  }
-}
-
-function writeDailyOrdering(ordering: DailyOrderingFile): void {
-  fs.mkdirSync(path.dirname(DAILY_ORDERING_PATH), { recursive: true });
-  fs.writeFileSync(DAILY_ORDERING_PATH, `${JSON.stringify(ordering, null, 2)}\n`, "utf8");
-}
-
-function readDailyLock(): DailyLockFile | null {
-  try {
-    if (!fs.existsSync(DAILY_LOCK_PATH)) return null;
-    const raw = fs.readFileSync(DAILY_LOCK_PATH, "utf8");
-    const parsed = JSON.parse(raw) as Partial<DailyLockFile>;
-    if (!parsed || typeof parsed !== "object") return null;
-    if (!Number.isFinite(parsed.lockedAt)) return null;
-    if (!parsed.data || typeof parsed.data !== "object") return null;
-    if (!Array.isArray((parsed.data as DailyPlaylistsResult).playlists)) return null;
-    return {
-      lockedAt: Number(parsed.lockedAt),
-      data: parsed.data as DailyPlaylistsResult,
-    };
-  } catch {
-    return null;
-  }
-}
-
-function writeDailyLock(lock: DailyLockFile): void {
-  fs.mkdirSync(path.dirname(DAILY_LOCK_PATH), { recursive: true });
-  fs.writeFileSync(DAILY_LOCK_PATH, `${JSON.stringify(lock, null, 2)}\n`, "utf8");
-}
-
-function removeDailyLock(): void {
-  if (fs.existsSync(DAILY_LOCK_PATH)) fs.unlinkSync(DAILY_LOCK_PATH);
-}
-
-function buildLiveDailyPlaylists(ordering = readDailyOrdering()): DailyPlaylistsResult {
-  // Phase 1 intentionally disconnects V1 persistent library/user DB models.
-  // Phase 2 will hydrate playlists from validated profile CSVs.
-  return buildDailyPlaylists([], {
-    firstTrackByPlaylist: ordering.firstTrackByPlaylist,
+type SavedState = { dayAssignment?: string; fingerprint: string; firstTrackByPlaylist: Record<string, string>; reviewed?: Record<string, string> };
+const running = new Set<string>();
+const failures = new Map<string, string>();
+export async function registerRoutes(server: Server, app: Express): Promise<Server> {
+  app.get("/api/profiles/preflight", (_req, res) => res.json(loadPreflight()));
+  app.get("/api/spotify/account", async (_req, res) => {
+    try { const account = await createSpotifyPublisher().account(); res.json({ id: account.id, name: account.display_name || account.id }); }
+    catch (error) { res.status(422).json({ error: (error as Error).message }); }
   });
-}
-
-function buildLockedDailyPlaylists(lockData: DailyPlaylistsResult): DailyPlaylistsResult {
-  return {
-    playlists: lockData.playlists.map((playlist) => ({
-      ...playlist,
-      orderingMode: DAILY_PLAYLIST_ORDERING_MODE,
-      trackCount: playlist.tracks.length,
-    })),
-    diagnostics: lockData.diagnostics,
+  app.get("/api/runtime", (_req, res) => res.json({ mode: "v2-playlists" }));
+  app.use("/api/playlists", (req, res, next) => {
+    const report = loadPreflight();
+    if (!report.valid) return res.status(422).json({ error: "Please fix the collection sources before building playlists.", report });
+    const profile = req.query.profile === undefined ? report.profiles[0] : report.profiles.find(p => p.id === req.query.profile);
+    if (!profile) return res.status(404).json({ error: "Collection not found." });
+    try {
+      const tracks = readProfileTracks(profile.path);
+      const fingerprint = createHash("sha256").update(JSON.stringify(tracks)).digest("hex");
+      const statePath = path.join(path.dirname(report.configPath), "state", `${profile.id}.json`);
+      let state: SavedState = { dayAssignment: "bpm-week-v1", fingerprint, firstTrackByPlaylist: {} };
+      if (fs.existsSync(statePath)) {
+        const saved = JSON.parse(fs.readFileSync(statePath, "utf8"));
+        if (saved.fingerprint === fingerprint) state = { dayAssignment: saved.dayAssignment, fingerprint, firstTrackByPlaylist: z.record(z.string()).parse(saved.firstTrackByPlaylist), reviewed: z.record(z.string()).parse(saved.reviewed ?? {}) };
+      }
+      if (state.dayAssignment !== "bpm-week-v1") {
+        const backup = `${statePath}.before-bpm-week.json`;
+        if (!fs.existsSync(backup)) fs.copyFileSync(statePath, backup);
+        state.firstTrackByPlaylist = remapOpeningSongs(buildDailyPlaylists(tracks), state.firstTrackByPlaylist);
+        state.reviewed = {};
+        state.dayAssignment = "bpm-week-v1";
+        writeJson(statePath, state);
+      }
+      const result = buildDailyPlaylists(tracks, state);
+      const revision = hash(result.playlists);
+      const input: PublishInput = { profileId: profile.id, userDir: path.dirname(report.configPath), result, revision, week: weekStart() };
+      if (req.method !== "GET" && running.has(statePath)) return res.status(409).json({ error: "Publishing is in progress. Wait before making changes." });
+      res.locals.workflow = { profile, tracks, state, statePath, result, revision, input };
+      next();
+    } catch (error) { res.status(422).json({ error: (error as Error).message }); }
+  });
+  const respond = (res: any) => {
+    const { profile, tracks, state, statePath, input } = res.locals.workflow;
+    const result = buildDailyPlaylists(tracks, state);
+    const revision = hash(result.playlists);
+    const currentInput = { ...input, result, revision, week: weekStart() };
+    return res.json({ ...result, revision, targetWeek: input.week, csvSaved: hasSavedExport(currentInput), profile, firstTrackByPlaylist: state.firstTrackByPlaylist,
+      reviewed: result.playlists.filter(p => state.reviewed?.[String(p.index)] === hash(p)).map(p => p.index),
+      publish: { running: running.has(statePath), job: readJob(currentInput), error: failures.get(statePath) },
+    });
   };
-}
-
-export async function registerRoutes(
-  _httpServer: Server,
-  app: Express,
-): Promise<Server> {
-  app.get("/api/runtime", (_req, res) => {
-    res.json({
-      mode: "v2-phase1",
-      stateDir: STATE_DIR,
-    });
-  });
-
-  app.get("/api/playlists/daily", (_req, res) => {
-    try {
-      const lock = readDailyLock();
-      if (lock) {
-        const lockedView = buildLockedDailyPlaylists(lock.data);
-        return res.json({
-          ...lockedView,
-          isLocked: true,
-          lockedAt: lock.lockedAt,
-        });
-      }
-      const live = buildLiveDailyPlaylists();
-      return res.json({
-        ...live,
-        isLocked: false,
-        lockedAt: null,
-      });
-    } catch (e: any) {
-      return res.status(500).json({ error: e?.message || "Could not generate daily playlists." });
-    }
-  });
-
-  app.post("/api/playlists/daily-lock", (_req, res) => {
-    try {
-      const live = buildLiveDailyPlaylists();
-      const lock: DailyLockFile = {
-        lockedAt: Date.now(),
-        data: live,
-      };
-      writeDailyLock(lock);
-      return res.json({
-        ok: true,
-        ...live,
-        isLocked: true,
-        lockedAt: lock.lockedAt,
-      });
-    } catch (e: any) {
-      return res.status(500).json({ error: e?.message || "Could not lock daily playlists." });
-    }
-  });
-
-  app.delete("/api/playlists/daily-lock", (_req, res) => {
-    try {
-      removeDailyLock();
-      return res.json({ ok: true });
-    } catch {
-      return res.status(500).json({ error: "Could not unlock daily playlists." });
-    }
-  });
-
-  app.post("/api/playlists/daily-recluster", (_req, res) => {
-    try {
-      const live = buildLiveDailyPlaylists();
-      const existingLock = readDailyLock();
-      if (existingLock) {
-        const nextLock: DailyLockFile = {
-          lockedAt: Date.now(),
-          data: live,
-        };
-        writeDailyLock(nextLock);
-        return res.json({
-          ok: true,
-          ...live,
-          isLocked: true,
-          lockedAt: nextLock.lockedAt,
-        });
-      }
-      return res.json({
-        ok: true,
-        ...live,
-        isLocked: false,
-        lockedAt: null,
-      });
-    } catch (e: any) {
-      return res.status(500).json({ error: e?.message || "Could not recluster daily playlists." });
-    }
-  });
-
-  const weekdayMapSchema = z.object({
-    mapping: z.record(z.string()),
-  });
-  app.get("/api/playlists/weekday-map", (_req, res) => {
-    res.json({ mapping: readWeekdayMap() });
-  });
-  app.put("/api/playlists/weekday-map", (req, res) => {
-    const parsed = weekdayMapSchema.safeParse(req.body);
-    if (!parsed.success) return res.status(400).json({ error: "Invalid weekday map" });
-
-    const mapping = normalizeWeekdayMap(parsed.data.mapping);
-    const assignedDays = Object.values(mapping);
-    if (assignedDays.length !== new Set(assignedDays).size) {
-      return res.status(400).json({ error: "Weekdays must be unique" });
-    }
-
-    try {
-      writeWeekdayMap(mapping);
-      return res.json({ ok: true, mapping });
-    } catch {
-      return res.status(500).json({ error: "Could not save weekday map" });
-    }
-  });
-
-  const dailyOrderingSchema = z.object({
-    playlistIndex: z.number().int().min(1).max(7),
-    firstTrackId: z.string().trim().min(1).nullable(),
-  });
-  app.get("/api/playlists/daily-ordering", (_req, res) => {
-    const ordering = readDailyOrdering();
-    res.json({
-      mode: DAILY_PLAYLIST_ORDERING_MODE,
-      firstTrackByPlaylist: ordering.firstTrackByPlaylist,
-    });
-  });
+  app.get("/api/playlists/daily", (_req, res) => respond(res));
   app.put("/api/playlists/daily-ordering", (req, res) => {
-    const parsed = dailyOrderingSchema.safeParse(req.body);
-    if (!parsed.success) {
-      return res.status(400).json({ error: "Invalid daily ordering payload" });
-    }
+    const parsed = z.object({ playlistIndex: z.number().int().min(1).max(7), firstTrackId: z.string().min(1).nullable() }).safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ error: "Choose a song from this playlist." });
+    const { tracks, state, statePath } = res.locals.workflow;
     const { playlistIndex, firstTrackId } = parsed.data;
-    const current = readDailyOrdering();
-    const nextFirstTrackByPlaylist = { ...current.firstTrackByPlaylist };
-    if (firstTrackId === null) delete nextFirstTrackByPlaylist[String(playlistIndex)];
-    else nextFirstTrackByPlaylist[String(playlistIndex)] = firstTrackId;
-
-    const next: DailyOrderingFile = {
-      firstTrackByPlaylist: nextFirstTrackByPlaylist,
-    };
-    try {
-      writeDailyOrdering(next);
-      return res.json({
-        ok: true,
-        mode: DAILY_PLAYLIST_ORDERING_MODE,
-        firstTrackByPlaylist: next.firstTrackByPlaylist,
-      });
-    } catch {
-      return res.status(500).json({ error: "Could not save daily first track" });
-    }
+    const playlist = buildDailyPlaylists(tracks).playlists[playlistIndex - 1];
+    if (firstTrackId && !playlist.tracks.some(t => t.id === firstTrackId)) return res.status(400).json({ error: "That song is not in this daily playlist." });
+    if (firstTrackId) state.firstTrackByPlaylist[String(playlistIndex)] = firstTrackId;
+    else delete state.firstTrackByPlaylist[String(playlistIndex)];
+    fs.mkdirSync(path.dirname(statePath), { recursive: true });
+    const temporary = `${statePath}.tmp`;
+    fs.writeFileSync(temporary, JSON.stringify(state, null, 2) + "\n");
+    fs.renameSync(temporary, statePath);
+    return respond(res);
   });
-
-  return _httpServer;
+  app.put("/api/playlists/approve-week", (req, res) => {
+    const { state, statePath, result, revision } = res.locals.workflow;
+    if (req.body?.revision !== revision) return res.status(409).json({ error: "This week changed. Refresh before approving it." });
+    state.reviewed = Object.fromEntries(result.playlists.map((playlist: { index: number }) => [String(playlist.index), hash(playlist)]));
+    writeJson(statePath, state);
+    return respond(res);
+  });
+  app.put("/api/playlists/review", (req, res) => {
+    const { state, statePath, result, revision } = res.locals.workflow;
+    const parsed = z.object({ revision: z.string(), day: z.number().int().min(1).max(7), reviewed: z.boolean() }).safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ error: "Choose a day to review." });
+    if (parsed.data.revision !== revision) return res.status(409).json({ error: "This mix changed. Refresh and review the latest version." });
+    state.reviewed ??= {};
+    if (parsed.data.reviewed) state.reviewed[String(parsed.data.day)] = hash(result.playlists[parsed.data.day - 1]);
+    else delete state.reviewed[String(parsed.data.day)];
+    writeJson(statePath, state);
+    return respond(res);
+  });
+  app.post("/api/playlists/export", (req, res) => {
+    const { input, revision } = res.locals.workflow;
+    if (req.body?.revision !== revision) return res.status(409).json({ error: "This mix changed. Refresh before saving." });
+    res.json(exportFiles(input));
+  });
+  app.get("/api/playlists/export/:day", (req, res) => {
+    const { input, revision } = res.locals.workflow;
+    if (req.query.revision !== revision) return res.status(409).json({ error: "This mix changed. Save the latest CSVs again." });
+    const day = Number(req.params.day);
+    if (!Number.isInteger(day) || day < 1 || day > 7) return res.sendStatus(404);
+    const exported = exportFiles(input);
+    res.download(path.join(exported.directory, exported.files[day - 1].filename));
+  });
+  app.post("/api/playlists/publish", (req, res) => {
+    const { input, revision, state, statePath, result } = res.locals.workflow;
+    if (req.body?.revision !== revision) return res.status(409).json({ error: "This mix changed. Refresh before publishing." });
+    if (!result.playlists.every((p: { index: number }) => state.reviewed?.[String(p.index)] === hash(p))) return res.status(409).json({ error: "Approve this week before publishing." });
+    if (typeof req.body.accountId !== "string" || !req.body.accountId) return res.status(400).json({ error: "Check the Spotify account before publishing." });
+    running.add(statePath); failures.delete(statePath);
+    void publishProfile(input, req.body.accountId, createSpotifyPublisher())
+      .catch(error => { failures.set(statePath, error.message); })
+      .finally(() => running.delete(statePath));
+    return res.status(202).json({ started: true });
+  });
+  return server;
 }

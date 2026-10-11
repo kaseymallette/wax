@@ -6,13 +6,17 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/lib/theme";
 import PlaylistsPage from "@/pages/PlaylistsPage";
+import { ProfilePreflight } from "@/components/ProfilePreflight";
 import NotFound from "@/pages/not-found";
 
 function AppRouter() {
   return (
     <Switch>
-      <Route path="/" component={PlaylistsPage} />
-      <Route path="/playlists" component={PlaylistsPage} />
+      <Route path="/organize"><PlaylistsPage /></Route>
+      <Route path="/organize/:id"><PlaylistsPage /></Route>
+      <Route path="/publish"><PlaylistsPage stage="publish" /></Route>
+      <Route path="/publish/:id"><PlaylistsPage stage="publish" /></Route>
+      <Route path="/playlists"><PlaylistsPage /></Route>
       <Route component={NotFound} />
     </Switch>
   );
@@ -25,7 +29,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router hook={useHashLocation}>
-            <AppRouter />
+            <ProfilePreflight><AppRouter /></ProfilePreflight>
           </Router>
         </TooltipProvider>
       </ThemeProvider>

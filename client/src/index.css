@@ -315,3 +315,34 @@
     inset: -1px;
   }
 }
+
+/* A shelf of personal record sleeves for the collection welcome screen. */
+.collection-intro { padding: 14px 0 38px; }
+.collection-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: .15em; font-weight: 700; color: hsl(var(--primary)); flex-wrap: wrap; }
+.collection-eyebrow span { color: hsl(var(--muted-foreground)); letter-spacing: .08em; }
+.collection-intro h1 { margin-top: 24px; font-size: clamp(38px, 6vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -.045em; }
+.collection-intro h1 span { color: hsl(var(--muted-foreground)); }
+.collection-description { margin-top: 20px; line-height: 1.65; color: hsl(var(--muted-foreground)); font-size: 15px; }
+.collection-totals { display: flex; gap: 24px; margin-top: 24px; font-size: 12px; color: hsl(var(--muted-foreground)); }
+.collection-totals strong { color: hsl(var(--foreground)); font-weight: 600; }
+.collection-shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.collection-art { aspect-ratio: 1.18; position: relative; overflow: hidden; border-radius: 5px; box-shadow: inset 0 0 0 1px #ffffff15, 0 8px 24px #00000012; }
+.collection-art-0 { background: #8b9e80; color: #172e28; }
+.collection-art-1 { background: #b96549; color: #391e1a; }
+.collection-art-2 { background: #3b3e60; color: #f4cea7; }
+.sleeve-caption { position: absolute; top: 18px; left: 20px; font-size: 9px; font-weight: 800; letter-spacing: .2em; z-index: 1; }
+.sleeve-graphic { position: absolute; width: 100%; height: 100%; inset: 0; }
+.sleeve-number { position: absolute; bottom: 17px; left: 20px; font-size: 10px; font-weight: 800; letter-spacing: .15em; }
+.sleeve-mark { position: absolute; bottom: 14px; right: 18px; }
+.collection-status { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; margin-top: 3px; border: 1px solid hsl(var(--border)); border-radius: 20px; padding: 3px 7px; font-size: 9px; color: hsl(var(--foreground)); }
+.collection-status-warning { color: hsl(var(--destructive)); border-color: currentColor; }
+.collection-details { margin-top: 16px; color: hsl(var(--muted-foreground)); font-size: 11px; line-height: 1.6; }
+.collection-details summary { cursor: pointer; width: fit-content; }
+.collection-details summary:hover { color: hsl(var(--foreground)); }
+.collection-details summary:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; }
+.collection-footer { border-top: 1px solid hsl(var(--border)); margin-top: 36px; padding-top: 26px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+@media (max-width: 700px) {
+  .collection-shelf { grid-template-columns: 1fr; gap: 32px; }
+  .collection-art { aspect-ratio: 1.4; }
+  .collection-footer { flex-direction: column; align-items: flex-start; }
+}

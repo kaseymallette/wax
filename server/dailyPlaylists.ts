@@ -37,6 +37,8 @@ export type DailyPlaylistTrack = {
 export type DailyPlaylist = {
   index: number;
   trackCount: number;
+  averageBpm: number;
+  bpmRank: number;
   orderingMode: DailyPlaylistOrderingMode;
   tracks: DailyPlaylistTrack[];
 };
@@ -151,94 +153,33 @@ function initializeCentroids(points: CandidateTrack[], k: number): Vector2[] {
   return centroids;
 }
 
+// Capacity constraints are enforced at every assignment step, not after clustering.
 function runKMeans(points: CandidateTrack[], k: number): Cluster[] {
-  if (points.length === 0) {
-    return Array.from({ length: k }, () => ({ centroid: { bpm: 0, mood: 0 }, members: [] }));
-  }
-
   let centroids = initializeCentroids(points, k);
-
-  for (let iter = 0; iter < KMEANS_MAX_ITERS; iter += 1) {
-    const buckets: CandidateTrack[][] = Array.from({ length: k }, () => []);
-    for (const point of points) {
-      const idx = nearestCentroidIndex(point.normalized, centroids);
-      buckets[idx].push(point);
+  const capacities = Array.from({ length: k }, (_, i) => Math.floor(points.length / k) + (i < points.length % k ? 1 : 0));
+  let clusters: Cluster[] = [];
+  let previous = "";
+  for (let iteration = 0; iteration < KMEANS_MAX_ITERS; iteration++) {
+    clusters = centroids.map(centroid => ({ centroid, members: [] }));
+    const remaining = [...points].sort((a, b) => a.track.id.localeCompare(b.track.id));
+    while (remaining.length) {
+      // Assign the most constrained song first, preserving scarce nearby slots.
+      let chosen = 0, destination = 0, greatestRegret = -Infinity;
+      remaining.forEach((point, index) => {
+        const choices = centroids.map((c, i) => ({ i, cost: distance(point.normalized, c) ** 2 }))
+          .filter(c => clusters[c.i].members.length < capacities[c.i])
+          .sort((a, b) => a.cost - b.cost || a.i - b.i);
+        const regret = choices.length > 1 ? choices[1].cost - choices[0].cost : Infinity;
+        if (regret > greatestRegret) { greatestRegret = regret; chosen = index; destination = choices[0].i; }
+      });
+      clusters[destination].members.push(remaining.splice(chosen, 1)[0]);
     }
-
-    const nextCentroids = centroids.map((c, idx) => {
-      if (buckets[idx].length === 0) return c;
-      const bpmAvg = mean(buckets[idx].map((p) => p.normalized.bpm));
-      const moodAvg = mean(buckets[idx].map((p) => p.normalized.mood));
-      return { bpm: bpmAvg, mood: moodAvg };
-    });
-
-    let changed = false;
-    for (let i = 0; i < k; i += 1) {
-      if (distance(centroids[i], nextCentroids[i]) > 1e-6) {
-        changed = true;
-        break;
-      }
-    }
-    centroids = nextCentroids;
-    if (!changed) break;
-  }
-
-  const clusters: Cluster[] = centroids.map((centroid) => ({ centroid, members: [] }));
-  for (const point of points) {
-    const idx = nearestCentroidIndex(point.normalized, centroids);
-    clusters[idx].members.push(point);
+    centroids = clusters.map(c => ({ bpm: mean(c.members.map(p => p.normalized.bpm)), mood: mean(c.members.map(p => p.normalized.mood)) }));
+    const signature = JSON.stringify(clusters.map(c => c.members.map(p => p.track.id).sort()));
+    if (signature === previous) break;
+    previous = signature;
   }
   return clusters;
-}
-
-function rebalanceClusterSizes(clusters: Cluster[], totalTracks: number): void {
-  if (clusters.length === 0 || totalTracks <= 0) return;
-
-  const base = Math.floor(totalTracks / clusters.length);
-  const remainder = totalTracks % clusters.length;
-
-  const rankedBySize = clusters
-    .map((cluster, idx) => ({ idx, size: cluster.members.length }))
-    .sort((a, b) => {
-      if (b.size !== a.size) return b.size - a.size;
-      return a.idx - b.idx;
-    });
-
-  const targetSizes = new Array<number>(clusters.length).fill(base);
-  for (let i = 0; i < remainder; i += 1) {
-    targetSizes[rankedBySize[i].idx] += 1;
-  }
-
-  const pickBestDonor = (receiverIdx: number): { donorIdx: number; memberIdx: number } | null => {
-    const receiver = clusters[receiverIdx];
-    let best: { donorIdx: number; memberIdx: number; distance: number } | null = null;
-
-    for (let donorIdx = 0; donorIdx < clusters.length; donorIdx += 1) {
-      if (donorIdx === receiverIdx) continue;
-      const donor = clusters[donorIdx];
-      if (donor.members.length <= targetSizes[donorIdx]) continue;
-
-      for (let memberIdx = 0; memberIdx < donor.members.length; memberIdx += 1) {
-        const candidate = donor.members[memberIdx];
-        const d = distance(candidate.normalized, receiver.centroid);
-        if (!best || d < best.distance) {
-          best = { donorIdx, memberIdx, distance: d };
-        }
-      }
-    }
-
-    if (!best) return null;
-    return { donorIdx: best.donorIdx, memberIdx: best.memberIdx };
-  };
-
-  for (let receiverIdx = 0; receiverIdx < clusters.length; receiverIdx += 1) {
-    while (clusters[receiverIdx].members.length < targetSizes[receiverIdx]) {
-      const donorPick = pickBestDonor(receiverIdx);
-      if (!donorPick) break;
-      const moved = clusters[donorPick.donorIdx].members.splice(donorPick.memberIdx, 1)[0];
-      clusters[receiverIdx].members.push(moved);
-    }
-  }
 }
 
 function orderClusterMembers(
@@ -295,13 +236,15 @@ function orderClusterMembers(
 }
 
 export function buildDailyPlaylists(tracks: PlaylistSourceTrack[], options: BuildDailyPlaylistsOptions = {}): DailyPlaylistsResult {
-  const eligibleTracks = tracks.filter((t) => t.dailyPlaylistStatus !== "review");
-  const excludedForReview = tracks.length - eligibleTracks.length;
+  if (tracks.length < 70 || tracks.length > 700) throw new Error("A profile must contain 70–700 tracks.");
+  if (new Set(tracks.map(t => t.id)).size !== tracks.length) throw new Error("Track IDs must be unique.");
+  const eligibleTracks = tracks;
+  const excludedForReview = 0;
 
   const candidatesRaw: Array<{ track: PlaylistSourceTrack; raw: Vector2; moodValue: number }> = [];
   for (const t of eligibleTracks) {
     if (!isFiniteNumber(t.bpm) || !isFiniteNumber(t.energy) || !isFiniteNumber(t.dance) || !isFiniteNumber(t.valence)) {
-      continue;
+      throw new Error(`Missing audio features for ${t.id}`);
     }
     const mood = t.energy + t.dance + t.valence;
     candidatesRaw.push({
@@ -320,9 +263,14 @@ export function buildDailyPlaylists(tracks: PlaylistSourceTrack[], options: Buil
     clusters.push({ centroid: { bpm: 0, mood: 0 }, members: [] });
   }
 
-  rebalanceClusterSizes(clusters, normalized.length);
 
-  const playlists: DailyPlaylist[] = clusters.slice(0, PLAYLIST_COUNT).map((cluster, i) => {
+
+  // Rank by actual mean tempo; cluster index breaks equal-BPM ties deterministically.
+  const ranked = clusters.map((cluster, index) => ({ cluster, index, averageBpm: mean(cluster.members.map(m => m.raw.bpm)) }))
+    .sort((a, b) => b.averageBpm - a.averageBpm || a.index - b.index);
+  const ranksByDay = [1, 3, 6, 4, 2, 5, 7];
+  const playlists: DailyPlaylist[] = ranksByDay.map((rank, i) => {
+    const { cluster, averageBpm } = ranked[rank - 1];
     const playlistIndex = i + 1;
     const orderingMode = DAILY_PLAYLIST_ORDERING_MODE;
     const ordered = orderClusterMembers(cluster, playlistIndex, options.firstTrackByPlaylist);
@@ -345,6 +293,8 @@ export function buildDailyPlaylists(tracks: PlaylistSourceTrack[], options: Buil
 
     return {
       index: playlistIndex,
+      averageBpm,
+      bpmRank: rank,
       trackCount: tracksOut.length,
       orderingMode,
       tracks: tracksOut,
@@ -362,4 +312,13 @@ export function buildDailyPlaylists(tracks: PlaylistSourceTrack[], options: Buil
       droppedForCapacity: 0,
     },
   };
+}
+
+// Legacy state used cluster indices as days. Match openers by membership instead.
+export function remapOpeningSongs(result: DailyPlaylistsResult, saved: Record<string, string>): Record<string, string> {
+  const chosen = new Set(Object.values(saved));
+  return Object.fromEntries(result.playlists.flatMap(playlist => {
+    const opener = playlist.tracks.find(track => chosen.has(track.id));
+    return opener ? [[String(playlist.index), opener.id]] : [];
+  }));
 }

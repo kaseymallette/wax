@@ -120,3 +120,56 @@ Wax remains human-in-the-loop without becoming a music-library maintenance syste
 
 **Live site:** [waxweekly.com](https://waxweekly.com)  
 **Curated by:** Kasey Mallette
+
+## Running the configuration preflight
+
+Start a user's local session with `WAX_USER=kaseysmom npm run dev`.
+The default user, when `WAX_USER` is unset, is `kaseysmom`.
+The server loads `users/<username>/config.json`; `username` in that file must match.
+Each enabled profile defines a unique `id`, `name`, and `masterCsvPath`.
+Relative CSV paths resolve from the config file's directory; absolute paths also work.
+
+The app shows track counts and validation errors for all enabled profiles. Use
+**Recheck files** after editing the configuration or a CSV. Every playlist API request
+also revalidates the files, returning HTTP 422 if any profile fails.
+CSV inputs are never modified. The current parser accepts Chosic columns `Song`,
+`Artist`, `Spotify Track Id`, `BPM`, `Energy`, `Dance`, and `Valence`; it requires
+unique Spotify track IDs, positive BPM, and feature scores from 0–100.
+
+The playlist workspace now builds seven balanced mixes from each complete CSV.
+Switch collections and days without restarting the app. Each track appears once;
+initial ordering starts near the playlist center, and selecting an opening song
+immediately recalculates the nearest-neighbor sequence. Preview buttons open Spotify embeds.
+Opening choices persist in `users/<username>/state/<profile-id>.json`, separately
+for each profile. Editing a source CSV resets its saved opening choices on the next load.
+Generation is deterministic; refreshing does not shuffle the collection.
+Clusters are ranked by average BPM (highest first) and assigned Monday–Sunday
+as ranks 1, 3, 6, 4, 2, 5, 7. Equal averages use the original cluster index as a
+stable tie-breaker. Existing openers migrate with their clusters; previous state
+is backed up, and Spotify approvals reset for the new day assignments. Previously
+exported CSVs and published Spotify playlists remain unchanged until saved/published again.
+Use **Approve this week** on Save & publish to approve all seven playlists in
+the selected collection. Approval is tied to the exact playlist contents and order;
+changing an opener requires approving the week again.
+**Save playlist CSVs** exports all seven days in their current order, independently
+of Spotify, under `users/<username>/exports/`. The UI offers individual downloads.
+
+After the week is approved, **Check Spotify account** shows the account
+associated with the existing `.env` credentials. **Publish collection** creates or
+updates seven private Spotify playlists on that displayed account. Playlist names
+use `Wax - <profile-id> <weekday>`, for example
+`Wax - kaseysmom-alt-indie-folk Monday`. Publishing runs in the background with progress
+and a retry button; completed days are skipped on retry. Each successful profile
+publish saves a versioned JSON snapshot in `users/<username>/snapshots/`, keyed by
+profile, next Monday, and playlist revision. The target is next week using the
+server’s local calendar, and Save & publish displays that week explicitly. These V2 snapshots are not yet consumed
+by the legacy Wax Weekly site builder; connecting that final build is the next phase.
+
+Spotify setup uses `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and
+`SPOTIFY_REFRESH_TOKEN` in `.env`. Use `npm run spotify:auth` to authorize the desired
+Spotify account and restart Wax after updating credentials. The displayed Spotify
+account can differ from the local Wax username. Credentials never go to the browser.
+Existing first-song state files remain compatible. Progress is saved after every
+Spotify replacement; source/order changes start a new publish revision. A snapshot
+retry does not repeat successful Spotify writes. Do not run concurrent Wax server
+instances for the same user while editing or publishing.

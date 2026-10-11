@@ -14,3 +14,8 @@ users/*/music_library.db
 users/*/music_library.db-wal
 users/*/music_library.db-shm
 backups/
+
+users/*/state/
+
+users/*/exports/
+users/*/snapshots/

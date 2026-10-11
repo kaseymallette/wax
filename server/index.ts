@@ -98,7 +98,7 @@ app.use((req, res, next) => {
     },
     () => {
       log(`serving on http://${host}:${port}`);
-      log("runtime=v2-phase1");
+      log("runtime=v2-playlists");
     },
   );
 })();
