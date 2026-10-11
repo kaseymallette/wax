@@ -1,0 +1,12 @@
+{
+  "username": "kaseysdad",
+  "profiles": [
+    {
+      "id": "kaseysdad",
+      "name": "Currently Listening",
+      "masterCsvPath": "profiles/currently_listening.csv",
+      "stationId": "kaseysdad",
+      "enabled": true
+    }
+  ]
+}

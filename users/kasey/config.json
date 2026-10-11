@@ -1,0 +1,47 @@
+{
+  "username": "kasey",
+  "profiles": [
+    {
+      "id": "kasey-alt-rock",
+      "name": "Alt Rock",
+      "masterCsvPath": "profiles/alt-rock.csv",
+      "stationId": "kasey-alt-rock",
+      "enabled": true
+    },
+    {
+      "id": "kasey-classic-rock",
+      "name": "Classic Rock",
+      "masterCsvPath": "profiles/classic-rock.csv",
+      "stationId": "kasey-classic-rock",
+      "enabled": true
+    },
+    {
+      "id": "kasey-country-blues",
+      "name": "Country Blues",
+      "masterCsvPath": "profiles/country-blues.csv",
+      "stationId": "kasey-country-blues",
+      "enabled": true
+    },
+    {
+      "id": "kasey-electropop",
+      "name": "Electropop",
+      "masterCsvPath": "profiles/electropop.csv",
+      "stationId": "kasey-electropop",
+      "enabled": true
+    },
+    {
+      "id": "kasey-indie-folk",
+      "name": "Indie Folk",
+      "masterCsvPath": "profiles/indie-folk.csv",
+      "stationId": "kasey-indie-folk",
+      "enabled": true
+    },
+    {
+      "id": "kasey-pop-hip-hop",
+      "name": "Pop & Hip-Hop",
+      "masterCsvPath": "profiles/pop-hip-hop.csv",
+      "stationId": "kasey-pop-hip-hop",
+      "enabled": true
+    }
+  ]
+}

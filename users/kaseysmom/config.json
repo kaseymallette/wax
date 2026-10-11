@@ -1,0 +1,26 @@
+{
+  "username": "kaseysmom",
+  "profiles": [
+    {
+      "id": "kaseysmom-alt-indie-folk",
+      "name": "Alt Indie Folk",
+      "masterCsvPath": "profiles/alt-indie-folk.csv",
+      "stationId": "kaseysmom-alt-indie-folk",
+      "enabled": true
+    },
+    {
+      "id": "kaseysmom-classic-rock",
+      "name": "Classic Rock",
+      "masterCsvPath": "profiles/classic-rock.csv",
+      "stationId": "kaseysmom-classic-rock",
+      "enabled": true
+    },
+    {
+      "id": "kaseysmom-pop-soft-rock",
+      "name": "Pop Soft Rock",
+      "masterCsvPath": "profiles/pop-soft-rock.csv",
+      "stationId": "kaseysmom-pop-soft-rock",
+      "enabled": true
+    }
+  ]
+}
