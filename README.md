@@ -1,8 +1,8 @@
 # Wax
 
-Wax is a local-first music curation system built to turn a personally managed listening library into deliberate weekly rotation. It uses **K-means clustering on BPM and Mood**, where **Mood = Energy + Dance + Valence**, to distribute songs across daily playlists, **K-nearest neighbors** to sequence each playlist, and the **Spotify Web API** to publish the results.
+Wax is a local-first playlist app that turns personally curated genre collections into a deliberate weekly rotation. It uses **balanced K-means clustering on BPM and Mood**, **nearest-neighbor sequencing**, and the **Spotify Web API** to build and publish seven daily playlists per collection.
 
-[Wax Weekly](https://waxweekly.com) turns the Wax workflow into a weekly listening experience across five genre-bending profiles: **Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop**. Every song is curated by me, then distributed and sequenced using Wax.
+[Wax Weekly](https://waxweekly.com/) turns the Wax workflow into a weekly listening experience across six genre-bending profiles: **Alt Rock, Classic Rock, Country Blues, Indie Folk, Pop & Hip-Hop, and Electropop**. Every song is curated by me, then distributed and sequenced using Wax.
 
 ## Introduction
 
@@ -18,420 +18,319 @@ Instead of generating another random order, I wanted to know that the songs in m
 
 **So I built my own system.**
 
+## The app
+
+Wax brings my genre collections together in one local app: **Collections → Organize → Save & publish**.
+
+### 01: Collections
+
+Your music starts here. Browse your genre collections and choose one to turn into a week of listening:
+
+![Wax Collections welcome page showing the three-step workflow and Kasey's collection](images/wax_local_collections_01.png)
+
+My six collections, each with its own record-sleeve artwork:
+
+![Kasey's six genre collections: Alt Rock, Classic Rock, Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop](images/wax_local_collections_02.png)
+
+### 02: Organize
+
+Choose a collection and explore its seven daily playlists, with song counts and average BPM for each day:
+
+![Wax Organize page showing genre collections and Monday through Sunday playlists](images/wax_local_organize_01.png)
+
+Choose an opening song and preview the tracks in each day's playlist:
+
+![Monday's playlist with an opening-song selector, track previews, BPM, and Spotify links](images/wax_local_organize_02.png)
+
+Looking for a song or artist? Search the collection to see which day each song is on:
+
+![Search results for Nirvana showing each song's assigned day and position in the playlist](images/wax_local_organize_03.png)
+
+### 03: Save & publish
+
+Take your week with you. Save a collection's seven daily playlists as CSVs, approve the week, and send them to Spotify:
+
+![Alt Rock's Save & publish page with saved daily CSV downloads, week approval, and the Publish collection button](images/wax_local_save_and_publish_01.png)
+
+First songs. One mix. Bring together the opening song from every day across all profiles.
+
+![First-song mix preview showing the Monday–Sunday opening songs for Alt Rock and Classic Rock](images/wax_local_save_and_publish_02.png)
+
+The mix includes six genre profiles: Alt Rock, Classic Rock, Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop. Save it as a CSV or publish it as its own Spotify playlist:
+
+![The remaining first-song mix selections, grouped by Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop](images/wax_local_save_and_publish_03.png)
+
 ## Methods
 
-### Managing the Listening Pool
+### 1. Create a user folder
 
-I built a local application to manage my music database and CSV files containing track metadata and audio-feature data. Songs can be moved between four states depending on how I currently want to listen to them:
+Each user has a folder containing one config file and a `profiles` folder for their source playlist CSVs. Using my username, `kasey`:
 
-- **Currently Listening** — songs included in active playlist generation
-- **Favorites / Archive** — songs I want to keep but remove from the current rotation
-- **Skip for Now** — songs temporarily removed from rotation
-- **Save for Later** — songs I want to revisit
+```bash
+mkdir -p users/kasey/profiles
+```
 
-This keeps the curation itself human-in-the-loop: I decide which songs belong in the active listening pool.
-
-### Playlist Generation
-
-For each genre collection, I used two dimensions to organize the active listening pool: **BPM** and **Mood**.
-
-Mood is a composite score calculated from three audio features:
-
-`Mood = Energy + Danceability + Valence`
-
-I used **K-means clustering** on BPM and Mood to divide the active listening pool into equal-sized daily playlists. This gives every selected song a place in the weekly rotation while grouping tracks with similar musical characteristics.
-
-### Playlist Sequencing
-
-For each playlist, I begin with the track that has the highest Mood score. I then use **K-nearest neighbors** in BPM-Mood space to move from that track to the nearest remaining track, repeating the process until the entire playlist has been ordered.
-
-In other words, **K-means determines which songs belong together; K-nearest neighbors determines how they flow from one song to the next.**
-
-### Publishing to Spotify
-
-Once the playlists have been clustered and ordered, I create the daily playlists programmatically using the **Spotify Web API**.
-
-Spotify remains the playback platform, but Wax determines which songs are in the rotation, how they are distributed across the week, and the order in which to play them.
-
-### Custom Web Interface
-
-After generating the playlists, I built a custom web interface to showcase the weekly output across five genre-bending collections: **Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop**.
-
-Built from scratch using **HTML, CSS, and JavaScript**, the site provides an interactive interface for navigating each genre and day of the week, viewing playlist statistics and track metadata, previewing songs through Spotify, and opening tracks directly in Spotify.
-
-## Results
-
-### Wax Weekly
-
-![Wax Weekly homepage](images/wax_weekly_homepage.png)
-
-[Wax Weekly](https://waxweekly.com) is the public listening experience built from Wax.
-
-The current collection includes 800 tracks across five genre-bending profiles, with daily playlists of 20-25 songs for each profile: **Alt Rock, Classic Rock, Country Blues, Indie Folk, and Pop & Hip-Hop**. 
-
-The site is deployed through Cloudflare Pages from the `wax_weekly/` directory in this repository and hosted on my custom domain.
-
-**Live site:** [waxweekly.com](https://waxweekly.com)  
-**Source:** [`wax_weekly/`](https://github.com/kaseymallette/wax/tree/main/wax_weekly)  
-**Curated by:** Kasey Mallette
-
-### Wax Weekly directory
+My six genre collections are organized like this:
 
 ```text
-wax_weekly/
-├── index.html    # Page structure and metadata
-├── base.css      # Base styles
-├── style.css     # Wax Weekly interface and responsive styles
-├── app.js        # Playlist rendering and interaction
-├── data.js       # Playlist and track data
-├── art.js        # Album artwork cache
-└── _headers      # Cloudflare cache-control headers
+users/
+└── kasey/
+    ├── config.json
+    └── profiles/
+        ├── alt-rock.csv
+        ├── classic-rock.csv
+        ├── country-blues.csv
+        ├── electropop.csv
+        ├── indie-folk.csv
+        └── pop-hip-hop.csv
 ```
 
-Refresh `wax_weekly/data.js` + `wax_weekly/art.js` from weekly snapshot DBs (latest available snapshot per public station):
+I maintain the music in each collection outside Wax. Each CSV is the complete source for one genre; every song in a valid source gets a place in the week's playlists.
 
-```bash
-npm run weekly:site:build
+### 2. Create the user config
+
+Create `users/kasey/config.json` with the username, profile names, and paths to the CSVs:
+
+```json
+{
+  "username": "kasey",
+  "profiles": [
+    {
+      "id": "kasey-alt-rock",
+      "name": "Alt Rock",
+      "masterCsvPath": "profiles/alt-rock.csv",
+      "stationId": "kasey-alt-rock",
+      "enabled": true
+    },
+    {
+      "id": "kasey-classic-rock",
+      "name": "Classic Rock",
+      "masterCsvPath": "profiles/classic-rock.csv",
+      "stationId": "kasey-classic-rock",
+      "enabled": true
+    },
+    {
+      "id": "kasey-country-blues",
+      "name": "Country Blues",
+      "masterCsvPath": "profiles/country-blues.csv",
+      "stationId": "kasey-country-blues",
+      "enabled": true
+    },
+    {
+      "id": "kasey-electropop",
+      "name": "Electropop",
+      "masterCsvPath": "profiles/electropop.csv",
+      "stationId": "kasey-electropop",
+      "enabled": true
+    },
+    {
+      "id": "kasey-indie-folk",
+      "name": "Indie Folk",
+      "masterCsvPath": "profiles/indie-folk.csv",
+      "stationId": "kasey-indie-folk",
+      "enabled": true
+    },
+    {
+      "id": "kasey-pop-hip-hop",
+      "name": "Pop & Hip-Hop",
+      "masterCsvPath": "profiles/pop-hip-hop.csv",
+      "stationId": "kasey-pop-hip-hop",
+      "enabled": true
+    }
+  ]
+}
 ```
 
-Optional: force a specific week start (UTC Monday):
+- `username` matches the user folder and the `WAX_USER` used to launch the app.
+- `id` is a unique, stable profile identifier. It is also used in Spotify playlist names.
+- `name` is the display name shown in the app.
+- `masterCsvPath` is relative to the config file, so `profiles/alt-rock.csv` resolves inside `users/kasey/`. Absolute paths also work.
+- `stationId` is optional metadata for the weekly site; the current publisher uses `id`.
+- `enabled` controls whether the profile participates in the workflow.
 
-```bash
-WAX_WEEKLY_WEEK_START=2026-08-31 npm run weekly:site:build
-```
+A user can have one profile or several. Keep usernames and IDs lowercase, using hyphens between words.
 
-### Local Wax App Walkthrough
+### 3. Prepare the source CSVs
 
-> The screenshots below are from the `test` user, using a 999-song playlist import from `Billboards_Greatest_Hits_of_All_Time.csv`.
+Place one master CSV per profile in `users/kasey/profiles/`. The current parser expects these column names:
 
-**01. Run dev**
+| Column | Requirement |
+| --- | --- |
+| `Song` | Song title |
+| `Artist` | Artist name |
+| `Spotify Track Id` | Unique 22-character Spotify track ID |
+| `BPM` | Positive number |
+| `Energy` | Number from 0–100 |
+| `Dance` | Danceability, from 0–100 |
+| `Valence` | Number from 0–100 |
 
-![Run dev](images/01_run_dev.png)
+Optional columns include `Album`, `Album Date`, and `Camelot`.
 
-**02. Import library**
+Each enabled profile must contain **70–700 songs**. Wax checks every enabled CSV before opening the workflow. If a file is missing, has invalid data, or falls outside that range, the Collections page explains what needs fixing. Update the source file, then click **Refresh collection**.
 
-![Import library](images/02_import.png)
+### 4. Run Wax
 
-**03. Evaluate playlist**
-
-![Evaluate playlist](images/03_evaluate.png)
-
-**04. Shuffle Preview Song**
-
-![Shuffle preview](images/04_shuffle_preview.png)
-
-**05. Shuffle Keep or Remove**
-
-![Shuffle keep](images/05_shuffle_keep.png)
-
-**06. Search Library**
-
-![Search library](images/06_library.png)
-
-**07. Recents**
-
-![Recents](images/07_recents.png)
-
-**08. Keeps**
-
-![Keeps](images/08_keeps.png)
-
-**09. Daily playlists**
-
-![Daily playlists](images/09_playlists.png)
-
-**10. Stats**
-
-![Stats](images/10_stats.png)
-
-## Quick start
+From a fresh checkout, install dependencies first:
 
 ```bash
 git clone https://github.com/kaseymallette/wax.git
 cd wax
 npm install
-npm run dev
 ```
 
-Then open **http://127.0.0.1:3000**.
-
-### Import your music library
-
-You can import a Spotify export (`.db`, `.sqlite`, or Exportify `.csv`) directly in the app.
-
-If you need a playlist CSV from Spotify:
-
-1. Build or open a playlist in Spotify.
-2. Copy the playlist link.
-3. Go to [Chosic Playlist Exporter](https://www.chosic.com/spotify-playlist-exporter/) and export as CSV.
-4. Upload that CSV in Wax Import.
-
-In Wax:
-
-1. Open the app and go to the Import flow.
-2. Upload your `.db`, `.sqlite`, or exported `.csv` file.
-3. If prompted, map columns and complete import.
-
-### Navigate the app
-
-Wax lands on **Import** by default (`/`). The top nav order is **Import → Evaluate → Shuffle → Library → Recents → Keeps → Playlists → Stats**.
-
-- Use **Import** to load your library CSV/DB.
-- Use **Evaluate** to review a playlist CSV and apply keep/remove decisions in bulk.
-- Use **Shuffle** for one-by-one listening decisions.
-- Use **Library** to browse/search tracks and edit repeat-intent tags directly.
-- Use **Recents** to review your latest logged decisions timeline.
-- Use **Keeps** to manage all keep-tagged songs and move tracks between keep buckets.
-- Use **Playlists** to inspect daily + intent playlists before Spotify push.
-- Use **Stats** to view totals, activity trends, and tag distribution.
-
-For full-song playback in the embed, sign into Spotify in any tab of the same browser. Premium plays the whole track; Free gives you 30-second previews.
-
-### Playlists Algorithm
-
-- Builds 7 daily playlists from `currently_listening` using k-means on BPM + mood (`energy + dance + valence`) with nearest-neighbor ordering.
-- Uses dynamic per-playlist caps based on current `currently_listening` count:
-  - `0–35` tracks → max `5` per playlist
-  - `36–70` tracks → max `10` per playlist
-  - `71–105` tracks → max `15` per playlist
-  - `106–140` tracks → max `20` per playlist
-  - `141–175` tracks → max `25` per playlist
-  - `176+` tracks → max `30` per playlist
-- Also writes one CSV each for `currently_listening`, `favorites_archive`, `save_for_later`, `skip_for_now`, and `full_music_library`.
-
-## Spotify API playlists
-
-1. Register a Spotify app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
-   - App name: `Wax`
-   - App description: `WAX playlists`
-   - Add redirect URI exactly: `http://127.0.0.1:8888/callback`
-   - Enable **Web API** and save.
-
-2. Copy the app credentials from Spotify app settings:
-   - `Client ID`
-   - `Client secret`
-
-3. Create `.env` from the example and fill in credentials:
+After creating your user folder, config, and source CSVs, start the app from the repository root:
 
 ```bash
-cp .env.example .env
+WAX_USER=kasey npm run dev
 ```
 
+Open [Wax locally](http://127.0.0.1:3000).
+
+To switch users, stop the server with **Ctrl+C** and start it with the other username:
+
 ```bash
-SPOTIFY_CLIENT_ID=paste_your_client_id_here
-SPOTIFY_CLIENT_SECRET=paste_your_client_secret_here
+WAX_USER=kaseysdad npm run dev
+WAX_USER=kaseysmom npm run dev
+```
+
+Switch genres within the app; there is no need to restart between profiles. Always specify `WAX_USER` to select the intended user. Run only one app instance per user while editing or publishing.
+
+### 5. Organize the week
+
+On **Collections**, check that the source playlists are ready, then choose **Organize playlists**. On **Organize**, select a genre and a day to inspect its songs.
+
+Wax groups songs using two dimensions:
+
+- **BPM**, the song's tempo.
+- **Mood = Energy + Danceability + Valence**, ranging from 0–300.
+
+The dimensions are standardized before clustering so their scales do not dominate the distance calculation. Balanced K-means assigns every song to one of seven groups, enforcing the target sizes during clustering. Playlist sizes differ by at most one song. For example, 193 songs become four playlists of 28 and three playlists of 27.
+
+Wax ranks the clusters by their **average BPM**, highest to lowest, and assigns them to days:
+
+| Day | BPM rank |
+| --- | --- |
+| Monday | 1 — fastest |
+| Tuesday | 3 |
+| Wednesday | 6 |
+| Thursday | 4 |
+| Friday | 2 |
+| Saturday | 5 |
+| Sunday | 7 — slowest |
+
+This gives Monday a faster start, Wednesday a breather, Friday a lift, and Sunday the slowest mix. Each day card displays its average BPM. Mood influences the clusters; average BPM determines their days.
+
+Within each daily playlist, Wax starts with the song nearest the cluster's center, then repeatedly chooses the nearest remaining song in BPM–Mood space. Choose a different opening song from the dropdown to immediately recalculate the sequence. **Opening-song choices save automatically.**
+
+Use the preview button to open a Spotify embed or the Spotify link to listen there. Search by song title or artist across the selected genre's entire week; each result shows its day and position. Select a result to jump to that song.
+
+Generation is deterministic for an unchanged source. Editing a source CSV resets its saved opening choices and approvals when the app next loads it.
+
+### 6. Save and publish
+
+Choose **Continue to save & publish** when the collection is ready. The page displays the target week: **next week, beginning next Monday**, based on the computer running Wax. For example, preparing playlists on October 11, 2026 targets October 12–18.
+
+**Save playlist CSVs** writes all seven playlists in their current order and offers individual downloads. Spotify access and approval are not required to save CSVs. The app shows **Your playlists are saved** when the current version has been exported for that week.
+
+To publish the selected collection:
+
+1. Click **Approve this week** to approve all seven playlists together.
+2. Click **Check Spotify account** and verify the destination account.
+3. Click **Publish collection**.
+
+Publishing saves the CSVs, creates or updates seven private Spotify playlists, and then saves a weekly snapshot. For my Alt Rock profile, the names are:
+
+```text
+Wax - Kasey-alt-rock Monday
+Wax - Kasey-alt-rock Tuesday
+Wax - Kasey-alt-rock Wednesday
+Wax - Kasey-alt-rock Thursday
+Wax - Kasey-alt-rock Friday
+Wax - Kasey-alt-rock Saturday
+Wax - Kasey-alt-rock Sunday
+```
+
+Repeat for each genre. Publishing again updates the existing Wax playlists for that profile and day. Changing songs or their order requires approving the week again.
+
+If publishing fails partway through, use **Retry publish**. Progress is saved after each successful Spotify playlist update. If only the weekly snapshot failed, retrying saves the snapshot without repeating completed Spotify writes.
+
+#### First-song mix
+
+On **Save & publish**, **First songs. One mix.** brings together the opening song from every day across all enabled profiles. It follows the profile order in your config, with Monday–Sunday together for each profile. Kasey's six profiles make a 42-song mix: Alt Rock first, then Classic Rock, Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop.
+
+Expand the mix to check the songs, then choose **Save mix CSV** or check your Spotify account and choose **Publish first-song mix**. The Spotify playlist is named `Wax - Kasey First Songs`. Updated choices replace the songs in the same Spotify mix. CSV exports keep each version separately. The mix uses your current opening-song choices, including any you let Wax choose; after changing an opener, return to Save & publish or select **Refresh mix**. Your daily playlists keep their existing order.
+
+## Spotify setup
+
+CSV generation works without Spotify credentials. Publishing uses the Spotify account authorized in the local `.env` file; changing `WAX_USER` does not change that Spotify account.
+
+Create `.env` from `.env.example` if you do not already have one. Fill in the credentials for your Spotify developer app:
+
+```dotenv
+SPOTIFY_CLIENT_ID=your_client_id
+SPOTIFY_CLIENT_SECRET=your_client_secret
 SPOTIFY_REDIRECT_URI=http://127.0.0.1:8888/callback
 SPOTIFY_REFRESH_TOKEN=
 WAX_USER=kasey
-# or WAX_USER=kaseysdad
-# or WAX_USER=kaseysmom
 ```
 
-4. Authorize once to get a refresh token:
+Configure the same redirect URI in your Spotify app settings, then run:
 
 ```bash
 npm run spotify:auth
 ```
 
-Copy the `SPOTIFY_REFRESH_TOKEN=...` line from terminal output into `.env`.
+Authorize the account you want to publish to. Copy the refresh-token line printed by the helper into `.env`, then restart Wax. The helper requests playlist read and modification permissions. Keep `.env` local; it is excluded from Git.
 
-## Users
+## Saved files
 
-### Switch between users
+Wax creates these folders as you use the app:
 
-This starts the app using that user's DB file (`users/<name>/music_library.db`).
-Use this when you want to work in one person's library/decisions without touching another user's DB.
-
-```bash
-WAX_USER=kasey npm run dev:user
-WAX_USER=kaseysdad npm run dev:user
-WAX_USER=kaseysmom npm run dev:user
+```text
+users/kasey/
+├── config.json
+├── profiles/     # Master CSVs you maintain
+├── state/        # Opening choices, approvals, and publish progress
+├── exports/      # Seven CSVs and a manifest per exported version
+└── snapshots/    # Weekly JSON snapshots after successful publishing
 ```
 
-### Switch between profiles
+Export folders use the genre, target Monday, and a short version fingerprint—for example, `alt-rock-2026-10-12-<fingerprint>`. CSV names are shorter, such as `alt-rock-monday.csv`. Saving a changed version creates another export folder; previous versions are retained.
 
-This switches between different profiles for the same user. Each profile has its own set of playlists and settings.
+Configs, source CSVs, and exports can be tracked in Git. Local state, snapshots, credentials, and backups are ignored. Back up `state/` and `snapshots/` separately if you want to preserve opening choices, publish progress, and weekly history outside this computer.
 
-```bash
-WAX_USER=kasey-alt-rock npm run dev:user
-WAX_USER=kasey-classic-rock npm run dev:user
-WAX_USER=kasey-country-blues npm run dev:user
-WAX_USER=kasey-indie-folk npm run dev:user
-WAX_USER=kasey-pop-hip-hop npm run dev:user
-
-
-```   
-
-### Export decisions for each user
-
-This writes the latest decisions from that user's DB (`users/<name>/music_library.db`) to
-`users/<name>/decisions-latest.json` so it can be tracked in git/history.
+To commit finished exports, review the changes and stage the intended files:
 
 ```bash
-WAX_USER=kasey npm run user:export
-WAX_USER=kaseysdad npm run user:export
-WAX_USER=kaseysmom npm run user:export
+git add users/kasey/config.json users/kasey/profiles users/kasey/exports
+git commit -m "Save Kasey's weekly playlists"
+git push
 ```
 
-### Export decisions for each profile
+## Wax Weekly
 
-This writes the latest decisions from that profile's DB (`users/<name>/<profile>/music_library.db`) to
-`users/<name>/<profile>/decisions-latest.json` so it can be tracked in git/history.
+[Wax Weekly](https://waxweekly.com) is the public listening site in `wax_weekly/`. It presents genre collections and daily playlists with song details and Spotify links.
 
-```bash
-WAX_USER=kasey-alt-rock npm run user:export
-WAX_USER=kasey-classic-rock npm run user:export
-WAX_USER=kasey-country-blues npm run user:export
-WAX_USER=kasey-indie-folk npm run user:export
-WAX_USER=kasey-pop-hip-hop npm run user:export
-```
+**V2 site integration is still pending.** The local app publishes playlists and saves JSON snapshots, but the existing `weekly:site:build` script reads the older snapshot database format. It does not yet build the site from these v2 snapshots or add Electropop automatically. Publishing through the local app does not deploy the site.
 
-### Build playlists for each user
+## Troubleshooting
 
-This reads that user's DB (`users/<name>/music_library.db`) and generates playlist CSVs in
-`users/<name>/playlists/`.
+- **A collection needs a fix:** expand its source details on Collections, correct the CSV, and click **Refresh collection**.
+- **The wrong user appears:** stop the server and restart with `WAX_USER=kasey npm run dev`; check that the config username matches.
+- **Port 3000 is in use:** stop the previous server, or use `PORT=3001 WAX_USER=kasey npm run dev` and open port 3001.
+- **CSV files show as unsaved after an edit:** save them again to export the new order. Opening choices still save automatically.
+- **Spotify authorization fails:** check `.env`, run `npm run spotify:auth` again if needed, and restart the app.
+
+## Development
 
 ```bash
-WAX_USER=kasey npm run user:playlists
-WAX_USER=kaseysdad npm run user:playlists
-WAX_USER=kaseysmom npm run user:playlists
+npm run check
+npm run build
+WAX_USER=kasey npm start
 ```
 
-### Build playlists for each profile
+The local app uses React, TypeScript, Vite, Express, Tailwind, shadcn/ui, and TanStack Query. Wax Weekly uses HTML, CSS, and JavaScript.
 
-This reads that profile's DB (`users/<name>/<profile>/music_library.db`) and generates playlist CSVs in
-`users/<name>/<profile>/playlists/`.
-
-```bash
-WAX_USER=kasey-alt-rock npm run user:playlists
-WAX_USER=kasey-classic-rock npm run user:playlists
-WAX_USER=kasey-country-blues npm run user:playlists
-WAX_USER=kasey-indie-folk npm run user:playlists
-WAX_USER=kasey-pop-hip-hop npm run user:playlists
-```
-
-### Push playlists using Spotify API
-
-If Spotify API is configured (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`), push playlists to Spotify with:
-
-Dry run: 
-```bash
-WAX_USER=kasey npm run spotify:push:dry
-WAX_USER=kaseysdad npm run spotify:push:dry
-WAX_USER=kaseysmom npm run spotify:push:dry
-```
-
-Push to Spotify: 
-```bash
-WAX_USER=kasey npm run spotify:push
-WAX_USER=kaseysdad npm run spotify:push
-WAX_USER=kaseysmom npm run spotify:push
-```
-
-### Push playlists for each profile
-
-This pushes playlists for each profile to Spotify.
-
-Dry run:
-```bash
-WAX_USER=kasey-alt-rock npm run spotify:push:dry
-WAX_USER=kasey-classic-rock npm run spotify:push:dry
-WAX_USER=kasey-country-blues npm run spotify:push:dry
-WAX_USER=kasey-indie-folk npm run spotify:push:dry
-WAX_USER=kasey-pop-hip-hop npm run spotify:push:dry
-```
-
-Push to Spotify:
-```bash
-WAX_USER=kasey-alt-rock npm run spotify:push
-WAX_USER=kasey-classic-rock npm run spotify:push
-WAX_USER=kasey-country-blues npm run spotify:push
-WAX_USER=kasey-indie-folk npm run spotify:push
-WAX_USER=kasey-pop-hip-hop npm run spotify:push
-```
-
-### Save weekly snapshots for each user
-
-This captures that user's weekly playlists into a user-specific snapshot DB, including unassigned tracks from `currently-listening.csv`.
-
-```bash
-WAX_USER=kasey npm run user:snapshots:weekly
-WAX_USER=kaseysdad npm run user:snapshots:weekly
-WAX_USER=kaseysmom npm run user:snapshots:weekly
-```
-
-This writes:
-
-- `users/<user>/weekly-playlists.db`
-
-### Save weekly playlists for profiles
-
-This captures that profile's weekly playlists into a profile-specific snapshot DB, including unassigned tracks from `currently-listening.csv`.
-
-```bash
-WAX_USER=kasey-alt-rock npm run user:snapshots:weekly
-WAX_USER=kasey-classic-rock npm run user:snapshots:weekly
-WAX_USER=kasey-country-blues npm run user:snapshots:weekly
-WAX_USER=kasey-indie-folk npm run user:snapshots:weekly
-WAX_USER=kasey-pop-hip-hop npm run user:snapshots:weekly
-```
-
-This writes:
-
-- `users/<user>/<profile>/weekly-playlists.db`
-
-### Remove songs in each user DB
-
-This deletes tracks marked with repeat intent `removed` from that user's DB (`users/<name>/music_library.db`).
-
-```bash
-WAX_USER=kasey npm run user:remove
-WAX_USER=kaseysdad npm run user:remove
-WAX_USER=kaseysmom npm run user:remove
-```
-
-### Check duplicate tracks in each user DB
-
-This checks a user's `users/<name>/music_library.db` for duplicate artist+song groups and writes a per-user CSV report.
-
-```bash
-WAX_USER=kasey npm run user:dupes
-WAX_USER=kaseysdad npm run user:dupes
-WAX_USER=kaseysmom npm run user:dupes
-```
-
-This writes:
-
-- `users/<user>/duplicate-tracks.csv`
-
-### Back up user data
-
-Each user DB (`users/<name>/music_library.db`) is local and not tracked in git. You can back up and restore a user's DB with:
-
-```bash
-WAX_USER=kasey npm run backup-db
-WAX_USER=kasey npm run restore-db
-WAX_USER=kaseysdad npm run backup-db
-WAX_USER=kaseysdad npm run restore-db
-WAX_USER=kaseysmom npm run backup-db
-WAX_USER=kaseysmom npm run restore-db
-```
-
-## Support
-
-### Troubleshooting
-
-- **Port already in use** → `lsof -ti:3000 | xargs kill` then restart. Or run on a different port: `PORT=4000 npm run dev`.
-- **macOS AirPlay grabbing port 5000** → use `PORT=3000` (default) or disable AirPlay Receiver in System Settings → General → AirDrop & Handoff.
-- **`better-sqlite3` install fails** → needs a C++ toolchain. macOS: `xcode-select --install`. Ubuntu: `sudo apt install build-essential python3`. Node 22+ is recommended; Node 26 has no prebuilt binaries yet.
-- **Old UI shows after pulling new code** → Vite cache: `rm -rf node_modules/.vite dist && npm run dev`, then hard-refresh the browser (Cmd+Shift+R).
-- **Tracks show as "Unknown track" after CSV import** → your CSV's name column wasn't auto-detected. Wax recognizes `Song`, `Title`, `Track`, `Track Name`, `Song Name`. Rename your column or open an issue.
-- **Lost data after rebuild** → your active DB is `users/<WAX_USER>/music_library.db` (default user is `kasey`). Don't delete it.
-
-### Tech stack
-
-Express · Vite · React · TypeScript · Tailwind · shadcn/ui · Drizzle ORM · better-sqlite3 · TanStack Query · framer-motion · Recharts · Fontshare (Cabinet Grotesk + Satoshi).
-
-### License
+## License
 
 MIT

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import Papa from "papaparse";
+import { playlistDisplayId } from "./playlistNames";
 import type { DailyPlaylistsResult } from "./dailyPlaylists";
 import type { SpotifyPublisher } from "./spotifyPublisher";
 export const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -71,7 +72,7 @@ export async function publishProfile(input: PublishInput, expectedAccountId: str
       const key = String(playlist.index);
       if (job.spotifyDone.includes(playlist.index)) continue;
       if (!job.spotifyIds[key]) {
-        job.spotifyIds[key] = await spotify.findOrCreate(`Wax - ${input.profileId} ${DAYS[playlist.index - 1]}`, `Wax v2 | ${input.profileId} | day ${playlist.index}`, account.id);
+        job.spotifyIds[key] = await spotify.findOrCreate(`Wax - ${playlistDisplayId(input.profileId)} ${DAYS[playlist.index - 1]}`, `Wax v2 | ${input.profileId} | day ${playlist.index}`, account.id);
         save();
       }
       await spotify.replace(job.spotifyIds[key], playlist.tracks.map(t => t.id));

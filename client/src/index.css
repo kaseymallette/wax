@@ -330,6 +330,9 @@
 .collection-art-0 { background: #8b9e80; color: #172e28; }
 .collection-art-1 { background: #b96549; color: #391e1a; }
 .collection-art-2 { background: #3b3e60; color: #f4cea7; }
+.collection-art-3 { background: #b87956; color: #302821; }
+.collection-art-4 { background: #262345; color: #ecd0f1; }
+.collection-art-5 { background: #7794a0; color: #1c2b36; }
 .sleeve-caption { position: absolute; top: 18px; left: 20px; font-size: 9px; font-weight: 800; letter-spacing: .2em; z-index: 1; }
 .sleeve-graphic { position: absolute; width: 100%; height: 100%; inset: 0; }
 .sleeve-number { position: absolute; bottom: 17px; left: 20px; font-size: 10px; font-weight: 800; letter-spacing: .15em; }

@@ -5,6 +5,7 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { PublishCollection, type PublishStatus } from "@/components/PublishCollection";
+import { FirstSongMix } from "@/components/FirstSongMix";
 import { Disc3, Play, ExternalLink, Search } from "lucide-react";
 import type { PreflightReport } from "../../../server/profileConfig";
 import type { DailyPlaylistsResult } from "../../../server/dailyPlaylists";
@@ -26,6 +27,7 @@ export default function PlaylistsPage({ stage = "organize" }: { stage?: "organiz
     </div>
     {profiles.error && <p role="alert">Could not load your collections. Refresh to try again.</p>}
     {profile && <Collection key={profile.id} id={profile.id} name={profile.name} stage={stage} />}
+    {stage === "publish" && <FirstSongMix />}
   </Layout>;
 }
 function Collection({ id, name, stage }: { id: string; name: string; stage: "organize" | "publish" }) {

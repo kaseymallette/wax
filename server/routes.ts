@@ -2,17 +2,18 @@ import type { Express } from "express";
 import type { Server } from "node:http";
 import fs from "node:fs";
 import path from "node:path";
-import { createHash } from "node:crypto";
 import { z } from "zod";
-import { loadPreflight, readProfileTracks } from "./profileConfig";
-import { hash, weekStart, writeJson, hasSavedExport, exportFiles, readJob, publishProfile, type PublishInput } from "./profilePublish";
+import { loadPreflight } from "./profileConfig";
+import { hash, weekStart, writeJson, hasSavedExport, exportFiles, readJob, publishProfile } from "./profilePublish";
 import { createSpotifyPublisher } from "./spotifyPublisher";
-import { buildDailyPlaylists, remapOpeningSongs } from "./dailyPlaylists";
+import { buildDailyPlaylists } from "./dailyPlaylists";
 
-type SavedState = { dayAssignment?: string; fingerprint: string; firstTrackByPlaylist: Record<string, string>; reviewed?: Record<string, string> };
+import { loadProfileWorkflow } from "./profileWorkflow";
+import { registerFirstSongMixRoutes } from "./firstSongMixRoutes";
 const running = new Set<string>();
 const failures = new Map<string, string>();
 export async function registerRoutes(server: Server, app: Express): Promise<Server> {
+  registerFirstSongMixRoutes(app);
   app.get("/api/profiles/preflight", (_req, res) => res.json(loadPreflight()));
   app.get("/api/spotify/account", async (_req, res) => {
     try { const account = await createSpotifyPublisher().account(); res.json({ id: account.id, name: account.display_name || account.id }); }
@@ -25,27 +26,10 @@ export async function registerRoutes(server: Server, app: Express): Promise<Serv
     const profile = req.query.profile === undefined ? report.profiles[0] : report.profiles.find(p => p.id === req.query.profile);
     if (!profile) return res.status(404).json({ error: "Collection not found." });
     try {
-      const tracks = readProfileTracks(profile.path);
-      const fingerprint = createHash("sha256").update(JSON.stringify(tracks)).digest("hex");
-      const statePath = path.join(path.dirname(report.configPath), "state", `${profile.id}.json`);
-      let state: SavedState = { dayAssignment: "bpm-week-v1", fingerprint, firstTrackByPlaylist: {} };
-      if (fs.existsSync(statePath)) {
-        const saved = JSON.parse(fs.readFileSync(statePath, "utf8"));
-        if (saved.fingerprint === fingerprint) state = { dayAssignment: saved.dayAssignment, fingerprint, firstTrackByPlaylist: z.record(z.string()).parse(saved.firstTrackByPlaylist), reviewed: z.record(z.string()).parse(saved.reviewed ?? {}) };
-      }
-      if (state.dayAssignment !== "bpm-week-v1") {
-        const backup = `${statePath}.before-bpm-week.json`;
-        if (!fs.existsSync(backup)) fs.copyFileSync(statePath, backup);
-        state.firstTrackByPlaylist = remapOpeningSongs(buildDailyPlaylists(tracks), state.firstTrackByPlaylist);
-        state.reviewed = {};
-        state.dayAssignment = "bpm-week-v1";
-        writeJson(statePath, state);
-      }
-      const result = buildDailyPlaylists(tracks, state);
-      const revision = hash(result.playlists);
-      const input: PublishInput = { profileId: profile.id, userDir: path.dirname(report.configPath), result, revision, week: weekStart() };
+      const workflow = loadProfileWorkflow(report, profile);
+      const { statePath } = workflow;
       if (req.method !== "GET" && running.has(statePath)) return res.status(409).json({ error: "Publishing is in progress. Wait before making changes." });
-      res.locals.workflow = { profile, tracks, state, statePath, result, revision, input };
+      res.locals.workflow = workflow;
       next();
     } catch (error) { res.status(422).json({ error: (error as Error).message }); }
   });
