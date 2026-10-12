@@ -1,0 +1,35 @@
+{
+  "profileId": "kasey-classic-rock",
+  "weekStart": "2026-10-12",
+  "revision": "04149257db8585e37a785436b41617143e8afdce5e60dbb5252774c740fc238b",
+  "files": [
+    {
+      "day": 1,
+      "filename": "classic-rock-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "classic-rock-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "classic-rock-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "classic-rock-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "classic-rock-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "classic-rock-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "classic-rock-sunday.csv"
+    }
+  ]
+}

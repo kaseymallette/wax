@@ -1,0 +1,35 @@
+{
+  "profileId": "kasey-alt-rock",
+  "weekStart": "2026-10-12",
+  "revision": "c8d1267025722b62527186fa5f8b0d4848403ac1f4ed62b15e93b2d2f1c4f46c",
+  "files": [
+    {
+      "day": 1,
+      "filename": "alt-rock-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "alt-rock-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "alt-rock-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "alt-rock-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "alt-rock-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "alt-rock-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "alt-rock-sunday.csv"
+    }
+  ]
+}

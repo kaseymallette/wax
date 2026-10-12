@@ -1,0 +1,35 @@
+{
+  "profileId": "kasey-electropop",
+  "weekStart": "2026-10-12",
+  "revision": "9635d87112c8a00efc78538d3eec61c97c34be06091cfce07e416fcfd2a164e3",
+  "files": [
+    {
+      "day": 1,
+      "filename": "electropop-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "electropop-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "electropop-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "electropop-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "electropop-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "electropop-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "electropop-sunday.csv"
+    }
+  ]
+}

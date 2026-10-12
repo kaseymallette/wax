@@ -1,0 +1,35 @@
+{
+  "profileId": "kasey-country-blues",
+  "weekStart": "2026-10-12",
+  "revision": "5ca0474302314807201338f2eaaeafc06a02bfc47a67c23f3cdf46a3fc2ea315",
+  "files": [
+    {
+      "day": 1,
+      "filename": "country-blues-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "country-blues-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "country-blues-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "country-blues-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "country-blues-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "country-blues-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "country-blues-sunday.csv"
+    }
+  ]
+}
