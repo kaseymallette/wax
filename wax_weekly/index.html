@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wax Weekly</title>
-  <meta name="description" content="Seven daily playlists across five genre stations, updated weekly by Wax Weekly." />
+  <meta name="description" content="Seven daily playlists across six genre stations, updated weekly by Wax Weekly." />
   <link rel="canonical" href="https://waxweekly.com/" />
 
   <!-- Social sharing / Open Graph -->
   <meta property="og:title" content="Wax Weekly" />
-  <meta property="og:description" content="Seven daily playlists across five genre stations, updated weekly." />
+  <meta property="og:description" content="Seven daily playlists across six genre stations, updated weekly." />
   <meta property="og:url" content="https://waxweekly.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Wax Weekly" />
@@ -17,11 +17,11 @@
   <!-- Fallback metadata for platforms that also read Twitter Card tags -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Wax Weekly" />
-  <meta name="twitter:description" content="Seven daily playlists across five genre stations, updated weekly." />
+  <meta name="twitter:description" content="Seven daily playlists across six genre stations, updated weekly." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23241f1a'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23b3402a' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23e8ddc9'/%3E%3C/svg%3E" />
   <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,700&f[]=switzer@400,500,600,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./base.css?v=20260816-1729" />
-  <link rel="stylesheet" href="./style.css?v=20260817-1329" />
+  <link rel="stylesheet" href="./style.css?v=20261012-view-tabs" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -51,21 +51,50 @@
   </header>
 
   <main id="main">
-    <section class="stations" aria-label="Genre stations">
+    <div class="stations">
       <div class="wax-intro">
         <p class="wax-tagline">Designed to feel like shuffle</p>
+        <p class="wax-totals" id="collection-totals"></p>
         <p class="wax-byline">Daily playlists curated by Kasey Mallette.</p>
         <p class="wax-about-line"><a class="wax-intro-link" href="./about.html">About Wax <span aria-hidden="true">→</span></a></p>
         <div class="wax-intro-divider" aria-hidden="true"></div>
       </div>
 
-      <div class="station-rail" id="station-rail" role="tablist" aria-label="Stations"></div>
+    </div>
+    <div class="view-tabs" role="tablist" aria-label="Browse Wax Weekly">
+      <button type="button" id="profiles-tab" role="tab" aria-controls="profiles-panel" aria-selected="true">Profiles</button>
+      <button type="button" id="explore-tab" role="tab" aria-controls="explore-panel" aria-selected="false" tabindex="-1">Explore</button>
+    </div>
+    <div id="explore-panel" class="explore-panel" role="tabpanel" aria-labelledby="explore-tab" hidden>
+      <section class="jukebox" id="jukebox" aria-labelledby="jukebox-title" hidden>
+        <div class="jukebox-heading">
+          <div><p class="jukebox-eyebrow">THE FIRST SONGS JUKEBOX</p><h2 id="jukebox-title">Find your next first song.</h2><p id="jukebox-description"></p></div>
+          <a id="jukebox-spotify" class="jukebox-link" target="_blank" rel="noopener noreferrer" hidden>Listen to the full mix on Spotify ↗</a>
+        </div>
+        <div class="jukebox-deck" id="jukebox-deck" role="region" aria-roledescription="carousel" aria-label="First songs" tabindex="0">
+          <div class="jukebox-record" aria-hidden="true"><img id="jukebox-art" alt="" hidden><span class="jukebox-vinyl">W</span></div>
+          <div class="jukebox-song">
+            <div id="jukebox-card" role="group" aria-roledescription="slide" aria-live="polite" aria-atomic="true">
+              <p class="jukebox-eyebrow" id="jukebox-origin"></p><h3 id="jukebox-song-title"></h3><p id="jukebox-artist"></p>
+            </div>
+            <a class="jukebox-link" id="jukebox-explore" href="#daily-playlists"></a>
+            <div class="jukebox-controls"><button type="button" id="jukebox-prev" aria-label="Previous first song">← Previous</button><span id="jukebox-position"></span><button type="button" id="jukebox-next" aria-label="Next first song">Next →</button></div>
+          </div>
+        </div>
+        <div id="jukebox-player" class="jukebox-player"></div>
+        <p class="jukebox-hint">Tap Play in the Spotify player to listen. Preview availability depends on Spotify.</p>
+        <details id="jukebox-full-mix" hidden><summary>Open the full playlist player</summary><div id="jukebox-playlist-player" class="jukebox-player"></div></details>
+      </section>
+    </div>
+    <div id="profiles-panel" role="tabpanel" aria-labelledby="profiles-tab">
+    <section class="stations profile-stations" aria-label="Genre stations">
+      <div class="station-rail" id="station-rail" role="group" aria-label="Stations"></div>
     </section>
 
-    <section class="week" aria-label="Daily playlists">
+    <section class="week" id="daily-playlists" aria-label="Daily playlists" hidden>
       <div class="week-head">
         <div class="week-title">
-          <h1 id="station-title"></h1>
+          <h1 id="station-title" tabindex="-1"></h1>
           <p class="week-desc" id="station-desc"></p>
         </div>
         <div class="day-rail" id="day-rail" role="tablist" aria-label="Day of week"></div>
@@ -94,13 +123,14 @@
         <ol class="track-list" id="track-list" role="list"></ol>
       </div>
     </section>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <p>Seven daily playlists per station, clustered by BPM and mood from the Currently Listening pool. Last updated on <span id="footer-week"></span>. Curated by Kasey Mallette.</p>
+    <p>Seven daily playlists per station, clustered by BPM and mood from each curated genre collection. Last updated on <span id="footer-week"></span>. Curated by Kasey Mallette.</p>
   </footer>
 
-  <script src="./data.js?v=20260816-1801"></script>
+  <script src="./data.js?v=20261012-view-tabs"></script>
   <script src="./art.js?v=20260816-1729"></script>
-  <script src="./app.js?v=20260817-1247" defer></script></body>
+  <script src="./app.js?v=20261012-view-tabs" defer></script></body>
 </html>

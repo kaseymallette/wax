@@ -66,6 +66,35 @@ The mix includes six genre profiles: Alt Rock, Classic Rock, Country Blues, Elec
 
 ![The remaining first-song mix selections, grouped by Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop](images/wax_local_first_song_playlist_02.png)
 
+## Wax Weekly
+
+[Wax Weekly](https://waxweekly.com) is the public listening site in `wax_weekly/`. It presents genre collections and daily playlists with song details and Spotify links.
+
+![Wax Weekly website showing listening totals, Profiles and Explore tabs, and six expandable genre cards with track counts, artist counts, and average songs per day](images/wax_weekly_website_preview.png)
+
+After publishing all six collections to Spotify in Wax, prepare the website release from the repository root:
+
+```bash
+npm run weekly:release
+```
+
+This reads the published v2 snapshots in `users/kasey/snapshots/` and updates `wax_weekly/data.js` and `wax_weekly/art.js`. Song order and Spotify playlist links come directly from the snapshots, including Electropop. Existing album artwork is reused when available.
+
+The **Explore** tab contains the **First Songs jukebox**, features each daily opener in profile order. Visitors can use Previous/Next, arrow keys, or swipe the song card, listen through the Spotify player, and choose **Explore [genre] · [day]** to jump to that full daily playlist. **Profiles** opens by default and keeps the genre cards and daily playlists together. Explore links switch to Profiles and select the matching genre and day. Spotify controls playback and preview availability. When a published First Songs snapshot matches the website's opening songs in the same order, the release also includes a link and expandable player for the full mix. Publish the mix in Wax and rerun `npm run weekly:release` to include it.
+
+The command selects the newest snapshot week and requires all six collections to have a complete published snapshot for that same week. If a collection is missing, it stops without changing the website files. If a collection was published more than once that week, its most recently published snapshot wins.
+
+To select a particular week or validate without writing files:
+
+```bash
+npm run weekly:release -- --week 2026-10-12
+npm run weekly:release -- --check
+```
+
+The website's user and profile order are configured separately in `wax_weekly/release.json`. This command does not use `WAX_USER`, so running the local app for a parent does not change the website's source. Other Wax users do not need a website or release configuration. The older `npm run weekly:site:build` command is an alias for the same v2 builder.
+
+Review the generated files, then commit and deploy `wax_weekly/` through your normal hosting workflow. The release command does not publish to Spotify, commit, push, or deploy. Snapshots stay local; run the command on the computer holding the published snapshots before deploying the generated site files.
+
 ## Methods
 
 ### 1. Create a user folder
@@ -312,12 +341,6 @@ git add users/kasey/config.json users/kasey/profiles users/kasey/exports
 git commit -m "Save Kasey's weekly playlists"
 git push
 ```
-
-## Wax Weekly
-
-[Wax Weekly](https://waxweekly.com) is the public listening site in `wax_weekly/`. It presents genre collections and daily playlists with song details and Spotify links.
-
-**V2 site integration is still pending.** The local app publishes playlists and saves JSON snapshots, but the existing `weekly:site:build` script reads the older snapshot database format. It does not yet build the site from these v2 snapshots or add Electropop automatically. Publishing through the local app does not deploy the site.
 
 ## Troubleshooting
 

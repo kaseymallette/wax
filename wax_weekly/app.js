@@ -7,12 +7,14 @@
     'kasey-alt-rock': { name: 'Alt Rock', accent: 'var(--accent-alt)', desc: 'Distortion, hooks, and heavy rotation.' },
     'kasey-classic-rock': { name: 'Classic Rock', accent: 'var(--accent-classic)', desc: 'The canon, spun front to back.' },
     'kasey-country-blues': { name: 'Country Blues', accent: 'var(--accent-country)', desc: 'Twang, grit, and twelve bars.' },
+    'kasey-electropop': { name: 'Electropop', accent: 'var(--accent-electro)', desc: 'Bright synths, late nights, and electric hooks.' },
     'kasey-indie-folk': { name: 'Indie Folk', accent: 'var(--accent-indie)', desc: 'Quiet rooms and open tunings.' },
     'kasey-pop-hip-hop': { name: 'Pop & Hip-Hop', accent: 'var(--accent-pop)', desc: 'Big choruses, bigger bounce.' },
   };
 
   let currentStation = DATA.stations[0].id;
   let currentDay = 0;
+  let profileExpanded = false;
 
   const $ = (id) => document.getElementById(id);
   const root = document.documentElement;
@@ -45,21 +47,36 @@
   $('footer-week').textContent = updatedText;
 
   /* ---------- Station rail ---------- */
+  function countArtists(tracks) {
+    // Exported collaborators use commas without spaces; preserve names like Crosby, Stills, Nash & Young.
+    return new Set(tracks.flatMap(t =>
+      t.a.split(/,(?=\S)/).map(name => name.trim().toLocaleLowerCase()).filter(Boolean)
+    )).size;
+  }
+  const allTracks = DATA.stations.flatMap(s => s.days.flatMap(d => d.tracks));
+  $('collection-totals').textContent = allTracks.length.toLocaleString('en-US') +
+    ' songs · ' + countArtists(allTracks).toLocaleString('en-US') +
+    ' unique artists · ' + DATA.stations.length + ' profiles';
   const rail = $('station-rail');
   DATA.stations.forEach((s) => {
-    const meta = STATIONS[s.id];
+    const meta = STATIONS[s.id] || { name: s.name || s.id, accent: 'var(--accent-alt)', desc: 'Your weekly rotation.' };
     const total = s.days.reduce((n, d) => n + d.tracks.length, 0);
+    const dailyAverage = s.days.length ? Math.round(total / s.days.length) : 0;
+    const artistCount = countArtists(s.days.flatMap(d => d.tracks));
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'station-card';
-    btn.setAttribute('role', 'tab');
-    btn.setAttribute('aria-selected', 'false');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'daily-playlists');
     btn.dataset.station = s.id;
     btn.style.setProperty('--sc', meta.accent);
     btn.innerHTML =
       '<span class="station-genre">' + meta.name + '</span>' +
-      '<span class="station-count">' + total + ' tracks · 7 days</span>';
+      '<span class="station-count">' + total + ' tracks · ' + artistCount + ' artists</span>' +
+      '<span class="station-average">' + dailyAverage + ' songs a day</span>' +
+      '<svg class="station-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
     btn.addEventListener('click', () => {
+      profileExpanded = currentStation !== s.id || !profileExpanded;
       currentStation = s.id;
       render();
     });
@@ -124,15 +141,16 @@
   /* ---------- Render ---------- */
   function render() {
     const s = station();
-    const meta = STATIONS[s.id];
+    const meta = STATIONS[s.id] || { name: s.name || s.id, accent: 'var(--accent-alt)', desc: 'Your weekly rotation.' };
     const day = s.days[currentDay];
     const tracks = day.tracks;
 
     root.style.setProperty('--accent', meta.accent);
 
     rail.querySelectorAll('.station-card').forEach((b) => {
-      b.setAttribute('aria-selected', String(b.dataset.station === s.id));
+      b.setAttribute('aria-expanded', String(profileExpanded && b.dataset.station === s.id));
     });
+    $('daily-playlists').hidden = !profileExpanded;
     dayRail.querySelectorAll('.day-pill').forEach((b, i) => {
       b.setAttribute('aria-selected', String(i === currentDay));
     });
@@ -278,5 +296,116 @@
     toggleEmbed(btn.closest('.track'));
   });
 
+  /* ---------- First Songs jukebox ---------- */
+  const firstSongs = DATA.stations.flatMap(s => s.days.flatMap((day, dayIndex) => day.tracks[0] ? [{ station: s, day: day.day, dayIndex, track: day.tracks[0] }] : []));
+  let firstSongIndex = 0;
+  let artworkRequest = 0;
+  const jukebox = $('jukebox');
+  let activeView = 'profiles';
+  function selectView(view) {
+    activeView = view;
+    ['profiles', 'explore'].forEach(name => {
+      const selected = name === view;
+      $(name + '-tab').setAttribute('aria-selected', String(selected));
+      $(name + '-tab').tabIndex = selected ? 0 : -1;
+      $(name + '-panel').hidden = !selected;
+    });
+    if (view === 'explore') {
+      list.querySelectorAll('.track').forEach(closeEmbed);
+      if (firstSongs.length) showFirstSong();
+    } else {
+      $('jukebox-full-mix').open = false;
+      $('jukebox-player').replaceChildren();
+      $('jukebox-playlist-player').replaceChildren();
+    }
+  }
+  ['profiles', 'explore'].forEach((view, index, views) => {
+    const tab = $(view + '-tab');
+    tab.addEventListener('click', () => selectView(view));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? views[0] : event.key === 'End' ? views[1] : views[1 - index];
+      selectView(next); $(next + '-tab').focus();
+    });
+  });
+  function spotifyEmbed(kind, id, title) {
+    const frame = document.createElement('iframe');
+    frame.src = 'https://open.spotify.com/embed/' + kind + '/' + id;
+    frame.title = title;
+    frame.height = kind === 'playlist' ? '352' : '152';
+    frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    frame.loading = 'lazy';
+    return frame;
+  }
+  function showFirstSong() {
+    const entry = firstSongs[firstSongIndex];
+    const meta = STATIONS[entry.station.id] || { name: entry.station.name || entry.station.id, accent: 'var(--accent-alt)' };
+    const id = trackId(entry.track.u);
+    jukebox.style.setProperty('--jukebox-accent', meta.accent);
+    $('jukebox-origin').textContent = meta.name + ' · ' + entry.day;
+    $('jukebox-song-title').textContent = entry.track.t;
+    $('jukebox-artist').textContent = entry.track.a;
+    $('jukebox-card').setAttribute('aria-label', (firstSongIndex + 1) + ' of ' + firstSongs.length);
+    $('jukebox-position').textContent = (firstSongIndex + 1) + ' / ' + firstSongs.length;
+    $('jukebox-explore').textContent = 'Explore ' + meta.name + ' · ' + entry.day + ' →';
+    $('jukebox-player').replaceChildren(...(id ? [spotifyEmbed('track', id, 'Listen to ' + entry.track.t + ' by ' + entry.track.a)] : []));
+    // Remove old embeds when switching so two previews cannot keep playing.
+    $('jukebox-full-mix').open = false;
+    $('jukebox-playlist-player').replaceChildren();
+    const image = $('jukebox-art');
+    image.hidden = true;
+    image.removeAttribute('src');
+    const request = ++artworkRequest;
+    const showArt = url => { if (request === artworkRequest && url && /^https:\/\//.test(url)) { image.src = url; image.hidden = false; } };
+    image.onerror = () => { image.hidden = true; };
+    if (id && ART[id]) showArt(ART[id]);
+    else if (id) fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(entry.track.u))
+      .then(r => r.ok ? r.json() : null).then(data => { if (data?.thumbnail_url) { ART[id] = data.thumbnail_url; showArt(data.thumbnail_url); } }).catch(() => {});
+  }
+  function moveFirstSong(offset) {
+    firstSongIndex = (firstSongIndex + offset + firstSongs.length) % firstSongs.length;
+    showFirstSong();
+  }
+  if (jukebox && firstSongs.length) {
+    jukebox.hidden = false;
+    $('jukebox-description').textContent = firstSongs.length + ' opening tracks. ' + DATA.stations.length + ' genres. One weekly mix.';
+    $('jukebox-prev').addEventListener('click', () => moveFirstSong(-1));
+    $('jukebox-next').addEventListener('click', () => moveFirstSong(1));
+    $('jukebox-deck').addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); moveFirstSong(event.key === 'ArrowLeft' ? -1 : 1); }
+    });
+    let touchStart;
+    $('jukebox-deck').addEventListener('touchstart', event => { const t = event.changedTouches[0]; touchStart = {x:t.clientX,y:t.clientY}; }, {passive:true});
+    $('jukebox-deck').addEventListener('touchend', event => {
+      if (!touchStart) return;
+      const t = event.changedTouches[0], dx = t.clientX - touchStart.x, dy = t.clientY - touchStart.y;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) moveFirstSong(dx < 0 ? 1 : -1);
+      touchStart = null;
+    }, {passive:true});
+    $('jukebox-explore').addEventListener('click', event => {
+      event.preventDefault();
+      const entry = firstSongs[firstSongIndex];
+      currentStation = entry.station.id; currentDay = entry.dayIndex; profileExpanded = true; render();
+      selectView('profiles');
+      $('station-title').focus({preventScroll:true});
+      $('daily-playlists').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+    });
+    const playlistUrl = DATA.first_songs?.playlist_url;
+    const playlistId = /^https:\/\/open\.spotify\.com\/playlist\/([A-Za-z0-9]{22})$/.exec(playlistUrl || '')?.[1];
+    if (playlistId) {
+      $('jukebox-spotify').href = playlistUrl; $('jukebox-spotify').hidden = false;
+      const fullMix = $('jukebox-full-mix'); fullMix.hidden = false;
+      fullMix.addEventListener('toggle', () => {
+        $('jukebox-playlist-player').replaceChildren();
+        if (activeView !== 'explore') return;
+        if (fullMix.open) { $('jukebox-player').replaceChildren(); $('jukebox-playlist-player').append(spotifyEmbed('playlist', playlistId, 'Wax First Songs playlist')); }
+        else if (!$('jukebox-player').children.length) {
+          const t = firstSongs[firstSongIndex].track, id = trackId(t.u);
+          if (id) $('jukebox-player').append(spotifyEmbed('track', id, 'Listen to ' + t.t));
+        }
+      });
+    }
+  }
   render();
 })();
