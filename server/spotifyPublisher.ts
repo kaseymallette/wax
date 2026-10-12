@@ -43,12 +43,20 @@ export function createSpotifyPublisher(fetcher: typeof fetch = fetch, sleep = (m
   return {
     account: () => request("/me"),
     async findOrCreate(name, marker, accountId) {
+      const owned: SpotifyPlaylist[] = [];
       for (let offset = 0; ; offset += 50) {
         const page = await request(`/me/playlists?limit=50&offset=${offset}`);
-        const match = page.items.find((p: SpotifyPlaylist | null) => p && p.owner?.id === accountId && p.description === marker);
-        if (match) return match.id;
+        owned.push(...page.items.filter((p: SpotifyPlaylist | null): p is SpotifyPlaylist => !!p && p.owner?.id === accountId));
         if (!page.next) break;
       }
+      // Search every page before falling back to a marker: older duplicates may
+      // carry the marker while the user's original playlist has the right name.
+      const named = owned.filter(p => p.name === name);
+      if (named.length > 1) throw new Error(`More than one playlist is named "${name}". Give the intended playlist a unique name before publishing.`);
+      if (named.length === 1) return named[0].id;
+      const marked = owned.filter(p => p.description === marker);
+      if (marked.length > 1) throw new Error(`More than one playlist matches "${name}". Resolve the duplicate playlists before publishing.`);
+      if (marked.length === 1) return marked[0].id;
       const playlist = await request("/me/playlists", "POST", { name, description: marker, public: false });
       return playlist.id;
     },

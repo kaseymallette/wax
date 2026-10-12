@@ -52,13 +52,19 @@ Take your week with you. Save a collection's seven daily playlists as CSVs, appr
 
 ![Alt Rock's Save & publish page with saved daily CSV downloads, week approval, and the Publish collection button](images/wax_local_save_and_publish_01.png)
 
+Once all seven playlists are on Spotify, Wax saves a weekly snapshot and gives you links to each day's playlist:
+
+![Alt Rock's completed publish with confirmation that all seven playlists are on Spotify, a saved weekly snapshot, and daily Spotify links](images/wax_local_save_and_publish_02.png)
+
+#### First-song playlist
+
 First songs. One mix. Bring together the opening song from every day across all profiles.
 
-![First-song mix preview showing the Monday–Sunday opening songs for Alt Rock and Classic Rock](images/wax_local_save_and_publish_02.png)
+![First-song mix preview showing the Monday–Sunday opening songs for Alt Rock and Classic Rock](images/wax_local_first_song_playlist_01.png)
 
 The mix includes six genre profiles: Alt Rock, Classic Rock, Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop. Save it as a CSV or publish it as its own Spotify playlist:
 
-![The remaining first-song mix selections, grouped by Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop](images/wax_local_save_and_publish_03.png)
+![The remaining first-song mix selections, grouped by Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop](images/wax_local_first_song_playlist_02.png)
 
 ## Methods
 

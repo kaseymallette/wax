@@ -82,3 +82,30 @@ test("exports target next Monday, including Sunday evening and year rollover", a
     assert.equal(hasSavedExport({...input, week:"2026-10-12"}),true);
   } finally { fs.rmSync(input.userDir,{recursive:true,force:true}); }
 });
+
+test("Spotify prefers the original exact-name playlist over a marked duplicate on an earlier page", async () => {
+  const keys = ["SPOTIFY_CLIENT_ID", "SPOTIFY_CLIENT_SECRET", "SPOTIFY_REFRESH_TOKEN"] as const;
+  const previous = keys.map(key => process.env[key]);
+  keys.forEach(key => process.env[key] = "test");
+  let creates = 0;
+  const name = "Wax - Kasey-alt-rock Monday";
+  const marker = "Wax v2 | kasey-alt-rock | day 1";
+  let duplicate = false;
+  const fetcher: typeof fetch = async (url, init) => {
+    if (String(url).includes("api/token")) return Response.json({access_token:"test"});
+    if (init?.method === "POST") { creates++; throw new Error("Should not create"); }
+    if (String(url).includes("offset=0")) return Response.json({items:[{id:"new-lowercase",name:"Wax - kasey-alt-rock Monday",description:marker,owner:{id:"account"}}, {id:"someone-else",name,description:"",owner:{id:"other"}}],next:"next"});
+    const original = {id:"original",name,description:"My playlist",owner:{id:"account"}};
+    return Response.json({items:duplicate ? [original,{...original,id:"ambiguous"}] : [original],next:null});
+  };
+  try {
+    const spotify = createSpotifyPublisher(fetcher);
+    assert.equal(await spotify.findOrCreate(name,marker,"account"),"original");
+    assert.equal(creates,0);
+    duplicate = true;
+    await assert.rejects(spotify.findOrCreate(name,marker,"account"), /More than one playlist/);
+    assert.equal(creates,0);
+  } finally {
+    keys.forEach((key,i) => { if(previous[i] === undefined) delete process.env[key]; else process.env[key] = previous[i]; });
+  }
+});
