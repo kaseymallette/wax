@@ -48,11 +48,15 @@ For the app, I chose equal-count angular groups so every song would have a place
 
 ### 03: Organize
 
-Choose a collection and explore its seven daily playlists, with song counts and average BPM for each day:
+Once angular clustering determines which songs belong to each day, **nearest-neighbor sequencing determines their order**. Wax uses standardized BPM and **Mood = Energy + Danceability + Valence** to measure how close songs are. It starts with the song nearest the group's center, then repeatedly picks the closest remaining song until every track is included.
+
+Choose your own opening song to give the playlist a different starting point; Wax recalculates the rest of the sequence from that song while keeping the day's membership unchanged. Opening-song choices save automatically.
+
+Explore a collection's seven daily playlists, with song counts and average BPM for each day:
 
 ![Wax Organize page showing genre collections and Monday through Sunday playlists](images/wax_local_organize_01.png)
 
-Choose an opening song and preview the tracks in each day's playlist:
+The opening-song selector and track previews sit inside each day's playlist:
 
 ![Monday's playlist with an opening-song selector, track previews, BPM, and Spotify links](images/wax_local_organize_02.png)
 
