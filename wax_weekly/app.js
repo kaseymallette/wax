@@ -12,9 +12,9 @@
     'kasey-pop-hip-hop': { name: 'Pop & Hip-Hop', accent: 'var(--accent-pop)', desc: 'Big choruses, bigger bounce.' },
   };
 
-  let currentStation = DATA.stations[0].id;
+  let currentStation = (DATA.stations.find(s => s.id === 'kasey-alt-rock') || DATA.stations[0]).id;
   let currentDay = 0;
-  let profileExpanded = false;
+  let profileExpanded = true;
 
   const $ = (id) => document.getElementById(id);
   const root = document.documentElement;
@@ -74,7 +74,7 @@
       '<span class="station-genre">' + meta.name + '</span>' +
       '<span class="station-count">' + total + ' tracks · ' + artistCount + ' artists</span>' +
       '<span class="station-average">' + dailyAverage + ' songs a day</span>' +
-      '<svg class="station-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+      '<span class="station-action"><span class="station-action-label">View all 7 playlists</span><svg class="station-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>';
     btn.addEventListener('click', () => {
       profileExpanded = currentStation !== s.id || !profileExpanded;
       currentStation = s.id;
@@ -148,7 +148,9 @@
     root.style.setProperty('--accent', meta.accent);
 
     rail.querySelectorAll('.station-card').forEach((b) => {
-      b.setAttribute('aria-expanded', String(profileExpanded && b.dataset.station === s.id));
+      const expanded = profileExpanded && b.dataset.station === s.id;
+      b.setAttribute('aria-expanded', String(expanded));
+      b.querySelector('.station-action-label').textContent = expanded ? 'Hide playlists' : 'View all 7 playlists';
     });
     $('daily-playlists').hidden = !profileExpanded;
     dayRail.querySelectorAll('.day-pill').forEach((b, i) => {

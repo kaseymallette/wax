@@ -1112,7 +1112,8 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .station-genre { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
 .station-average { font-size: var(--text-sm); color: var(--color-text-muted); }
-.station-chevron { flex-shrink: 0; align-self: flex-end; color: var(--color-text-muted); }
+.station-action { display: flex; align-items: center; justify-content: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--sc); }
+.station-chevron { flex-shrink: 0; }
 .station-card[aria-expanded='true'] .station-chevron { transform: rotate(180deg); color: var(--sc); }
 @media (max-width: 640px) {
   .station-card { min-height: 140px; padding: var(--space-4) var(--space-2); }
