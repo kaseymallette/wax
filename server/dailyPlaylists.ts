@@ -1,3 +1,5 @@
+import { angularPartition } from "./angularPartition";
+
 const PLAYLIST_COUNT = 7;
 const KMEANS_MAX_ITERS = 25;
 
@@ -75,6 +77,7 @@ export type PlaylistSourceTrack = {
 
 type BuildDailyPlaylistsOptions = {
   firstTrackByPlaylist?: Record<string | number, string>;
+  grouping?: "angular" | "kmeans";
 };
 
 function isFiniteNumber(v: unknown): v is number {
@@ -258,7 +261,25 @@ export function buildDailyPlaylists(tracks: PlaylistSourceTrack[], options: Buil
   const normalized = normalizeCandidates(candidatesRaw);
 
   const k = Math.min(PLAYLIST_COUNT, Math.max(1, normalized.length || 1));
-  const clusters = runKMeans(normalized, k);
+  // Group in BPM–valence space; sequencing still uses normalized BPM–Mood.
+  let clusters: Cluster[];
+  let mondaySector = 0;
+  if (options.grouping === "kmeans") {
+    clusters = runKMeans(normalized, k);
+  } else {
+    const partition = angularPartition(candidatesRaw.map(c => ({
+      id: c.track.id, bpm: c.raw.bpm, valence: c.track.valence!,
+    })), { k, mode: "equal-count", rotation: 0 });
+    // Anchor Monday to the upper-left direction (135°) in every profile.
+    const mondayAngle = 3 * Math.PI / 4;
+    mondaySector = partition.boundaries.reduce((sector, boundary, index) =>
+      boundary <= mondayAngle ? index : sector, 0);
+    const sectorById = new Map(partition.points.map(p => [p.id, p.sector]));
+    clusters = Array.from({ length: k }, () => ({ centroid: { bpm: 0, mood: 0 }, members: [] }));
+    for (const candidate of normalized) {
+      clusters[sectorById.get(candidate.track.id)!].members.push(candidate);
+    }
+  }
   while (clusters.length < PLAYLIST_COUNT) {
     clusters.push({ centroid: { bpm: 0, mood: 0 }, members: [] });
   }
@@ -269,8 +290,15 @@ export function buildDailyPlaylists(tracks: PlaylistSourceTrack[], options: Buil
   const ranked = clusters.map((cluster, index) => ({ cluster, index, averageBpm: mean(cluster.members.map(m => m.raw.bpm)) }))
     .sort((a, b) => b.averageBpm - a.averageBpm || a.index - b.index);
   const ranksByDay = [1, 3, 6, 4, 2, 5, 7];
-  const playlists: DailyPlaylist[] = ranksByDay.map((rank, i) => {
-    const { cluster, averageBpm } = ranked[rank - 1];
+  // Start in the upper left, then walk clockwise.
+  // Angular sector indices increase counterclockwise.
+  const groupsByDay = options.grouping === "kmeans"
+    ? ranksByDay.map(rank => ranked[rank - 1])
+    : Array.from({ length: PLAYLIST_COUNT }, (_, day) =>
+      ranked.find(group => group.index === (mondaySector - day + PLAYLIST_COUNT) % PLAYLIST_COUNT)!);
+  const playlists: DailyPlaylist[] = groupsByDay.map((group, i) => {
+    const { cluster, averageBpm } = group;
+    const rank = ranked.indexOf(group) + 1;
     const playlistIndex = i + 1;
     const orderingMode = DAILY_PLAYLIST_ORDERING_MODE;
     const ordered = orderClusterMembers(cluster, playlistIndex, options.firstTrackByPlaylist);

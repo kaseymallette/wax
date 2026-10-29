@@ -25,7 +25,7 @@ for (let group = 0; group < 7; group++) {
   for (let j = 0; j < count; j++) ringIds.set(radial[offset++].id, group);
 }
 // Same production implementation, with Mood = Valence in this in-memory comparison only.
-const baseline = buildDailyPlaylists(tracks.map(t => ({ ...t, energy: 0, dance: 0 })));
+const baseline = buildDailyPlaylists(tracks.map(t => ({ ...t, energy: 0, dance: 0 })), { grouping: "kmeans" });
 const kmeansIds = new Map(baseline.playlists.flatMap((p, i) => p.tracks.map(t => [t.id, i] as const)));
 const methods = [
   { name: "Equal-count angles", ids: new Map(points.map(p => [p.id, p.sector])), rays: equalCount.boundaries },
