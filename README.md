@@ -40,11 +40,11 @@ See [all six collection maps and the angular partition details](features/angular
 
 #### How angular clustering developed
 
-Wax originally used balanced K-means on BPM and a combined Mood score. As I listened and made my own playlist orders, I wanted to explore groups that could share a musical direction while still allowing bigger differences between songs. That led to a question: what would happen if we divided the collection around its center, like slices, instead of seeking compact clusters?
+Wax originally used balanced K-means on BPM and a combined Mood score. As I listened and made my own playlist orders, I wanted to explore groups that could share a musical direction while still allowing bigger differences between songs. That led to a question: what would happen if I divided the collection around its center, like slices, instead of seeking compact clusters?
 
-We built an offline experiment using standardized BPM and valence, comparing equal-angle slices, equal-count angular groups, concentric rings, and balanced K-means on the same two features. We inspected song counts, distance from the center, and within-group spread. Those measurements described the groups; they could not tell us which playlists would sound best.
+I built an offline experiment using standardized BPM and valence, comparing equal-angle slices, equal-count angular groups, concentric rings, and balanced K-means on the same two features. I inspected song counts, distance from the center, and within-group spread. Those measurements described the groups; they could not tell me which playlists would sound best.
 
-For the app, we chose equal-count angular groups so every song would have a place and each day would have a similar number of songs. We kept nearest-neighbor sequencing unchanged to explore the new membership through listening. The interactive maps made the results visible across all six collections, and I chose Monday in the upper left with the week moving clockwise. This is a listening-driven iteration, with the [original experiment and results](features/angular-partition/README.md) preserved for comparison.
+For the app, I chose equal-count angular groups so every song would have a place and each day would have a similar number of songs. I kept nearest-neighbor sequencing unchanged to explore the new membership through listening. The interactive maps made the results visible across all six collections, and I chose Monday in the upper left with the week moving clockwise. This is a listening-driven iteration, with the [original experiment and results](features/angular-partition/README.md) preserved for comparison.
 
 ### 03: Organize
 
