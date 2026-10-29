@@ -1,6 +1,45 @@
 # Angular partition proposal
 
-Status: offline experiment; the production playlist algorithm is unchanged.
+Status: integrated on `feature/angular-partition` for app listening review.
+
+Run `WAX_USER=kasey npm run dev` to generate seven equal-count angular playlists
+for each profile using standardized BPM and valence, with a 0° seam. Monday starts in the group containing the upper-left direction (135°),
+then Tuesday through Sunday follow clockwise through the angular sectors. Monday
+is green in the chart. Nearest-neighbor BPM–Mood track ordering is unchanged. Existing saved openers are remapped to their new groups and review
+approvals are cleared when migrating saved state; the old state is backed up.
+Published snapshots are unchanged. The offline comparison below retains an
+explicit K-means baseline; its saved results predate the updated profile CSVs.
+
+## Playlist maps
+
+Screenshots from the app's Visualize page for all six collections. Each dot is a
+song, colored by its assigned day; Monday begins in green at the upper left and
+the week proceeds clockwise. BPM increases to the right and valence upward,
+relative to each collection's own center and scale.
+
+### Alt Rock
+
+![Alt Rock playlist map with seven angular daily groups](images/alt-rock.png)
+
+### Classic Rock
+
+![Classic Rock playlist map with seven angular daily groups](images/classic-rock.png)
+
+### Country Blues
+
+![Country Blues playlist map with seven angular daily groups](images/country-blues.png)
+
+### Electropop
+
+![Electropop playlist map with seven angular daily groups](images/electropop.png)
+
+### Indie Folk
+
+![Indie Folk playlist map with seven angular daily groups](images/indie-folk.png)
+
+### Pop & Hip-Hop
+
+![Pop and Hip-Hop playlist map with seven angular daily groups](images/pop-hip-hop.png)
 
 ## Question and plan
 
