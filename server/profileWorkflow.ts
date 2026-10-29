@@ -10,17 +10,17 @@ export function loadProfileWorkflow(report: PreflightReport, profile: ProfileRep
   const tracks = readProfileTracks(profile.path);
   const fingerprint = createHash("sha256").update(JSON.stringify(tracks)).digest("hex");
   const statePath = path.join(path.dirname(report.configPath), "state", `${profile.id}.json`);
-  let state: SavedState = { dayAssignment: "bpm-week-v1", fingerprint, firstTrackByPlaylist: {} };
+  let state: SavedState = { dayAssignment: "angular-equal-count-0-upper-left-clockwise-v1", fingerprint, firstTrackByPlaylist: {} };
   if (fs.existsSync(statePath)) {
     const saved = JSON.parse(fs.readFileSync(statePath, "utf8"));
     if (saved.fingerprint === fingerprint) state = { dayAssignment: saved.dayAssignment, fingerprint, firstTrackByPlaylist: z.record(z.string()).parse(saved.firstTrackByPlaylist), reviewed: z.record(z.string()).parse(saved.reviewed ?? {}) };
   }
-  if (state.dayAssignment !== "bpm-week-v1") {
-    const backup = `${statePath}.before-bpm-week.json`;
+  if (state.dayAssignment !== "angular-equal-count-0-upper-left-clockwise-v1") {
+    const backup = `${statePath}.before-angular-upper-left.json`;
     if (!fs.existsSync(backup)) fs.copyFileSync(statePath, backup);
     state.firstTrackByPlaylist = remapOpeningSongs(buildDailyPlaylists(tracks), state.firstTrackByPlaylist);
     state.reviewed = {};
-    state.dayAssignment = "bpm-week-v1";
+    state.dayAssignment = "angular-equal-count-0-upper-left-clockwise-v1";
     writeJson(statePath, state);
   }
   const result = buildDailyPlaylists(tracks, state);
