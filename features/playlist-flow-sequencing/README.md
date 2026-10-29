@@ -56,6 +56,12 @@ Given numeric positions `a` and `b`, let `forward = (b - a + 12) % 12`. Use `for
 
 ### Beginning, middle, and end
 
+![Pooled transition counts: beginning has 11 close, 7 mood shifters, and 10 Jaws; middle has 22, 4, and 1; end has 15, 9, and 1.](charts/move-categories-pooled.png)
+
+Kasey's supplied chart shows **counts of transitions**, pooled across the three
+playlists. Beginning, middle, and end contain 28, 27, and 25 moves respectively.
+A/B changes and the repeat back to the opener are excluded.
+
 Partition transitions, not individual songs. For `N` songs there are `M = N - 1` consecutive transitions. Number transitions with zero-based index `i`, then assign `section = floor(3 * i / M)`: 0 beginning, 1 middle, 2 end. This gives roughly equal thirds and counts every transition exactly once. Adjacent sections share a boundary song but no transition.
 
 | Playlist | Beginning track span | Middle track span | End track span | Moves per section |
@@ -86,6 +92,12 @@ Percentages are rounded within each section and pooled by transition count, so l
 
 These tables divide each saved selection by its current length. For live generation, use the known target length; for training on a partial selection whose eventual length was unknown, use original candidate-pool progress or another available position signal instead of leaking the future chosen stopping point. A finished-order descriptive chart is not automatically a valid training feature.
 
+The percentage view below separates the playlists so the longer Alt Rock order
+does not obscure Country/Blues' steadier pattern. Each bar shows the share of
+moves within that playlist section; `n` is its transition count.
+
+![Move-category percentages by playlist and section, showing an entirely close-move Alt Rock middle and no Jaws moves in Country/Blues.](charts/move-categories-by-playlist.png)
+
 ### Repeat playback
 
 Keep closure separate from the three-section analysis; do not add it to the end section by accident.
@@ -99,6 +111,12 @@ Keep closure separate from the three-section analysis; do not add it to the end 
 Counting these three closures yields **49 close, 21 mood shifter, and 13 Jaws moves**, or 83 transitions. These are descriptive possible loops; only the Alt Rock closure has been explicitly discussed as intentional. A loop is not an ordinary remaining-candidate decision: the opener is already used. Score it separately when repeat playback is requested, rather than fabricate another training choice.
 
 ## Energy, danceability, and valence across the sequence
+
+![Energy, danceability, and valence at each song position in the three custom orders.](charts/feature-trajectories.png)
+
+Each panel uses the same 0–100 vertical scale and its own song-position axis.
+These are raw feature values, not changes or smoothed trends. This view preserves
+the rises, descents, and opposing movements that section averages can hide.
 
 The same transition thirds give the following mean absolute energy changes, in the CSV's 0–100 feature points:
 
@@ -173,6 +191,19 @@ Acceptance requires the following:
 - No discarded revisions become dislike labels. Candidate pools and saved source features are traceable, and unknown pool provenance prevents supervised ranking rather than inventing labels.
 - Model selection never uses the held-out two days per profile. One model spans all six profiles; there is no requirement to order the same playlist twice.
 - Generated drafts preserve the source custom order, membership, and selected opener. No Spotify publishing, automatic migration, model training, or production algorithm change occurs simply from adding this proposal.
+
+## Reproduce the supplementary charts
+
+From the repository root, with Python and Pillow available:
+
+```bash
+python3 features/playlist-flow-sequencing/render_charts.py
+```
+
+The renderer reads the saved CSVs, checks the pooled category counts against this
+snapshot, and regenerates `charts/move-categories-by-playlist.png` and
+`charts/feature-trajectories.png`. The supplied `charts/move-categories-pooled.png`
+is preserved unchanged. No source CSVs or playlist state are modified.
 
 ## Decisions remaining
 
