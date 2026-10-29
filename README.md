@@ -352,6 +352,11 @@ git push
 
 ## Development
 
+The [angular partition proposal and experiment](features/angular-partition/README.md)
+compares BPM–valence angular sectors, concentric bands, and balanced K-means,
+with reproducible charts and per-song assignments. It does not change the app's
+current partitioning behavior.
+
 ```bash
 npm run check
 npm run build
