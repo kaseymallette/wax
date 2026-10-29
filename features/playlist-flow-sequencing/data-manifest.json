@@ -1,0 +1,32 @@
+{
+  "snapshot_date": "2026-10-28",
+  "playlists": [
+    {
+      "file": "data/alt-rock-monday.csv",
+      "moved_from": "users/kasey/supervised/alt-rock-monday.csv",
+      "sha256": "fffd095fdbd6cab291223273e0910a590f4ceec2d1f906ba47eb4744cf52c4d9",
+      "tracks": 35,
+      "source_pool_path": "users/kasey/exports/alt-rock-2026-10-12-c8d126702572/alt-rock-monday.csv",
+      "source_pool_sha256": "43b41ca6730c61c4ec54ec251fc574d51e731bbe928931d6aaf6dfdf7e236c85",
+      "source_pool_tracks": 38
+    },
+    {
+      "file": "data/country-blues-monday.csv",
+      "moved_from": "users/kasey/supervised/country-blues-monday.csv",
+      "sha256": "472a2ab866caba0b7626829c8206d65e8f949505628c12abd35624dd84389c6f",
+      "tracks": 21,
+      "source_pool_path": "users/kasey/exports/country-blues-2026-10-12-5ca047430231/country-blues-monday.csv",
+      "source_pool_sha256": "3675d960de1f17e13e31ffbf8cf514691139a5b684e1d1f130de8ad13ab694c1",
+      "source_pool_tracks": 23
+    },
+    {
+      "file": "data/electropop-monday.csv",
+      "moved_from": "users/kasey/supervised/electropop-monday.csv",
+      "sha256": "00ff2e37629dd807c6413ba8583604b5533b175427181909cea660c97998d3fd",
+      "tracks": 27,
+      "source_pool_path": "users/kasey/exports/electropop-2026-10-12-9635d87112c8/electropop-monday.csv",
+      "source_pool_sha256": "0a2d40ff3d93f548d62b40e086cc43933bb78d86dd3c45975b24f6d87cfd630d",
+      "source_pool_tracks": 30
+    }
+  ]
+}

@@ -3,6 +3,13 @@
 Status: Draft for future implementation  
 Created: October 27, 2026
 
+Follow-up: the [playlist flow sequencing pilot](../features/playlist-flow-sequencing/README.md)
+contains the development CSVs, measured beginning/middle/end move tables, and
+updated sequencing decisions: one model across Kasey's six profiles, optional
+title relationships, artist spacing, and a 30-playlist development / 12-playlist
+test plan. It refines the modeling discussion below; custom-day preservation
+remains a separate implementation stage.
+
 ## Idea
 
 Allow a profile to have a master playlist plus optional custom playlists assigned to weekdays. Preserve each custom day's exact membership and playback order, remove its songs from the automatic pool, and cluster the remaining songs into the remaining days.

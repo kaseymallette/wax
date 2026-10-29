@@ -352,6 +352,11 @@ git push
 
 ## Development
 
+The [playlist flow sequencing proposal](features/playlist-flow-sequencing/README.md)
+uses three custom playlist orders to explore positional Camelot moves, musical
+arcs, artist spacing, and a future shared ranking model. Its development CSVs
+are stored with the proposal; production sequencing is unchanged.
+
 The [angular partition proposal and experiment](features/angular-partition/README.md)
 compares BPM–valence angular sectors, concentric bands, and balanced K-means,
 with reproducible charts and per-song assignments. It does not change the app's
