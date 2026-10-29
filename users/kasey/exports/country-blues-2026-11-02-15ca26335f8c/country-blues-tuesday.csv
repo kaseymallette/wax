@@ -1,0 +1,25 @@
+rank,track_id,name,artists,album,bpm,mood,energy,dance,valence,camelot,spotify_url
+1,4fjcOqEadLRIj6jJ19lYCE,Loneliest Girl,Kacey Musgraves,Middle of Nowhere,120,229,82,71,76,1B,https://open.spotify.com/track/4fjcOqEadLRIj6jJ19lYCE
+2,6xAF3xYDK915NEvC6WNbj9,Don't Be Stupid (You Know I Love You),Shania Twain,Come On Over,122,231,64,77,90,10B,https://open.spotify.com/track/6xAF3xYDK915NEvC6WNbj9
+3,6nN58NDV8VnjvtBmR00qq4,I'm Just Talkin' About Tonight,Toby Keith,Pull My Chain,124,236,85,69,82,9B,https://open.spotify.com/track/6nN58NDV8VnjvtBmR00qq4
+4,2yhhcHTfvLC0HzSajGYL0h,Kerosene,Miranda Lambert,Kerosene,127,236,92,63,81,9B,https://open.spotify.com/track/2yhhcHTfvLC0HzSajGYL0h
+5,6Lst3nF4McKOTLSLuTvLhw,(If You're Not In It For Love) I'm Outta Here!,Shania Twain,The Woman In Me,120,240,76,77,87,7B,https://open.spotify.com/track/6Lst3nF4McKOTLSLuTvLhw
+6,2E9n1Zpby16xLUPoujMUSd,Crazy Ex-Girlfriend,Miranda Lambert,Crazy Ex-Girlfriend,117,235,98,68,69,8B,https://open.spotify.com/track/2E9n1Zpby16xLUPoujMUSd
+7,2mXsZsJBThTaJXbNcg5QD4,Mama's Broken Heart,Miranda Lambert,Four The Record,112,233,81,77,75,9A,https://open.spotify.com/track/2mXsZsJBThTaJXbNcg5QD4
+8,4yXzILmU9N1zWzTD3Pn4xL,Texas,Blake Shelton,For Recreational Use Only,111,244,79,69,96,1A,https://open.spotify.com/track/4yXzILmU9N1zWzTD3Pn4xL
+9,4FUfoWMypAyWbOavmYyeNu,That Don't Impress Me Much,Shania Twain,Come On Over,125,249,76,76,97,3B,https://open.spotify.com/track/4FUfoWMypAyWbOavmYyeNu
+10,267pym8JqsQQdIs7dadMJR,A Little Less Talk And A Lot More Action,Toby Keith,Toby Keith,125,252,83,76,93,11B,https://open.spotify.com/track/267pym8JqsQQdIs7dadMJR
+11,69m9WDPBvemwujQwdONslk,There's Your Trouble,The Chicks,Wide Open Spaces,127,251,87,74,90,10B,https://open.spotify.com/track/69m9WDPBvemwujQwdONslk
+12,3IvcWWehbBcBR4YZxlGM9R,"I Like It, I Love It",Tim McGraw,All I Want,124,256,96,64,96,8B,https://open.spotify.com/track/3IvcWWehbBcBR4YZxlGM9R
+13,2Asiem9O0YGuvvoAkz8aSq,Baby I'm Burnin',Dolly Parton,Heartbreaker,134,255,83,75,97,8B,https://open.spotify.com/track/2Asiem9O0YGuvvoAkz8aSq
+14,0vtvjbeDqVSDl9rdpaQK6N,Whose Bed Have Your Boots Been Under?,Shania Twain,The Woman In Me,132,223,64,73,86,7B,https://open.spotify.com/track/0vtvjbeDqVSDl9rdpaQK6N
+15,20DfkHC5grnKNJCzZQB6KC,Good Girl,Carrie Underwood,Blown Away,129,220,84,62,74,5A,https://open.spotify.com/track/20DfkHC5grnKNJCzZQB6KC
+16,1xK2NkwOfT8qZYWPossXGz,What About Now,Lonestar,Lonely Grill,126,221,82,66,73,12B,https://open.spotify.com/track/1xK2NkwOfT8qZYWPossXGz
+17,7rqaqQurHzR5xHAhdm1gmM,Goodbye Earl,The Chicks,Fly,123,218,70,71,77,8B,https://open.spotify.com/track/7rqaqQurHzR5xHAhdm1gmM
+18,2U2Z1IXnmJIvlknWizFykZ,High Horse,Kacey Musgraves,Golden Hour,120,217,67,73,77,10A,https://open.spotify.com/track/2U2Z1IXnmJIvlknWizFykZ
+19,4GuMdwLD8vYsv1j50F8LcK,Hello Mr. Heartache,The Chicks,Fly,110,214,60,68,86,8B,https://open.spotify.com/track/4GuMdwLD8vYsv1j50F8LcK
+20,2PmMh2t7jAtN6cqFooA0Xy,JOLENE,Beyoncé,COWBOY CARTER,106,223,81,57,85,10A,https://open.spotify.com/track/2PmMh2t7jAtN6cqFooA0Xy
+21,5fdhThPDe6jQQDqCyWrdAn,Jolene,Dolly Parton,Jolene (Expanded Edition),111,202,54,67,81,12A,https://open.spotify.com/track/5fdhThPDe6jQQDqCyWrdAn
+22,2bKazIbV8uwFTyMdUS0vct,Ain't Gonna Drown,Elle King,Love Stuff,116,205,58,73,74,12A,https://open.spotify.com/track/2bKazIbV8uwFTyMdUS0vct
+23,1dDfNKasu3ETniVIYLAZNM,I'm Gone,Dolly Parton,Halos & Horns,124,204,67,54,83,3B,https://open.spotify.com/track/1dDfNKasu3ETniVIYLAZNM
+24,3cRhk3aGHPTe4aptRyQAJW,Bleach Blonde Bottle Blues,Larkin Poe,Venom & Faith,132,176,61,44,71,3B,https://open.spotify.com/track/3cRhk3aGHPTe4aptRyQAJW
