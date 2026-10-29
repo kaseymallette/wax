@@ -3,7 +3,7 @@
 Status: Draft for future implementation  
 Created: October 27, 2026
 
-Follow-up: the [playlist flow sequencing pilot](../features/playlist-flow-sequencing/README.md)
+Follow-up: the [playlist flow sequencing pilot](../playlist-flow-sequencing/README.md)
 contains the development CSVs, measured beginning/middle/end move tables, and
 updated sequencing decisions: one model across Kasey's six profiles, optional
 title relationships, artist spacing, and a 30-playlist development / 12-playlist
@@ -32,14 +32,14 @@ For learned ordering, choose an automatic playlist or a copy of a custom playlis
 
 ## Current implementation
 
-- [server/dailyPlaylists.ts](../server/dailyPlaylists.ts) creates seven balanced clusters from standardized BPM and `Mood = Energy + Dance + Valence`. It assigns weekdays using BPM ranks `[1, 3, 6, 4, 2, 5, 7]`.
+- [server/dailyPlaylists.ts](../../server/dailyPlaylists.ts) creates seven balanced clusters from standardized BPM and `Mood = Energy + Dance + Valence`. It assigns weekdays using BPM ranks `[1, 3, 6, 4, 2, 5, 7]`.
 - Its `orderClusterMembers` function begins at a chosen opener or the member nearest the center, then repeatedly selects the nearest remaining song in BPM–Mood space. It considers only the previous song. Individual feature trajectories and Camelot relationships do not affect ordering.
 - The candidate track already contains BPM, energy, dance, valence, and Camelot data. No new audio data source is necessary to experiment with sequence scoring.
-- [server/profileWorkflow.ts](../server/profileWorkflow.ts) persists opening-song choices and review state, not full custom orders. It loads those preferences only when the master fingerprint matches. Custom-day definitions need separate persistence that survives master updates.
-- [server/profileConfig.ts](../server/profileConfig.ts) reads already configured profile masters. The proposed reservation happens within a profile before its daily clustering, not before a global genre classifier. Cross-profile reservations are outside the initial scope.
-- [server/routes.ts](../server/routes.ts) validates opening-song changes against a fresh automatic build. That validation must use the actual custom/generated day membership after this feature is introduced.
+- [server/profileWorkflow.ts](../../server/profileWorkflow.ts) persists opening-song choices and review state, not full custom orders. It loads those preferences only when the master fingerprint matches. Custom-day definitions need separate persistence that survives master updates.
+- [server/profileConfig.ts](../../server/profileConfig.ts) reads already configured profile masters. The proposed reservation happens within a profile before its daily clustering, not before a global genre classifier. Cross-profile reservations are outside the initial scope.
+- [server/routes.ts](../../server/routes.ts) validates opening-song changes against a fresh automatic build. That validation must use the actual custom/generated day membership after this feature is introduced.
 
-This document proposes behavior only. It does not implement the feature, save the conversational playlist, train a model, or change a published playlist. It is separate from the monthly rotation proposed in [Wax Daily Feature](WAX_DAILY_FEATURE.md).
+This document proposes behavior only. It does not implement the feature, save the conversational playlist, train a model, or change a published playlist. It is separate from the monthly rotation proposed in [Wax Daily Feature](../daily-rotation/README.md).
 
 ## Custom playlist inputs and validation
 

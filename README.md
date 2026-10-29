@@ -352,6 +352,10 @@ git push
 
 ## Development
 
+Planned features include [custom playlist days](features/custom-playlist-days/README.md)
+and a [daily rotation](features/daily-rotation/README.md). Each feature folder can
+start with a proposal and hold implementation notes or experiment data later.
+
 The [playlist flow sequencing proposal](features/playlist-flow-sequencing/README.md)
 uses three custom playlist orders to explore positional Camelot moves, musical
 arcs, artist spacing, and a future shared ranking model. Its development CSVs

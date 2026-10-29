@@ -9,7 +9,7 @@ Can Wax sequence a fixed set of songs more like Kasey by considering the precedi
 
 The working hypothesis is that larger opening contrasts give way to longer passages of close movement, with renewed contrast toward the ending. Energy, danceability, and valence can rise and fall independently within those passages. The objective is to predict the one next song Kasey would choose from the remaining candidates, rather than minimize every difference between adjacent songs.
 
-This feature changes ordering, not playlist membership or genre assignment. Keep current nearest neighbors available while Kasey adds songs and makes custom orders. Preserve completed custom days through the separate [custom playlist days proposal](../../docs/WAX_CUSTOM_DAYS_AND_LEARNED_ORDERING_FEATURE.md). Do not make vacation playlists depend on a trained model being ready.
+This feature changes ordering, not playlist membership or genre assignment. Keep current nearest neighbors available while Kasey adds songs and makes custom orders. Preserve completed custom days through the separate [custom playlist days proposal](../custom-playlist-days/README.md). Do not make vacation playlists depend on a trained model being ready.
 
 The eventual target is **one model for Kasey across all six genre profiles**, not six genre-specific models. This proposal updates the earlier modeling assumptions: artist-spacing and optional title-relationship features are worth testing, while raw artist identities and song titles need not be memorized. Lyrics, audio analysis, and an LLM are not prerequisites. Personal interpretations of lyrics remain commentary unless explicitly supplied as modeling input.
 
