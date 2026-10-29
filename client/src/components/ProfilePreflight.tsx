@@ -91,10 +91,10 @@ export function ProfilePreflight({ children }: { children: ReactNode }) {
       </div>
     </>}
     <div className="collection-footer">
-      <div><p role="status" className="font-medium">{query.data ? query.data.valid ? "Your collection is ready to go." : "Almost there. Let’s get every collection ready." : "Your next rotation starts here."}</p><p className="mt-1 text-sm text-muted-foreground">{query.data?.valid ? "Next up: your playlist workspace." : "Update your source files, then refresh your collection."}</p></div>
+      <div><p role="status" className="font-medium">{query.data ? query.data.valid ? "Your collection is ready to go." : "Almost there. Let’s get every collection ready." : "Your next rotation starts here."}</p><p className="mt-1 text-sm text-muted-foreground">{query.data?.valid ? "Next up: explore your seven daily mixes." : "Update your source files, then refresh your collection."}</p></div>
       <div className="flex flex-wrap items-center gap-3">
         <Button variant="ghost" disabled={query.isFetching} onClick={() => query.refetch()}><RefreshCw className={query.isFetching ? "animate-spin" : ""} /> Refresh collection</Button>
-        {query.data?.valid && <Button className="rounded-full px-6 py-3" onClick={() => navigate("/organize")}>Organize playlists <ArrowRight /></Button>}
+        {query.data?.valid && <Button className="rounded-full px-6 py-3" onClick={() => navigate("/visualize")}>Visualize playlists <ArrowRight /></Button>}
       </div>
     </div>
   </Layout>;
