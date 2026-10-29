@@ -1,6 +1,6 @@
 # Wax
 
-Wax is a local-first playlist app that turns personally curated genre collections into a deliberate weekly rotation. It uses **balanced K-means clustering on BPM and Mood**, **nearest-neighbor sequencing**, and the **Spotify Web API** to build and publish seven daily playlists per collection.
+Wax is a local-first playlist app that turns personally curated genre collections into a deliberate weekly rotation. It uses **equal-count angular clustering on BPM and valence**, **nearest-neighbor sequencing**, and the **Spotify Web API** to build and publish seven daily playlists per collection.
 
 [Wax Weekly](https://waxweekly.com/) turns the Wax workflow into a weekly listening experience across six genre-bending profiles: **Alt Rock, Classic Rock, Country Blues, Indie Folk, Pop & Hip-Hop, and Electropop**. Every song is curated by me, then distributed and sequenced using Wax.
 
@@ -20,19 +20,33 @@ Instead of generating another random order, I wanted to know that the songs in m
 
 ## The app
 
-Wax brings my genre collections together in one local app: **Collections → Organize → Save & publish**.
+Wax brings my genre collections together in one local app: **Collections → Visualize → Organize → Save & publish**.
 
 ### 01: Collections
 
 Your music starts here. Browse your genre collections and choose one to turn into a week of listening:
 
-![Wax Collections welcome page showing the three-step workflow and Kasey's collection](images/wax_local_collections_01.png)
+![Wax Collections welcome page showing Kasey's collection](images/wax_local_collections_01.png)
 
-My six collections, each with its own record-sleeve artwork:
+### 02: Visualize
 
-![Kasey's six genre collections: Alt Rock, Classic Rock, Country Blues, Electropop, Indie Folk, and Pop & Hip-Hop](images/wax_local_collections_02.png)
+See how each collection becomes seven daily playlists. Wax plots songs by standardized **BPM and valence**, then divides them into consecutive angular groups with nearly equal song counts. Each group includes songs near the collection’s center and farther out, giving it a shared direction with room for variation.
 
-### 02: Organize
+Monday starts in green in the upper-left group, and Tuesday through Sunday follow clockwise. Hover over or select a song to see its title, artist, day, BPM, and valence above the chart.
+
+![Alt Rock's angular playlist map, with Monday in green at the upper left and seven daily groups proceeding clockwise](features/angular-partition/images/alt-rock.png)
+
+See [all six collection maps and the angular partition details](features/angular-partition/README.md#playlist-maps).
+
+#### How angular clustering developed
+
+Wax originally used balanced K-means on BPM and a combined Mood score. As I listened and made my own playlist orders, I wanted to explore groups that could share a musical direction while still allowing bigger differences between songs. That led to a question: what would happen if we divided the collection around its center, like slices, instead of seeking compact clusters?
+
+We built an offline experiment using standardized BPM and valence, comparing equal-angle slices, equal-count angular groups, concentric rings, and balanced K-means on the same two features. We inspected song counts, distance from the center, and within-group spread. Those measurements described the groups; they could not tell us which playlists would sound best.
+
+For the app, we chose equal-count angular groups so every song would have a place and each day would have a similar number of songs. We kept nearest-neighbor sequencing unchanged to explore the new membership through listening. The interactive maps made the results visible across all six collections, and I chose Monday in the upper left with the week moving clockwise. This is a listening-driven iteration, with the [original experiment and results](features/angular-partition/README.md) preserved for comparison.
+
+### 03: Organize
 
 Choose a collection and explore its seven daily playlists, with song counts and average BPM for each day:
 
@@ -46,7 +60,7 @@ Looking for a song or artist? Search the collection to see which day each song i
 
 ![Search results for Nirvana showing each song's assigned day and position in the playlist](images/wax_local_organize_03.png)
 
-### 03: Save & publish
+### 04: Save & publish
 
 Take your week with you. Save a collection's seven daily playlists as CSVs, approve the week, and send them to Spotify:
 
@@ -232,30 +246,18 @@ Switch genres within the app; there is no need to restart between profiles. Alwa
 
 ### 5. Organize the week
 
-On **Collections**, check that the source playlists are ready, then choose **Organize playlists**. On **Organize**, select a genre and a day to inspect its songs.
+On **Collections**, check that the source playlists are ready, then choose **Visualize playlists**. Explore the collection’s map and choose **Continue to organize** to inspect a genre and day.
 
 Wax groups songs using two dimensions:
 
-- **BPM**, the song's tempo.
-- **Mood = Energy + Danceability + Valence**, ranging from 0–300.
+- **BPM**, the song’s tempo.
+- **Valence**, the audio feature describing musical positivity, from 0–100.
 
-The dimensions are standardized before clustering so their scales do not dominate the distance calculation. Balanced K-means assigns every song to one of seven groups, enforcing the target sizes during clustering. Playlist sizes differ by at most one song. For example, 193 songs become four playlists of 28 and three playlists of 27.
+Each dimension is centered on the collection’s mean and divided by its population standard deviation. Wax computes each song’s angle around that center, sorts counterclockwise from the positive BPM direction, and splits that order into seven consecutive groups. Exact angle ties are broken by Spotify track ID. Every source song appears once, and playlist sizes differ by at most one song. For example, 193 songs become four playlists of 28 and three playlists of 27.
 
-Wax ranks the clusters by their **average BPM**, highest to lowest, and assigns them to days:
+**Monday is the group containing the upper-left direction (135°)**. The remaining days follow clockwise around the map. A group’s angular width depends on how densely songs occupy that direction, so balanced song counts do not require equal-sized slices. Average BPM is still displayed on each day card, but it does not determine weekday assignment.
 
-| Day | BPM rank |
-| --- | --- |
-| Monday | 1 — fastest |
-| Tuesday | 3 |
-| Wednesday | 6 |
-| Thursday | 4 |
-| Friday | 2 |
-| Saturday | 5 |
-| Sunday | 7 — slowest |
-
-This gives Monday a faster start, Wednesday a breather, Friday a lift, and Sunday the slowest mix. Each day card displays its average BPM. Mood influences the clusters; average BPM determines their days.
-
-Within each daily playlist, Wax starts with the song nearest the cluster's center, then repeatedly chooses the nearest remaining song in BPM–Mood space. Choose a different opening song from the dropdown to immediately recalculate the sequence. **Opening-song choices save automatically.**
+Within each daily playlist, sequencing uses **BPM and Mood**, where **Mood = Energy + Danceability + Valence**. Wax standardizes those two dimensions across the collection, starts with the song nearest the group’s center in that space, then repeatedly chooses the nearest remaining song. Choose a different opening song from the dropdown to immediately recalculate the sequence. **Opening-song choices save automatically.**
 
 Use the preview button to open a Spotify embed or the Spotify link to listen there. Search by song title or artist across the selected genre's entire week; each result shows its day and position. Select a result to jump to that song.
 
@@ -361,10 +363,10 @@ uses three custom playlist orders to explore positional Camelot moves, musical
 arcs, artist spacing, and a future shared ranking model. Its development CSVs
 are stored with the proposal; production sequencing is unchanged.
 
-The [angular partition proposal and experiment](features/angular-partition/README.md)
-compares BPM–valence angular sectors, concentric bands, and balanced K-means,
-with reproducible charts and per-song assignments. It does not change the app's
-current partitioning behavior.
+The [angular partition feature](features/angular-partition/README.md) documents the app’s
+current equal-count BPM–valence grouping, clockwise weekday assignment, and all six
+collection maps. It also retains the earlier comparison with concentric bands and
+balanced K-means, including reproducible charts and per-song assignments.
 
 ```bash
 npm run check
