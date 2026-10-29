@@ -150,7 +150,7 @@
     rail.querySelectorAll('.station-card').forEach((b) => {
       const expanded = profileExpanded && b.dataset.station === s.id;
       b.setAttribute('aria-expanded', String(expanded));
-      b.querySelector('.station-action-label').textContent = expanded ? 'Hide playlists' : 'View all 7 playlists';
+      b.querySelector('.station-action-label').textContent = expanded ? 'Viewing playlists' : 'View all 7 playlists';
     });
     $('daily-playlists').hidden = !profileExpanded;
     dayRail.querySelectorAll('.day-pill').forEach((b, i) => {
