@@ -1,0 +1,25 @@
+rank,track_id,name,artists,album,bpm,mood,energy,dance,valence,camelot,spotify_url
+1,0froGQFzaDPiXzxxk0LuOi,Ain't Enough Road,Jordan Davis,Learn The Hard Way,100,215,74,70,71,12A,https://open.spotify.com/track/0froGQFzaDPiXzxxk0LuOi
+2,4hx9NTugoBdIG8MkAi2fzI,Tell Me When It’s Over,"Sheryl Crow,Chris Stapleton",Threads,98,217,76,67,74,8A,https://open.spotify.com/track/4hx9NTugoBdIG8MkAi2fzI
+3,4w3tQBXhn5345eUXDGBWZG,9 to 5,Dolly Parton,9 To 5 And Odd Jobs,105,214,78,55,81,2B,https://open.spotify.com/track/4w3tQBXhn5345eUXDGBWZG
+4,024avm1IHjbHmvpFQyl38J,Can't Sit Still,Lainey Wilson,Can't Sit Still,105,213,90,62,61,4A,https://open.spotify.com/track/024avm1IHjbHmvpFQyl38J
+5,5wbN8wztvxqI5jsgrFDuM2,"Too Little, Too Late",Orville Peck,"Too Little, Too Late",105,210,93,49,68,11B,https://open.spotify.com/track/5wbN8wztvxqI5jsgrFDuM2
+6,7bFlG4WbMxWA6rEhEEs9Mx,I Like It,The Chicks,Taking The Long Way (20th Anniversary Edition),106,218,85,60,73,8B,https://open.spotify.com/track/7bFlG4WbMxWA6rEhEEs9Mx
+7,0lzcNtphdk0YXXVr4KvFws,I Can't Take You Anywhere,Toby Keith,Pull My Chain,107,230,75,73,82,12B,https://open.spotify.com/track/0lzcNtphdk0YXXVr4KvFws
+8,3VHevS1BocAcrihLnl11DG,I Wanna Talk About Me,Toby Keith,Pull My Chain,106,232,87,77,68,7B,https://open.spotify.com/track/3VHevS1BocAcrihLnl11DG
+9,63tqSZIWPIbNCcOb9A2gHY,Put the Gun Down,ZZ Ward,Til the Casket Drops,105,233,72,76,85,8B,https://open.spotify.com/track/63tqSZIWPIbNCcOb9A2gHY
+10,7t3yEWJXS4ZZE64JyJDJIg,DONE.,The Band Perry,Pioneer,100,230,88,65,77,2B,https://open.spotify.com/track/7t3yEWJXS4ZZE64JyJDJIg
+11,5s7m2xNZWgz5FqVSIvJcGA,Save a Horse (Ride a Cowboy),Big & Rich,Horse of a Different Color,102,242,90,70,82,10B,https://open.spotify.com/track/5s7m2xNZWgz5FqVSIvJcGA
+12,1hTSImeofoaFWptq9JSFpP,Baggage Claim,Miranda Lambert,Four The Record,81,259,93,70,96,4B,https://open.spotify.com/track/1hTSImeofoaFWptq9JSFpP
+13,0pdfN7nOHMYmKykzu1cyfm,Any Man Of Mine,Shania Twain,The Woman In Me,78,210,73,59,78,4B,https://open.spotify.com/track/0pdfN7nOHMYmKykzu1cyfm
+14,178OI1A3qjROeFeh8lmNwW,Traveller,Chris Stapleton,Traveller,88,205,75,54,76,7A,https://open.spotify.com/track/178OI1A3qjROeFeh8lmNwW
+15,4GkLx8Yg80COws7FSmq8bQ,WILD AS THE WIND,Hayley Jensen,WILD AS THE WIND,92,198,78,53,67,8B,https://open.spotify.com/track/4GkLx8Yg80COws7FSmq8bQ
+16,0wDHfPk4QxF6TVk3j0Zojy,Say What,The Peach Kings,Mojo Thunder EP,86,196,61,65,70,11B,https://open.spotify.com/track/0wDHfPk4QxF6TVk3j0Zojy
+17,1wgXZFadykcGX9W1olAOmp,Dumb Blonde,Dolly Parton,"Hello, I'm Dolly",80,196,56,62,78,9B,https://open.spotify.com/track/1wgXZFadykcGX9W1olAOmp
+18,1LSWDkZxVngIpfjvMs6Q56,ALLIIGATOR TEARS,Beyoncé,COWBOY CARTER,75,193,65,62,66,10B,https://open.spotify.com/track/1LSWDkZxVngIpfjvMs6Q56
+19,5rDkA2TFOImbiVenmnE9r4,Ring of Fire,Johnny Cash,The Essential Johnny Cash,105,186,52,66,68,9B,https://open.spotify.com/track/5rDkA2TFOImbiVenmnE9r4
+20,22VHOlVYBqytsrAqV8yXBK,Dial Drunk (with Post Malone),"Noah Kahan,Post Malone",Dial Drunk (with Post Malone),112,197,61,67,69,4B,https://open.spotify.com/track/22VHOlVYBqytsrAqV8yXBK
+21,7rDcULv8vV16vetBjPJhuE,How Do You Like Me Now?!,Toby Keith,How Do You Like Me Now?!,110,199,67,65,67,8B,https://open.spotify.com/track/7rDcULv8vV16vetBjPJhuE
+22,5jROdl6MhcmP3O7h2sVgtw,Parachute,Chris Stapleton,Traveller,113,201,76,64,61,2B,https://open.spotify.com/track/5jROdl6MhcmP3O7h2sVgtw
+23,0NoGB44EghrBHsQs32yfOP,Everybody Knows,The Chicks,Taking The Long Way (20th Anniversary Edition),116,208,83,65,60,11B,https://open.spotify.com/track/0NoGB44EghrBHsQs32yfOP
+24,6OqdF0vHI9xkqswI7EK0cD,Cowboy Casanova,Carrie Underwood,Play On,120,200,82,60,58,7B,https://open.spotify.com/track/6OqdF0vHI9xkqswI7EK0cD

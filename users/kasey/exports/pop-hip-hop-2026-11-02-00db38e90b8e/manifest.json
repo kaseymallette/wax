@@ -1,0 +1,35 @@
+{
+  "profileId": "kasey-pop-hip-hop",
+  "weekStart": "2026-11-02",
+  "revision": "00db38e90b8ed0d67457045d1f2da80734d39149cd2a4d74a0763ba4c666c98f",
+  "files": [
+    {
+      "day": 1,
+      "filename": "pop-hip-hop-monday.csv"
+    },
+    {
+      "day": 2,
+      "filename": "pop-hip-hop-tuesday.csv"
+    },
+    {
+      "day": 3,
+      "filename": "pop-hip-hop-wednesday.csv"
+    },
+    {
+      "day": 4,
+      "filename": "pop-hip-hop-thursday.csv"
+    },
+    {
+      "day": 5,
+      "filename": "pop-hip-hop-friday.csv"
+    },
+    {
+      "day": 6,
+      "filename": "pop-hip-hop-saturday.csv"
+    },
+    {
+      "day": 7,
+      "filename": "pop-hip-hop-sunday.csv"
+    }
+  ]
+}
