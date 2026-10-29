@@ -12,6 +12,8 @@ import NotFound from "@/pages/not-found";
 function AppRouter() {
   return (
     <Switch>
+      <Route path="/visualize"><PlaylistsPage stage="visualize" /></Route>
+      <Route path="/visualize/:id"><PlaylistsPage stage="visualize" /></Route>
       <Route path="/organize"><PlaylistsPage /></Route>
       <Route path="/organize/:id"><PlaylistsPage /></Route>
       <Route path="/publish"><PlaylistsPage stage="publish" /></Route>

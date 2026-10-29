@@ -11,6 +11,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const suffix = profileId ? `/${profileId}` : "";
   const steps = [
     { href: "/", label: "Collections", active: location === "/" },
+    { href: `/visualize${suffix}`, label: "Visualize", active: location.startsWith("/visualize") },
     { href: `/organize${suffix}`, label: "Organize", active: location.startsWith("/organize") || location === "/playlists" },
     { href: `/publish${suffix}`, label: "Save & publish", active: location.startsWith("/publish") },
   ];

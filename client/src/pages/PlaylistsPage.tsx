@@ -6,13 +6,14 @@ import { Button } from "@/components/ui/button";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { PublishCollection, type PublishStatus } from "@/components/PublishCollection";
 import { FirstSongMix } from "@/components/FirstSongMix";
+import { PlaylistMap } from "@/components/PlaylistMap";
 import { Disc3, Play, ExternalLink, Search } from "lucide-react";
 import type { PreflightReport } from "../../../server/profileConfig";
 import type { DailyPlaylistsResult } from "../../../server/dailyPlaylists";
 
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 type Result = DailyPlaylistsResult & { firstTrackByPlaylist: Record<string, string>; revision: string; targetWeek: string; csvSaved: boolean; reviewed: number[]; publish: PublishStatus };
-export default function PlaylistsPage({ stage = "organize" }: { stage?: "organize" | "publish" }) {
+export default function PlaylistsPage({ stage = "organize" }: { stage?: "visualize" | "organize" | "publish" }) {
   const [, navigate] = useLocation();
   const [, params] = useRoute("/:stage/:id");
   const profiles = useQuery<PreflightReport>({ queryKey: ["/api/profiles/preflight"] });
@@ -20,8 +21,8 @@ export default function PlaylistsPage({ stage = "organize" }: { stage?: "organiz
   const profile = profiles.data?.profiles.find(p => p.id === selected) ?? profiles.data?.profiles[0];
   return <Layout>
     <p className="collection-eyebrow"><Disc3 size={15} /> YOUR WEEK ON WAX</p>
-    <h1 className="mt-5 font-display text-4xl font-bold tracking-tight">{stage === "publish" ? "Take your week with you." : "Seven days. Your soundtrack."}</h1>
-    <p className="mt-3 text-muted-foreground">{stage === "publish" ? "Save your finished playlists or send them to Spotify, one collection at a time." : "Pick a day, take a listen, and make the opening yours. Your choices save automatically."}</p>
+    <h1 className="mt-5 font-display text-4xl font-bold tracking-tight">{stage === "visualize" ? "See your week take shape." : stage === "publish" ? "Take your week with you." : "Seven days. Your soundtrack."}</h1>
+    <p className="mt-3 text-muted-foreground">{stage === "visualize" ? "Explore how your songs come together, then head to Organize to find their flow." : stage === "publish" ? "Save your finished playlists or send them to Spotify, one collection at a time." : "Pick a day, take a listen, and make the opening yours. Your choices save automatically."}</p>
     <div className="my-8 flex flex-wrap gap-2" aria-label="Genre collections">
       {profiles.data?.profiles.map(p => <Button key={p.id} variant={profile?.id === p.id ? "default" : "outline"} aria-pressed={profile?.id === p.id} onClick={() => navigate(`/${stage}/${p.id}`)}>{p.name}</Button>)}
     </div>
@@ -30,7 +31,7 @@ export default function PlaylistsPage({ stage = "organize" }: { stage?: "organiz
     {stage === "publish" && <FirstSongMix />}
   </Layout>;
 }
-function Collection({ id, name, stage }: { id: string; name: string; stage: "organize" | "publish" }) {
+function Collection({ id, name, stage }: { id: string; name: string; stage: "visualize" | "organize" | "publish" }) {
   const [, navigate] = useLocation();
   const [day, setDay] = useState(0);
   const [search, setSearch] = useState("");
@@ -64,8 +65,17 @@ function Collection({ id, name, stage }: { id: string; name: string; stage: "org
     <h2 className="mt-6 font-display text-2xl font-bold">{name}</h2>
     {query.data && <PublishCollection targetWeek={query.data.targetWeek} csvSaved={query.data.csvSaved} id={id} revision={query.data.revision} reviewed={query.data.reviewed} status={query.data.publish} busy={busy} refresh={() => { void query.refetch(); }} />}
   </>;
+  if (stage === "visualize") return <>
+    <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+      <Button variant="ghost" onClick={() => navigate("/")}>← Collections</Button>
+      <Button onClick={() => navigate(`/organize/${id}`)}>Continue to organize →</Button>
+    </div>
+    <p className="mb-4 text-sm text-muted-foreground">{query.data?.diagnostics.usableTrackCount} songs · 7 daily mixes. Hover over or select a dot to explore a song.</p>
+    {query.data && <PlaylistMap playlists={query.data.playlists} name={name} disabled={false} onSelect={dayIndex => setDay(dayIndex)} />}
+    <div className="mt-6 flex justify-end"><Button onClick={() => navigate(`/organize/${id}`)}>Organize {name} →</Button></div>
+  </>;
   return <>
-    <div className="mb-6 flex flex-wrap items-center justify-between gap-3"><Button variant="ghost" onClick={() => navigate("/")}>← Collections</Button><Button disabled={busy} onClick={() => navigate(`/publish/${id}`)}>Continue to save & publish →</Button></div>
+    <div className="mb-6 flex flex-wrap items-center justify-between gap-3"><Button variant="ghost" onClick={() => navigate(`/visualize/${id}`)}>← Visualize</Button><Button disabled={busy} onClick={() => navigate(`/publish/${id}`)}>Continue to save & publish →</Button></div>
     <div className="mb-6 flex items-baseline justify-between gap-4"><h2 className="font-display text-2xl font-bold">{name}</h2><p className="text-sm text-muted-foreground">{query.data?.diagnostics.usableTrackCount} songs · 7 daily mixes</p></div>
     <div className="mb-6">
       <label htmlFor="song-search" className="mb-2 block text-sm font-medium">Find a song in {name}</label>
@@ -82,7 +92,7 @@ function Collection({ id, name, stage }: { id: string; name: string; stage: "org
         </button></li>)}
       </ul>}
     </div>
-    <p className="mb-4 text-sm text-muted-foreground">A faster Monday, a midweek breather, and a slower Sunday. Days follow each mix’s average BPM.</p>
+    <p className="mb-4 text-sm text-muted-foreground">Monday starts in green in the upper-left quadrant. Tuesday through Sunday follow clockwise around the playlist map.</p>
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7" aria-label="Daily playlists">
       {query.data?.playlists.map((p, i) => <button key={p.index} disabled={busy} aria-pressed={day === i} onClick={() => { setDay(i); setPreview(null); setFoundTrack(null); }} className={`rounded-xl border p-4 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary ${day === i ? "border-primary bg-primary/10" : "border-border hover:bg-muted"}`}><span className="block text-xs uppercase tracking-widest text-muted-foreground">{DAYS[i].slice(0, 3)}</span><span className="mt-2 block font-display text-2xl font-bold">{p.trackCount}<span className="ml-1 text-xs font-normal text-muted-foreground">songs</span></span><span className="mt-2 block text-xs text-muted-foreground">{Math.round(p.averageBpm)} avg BPM</span></button>)}
     </div>
