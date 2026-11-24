@@ -1,210 +1,195 @@
-# Playlist flow sequencing proposal
+# Future Custom Days and Learned Ordering Proposal
 
-Status: Proposed pilot; production clustering and nearest-neighbor sequencing are unchanged.  
-Created: October 28, 2026
+Status: Draft for future implementation; separate from supervised playlist updates
 
-## Question and scope
+Created: October 27, 2026
 
-Can Wax sequence a fixed set of songs more like Kasey by considering the preceding sequence, playlist position, artist spacing, and different sizes of Camelot movement?
+This is the starting proposal for future playlist sequencing. The previous pilot, datasets, charts, and analysis have been removed. The separate [supervised playlists workflow](../supervised-playlists/README.md) handles reviewing manual Spotify arrangements and updating Wax Weekly.
 
-The working hypothesis is that larger opening contrasts give way to longer passages of close movement, with renewed contrast toward the ending. Energy, danceability, and valence can rise and fall independently within those passages. The objective is to predict the one next song Kasey would choose from the remaining candidates, rather than minimize every difference between adjacent songs.
+## Idea
 
-This feature changes ordering, not playlist membership or genre assignment. Keep current nearest neighbors available while Kasey adds songs and makes custom orders. Preserve completed custom days through the separate [custom playlist days proposal](../custom-playlist-days/README.md). Do not make vacation playlists depend on a trained model being ready.
+Allow a profile to have a master playlist plus optional custom playlists assigned to weekdays. Preserve each custom day's exact membership and playback order, remove its songs from the automatic pool, and cluster the remaining songs into the remaining days.
 
-The eventual target is **one model for Kasey across all six genre profiles**, not six genre-specific models. This proposal updates the earlier modeling assumptions: artist-spacing and optional title-relationship features are worth testing, while raw artist identities and song titles need not be memorized. Lyrics, audio analysis, and an LLM are not prerequisites. Personal interpretations of lyrics remain commentary unless explicitly supplied as modeling input.
+Use personally arranged playlists as demonstrations for a statistical next-song ranking model. Given an opening song, the preceding sequence, and the remaining candidates, the model should predict the one song the listener would choose next. Offer direct next-song selection and experimental beam search as separate ways to generate a new order from that model.
 
-## Development data
+These features solve related but distinct problems: custom days preserve work already done; learned ordering proposes new sequences that reflect the listener's choices. Custom days must work without a trained model. No lyrics, audio files, audio analysis service, or LLM is required for the proposed first version.
 
-The three custom CSVs were moved here unchanged from `users/kasey/supervised/`. They represent the current chosen orders, not a history of discarded trials. The `#` column defines order. Match tracks by `Spotify Track Id`; validate unique IDs and contiguous ranks before analysis.
+## Listening experience
 
-| Custom order | Songs | Consecutive moves | Original source-pool size |
-| --- | ---: | ---: | ---: |
-| [Alt Rock Monday](data/alt-rock-monday.csv) | 35 | 34 | 38 |
-| [Electropop Monday](data/electropop-monday.csv) | 27 | 26 | 30 |
-| [Country/Blues Monday](data/country-blues-monday.csv) | 21 | 20 | 23 |
-| **Total** | **83** | **80** | **91** |
+During collection setup or refresh, upload or select the master CSV and optionally attach a custom CSV to Monday, Tuesday, or any other day. Show these assignments before generating the week. A custom day displays its uploaded order and a Custom label; the remaining days display their generated playlists.
 
-All custom IDs are present in the corresponding original export. [data-manifest.json](data-manifest.json) records original locations, byte-level SHA-256 hashes, source-pool paths relative to the repository root, and counts. The original exports remain in place. Preserve or deliberately version these snapshots before replacing source data; do not silently train against a changed pool.
+For master plus custom Monday, Wax keeps Monday intact and generates Tuesday through Sunday around it. New master songs enter the automatic pool. Uploading a refreshed master must not clear Monday, insert songs into it, reorder it, or move it to another day.
 
-For the two orders discussed while arranging songs in chat, the corresponding original daily export supplies the starting pool. Country/Blues has a matching source export, but confirm that it was the actual selectable pool before using it for supervised candidate ranking. Its current order is usable for descriptive transition analysis regardless. Do not infer a full master library as the candidate pool or assume a current snapshot is a completed session.
+The motivating example is Kasey's 27-song Electropop Monday, beginning with `..FEISTY` and ending with `Private Idaho`. Uploading that custom Monday should preserve all 27 selections in order. The other three songs from the original 30-song Monday return to the automatic pool along with the rest of the unreserved master. They are not globally disliked or excluded songs.
 
-These are three examples from one listener, all Monday playlists. Their 80 transitions are correlated observations, not 80 independent playlists. The findings below describe this snapshot; they are not validated sequencing laws.
+Editing or replacing a custom CSV replaces its active order. Removing a custom-day assignment releases its songs and weekday back to automatic generation. Preview the resulting week before using the existing review and publish workflow. A custom day's first-song dropdown must not silently reorder it; generating an alternative requires an explicit new draft.
 
-## Kasey's Camelot move categories
+For learned ordering, choose an automatic playlist or a copy of a custom playlist, select its opener, and generate a new draft. Show the ordering method and let the listener compare the result with the original. The original custom order remains intact unless explicitly replaced.
 
-For this analysis, ignore whether the letter changes between A and B and classify only the shortest circular movement of the numeric position. Preserve A/B separately in the underlying data for later tests.
+## Current implementation
 
-| Category | Signed Camelot steps |
+- [server/dailyPlaylists.ts](../../server/dailyPlaylists.ts) creates seven balanced clusters from standardized BPM and `Mood = Energy + Dance + Valence`. It assigns weekdays using BPM ranks `[1, 3, 6, 4, 2, 5, 7]`.
+- Its `orderClusterMembers` function begins at a chosen opener or the member nearest the center, then repeatedly selects the nearest remaining song in BPM–Mood space. It considers only the previous song. Individual feature trajectories and Camelot relationships do not affect ordering.
+- The candidate track already contains BPM, energy, dance, valence, and Camelot data. No new audio data source is necessary to experiment with sequence scoring.
+- [server/profileWorkflow.ts](../../server/profileWorkflow.ts) persists opening-song choices and review state, not full custom orders. It loads those preferences only when the master fingerprint matches. Custom-day definitions need separate persistence that survives master updates.
+- [server/profileConfig.ts](../../server/profileConfig.ts) reads already configured profile masters. The proposed reservation happens within a profile before its daily clustering, not before a global genre classifier. Cross-profile reservations are outside the initial scope.
+- [server/routes.ts](../../server/routes.ts) validates opening-song changes against a fresh automatic build. That validation must use the actual custom/generated day membership after this feature is introduced.
+
+This document proposes behavior only. It does not implement the feature, save the conversational playlist, train a model, or change a published playlist. It is separate from the monthly rotation proposed in [Wax Daily Feature](../daily-rotation/README.md).
+
+## Custom playlist inputs and validation
+
+The master remains authoritative for track metadata and current numerical features. A custom CSV supplies track identities and order. Accept the existing exported `track_id` format and the master format's `Spotify Track Id`; match exact Spotify IDs rather than song titles. Different recording IDs remain distinct.
+
+Proposed ordering convention: when a `rank` column exists, require unique contiguous positive ranks starting at 1 and sort by rank. Otherwise preserve physical CSV row order. Show the resolved order before saving. Stale feature columns in a custom export must not override master values.
+
+Validate all assignments together before generation:
+
+- At most one custom playlist per weekday within a profile; each assigned playlist is nonempty.
+- No duplicate track ID inside a custom playlist or across custom days in the same profile.
+- Every reserved track exists in the current master. Missing IDs block generation with the affected day and tracks listed; never silently drop them. Let the user correct the master or custom selection.
+- The existing master validation remains applicable. Do not apply its 70-track minimum to a custom day or to the remaining automatic pool.
+- A custom playlist can have any positive size supported by the master; it need not match automatic cluster sizes.
+
+Reservations are scoped to the profile. A song present in two genre profiles may still appear in each profile's week under current collection semantics.
+
+## Building the remaining week
+
+Let `C` be the number of custom days, `K = 7 - C`, and `R` the set of master tracks not reserved by custom days.
+
+1. Validate the master and custom assignments, then materialize each custom day in its exact saved order.
+2. Remove all reserved track IDs from the automatic pool.
+3. If `K > 0`, require at least `K` remaining songs so every automatic day can be nonempty. Cluster `R` into exactly `K` balanced clusters. Their sizes differ by at most one.
+4. Proposed normalization: compute BPM and Mood standardization over `R`, with the existing safe handling of zero variance. Record the statistics. With no custom days, this reduces to current behavior.
+5. Assign generated clusters only to unreserved weekdays using the proposed mapping below, then apply the selected ordering method to those clusters.
+6. Assemble all seven days and verify that each master track appears exactly once across the week.
+
+For `K = 0`, skip clustering. Proposed initial policy: require the seven custom days to cover the master exactly. If unassigned songs remain, show them and require resolution rather than silently omitting them. Supporting an explicit overflow library would be a separate product decision.
+
+### Assigning fewer clusters to weekdays
+
+Preserve the current relative weekday tempo priorities. Sort the available weekdays by their original priority in `[1, 3, 6, 4, 2, 5, 7]`, then assign the generated clusters from highest to lowest mean BPM. Break ties deterministically using the existing stable cluster identity.
+
+With Monday reserved, the automatic clusters from fastest to slowest go to **Friday, Tuesday, Thursday, Saturday, Wednesday, Sunday**. Custom Monday stays Monday regardless of its average BPM. Compute any displayed actual BPM ranking separately from this assignment policy.
+
+Identical master, custom definitions, and algorithm settings must produce identical results. Newly uploaded master songs may change automatic memberships; only custom days are protected from reclustering.
+
+## Saved custom days and continuity
+
+Store custom-day definitions independently of generated weekly state and master fingerprints. Each definition includes profile ID, weekday, ordered track IDs, source filename or upload provenance, content revision, and schema version. Reload it on every generation and validate it against the latest master.
+
+A generated-week manifest records the master fingerprint, custom-day revisions, day origins, ordered track IDs, normalization settings, clustering version, and ordering settings. Master or custom changes invalidate affected generated results and stale review/export/publication state without deleting the custom definitions.
+
+Keep saved human order separate from generated alternatives. Revisions replace active choices; discarded experiments must not become negative feedback or additional demonstrations. Internal recovery history, if retained, is excluded from training by default. Repeated weekly use of an unchanged custom order must not duplicate its training weight.
+
+CSV exports, Spotify publishing, weekly snapshots, and First Songs selections must consume the final assembled orders. Custom days must never pass through nearest-neighbor ordering on these paths.
+
+## Training examples: one best next song
+
+The listener's task is: select a starting song, then choose the one best next song from the remaining choices, repeating until the intended ending. A training example contains:
+
+| Field | Meaning |
 | --- | --- |
-| **Close moves** | 0, ±1, ±2 |
-| **Mood shifter** | ±3, ±4 |
-| **Jaws** | ±5, ±6 |
+| Listener and demonstration ID | Whose preference is represented and which active custom order supplied it |
+| Source snapshot | Candidate track IDs and numerical features available during arrangement |
+| Initial candidate pool | The actual selectable tracks before ordering began |
+| Chosen prefix | Every song already selected, in order |
+| Remaining candidates | Initial pool minus the chosen prefix |
+| Chosen next track | The single preferred continuation in that context |
+| Completion state | Full ordering or an intentionally ended partial selection |
+| Provenance | Human arrangement, model-generated draft, and explicit later listening feedback kept distinct |
 
-These are custom analytical categories. They do not replace the directional rules in [harmonic_mixing_rules.csv](../../data/harmonic_mixing_rules.csv), and a label is not a guarantee of musical compatibility or a measured mood change.
+For the original 30-song Monday, after `..FEISTY` there are 29 candidates and `Shut Me Up` is the chosen answer. It should rank above the other 28 in that context. Alternatives are less suitable at that position, not globally bad tracks. After `Shut Me Up`, use the entire chosen prefix and the reduced candidate pool to learn the selection of `All A Mystery`.
 
-Given numeric positions `a` and `b`, let `forward = (b - a + 12) % 12`. Use `forward` for 0–5, `forward - 12` for 7–11, and the explicit tie `±6` for 6. Thus `12 → 1 = +1` and `1 → 12 = -1`. Count a six-step tie once. Categorize by magnitude: 0–2 close, 3–4 mood shifter, 5–6 jaws. A same-number A/B switch belongs to close moves but is not the same musical key. Missing or invalid keys are unknown, not close moves; exclude them from category percentages and report coverage. All 80 current moves have valid keys.
+A complete 30-song ordering supplies 28 decisions with alternatives after the user-selected opener. The last remaining song is forced and contributes no ranking comparison. A 27-song selection from a known 30-song pool supplies 26 next-song decisions after the opener, with unused tracks still present as alternatives. Do not invent a next song or learn a stopping rule from the chosen ending in the first version.
 
-### Overall counts
+**An uploaded custom order alone does not establish the original candidate pool.** Do not assume the entire master was available when the listener arranged one daily playlist. Capture a reference to the source daily-playlist snapshot when possible. For external uploads, allow attaching the source pool. If it is unknown, retain the custom day but exclude it from supervised ranking until resolved; do not fabricate alternatives.
 
-| Playlist | Close | Mood shifter | Jaws | Total moves |
-| --- | ---: | ---: | ---: | ---: |
-| Alt Rock Monday | 21 | 5 | 8 | 34 |
-| Electropop Monday | 13 | 9 | 4 | 26 |
-| Country/Blues Monday | 14 | 6 | 0 | 20 |
-| **Total** | **48** | **20** | **12** | **80** |
-| **Percentage** | **60%** | **25%** | **15%** | **100%** |
+At the end of an ordering session, derive examples from the current final order only. Feature snapshots preserve what was known when the choices were made even if a later master updates the metadata. Saved arrangements are demonstrations; they are not proof that a subsequent listening session succeeded. Generated drafts must not automatically become human training data merely because they were exported or published.
 
-### Beginning, middle, and end
+## Sequence features
 
-![Pooled transition counts: beginning has 11 close, 7 mood shifters, and 10 Jaws; middle has 22, 4, and 1; end has 15, 9, and 1.](charts/move-categories-pooled.png)
+Keep BPM and combined Mood for playlist membership. For ranking within a playlist, use individual features and the ordered context. Candidate inputs can include:
 
-Kasey's supplied chart shows **counts of transitions**, pooled across the three
-playlists. Beginning, middle, and end contain 28, 27, and 25 moves respectively.
-A/B changes and the repeat back to the opener are excluded.
+- Candidate BPM, energy, dance, valence, and Mood; signed changes from the previous song; and scale-normalized magnitudes.
+- Feature values and changes at several recent positions, with explicit missing-context indicators near the opener.
+- Trends over several candidate-inclusive window lengths, consecutive rises or falls, turning points, and rebound size relative to recent peaks and troughs.
+- Camelot number step, A/B transition, same-key indicator, and optional named harmonic relationship. These are preferences to learn, not hard compatibility filters.
+- Recent key-step sequences, including periods of small movement after larger jumps.
+- Candidate rank within the remaining pool, number of remaining choices, and relative playlist position. The candidate pool shrinks, so late decisions have different constraints.
 
-Partition transitions, not individual songs. For `N` songs there are `M = N - 1` consecutive transitions. Number transitions with zero-based index `i`, then assign `section = floor(3 * i / M)`: 0 beginning, 1 middle, 2 end. This gives roughly equal thirds and counts every transition exactly once. Adjacent sections share a boundary song but no transition.
+For numeric Camelot movement, use the shortest signed circular distance on 12 positions: `12 → 1 = +1`, `1 → 12 = -1`. Encode a six-position tie explicitly rather than inventing a direction. Preserve A/B as a separate categorical feature; do not subtract Camelot labels as ordinary linear numbers. Missing keys need an explicit missing indicator, not a fabricated key or automatic exclusion.
 
-| Playlist | Beginning track span | Middle track span | End track span | Moves per section |
-| --- | --- | --- | --- | --- |
-| Alt Rock | 1–13 | 13–24 | 24–35 | 12 / 11 / 11 |
-| Electropop | 1–10 | 10–19 | 19–27 | 9 / 9 / 8 |
-| Country/Blues | 1–8 | 8–15 | 15–21 | 7 / 7 / 6 |
+Rolling averages may be supplementary features but cannot represent an arc by themselves: changing song order leaves a window's average unchanged. The observed energy sequence `48 → 70 → 52 → 84 → 72` and valence sequence `42 → 43 → 49 → 66 → 30` are an example to describe, not a universal rule to enforce. Existing metadata cannot explain every perceived vocal, instrumental, or lyrical connection.
 
-| Playlist | Section | Close | Mood shifter | Jaws | Total |
-| --- | --- | ---: | ---: | ---: | ---: |
-| Alt Rock | Beginning | 3 | 2 | **7** | 12 |
-| Alt Rock | Middle | **11** | 0 | 0 | 11 |
-| Alt Rock | End | **7** | 3 | 1 | 11 |
-| Electropop | Beginning | 3 | 3 | 3 | 9 |
-| Electropop | Middle | **6** | 2 | 1 | 9 |
-| Electropop | End | 4 | 4 | 0 | 8 |
-| Country/Blues | Beginning | **5** | 2 | 0 | 7 |
-| Country/Blues | Middle | **5** | 2 | 0 | 7 |
-| Country/Blues | End | **4** | 2 | 0 | 6 |
+## Statistical scoring model
 
-| Section, all playlists | Close | Mood shifter | Jaws | Total |
-| --- | ---: | ---: | ---: | ---: |
-| Beginning | 11 (39%) | 7 (25%) | **10 (36%)** | 28 |
-| Middle | **22 (81%)** | 4 (15%) | 1 (4%) | 27 |
-| End | **15 (60%)** | 9 (36%) | 1 (4%) | 25 |
+Start with a small regularized conditional ranking model trained per listener. One concrete baseline is a linear score over the context/candidate features, including a limited set of sequence interactions. Apply a softmax over the actual remaining candidates and train to maximize the probability of the chosen next song. Group the loss by decision so large early candidate pools do not accidentally count as dozens of independent user decisions.
 
-Percentages are rounded within each section and pooled by transition count, so longer playlists contribute more observations. Ten of twelve Jaws moves occur in the opening third. Close moves dominate the middle, while mood shifters become more frequent at the end. Country/Blues has no Jaws moves and maintains a comparatively steady category distribution. Do not require every genre or playlist to reproduce the pooled pattern or the specific numeric key 11.
+This model learns parameters for repeatable sequence features without requiring an LLM. If the simple model underfits after collecting sufficient data, compare a small nonlinear ranker using the same decision groups. Select the implementation library during development; no new dependency is prescribed here.
 
-These tables divide each saved selection by its current length. For live generation, use the known target length; for training on a partial selection whose eventual length was unknown, use original candidate-pool progress or another available position signal instead of leaking the future chosen stopping point. A finished-order descriptive chart is not automatically a valid training feature.
+Do not use track IDs, titles, or artist identities as predictive inputs in the first experiment. Retain IDs for bookkeeping and evaluation. This encourages transferable feature patterns, although repeated songs can still be recognizable from their feature combinations. Fit normalization and any feature selection on training data only. Mood is derived from three components, so control redundancy through regularization and feature ablations.
 
-The percentage view below separates the playlists so the longer Alt Rock order
-does not obscure Country/Blues' steadier pattern. Each bar shows the share of
-moves within that playlist section; `n` is its transition count.
+Save model version, training demonstration revisions, feature schema, normalization statistics, hyperparameters, seed, and evaluation results. Training updates create a candidate model rather than silently replacing the active model. Without a usable model, keep nearest-neighbor ordering available and clearly identify the fallback.
 
-![Move-category percentages by playlist and section, showing an entirely close-move Alt Rock middle and no Jaws moves in Country/Blues.](charts/move-categories-by-playlist.png)
+## Generating orders and beam search
 
-### Repeat playback
+Preserve daily membership and the selected opener. Generate only from the songs still available in that day, each exactly once.
 
-Keep closure separate from the three-section analysis; do not add it to the end section by accident.
+| Method | Selection behavior |
+| --- | --- |
+| Existing nearest neighbor | Choose the closest remaining song in standardized BPM–Mood space |
+| Learned greedy ranking | Choose the model's highest-scoring next song, update the prefix, and repeat |
+| Learned beam search | Keep several promising prefixes and compare their possible continuations |
 
-| Playlist | Last → first | Keys | Step | Category |
-| --- | --- | --- | --- | --- |
-| Alt Rock | Fluctuate → All I Need Is You | 4B → 1A | −3 | Mood shifter |
-| Electropop | Private Idaho → ..FEISTY | 10B → 3B | +5 | Jaws |
-| Country/Blues | Lubbock or Leave It → Rollin' (The Ballad of Big & Rich) | 9B → 8B | −1 | Close |
+Learned greedy ranking directly matches the listener's stated next-best-song process and is the primary learned baseline. Beam search is an optional experiment: it can sacrifice the locally highest-ranked next song for a stronger total sequence. It is not automatically more faithful to the user's choices.
 
-Counting these three closures yields **49 close, 21 mood shifter, and 13 Jaws moves**, or 83 transitions. These are descriptive possible loops; only the Alt Rock closure has been explicitly discussed as intentional. A loop is not an ordinary remaining-candidate decision: the opener is already used. Score it separately when repeat playback is requested, rather than fabricate another training choice.
+For beam search, start with the requested opener. At each depth, score remaining candidates separately for each prefix, extend the retained prefixes, and retain the best `B` by cumulative conditional log probability. A provisional beam width of 20 is a tuning starting point, not a quality claim. Normalize probabilities over the full actual candidate pool before optional expansion pruning. Compare equal-depth prefixes and use deterministic track-ID tie breaks.
 
-## Energy, danceability, and valence across the sequence
+All complete candidates have the same membership and length; the final forced choice has probability 1 and adds zero log probability. Width 1 should reproduce learned greedy ranking under identical tie handling. Record width, pruning settings, model version, and generation settings so an order can be reproduced. Beam search is approximate and does not guarantee a global optimum.
 
-![Energy, danceability, and valence at each song position in the three custom orders.](charts/feature-trajectories.png)
+Benchmark runtime on the supported profile sizes and skewed custom-day sizes. Set a bounded search budget and show any fallback rather than silently switching methods. A new opener is a legitimate input, but generated contexts may differ from human training examples; exact next-song test accuracy alone cannot establish the quality of a whole generated order.
 
-Each panel uses the same 0–100 vertical scale and its own song-position axis.
-These are raw feature values, not changes or smoothed trends. This view preserves
-the rises, descents, and opposing movements that section averages can hide.
+## Evaluation and collecting examples
 
-The same transition thirds give the following mean absolute energy changes, in the CSV's 0–100 feature points:
+One custom order per distinct playlist is sufficient. The listener does not need to manually reorder the same playlist twice. Collect current arrangements naturally, and keep informal drafts out of the dataset.
 
-| Playlist | Beginning | Middle | End |
-| --- | ---: | ---: | ---: |
-| Alt Rock | 15.6 | 6.2 | 10.5 |
-| Electropop | 15.6 | 11.0 | 18.0 |
-| Country/Blues | 19.7 | 14.9 | 10.5 |
+As a planning estimate, 5–7 playlists can exercise the pipeline, and 10–20 playlists of around 30 songs can support an initial experiment. These are not established sample-size guarantees. Decisions from one order are correlated; report playlist counts as well as decision counts.
 
-All three have smaller energy changes in the middle than at the beginning. Two become more variable again near the end. This supports testing a flexible opening/middle/ending pattern, not requiring uninterrupted calming or a low-energy closer.
+Reserve complete playlists for evaluation before tuning. Keep revisions and identical demonstrations in the same split, and do not randomly split overlapping windows of one order across training and test sets. With few playlists, report grouped validation and its variability rather than claiming a reliable generalization score. Keep a final set of playlists untouched by tuning when enough examples exist.
 
-Individual components matter as well as `Mood = Energy + Dance + Valence`. A stable sum can mask large opposing changes, while a long rise or descent depends on order and is invisible to an average alone. Alt Rock's energy descent from Get Happy to Drag Path is `87 → 86 → 78 → 75 → 72 → 63 → 58 → 49`. This is one observed passage, not a prescribed eight-song descent.
+For each held-out decision, use the actual human prefix and actual remaining candidates, then report top-1 accuracy and mean reciprocal rank. Top-1 measures the user's single-right-answer task; top-k can be supplemental, not a substitute. Break down results by remaining candidate count and compare with both nearest neighbor and the chance baseline `1 / candidate_count`. Exclude forced final selections. Test repeated-library generalization separately from stricter tests involving unseen songs.
 
-## Proposed pilot rules
+Evaluate full generated orders through listening as a separate step. A new opener has no known exact human reference unless the user supplies one, so do not claim exact-order accuracy there. The user can listen and give optional feedback without rebuilding the playlist. Revisions alone are not dislike labels. Compare learned greedy and beam search with the same membership and opener before choosing a default.
 
-Use soft preferences and tunable weights. Do not exclude songs solely because they make a large key or BPM jump. The pilot should be able to reproduce exceptions, rather than declaring human choices invalid.
+## Implementation outline
 
-| Rule family | Candidate feature or score | Guardrail |
-| --- | --- | --- |
-| Position and key movement | Interact beginning/middle/end or continuous progress with the three move categories; retain signed step and A/B transition separately | Test category availability among remaining songs. Do not turn the observed 39/25/36 distribution into mandatory quotas. |
-| Local musical continuity | Signed and normalized absolute changes in energy, dance, valence, BPM, and optional combined Mood | Permit one feature to change while another holds. Do not double-count Mood as independent evidence or require small BPM changes. |
-| Passage direction | Recent rises/falls, consecutive direction, turning points, distance from recent peaks/troughs, and candidate-inclusive trends at several window lengths | Only use the prefix and candidate, never future selected songs. Neither endless smoothness nor constant alternation is the objective. |
-| Artist spacing | Artist overlap, songs since previous appearance, recent frequency, and remaining artist share | Five or six songs by one artist need room throughout the playlist. Allow intentional adjacent same-album pairs. Parse collaborators consistently. |
-| Optional title wordplay | Shared distinctive words, phrases, and cautiously normalized word families | A small separate experiment; musical fit can override wordplay. Do not infer lyrical meanings or require an LLM. |
-| Repeat closure | Score the last-to-first relationship for a declared loop | Do not force low-energy endings, and do not train the loop as a new candidate decision. |
+1. Add custom-day definitions, a dedicated custom CSV parser, validation, and persistence outside master-fingerprint resets. Expose weekday assignment and resolved-order preview in collection setup and playlist views.
+2. Parameterize balanced clustering by the number of unreserved days, implement remaining-day assignment, and merge generated and custom days. Preserve existing seven-day behavior when no reservations exist.
+3. Update result types, ordering-mode metadata, routes, opener validation, revision hashes, review state, exports, publication, weekly snapshots, and First Songs consumers to respect day origin and exact order.
+4. Add explicit demonstration capture with source candidate pools and feature snapshots. Keep active human demonstrations separate from generated orders and ignored drafts.
+5. Build offline feature extraction, training, grouped evaluation, and a versioned scoring interface. Start with learned greedy ranking before adding beam search over the same scores.
+6. Add experimental generation controls and draft comparison. Promote a model or ordering default only after evaluation and listening, without overwriting custom days.
 
-The first repeated exact artist label occurs at #11 in Alt Rock, #14 in Electropop, and #12 in Country/Blues. These labels do not fully capture collaborator overlap. Alt Rock also deliberately pairs The Best Deceptions and Screaming Infidelities from the same artist and album. Those examples favor flexible spacing rather than a hard no-repeat rule.
+Proposed stages can ship independently: custom-day preservation first, demonstration capture second, learned ranking third, and beam-search comparison fourth. Training should not delay preserving Monday.
 
-Acousticness, instrumentalness, loudness, duration, and time signature are already present in the CSVs. Consider them only in a later, isolated experiment after checking metadata quality. Popularity is not a proxy for familiarity or a required input. Unknown values must not silently become zero.
+## Acceptance criteria
 
-## Pilot comparisons
+- Master plus a 27-song custom Monday yields that exact ordered Monday and six generated days. No song appears twice or disappears; the weekly union equals the master.
+- From zero through seven custom days, assignment respects reservations, automatic cluster sizes differ by at most one, and empty-pool/insufficient-pool/full-reservation cases follow the explicit validation policy.
+- Zero custom days reproduces current clustering, weekday assignment, and nearest-neighbor output. Tests cover identical features and deterministic ties.
+- Refreshing the master preserves custom definitions. Missing reserved tracks and cross-day duplicates produce actionable errors without mutating saved custom orders.
+- Replacing an order updates its active demonstration; discarded trials and repeated publication do not become extra training examples. Unknown source pools never produce fabricated ranking labels.
+- Training examples reconstruct exact prefixes and candidate sets, distinguish partial selections, and exclude forced choices. Features contain no future song information.
+- Evaluation separates whole playlists and revisions, fits preprocessing only on training data, and reports exact-choice accuracy with baseline and candidate-count context.
+- Generated orders preserve the opener and membership, use each track once, and record reproducible settings. Beam width 1 matches learned greedy output; larger beams are tested for runtime and sequence quality.
+- Custom days remain unchanged through preview, export, Spotify publication, weekly snapshot creation, and First Songs extraction. Existing revision/review protections remain effective.
+- No model training, automatic promotion, publication, or new scheduled job is triggered merely by this proposal.
 
-Hold playlist membership and opener fixed for whole-order listening comparisons:
+## Decisions to revisit before building
 
-1. **Baseline:** existing normalized BPM–Mood nearest neighbors.
-2. **Simple preferences:** baseline plus artist-spacing and Camelot-category features, without positional preferences.
-3. **Sequence preferences:** add recent direction and position-by-category interactions. Compare with the simple version to isolate the value of context.
-4. **Search comparison:** run greedy selection and bounded beam search using the same candidate score. A provisional beam width of 20 is a test setting, not an established optimum.
+Confirm the proposed remaining-weekday tempo mapping and the seven-custom-day leftover policy. Decide how the current local configuration workflow should expose master/custom uploads, and where external users attach the original candidate pool for a demonstration. Decide whether one listener's genre profiles share one model with profile context or initially train separate models; avoid pooling different listeners by default.
 
-Greedy ranking directly implements choosing the best next song. Beam search retains several prefixes and can sacrifice the locally best choice for a stronger complete sequence. Its benefit must be demonstrated rather than assumed. With identical scoring and tie handling, beam width 1 should match greedy output. Normalize conditional probabilities over each prefix's actual remaining candidates before accumulating log probabilities, and handle optional loop scoring as a separate explicit term.
+Select a lightweight ranking implementation and validation protocol after the first batch of custom orders exists. Tune context lengths, feature interactions, beam width, and pruning from held-out evidence rather than treating this one Monday's patterns as settled rules. Decide how explicit listening feedback should be collected independently of ordinary edits. Preserve custom days regardless of those modeling decisions.
 
-Initially write down a small set of weights and compare their outputs; do not extensively tune dozens of rules to these three examples. For the learned version, fit one regularized conditional ranking model across Kasey's profiles, using each human choice as the preferred candidate over the actual alternatives. Keep the model small, and fit preprocessing only on development data.
-
-## Candidate pools, revisions, and evaluation
-
-For each selected next song, reconstruct the preceding chosen sequence and remove those IDs from the confirmed original candidate pool. The remaining songs are the alternatives for that decision. Tracks omitted from a custom selection remain available alternatives during its recorded choices; they are not globally disliked. Do not invent an ordering for unused tracks or a stop decision.
-
-Ordinary rearrangements replace the active order. Discarded trials are neither negative feedback nor additional training examples. Deduplicate unchanged custom orders across weekly publications. Store human orders separately from generated drafts and keep artist/title metadata usable as relationships rather than memorization keys.
-
-The planned collection is **42 playlists: six profiles × seven days**. Pool all profiles into one model. Use five days per profile for development (30 playlists, 71.4% by playlist count), and two days per profile for held-out testing (12 playlists, 28.6%). Monday–Friday versus Saturday–Sunday is the current proposed assignment; record it before training. Tune only within the development set using whole-playlist groups. This day-based split may have a tempo-distribution shift due to weekday assignment, which should be reported rather than hidden.
-
-These three Mondays are exploratory development examples, not an untouched test. Do not split overlapping windows or revisions between development and test. Report per-profile and pooled results; distinguish repeated-library performance from performance on unseen tracks. There is no need for Kasey to manually arrange a playlist twice.
-
-For held-out exact-choice evaluation, use the human prefix and the actual remaining candidates at each step. Compare top-1 accuracy and mean reciprocal rank against nearest neighbors and chance (`1 / remaining_candidate_count`), broken down by position and candidate count. Exclude forced final choices. The full source pool belongs in this test even when the final human selection is shorter. For whole-order listening comparisons, use the same selected membership and opener for all algorithms; that is a different task from recovering a choice among the larger original pool.
-
-Also compare observed category use with category availability at each decision and with fixed-opener shuffles. A preference cannot be established merely because many remaining songs share the same keys. Report macro averages by playlist alongside transition-weighted totals. Follow next-song tests with listening to generated orders, because generated prefixes can diverge from the human contexts used during evaluation.
-
-## Implementation outline and acceptance criteria
-
-1. Build an offline analyzer that reads these snapshots and reproduces the category counts, section boundaries, energy summaries, and separate closures. Add candidate-availability reporting when pools are confirmed.
-2. Add an isolated scoring interface receiving prefix, candidate, remaining pool, position information, and settings. Preserve existing production behavior while testing.
-3. Generate draft alternatives and readable feature/score explanations. Verify unique membership, fixed opener, deterministic ties, and reproducible settings.
-4. Fit and evaluate one model after enough custom orders are available. Compare greedy and beam outputs with fixed scoring; model training and search are separate experiments.
-5. Integrate only after held-out evaluation and listening. Custom-day preservation and collection of examples can ship first.
-
-Acceptance requires the following:
-
-- The three CSVs remain unchanged by analysis or draft generation. Their hashes and counts match the manifest.
-- Recomputed tables sum to 80 consecutive moves: 48 close, 20 mood shifter, 12 Jaws. Section counts reconcile to each playlist's overall totals. Optional closures produce 83 total moves and remain separately labeled.
-- Circular wraparound, six-step ties, A/B switches, unknown keys, and short playlists are handled explicitly. Position features do not leak a future stopping point.
-- Models and rule scores are compared with nearest neighbors under matching conditions. Raw counts and appealing narratives are not presented as proof of improvement.
-- No discarded revisions become dislike labels. Candidate pools and saved source features are traceable, and unknown pool provenance prevents supervised ranking rather than inventing labels.
-- Model selection never uses the held-out two days per profile. One model spans all six profiles; there is no requirement to order the same playlist twice.
-- Generated drafts preserve the source custom order, membership, and selected opener. No Spotify publishing, automatic migration, model training, or production algorithm change occurs simply from adding this proposal.
-
-## Reproduce the supplementary charts
-
-From the repository root, with Python and Pillow available:
-
-```bash
-python3 features/playlist-flow-sequencing/render_charts.py
-```
-
-The renderer reads the saved CSVs, checks the pooled category counts against this
-snapshot, and regenerates `charts/move-categories-by-playlist.png` and
-`charts/feature-trajectories.png`. The supplied `charts/move-categories-pooled.png`
-is preserved unchanged. No source CSVs or playlist state are modified.
-
-## Decisions remaining
-
-Confirm source-pool provenance for external custom uploads and whether each snapshot is complete. Choose initial rule weights, available-at-generation position features, artist/collaborator parsing, and how an intentional same-album pairing can outweigh the spacing penalty. Decide whether title matching and loop scoring belong in the first pilot or separate comparisons. Use later custom orders to test these choices instead of hard-coding all patterns observed in the three Mondays.
+The current agreed workflow is documented in [Supervised Playlists](../supervised-playlists/README.md). Implement that review-first workflow independently of these generation and training ideas.

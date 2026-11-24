@@ -96,7 +96,7 @@ After publishing all six collections to Spotify in Wax, prepare the website rele
 npm run weekly:release
 ```
 
-This reads the published v2 snapshots in `users/kasey/snapshots/` and updates `wax_weekly/data.js` and `wax_weekly/art.js`. Song order and Spotify playlist links come directly from the snapshots, including Electropop. Existing album artwork is reused when available.
+This reads the published v2 snapshots in `users/kasey/snapshots/` and updates `wax_weekly/data.js` and `wax_weekly/art.js`. Song order and Spotify playlist links come from the snapshots, including Electropop, with accepted [supervised playlist orders](features/supervised-playlists/README.md) applied to their matching source revisions. Unaccepted review exports do not affect releases. Existing album artwork is reused when available.
 
 The **Explore** tab contains the **First Songs jukebox**, features each daily opener in profile order. Visitors can use Previous/Next, arrow keys, or swipe the song card, listen through the Spotify player, and choose **Explore [genre] · [day]** to jump to that full daily playlist. **Profiles** opens by default and keeps the genre cards and daily playlists together. Explore links switch to Profiles and select the matching genre and day. Spotify controls playback and preview availability. When a published First Songs snapshot matches the website's opening songs in the same order, the release also includes a link and expandable player for the full mix. Publish the mix in Wax and rerun `npm run weekly:release` to include it.
 
@@ -112,6 +112,35 @@ npm run weekly:release -- --check
 The website's user and profile order are configured separately in `wax_weekly/release.json`. This command does not use `WAX_USER`, so running the local app for a parent does not change the website's source. Other Wax users do not need a website or release configuration. The older `npm run weekly:site:build` command is an alias for the same v2 builder.
 
 Review the generated files, then commit and deploy `wax_weekly/` through your normal hosting workflow. The release command does not publish to Spotify, commit, push, or deploy. Snapshots stay local; run the command on the computer holding the published snapshots before deploying the generated site files.
+
+## Supervised playlists
+
+After manually reordering a daily playlist in Spotify, update that one playlist on Wax Weekly through a review export. The supervised CSV supplies the exact songs and order; Wax matches Spotify Track IDs and keeps the existing song metadata. Songs omitted from the CSV are removed from that daily playlist.
+
+Save the CSV under `users/<username>/supervised/<export-folder>/`, using the matching export folder and playlist filename. From the repository root, prepare its review export:
+
+```bash
+npm run supervised:prepare -- users/kasey/supervised/alt-rock-2026-11-02-6729d0516bb1/alt-rock-monday.csv
+```
+
+Review the updated CSV in the corresponding `users/kasey/exports/` folder. Preparation leaves the website unchanged, so you can keep arranging and reviewing one playlist at a time. When the export is ready, accept it:
+
+```bash
+npm run supervised:accept -- users/kasey/exports/alt-rock-2026-11-02-6729d0516bb1/alt-rock-monday.csv
+```
+
+Acceptance updates that playlist in the local website data and saves its order in `users/kasey/supervised/accepted.json`. Future `npm run weekly:release` builds preserve accepted orders for their matching snapshots. Preparing another draft leaves the last accepted order intact.
+
+Append `--check` to either command to validate and preview without changing files:
+
+```bash
+npm run supervised:prepare -- users/kasey/supervised/alt-rock-2026-11-02-6729d0516bb1/alt-rock-monday.csv --check
+npm run supervised:accept -- users/kasey/exports/alt-rock-2026-11-02-6729d0516bb1/alt-rock-monday.csv --check
+```
+
+Replace the example paths to work on another playlist. The matching export manifest and original published snapshot must be available locally; acceptance requires the website to show the same week and Spotify playlist. Keep the accepted-order file with the repository, then commit and deploy the website through the usual workflow. These commands do not generate playlists, write to Spotify, or deploy automatically.
+
+See [Supervised Playlists](features/supervised-playlists/README.md) for validation rules and implementation details.
 
 ## Methods
 
@@ -358,14 +387,18 @@ git push
 
 ## Development
 
-Planned features include [custom playlist days](features/custom-playlist-days/README.md)
-and a [daily rotation](features/daily-rotation/README.md). Each feature folder can
+[Supervised playlists](features/supervised-playlists/README.md) are available through
+`npm run supervised:prepare` and `npm run supervised:accept`. Planned features
+include a [daily rotation](features/daily-rotation/README.md). Supervised playlists follow
+a review-first workflow: arrange in Spotify, import one supervised CSV into its
+review export, then explicitly update that playlist on Wax Weekly when ready.
+Each feature folder can
 start with a proposal and hold implementation notes or experiment data later.
 
 The [playlist flow sequencing proposal](features/playlist-flow-sequencing/README.md)
-uses three custom playlist orders to explore positional Camelot moves, musical
-arcs, artist spacing, and a future shared ranking model. Its development CSVs
-are stored with the proposal; production sequencing is unchanged.
+describes future custom-day preservation and learned ordering. It is a fresh
+planning starting point, separate from supervised playlist updates; the old pilot
+data, charts, and analysis have been removed. Production sequencing is unchanged.
 
 The [angular partition feature](features/angular-partition/README.md) documents the app’s
 current equal-count BPM–valence grouping, clockwise weekday assignment, and all six
