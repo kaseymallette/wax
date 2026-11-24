@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 import { z } from "zod";
 import { configSchema } from "../server/profileConfig";
 import { DAYS, hash } from "../server/profilePublish";
+import { applyOverrides, readOverrides } from "./supervisedOverrides";
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const spotifyId = z.string().regex(/^[A-Za-z0-9]{22}$/);
@@ -28,7 +29,7 @@ function readJson(file: string) {
   try { return JSON.parse(fs.readFileSync(file, "utf8")); }
   catch (error) { throw new Error(`Cannot read ${file}: ${(error as Error).message}`); }
 }
-function validateSnapshot(file: string) {
+export function validateSnapshot(file: string) {
   const raw = readJson(file);
   const parsed = snapshotSchema.safeParse(raw);
   if (!parsed.success) throw new Error(`Invalid snapshot ${file}: ${parsed.error.message}`);
@@ -60,11 +61,12 @@ export function prepareWeeklyRelease(root: string, requestedWeek?: string) {
     .map(file => validateSnapshot(path.join(snapshotDir, file))).filter(s => release.profileIds.includes(s.profileId));
   const week = requestedWeek ?? snapshots.map(s => s.weekStart).sort().at(-1);
   if (!week) throw new Error("No published weekly snapshots found. Publish the website's collections in Wax first.");
+  const overrides = readOverrides(userDir);
   const selected = profiles.map(profile => {
     const candidates = snapshots.filter(s => s.profileId === profile.id && s.weekStart === week).sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
     if (!candidates.length) throw new Error(`Missing published snapshot for ${profile.name}, week of ${week}. Publish that collection first, or choose a complete week with --week YYYY-MM-DD. Website files were not changed.`);
     if (candidates[1]?.publishedAt === candidates[0].publishedAt && candidates[1].revision !== candidates[0].revision) throw new Error(`Ambiguous snapshots for ${profile.name}, week of ${week}.`);
-    return candidates[0];
+    return applyOverrides(candidates[0], overrides);
   });
   if (new Set(selected.map(s => s.spotifyAccountId)).size !== 1) throw new Error("The selected week's collections were published to different Spotify accounts.");
   const stations = selected.map((s, i) => ({
@@ -91,13 +93,17 @@ export function prepareWeeklyRelease(root: string, requestedWeek?: string) {
   // A mix published after midnight can target the following week while still
   // containing these exact openers. Match the songs and origins, not the date.
   const openers = selected.flatMap(s => DAYS.map((day, i) => ({ id: s.playlists.find(p => p.index === i + 1)!.tracks[0].id, profileId: s.profileId, day })));
+  const firstSongs = matchingFirstSongs(snapshotDir, selected[0].spotifyAccountId, openers);
+  return { siteDir, username: release.username, data: { week_start: week, last_updated: Math.max(...selected.map(s => Date.parse(s.publishedAt)), ...overrides.filter(o => o.weekStart === week && release.profileIds.includes(o.profileId)).map(o => Date.parse(o.acceptedAt))), stations, first_songs: firstSongs }, art };
+}
+
+export function matchingFirstSongs(snapshotDir: string, accountId: string, openers: { id: string; profileId: string; day: string }[]) {
   const mixSchema = z.object({ playlistId: spotifyId, accountId: z.string(), publishedAt: z.string().datetime(), tracks: z.array(z.object({ id: spotifyId, profileId: slug, day: z.string() })) });
   const mixes = fs.readdirSync(snapshotDir).filter(file => file.startsWith("first-songs-mix-") && file.endsWith(".json"))
     .map(file => mixSchema.parse(readJson(path.join(snapshotDir, file))))
-    .filter(mix => mix.accountId === selected[0].spotifyAccountId)
+    .filter(mix => mix.accountId === accountId)
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
-  const firstSongs = mixes[0] && JSON.stringify(mixes[0].tracks) === JSON.stringify(openers) ? { playlist_url: `https://open.spotify.com/playlist/${mixes[0].playlistId}` } : undefined;
-  return { siteDir, username: release.username, data: { week_start: week, last_updated: Math.max(...selected.map(s => Date.parse(s.publishedAt))), stations, first_songs: firstSongs }, art };
+  return mixes[0] && JSON.stringify(mixes[0].tracks) === JSON.stringify(openers) ? { playlist_url: `https://open.spotify.com/playlist/${mixes[0].playlistId}` } : undefined;
 }
 
 export function writeWeeklyRelease(release: ReturnType<typeof prepareWeeklyRelease>) {

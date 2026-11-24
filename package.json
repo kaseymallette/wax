@@ -11,7 +11,9 @@
     "weekly:site:build": "node --import tsx script/buildWaxWeeklyData.ts",
     "weekly:release": "node --import tsx script/buildWaxWeeklyData.ts",
     "spotify:auth": "tsx script/spotifyAuth.ts",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "supervised:prepare": "node --import tsx script/supervisedPlaylists.ts prepare",
+    "supervised:accept": "node --import tsx script/supervisedPlaylists.ts accept"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
