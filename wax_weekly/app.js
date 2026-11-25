@@ -36,13 +36,15 @@
   applyTheme();
 
   /* ---------- Last updated label ---------- */
-  function fmtDateUtc(d) {
-    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
-  }
-  const updatedAt = Number.isFinite(DATA.last_updated)
-    ? new Date(Number(DATA.last_updated))
+  const hasUpdateTimestamp = Number.isFinite(DATA.last_updated);
+  const updatedAt = hasUpdateTimestamp
+    ? new Date(DATA.last_updated)
     : (DATA.week_start ? new Date(DATA.week_start + 'T00:00:00Z') : new Date());
-  const updatedText = fmtDateUtc(updatedAt);
+  // Updates follow the curator's Pacific calendar; a date-only week stays literal.
+  const updatedText = updatedAt.toLocaleDateString('en-US', {
+    month: 'long', day: 'numeric', year: 'numeric',
+    timeZone: !hasUpdateTimestamp && DATA.week_start ? 'UTC' : 'America/Los_Angeles',
+  });
   $('week-label').textContent = 'Last updated on ' + updatedText;
   $('footer-week').textContent = updatedText;
 
